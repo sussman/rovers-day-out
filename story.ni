@@ -17,6 +17,8 @@ A prop is a kind of thing. It is usually portable.[If props can be carried out o
 
 A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. "[if open]The fridge is open, spilling cold air onto the floor of the kitchen.[otherwise]The fridge is closed."
 
+A sink is a kind of furniture. Understand "sink" as a sink.  A faucet is a kind of thing. A knob is a kind of thing. A drain is a kind of thing. A basin is a kind of container [redirect in/on the sink to the basin]. A basin is always open not openable.  A faucet, knob, drain and basin are parts of every sink.
+
 Chapter Routines
 
 To say ACU Boot Banner: [note -- the boot banner varies according to the stage of the story]
@@ -61,7 +63,7 @@ The description of the living room is "This is an ordinary living room. It conta
 
 The purple futon is an enterable furniture in the living room. Understand "couch" or  "bed" or "sofa" as the futon. "A comfy purple futon. There is an alarm clock on the futon."  The mattress and frame are parts of the futon.  
 
-On the futon is a woman called Janet. She is wearing a flight suit. A left arm and a right arm are parts of Janet. A back is part of Janet.[TODO remember to set the article appropriately, your/her, depending on POV.]
+On the futon is a woman called Janet. She is wearing a flight suit. A left arm and a right arm are parts of Janet. A back, a hair, and a body are parts of Janet.[note -- remember to set the article appropriately, your/her, depending on POV.]
 
 The flight suit is a wearable prop.  The insignia is part of the flight suit.
 
@@ -85,21 +87,55 @@ The living room floor is scenery in the living room.
 
 The front door is west of the living room and east of the porch. 
 
-
-
 Section Kitchen
 
 The Kitchen is a room."A small kitchen."
 
-The old yellow fridge is a refrigerator in the kitchen. 
+The old fridge is a refrigerator in the kitchen. A piece of magpaper is a part of the old fridge.  
 
-An egg is in the fridge. It is edible.
+In the fridge is the egg. It is an edible prop.
 
-Rover is a male animal in the Kitchen.
+The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range. The burner is part of the sink. It is a furniture.  
+
+A frying pan is in the drawer. "A small, non-stick frying pan." It is an open not openable container.  The carrying capacity of the pan is 1.
+
+The dispenser is a prop in the kitchen.The water bowl and the food bowl are containers that are parts of the dispenser. The carrying capacity of the water bowl is 1. The carrying capacity of the food bowl is 1.
+
+The counter is an enterable furniture in the kitchen.[do not increment this counter]
+
+The kitchen sink is a sink in the kitchen.  
+
+The cabinet is part of the kitchen sink.  The cabinet is an openable closed scenery container.  The bag and the box are in the cabinet.  
+
+The bag is an open openable container.  The carrying capacity of the bag is 1.  The bag contains some dog food.
+
+The box is an open not openable container. The carrying capacity of the box is 1. The box contains some dog treats.
+
+Rover is a male animal in the Kitchen.  The tail, paw, nose, ear, dorsum, tummy, and tongue are part of Rover.
 
 Section Bathroom
 
 The Bathroom is a room."An ordinary bathroom."
+
+The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a floss dispenser. The toothbrush and floss dispenser are props.
+
+The blue button is part of the floss dispenser.
+
+The bathroom floor is scenery in the bathroom.
+
+The bathroom wall is scenery in the bathroom.  The mirror and the plate are parts of the wall.
+
+The bathroom ceiling is scenery in the bathroom. The irradiator is part of the ceiling.
+
+The bathroom sink is a sink in the bathroom.
+
+The toilet is enterable furniture in the bathroom. The bow and tank are parts of the toilet. The lever is part of the tank.
+
+The plunger is furniture in the bathroom. The handle and the cup are part of the plunger.
+
+The shower door is north of the bathroom. The Shower is north of the shower door.
+
+The soap dispenser, the shampoo dispenser, and the shower drain are scenery in the shower.
 
 Chapter The Planet
 
@@ -110,6 +146,13 @@ The sky is a backdrop. It is in the Planet.
 Chapter The Ginsu
 
 The Ginsu [i.e., the Earth ship] is a region.  The Sleep Room and the Eating Room are rooms in the Ginsu.
+
+Chapter Offstage
+[Items that are tangible, but initially out of play] 
+
+Chapter Memories
+
+Chapter Dreams
 
 Chapter Menus
 
