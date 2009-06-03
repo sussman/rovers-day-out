@@ -31,7 +31,7 @@ To say ACU Boot Banner: [note -- the boot banner varies according to the stage o
 
 [General routine for displaying dialogue between Janet and David.]
 To say (dialogue - some text) in metaspeak:
-	say paragraph break; 
+	say line break; 
 	say "[fixed letter spacing][blue letters][dialogue][default letters]";
 	say variable letter spacing;
 	say paragraph break;
@@ -54,24 +54,26 @@ After printing the banner text:
 Chapter The Valkyrie
 
 Section Living Room
-
+ 
 The Valkyrie is a region.  The Living Room, Kitchen, and Bathroom are rooms in the Valkyrie.
 
-The wall is a backdrop.  It is in the livingroom and kitchen.  Understand "wall" or "walls" or "ceiling" as wall.
+The walls are a backdrop.  It is in the living room and kitchen.  Understand "wall" or "walls" as walls.  The description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."
+
+The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" as ceiling. "The ceiling is a white stucco material designed to absorb sound." 
 
 The description of the living room is "This is an ordinary living room. It contains a futon, drapes. From here you can see the kitchen, bathroom and front door." The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
-The purple futon is an enterable furniture in the living room. Understand "couch" or  "bed" or "sofa" as the futon. "A comfy purple futon. There is an alarm clock on the futon."  The mattress and frame are parts of the futon.  
+The purple futon is an enterable furniture in the living room. Understand "couch" or "bed" or "sofa" as the futon. "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon."  The mattress and frame are parts of the futon.  The description of the mattress is "A thick, heavy purple mattress." The description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering."  
 
-On the futon is a woman called Janet. She is wearing a flight suit. A left arm and a right arm are parts of Janet. A back, a hair, and a body are parts of Janet.[note -- remember to set the article appropriately, your/her, depending on POV.]
+On the futon is a woman called ACU. She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.]
 
 The flight suit is a wearable prop.  The insignia is part of the flight suit.
 
-The alarm clock is furniture.  The description of the alarm clock is "It's a white plastic alarm clock with bright green LEDs.". A button and a switch are part of the alarm clock.
+The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap white plastic alarm clock with bright green LEDs.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
 
 After examining the alarm clock:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
-	say "[metatext in metaspeak]".
+	say "[metatext in metaspeak]";
 
 Some drapes are furniture in the living room.
 
@@ -83,7 +85,7 @@ Some garden skylights are scenery in the living room.
 
 The grass is scenery in the living room.
 
-The living room floor is scenery in the living room.
+The living room floor is scenery in the living room. "A hardwood floor."
 
 The front door is west of the living room and east of the porch. 
 
@@ -129,7 +131,7 @@ The bathroom ceiling is scenery in the bathroom. The irradiator is part of the c
 
 The bathroom sink is a sink in the bathroom.
 
-The toilet is enterable furniture in the bathroom. The bow and tank are parts of the toilet. The lever is part of the tank.
+The toilet is enterable furniture in the bathroom. The bow and tank are parts of the toilet. The lever is part of the tank. The flapper valve is part of the tank.
 
 The plunger is furniture in the bathroom. The handle and the cup are part of the plunger.
 
@@ -139,20 +141,101 @@ The soap dispenser, the shampoo dispenser, and the shower drain are scenery in t
 
 Chapter The Planet
 
-The Planet is a region. The Porch, Outdoor1, Outdoor2, and Outdoor3 are rooms in the Planet.
+The Planet is a region. The Porch, The Barren Plain, The Dug-Up Field, The Smoking Pit, The Featureless Desert, and The Stranger's House are rooms in the Planet.
+
+The Porch is west of the front door.
+
+The Barren Plain is west of the Porch. A rock is a prop in the Barren Plain.
+
+Dug-Up Field is west of the Barren Plain. A small ditch is an open not openable container. It is in the Dug-Up Field.
+
+The Smoking Pit is west of the Dug-Up Field. A long furrow is an enterable open not openable container.
+
+The Featureless Desert is west of the Smoking Pit.
+
+The Black BullDog is a male animal in the Featureless Desert. He is carrying the delicious bone. The decision bone is a prop.
+
+The Stranger's House is west of the Featureless Desert.
+
+The Broken Door is west of the Stranger's House and east of the Sleeping Room.
 
 The sky is a backdrop. It is in the Planet. 
 
 Chapter The Ginsu
 
-The Ginsu [i.e., the Earth ship] is a region.  The Sleep Room and the Eating Room are rooms in the Ginsu.
+The Ginsu [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Ginsu.
+
+In the sleeping room is a man called the stranger.
+
+The bed is enterable furniture in the sleeping room. The pillow is a prop on the bed.[Rover can have fun with it. Bad dog! Bad dog!]
+
+The Eating Room is north of the sleeping room.
+
+A cold box is a refrigerator in the Eating Room.
+[there is no egg in the Ginsu's fridge because it's the same egg as in the Valkyrie. A byte saved is a byte earned.]
+
+The water maker is a sink in the Eating Room.
+
+The table is an enterable furniture in the Eating Room.
+
+The bulldog's water bowl and the bulldog's food bowl are portable containers in the Eating Room. [portable, but slick, add a before action to prevent Rover from walking off with them].
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
 
+There are some spruce trees. They are scenery.
+
+David Venkatachalam is a man.
+
+The space probe is a prop.
+
+There are some assault ships. They are scenery.
+
+There are some gunships. They are scenery.
+
+Janet Xiang is a woman. 
+
+Chapter Conversations
+[not used at present]
+
+Table of Conversations
+topic			said			metatext
+"clock"		false			"David:  Why is it so interested in the clock?[line break]Janet:  Not sure."
+
 Chapter Memories
 
+Table of Remembered Stuff
+topic							description
+"trick" or "tricks"		"You recall that since Rover was a puppy, he[apostrophe]s been good at the basic tricks like sit, lay down, roll over, and kiss. During the war, he was also trained to rescue people trapped in cave-ins, and knows the command [quotation mark]dig[quotation mark]. Similarly, from the war, he knows the command [quotation mark]attack[quotation mark], but you doubt he would ever really attack anyone except to protect you."
+"war"							"Five years ago, you were a graduate student in computational cognition when the situation with Earth deteriorated, and Earth ships attacked the colonial government. The fighting destroyed most of the surface installations in the first few days, but Earth backed down when Martian missiles struck Luna City, Beijing and São Paulo. Under terms of the treaty, the Martian government was granted autonomy, but Mars remains economically dominated by Earth, except for MARSpace."
+"marspace"					"MARSpace began as an extension of the Myomita corporation space program, but was absorbed by the Martian government after the War of Independence. Before the war, MARSpace serviced almost all Condensate Drive vessels engaged in commerce between the Solar System and Earth[apostrophe]s Interstellar Territories. Since the war, MARSpace has slowly rebuilt, and its first Casimir Drive ship, the Valkyrie, is nearly ready for launch."
+"me" or "self" or "myself"	"You are Janet Xiang, age 36, citizen of Mars, and employee of MARSpace. You grew up in the suburbs of Cydonia, and your mother taught Applied Cybernetics at U of C. Your father was an environmental technician who worked at the local reclamation center. Like many Martian women of your generation, you intended to wed early, and you were engaged to Tomasz Kowalski when the Independence War began. Tomasz was working in the power station located on Phobos when that moon was destroyed. The same day, you adopted your dog, Rover, whose owners were killed during an attack which destroyed part of the U of C. You have raised him from a puppy, and he is your most loyal friend."
+"cydonia"							"You don't have many memories of Cydonia itself despite having grown up just a few klicks from the city center -- and it is not like you had time to go their as a graduate student. You recall Cydonia[apostrophe]s overly complicated public transport systems, the food vendors who ply the walkways with their tempting carts of fried food, and the tube-people who beg for money."
+"mars"								"Mars has been home to your family for three generations, your grandparents having been life contractors for the Myomita corporation. Since its colonization by national and later corporate entities beginning more than two hundred years ago, Mars has been subservient to the interests of Earth. Since the Independence War, the situation has improved, and income from off-world commerce is slowly balancing the equation."
+"rover"							"Rover is your dog, a five year old dalmation. When his original owners were killed during the Independence War, you adopted him as a puppy. He is a clever dog, and you have taught him to perform a number of tricks on command. Rover is house trained, but loves to explore outside. He can be trusted to go out on his own, and always comes back."
+"david" or "venkatachalam"	"David Venkatachalam, age 42, citizen of Mars, and Project Leader for the Valkyrie program. David was raised in an undersea community just north of Sri Lanka, so he had less difficulty adapting to Mars and its life support requirements than most Earthers. He studied mathematics in New Delhi and Novosibirsk before working on theoretical aspects of the Casimir propulsion system at Myomita Corporation in Sapporo. He was cut off from Earth by the events preceding the Independence War, and after the war naturalized as a Martian Citizen, joining the Valkyrie program at MARSpace. David is single, attractive, and most importantly, he likes dogs."
+"ACU"								"Your project for the last two years has been design of the autonomous control unit, an artificially intelligent agent that controls all operations aboard the Valkyrie. Originally, the ACU would have been modeled on synaptic scans of experts from relevant fields of study, but given the short time frame, you have only had time to incorporate your own synaptic scans and you have jury-rigged the ACU-to-ship interface."
+"valkyrie"						"The potential for interstellar commerce has been constrained by time and distance. Although Condensate Drive has allowed vessels to reach nearby stars, it is expensive and slow, and holds little promise for commercial exploitation. The Valkyrie is the first ship to incorporate Casimir Drive, giving it unprecedented speed and range. It is rumored that since the Valkyrie project fell into MARSpace hands after the Independence War, Earth[apostrophe]s Myomita corporation has been working on a sister ship based on similar technology."
+"helium"							"Heavy helium is consumed as a fuel in fusion reactors, including the fusion rockets aboard the Valkyrie. Heavy helium is confined in a magnetic bottle, and the reaction is initiated by a flash of tightly concentrated laser energy. Subsequently, the reaction is self-sustaining. Mars has limited production capacity for heavy helium, and the isotope is scarce and understandably expensive."
+"casimir"							"Casimir, or zero-point energy drive, was developed in the last ten years. By doing largely incomprehensible things to time/space, the Casimir Drive can translate a ship incredible distances in a fraction of the time and energy that would be required by a ship equipped with Condensate Drive. The one drawback to Casimir technology, at least in its current implementation, is that such trips are lethal to biological organisms, hence the need for the ACU."
+"myomita"							"The Myomita Corporation is Earth's largest zaibatsu, with a strangle hold on Earth's computer and space exploration sectors. For all intents and purposes, Myomita [italic type]is[roman type] Earth[apostrophe]s government. The company is based in Kyoto, but has offices throughout the Solar System. The company is controlled by the Ishegawa family, who follow a profit-oriented reinterpretation of the bushido code. The company is ruthless and unforgiving, but unquestionably successful."
+"probe"							"In 2108, shortly after the invention of Condensate Drive, the Myomita Corporation launched a number of deep space probes from their Martian Headquarters at Cydonia. More than thirty probes were launched, programmed to jump from system to system in search of planets with evidence of life. Refueling from the stellar wind in each system, the probes were designed to return only if successful. Three months ago, the Mushashi-5 transponder signal was detected, originating at a planet 38 light years from Earth. According to the telemetry, the probe was returning to the Solar System when it crashed. Both Mars and Earth have claimed ownership of the probe and the data it contains, and have mounted a program to retrieve the probe from where it crashed almost four decades ago."
+"windex"						"A proprietary computer operating system owned by the Myomita Corporation."
+"inform"						"An interpreted computer language originally designed for interactive fiction. The Valkyrie's ACU controls the ship through an interface implemented entirely in Inform version 10.5.4."
+"interactive fiction"		"Any of a number of literary forms implemented as an immersive, interactive experience. Interactive fiction (IF) arguably began with primitive text-based [quotation mark]adventure[quotation mark] programs in the 20th century, and has matured in parallel to technology. Today, IF dominates the entertainment industry, and IF programmers are among the most highly valued members of society."
+"flosix"						"A modern operating system supported by a community of users throughout known space."	
+
 Chapter Dreams
+
+Table of Dreams
+index		description
+1	"Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?"
+2	"The alarm clock rolls into a ball, and flies the length of the vehicle construction facility, chased by an eager, slobbering dalmation. In the Martian gravity, Rover bounds three meters into the air and sails over the heads of an annoyed crew in cleanroom suits working frantically on the Valkyrie's starboard Casimir Drive assembly. The mission director, David Venkatachalam, grimaces, but your mother offers you a comforting cup of tea."
+3	"A pudgy puppy hastily rounds a corner, sliding awkwardly on the polished dormitory floor. Behind it, there are flashes of light, and a rolling cloud, a mixture of smoke and Martian atmosphere. As the above-ground structures are ripped apart and lose pressure, the shivering ball of white fur leaps into your arms, burying its snout in the fold of your elbow. The Earth missiles continue to pound the university, but cannot penetrate to this depth. Huddled under a sturdy desk, you pet the frightened dog and hug it tight."
+4	"xxxxxxxxxxxxx."
+5	"The image of Tomasz blinks momentarily as the relay is handed off from ground station to ground station, trying to keep line of sight to Phobos. Behind him, you can see the tubular structure of the power station jutting over the edge of Stickley Crater. He is taking the news rather well, all things considered. Tomasz guesses your thoughts as you glance at your diamond engagement ring. [quotation mark]Don’t sweat it,[quotation mark]he says. [quotation mark]This whole rock is carbon, so plenty more where that came from.[quotation mark] There is blinding flash of light and the screen goes black."
+6	"A dwarf emerges from under the kitchen sink, spilling dog chow all over the floor. He throws you a menacing look, pries the fridge open with a black rod, and snatches an egg off the shelf. Sand pours out of the fridge. [quotation mark]Hey,[quotation mark] you yell from the futon, [quotation mark]put that back[quotation mark]. You stop short, realizing that this sort of distraction is exactly why you haven’t completed your dissertation. You feel around under the futon, where you think you will have put the dissertation so you could find it in the past, and grab the stubby snout of a pig. The fleet-footed porcine slaps a fish into its ear, jumps into a dumbwaiter and disappears."
+7	"xxxxxx."
 
 Chapter Menus
 
@@ -171,7 +254,7 @@ title	subtable	description	toggle
 "What is this?"		Table of Adventures	""	--
 "How does this work?"	Table of How		--		--
 "Help! I'm stuck!"	Table of Stuck	--	--
-"Entymology"		Table of Bugs	--	--
+"Entomology"		Table of Bugs	--	--
 "Acknowledgements"	Table of Acknowledgements	--	--
 
 Table of Adventures
