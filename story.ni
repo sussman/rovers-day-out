@@ -36,7 +36,7 @@ To say (dialogue - some text) in metaspeak:
 	say variable letter spacing;
 	say paragraph break;
 
-[TODO:  write awesome subroutine to update the status line.  In docs, see section 8.3]
+[TODO:  write awesome subroutine to update the status line.  In docs, see section 8.3.  Coming soon.]
 
 Chapter Initialize
 
@@ -71,7 +71,7 @@ The flight suit is a wearable prop.  The insignia is part of the flight suit.
 
 The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap white plastic alarm clock with bright green LEDs.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
 
-After examining the alarm clock:
+After examining the alarm clock for the first time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 	say "[metatext in metaspeak]";
 
