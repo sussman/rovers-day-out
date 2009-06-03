@@ -19,6 +19,10 @@ A refrigerator is a kind of container. A refrigerator is usually closed, openabl
 
 A sink is a kind of furniture. Understand "sink" as a sink.  A faucet is a kind of thing. A knob is a kind of thing. A drain is a kind of thing. A basin is a kind of container [redirect in/on the sink to the basin]. A basin is always open not openable.  A faucet, knob, drain and basin are parts of every sink.
 
+Wakefulness is a kind of value. The wakefulnesses are asleep, hypnopompic, groggy, and alert.
+
+Insightfulness is a kind of value. The insightfulnesses are selfaware and clueless.
+
 Chapter Routines
 
 To say ACU Boot Banner: [note -- the boot banner varies according to the stage of the story]
@@ -37,6 +41,18 @@ To say (dialogue - some text) in metaspeak:
 	say paragraph break;
 
 [TODO:  write awesome subroutine to update the status line.  In docs, see section 8.3.  Coming soon.]
+
+[
+Before going a direction (called the way):
+	if the way is up or the way is down:
+		continue the action;
+	otherwise:		
+		if the ACU is the player: 
+			say "Compass directions? On Mars? The magnetic field here is too weak.";
+		otherwise:
+			say "Woof?";
+		stop the action;
+]
 
 Chapter Initialize
 
@@ -59,17 +75,17 @@ The Valkyrie is a region.  The Living Room, Kitchen, and Bathroom are rooms in t
 
 The walls are a backdrop.  It is in the living room and kitchen.  Understand "wall" or "walls" as walls.  The description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."
 
-The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" as ceiling. "The ceiling is a white stucco material designed to absorb sound." 
+The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." 
 
-The description of the living room is "This is an ordinary living room. It contains a futon, drapes. From here you can see the kitchen, bathroom and front door." The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
+The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
 The purple futon is an enterable furniture in the living room. Understand "couch" or "bed" or "sofa" as the futon. "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon."  The mattress and frame are parts of the futon.  The description of the mattress is "A thick, heavy purple mattress." The description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering."  
 
-On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.]
+On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless.
 
-The flight suit is a wearable prop. The ACU wears the flight suit. The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background."
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background."
  
-The insignia is part of the flight suit. The description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." 
+The insignia is part of the flight suit. The description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." 
 
 The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap white plastic alarm clock with bright green LEDs.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
 
@@ -77,15 +93,12 @@ After examining the alarm clock for the first time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 	say "[metatext in metaspeak]";
 
-Some drapes are furniture in the living room.
+Some drapes are furniture in the living room. The drapes can be open. The drapes are closed. The description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."
 
-The window is in the living room. It is scenery.  Understand "outside" or "outdoors" as the window.
-Instead of searching the window[ to catch "look through" window]:
-		try examining the window.
-		
-Some garden skylights are scenery in the living room.
-
-The grass is scenery in the living room.
+Instead of opening the drapes:
+	say "You push aside the drapes.";
+	now the drapes are open;
+	now the window is in the living room.
 
 The living room floor is scenery in the living room. "A hardwood floor."
 
@@ -185,7 +198,7 @@ The bulldog's water bowl and the bulldog's food bowl are portable containers in 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
 
-There are some spruce trees. They are scenery.
+
 
 David Venkatachalam is a man.
 
@@ -196,6 +209,20 @@ There are some assault ships. They are scenery.
 There are some gunships. They are scenery.
 
 Janet Xiang is a woman. 
+
+[the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
+
+The window is a transparent scenery closed not openable container. Understand "outside" or "outdoors" as the window.
+Instead of examining the window:
+		say "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]."
+		
+Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park."
+
+The park is scenery in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors."
+
+Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass."
+
+There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park."
 
 Chapter Conversations
 [not used at present]
