@@ -13,15 +13,17 @@ Chapter Classes
 
 A furniture is a kind of thing. It is usually a supporter, scenery, and fixed in place. [In general, furniture descriptions should be integrated into room descriptions.]
 
-A prop is a kind of thing. It is usually portable.[If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
+A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
 
-A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. "[if open]The fridge is open, spilling cold air onto the floor of the kitchen.[otherwise]The fridge is closed."
+A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. 
 
 A sink is a kind of furniture. Understand "sink" as a sink.  A faucet is a kind of thing. A knob is a kind of thing. A drain is a kind of thing. A basin is a kind of container [redirect in/on the sink to the basin]. A basin is always open not openable.  A faucet, knob, drain and basin are parts of every sink.
 
 Wakefulness is a kind of value. The wakefulnesses are asleep, hypnopompic, groggy, and alert.
 
 Insightfulness is a kind of value. The insightfulnesses are selfaware and clueless.
+
+Everything has some text called aware description.  Every room has some text called aware description.
 
 Chapter Routines
 
@@ -42,7 +44,8 @@ To say (dialogue - some text) in metaspeak:
 
 [TODO:  write awesome subroutine to update the status line.  In docs, see section 8.3.  Coming soon.]
 
-[
+[disabled until room navigation is in place
+
 Before going a direction (called the way):
 	if the way is up or the way is down:
 		continue the action;
@@ -53,6 +56,22 @@ Before going a direction (called the way):
 			say "Woof?";
 		stop the action;
 ]
+
+Instead of examining something (called the item):
+	if player is selfaware:
+		if the aware description of the item is not "":	
+			say aware description of the item;
+			say line break;
+			stop the action;
+	continue the action;
+	
+Instead of looking:
+	if player is selfaware:
+		if the aware description of the location is not "":	
+			say aware description of the location;
+			say line break;
+			stop the action;
+	continue the action;
 
 Chapter Initialize
 
@@ -73,19 +92,23 @@ Section Living Room
  
 The Valkyrie is a region.  The Living Room, Kitchen, and Bathroom are rooms in the Valkyrie.
 
-The walls are a backdrop.  It is in the living room and kitchen.  Understand "wall" or "walls" as walls.  The description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."
+The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."
 
-The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." 
+The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." The aware description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor."
 
-The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
+The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present."
 
-The purple futon is an enterable furniture in the living room. Understand "couch" or "bed" or "sofa" as the futon. "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon."  The mattress and frame are parts of the futon.  The description of the mattress is "A thick, heavy purple mattress." The description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering."  
+The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
-On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless.
+The futon is an enterable furniture in the living room. The printed name of the futon is "purple futon". Understand "couch" or "bed" or "sofa" or "purple" as the futon. The aware description of the futon is "The Casimir Drive system is retracted and intact." The description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".
 
-The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background."
+The mattress and frame are parts of the futon.  The description of the mattress is "A thick, heavy purple mattress." The aware description of the mattress is "The spatial manifold attenuator is offline." The description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering." The aware description of the frame is "The Casimir Drive extension struts are contracted."
+
+On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The description of the ACU is "You seem just like you have every other day of your life.[if the ACU wears the flight suit] You are wearing a blue flight suit." The aware description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
+
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background." The aware description of the flight suit is "The ACU is housed in a quantum-isolated housing which bears the insignia of MARSpace."
  
-The insignia is part of the flight suit. The description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." 
+The insignia is part of the flight suit. The description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware description of the insignia: say the description of the insignia.
 
 The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap white plastic alarm clock with bright green LEDs.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
 
@@ -100,7 +123,7 @@ Instead of opening the drapes:
 	now the drapes are open;
 	now the window is in the living room.
 
-The living room floor is scenery in the living room. "A hardwood floor."
+The living room floor is scenery in the living room. The description of the living room floor is "A hardwood floor." The aware description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors."
 
 The front door is west of the living room and east of the porch. 
 
