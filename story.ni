@@ -65,9 +65,11 @@ The description of the living room is "This is an ordinary living room. It conta
 
 The purple futon is an enterable furniture in the living room. Understand "couch" or "bed" or "sofa" as the futon. "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon."  The mattress and frame are parts of the futon.  The description of the mattress is "A thick, heavy purple mattress." The description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering."  
 
-On the futon is a woman called ACU. She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.]
+On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.]
 
-The flight suit is a wearable prop.  The insignia is part of the flight suit.
+The flight suit is a wearable prop. The ACU wears the flight suit. The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background."
+ 
+The insignia is part of the flight suit. The description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." 
 
 The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap white plastic alarm clock with bright green LEDs.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
 
