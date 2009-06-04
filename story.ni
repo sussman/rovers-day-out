@@ -25,6 +25,8 @@ Insightfulness is a kind of value. The insightfulnesses are selfaware and cluele
 
 Everything has some text called aware description.  Every room has some text called aware description.
 
+Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
+
 Chapter Routines
 
 To say ACU Boot Banner: [note -- the boot banner varies according to the stage of the story]
@@ -96,7 +98,7 @@ The walls are a backdrop.  They are in the living room and kitchen.  Understand 
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." The aware description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor."
 
-The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present."
+The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present."
 
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
@@ -116,20 +118,26 @@ After examining the alarm clock for the first time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 	say "[metatext in metaspeak]";
 
-Some drapes are furniture in the living room. The drapes can be open. The drapes are closed. The description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."
+Some drapes are furniture in the living room. The drapes can be open. The drapes are closed. The description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware description is given since the drapes are missing in that part of the story]
 
 Instead of opening the drapes:
 	say "You push aside the drapes.";
 	now the drapes are open;
 	now the window is in the living room.
+	
+Instead of closing the drapes:
+	if the drapes are open:
+		say "It would be too dark to move around if you close the drapes and you’d risk falling back to sleep. You reconsider and leave the drapes open.";
+	otherwise:
+		say "The drapes were cheap. They've never quite hung right, and they are as closed as they're going to get."
 
 The living room floor is scenery in the living room. The description of the living room floor is "A hardwood floor." The aware description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors."
 
-The front door is west of the living room and east of the porch. 
+The front door is west of the living room and east of the porch. It is a door and scenery.
 
 Section Kitchen
 
-The Kitchen is a room."A small kitchen."
+The Kitchen is a room. The description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry] Rover looks at the dish, then at you, then at the dish, and then at you."
 
 The old fridge is a refrigerator in the kitchen. A piece of magpaper is a part of the old fridge.  
 
@@ -139,7 +147,7 @@ The range is enterable furniture in the kitchen[enterable so you can sit on it].
 
 A frying pan is in the drawer. "A small, non-stick frying pan." It is an open not openable container.  The carrying capacity of the pan is 1.
 
-The dispenser is a prop in the kitchen.The water bowl and the food bowl are containers that are parts of the dispenser. The carrying capacity of the water bowl is 1. The carrying capacity of the food bowl is 1.
+The dog dish is a prop in the kitchen.The water bowl and the food bowl are containers that are parts of the dog dish. The carrying capacity of the water bowl is 1. The carrying capacity of the food bowl is 1. The printed name of the dog dish is "Rover[apostrophe]s dish". The description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl  marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. Both are empty. Rover licks his chops in anticipation." 
 
 The counter is an enterable furniture in the kitchen.[do not increment this counter]
 
@@ -151,11 +159,13 @@ The bag is an open openable container.  The carrying capacity of the bag is 1.  
 
 The box is an open not openable container. The carrying capacity of the box is 1. The box contains some dog treats.
 
-Rover is a male animal in the Kitchen.  The tail, paw, nose, ear, dorsum, tummy, and tongue are part of Rover.
+Rover is a male animal in the Kitchen. Rover has satiety. Rover is hungry.  The tail, paw, nose, ear, dorsum, tummy, and tongue are part of Rover.
 
 Section Bathroom
 
 The Bathroom is a room."An ordinary bathroom."
+
+The shower is a room.
 
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a floss dispenser. The toothbrush and floss dispenser are props.
 
@@ -173,7 +183,7 @@ The toilet is enterable furniture in the bathroom. The bow and tank are parts of
 
 The plunger is furniture in the bathroom. The handle and the cup are part of the plunger.
 
-The shower door is north of the bathroom. The Shower is north of the shower door.
+The shower door is a door and scenery.  It is north of the bathroom and south of the shower.
 
 The soap dispenser, the shampoo dispenser, and the shower drain are scenery in the shower.
 
@@ -195,7 +205,7 @@ The Black BullDog is a male animal in the Featureless Desert. He is carrying the
 
 The Stranger's House is west of the Featureless Desert.
 
-The Broken Door is west of the Stranger's House and east of the Sleeping Room.
+The Broken Door is west of the Stranger's House and east of the Sleeping Room.  It is a door and scenery.
 
 The sky is a backdrop. It is in the Planet. 
 
@@ -220,8 +230,6 @@ The bulldog's water bowl and the bulldog's food bowl are portable containers in 
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
-
-
 
 David Venkatachalam is a man.
 
