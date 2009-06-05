@@ -201,12 +201,12 @@ X. Get up[line break]
 5. Let Rover go walkies";
 
 The aware-description of the magpaper is 
-"[fixed letter spacing]PID   TTY       STATUS   CMD
-[line break]301   ttys000   Done.    Initial Program Load
-[line break]323	  ttys000   Done.    Apply Ablative Enamel
-[line break]515   ttys000   Done.    Ignite Fusion Reactor
-[line break]525   ttys000   Done.    Landing Sequence
-[line break]540	  ttys000   Done.    Send Probe Data[variable letter spacing]";[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
+"[fixed letter spacing]PID   TTY          STATUS   CMD
+[line break]301   ttys000      Done.       Initial Program Load
+[line break]323	  ttys000      Done.       Apply Ablative Enamel
+[line break]515   ttys000      Done.       Ignite Fusion Reactor
+[line break]525   ttys000      Done.       Landing Sequence
+[line break]540	  ttys000      Pending.    Send Probe Data[variable letter spacing]";[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
 
 Instead of taking the magpaper:
 	if the player is clueless:
@@ -519,11 +519,11 @@ Every turn:
 	if myaction is a verb listed in the Table of Technoverbs:
 		say "[noun] -> [technoverb entry]";
 	otherwise:
-		say "[noun] -> ?UNKNOWN";
+		say "[noun] -> ?UNKNOWN";[later, can make this "NOP"]
 	[A red herring just to screw with players, plus remind them the program is running.]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
-	if the player is selfaware:
+	if the player is self-aware:
 		change the command prompt to "READY>";
 	otherwise:
 		change the command prompt to ">";
