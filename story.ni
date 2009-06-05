@@ -54,7 +54,7 @@ Before going a direction (called the way):
 	otherwise:		
 		if the ACU is the player: 
 			say "Compass directions? On Mars? The magnetic field here is too weak.";
-		otherwise:
+		otherwise: [maybe safer to say 'if Rover is the player'?]
 			say "Woof?";
 		stop the action;
 ]
@@ -117,8 +117,9 @@ The walls are a backdrop.  They are in the living room and kitchen.  Understand 
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." The aware description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor."
 
-The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present."
+The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present." [shouldn't this last bit be generalized to report rover's presence in *any* room?]
 
+[TODO:  remove this part eventually, using 'go to X' as our main navigation device]
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
 The futon is an enterable furniture in the living room. The printed name of the futon is "purple futon". Understand "couch" or "bed" or "sofa" or "purple" as the futon. The aware description of the futon is "The Casimir Drive system is retracted and intact." The description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".
@@ -127,22 +128,27 @@ The mattress and frame are parts of the futon.  The description of the mattress 
 
 On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The description of the ACU is "You seem just like you have every other day of your life.[if the ACU wears the flight suit] You are wearing a blue flight suit." The aware description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
 
-The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background." The aware description of the flight suit is "The ACU is housed in a quantum-isolated housing which bears the insignia of MARSpace."
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background." The aware description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace."
  
 The insignia is part of the flight suit. The description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware description of the insignia: say the description of the insignia.
 
-The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap white plastic alarm clock with bright green LEDs.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
+The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs.  A large button juts out of the top.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
 
-After examining the alarm clock for the first time:
+After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 	say "[metatext in metaspeak]";
 
 Some drapes are furniture in the living room. The drapes can be open. The drapes are closed. The description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware description is given since the drapes are missing in that part of the story]
 
 Instead of opening the drapes:
-	say "You push aside the drapes.";
-	now the drapes are open;
-	now the window is in the living room.
+	if the futon encloses the player:
+		say "You'll need to stand up first.";
+		stop the action;
+	otherwise:
+		say "You push aside the drapes.";
+		now the drapes are open;
+		now the window is in the living room;
+		say "[line break][the description of the living room][line break]";
 
 Instead of closing the drapes:
 	if the drapes are open:
@@ -158,7 +164,12 @@ Section Kitchen
 
 The Kitchen is a room. The description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry] Rover looks at the dish, then at you, then at the dish, and then at you."
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door."  
+
+After examining the old fridge for the first time:
+	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
+	say "[metatext in metaspeak]";
+
 
 In the fridge is the egg. It is an edible prop.
 
