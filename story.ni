@@ -158,7 +158,7 @@ Section Kitchen
 
 The Kitchen is a room. The description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry] Rover looks at the dish, then at you, then at the dish, and then at you."
 
-The old fridge is a refrigerator in the kitchen. A piece of magpaper is a part of the old fridge.  
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  
 
 In the fridge is the egg. It is an edible prop.
 
@@ -166,7 +166,7 @@ The range is enterable furniture in the kitchen[enterable so you can sit on it].
 
 A frying pan is in the drawer. "A small, non-stick frying pan." It is an open not openable container.  The carrying capacity of the pan is 1.
 
-The dog dish is a prop in the kitchen.The water bowl and the food bowl are containers that are parts of the dog dish. The carrying capacity of the water bowl is 1. The carrying capacity of the food bowl is 1. The printed name of the dog dish is "Rover[apostrophe]s dish". The description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl  marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. Both are empty. Rover licks his chops in anticipation." 
+The dog dish is a prop in the kitchen.The water bowl and the food bowl are containers that are parts of the dog dish. The carrying capacity of the water bowl is 1. The carrying capacity of the food bowl is 1. The printed name of the dog dish is "Rover[apostrophe]s dish".  The dog dish is proper-named. The description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl  marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. Both are empty. [paragraph break]Rover licks his chops in anticipation." [perhaps a separate subroutine to describe Rover's mental state??]
 
 The counter is an enterable furniture in the kitchen.[do not increment this counter]
 
