@@ -29,7 +29,21 @@ A simroom is a kind of room.  A simroom has some text called aware-description. 
 
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
+Current memory usage is a number that varies.  The current memory usage is 508.
+
 Chapter Routines
+
+
+[Let's do a random walk, shall we?  :-) ]
+Memory-updating is an action applying to nothing.
+Carry out memory-updating:
+	let memdelta be a random number from -25 to 25;
+	now the current memory usage is the current memory usage plus memdelta;
+	if current memory usage is greater than 640:
+		now the current memory usage is 620;
+	if current memory usage is less than 400:
+		now the current memory usage is 500.
+
 
 To say ACU Boot Banner: [note -- the boot banner varies according to the stage of the story]
 	say "[bold type]Rover's Day Out[roman type]";
@@ -46,7 +60,6 @@ To say (dialogue - some text) in metaspeak:
 	say variable letter spacing;
 	say paragraph break;
 
-[TODO:  write awesome subroutine to update the status line.  In docs, see section 8.3.  Coming soon.]
 
 [disabled until room navigation is in place
 
@@ -79,7 +92,6 @@ Instead of looking:
 			say line break;
 			stop the action;
 	continue the action;
-	
 
 
 Chapter Not Ready For Prime Time - Not for release
@@ -94,6 +106,7 @@ Carry out reorienting:
 		
 Report reorienting:
 	say "Now the player is [if player is selfaware]self aware[otherwise]clueless[end if].";
+
 
 Chapter Initialize
 
@@ -433,59 +446,91 @@ title	subtable	description	toggle
 
 Chapter Status Line Magic
 
-[a first approximation here:  we're going to need a system to make special exceptions for certain situations]
+[a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
 
 Table of Technoverbs
 Verb		Technoverb
-"go"		"SELECT"
-"get"		"SELECT"
-"take off"	"RETRACT"
-"take"		"SELECT"
-"grab"		"SELECT"
-"drop"		"DESELECT"
-"put"		"TRANSFER"
-"look in"	"MANIFEST"
-"look"		"STATUS"
-"examine"	"DIAGNOSTIC" [sometimes SCAN?]
-"read"		"DIAGNOSTIC"
-"stand"		"ACTIVATE"
+"going"		"SELECT"	[go, or any compass direction]
+"taking off"	"RETRACT"       [take off, remove]
+"wearing"	"EXPAND"        [put on, wear]
+"taking"	"SELECT"  [take, get]
+"dropping"	"DESELECT"  [drop]
+"inserting it into"	"TRANSFER"  [put]
+"searching"	"MANIFEST"  [look in]
+"looking"	"STATUS"  [look]
+"examining"	"DIAGNOSTIC" [examine, read]
+"entering"	"ACTIVATE"  [enter, sit on]
+"exiting"	"DEACTIVATE" [exit, stand up]
+"opening"	"ACCESS"  [open]
+"closing"	"DEACCESS" [close]
+"eating"	"ROUTE"  [eat]
+"pushing"	"APPLY"  [press]
+"remembering"	"RETRIEVE DATA" [remember] [also add 'think about','recall']
+
+[some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
+
 "fold"		"RETRACT"
 "unfold"	"EXTEND"
 "fill"		"ADD"
 "scratch"	"NEUTRALIZE STATIC CHARGE"
-"open"		"ACCESS"
-"close"		"DEACCESS"
 "wake"		"INITIALIZE"
 "sleep"		"SUSPEND"
-"eat"		"ROUTE"
-"press"		"APPLY"
-"think about"	"RETRIEVE DATA"
-"remember"	"RETRIEVE DATA"
 "give"		"DISPENSE"
-"pull"		"ROLL"   [handle right]
-"push"		"PITCH"  [handle back]
+"pull"		"ROLL"
+"push"		"PITCH"
 "flush"		"THRUST"
-"roll over"	"LATERAL JETS" [rover stuff here]
+"roll over"	"LATERAL JETS"
 "lay down"	"DEFENSIVE MODE"
 "lie down"	"DEFENSIVE MODE"
 "attack"	"OFFENSIVE MODE"
 "kill"		"OFFENSIVE MODE"
 "sit"		"STANDBY"
 "kiss"		"SHIP INTERFACE"
-"dig"		"MINING SUBSYSTEM"
+"dig"		"MINING SUBSYSTEM" ]
 
 
+[FIX ME:  NOUN->VERB:  TRUE | NIL]
+[if the incoming-verb is an Verb listed in the Table of Technoverbs... see 15.12]
 
+[the topic understood]
+
+[
+ACU-updating is an action applying to nothing.
+
+Carry out ACU-updating:
+	let myaction be "[action-name part of the current action]";
+	say "myaction: [myaction][line break]";
+	if myaction is a verb listed in the Table of Technoverbs:
+		say "Yipee!";
+	otherwise:
+		say "Booooo.".
+]
 
 Chapter Every Turn
 
 
 Every turn:
-	[FIX ME:  NOUN->VERB:  TRUE|NIL]
-	change the left hand status line to "[recap of command]";
+	[The main status-line updating logic:]
+	let myaction be "[action-name part of the current action]";
+	say "myaction: [myaction][line break]";
+	if myaction is a verb listed in the Table of Technoverbs:
+		say "Yipee! That's [technoverb entry]";
+	otherwise:
+		say "Booooo.";
 	[A red herring just to screw with players, plus remind them the program is running.]
-	change the right hand status line to "Memory: [a random number from 600 to 1000].[a random number from 0 to 9] PB";
+	try memory-updating;
+	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
 	if the player is selfaware:
 		change the command prompt to "READY>";
 	otherwise:
 		change the command prompt to ">";
+
+
+
+
+[	say "action: [current action][line break]"; 
+	say "action-name: [action-name part of the current action][line break]"; 
+	if the noun is something: 
+		say "noun: [noun][line break]"; 
+	if the second noun is something: 
+		say "second noun: [second noun][line break]"; ]
