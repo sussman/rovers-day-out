@@ -162,9 +162,22 @@ The front door is east of the porch. It is a door and scenery.
 
 Section Kitchen
 
-The Kitchen is a room. The description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry] Rover looks at the dish, then at you, then at the dish, and then at you."
+The Kitchen is a room. The description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."
 
 The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door."  
+
+The magpaper is part of the the old fridge.  The description of the magpaper is "It is a to-do list, in your own writing. It reads:
+
+Morning:[line break]
+X. Get up[line break]
+2. Shower[line break]
+3. Breakfast[line break]
+4. Take care of business[line break]
+5. Let Rover go walkies". Instead of taking the magpaper:  say "If you moved the 'to do' list, you'd need another note to remind you where you put the list. Better to just leave it there."
+
+After examining the magpaper for the first time:
+	let metatext be "David: 'Take care of business'? Is that a euphemism?[line break]Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
+	say "[metatext in metaspeak]".
 
 After examining the old fridge for the first time:
 	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
