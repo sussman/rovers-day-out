@@ -433,12 +433,25 @@ title	subtable	description	toggle
   acknowledgements section of a menu system. Attribution does not 
   suggest my endorsement of derivative works or their authors.[paragraph break]Noncommercial. You may not use this work for commercial purposes.[paragraph break]Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.[paragraph break]If you would like a copy of the Inform7 source for this game, please let us know by email: rover@templaro.com"	--
 
+
+
+Chapter Status Line Magic
+
+
+[Table of Technoverbs
+
+verb ]
+
+
+
+
+
 Chapter Every Turn
 
 
 Every turn:
 	[FIX ME:  NOUN->VERB:  TRUE|NIL]
-	change the left hand status line to "[the player's command]";
+	change the left hand status line to "[recap of command]";
 	[A red herring just to screw with players, plus remind them the program is running.]
 	change the right hand status line to "Memory: [a random number from 600 to 1000].[a random number from 0 to 9] PB";
 	if the player is selfaware:
