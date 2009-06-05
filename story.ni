@@ -6,6 +6,7 @@ The story genre is "Science Fiction".
 
 Include Basic Screen Effects by Emily Short.
 Include Menus by Emily Short.
+Include Case Management by Emily Short.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.
 
@@ -452,7 +453,7 @@ Table of Technoverbs
 verb (indexed text)		technoverb
 "going"		"SELECT"	[go, or any compass direction]
 "taking off"	"RETRACT"       [take off, remove]
-"wearing"	"EXPAND"        [put on, wear]
+"wearing"	"ENGAGE"        [put on, wear]
 "taking"	"SELECT"  [take, get]
 "dropping"	"DESELECT"  [drop]
 "inserting it into"	"TRANSFER"  [put]
@@ -499,12 +500,12 @@ Chapter Every Turn
 
 Every turn:
 	[The main status-line updating logic:]
+	let myaction be indexed text;
 	let myaction be "[action-name part of the current action]";
-	say "myaction: [myaction][line break]";
 	if myaction is a verb listed in the Table of Technoverbs:
-		say "[noun] [second noun] -> [technoverb entry]";
+		say "[noun] -> [technoverb entry]";
 	otherwise:
-		say "[noun] [second noun] -> ?UNKNOWN";
+		say "[noun] -> ?UNKNOWN";
 	[A red herring just to screw with players, plus remind them the program is running.]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
