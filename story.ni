@@ -78,6 +78,14 @@ Instead of looking:
 			stop the action;
 	continue the action;
 	
+A simroom is a kind of room.  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is selfaware][aware-description][otherwise][clueless-description]".
+
+[Temporary room for testing, located south of the living room:]
+The Closet is a simroom.  The aware-description of the Closet is "Ominous metal walls."  The clueless-description is "Plaster covered by flowery wallpaper.".
+	
+[Note:  the advantage of this 'simroom' construct is that the interpreter now properly prints either the clueless or aware description of each room as we walk around in 'verbose' mode.]
+
+
 Chapter Not Ready For Prime Time - Not for release
 
 Reorienting is an action applying to nothing. Understand "reorient" as reorienting.
@@ -111,16 +119,16 @@ Chapter The Valkyrie
 
 Section Living Room
  
-The Valkyrie is a region.  The Living Room, Kitchen, and Bathroom are rooms in the Valkyrie.
+The Valkyrie is a region.  The Living Room, Kitchen, and Bathroom are simrooms in the Valkyrie.
 
 The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." The aware description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor."
 
-The description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present." [shouldn't this last bit be generalized to report rover's presence in *any* room?]
+The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present." [shouldn't this last bit be generalized to report rover's presence in *any* room?]
 
 [TODO:  remove this part eventually, using 'go to X' as our main navigation device]
-The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
+The living room is west of the kitchen, south of the bathroom, and east of the front door, and north of the closet.  The living room contains the player. 
 
 The futon is an enterable furniture in the living room. The printed name of the futon is "purple futon". Understand "couch" or "bed" or "sofa" or "purple" as the futon. The aware description of the futon is "The Casimir Drive system is retracted and intact." The description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".
 
@@ -162,7 +170,7 @@ The front door is east of the porch. It is a door and scenery.
 
 Section Kitchen
 
-The Kitchen is a room. The description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."
+The Kitchen is a simroom. The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
 
 The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door."  
 
@@ -173,7 +181,9 @@ X. Get up[line break]
 2. Shower[line break]
 3. Breakfast[line break]
 4. Take care of business[line break]
-5. Let Rover go walkies". Instead of taking the magpaper:  say "If you moved the 'to do' list, you'd need another note to remind you where you put the list. Better to just leave it there."
+5. Let Rover go walkies". 
+
+Instead of taking the magpaper:  say "If you moved the 'to do' list, you'd need another note to remind you where you put the list. Better to just leave it there."
 
 After examining the magpaper for the first time:
 	let metatext be "David: 'Take care of business'? Is that a euphemism?[line break]Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
@@ -206,7 +216,7 @@ Rover is a male animal in the Kitchen. Rover has satiety. Rover is hungry.  The 
 
 Section Bathroom
 
-The Bathroom is a room."An ordinary bathroom."
+The Bathroom is a simroom.  The clueless-description is "An ordinary bathroom."  The aware-description is "Flight control room.".
 
 The shower is a room.
 
