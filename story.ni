@@ -21,11 +21,11 @@ A sink is a kind of furniture. Understand "sink" as a sink.  A faucet is a kind 
 
 Wakefulness is a kind of value. The wakefulnesses are asleep, hypnopompic, groggy, and alert.
 
-Insightfulness is a kind of value. The insightfulnesses are selfaware and clueless.
+Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
 
-Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is selfaware][aware-description][otherwise][clueless-description]".
+Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
-A simroom is a kind of room.  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is selfaware][aware-description][otherwise][clueless-description]".
+A simroom is a kind of room.  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
@@ -40,6 +40,7 @@ To say ACU Boot Banner: [note -- the boot banner varies according to the stage o
 	say paragraph break.
 
 [General routine for displaying dialogue between Janet and David.]
+[TODO: Suppress this after the first two simulation runs]
 To say (dialogue - some text) in metaspeak:
 	say line break; 
 	say "[fixed letter spacing][blue letters][dialogue][default letters]";
@@ -65,7 +66,7 @@ Instead of examining a room:
 	try looking;
 
 Instead of examining something (called the item):
-	if player is selfaware:
+	if player is self-aware:
 		if the aware-description of the item is not "":	
 			say aware-description of the item;
 			say line break;
@@ -73,7 +74,7 @@ Instead of examining something (called the item):
 	continue the action;
 	
 Instead of looking:
-	if player is selfaware:
+	if player is self-aware:
 		if the aware-description of the location is not "":	
 			say aware-description of the location;
 			say line break;
@@ -87,13 +88,13 @@ Chapter Not Ready For Prime Time - Not for release
 Reorienting is an action applying to nothing. Understand "reorient" as reorienting.
 
 Carry out reorienting:
-	if the player is selfaware:
+	if the player is self-aware:
 		now the player is clueless;
 	otherwise:
-		now the player is selfaware.
+		now the player is self-aware.
 		
 Report reorienting:
-	say "Now the player is [if player is selfaware]self aware[otherwise]clueless[end if].";
+	say "Now the player is [if player is self-aware]self-aware[otherwise]clueless[end if].";
 
 Chapter Initialize
 
@@ -108,7 +109,7 @@ After printing the banner text:
 	clear the screen;
 	say "[ACU Boot Banner]".
 	
-At the time when the player is selfaware:
+At the time when the player is self-aware:
 	change the command prompt to "READY>";
 	
 When play begins:
@@ -126,7 +127,7 @@ The walls are a backdrop.  They are in the living room and kitchen.  Understand 
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor."
 
-The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present." [shouldn't this last bit be generalized to report rover's presence in *any* room?]
+The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present." [shouldn't this last bit be generalized to report rover's presence in *any* room? Yes.]
 
 [TODO:  remove this part eventually, using 'go to X' as our main navigation device]
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
@@ -151,7 +152,8 @@ Some drapes are furniture in the living room. The drapes can be open. The drapes
 
 Instead of opening the drapes:
 	if the futon encloses the player:
-		say "You'll need to stand up first.";
+		say "You'll need to stand up first."; [perhaps better handled by limiting the scope to the futon and things on it -- prevents the player from opening
+		  the front door, touching the floor, etc.]
 		stop the action;
 	otherwise:
 		say "You push aside the drapes.";
@@ -167,24 +169,36 @@ Instead of closing the drapes:
 
 The living room floor is scenery in the living room. The description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors."
 
-The front door is east of the porch. It is a door and scenery.
+The front door is east of the porch. It is a door and scenery. The clueless-description of the front door is "The front door of the cottage is [if closed]closed[otherwise]open. Outside, it looks like a nice day[end if]."  The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]."
 
 Section Kitchen
 
 The Kitchen is a room. The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door."  
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "The cryo unit is [if closed]closed[otherwise]open[end if]."
 
-The magpaper is part of the the old fridge.  The description of the magpaper is "It is a to-do list, in your own writing. It reads:
+The magpaper is part of the the old fridge.  The clueless-description of the magpaper is "It is a to-do list, in your own writing. It reads:
 
 Morning:[line break]
 X. Get up[line break]
 2. Shower[line break]
 3. Breakfast[line break]
 4. Take care of business[line break]
-5. Let Rover go walkies". 
+5. Let Rover go walkies";
 
-Instead of taking the magpaper:  say "If you moved the 'to do' list, you'd need another note to remind you where you put the list. Better to just leave it there."
+The aware-description of the magpaper is 
+"[fixed letter spacing]PID   TTY       STATUS   CMD
+[line break]301   ttys000   Done.    Initial Program Load
+[line break]323	  ttys000   Done.    Apply Ablative Enamel
+[line break]515   ttys000   Done.    Ignite Fusion Reactor
+[line break]525   ttys000   Done.    Landing Sequence
+[line break]540	  ttys000   Done.    Launch R.O.V.E.R.[variable letter spacing]";[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
+
+Instead of taking the magpaper:
+	if the player is clueless:
+		say "If you moved the 'to do' list, you'd need another note to remind you where you put the list. Better to just leave it there.";
+	otherwise:
+		say "The task list cannot be relocated; it has a fixed address in system priority memory."
 
 After examining the magpaper for the first time:
 	let metatext be "David: 'Take care of business'? Is that a euphemism?[line break]Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
@@ -317,7 +331,7 @@ Carry out remembering:
 	say "That doesn't ring a bell.";
 	
 Instead of remembering a topic listed in the Table of Remembered Stuff:
-	if the player is selfaware:
+	if the player is self-aware:
 		say "You consult your memory banks: ";
 	say "[description entry][paragraph break]".
 	
@@ -485,7 +499,7 @@ Every turn:
 	change the left hand status line to "[recap of command]";
 	[A red herring just to screw with players, plus remind them the program is running.]
 	change the right hand status line to "Memory: [a random number from 600 to 1000].[a random number from 0 to 9] PB";
-	if the player is selfaware:
+	if the player is self-aware:
 		change the command prompt to "READY>";
 	otherwise:
 		change the command prompt to ">";
