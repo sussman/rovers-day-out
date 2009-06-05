@@ -359,4 +359,18 @@ Rover's actual position.
 Let's lose the dog door.  Rover can go out the cargo bay door, and
 scratch the door or bark to be let back in.
 
-It would be signal that the audio is muted during memory playback. Maybe a  red "MUTE" in the upper right hand corner of the display area for that turn?
+It would be signal that the audio is muted during memory
+playback. Maybe a red "MUTE" in the upper right hand corner of the
+display area for that turn?
+
+
+----------------------
+
+>open drapes
+SOLAR SHIELD->RETRACT: TRUE
+
+>close drapes
+SOLAR SHIELD->DEPLOY: NIL
+
+>get up | stand
+CASIMIR DRIVE->STANDBY: TRUE
