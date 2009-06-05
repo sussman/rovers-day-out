@@ -29,7 +29,21 @@ A simroom is a kind of room.  A simroom has some text called aware-description. 
 
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
+Current memory usage is a number that varies.  The current memory usage is 508.
+
 Chapter Routines
+
+
+[Let's do a random walk, shall we?  :-) ]
+Memory-updating is an action applying to nothing.
+Carry out memory-updating:
+	let memdelta be a random number from -25 to 25;
+	now the current memory usage is the current memory usage plus memdelta;
+	if current memory usage is greater than 640:
+		now the current memory usage is 620;
+	if current memory usage is less than 400:
+		now the current memory usage is 500.
+
 
 To say ACU Boot Banner: [note -- the boot banner varies according to the stage of the story]
 	say "[bold type]Rover's Day Out[roman type]";
@@ -47,7 +61,6 @@ To say (dialogue - some text) in metaspeak:
 	say variable letter spacing;
 	say paragraph break;
 
-[TODO:  write awesome subroutine to update the status line.  In docs, see section 8.3.  Coming soon.]
 
 [disabled until room navigation is in place
 
@@ -80,7 +93,6 @@ Instead of looking:
 			say line break;
 			stop the action;
 	continue the action;
-	
 
 
 Chapter Not Ready For Prime Time - Not for release
@@ -95,6 +107,7 @@ Carry out reorienting:
 		
 Report reorienting:
 	say "Now the player is [if player is self-aware]self-aware[otherwise]clueless[end if].";
+
 
 Chapter Initialize
 
@@ -123,32 +136,32 @@ Section Living Room
  
 The Valkyrie is a region.  The Living Room, Kitchen, and Bathroom are simrooms in the Valkyrie.
 
-The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."
+The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."
 
-The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor."
+The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor."
 
 The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks.[if rover is the living room] The Reconnaissance Operation Vehicle for Exploration and Retrieval (ROVER) is present." [shouldn't this last bit be generalized to report rover's presence in *any* room? Yes.]
 
 [TODO:  remove this part eventually, using 'go to X' as our main navigation device]
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
-The futon is an enterable furniture in the living room. The printed name of the futon is "purple futon". Understand "couch" or "bed" or "sofa" or "purple" as the futon. The aware-description of the futon is "The Casimir Drive system is retracted and intact." The description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".
+The futon is an enterable furniture in the living room. The printed name of the futon is "purple futon". Understand "couch" or "bed" or "sofa" or "purple" as the futon. The aware-description of the futon is "The Casimir Drive system is retracted and intact.[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".
 
-The mattress and frame are parts of the futon.  The description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is offline." The description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering." The aware-description of the frame is "The Casimir Drive extension struts are contracted."
+The mattress and frame are parts of the futon.  The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is offline." The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering." The aware-description of the frame is "The Casimir Drive extension struts are contracted."
 
-On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU.[note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The description of the ACU is "You seem just like you have every other day of your life.[if the ACU wears the flight suit] You are wearing a blue flight suit." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
+On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU. [note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The clueless-description of the ACU is "You seem just like you have every other day of your life.[if the ACU wears the flight suit] You are wearing a blue flight suit." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
 
-The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace."
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace."
  
-The insignia is part of the flight suit. The description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the description of the insignia.
+The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia.
 
-The alarm clock is furniture on the futon.  The description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs.  A large button juts out of the top.". A button and a switch are part of the alarm clock. The description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."
+The alarm clock is furniture on the futon.  The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs.  A large button juts out of the top.". A button and a switch are part of the alarm clock. The aware-description of the alarm clock is "The Casimir Drive's temporal transgressor glows green as usual.  A basic toggle is on top.".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle.".
 
 After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 	say "[metatext in metaspeak]";
 
-Some drapes are furniture in the living room. The drapes can be open. The drapes are closed. The description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
+Some drapes are furniture in the living room. The drapes can be open. The drapes are closed. The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
 
 Instead of opening the drapes:
 	if the futon encloses the player:
@@ -167,7 +180,7 @@ Instead of closing the drapes:
 	otherwise:
 		say "They are as closed as they're going to get."
 
-The living room floor is scenery in the living room. The description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors."
+The living room floor is scenery in the living room. The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors."
 
 The front door is east of the porch. It is a door and scenery. The clueless-description of the front door is "The front door of the cottage is [if closed]closed[otherwise]open. Outside, it looks like a nice day[end if]."  The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]."
 
@@ -175,7 +188,7 @@ Section Kitchen
 
 The Kitchen is a room. The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "The cryo unit is [if closed]closed[otherwise]open[end if]."
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The cryo unit is [if closed]closed[otherwise]open[end if]."
 
 The magpaper is part of the the old fridge.  The clueless-description of the magpaper is "It is a to-do list, in your own writing. It reads:
 
@@ -192,7 +205,7 @@ The aware-description of the magpaper is
 [line break]323	  ttys000   Done.    Apply Ablative Enamel
 [line break]515   ttys000   Done.    Ignite Fusion Reactor
 [line break]525   ttys000   Done.    Landing Sequence
-[line break]540	  ttys000   Done.    Launch R.O.V.E.R.[variable letter spacing]";[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
+[line break]540	  ttys000   Done.    Send Probe Data[variable letter spacing]";[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
 
 Instead of taking the magpaper:
 	if the player is clueless:
@@ -447,59 +460,78 @@ title	subtable	description	toggle
 
 Chapter Status Line Magic
 
-[a first approximation here:  we're going to need a system to make special exceptions for certain situations]
+[a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
 
 Table of Technoverbs
 Verb		Technoverb
-"go"		"SELECT"
-"get"		"SELECT"
-"take off"	"RETRACT"
-"take"		"SELECT"
-"grab"		"SELECT"
-"drop"		"DESELECT"
-"put"		"TRANSFER"
-"look in"	"MANIFEST"
-"look"		"STATUS"
-"examine"	"DIAGNOSTIC" [sometimes SCAN?]
-"read"		"DIAGNOSTIC"
-"stand"		"ACTIVATE"
+"going"		"SELECT"	[go, or any compass direction]
+"taking off"	"RETRACT"       [take off, remove]
+"wearing"	"EXPAND"        [put on, wear]
+"taking"	"SELECT"  [take, get]
+"dropping"	"DESELECT"  [drop]
+"inserting it into"	"TRANSFER"  [put]
+"searching"	"MANIFEST"  [look in]
+"looking"	"STATUS"  [look]
+"examining"	"DIAGNOSTIC" [examine, read]
+"entering"	"ACTIVATE"  [enter, sit on]
+"exiting"	"DEACTIVATE" [exit, stand up]
+"opening"	"ACCESS"  [open]
+"closing"	"DEACCESS" [close]
+"eating"	"ROUTE"  [eat]
+"pushing"	"APPLY"  [press]
+"remembering"	"RETRIEVE DATA" [remember] [also add 'think about','recall']
+
+[some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
+
 "fold"		"RETRACT"
 "unfold"	"EXTEND"
 "fill"		"ADD"
 "scratch"	"NEUTRALIZE STATIC CHARGE"
-"open"		"ACCESS"
-"close"		"DEACCESS"
 "wake"		"INITIALIZE"
 "sleep"		"SUSPEND"
-"eat"		"ROUTE"
-"press"		"APPLY"
-"think about"	"RETRIEVE DATA"
-"remember"	"RETRIEVE DATA"
 "give"		"DISPENSE"
-"pull"		"ROLL"   [handle right]
-"push"		"PITCH"  [handle back]
+"pull"		"ROLL"
+"push"		"PITCH"
 "flush"		"THRUST"
-"roll over"	"LATERAL JETS" [rover stuff here]
+"roll over"	"LATERAL JETS"
 "lay down"	"DEFENSIVE MODE"
 "lie down"	"DEFENSIVE MODE"
 "attack"	"OFFENSIVE MODE"
 "kill"		"OFFENSIVE MODE"
 "sit"		"STANDBY"
 "kiss"		"SHIP INTERFACE"
-"dig"		"MINING SUBSYSTEM"
+"dig"		"MINING SUBSYSTEM" ]
 
+
+[FIX ME:  NOUN->VERB:  TRUE | NIL]
+[if the incoming-verb is an Verb listed in the Table of Technoverbs... see 15.12]
+[the topic understood]
 
 
 
 Chapter Every Turn
 
-
 Every turn:
-	[FIX ME:  NOUN->VERB:  TRUE|NIL]
-	change the left hand status line to "[recap of command]";
+	[The main status-line updating logic:]
+	let myaction be "[action-name part of the current action]";
+	say "myaction: [myaction][line break]";
+	if myaction is a verb listed in the Table of Technoverbs:
+		say "Yipee! That's [technoverb entry]";
+	otherwise:
+		say "Booooo.";
 	[A red herring just to screw with players, plus remind them the program is running.]
-	change the right hand status line to "Memory: [a random number from 600 to 1000].[a random number from 0 to 9] PB";
-	if the player is self-aware:
+	try memory-updating;
+	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
+	if the player is selfaware:
 		change the command prompt to "READY>";
 	otherwise:
 		change the command prompt to ">";
+
+
+
+[	say "action: [current action][line break]"; 
+	say "action-name: [action-name part of the current action][line break]"; 
+	if the noun is something: 
+		say "noun: [noun][line break]"; 
+	if the second noun is something: 
+		say "second noun: [second noun][line break]"; ]
