@@ -1,6 +1,6 @@
 "Rover's Day Out" by Jack Welch and Ben Collins-Sussman
 
-The story headline is "An interactive fiction".
+The story headline is "An Interactive Fiction".
 The release number is 0.
 The story genre is "Science Fiction".
 
@@ -114,6 +114,11 @@ After printing the banner text:
 	
 At the time when the player is selfaware:
 	change the command prompt to "READY>";
+	
+When play begins:
+	change the left hand status line to "INITIAL PROGRAM LOAD";
+	change the right hand status line to "".	
+
 
 Chapter The Valkyrie
 
@@ -430,7 +435,12 @@ title	subtable	description	toggle
 
 Chapter Every Turn
 
+
 Every turn:
+	[FIX ME:  NOUN->VERB:  TRUE|NIL]
+	change the left hand status line to "[the player's command]";
+	[A red herring just to screw with players, plus remind them the program is running.]
+	change the right hand status line to "Memory: [a random number from 600 to 1000].[a random number from 0 to 9] PB";
 	if the player is selfaware:
 		change the command prompt to "READY>";
 	otherwise:
