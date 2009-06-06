@@ -35,7 +35,7 @@ Rule for printing the name of the a thing (called the item):
 		otherwise:
 			say the printed name of the item;
 		
-A simroom is a kind of room.  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
+A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
@@ -173,7 +173,7 @@ After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 	say "[metatext in metaspeak]";
 
-Some drapes are furniture in the living room. The drapes can be open. The drapes are closed. The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
+Some drapes are furniture in the living room. Understand "curtains" as the drapes. The drapes can be open. The drapes are closed. The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story] The aware-name of the drapes is "solar shield".  The clueless-name of the drapes is "drapes".
 
 Instead of opening the drapes:
 	if the futon encloses the player:
@@ -198,9 +198,9 @@ The front door is east of the porch. It is a door and scenery. The clueless-desc
 
 Section Kitchen
 
-The Kitchen is a room. The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
+The Kitchen is a room. The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]."
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  A piece of magpaper is a part of the old fridge.  The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]."
 
 Instead of searching a refrigerator (called R):
 	if the player is clueless:
@@ -208,7 +208,7 @@ Instead of searching a refrigerator (called R):
 	otherwise:
 		say "The cryo unit contains [a list of things in R][if nothing is in R] but the super-chilled interior of the cryo unit itself[end if]."
 
-The magpaper is part of the the old fridge.  The clueless-description of the magpaper is "It is a to-do list, in your own writing. It reads:
+The magpaper is part of the the old fridge.  The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing. It reads:
 
 Morning:[line break]
 X. Get up[line break]
@@ -239,7 +239,7 @@ After examining the old fridge for the first time:
 	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 	say "[metatext in metaspeak]";
 
-In the fridge is the white egg. It is an edible prop. The clueless-description of the white egg is "A big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy of super-chilled metallic Helium-4."
+In the fridge is the white egg. It is an edible prop.  The aware-name of the white egg is "helium-4 sphere".  The clueless-description of the white egg is "A big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy of super-chilled metallic Helium-4."
 
 The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range.
 
@@ -483,29 +483,29 @@ Chapter Status Line Magic
 
 Table of Technoverbs
 verb (indexed text)		technoverb
-"going"		"SELECT"	[go, or any compass direction]
-"taking off"	"RETRACT"       [take off, remove]
-"wearing"	"ENGAGE"        [put on, wear]
-"taking"	"SELECT"  [take, get]
-"dropping"	"DESELECT"  [drop]
+"going"			"SELECT"	[go, or any compass direction]
+"taking off"		"RETRACT"       [take off, remove]
+"wearing"		"ENGAGE"        [put on, wear]
+"taking"		"SELECT"  [take, get]
+"dropping"		"DESELECT"  [drop]
 "inserting it into"	"TRANSFER"  [put]
-"searching"	"MANIFEST"  [look in]
-"looking"	"STATUS"  [look]
-"examining"	"DIAGNOSTIC" [examine, read]
-"entering"	"ACTIVATE"  [enter, sit on]
-"exiting"	"DEACTIVATE" [exit, stand up]
-"opening"	"ACCESS"  [open]
-"closing"	"DEACCESS" [close]
-"eating"	"ROUTE"  [eat]
-"pushing"	"APPLY"  [press]
-"remembering"	"RETRIEVE DATA" [remember] [also add 'think about','recall']
+"searching"		"MANIFEST"  [look in]
+"looking"		"STATUS"  [look]
+"examining"		"DIAGNOSTIC" [examine, read]
+"entering"		"ACTIVATE"  [enter, sit on]
+"exiting"		"DEACTIVATE" [exit, stand up]
+"opening"		"ACCESS"  [open]
+"closing"		"DEACCESS" [close]
+"eating"		"ROUTE"  [eat]
+"pushing"		"APPLY"  [press]
+"remembering"		"RETRIEVE DATA" [remember] [also add 'think about','recall']
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 
 "fold"		"RETRACT"
-"unfold"	"EXTEND"
+"unfold"		"EXTEND"
 "fill"		"ADD"
-"scratch"	"NEUTRALIZE STATIC CHARGE"
+"scratch"		"NEUTRALIZE STATIC CHARGE"
 "wake"		"INITIALIZE"
 "sleep"		"SUSPEND"
 "give"		"DISPENSE"
@@ -515,7 +515,7 @@ verb (indexed text)		technoverb
 "roll over"	"LATERAL JETS"
 "lay down"	"DEFENSIVE MODE"
 "lie down"	"DEFENSIVE MODE"
-"attack"	"OFFENSIVE MODE"
+"attack"		"OFFENSIVE MODE"
 "kill"		"OFFENSIVE MODE"
 "sit"		"STANDBY"
 "kiss"		"SHIP INTERFACE"
@@ -534,10 +534,14 @@ Every turn:
 	[The main status-line updating logic:]
 	let myaction be indexed text;
 	let myaction be "[action-name part of the current action]";
-	if myaction is a verb listed in the Table of Technoverbs:
-		say "[noun] -> [technoverb entry]";
+	if the noun is something:
+		let mynoun be "[aware-name of the noun]";
 	otherwise:
-		say "[noun] -> ?UNKNOWN";[later, can make this "NOP"]
+		let mynoun be "nil";	
+	if myaction is a verb listed in the Table of Technoverbs:
+		say "[mynoun in upper case] -> [technoverb entry]";
+	otherwise:
+		say "[mynoun in upper case] -> ?UNKNOWN";[later, can make this "NOP"]
 	[A red herring just to screw with players, plus remind them the program is running.]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
