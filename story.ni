@@ -152,7 +152,7 @@ Chapter The Valkyrie
 
 Section Living Room
  
-The Valkyrie is a region.  The Living Room, Kitchen, and Bathroom are simrooms in the Valkyrie.
+The Valkyrie is a region.  The Living Room, Kitchen, Bathroom and Shower are simrooms in the Valkyrie.
 
 The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."
 
@@ -281,21 +281,38 @@ The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The c
 
 Section Bathroom
 
-The Bathroom is a room.  The clueless-description is "An ordinary bathroom."  The aware-description is "Flight control room.".
+The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.[if the bathroom is unvisited][paragraph break]You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence."
 
-The shower is a room.
+After going to bathroom for the first time:[TODO: this needs tweaking, doesn't show up if a prevous attempt to go n from living room failed]
+	try looking;
+	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
+	say "[metatext in metaspeak]";
 
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a floss dispenser. The toothbrush and floss dispenser are props.
 
-The blue button is part of the floss dispenser.
+The clueless-name of the marble counter is "marble counter". The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms. [if the toothbrush is on the counter or the floss dispenser is on the counter] There are some toiletries on it.[end if] A small sink is inset just below the mirror on the wall."  The aware-description of the marble counter is "A fully automated flight control console."
 
-The bathroom floor is scenery in the bathroom.
+The clueless-name of the floss dispenser is "floss dispenser". The aware-name of the floss floss dispenser is "linkage modulator". The clueless-description of the floss dispenser is "A small white box with a blue button just below where the floss comes out." The aware-description of the floss dispenser is "A featureless and perfectly cube-shaped grey box."
 
-The bathroom wall is scenery in the bathroom.  The mirror and the plate are parts of the wall.
+The blue button is part of the floss dispenser.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed floss dispenser." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem."
 
-The bathroom ceiling is scenery in the bathroom. The irradiator is part of the ceiling.
+The clueless-name of the toothbrush is "toothbrush". The aware-name of the toothbrush is "pit scrubber". The clueless-description of the toothbrush is "A green toothbrush with slightly worn bristles." The aware-description of the toothbrush is "The pit scrubber system appears to be operational. The countless nanobots it contains are dormant until they are released on the skin of the ship to polish out micropits from collisions with microscopic particles during the flight."
 
-The bathroom sink is a sink in the bathroom.
+The bathroom floor is scenery in the bathroom.  The clueless-name of the bathroom floor is "bathroom floor". The aware-name of the bathroom floor is "flight control decking". The clueless-description of the bathroom floor is "The black bathroom floor sparkles thanks to microscopic bits of volcanic glass which assure that the floor is never slippery, even when wet. The micropores in the floor also assure that water does not collect for long on the bathroom floor." The aware-description of the bathroom floor is "The deck plating in the flight deck is painted bright yellow."
+
+The bathroom walls are scenery in the bathroom.  The mirror and the plate are parts of the bathroom walls. Understand "wall" as bathroom walls. 
+
+The clueless-name of the bathroom walls is "bathroom wall". The aware-name of the bathroom walls is "flight control panels". The clueless-description of the bathroom walls is "Light pink tiles." The aware-description of the bathroom walls is "Panels with indicators showing the orientation of the ship in space, heading and speed, and other information useful for piloting and landing the ship."
+ 
+The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination." The aware-description of the mirror is "About this ACU: You are a DTC Model 69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hyperactive Hydrax[quotation mark]."
+
+The bathroom ceiling is scenery in the bathroom. The irradiator is a switched off device which is part of the bathroom  ceiling.  
+
+The clueless-name of the bathroom ceiling is "bathroom ceiling". The aware-name of the bathroom ceiling is "flight control canopy". The clueless-description of the bathroom ceiling is "The bathroom ceiling is slightly concave to promote drainage towards the walls. A red heat lamp is mounted in the center of the ceiling." The aware-description of the bathroom ceiling is "The roof of the flight control section is the nose of the ship, containing the RCS thrusters and the equipment that secretes the ablative coating that protects the ship during planetary landings."
+
+The clueless-name of the irradiator is "heat lamp". The aware-name of the irradiator is "UV emitter". The clueless-description is "The red lens of a heat lamp is mounted at the apex of the bathroom ceiling." The aware-description of the irradiator is "A distributed system of ultraviolet emitters lining the tubes of the system responsible for secreting an ablative enamel onto the surface of the ship before planetary landings. The ultraviolet light accelerates the polymerization of the neoadamite enamel, forming a protective barrier around the ship. The emitters are [if the irradiator is switched on]energized[otherwise]powered down[end if] at present."  Understand "heat" or "lamp" as irradiator.
+
+The bathroom sink is a sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination system". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response system is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents."
 
 The toilet is enterable furniture in the bathroom. The bow and tank are parts of the toilet. The lever is part of the tank. The flapper valve is part of the tank.
 
