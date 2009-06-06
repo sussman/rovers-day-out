@@ -165,7 +165,7 @@ On the futon is a woman called the ACU. The player is the ACU.  She is wearing a
 
 The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters [quotation mark]ACU[quotation mark] are embroidered in white on a red background." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace." The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "ACU quantum isolation".
  
-The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia and the clueless-name of the insignia is "insignia".
+The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia.
 
 The alarm clock is furniture on the futon.  The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs.  A large button juts out of the top.". A button and a switch are part of the alarm clock. The aware-description of the alarm clock is "The Casimir Drive's temporal transgressor glows green as usual.  A basic toggle is on top.".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle.". The clueless-name of the alarm clock is "alarm clock". The aware-name of the alarm clock is "temporal transgressor".
 
@@ -535,10 +535,7 @@ Every turn:
 	let myaction be indexed text;
 	let myaction be "[action-name part of the current action]";
 	if the noun is something:
-		if the player is self-aware:
-			let mynoun be "[aware-name of the noun]";
-		otherwise:
-			let mynoun be "[clueless-name of the noun]";
+		let mynoun be "[aware-name of the noun]";
 	otherwise:
 		let mynoun be "nil";	
 	if myaction is a verb listed in the Table of Technoverbs:
