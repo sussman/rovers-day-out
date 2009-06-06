@@ -24,6 +24,10 @@ Wakefulness is a kind of value. The wakefulnesses are asleep, hypnopompic, grogg
 
 Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
 
+Continuity is a kind of value. The continuities are intact and broken.
+
+
+
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
 Rule for printing the name of the a thing (called the item):
@@ -40,6 +44,39 @@ A simroom is a kind of room.  A simroom has some text called aware-name.  The aw
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
 Current memory usage is a number that varies.  The current memory usage is 508.
+
+Section Chests and Lids
+
+[borrowed more or less whole cloth from example 49 in the I7 documentation. Instead of keeping track of whether the lid is up or down, keep track of the open/close status of the chest.]
+
+A chest is a kind of container. A chest is always openable. A chest is usually fixed in place. A chest is usually closed. The specification of a chest is "Represents a container with a separately implemented lid; the lid is itself a supporter."
+
+A lid is a kind of supporter. A lid is part of every chest. The specification of a lid is "A supporter attached to a chest, which can only support things when the chest is closed."
+
+Before opening a lid which is part of a chest (called the item): 
+	try opening the item instead.
+Before closing a lid which is part of a chest (called the item): 
+	try closing the item instead.
+Before opening a chest when something is on the lid (called the obstruction) which is part of the noun: 
+	repeat with item running through things on the obstruction: 
+		say "(first removing [the item])"; 
+		try taking the item.
+
+Instead of opening a chest when something is on a lid (called the item) which is part of the noun: 
+	say "You'd have to remove [the list of things on the item] from the lid first." instead.
+	
+Instead of looking under a lid which is part of a chest (called the item): 
+    try opening the item.
+
+Before inserting something into a lid which is part of a chest (called the item): 
+	try inserting the noun into the item instead.
+	
+Before putting something on a chest when a lid (called the item) is part of the second noun: 
+	try putting the noun on the item instead.
+	
+Instead of examining a closed chest when something is on a lid (called the top) which is part of the noun: 
+	say "[The noun] is closed, and there [is-are a list of things on the top] on top."
+	
 
 Chapter Routines
 
@@ -125,7 +162,11 @@ Carry out reorienting:
 		
 Report reorienting:
 	say "Now the player is [if player is self-aware]self-aware[otherwise]clueless[end if].";
-
+	
+Instead of attacking the chain: [consider leaving something like this in the game]
+	if the chain is intact:
+		now the chain is broken;
+		say "No doubt for legitimate purposes of testing rather than out of frustration, you break the chain with your brutish strength."
 
 Chapter Initialize
 
@@ -283,7 +324,7 @@ Section Bathroom
 
 The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.[if the bathroom is unvisited][paragraph break]You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence."
 
-After going to bathroom for the first time:[TODO: this needs tweaking, doesn't show up if a prevous attempt to go n from living room failed]
+After going to bathroom for the first time:[TODO: this needs tweaking, doesn't show up if a prevous attempt to go n from living room failed. also, consider moving to the shower door.]
 	try looking;
 	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
 	say "[metatext in metaspeak]";
@@ -304,19 +345,58 @@ The bathroom walls are scenery in the bathroom.  The mirror and the plate are pa
 
 The clueless-name of the bathroom walls is "bathroom wall". The aware-name of the bathroom walls is "flight control panels". The clueless-description of the bathroom walls is "Light pink tiles." The aware-description of the bathroom walls is "Panels with indicators showing the orientation of the ship in space, heading and speed, and other information useful for piloting and landing the ship."
  
-The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination." The aware-description of the mirror is "About this ACU: You are a DTC Model 69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hyperactive Hydrax[quotation mark]."
+The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination." The aware-description of the mirror is "About this ACU: You are a DTC Model 69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark]."
 
-The bathroom ceiling is scenery in the bathroom. The irradiator is a switched off device which is part of the bathroom  ceiling.  
+The bathroom ceiling is scenery in the bathroom. The irradiator is a switched off device which is part of the bathroom ceiling.  
 
 The clueless-name of the bathroom ceiling is "bathroom ceiling". The aware-name of the bathroom ceiling is "flight control canopy". The clueless-description of the bathroom ceiling is "The bathroom ceiling is slightly concave to promote drainage towards the walls. A red heat lamp is mounted in the center of the ceiling." The aware-description of the bathroom ceiling is "The roof of the flight control section is the nose of the ship, containing the RCS thrusters and the equipment that secretes the ablative coating that protects the ship during planetary landings."
 
-The clueless-name of the irradiator is "heat lamp". The aware-name of the irradiator is "UV emitter". The clueless-description is "The red lens of a heat lamp is mounted at the apex of the bathroom ceiling." The aware-description of the irradiator is "A distributed system of ultraviolet emitters lining the tubes of the system responsible for secreting an ablative enamel onto the surface of the ship before planetary landings. The ultraviolet light accelerates the polymerization of the neoadamite enamel, forming a protective barrier around the ship. The emitters are [if the irradiator is switched on]energized[otherwise]powered down[end if] at present."  Understand "heat" or "lamp" as irradiator.
+The clueless-name of the irradiator is the "heat lamp". The aware-name of the irradiator is "UV emitter". The clueless-description is "The red lens of a heat lamp is mounted at the apex of the bathroom ceiling." The aware-description of the irradiator is "A distributed system of ultraviolet emitters lining the tubes of the system responsible for secreting an ablative enamel onto the surface of the ship before planetary landings. The ultraviolet light accelerates the polymerization of the neoadamite enamel, forming a protective barrier around the ship. The emitters are [if the irradiator is switched on]energized[otherwise]powered down[end if] at present."  Understand "heat" or "lamp" as irradiator.
+
+The clueless-name of the plate is the "black plate". The aware-name of the plate is "irradiator switch". The clueless-description of the plate is "A glossy black glass plate that is just to the right of the bathroom mirror." The aware-description of the plate is "The relay circuit that actuates the UV emitter in the enamel polymerization system."
 
 The bathroom sink is a sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination system". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response system is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents."
 
-The toilet is enterable furniture in the bathroom. The bow and tank are parts of the toilet. The lever is part of the tank. The flapper valve is part of the tank.
+The toilet is furniture in the bathroom. The toilet bowl and water tank are chests which are parts of the toilet. The toilet#interior is a fixed in place thing in the water tank. The flapper valve is a scenery which is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver handle is scenery which is part of the water tank.  The tank top is a lid which is part of the water tank. The toilet cover is a lid which is part of the toilet bowl. The toilet seat is enterable furniture which is part of the toilet bowl.
 
-The plunger is furniture in the bathroom. The handle and the cup are part of the plunger.
+The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "Retros".  The clueless-description of the toilet is "A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retro-rocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters designed to slow the ship enough to make a soft landing almost anywhere. [throne status]."
+
+The clueless-name of the water tank is the "water tank". The aware-name of the water tank is "plasma constrictor". The clueless-description of the water tank is "A porcelain reservoir containing several liters of water to flush the toilet. On the front of the tank there is a silver handle used to flush the toilet and on the top of the tank there is a lid[if the water tank is open] which has been flipped up[end if]." The aware-description of the water tank is "A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch [if the water tank is open]has been swung open[otherwise]is tightly sealed[end if] ."
+
+The clueless-name of the tank top is the "tank lid". The aware-name of the tank top is "plasma constrictor hatch". The clueless-description of the tank top is "A lid made of the same porcelain material as the water tank itself." The aware-description of the tank top is "A hatch providing access to the plasma constrictor ring." Understand "lid" as the tank top.
+
+The clueless-name of the flapper valve is the "flapper valve".  The aware-name of the flapper valve is "thrust aperture". The clueless-description of the flapper valve is "A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever." The aware-description of the flapper valve is "The most critical component of the retro assembly, and its only moving part, the thrust aperature controls the flow rate of the ship's breaking thrusters."
+
+The chain has continuity. The chain is intact.
+
+The clueless-name of the chain is the "flush chain." The aware-name of the chain is "thruster linkage servo." The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has broken, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the relay and the aperture."
+
+The clueless-name of the lever is the "flush lever." The aware-name of the lever is "thruster actuation relay." The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver handle on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unforunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken."
+
+The clueless-name of the silver handle is the "silver handle." The aware-name of the silver handle is "thruster trigger circuit." The clueless-description of the silver handle is "A silver-plated handle on upper part of the toilet's water tank." The aware-description of the silver handle is "A high-speed circuit connected directly to the flight control system, the thruster trigger circuit controls the precise timing required to fire the fusion retros during planetary landings."
+
+The clueless-name of the toilet#interior is the "inside of the tank." The aware-name of the toilet#interior is "interior of the plasma constrictor ring." The clueless-description of the toilet#interior is "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve.[if the chain is broken] The situation here is slightly complication, however, as the chain is broken." The aware-description of the toilet#interior is "Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay [if the chain is broken]but here there is a discontinuity and the signal does not reach[otherwise]and the servo linkage to the[end if] thrust aperature. [if the chain is broken] It looks like the servo linkage has been damaged."
+
+The clueless-name of the toilet bowl is the "toilet bowl." The aware-name of the toilet bowl is the "reaction chamber."  The clueless-description of the toilet bowl is "The white porcelain bowl is the bottom part of the toilet. [throne status]." The aware-description of the toilet bowl is "The fusion output mixes with reactant in the glossy white chamber at the bottom of the retro assembly, just distal to the thrust aperature. [throne status]." 
+
+To say throne status:
+	if the toilet seat is closed:
+		if the toilet bowl is closed:
+			say "[if the player is clueless]Both the the cover and seat are down[otherwise]Both the reactant shield and pressure seating are clamped down";
+		otherwise:
+			say "[if the player is clueless]The toilet seat is down, but the cover is raised[otherwise]The pressure seating is engaged but the reactant shield is raised";
+	otherwise:
+		say "[if the player is clueless]Someone left both the cover and seat up. How rude[otherwise]Both the reactant shield and the pressure seating are presently disengaged";
+
+The toilet seat can be open or closed. The toilet seat is open.
+
+[TODO: routine to intercept open/close of the toilet seat, taking into consideration the status of the toilet cover]
+
+The clueless-name of the toilet seat is the "toilet seat". The aware-name of the toilet seat is "pressure seating". The clueless-description of the toilet seat is "A padded and heated seat, which is presently [if the toilet seat is open]raised[otherwise]in the down position[end if]." The aware-description of the toilet seat is "A black mevolar gasket that assures a perfect seal between the shield and the reactant chamber. The pressure seating is presently [if the toilet seat is open]not [end if]making a seal with the chamber."
+
+The clueless-name of the toilet cover is the "toilet cover." The aware-name of the toilet cover is "reactant shield". The clueless-description of the toilet cover is "The cover is made of plastic, but has been laminated to give it the appearance of unstained wood. It toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured."
+
+The plunger is furniture in the bathroom. The shaft and the cup are part of the plunger.
 
 The shower door is a door and scenery.  It is north of the bathroom and south of the shower.
 
@@ -340,7 +420,7 @@ The Black BullDog is a male animal in the Featureless Desert. He is carrying the
 
 The Stranger's House is west of the Featureless Desert.
 
-The Broken Door is west of the Stranger's House and east of the Sleeping Room.  It is a door and scenery.
+The Splintered Door is west of the Stranger's House and east of the Sleeping Room.  It is a scenery door.
 
 The sky is a backdrop. It is in the Planet. 
 
