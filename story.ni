@@ -45,6 +45,7 @@ Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
 Current memory usage is a number that varies.  The current memory usage is 508.
 
+
 Section Chests and Lids
 
 [borrowed more or less whole cloth from example 49 in the I7 documentation. Instead of keeping track of whether the lid is up or down, keep track of the open/close status of the chest.]
@@ -77,6 +78,7 @@ Before putting something on a chest when a lid (called the item) is part of the 
 Instead of examining a closed chest when something is on a lid (called the top) which is part of the noun: 
 	say "[The noun] is closed, and there [is-are a list of things on the top] on top."
 	
+
 
 Chapter Routines
 
@@ -185,8 +187,8 @@ At the time when the player is self-aware:
 	change the command prompt to "READY>";
 	
 When play begins:
-	change the left hand status line to "INITIAL PROGRAM LOAD";
-	change the right hand status line to "".	
+	change the left hand status line to "[last-noun in upper case] -> [status-line-action]";
+	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB".	
 
 
 Chapter The Valkyrie
@@ -472,7 +474,7 @@ There are some spruce trees. They are scenery.  The description of the spruce tr
 
 Chapter Memories
 
-Understand "remember [text]" as remembering. Remembering is an action applying to one topic.
+Remembering is an action applying to one topic.  Understand "remember [text]" as remembering.  Understand "recall [text]" as remembering.  Understand "think about [text]" as remembering.
 
 Carry out remembering:
 	say "That doesn't ring a bell.";
@@ -594,26 +596,34 @@ title	subtable	description	toggle
 
 Chapter Status Line Magic
 
+
+Last-action is an action-name that varies.
+
+Last-noun is a text that varies.  The last-noun is "ACU".
+
+The status-line-action is a text that varies.  The status-line-action is "INITIAL PROGRAM LOAD".
+
+
 [a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
 
 Table of Technoverbs
-verb (indexed text)		technoverb
-"going"			"SELECT"	[go, or any compass direction]
-"taking off"		"RETRACT"       [take off, remove]
-"wearing"		"ENGAGE"        [put on, wear]
-"taking"		"SELECT"  [take, get]
-"dropping"		"DESELECT"  [drop]
-"inserting it into"	"TRANSFER"  [put]
-"searching"		"MANIFEST"  [look in]
-"looking"		"STATUS"  [look]
-"examining"		"DIAGNOSTIC" [examine, read]
-"entering"		"ACTIVATE"  [enter, sit on]
-"exiting"		"DEACTIVATE" [exit, stand up]
-"opening"		"ACCESS"  [open]
-"closing"		"DEACCESS" [close]
-"eating"		"ROUTE"  [eat]
-"pushing"		"APPLY"  [press]
-"remembering"		"RETRIEVE DATA" [remember] [also add 'think about','recall']
+Verb				Technoverb
+the going action			"SELECT"  [go, or any compass direction]
+the taking off action		"RETRACT"  [take off, remove]
+the wearing action		"ENGAGE"  [put on, wear]
+the taking action		"SELECT"  [take, get]
+the dropping action		"DESELECT"  [drop]
+the inserting it into action	"TRANSFER"  [put]
+the searching action		"MANIFEST"  [look in]
+the looking action		"STATUS"  [look]
+the examining action		"DIAGNOSTIC" [examine, read]
+the entering action		"ACTIVATE"  [enter, sit on]
+the exiting action		"DEACTIVATE" [exit, stand up]
+the opening action		"ACCESS"  [open]
+the closing action		"DEACCESS" [close]
+the eating action		"ROUTE"  [eat]
+the pushing action		"APPLY"  [press]
+the remembering action		"RETRIEVE DATA" [remember]
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 
@@ -637,32 +647,20 @@ verb (indexed text)		technoverb
 "dig"		"MINING SUBSYSTEM" ]
 
 
-[FIX ME:  NOUN->VERB:  TRUE | NIL]
-[if the incoming-verb is an Verb listed in the Table of Technoverbs... see 15.12]
-[the topic understood]
-
-
 
 Chapter Every Turn
 
 Every turn:
 	[The main status-line updating logic:]
-	let myaction be indexed text;
-	let myaction be "[action-name part of the current action]";
-	if the noun is something or the noun is a location:		
-		if the aware-name of the noun is not "":
-			let mynoun be "[aware-name of the noun]";
-		otherwise:
-			let mynoun be printed name of the noun;
+	if the noun is something:
+		change last-noun to "[aware-name of the noun]";
 	otherwise:
-		if the noun is nothing:
-			let mynoun be the aware-name of the location;
-		otherwise:
-			let mynoun be "nil";	
-	if myaction is a verb listed in the Table of Technoverbs:
-		say "[mynoun in upper case] -> [technoverb entry]";
+		change last-noun to "nil";	
+	now last-action is the action-name part of the current action;
+	if last-action is a verb listed in the Table of Technoverbs:
+		change the status-line-action to technoverb entry;
 	otherwise:
-		say "[mynoun in upper case] -> ?UNKNOWN";[later, can make this "NOP"]
+		change the status-line-action to "NOP";
 	[A red herring just to screw with players, plus remind them the program is running.]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
