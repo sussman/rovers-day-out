@@ -196,7 +196,7 @@ Chapter The Valkyrie
 
 Section Living Room
  
-The Valkyrie is a region.  The Living Room, Kitchen, Bathroom and Shower are simrooms in the Valkyrie.
+The Valkyrie Area is a region.  The Living Room, Kitchen, Bathroom and Shower are simrooms in the Valkyrie Area.
 
 The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."
 
@@ -405,15 +405,36 @@ The clueless-name of the toilet seat is the "toilet seat". The aware-name of the
 
 The clueless-name of the toilet cover is the "toilet cover." The aware-name of the toilet cover is "reactant shield". The clueless-description of the toilet cover is "The cover is made of plastic, but has been laminated to give it the appearance of unstained wood. It toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured."
 
-The plunger is furniture in the bathroom. The shaft and the cup are part of the plunger.
+The plunger is furniture in the bathroom. The john shaft and the red rubber cup are part of the plunger.
 
-The shower door is a door and scenery.  It is north of the bathroom and south of the shower.
+The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup." The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters."
 
-The soap dispenser, the shampoo dispenser, and the shower drain are scenery in the shower.
+The clueless-name of the john shaft is "shaft". The aware-name of the john shaft is "vector input port". The clueless-description of the john shaft is "A wooden stick." The aware-description of the john shaft is "A multiaxial control device which outputs ship orientation instructions to the nose cone drivers."
+
+The clueless-name of the red rubber cup is the "red rubber cup". The aware-name of the red rubber cup is the "nose cone driver". The clueless-description of the red rubber cup is "The business end of the plunger.[if a random chance of one in eight succeeds] Exterminate! Exterminate!"
+
+The shower door is a door and scenery.  It is north of the bathroom and south of the shower. 
+
+The clueless-name of the shower door is "shower door". The aware-name of the shower door is "extruder latch". The clueless-description of the shower door is "A translucent polyglass door." The aware-description of the shower door is "A circuit which enables or disables the extruder."
+
+The soap dispenser, the shampoo dispenser, and the shower drain are scenery in the shower. The shower walls are scenery in the shower. Understand "wall" as shower walls. The soap button is part of the shower walls. The shampoo button is part of the shower walls.
+
+The clueless-name of the soap dispenser is "soap dispenser". The aware-name of the soap dispenser is "ablative enamel". The clueless-description of the soap dispenser is "The soap button is molded into the wall of the shower stall." The aware-description of the soap dispenser is "A solenoid pump which delivers the enamel solution to the extruder system for mixing with accelerant."
+
+The clueless-name of the shampoo dispenser is "shampoo dispenser". The aware-name of the shampoo dispenser is "accelerant". The clueless-description of the shampoo dispenser is "The button for the shampoo dispenser is right next to the one for the soap dispenser". The aware-description of the shampoo dispenser is "A solenoid pump which delivers a catalyst to the extruder system for mixing with monomer solution."
+
+The aware-name of the shower is "extruder". The clueless-description of the shower is "You are in your shower, and water is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled [quotation mark]soap[quotation mark], and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower is "A fluidics network runs throughout the ship, designed to pump an enamel solution to the surface of the ship where it hardens into an ablative coating."
+
+The clueless-name of the show walls is "shower walls". The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick whte plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull."
+
+The clueless-name of the shampoo button is "shampoo button". The aware-name of the shampoo button is "accelerant release". The clueless-description of the shampoo button is "A small yellow button on the wall of the shower. It is marked [quotation mark]Shampoo[quotation mark]." The aware-description of the shampoo button is "A relay operating the accelerant solenoid."
+
+The clueless-name of the soap button is "soap button". The aware-name of the soap button is "enamel release". The clueless-description of the soap button is "A small green button on the wall of the shower. It is marked [quotation mark]Soap[quotation mark]." The aware-description of the soap button is "A relay operating the enamel solenoid."
+
 
 Chapter The Planet
 
-The Planet is a region. The Porch, The Barren Plain, The Dug-Up Field, The Smoking Pit, The Featureless Desert, and The Stranger's House are rooms in the Planet.
+The Planet Area is a region. The Porch, The Barren Plain, The Dug-Up Field, The Smoking Pit, The Featureless Desert, and The Stranger's House are rooms in the Planet Area.
 
 The Porch is west of the front door.
 
@@ -435,7 +456,7 @@ The sky is a backdrop. It is in the Planet.
 
 Chapter The Ginsu
 
-The Ginsu [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Ginsu.
+The Ginsu Area [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Ginsu Area.
 
 In the sleeping room is a man called the stranger.
 
@@ -636,7 +657,7 @@ the opening action		"ACCESS"  [open]
 the closing action		"DEACCESS" [close]
 the eating action		"ROUTE"  [eat]
 the pushing action		"APPLY"  [press]
-the remembering action		"RETRIEVE DATA" [remember]
+the remembering action		"DATA_FETCH" [remember]
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 

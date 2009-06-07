@@ -374,3 +374,7 @@ SOLAR SHIELD->DEPLOY: NIL
 
 >get up | stand
 CASIMIR DRIVE->STANDBY: TRUE
+
+-----------------------
+switching from Windex to Flosix should drop the memory requirement.
+-----------------------
