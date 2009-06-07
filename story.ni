@@ -49,6 +49,8 @@ A hole is a kind of container. A hole is always open not openable and fixed in p
 
 A bowl is a kind of container. The carrying capacity of a bowl is always 1.
 
+An message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".
+
 Section Chests and Lids
 
 [borrowed more or less whole cloth from example 49 in the I7 documentation. Instead of keeping track of whether the lid is up or down, keep track of the open/close status of the chest.]
@@ -80,8 +82,6 @@ Before putting something on a chest when a lid (called the item) is part of the 
 	
 Instead of examining a closed chest when something is on a lid (called the top) which is part of the noun: 
 	say "[The noun] is closed, and there [is-are a list of things on the top] on top."
-	
-
 
 Chapter Routines
 
@@ -154,7 +154,19 @@ Before jumping:
 	if the player is the acu and the player is self-aware:
 		say "Branch instruction ignored. Instruction pointer unaffected.";
 		stop the action.
+		
+Understand the command "read" as something new. Reading is an action applying to one thing. Understand "read [some message]" as reading.
 
+Check reading:
+	If the player is rover:
+		say "Dogs can't read." instead;
+	otherwise:
+		if the inscription of the noun is "":
+			say "Nothing is printed on [the noun]." instead.
+			
+Carry out reading:
+	say "[inscription][paragraph break]".
+	
 Chapter Not Ready For Prime Time - Not for release
 
 Reorienting is an action applying to nothing. Understand "reorient" as reorienting.
@@ -194,6 +206,9 @@ When play begins:
 	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB".	
 
+Chapter Teaching An Old Dog
+
+[TODO Rover persuasion rules here]
 
 Chapter The Valkyrie
 
@@ -272,7 +287,7 @@ Section Kitchen
 
 The Kitchen is a room. The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor.[if Rover is hungry][paragraph break]Rover looks at the dish, then at you, then at the dish, and then at you."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  A piece of magpaper is a part of the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]."
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]."
 
 Instead of searching a refrigerator (called R):
 	if the player is clueless:
@@ -280,22 +295,21 @@ Instead of searching a refrigerator (called R):
 	otherwise:
 		say "The cryo unit contains [a list of things in R][if nothing is in R] but the super-chilled interior of the cryo unit itself[end if]."
 
-The magpaper is part of the the old fridge.  The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing. It reads:
+The magpaper is message which is part of the the old fridge.  The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue."
 
-Morning:[line break]
+The inscription of the magpaper is "[if the player is clueless]Morning:[line break]
 X. Get up[line break]
 2. Shower[line break]
 3. Breakfast[line break]
 4. Take care of business[line break]
-5. Let Rover go walkies";[TODO: check these off as they occur. Might be better to store this in a table.]
-
-The aware-description of the magpaper is 
-"[fixed letter spacing]PID   TTY          STATUS   CMD
+5. Let Rover go walkies[otherwise][fixed letter spacing]PID   TTY          STATUS      CMD
 [line break]301   ttys000      Done.       Initial Program Load
 [line break]323	  ttys000      Done.       Apply Ablative Enamel
 [line break]515   ttys000      Done.       Ignite Fusion Reactor
 [line break]525   ttys000      Done.       Landing Sequence
-[line break]540	  ttys000      Pending.    Send Probe Data[variable letter spacing]";[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
+[line break]540	  ttys000      Pending.    Send Probe Data[variable letter spacing]";
+
+[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
 
 Instead of taking the magpaper:
 	if the player is clueless:
@@ -303,7 +317,7 @@ Instead of taking the magpaper:
 	otherwise:
 		say "The task list cannot be relocated; it has a fixed address in system priority memory."
 
-After examining the magpaper for the first time:
+After reading the magpaper for the first time:
 	let metatext be "David: 'Take care of business'? Is that a euphemism?[line break]Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
 	say "[metatext in metaspeak]".
 
