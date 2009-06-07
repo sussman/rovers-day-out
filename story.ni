@@ -188,7 +188,7 @@ At the time when the player is self-aware:
 	change the command prompt to "READY>";
 	
 When play begins:
-	change the left hand status line to "[last-noun in upper case] -> [status-line-action]";
+	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB".	
 
 
@@ -219,7 +219,7 @@ The flight suit is a wearable prop. The ACU wears the flight suit. Understand "f
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. 
 
-The alarm clock is furniture on the futon.  The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs.  A large button juts out of the top.". A button and a switch are part of the alarm clock. The clueless-name of the alarm clock is "alarm clock". The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top.".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle.".
+The alarm clock is furniture on the futon.  The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs.  A large button juts out of the top.". A button and a switch are part of the alarm clock. The clueless-name of the alarm clock is "alarm clock". The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top.".  The aware-name of the button is "mf toggle".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle.".
 
 After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
@@ -340,7 +340,7 @@ The clueless-name of the floss dispenser is "floss dispenser". The aware-name of
 
 The blue button is part of the floss dispenser.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed floss dispenser." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem."
 
-The clueless-name of the toothbrush is "toothbrush". The aware-name of the toothbrush is "pit scrubber". The clueless-description of the toothbrush is "A green toothbrush with slightly worn bristles." The aware-description of the toothbrush is "The pit scrubber system appears to be operational. The countless nanobots it contains are dormant until they are released on the skin of the ship to polish out micropits from collisions with microscopic particles during the flight."
+The clueless-name of the toothbrush is "toothbrush".  Understand "brush" as the toothbrush. The aware-name of the toothbrush is "pit scrubber". The clueless-description of the toothbrush is "A green toothbrush with slightly worn bristles." The aware-description of the toothbrush is "The pit scrubber system appears to be operational. The countless nanobots it contains are dormant until they are released on the skin of the ship to polish out micropits from collisions with microscopic particles during the flight."
 
 The bathroom floor is scenery in the bathroom.  The clueless-name of the bathroom floor is "bathroom floor". The aware-name of the bathroom floor is "flight control decking". The clueless-description of the bathroom floor is "The black bathroom floor sparkles thanks to microscopic bits of volcanic glass which assure that the floor is never slippery, even when wet. The micropores in the floor also assure that water does not collect for long on the bathroom floor." The aware-description of the bathroom floor is "The deck plating in the flight deck is painted bright yellow."
 
@@ -349,6 +349,8 @@ The bathroom walls are scenery in the bathroom.  The mirror and the plate are pa
 The clueless-name of the bathroom walls is "bathroom wall". The aware-name of the bathroom walls is "flight control panels". The clueless-description of the bathroom walls is "Light pink tiles." The aware-description of the bathroom walls is "Panels with indicators showing the orientation of the ship in space, heading and speed, and other information useful for piloting and landing the ship."
  
 The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination." The aware-description of the mirror is "About this ACU: You are a DTC Model 69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark]."
+
+Instead of looking in the mirror:  try examining the mirror.
 
 After examining the mirror for the first time:
 	let metatext be "David:  Wait, is that memory usage correct?[line break]Janet:  Sure, it's fairly conservative.  The system has 640 PB available.[line break]David:  That's it?[line break]Janet:  C'mon, nobody will ever need more than 640 PB.";
@@ -384,7 +386,7 @@ The clueless-name of the silver handle is the "silver handle." The aware-name of
 
 The clueless-name of the toilet#interior is the "inside of the tank." The aware-name of the toilet#interior is "interior of the plasma constrictor ring." The clueless-description of the toilet#interior is "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve.[if the chain is broken] The situation here is slightly complication, however, as the chain is broken." The aware-description of the toilet#interior is "Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay [if the chain is broken]but here there is a discontinuity and the signal does not reach[otherwise]and the servo linkage to the[end if] thrust aperature. [if the chain is broken] It looks like the servo linkage has been damaged."
 
-The clueless-name of the toilet bowl is the "toilet bowl." The aware-name of the toilet bowl is the "reaction chamber."  The clueless-description of the toilet bowl is "The white porcelain bowl is the bottom part of the toilet. [throne status]." The aware-description of the toilet bowl is "The fusion output mixes with reactant in the glossy white chamber at the bottom of the retro assembly, just distal to the thrust aperature. [throne status]." 
+The clueless-name of the toilet bowl is the "toilet bowl." The aware-name of the toilet bowl is the "reaction chamber".  The clueless-description of the toilet bowl is "The white porcelain bowl is the bottom part of the toilet. [throne status]." The aware-description of the toilet bowl is "The fusion output mixes with reactant in the glossy white chamber at the bottom of the retro assembly, just distal to the thrust aperature. [throne status]." 
 
 To say throne status:
 	if the toilet seat is closed:
@@ -606,6 +608,14 @@ Last-action is an action-name that varies.
 Last-noun is a text that varies.  The last-noun is "ACU".
 The status-line-action is a text that varies.  The status-line-action is "INITIAL PROGRAM LOAD".
 
+Last-successful-action is an action-name that varies.
+Last-success is a text that varies.  The last-success is "TRUE".
+
+[This after-rule only gets called if the player's action succeeded.]
+First after an actor doing something:
+	change last-successful-action to the action-name part of the current action;
+	continue the action.
+
 
 [a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
 
@@ -664,6 +674,10 @@ Every turn:
 		change the status-line-action to technoverb entry;
 	otherwise:
 		change the status-line-action to "NOP";
+	if last-action is last-successful-action:
+		change last-success to "TRUE";
+	otherwise:
+		change last-success to "NIL";
 	[update memory usage]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
