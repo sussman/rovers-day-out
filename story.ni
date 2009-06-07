@@ -124,7 +124,7 @@ Before going a direction (called the way):
 			say "Compass directions? On Mars? The magnetic field here is too weak.";
 		otherwise: [maybe safer to say 'if Rover is the player'?]
 			say "Woof?";
-		stop the action;
+		rule succeeds;
 ]
 
 Instead of examining a room:
@@ -135,7 +135,7 @@ Instead of examining something (called the item):
 		if the aware-description of the item is not "":	
 			say aware-description of the item;
 			say line break;
-			stop the action;
+			rule succeeds;
 	continue the action;
 	
 Instead of looking:
@@ -143,7 +143,7 @@ Instead of looking:
 		if the aware-description of the location is not "":	
 			say aware-description of the location;
 			say line break;
-			stop the action;
+			rule succeeds;
 	continue the action;
 
 Before touching something (called the item):
@@ -153,7 +153,7 @@ Before touching something (called the item):
 Before jumping:
 	if the player is the acu and the player is self-aware:
 		say "Branch instruction ignored. Instruction pointer unaffected.";
-		stop the action.
+		rule succeeds.
 		
 Understand the command "read" as something new. Reading is an action applying to one thing. Understand "read [some message]" as reading.
 
@@ -208,7 +208,49 @@ When play begins:
 
 Chapter Teaching An Old Dog
 
-[TODO Rover persuasion rules here]
+Section Barking
+
+Persuasion rule for asking Rover to try barking:
+	persuasion succeeds.
+
+Barking is an action applying to nothing. Understand "bark" as barking.
+
+Check barking:
+	if the player is a person:
+		say "Leave barking to the dogs." instead.
+		
+Carry out barking:
+	say "Woof!"; [not actually hit]
+	
+Instead of Rover barking:
+	say "[The actor] barks out a meaty, [one of]Woof! Woof![or]Arf! Arf![or]Bow! Wow![or]Gaa....Ruffff[or]Gurrah![or]Rrrrrrrrrrrrrrrr[or]Yap! Yap![or]Buhwahwahwahwahwah![at random]";
+	rule succeeds.
+
+Section Attacking
+
+Persuasion rule for asking Rover to try attacking:
+	persuasion succeeds.
+	
+Instead of Rover attacking:
+	if the second noun is not David Venkatachalam:
+		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threating here.";
+	otherwise:
+		say "Rover stomps on David, coming down like a truckful of bricks.";
+	rule succeeds.
+	
+Section Lying Down
+
+Section Rolling Over
+
+Section Digging
+
+Section Coming
+
+Section Giving Kisses
+
+Section Going Walkies
+
+
 
 Chapter The Valkyrie
 
@@ -231,7 +273,7 @@ The mattress and frame are parts of the futon.  The clueless-name of the mattres
 
 The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering." The aware-description of the frame is "The casimir drive extension strut is contracted." The clueless-name of the frame is "bed frame". The aware-name of the frame is "extension strut".
 
-On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU. [note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The clueless-description of the ACU is "You seem just like you have every other day of your life.[if the ACU wears the flight suit] You are wearing a blue flight suit." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
+On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU. [note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise]It's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
 
 Audio is a device which is part of the ACU. The aware-name of Audio is "Internal Microphones". Audio is switched off.
 
@@ -251,7 +293,7 @@ Instead of opening the drapes:
 	if the futon encloses the player:
 		say "You'll need to stand up first."; [perhaps better handled by limiting the scope to the futon and things on it -- prevents the player from opening
 		  the front door, touching the floor, etc.]
-		stop the action;
+		rule succeeds;
 	otherwise:
 		say "You push aside the drapes.";
 		now the drapes are open;
@@ -356,6 +398,8 @@ The clueless-name of the reward nuggets box is "box of dog treats". The aware-na
 Rover is a male animal in the Kitchen. Rover has satiety. Rover is hungry.  The tail, paw, nose, ear, dorsum, tummy, and tongue are part of Rover.
 
 The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "He's a big, happy dalmation."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the space probe] He is chewing a piece of the Musashi-5 space probe[end if]."
+
+The kitchen floor is a scenery supporter in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." 
 
 Section Bathroom
 
