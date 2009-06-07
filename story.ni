@@ -231,15 +231,18 @@ Persuasion rule for asking Rover to try barking:
 Barking is an action applying to nothing. Understand "bark" as barking.
 
 Check barking:
-	if the player is a person:
+	if the player is not Rover:
 		say "Leave barking to the dogs." instead.
 		
 Carry out barking:
-	say "Woof!"; [not actually hit]
+	say "[doggerel]".
 	
 Instead of Rover barking:
-	say "[The actor] barks out a meaty, [one of]Woof! Woof![or]Arf! Arf![or]Bow! Wow![or]Gaa....Ruffff[or]Gurrah![or]Rrrrrrrrrrrrrrrr[or]Yap! Yap![or]Buhwahwahwahwahwah![at random]";
+	say "[The actor] barks out a meaty, [doggerel]";
 	rule succeeds.
+	
+To say doggerel:
+	say "[quotation mark][one of]Woof! Woof[or]Arf! Arf[or]Bow! Wow[or]Gaa....Ruffff[or]Gurrah[or]Rrrrrrrrrrrrrrrr[or]Yap! Yap[or]Buhwahwahwahwahwah[at random]![quotation mark][paragraph break]".
 
 Section Attacking
 
