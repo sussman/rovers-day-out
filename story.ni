@@ -253,16 +253,45 @@ Instead of Rover attacking:
 	if the second noun is not David Venkatachalam:
 		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threating here.";
 	otherwise:
-		say "Rover stomps on David, coming down like a truckful of bricks.";
+		say "Rover stomps on David, coming down like a truckload of bricks.";
 	rule succeeds.
 	
 Section Lying Down
+
+[Persuasion rule for asking Rover to try lying:
+	persuasion succeeds.
+	
+Lying is an action applying to one thing. Understand "lie" or "lie down" or "lie on [something]" as lying.
+
+]
+	
 
 Section Rolling Over
 
 Section Digging
 
 Section Coming
+
+Persuasion rule for asking Rover to try coming:
+	persuasion succeeds.
+
+Coming is an action applying to nothing. Understand "come" or "come here" or "here boy" or "food" as coming.
+
+check coming:
+	if the player is Rover:
+		say "You are already here." instead;
+	
+carry out coming:
+	if Rover is in the location:
+		say "Rover cocks his head quizzically.";
+	otherwise:
+		now Rover is in the location;
+		say "Rover tears around the corner excitedly, arriving in [the location]."
+		
+Instead of Rover coming when Rover is not the player:
+	[e.g., if Rover is in the room (and therefore scope) and you say "Rover, come" ]
+	say "Rover scratches his ears and wonders if you are talking to.";
+	rule succeeds;
 
 Section Giving Kisses
 
@@ -274,7 +303,7 @@ Chapter The Valkyrie
 
 Section Living Room
  
-The Valkyrie Area is a region.  The Living Room, Kitchen, Bathroom and Shower are simrooms in the Valkyrie Area.
+The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and The Shower are simrooms in the Valkyrie Area.
 
 The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."
 
