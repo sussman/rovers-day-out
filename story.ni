@@ -39,13 +39,15 @@ Rule for printing the name of the a thing (called the item):
 		
 A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
-A outside room is a kind of room. The description of an outside room is usually "You are outside.[useless outside detail]". The printed name of an outside room is usually "The Park".
+A outside room is a kind of room. The description of an outside room is usually "You are outside.[inconsequential outside detail]". The printed name of an outside room is usually "The Park".
 
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
 Current memory usage is a number that varies.  The current memory usage is 508.
 
 A hole is a kind of container. A hole is always open not openable and fixed in place.
+
+A bowl is a kind of container. The carrying capacity of a bowl is always 1.
 
 Section Chests and Lids
 
@@ -317,7 +319,7 @@ A frying pan is in the drawer. It is an open not openable container.  The carryi
 
 The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep drawer under the cooking range. The drawer [if open]has been opened[otherwise]is shut[end if]."
 
-The dog dish is a prop in the kitchen.The water bowl and the food bowl are containers that are parts of the dog dish. The carrying capacity of the water bowl is 1. The carrying capacity of the food bowl is 1. The dog dish is proper-named. The clueless-name of the dog dish is "Rover's dog dish". The aware-name of the dog dish is "Rover's transfer device". The description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl  marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. Both are empty. [paragraph break]Rover licks his chops in anticipation." [perhaps a separate subroutine to describe Rover's mental state??]
+The dog dish is a prop in the kitchen. The water trough and the food trough are bowls which are parts of the dog dish. The dog dish is proper-named. The clueless-name of the dog dish is "Rover's dog dish". The aware-name of the dog dish is "Rover's transfer device". The description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl  marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. Both are empty." [TODO: handle empty/full]
 
 The counter is an enterable furniture in the kitchen.[do not increment this counter] The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber."
 
@@ -452,10 +454,10 @@ Chapter The Planet
 
 The Planet Area is a region. The Front Yard, The Barren Plain, The Dug-Up Field, The Smoking Pit, The Featureless Desert, and The Strange Porch are outside rooms in the Planet Area.
 
-To say useless outside detail:
+To say inconsequential outside detail:
 	say " You can't see far because it is so dusty here. [one of][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[as decreasingly likely outcomes]"
 
-The Front Yard is west of the front door. The description of the front yard is "You are right outside the front door to your home.[useless outside detail]". The printed name of the Front Yard is "Front Yard".
+The Front Yard is west of the front door. The description of the front yard is "You are right outside the front door to your home.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".
 
 The Barren Plain is west of the Front Yard. A rock is a prop in the Barren Plain. The clueless-description of the rock is "[if the player is rover]You lick the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore."
 
@@ -483,37 +485,49 @@ To say delicious bone status:
 	otherwise:
 		say "It the bone that Rover dragged in from the park. He's already gnawed on it a bit".
 
-The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a strange house. [useless outside detail]"
+The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a strange house. [inconsequential outside detail]"
 
-The Strange House is scenery in the strange porch.  The description of the Strange House is "A house just like where you and Janet live, except it doesn't smell like home. [useless outside detail]"
+The Strange House is scenery in the strange porch.  The description of the Strange House is "A house just like where you and Janet live, except it doesn't smell like home. [inconsequential outside detail]"
 
-The Splintered Door is west of the Strange Porch and east of the Sleeping Room.  It is an open not openable scenery door. The description of the splintered door is "The door of the stranger's house does not close all the way." 
+The Splintered Door is west of the Strange Porch and east of the Studio.  It is an open not openable scenery door. The description of the splintered door is "The door of the stranger's house does not close all the way." 
 
 The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above."
 
 Chapter The Ginsu
 
-The Ginsu Area [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Ginsu Area.
+The Ginsu Area [i.e., the Earth ship] is a region.  The Studio and the Galley are rooms in the Ginsu Area.
 
-In the sleeping room is a man called the stranger.
+The description of the Studio is "[if The Studio is not visited]You walk into the building. There is a man here who looks old and grumpy. Like your home, this place has a sleep room and a food room. It looks like you've walked right into the sleep room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move. You don[apostrophe]t feel so afraid of him.[otherwise]The stranger[apostrophe]s house is boring. The only furniture in the room is a bed. In one direction lies the eating room, in the other, the door that leads back to the park. The stranger is still here and carrying on, [rantings] You ignore him."
 
-The bed is enterable furniture in the sleeping room. The pillow is a prop on the bed.[Rover can have fun with it. Bad dog! Bad dog!]
+In The Studio is a man called the stranger. He is scenery. The description of the stranger is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. Boy, does he seem mad, [rantings]!"
 
-The Eating Room is north of the sleeping room.
+To say rantings:
+ say "[quotation mark][one of]Blah, blah, blah, dog, blah, bad[or]Bad dog! Blah[or]Blah, blah, blah, blah, dog? Blah! Blah, blah[or]Blah, blah, blah, blah, blah, blah[or]Blah, out, blah, blah, dog[at random]![quotation mark]".
 
-A cold box is a refrigerator in the Eating Room.
+The bed is enterable furniture in The Studio. The pillow is a prop on the bed.
+
+The description of the bed is "The bed looks wrong somehow, like maybe it[apostrophe]s broken. It is more or less unfolded and looks even bigger than Janet[apostrophe]s bed."
+
+The Galley is north of the Studio.
+
+The description of the Galley is "[if the Galley is not visited]You enter the eating room.[paragraph break][end if]The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]".
+A cold box is a refrigerator in the Galley.  The description of the cold box is "A bright orange box, just like the one that Janet keeps food in at home."
 [there is no egg in the Ginsu's fridge because it's the same egg as in the Valkyrie. A byte saved is a byte earned.]
 
-The water maker is a sink in the Eating Room.
+The water maker is a sink in the Galley. The description of the water maker is "A thing that people have in their homes.  They can get water out of it to put in your bowl."
 
-The table is an enterable furniture in the Eating Room.
+The table is an enterable furniture in the Galley. The description of the table is "A big wooden table. Probably used for cooking stuff.[if nothing is on the table] Unfortunately, there is nothing, food or otherwise, on the table at the moment."
 
-The bulldog's water bowl and the bulldog's food bowl are portable containers in the Eating Room. [portable, but slick, add a before action to prevent Rover from walking off with them].
+The bulldog water bowl and the bulldog food bowl are portable containers in the Galley. [portable, but slick, add a before action to prevent Rover from walking off with them].
+
+The description of the bulldog food bowl is "The bulldog's food smells much better than yours."
+
+The description of the bulldog water bowl is "The bulldog's water bowl smells much better than yours."[TODO think about how to handle water/food quantities in game; consider extension.]
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
 
-David Venkatachalam is a man.
+David Venkatachalam is a man.  
 
 The space probe is a prop.
 
