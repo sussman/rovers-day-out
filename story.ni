@@ -596,12 +596,11 @@ title	subtable	description	toggle
 
 Chapter Status Line Magic
 
-
+[See the "every turn" and "initialize" sections to understand how this works.]
 Last-action is an action-name that varies.
-
 Last-noun is a text that varies.  The last-noun is "ACU".
-
 The status-line-action is a text that varies.  The status-line-action is "INITIAL PROGRAM LOAD".
+
 
 
 [a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
