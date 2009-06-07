@@ -94,12 +94,12 @@ Carry out memory-updating:
 		now the current memory usage is 500.
 
 
-To say ACU Boot Banner: [note -- the boot banner varies according to the stage of the story]
+To say (datestring - some text) in ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
 	say line break;
 	say "An Interactive Fiction by Janet Xiang";
 	say line break;
-	say "Release beta732 / Serial number 23920401 / Inform v10.5.4 Library 6/42";
+	say "Release beta732 / Serial number [datestring] / Inform v10.5.4 Library 6/42";
 	say paragraph break.
 
 [General routine for displaying dialogue between Janet and David.]
@@ -181,7 +181,8 @@ After printing the banner text:
 	say paragraph break;
 	wait for any key;
 	clear the screen;
-	say "[ACU Boot Banner]".
+	let datetext be "23920401";
+	say "[datetext in ACU Boot Banner]".
 	
 At the time when the player is self-aware:
 	change the command prompt to "READY>";
@@ -348,6 +349,10 @@ The bathroom walls are scenery in the bathroom.  The mirror and the plate are pa
 The clueless-name of the bathroom walls is "bathroom wall". The aware-name of the bathroom walls is "flight control panels". The clueless-description of the bathroom walls is "Light pink tiles." The aware-description of the bathroom walls is "Panels with indicators showing the orientation of the ship in space, heading and speed, and other information useful for piloting and landing the ship."
  
 The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination." The aware-description of the mirror is "About this ACU: You are a DTC Model 69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark]."
+
+After examining the mirror for the first time:
+	let metatext be "David:  Wait, is that memory usage correct?[line break]Janet:  Sure, it's fairly conservative.  The system has 640 PB available.[line break]David:  That's it?[line break]Janet:  C'mon, nobody will ever need more than 640 PB.";
+	say "[metatext in metaspeak]";
 
 The bathroom ceiling is scenery in the bathroom. The irradiator is a switched off device which is part of the bathroom ceiling.  
 
@@ -602,7 +607,6 @@ Last-noun is a text that varies.  The last-noun is "ACU".
 The status-line-action is a text that varies.  The status-line-action is "INITIAL PROGRAM LOAD".
 
 
-
 [a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
 
 Table of Technoverbs
@@ -650,7 +654,7 @@ the remembering action		"RETRIEVE DATA" [remember]
 Chapter Every Turn
 
 Every turn:
-	[The main status-line updating logic:]
+	[update status line]
 	if the noun is something:
 		change last-noun to "[aware-name of the noun]";
 	otherwise:
@@ -660,9 +664,10 @@ Every turn:
 		change the status-line-action to technoverb entry;
 	otherwise:
 		change the status-line-action to "NOP";
-	[A red herring just to screw with players, plus remind them the program is running.]
+	[update memory usage]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
+	[update prompt]
 	if the player is self-aware:
 		change the command prompt to "READY>";
 	otherwise:
