@@ -26,8 +26,6 @@ Insightfulness is a kind of value. The insightfulnesses are self-aware and cluel
 
 Continuity is a kind of value. The continuities are intact and broken.
 
-
-
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
 Rule for printing the name of the a thing (called the item):
@@ -41,10 +39,13 @@ Rule for printing the name of the a thing (called the item):
 		
 A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
+A outside room is a kind of room. The description of an outside room is usually "You are outside.[useless outside detail]". The printed name of an outside room is usually "The Park".
+
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
 Current memory usage is a number that varies.  The current memory usage is 508.
 
+A hole is a kind of container. A hole is always open not openable and fixed in place.
 
 Section Chests and Lids
 
@@ -246,7 +247,22 @@ Instead of closing the drapes:
 
 The living room floor is scenery in the living room. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." 
 
-The front door is east of the porch. It is a door and scenery. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The clueless-description of the front door is "The front door of the cottage is [if closed]closed[otherwise]open. Outside, it looks like a nice day[end if]."  The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]."
+The front door is east of the front yard. It is a door and scenery. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". 
+
+The aware-description of the front door is "The massive titanium cargo bay door are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]."
+
+The clueless-description of the front door is "[front door status]"
+
+To say front door status:
+	say "The front door of the cottage is ";
+	if the front door is closed: 
+		say "closed.";
+	otherwise:
+		say "open. ";
+		if the player is in the front yard:
+			say "You can see light from inside the house, and the smell of home wafts out the front door.";
+		otherwise:
+			say "Outside, it looks like a nice day."  
 
 Section Kitchen
 
@@ -434,25 +450,46 @@ The clueless-name of the soap button is "soap button". The aware-name of the soa
 
 Chapter The Planet
 
-The Planet Area is a region. The Porch, The Barren Plain, The Dug-Up Field, The Smoking Pit, The Featureless Desert, and The Stranger's House are rooms in the Planet Area.
+The Planet Area is a region. The Front Yard, The Barren Plain, The Dug-Up Field, The Smoking Pit, The Featureless Desert, and The Strange Porch are outside rooms in the Planet Area.
 
-The Porch is west of the front door.
+To say useless outside detail:
+	say " You can't see far because it is so dusty here. [one of][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[as decreasingly likely outcomes]"
 
-The Barren Plain is west of the Porch. A rock is a prop in the Barren Plain.
+The Front Yard is west of the front door. The description of the front yard is "You are right outside the front door to your home.[useless outside detail]". The printed name of the Front Yard is "Front Yard".
 
-Dug-Up Field is west of the Barren Plain. A small ditch is an open not openable container. It is in the Dug-Up Field.
+The Barren Plain is west of the Front Yard. A rock is a prop in the Barren Plain. The clueless-description of the rock is "[if the player is rover]You lick the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore."
 
-The Smoking Pit is west of the Dug-Up Field. A long furrow is an enterable open not openable container.
+Dug-Up Field is west of the Barren Plain. The small ditch is a not enterable hole in the Dug-Up Field. The description of the small ditch is "It smells like fresh dirt and you can see somes paw marks. Someone has recently dug this hole." The carrying capacity of the ditch is 1.
 
-The Featureless Desert is west of the Smoking Pit.
+The Smoking Pit is west of the Dug-Up Field. A long furrow is an enterable hole in the Smoking Pit. 
 
-The Black BullDog is a male animal in the Featureless Desert. He is carrying the delicious bone. The decision bone is a prop.
+The description of the long furrow is "The long, deep furrow smells burnt." The carrying capacity of the furrow is 5.
 
-The Stranger's House is west of the Featureless Desert.
+The furrow walls is scenery. It is part of the furrow. The description of the furrow walls is "The walls and the floor of the furrow are hard and shiny, more like glass. The dirt here smells burnt." Understand "wall" or "walls" or "floor" or "dirt" or "soil" or "ground" or "crater" or "ditch" or "excavation" as the furrow walls.
 
-The Splintered Door is west of the Stranger's House and east of the Sleeping Room.  It is a scenery door.
+The Featureless Desert is west of the Smoking Pit. 
 
-The sky is a backdrop. It is in the Planet. 
+The Black Bulldog is a male animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. 
+
+The description of the Black Bulldog is "A squat little beast with bristly fur and tiny, unintelligent eyes.[if the black bulldog carries the delicious bone] In his mouth, he is carrying a bone almost as big as he is." 
+
+The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey and even more so now that Rover is munching on it, but its data have been downloaded to you and are safe."
+
+To say delicious bone status:
+	if the player is rover:
+		say "It is the biggest, juiciest bone you’ve ever scene. It smells like marrow";
+		if the delicious bone is carried by the bulldog:
+			say "The bulldog notices your interest in the bone, and the corners of his mouth rise, revealing sharp teeth";
+	otherwise:
+		say "It the bone that Rover dragged in from the park. He's already gnawed on it a bit".
+
+The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a strange house. [useless outside detail]"
+
+The Strange House is scenery in the strange porch.  The description of the Strange House is "A house just like where you and Janet live, except it doesn't smell like home. [useless outside detail]"
+
+The Splintered Door is west of the Strange Porch and east of the Sleeping Room.  It is an open not openable scenery door. The description of the splintered door is "The door of the stranger's house does not close all the way." 
+
+The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above."
 
 Chapter The Ginsu
 
