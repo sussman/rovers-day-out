@@ -10,6 +10,12 @@ Include Case Management by Emily Short.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.
 
+Chapter Global Variables
+
+Current memory usage is a number that varies.  The current memory usage is 508.
+
+Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs.]
+
 Chapter Classes
 
 A furniture is a kind of thing. It is usually a supporter, scenery, and fixed in place. [In general, furniture descriptions should be integrated into room descriptions.]
@@ -39,11 +45,9 @@ Rule for printing the name of the a thing (called the item):
 		
 A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
-A outside room is a kind of room. The description of an outside room is usually "You are outside.[inconsequential outside detail]". The printed name of an outside room is usually "The Park".
+An outside room is a kind of room. The description of an outside room is usually "You are outside.[inconsequential outside detail]". The printed name of an outside room is usually "The Park".
 
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
-
-Current memory usage is a number that varies.  The current memory usage is 508.
 
 A hole is a kind of container. A hole is always open not openable and fixed in place.
 
@@ -83,11 +87,11 @@ Before putting something on a chest when a lid (called the item) is part of the 
 Instead of examining a closed chest when something is on a lid (called the top) which is part of the noun: 
 	say "[The noun] is closed, and there [is-are a list of things on the top] on top."
 
-Chapter Routines
-
+Chapter General Routines
 
 [Let's do a random walk, shall we?  :-) ]
 Memory-updating is an action applying to nothing.
+
 Carry out memory-updating:
 	let memdelta be a random number from -25 to 25;
 	now the current memory usage is the current memory usage plus memdelta;
@@ -112,20 +116,78 @@ To say (dialogue - some text) in metaspeak:
 	say "[fixed letter spacing][blue letters][dialogue][default letters]";
 	say variable letter spacing;
 	say paragraph break;
+	
+Chapter Verbs
+	
+Section Computer Humor
 
+Before touching something (called the item):
+	if the player is the acu and the player is self-aware:
+		say "[aware-name of the item]: file timestamp updated.";
+		
+Before jumping:
+	if the player is the acu and the player is self-aware:
+		say "Branch instruction ignored. Instruction pointer unaffected.";
+		rule succeeds.
+		
+Section Reading
+		
+Understand the command "read" as something new. Reading is an action applying to one thing. Understand "read [some message]" as reading.
 
-[disabled until room navigation is in place
+Check reading:
+	If the player is rover:
+		say "Dogs can't read." instead;
+	otherwise:
+		if the inscription of the noun is "":
+			say "Nothing is printed on [the noun]." instead.
+			
+Carry out reading:
+	say "[inscription][paragraph break]".
+	
+Section Going Towards
+
+Going towards is an action applying to one thing.
+
+Understand "go to [any room]" or "go toward [any room]" or "go towards [any room]"  or "go to [any person]" or "go toward [any person]" or "go towards [any person]" as going towards.  
+
+Check going towards:
+	if the noun is a person:
+		if the noun is the actor:		
+			say "How much more here do you want to be?" instead;
+		if the noun is in the location:
+			say "[The noun] is already here." instead;
+		otherwise:
+			if the player is the ACU:
+				say "You'd have to look for [the noun]." instead;
+	if the noun is the location, say "You're already here." instead.
+
+Carry out going towards:
+	let the heading be the best route from the location to the location of the noun, using even locked doors;
+	if heading is not a direction, say "You can't figure out how to get there." instead;
+	let the destination be the room the heading from the location;
+	now enroute is true;
+	try going heading;
+	if the player is not in the destination, rule fails.
+	
+Rule for reaching inside a room when the current action is going towards: 
+    allow access.[necessary to allow the going towards rule to work on a person that is out of local scope; otherwise would throw a "you can't reach inside the kitchen" sort of error.]
 
 Before going a direction (called the way):
+	if enroute is true:
+		now enroute is false;
+		continue the action;
 	if the way is up or the way is down:
 		continue the action;
-	otherwise:		
-		if the ACU is the player: 
+	if the ACU is the player: 
+		if the player is clueless:
 			say "Compass directions? On Mars? The magnetic field here is too weak.";
-		otherwise: [maybe safer to say 'if Rover is the player'?]
-			say "Woof?";
-		rule succeeds;
-]
+		otherwise:
+			say "That term is undefined in the present reference frame.";
+	otherwise: [maybe safer to say 'if Rover is the player'?]
+		say "Woof?";
+	rule succeeds;
+	
+Chapter General Insteads
 
 Instead of examining a room:
 	try looking;
@@ -145,29 +207,10 @@ Instead of looking:
 			say line break;
 			rule succeeds;
 	continue the action;
-
-Before touching something (called the item):
-	if the player is the acu and the player is self-aware:
-		say "[aware-name of the item]: file timestamp updated.";
 		
-Before jumping:
-	if the player is the acu and the player is self-aware:
-		say "Branch instruction ignored. Instruction pointer unaffected.";
-		rule succeeds.
-		
-Understand the command "read" as something new. Reading is an action applying to one thing. Understand "read [some message]" as reading.
-
-Check reading:
-	If the player is rover:
-		say "Dogs can't read." instead;
-	otherwise:
-		if the inscription of the noun is "":
-			say "Nothing is printed on [the noun]." instead.
-			
-Carry out reading:
-	say "[inscription][paragraph break]".
-	
 Chapter Not Ready For Prime Time - Not for release
+
+Section Reorienting
 
 Reorienting is an action applying to nothing. Understand "reorient" as reorienting.
 
@@ -188,6 +231,8 @@ Instead of attacking the chain: [consider leaving something like this in the gam
 		now the chain is broken;
 		say "No doubt for legitimate purposes of testing rather than out of frustration, you break the chain with your brutish strength."
 		
+Section Possessing
+		
 Possessing is an action applying to nothing. Understand "possess" as possessing.
 
 Carry out possessing:
@@ -198,8 +243,6 @@ Carry out possessing:
 	say "POV switched: now that of [the player], who is [if the player is self-aware]self aware[otherwise]clueless[end if].[paragraph break]";
 	try looking.
 			
-
-
 Chapter Initialize
 
 After printing the banner text:
@@ -452,7 +495,7 @@ Section Bathroom
 
 The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.[if the bathroom is unvisited][paragraph break]You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence."
 
-After going to the bathroom when the bathroom is unvisited:
+At the time when the player goes towards the bathroom for the first time:
 	try looking;
 	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
 	say "[metatext in metaspeak]";
@@ -637,6 +680,8 @@ Chapter Offstage
 
 David Venkatachalam is a man. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving."
 
+Janet Xiang is a woman. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving."  
+
 The space probe is a prop. The clueless-name of the space probe is "dog bone". The aware-name of the space probe is "space probe". The clueless-description of the space probe is "A partially gnawed dog bone." The aware-description of the space probe is "The Musashi-5 probe was severely damaged at some point during its journey and even more so now that Rover is munching on it, but its data have been downloaded to you and are safe."
 
 Instead of taking the space probe when the player is the acu:
@@ -645,8 +690,6 @@ Instead of taking the space probe when the player is the acu:
 There are some assault ships. They are scenery. The description of the assault ships is "The black hulls of the Lamprey Class assault ships are barely visible against the background of space."
 
 There are some gunships. They are scenery. The description of the gunships is "A tight cluster of highly maneuverable gunships, each of which mounts a single-powerful excimer laser."
-
-Janet Xiang is a woman. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving."  
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
@@ -661,6 +704,8 @@ The park is scenery in the window. The description of the park is "Lincoln Park 
 Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass."
 
 There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park."
+
+Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gun ships, the window, and the spruce trees are in Limbo.
 
 Chapter Memories
 
