@@ -10,13 +10,13 @@ Include Case Management by Emily Short.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.
 
-Chapter Global Variables
+Chapter Declare Global Variables
 
-Current memory usage is a number that varies.  The current memory usage is 508.
+Current memory usage is a number that varies.  
 
-Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs.]
+Enroute is a truth state that varies. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs.]
 
-Chapter Classes
+Chapter Class Definitions
 
 A furniture is a kind of thing. It is usually a supporter, scenery, and fixed in place. [In general, furniture descriptions should be integrated into room descriptions.]
 
@@ -24,7 +24,7 @@ A prop is a kind of thing. It is usually portable. [If props can be carried out 
 
 A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. 
 
-A sink is a kind of furniture. Understand "sink" as a sink.  A faucet is a kind of thing. A knob is a kind of thing. A drain is a kind of thing. A basin is a kind of container [redirect in/on the sink to the basin]. A basin is always open not openable.  A faucet, knob, drain and basin are parts of every sink.
+A sink is a kind of furniture. Understand "sink" as a sink.  A faucet is a kind of thing. A knob is a kind of thing. A drain is a kind of thing. A basin is a kind of container [redirect in/on the sink to the basin]. A basin is always open not openable.  A faucet, knob, drain and basin are parts of every sink.[this may be too detailed]
 
 Wakefulness is a kind of value. The wakefulnesses are asleep, hypnopompic, groggy, and alert.
 
@@ -245,6 +245,13 @@ Carry out possessing:
 			
 Chapter Initialize
 
+When play begins:
+	Reset the World;
+	now the player is the ACU;
+	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
+	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
+	now the time of day is 5:30 am.
+		
 After printing the banner text:
 	say "Type [quotation mark]help[quotation mark] for instructions, credits and license or just blaze on impetuously.";
 	say paragraph break;
@@ -255,14 +262,32 @@ After printing the banner text:
 	wait for any key;
 	clear the screen;
 	let datetext be "23920401";
-	say "[datetext in ACU Boot Banner]".
+	say "[datetext in ACU Boot Banner]".	
 	
-At the time when the player is self-aware:
-	change the command prompt to "READY>";
+Section Reset the World
+[Explicitly reset everything except whatever keeps track of the stage of the game to the inital state.]
+
+To reset the world:
+[reset global variables]
+	now the current memory usage is 508;
+	now enroute is false;
+[reset all rooms visited]
+	Repeat with R running through rooms:
+		now R is not visited;
+[reset all things handled]
+	Repeat with T running through things:
+		now T is not handled;
+[reset people]	
+	now the ACU is on the futon;
+	now the ACU is wearing the flight suit;
+	now the ACU is asleep;
+	now Rover is in the kitchen;
+	now Rover is hungry.
+[reset location of all moveable objects]
+	[etc.]
+[reset properties of other specific objects]
+	[etc.]
 	
-When play begins:
-	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
-	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB".	
 
 Chapter Teaching An Old Dog
 
@@ -340,8 +365,6 @@ Section Giving Kisses
 
 Section Going Walkies
 
-
-
 Chapter The Valkyrie
 
 Section Living Room
@@ -363,7 +386,7 @@ The mattress and frame are parts of the futon.  The clueless-name of the mattres
 
 The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering." The aware-description of the frame is "The casimir drive extension strut is contracted." The clueless-name of the frame is "bed frame". The aware-name of the frame is "extension strut".
 
-On the futon is a woman called the ACU. The player is the ACU.  She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU. [note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise]It's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
+On the futon is a woman called the ACU. The player is the ACU. She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU. [note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise]It's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
 
 Audio is a device which is part of the ACU. The aware-name of Audio is "Internal Microphones". Audio is switched off.
 
@@ -371,7 +394,7 @@ The flight suit is a wearable prop. The ACU wears the flight suit. Understand "f
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. 
 
-The alarm clock is furniture on the futon.  The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs.  A large button juts out of the top.". A button and a switch are part of the alarm clock. The clueless-name of the alarm clock is "alarm clock". The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top.".  The aware-name of the button is "mf toggle".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle.".
+The alarm clock is furniture on the futon.  The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A button and a switch are part of the alarm clock. The clueless-name of the alarm clock is "alarm clock". The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top.".  The aware-name of the button is "mf toggle".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle.".
 
 After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
@@ -516,7 +539,7 @@ The bathroom walls are scenery in the bathroom.  The mirror and the plate are pa
 
 The clueless-name of the bathroom walls is "bathroom wall". The aware-name of the bathroom walls is "flight control panels". The clueless-description of the bathroom walls is "Light pink tiles." The aware-description of the bathroom walls is "Panels with indicators showing the orientation of the ship in space, heading and speed, and other information useful for piloting and landing the ship."
  
-The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination." The aware-description of the mirror is "About this ACU: You are a DTC Model 69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark]."
+The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination." The aware-description of the mirror is "About this ACU: You are a Burroughs model DT69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark]."
 
 Instead of looking in the mirror:  try examining the mirror.
 
@@ -887,7 +910,10 @@ the remembering action		"DATA_FETCH" [remember]
 "kiss"		"SHIP INTERFACE"
 "dig"		"MINING SUBSYSTEM" ]
 
+Chapter Triggered Events
 
+At the time when the player is self-aware:
+	change the command prompt to "READY>";
 
 Chapter Every Turn
 
