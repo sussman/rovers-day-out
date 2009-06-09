@@ -10,6 +10,8 @@ Include Case Management by Emily Short.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.
 
+Book 1 Mechanics
+
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies.  
@@ -21,6 +23,8 @@ Chapter Class Definitions
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
 
 A furniture is a kind of thing. It is usually a supporter, scenery, and fixed in place. [In general, furniture descriptions should be integrated into room descriptions.]
+
+A bed is a kind of furniture. It is usually enterable.
 
 A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. 
 
@@ -109,7 +113,6 @@ Carry out memory-updating:
 		now the current memory usage is 620;
 	if current memory usage is less than 400:
 		now the current memory usage is 500.
-
 
 To say (datestring - some text) in ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
@@ -254,7 +257,7 @@ Carry out possessing:
 	say "POV switched: now that of [the player], who is [if the player is self-aware]self aware[otherwise]clueless[end if].[paragraph break]";
 	try looking.
 	
-Section Reset
+Section Resetting
 
 Resetting is an action applying to nothing. Understand "reset" as resetting.
 
@@ -350,20 +353,23 @@ Chapter Teaching An Old Dog
 
 Section Barking
 
-Persuasion rule for asking Rover to try barking:
+Persuasion rule for asking an animal to try barking:
 	persuasion succeeds.
 
 Barking is an action applying to nothing. Understand "bark" as barking.
 
 Check barking:
-	if the player is not Rover:
+	if the player is not an animal:
 		say "Leave barking to the dogs." instead.
 		
 Carry out barking:
 	say "[doggerel]".
 	
-Instead of Rover barking:
+Instead of an animal barking:
 	say "[The actor] barks out a meaty, [doggerel]";
+	if the actor encloses the delicious bone:
+		now the delicious bone is in the holder of the actor;	
+		say "The bone drops to [the actor]'s feet.";
 	rule succeeds.
 	
 To say doggerel:
@@ -371,10 +377,10 @@ To say doggerel:
 
 Section Attacking
 
-Persuasion rule for asking Rover to try attacking:
+Persuasion rule for asking an animal to try attacking:
 	persuasion succeeds.
 	
-Instead of Rover attacking:
+Instead of an animal attacking when Rover is enclosed by the Valkyrie Area:
 	if the second noun is not David Venkatachalam:
 		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threating here.";
 	otherwise:
@@ -383,13 +389,39 @@ Instead of Rover attacking:
 	
 Section Lying Down
 
-[Persuasion rule for asking Rover to try lying:
+Persuasion rule for asking an animal to try lying down:
+	persuasion succeeds.
+
+Lying down is an action applying to nothing. Understand "lie" or "lie down" as lying down.
+		
+check lying down:
+	if the player is an animal:
+		say "You're too excited to lie down! Woof!pos" instead;
+	otherwise:
+		say "[if player is clueless]You know that if you lie down this early in the morning you'll feel weird the entire day and that no amount of coffee in the afternoon with put things right again[otherwise]You rest for 0.0[a random number from 100 to 999][a random number from 100 to 999] femtoseconds. How [one of]refreshing[or]invigorating[or]energizing[or]exhilarating[or]stimulating[at random][end if]." instead.
+			
+carry out lying down:
+	do nothing.
+	
+Instead of lying down when the player is the ACU and the player is not alert:
+	say "Snooze the Alarm."
+	[TODO: write a Snooze the Alarm routine]
+	
+Instead of an animal lying down:
+	say "[The actor] dives towards the floor, holds the required position as briefly as he dares, and then jumps back on all fours in front of you, ready to play again.";
+	rule succeeds.
+	
+Persuasion rule for asking an animal to try lying on:
 	persuasion succeeds.
 	
-Lying is an action applying to one thing. Understand "lie" or "lie down" or "lie on [something]" as lying.
+Lying on is an action applying to one thing. Understand "lie on [something]" or "lie down on [something]" or "lie in [something]" as Lying on.
 
-]
+check lying on:
+	try lying down instead.
 	
+Instead of an animal lying on:
+	say "[The actor] looks at [the noun] and wonders if this is some sort of trick. [if the noun is a bed]Dogs aren't allowed on people furniture, are they?[otherwise]That's not a good place for a dog to lie![end if]";
+	rule succeeds.
 
 Section Rolling Over
 
@@ -397,7 +429,7 @@ Section Digging
 
 Section Coming
 
-Persuasion rule for asking Rover to try coming:
+Persuasion rule for asking an animal to try coming:
 	persuasion succeeds.
 
 Coming is an action applying to nothing. Understand "come" or "come here" or "here boy" or "food" as coming.
@@ -415,7 +447,7 @@ carry out coming:
 		
 Instead of Rover coming when Rover is not the player:
 	[e.g., if Rover is in the room (and therefore scope) and you say "Rover, come" ]
-	say "Rover scratches his ears and wonders if you are talking to.";
+	say "Rover scratches his ears and wonders to whom you are talking.";
 	rule succeeds;
 
 Section Giving Kisses
@@ -437,11 +469,11 @@ The aware-name of the living room is "operations". The clueless-description of t
 [TODO:  remove this part eventually, using 'go to X' as our main navigation device]
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
-The futon is an enterable furniture in the living room. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "sofa" or "purple" as the futon. The aware-description of the futon is "The Casimir Drive system is retracted and intact.[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".
+The futon is a bed in the living room. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The Casimir Drive system is retracted and intact.[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress.[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".
 
 The mattress and frame are parts of the futon.  The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is offline."
 
-The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of geometric engineering." The aware-description of the frame is "The casimir drive extension strut is contracted." The clueless-name of the frame is "bed frame". The aware-name of the frame is "extension strut".
+The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of engineering and geometry." The aware-description of the frame is "The casimir drive extension strut is contracted." The clueless-name of the frame is "bed frame". The aware-name of the frame is "extension strut".
 
 On the futon is a woman called the ACU. The player is the ACU. She is wearing a flight suit. A left arm and a right arm are parts of the ACU. A back, a hair, and a body are parts of the ACU. [note -- remember to set the article appropriately, your/her, depending on POV.] The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise]It's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie."
 
@@ -537,7 +569,7 @@ After examining the old fridge for the first time:
 	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 	say "[metatext in metaspeak]";
 
-In the fridge is the white egg. It is an edible prop.  The clueless-name of hte white egg is "white egg". The aware-name of the white egg is "helium-4 sphere".  The clueless-description of the white egg is "A big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy of super-chilled metallic Helium-4."
+In the fridge is the white egg. It is an edible prop.  The clueless-name of the white egg is "white egg". The aware-name of the white egg is "helium-4 sphere".  The clueless-description of the white egg is "A big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy of super-chilled metallic Helium-4."
 
 The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range.
 
@@ -584,7 +616,7 @@ The marble counter is furniture in the bathroom.  On the marble counter are a to
 
 The clueless-name of the marble counter is "marble counter". The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms. [if the toothbrush is on the counter or the floss dispenser is on the counter] There are some toiletries on it.[end if] A small sink is inset just below the mirror on the wall."  The aware-description of the marble counter is "A fully automated flight control console."
 
-The clueless-name of the floss dispenser is "floss dispenser". The aware-name of the floss floss dispenser is "linkage modulator". The clueless-description of the floss dispenser is "A small white box with a blue button just below where the floss comes out." The aware-description of the floss dispenser is "A featureless and perfectly cube-shaped grey box."
+The clueless-name of the floss dispenser is "floss dispenser". The aware-name of the floss dispenser is "linkage modulator". The clueless-description of the floss dispenser is "A small white box with a blue button just below where the floss comes out." The aware-description of the floss dispenser is "A featureless and perfectly cube-shaped grey box."
 
 The blue button is part of the floss dispenser.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed floss dispenser." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem."
 
@@ -673,7 +705,7 @@ The clueless-name of the shampoo dispenser is "shampoo dispenser". The aware-nam
 
 The aware-name of the shower is "extruder". The clueless-description of the shower is "You are in your shower, and water is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled [quotation mark]soap[quotation mark], and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower is "A fluidics network runs throughout the ship, designed to pump an enamel solution to the surface of the ship where it hardens into an ablative coating."
 
-The clueless-name of the show walls is "shower walls". The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick whte plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull."
+The clueless-name of the shower walls is "shower walls". The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull."
 
 The clueless-name of the shampoo button is "shampoo button". The aware-name of the shampoo button is "accelerant release". The clueless-description of the shampoo button is "A small yellow button on the wall of the shower. It is marked [quotation mark]Shampoo[quotation mark]." The aware-description of the shampoo button is "A relay operating the accelerant solenoid."
 
@@ -734,9 +766,9 @@ In The Studio is a man called the stranger. He is scenery. The description of th
 To say rantings:
  say "[quotation mark][one of]Blah, blah, blah, dog, blah, bad[or]Bad dog! Blah[or]Blah, blah, blah, blah, dog? Blah! Blah, blah[or]Blah, blah, blah, blah, blah, blah[or]Blah, out, blah, blah, dog[at random]![quotation mark]".
 
-The bed is enterable furniture in The Studio. The pillow is a prop on the bed.
+The pullout sofa is bed in The Studio. The pillow is a prop on the pullout sofa.
 
-The description of the bed is "The bed looks wrong somehow, like maybe it[apostrophe]s broken. It is more or less unfolded and looks even bigger than Janet[apostrophe]s bed."
+The description of the pullout sofa is "The sofa looks wrong somehow, like maybe it[apostrophe]s broken. It is more or less unfolded and looks even bigger than Janet[apostrophe]s futon."
 
 The Galley is north of the Studio.
 
@@ -785,7 +817,7 @@ Some grass is scenery in the window. The description of the grass is "A closely 
 
 There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park."
 
-Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gun ships, the window, and the spruce trees are in Limbo.
+Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gunships, the window, and the spruce trees are in Limbo.
 
 Chapter Memories
 
@@ -907,8 +939,6 @@ title	subtable	description	toggle
   acknowledgements section of a menu system. Attribution does not 
   suggest my endorsement of derivative works or their authors.[paragraph break]Noncommercial. You may not use this work for commercial purposes.[paragraph break]Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.[paragraph break]If you would like a copy of the Inform7 source for this game, please let us know by email: rover@templaro.com"	--
 
-
-
 Chapter Status Line Magic
 
 [See the "every turn" and "initialize" sections to understand how this works.]
@@ -1012,3 +1042,15 @@ Every turn:
 		say "noun: [noun][line break]"; 
 	if the second noun is something: 
 		say "second noun: [second noun][line break]"; ]
+		
+Book 2  Scenes
+
+Chapter Waking Up
+
+[just sketched in loosely for the moment, not in formal scenes, but clusters of code related to each scene, just for purposes of organization.]
+
+Before exiting when a bed encloses the player:
+	now the player is alert.
+
+	
+	
