@@ -57,7 +57,13 @@ An message is a kind of prop. A message has some text called inscription. The in
 
 [classs-wise resettable properties:]
 A person has an object called initial-enclosure. The initial-enclosure of a person is usually nothing.
-A prop has an object called initial-enclosure. The initial-enclosure of a prop is usually nothing.A container has a truth state called initial-overture. The initial-overture of a container is usually false.A door has a truth state called initial-overture. The initial-overture of a door is usually false.A device has an truth state called initial-onoff. The initial-onoff of a device is usually false.
+A prop has an object called initial-enclosure. The initial-enclosure of a prop is usually nothing.
+
+A container has a truth state called initial-overture. The initial-overture of a container is usually false.
+
+A door has a truth state called initial-overture. The initial-overture of a door is usually false.
+
+A device has an truth state called initial-onoff. The initial-onoff of a device is usually false.
 
 Section Chests and Lids
 
@@ -967,6 +973,8 @@ Chapter Triggered Events
 
 At the time when the player is self-aware:
 	change the command prompt to "READY>";
+	
+After reading a command:	let N be indexed text;	let N be the player's command;	replace the regular expression "\b(ask|tell|order) (.+?) to (.+)" in N with "\2, \3";	change the text of the player's command to N.
 
 Chapter Every Turn
 
