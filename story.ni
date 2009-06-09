@@ -18,9 +18,9 @@ Enroute is a truth state that varies. [en route is a flag that the character is 
 
 Chapter Class Definitions
 
-A furniture is a kind of thing. It is usually a supporter, scenery, and fixed in place. [In general, furniture descriptions should be integrated into room descriptions.]
-
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
+
+A furniture is a kind of thing. It is usually a supporter, scenery, and fixed in place. [In general, furniture descriptions should be integrated into room descriptions.]
 
 A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. 
 
@@ -54,6 +54,10 @@ A hole is a kind of container. A hole is always open not openable and fixed in p
 A bowl is a kind of container. The carrying capacity of a bowl is always 1.
 
 An message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".
+
+[classs-wise resettable properties:]
+A person has an object called initial-enclosure. The initial-enclosure of a person is usually nothing.
+A prop has an object called initial-enclosure. The initial-enclosure of a prop is usually nothing.A container has a truth state called initial-overture. The initial-overture of a container is usually false.A door has a truth state called initial-overture. The initial-overture of a door is usually false.A device has an truth state called initial-onoff. The initial-onoff of a device is usually false.
 
 Section Chests and Lids
 
@@ -240,19 +244,31 @@ Carry out possessing:
 	if the player is the ACU:
 		now the player is Rover;
 	otherwise:
-		now the player is the ACU;
+		now the player is the ACU.
+
+Report possessing:
 	say "POV switched: now that of [the player], who is [if the player is self-aware]self aware[otherwise]clueless[end if].[paragraph break]";
 	try looking.
-			
+	
+Section Reset
+
+Resetting is an action applying to nothing. Understand "reset" as resetting.
+
+Carry out resetting:
+	Restore the World;
+	Setup the World.
+	
+Report resetting:
+	say "World Reset!".
+	
 Chapter Initialize
 
 When play begins:
-	Reset the World;
-	now the player is the ACU;
+	Save the World;
+	Setup the World;
 	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
-	now the time of day is 5:30 am.
-		
+	
 After printing the banner text:
 	say "Type [quotation mark]help[quotation mark] for instructions, credits and license or just blaze on impetuously.";
 	say paragraph break;
@@ -265,30 +281,66 @@ After printing the banner text:
 	let datetext be "23920401";
 	say "[datetext in ACU Boot Banner]".	
 	
-Section Reset the World
-[Explicitly reset everything except whatever keeps track of the stage of the game to the inital state.]
-
-To reset the world:
-[reset global variables]
+To Save the World: [programmatically store inital state of class properties]
+	Repeat with selection running through persons:
+		now the initial-enclosure of the selection is the holder of the selection;
+	Repeat with selection running through props:
+		now the initial-enclosure of the selection is the holder of the selection;
+	Repeat with selection running through containers:
+		if the selection is open:
+			now the initial-overture of the selection is true;
+		otherwise:
+			now the initial-overture of the selection is false;
+	Repeat with selection running through doors:
+		if the selection is open:
+			now the initial-overture of the selection is true;
+		otherwise:
+			now the initial-overture of the selection is false;
+	Repeat with selection running through devices:
+		if the selection is switched on:
+			now the initial-onoff of the selection is true;
+		otherwise:
+			now the initial-onoff of the selection is false.
+	
+To Setup the World: [explictly set initial conditions]
+[globals]	
 	now the current memory usage is 508;
 	now enroute is false;
-[reset all rooms visited]
-	Repeat with R running through rooms:
-		now R is not visited;
-[reset all things handled]
-	Repeat with T running through things:
-		now T is not handled;
-[reset people]	
-	now the ACU is on the futon;
-	now the ACU is wearing the flight suit;
+	now the time of day is 5:30 am;
+[persons]
+	now the player is the ACU;
 	now the ACU is asleep;
 	now Rover is in the kitchen;
 	now Rover is hungry.
-[reset location of all moveable objects]
-	[etc.]
-[reset properties of other specific objects]
-	[etc.]
-	
+
+To Restore The World: [programmatically reset by class]
+[reset all rooms visited]
+	Repeat with selection running through rooms:
+		now selection is not visited;
+[reset all things handled]
+	Repeat with selection running through things:
+		now selection is not handled;
+[reset containment of persons, props, and anything else not nailed down]
+	Repeat with selection running through persons:
+		move the selection to the initial-enclosure of the selection;
+	Repeat with selection running through props:
+		move the 	selection to the initial-enclosure of the selection;
+[reset the open/closed or on/off properties of containers, doors, and devices]
+	Repeat with selection running through containers:	
+		if the initial-overture of the selection is true:
+			now the selection is open;
+		otherwise:
+			now the selection is closed;
+	Repeat with selection running through doors:
+		if the initial-overture of the selection is true:
+			now the selection is open;
+		otherwise:
+			now the selection is closed;
+	Repeat with selection running through devices:
+		if the initial-onoff of the selection is true:
+			now the selection is switched on;
+		otherwise:
+			now the selection is switched off.
 
 Chapter Teaching An Old Dog
 
