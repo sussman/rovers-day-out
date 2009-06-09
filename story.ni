@@ -250,9 +250,7 @@ Carry out possessing:
 	if the player is the ACU:
 		now the player is Rover;
 	otherwise:
-		now the player is the ACU.
-
-Report possessing:
+		now the player is the ACU;
 	say "POV switched: now that of [the player], who is [if the player is self-aware]self aware[otherwise]clueless[end if].[paragraph break]";
 	try looking.
 	
@@ -315,9 +313,9 @@ To Setup the World: [explictly set initial conditions]
 	now the time of day is 5:30 am;
 [persons]
 	now the player is the ACU;
+	now Rover is hungry;
 	now the ACU is asleep;
-	now Rover is in the kitchen;
-	now Rover is hungry.
+
 
 To Restore The World: [programmatically reset by class]
 [reset all rooms visited]
@@ -974,7 +972,11 @@ Chapter Triggered Events
 At the time when the player is self-aware:
 	change the command prompt to "READY>";
 	
-After reading a command:	let N be indexed text;	let N be the player's command;	replace the regular expression "\b(ask|tell|order) (.+?) to (.+)" in N with "\2, \3";	change the text of the player's command to N.
+After reading a command:
+	let N be indexed text;
+	let N be the player's command;
+	replace the regular expression "\b(ask|tell|order) (.+?) to (.+)" in N with "\2, \3";
+	change the text of the player's command to N.
 
 Chapter Every Turn
 
