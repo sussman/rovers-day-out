@@ -148,7 +148,7 @@ Section Going Towards
 
 Going towards is an action applying to one thing.
 
-Understand "go to [any room]" or "go toward [any room]" or "go towards [any room]"  or "go to [any person]" or "go toward [any person]" or "go towards [any person]" as going towards.  
+Understand "go [any room]" or "go to [any room]" or "go toward [any room]" or "go towards [any room]"  or "go [any person]" or "go to [any person]" or "go toward [any person]" or "go towards [any person]" as going towards.  
 
 Check going towards:
 	if the noun is a person:
@@ -159,7 +159,8 @@ Check going towards:
 		otherwise:
 			if the player is the ACU:
 				say "You'd have to look for [the noun]." instead;
-	if the noun is the location, say "You're already here." instead.
+	if the noun is the location, say "You're already here." instead;
+	if the player is the ACU and the noun is not in the Valkyrie, say "You're not ready to go out yet." instead.
 
 Carry out going towards:
 	let the heading be the best route from the location to the location of the noun, using even locked doors;
