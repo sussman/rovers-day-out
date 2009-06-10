@@ -14,9 +14,10 @@ Book 1 Mechanics
 
 Chapter Declare Global Variables
 
-Current memory usage is a number that varies.  
+Current memory usage is a number that varies. Current memory usage is 508.
+Load average is a number that varies. Load average is 500.
 
-Enroute is a truth state that varies. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs.]
+Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs.]
 
 Chapter Class Definitions
 
@@ -34,7 +35,7 @@ Wakefulness is a kind of value. The wakefulnesses are asleep, hypnopompic, grogg
 
 Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
 
-Continuity is a kind of value. The continuities are intact and broken.
+[Continuity is a kind of value. The continuities are intact and broken.]
 
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
@@ -61,6 +62,7 @@ An message is a kind of prop. A message has some text called inscription. The in
 
 [classs-wise resettable properties:]
 A person has an object called initial-enclosure. The initial-enclosure of a person is usually nothing.
+
 A prop has an object called initial-enclosure. The initial-enclosure of a prop is usually nothing.
 
 A container has a truth state called initial-overture. The initial-overture of a container is usually false.
@@ -109,10 +111,10 @@ Memory-updating is an action applying to nothing.
 Carry out memory-updating:
 	let memdelta be a random number from -25 to 25;
 	now the current memory usage is the current memory usage plus memdelta;
-	if current memory usage is greater than 640:
-		now the current memory usage is 620;
-	if current memory usage is less than 400:
-		now the current memory usage is 500.
+	if current memory usage is greater than load average + 140:
+		now the current memory usage is load average + 120;
+	if current memory usage is less than load average - 100:
+		now the current memory usage is load average.
 
 To say (datestring - some text) in ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
@@ -311,8 +313,6 @@ To Save the World: [programmatically store inital state of class properties]
 	
 To Setup the World: [explictly set initial conditions]
 [globals]	
-	now the current memory usage is 508;
-	now enroute is false;
 	now the time of day is 5:30 am;
 [persons]
 	now the player is the ACU;
@@ -624,7 +624,7 @@ The clueless-name of the toothbrush is "toothbrush".  Understand "brush" as the 
 
 The bathroom floor is scenery in the bathroom.  The clueless-name of the bathroom floor is "bathroom floor". The aware-name of the bathroom floor is "flight control decking". The clueless-description of the bathroom floor is "The black bathroom floor sparkles thanks to microscopic bits of volcanic glass which assure that the floor is never slippery, even when wet. The micropores in the floor also assure that water does not collect for long on the bathroom floor." The aware-description of the bathroom floor is "The deck plating in the flight deck is painted bright yellow."
 
-The bathroom walls are scenery in the bathroom.  The mirror and the plate are parts of the bathroom walls. Understand "wall" as bathroom walls. 
+The bathroom walls are scenery in the bathroom.  The mirror is part of the bathroom walls.  The black plate is a device which is part of the bathroom walls. Understand "wall" as bathroom walls. 
 
 The clueless-name of the bathroom walls is "bathroom wall". The aware-name of the bathroom walls is "flight control panels". The clueless-description of the bathroom walls is "Light pink tiles." The aware-description of the bathroom walls is "Panels with indicators showing the orientation of the ship in space, heading and speed, and other information useful for piloting and landing the ship."
  
@@ -640,9 +640,9 @@ The bathroom ceiling is scenery in the bathroom. The irradiator is a switched of
 
 The clueless-name of the bathroom ceiling is "bathroom ceiling". The aware-name of the bathroom ceiling is "flight control canopy". The clueless-description of the bathroom ceiling is "The bathroom ceiling is slightly concave to promote drainage towards the walls. A red heat lamp is mounted in the center of the ceiling." The aware-description of the bathroom ceiling is "The roof of the flight control section is the nose of the ship, containing the RCS thrusters and the equipment that secretes the ablative coating that protects the ship during planetary landings."
 
-The clueless-name of the irradiator is the "heat lamp". The aware-name of the irradiator is "UV emitter". The clueless-description is "The red lens of a heat lamp is mounted at the apex of the bathroom ceiling." The aware-description of the irradiator is "A distributed system of ultraviolet emitters lining the tubes of the system responsible for secreting an ablative enamel onto the surface of the ship before planetary landings. The ultraviolet light accelerates the polymerization of the neoadamite enamel, forming a protective barrier around the ship. The emitters are [if the irradiator is switched on]energized[otherwise]powered down[end if] at present."  Understand "heat" or "lamp" as irradiator.
+The clueless-name of the irradiator is the "heat lamp". The aware-name of the irradiator is "UV emitter". The clueless-description is "The red lens of a heat lamp is mounted at the apex of the bathroom ceiling." The aware-description of the irradiator is "A distributed system of ultraviolet emitters lining the tubes of the system responsible for secreting an ablative enamel onto the surface of the ship before planetary landings. The ultraviolet light accelerates the polymerization of the neoadamite enamel, forming a protective barrier around the ship. The emitters are [if the irradiator is switched on]energized[otherwise]powered down[end if] at present."  Understand "heat" or "lamp" as irradiator. The irradiator can be buggy or patched. The irradiator is buggy.
 
-The clueless-name of the plate is the "black plate". The aware-name of the plate is "irradiator switch". The clueless-description of the plate is "A glossy black glass plate that is just to the right of the bathroom mirror." The aware-description of the plate is "The relay circuit that actuates the UV emitter in the enamel polymerization system."
+The clueless-name of the black plate is the "black plate". The black plate is switched off. The aware-name of the black plate is "irradiator switch". The clueless-description of the black plate is "A glossy black glass plate that is just to the right of the bathroom mirror." The aware-description of the black plate is "The relay circuit that actuates the UV emitter in the enamel polymerization system."
 
 The bathroom sink is a sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination system". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response system is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents."
 
@@ -656,7 +656,7 @@ The clueless-name of the tank top is the "tank lid". The aware-name of the tank 
 
 The clueless-name of the flapper valve is the "flapper valve".  The aware-name of the flapper valve is "thrust aperture". The clueless-description of the flapper valve is "A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever." The aware-description of the flapper valve is "The most critical component of the retro assembly, and its only moving part, the thrust aperature controls the flow rate of the ship's breaking thrusters."
 
-The chain has continuity. The chain is intact.
+The chain can be broken or intact. The chain is intact.
 
 The clueless-name of the chain is the "flush chain." The aware-name of the chain is "thruster linkage servo." The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has broken, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the relay and the aperture."
 
@@ -1045,12 +1045,52 @@ Every turn:
 		
 Book 2  Scenes
 
-Chapter Waking Up
+Chapter Bedtime
 
-[just sketched in loosely for the moment, not in formal scenes, but clusters of code related to each scene, just for purposes of organization.]
-
-Before exiting when a bed encloses the player:
-	now the player is alert.
-
+Bedtime is a scene. Bedtime begins when the player is asleep. Bedtime ends when the player is not enclosed by the futon. 
 	
+When Bedtime ends:
+	move the alarm clock to Limbo;
+	say "Rover bats the alarm clock off the bed.".
+
+After exiting when a bed encloses the ACU:
+	now the player is alert.	
+
+Chapter First Sim
+
+First Sim is a scene. First Sim begins when the player is the ACU. First Sim ends when the black plate is switched on for the first time.
+
+When First Sim ends:
+	say "BLUE SCREEN OF DEATH!!!!";
+	now the irradiator is patched;
+	now the current memory usage is 260;
+	now load average is 256;
+	Restore the World;
+	Setup the World.
+
+Chapter Second Sim
+
+Second Sim is a scene. Second Sim begins when the irradiator is patched and the ACU is asleep. Second Sim ends when the front door is open for the first time.
+
+When Second Sim ends:
+	Restore the World;
+	[description of waking up again]
+	Setup the World.
+
+Chapter Real Thing
+
+Real Thing is a scene.  Real Thing begins when the drapes are not in the living room. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [i.e., eaten]
+
+Chapter Walkies
+
+Walkies is a scene. Walkies begins when Rover is not in the Valkyrie Area. Walkies ends when Rover is in the Valkyrie Area.
+
+Chapter Boarding Party
+
+Boarding Part is a scene.
+
+Chapter Back On Mars
+
+Back on Mars is a scene.
+
 	
