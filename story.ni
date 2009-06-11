@@ -754,7 +754,7 @@ The Black Bulldog is a male animal in the Featureless Desert. He is carrying the
 
 The description of the Black Bulldog is "A squat little beast with bristly fur and tiny, unintelligent eyes.[if the black bulldog carries the delicious bone] In his mouth, he is carrying a bone almost as big as he is." 
 
-The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey and even more so now that Rover is munching on it, but its data have been downloaded to you and are safe."
+The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey and even more so now that Rover is munching on it, but its data have been downloaded to you and are safe."  
 
 To say delicious bone status:
 	if the player is rover:
@@ -1064,7 +1064,7 @@ Book 2  Scenes
 
 Chapter Bedtime
 
-Bedtime is a scene. Bedtime begins when the player is asleep. Bedtime ends when the player is not enclosed by the futon. 
+Bedtime is a recurring scene. Bedtime begins when play begins. Bedtime ends when the player is not enclosed by the futon. 
 	
 When Bedtime ends:
 	move the alarm clock to Limbo;
@@ -1075,7 +1075,7 @@ After exiting when a bed encloses the ACU:
 
 Chapter First Sim
 
-First Sim is a scene. First Sim begins when the player is the ACU. First Sim ends when the black plate is switched on for the first time.
+First Sim is a scene. First Sim begins when play begins. First Sim ends when the black plate is switched on for the first time.
 
 When First Sim ends:
 	say "BLUE SCREEN OF DEATH!!!!";
@@ -1087,7 +1087,7 @@ When First Sim ends:
 
 Chapter Second Sim
 
-Second Sim is a scene. Second Sim begins when the irradiator is patched and the ACU is asleep. Second Sim ends when the front door is open for the first time.
+Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim ends when the front door is open for the first time.
 
 When Second Sim ends:
 	Restore the World;
@@ -1096,7 +1096,7 @@ When Second Sim ends:
 
 Chapter Real Thing
 
-Real Thing is a scene.  Real Thing begins when the drapes are not in the living room. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [i.e., eaten]
+Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [i.e., eaten]
 
 Chapter Walkies
 
@@ -1104,10 +1104,10 @@ Walkies is a scene. Walkies begins when Rover is not in the Valkyrie Area. Walki
 
 Chapter Boarding Party
 
-Boarding Part is a scene.
+Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not asleep.
 
 Chapter Back On Mars
 
-Back on Mars is a scene.
+Back on Mars is a scene.  Back on Mars begins when Boarding Party ends. 
 
 	
