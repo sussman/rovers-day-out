@@ -116,16 +116,26 @@ Carry out memory-updating:
 	if current memory usage is less than load average - 100:
 		now the current memory usage is load average.
 
-To say (datestring - some text) in ACU Boot Banner:
+To say ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
 	say line break;
-	say "An Interactive Fiction by Janet Xiang";
+	say "An Interactive Fiction by Janet Xiang[if the Real Thing is happening] and David Venkatachalam[end if]";
 	say line break;
-	say "Release beta732 / Serial number [datestring] / Inform v10.5.4 Library 6/42";
+	if First Sim is happening:
+		let release be "beta 732";
+		let serial be "23920401";
+	otherwise if Second Sim is happening:
+		let release be "beta810";
+		let serial be "23920415";
+	otherwise if Real Thing is happening:
+		let release be "1";
+		let serial be "23920416";
+	otherwise:
+		say "Boot banner error.";
+	say "Release [release] / Serial number [serial] / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)";
 	say paragraph break.
 
 [General routine for displaying dialogue between Janet and David.]
-[TODO: Suppress this after the first two simulation runs]
 To say (dialogue - some text) in metaspeak:
 	say line break; 
 	say "[fixed letter spacing][blue letters][dialogue][default letters]";
@@ -144,6 +154,14 @@ Before jumping:
 	if the player is the acu and the player is self-aware:
 		say "Branch instruction ignored. Instruction pointer unaffected.";
 		rule succeeds.
+		
+Understand "ls" as looking when the player is the ACU and the ACU is self-aware.
+
+Understand "grep [something]" as searching when the player is the ACU and the ACU is self-aware.
+
+Understand "man" as asking for help when the player is the ACU and the ACU is self-aware.
+
+Understand "cd [any room]" as going towards when the player is the ACU and the ACU is self-aware.
 		
 Section Reading
 		
@@ -287,8 +305,7 @@ After printing the banner text:
 	say paragraph break;
 	wait for any key;
 	clear the screen;
-	let datetext be "23920401";
-	say "[datetext in ACU Boot Banner]".	
+	say "[ACU Boot Banner]".	
 	
 To Save the World: [programmatically store inital state of class properties]
 	Repeat with selection running through persons:
@@ -616,7 +633,7 @@ The marble counter is furniture in the bathroom.  On the marble counter are a to
 
 The clueless-name of the marble counter is "marble counter". The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms. [if the toothbrush is on the counter or the floss dispenser is on the counter] There are some toiletries on it.[end if] A small sink is inset just below the mirror on the wall."  The aware-description of the marble counter is "A fully automated flight control console."
 
-The clueless-name of the floss dispenser is "floss dispenser". The aware-name of the floss dispenser is "linkage modulator". The clueless-description of the floss dispenser is "A small white box with a blue button just below where the floss comes out." The aware-description of the floss dispenser is "A featureless and perfectly cube-shaped grey box."
+The clueless-name of the floss dispenser is "floss dispenser". The aware-name of the floss dispenser is "object linker". The clueless-description of the floss dispenser is "A small white box with a blue button just below where the floss comes out." The aware-description of the floss dispenser is "A featureless and perfectly cube-shaped grey box."
 
 The blue button is part of the floss dispenser.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed floss dispenser." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem."
 
