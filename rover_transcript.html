@@ -1,0 +1,6531 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<base target="_top">
+<style type="text/css">
+  
+
+/* default css */
+
+table {
+  font-size: 1em;
+  line-height: inherit;
+  border-collapse: collapse;
+}
+
+
+tr {
+  
+  text-align: left;
+  
+}
+
+
+div, address, ol, ul, li, option, select {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+
+pre {
+  font-family: Courier New;
+  white-space: pre-wrap;
+  margin:0;
+}
+
+body {
+  margin: 6px;
+  padding: 0px;
+  font-family: Verdana, sans-serif;
+  font-size: 10pt;
+  background-color: #ffffff;
+}
+
+
+img {
+  -moz-force-broken-image-icon: 1;
+}
+
+@media screen {
+  html.pageview {
+    background-color: #f3f3f3 !important;
+  }
+
+  
+
+  body {
+    min-height: 1100px;
+    
+    counter-reset: __goog_page__;
+  }
+  * html body {
+    height: 1100px;
+  }
+  .pageview body {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    width: 648px !important;
+    margin: 15px auto 25px;
+    padding: 40px 50px;
+  }
+  /* IE6 */
+  * html {
+    overflow-y: scroll;
+  }
+  * html.pageview body {
+    overflow-x: auto;
+  }
+  /* Prevent repaint errors when scrolling in Safari. This "Star-7" css hack
+     targets Safari 3.1, but not WebKit nightlies and presumably Safari 4.
+     That's OK because this bug is fixed in WebKit nightlies/Safari 4 :-). */
+  html*#wys_frame::before {
+    content: '\A0';
+    position: fixed;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+  }
+  
+  
+
+  
+    .writely-callout-data {
+      display: none;
+      *display: inline-block;
+      *width: 0;
+      *height: 0;
+      *overflow: hidden;
+    }
+    .writely-footnote-marker {
+      background-image: url('MISSING');
+      background-color: transparent;
+      background-repeat: no-repeat;
+      width: 7px;
+      overflow: hidden;
+      height: 16px;
+      vertical-align: top;
+
+      
+      -moz-user-select: none;
+    }
+    .editor .writely-footnote-marker {
+      cursor: move;
+    }
+    .writely-footnote-marker-highlight {
+      background-position: -15px 0;
+      -moz-user-select: text;
+    }
+    .writely-footnote-hide-selection ::-moz-selection, .writely-footnote-hide-selection::-moz-selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection ::selection, .writely-footnote-hide-selection::selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection {
+      cursor: move;
+    }
+
+    
+    .editor .writely-comment-yellow {
+      background-color: #FF9;
+      background-position: -240px 0;
+    }
+    .editor .writely-comment-yellow-hover {
+      background-color: #FF0;
+      background-position: -224px 0;
+    }
+    .editor .writely-comment-blue {
+      background-color: #C0D3FF;
+      background-position: -16px 0;
+    }
+    .editor .writely-comment-blue-hover {
+      background-color: #6292FE;
+      background-position: 0 0;
+    }
+    .editor .writely-comment-orange {
+      background-color: #FFDEAD;
+      background-position: -80px 0;
+    }
+    .editor .writely-comment-orange-hover {
+      background-color: #F90;
+      background-position: -64px 0;
+    }
+    .editor .writely-comment-green {
+      background-color: #99FBB3;
+      background-position: -48px 0;
+    }
+    .editor .writely-comment-green-hover {
+      background-color: #00F442;
+      background-position: -32px 0;
+    }
+    .editor .writely-comment-cyan {
+      background-color: #CFF;
+      background-position: -208px 0;
+    }
+    .editor .writely-comment-cyan-hover {
+      background-color: #0FF;
+      background-position: -192px 0;
+    }
+    .editor .writely-comment-purple {
+      background-color: #EBCCFF;
+      background-position: -144px 0;
+    }
+    .editor .writely-comment-purple-hover {
+      background-color: #90F;
+      background-position: -128px 0;
+    }
+    .editor .writely-comment-magenta {
+      background-color: #FCF;
+      background-position: -112px 0;
+    }
+    .editor .writely-comment-magenta-hover {
+      background-color: #F0F;
+      background-position: -96px 0;
+    }
+    .editor .writely-comment-red {
+      background-color: #FFCACA;
+      background-position: -176px 0;
+    }
+    .editor .writely-comment-red-hover {
+      background-color: #FF7A7A;
+      background-position: -160px 0;
+    }
+
+    .editor .writely-comment-marker {
+      background-image: url('MISSING');
+      background-color: transparent;
+      padding-right: 11px;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      -moz-user-select: none;
+    }
+
+    .editor .writely-comment-hidden {
+      padding: 0;
+      background: none;
+    }
+    .editor .writely-comment-marker-hidden {
+      background: none;
+      padding: 0;
+      width: 0;
+    }
+    .editor .writely-comment-none {
+      opacity: .2;
+      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+      -moz-opacity: .2;
+    }
+    .editor .writely-comment-none-hover {
+      opacity: .2;
+      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+      -moz-opacity: .2;
+    }
+  
+
+
+  
+  .br_fix br:not(:-moz-last-node):not(:-moz-first-node) {
+    
+    position:relative;
+    
+    left: -1ex
+    
+  }
+  
+  .br_fix br+br {
+    position: static !important
+  }
+
+  
+  #cb-p-tgt {
+    font-size: 8pt;
+    padding: .4em;
+    font-style: oblique;
+    background-color: #FFF1A8;
+    border: 1px solid #000;
+  }
+}
+
+h6 { font-size: 8pt }
+h5 { font-size: 8pt }
+h4 { font-size: 10pt }
+h3 { font-size: 12pt }
+h2 { font-size: 14pt }
+h1 { font-size: 18pt }
+
+blockquote {padding: 10px; border: 1px #DDD dashed }
+
+.webkit-indent-blockquote { border: none; }
+
+a img {border: 0}
+
+.pb {
+  border-width: 0;
+  page-break-after: always;
+  /* We don't want this to be resizeable, so enforce a width and height
+     using !important */
+  height: 1px !important;
+  width: 100% !important;
+}
+
+.editor .pb {
+  border-top: 1px dashed #C0C0C0;
+  border-bottom: 1px dashed #C0C0C0;
+}
+
+div.google_header, div.google_footer {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+/* Table of contents */
+.editor div.writely-toc {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+}
+.writely-toc > ol {
+  padding-left: 3em;
+  font-weight: bold;
+}
+ol.writely-toc-subheading {
+  padding-left: 1em;
+  font-weight: normal;
+}
+/* IE6 only */
+* html writely-toc ol {
+  list-style-position: inside;
+}
+.writely-toc-none {
+  list-style-type: none;
+}
+.writely-toc-decimal {
+  list-style-type: decimal;
+}
+.writely-toc-upper-alpha {
+  list-style-type: upper-alpha;
+}
+.writely-toc-lower-alpha {
+  list-style-type: lower-alpha;
+}
+.writely-toc-upper-roman {
+  list-style-type: upper-roman;
+}
+.writely-toc-lower-roman {
+  list-style-type: lower-roman;
+}
+.writely-toc-disc {
+  list-style-type: disc;
+}
+
+/* Ordered lists converted to numbered lists can preserve ordered types, and
+   vice versa. This is confusing, so disallow it */
+ul[type="i"], ul[type="I"], ul[type="1"], ul[type="a"], ul[type="A"] {
+  list-style-type: disc;
+}
+
+ol[type="disc"], ol[type="circle"], ol[type="square"] {
+  list-style-type: decimal;
+}
+
+/* end default css */
+
+
+  /* default print css */
+  
+  @media print {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    div.google_header, div.google_footer {
+      display: block;
+      min-height: 0;
+      border: none;
+    }
+
+    div.google_header {
+      flow: static(header);
+    }
+
+    /* used to insert page numbers */
+    div.google_header::before, div.google_footer::before {
+      position: absolute;
+      top: 0;
+    }
+
+    div.google_footer {
+      flow: static(footer);
+    }
+
+    /* always consider this element at the start of the doc */
+    div#google_footer {
+      flow: static(footer, start);
+    }
+
+    span.google_pagenumber {
+      content: counter(page);
+    }
+
+    span.google_pagecount {
+      content: counter(pages);
+    }
+
+
+    callout.google_footnote {
+      
+      display: prince-footnote;
+      footnote-style-position: inside;
+      /* These styles keep the footnote from taking on the style of the text
+         surrounding the footnote marker. They can be overridden in the
+         document CSS. */
+      color: #000;
+      font-family: Times New Roman;
+      font-size: 12.0pt;
+      font-weight: normal;
+    }
+
+    /* Table of contents */
+    #WritelyTableOfContents a::after {
+      content: leader('.') target-counter(attr(href), page);
+    }
+
+    #WritelyTableOfContents a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  @page {
+    @top {
+      content: flow(header);
+    }
+    @bottom {
+      content: flow(footer);
+    }
+    @footnotes {
+      border-top: solid black thin;
+      padding-top: 8pt;
+    }
+  }
+  /* end default print css */
+
+
+/* custom css */
+
+
+/* end custom css */
+
+/* ui edited css */
+
+body {
+  font-family: Times New Roman;
+  
+  font-size: 12.0pt;
+  line-height: normal;
+  background-color: #ffffff;
+}
+/* end ui edited css */
+
+
+/* editor CSS */
+.editor a:visited {color: #551A8B}
+.editor table.zeroBorder {border: 1px dotted gray}
+.editor table.zeroBorder td {border: 1px dotted gray}
+.editor table.zeroBorder th {border: 1px dotted gray}
+
+
+.editor div.google_header, .editor div.google_footer {
+  border: 2px #DDDDDD dashed;
+  position: static;
+  width: 100%;
+  min-height: 2em;
+}
+
+.editor .misspell {background-color: yellow}
+
+.editor .writely-comment {
+  font-size: 9pt;
+  line-height: 1.4;
+  padding: 1px;
+  border: 1px dashed #C0C0C0
+}
+
+
+/* end editor CSS */
+
+</style>
+
+  
+  <title>Rover: Director's Cut</title>
+
+</head>
+
+<body 
+    
+    >
+    
+    
+    
+<P class=western>
+  Notes on transcript –
+</P>
+<P class=western>
+  [CLEARSCREEN] refers to clearing of the screen, nothing is printed.
+</P>
+<P class=western>
+  &lt;space&gt; is the prompt to hit the space bar to continue
+</P>
+<DIV class=western>
+  {stuff in curly} is conditional, and printed only in certain situations.
+</DIV>
+<DIV class=western>
+  &nbsp;
+</DIV>
+<DIV class=western>
+  The top line of the screen, the status bar, is modified in this game:&nbsp; Items in <FONT face=Arial>ALL CAPITAL LETTERS</FONT> do not display within the flow of the game, but up on the status bar (unless the user alters the preferences to put them inline).
+</DIV>
+<DIV class=western>
+  &nbsp;
+</DIV>
+<DIV class=western>
+  Most of the game is in Roman font, the conversations between Janet and David are in <FONT face=Arial size=2>something else</FONT> to help distinguish them.
+</DIV>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  ============
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  [CLEARSCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+Rover's Day Out<BR>
+An Interactive Fiction by Jack Welch<BR>
+Release 1 / Serial number 090525 / Inform 7 build 5U92 (I6/v6.31 lib 6/12N) SD<BR>
+<BR>
+Type help for instructions, credits and license or just blaze on impetuously.<BR>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: David, are you hooked in?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Ready to go. Is this the final version of the ACU, or another beta?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: A program is never finished, but I think we're ready to go.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I hope so, Earth could launch any day now. </FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Run program.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  [CLEARSCREEN]
+</P>
+Rover's Day Out<BR>
+An Interactive Fiction by Janet Xiang
+<P class=western>
+  Release beta732 / Serial number 23920401 / Inform v10.5.4 Library 6/42
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial>INITIAL PROGRAM LOAD</FONT>
+</P>
+<P class=western>
+  Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  [CLEAR SCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt; &lt;beep&gt; &lt;beep&gt;
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;INTERRUPT: TRUE</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: You have some weird dreams.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: You can't hold me responsible for the subconscious ramblings of the ACU.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  Alarm clock. Next to bed. Make it stop.
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x me
+</P>
+<P class=western>
+  <FONT face=Arial>SELF-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Laying down. Wearing pajamas. That's all the description you can handle at this time in the morning.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  &gt;i
+</P>
+<P class=western>
+  <FONT face=Arial>SELF-&gt;INTERFACES: NIL</FONT>
+</P>
+<P class=western>
+  You are carrying nothing, which is more often than not the case when you wake up most mornings.
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x alarm
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Alarm clock. Annoying alarm clock. The alarm clock is beeping.
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  Rover howls from somewhere in the cottage; clearly, he's not very fond of the alarm clock either.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;turn off alarm
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMTY ALERT-&gt;QUERY: NIL</FONT>
+</P>
+<P class=western>
+  You fumble vaguely with the alarm clock, grazing its controls, but not quite oriented enough to hit the right button.
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x time
+</P>
+<P class=western>
+  <FONT face=Arial>TEMPORAL SUBSYSTEM-&gt;QUERY: TRUE</FONT>
+</P>
+<P class=western>
+  According to your clock, it is 05:30.
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x alarm | x controls | x button
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Your white plastic alarm clock sits on the edge of the futon. Bright (too bright) green LEDs show the time as 05:30. There are two controls on top of the clock: a worn square button and a switch.
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x square button
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Mounted almost flush with the top of the clock, you can barely make out the word "snoo".
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: You could use a new alarm clock.</FONT>
+</P>
+<DIV class=western>
+  <FONT face=Arial size=2>Janet: You could increase my salary.</FONT>
+</DIV>
+<DIV class=western>
+  &nbsp;
+</DIV>
+<P class=western>
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  Rover snorts impatiently.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x switch
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The switch has two positions, both of which are labeled in unrealistically small black on black lettering. You’ve never remembered which position turns it off.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;read lettering
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Not a chance. Particularly, not this early in the morning.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;touch | press button {attempts to hit the switch result in a clumsy hitting of snooze button}
+</P>
+<P class=western style=FONT-FAMILY:Arial>
+  PROXIMITY ALERT-&gt;RESET: TRUE
+</P>
+<P class=western>
+  Your fingers clumsily graze the snooze button.<BR>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  [CLEARSCREEN]
+</P>
+<BR>
+<P class=western>
+  The alarm clock rolls into a ball, and flies the length of the vehicle construction facility, chased by an eager, slobbering dalmation. In the Martian gravity, Rover bounds three meters into the air and sails over the heads of an annoyed crew in cleanroom suits working frantically on the Valkyrie's starboard Casimir Drive assembly. The mission director, David Venkatachalam, grimaces, but your mother offers you a comforting cup of tea.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  press &lt;space&gt; to continue
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  [CLEARSCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt; &lt;beep&gt; &lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Do you always hit the snooze button so many times?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Yeah. That's why the alarm is set so early -- I don't have to be at the spaceport until 08:30. It serves its purpose in the simulation, though. Minimal resources are expended on each wake cycle, but if there were a problem during the approach, the ACU would elevate to full op status rapidly.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I don't really make that expression do I? I looked pouty.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: All the time, but I like the word “petulant” better than “pouty”.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I’ll stick with pouty.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press | touch button
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt; RESET: TRUE</FONT>
+</P>
+<P class=western>
+  A pudgy puppy hastily rounds a corner, sliding awkwardly on the polished dormitory floor. Behind it, there are flashes of light, and a rolling cloud, a mixture of smoke and Martian atmosphere. As the above-ground structures are ripped apart and lose pressure, the shivering ball of white fur leaps into your arms, burying its snout in the fold of your elbow. The Earth missiles continue to pound the university, but cannot penetrate to this depth. Huddled under a sturdy desk, you pet the frightened dog and hug it tight.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;press space&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: The ACU certainly has that dog on its mind.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Well, I do think about Rover a lot. Besides, the Rover is central to the mission, so a lot of the code is dedicated to the Rover.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Was that what it was like?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Yes, that was the last day of War of Independence.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  Something is licking your right arm.
+</P>
+<P class=western>
+  &gt;x arm
+</P>
+<P class=western>
+  which arm, right or left?
+</P>
+<P class=western>
+  &gt;right
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  Rover is licking your right arm with gusto. Either you really taste good or he really wants you to get up. Rover tugs on your pajamas.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x pajamas
+</P>
+<P class=western>
+  <FONT face=Arial>DIAGNOSTIC-&gt;SELF: TRUE</FONT>
+</P>
+<P class=western>
+  Actually, you are wearing a plain blue flight suit worn by pilots. There is some writing on the right breast pocket, but you can't make it out in this light.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt;&lt;beep&gt;&lt;beep&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press | touch button {or, any time you try to switch off the phone, or when you get up}
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;DISABLE: TRUE</FONT>
+</P>
+<P class=western>
+  As you reach for the alarm clock, your excited dog deftly bats it off the cushion with his tail. The clock tumbles behind your futon and thuds smartly as it hits the floor, ending the beeping. Rover looks puzzled that the noise has stopped. {clock is now removed from play}<BR>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Thank you. I can only take so many dream sequences.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: No problem. So, at this point, the Valkyrie would be at the edge of the stellar system, and ready to switch over from Casimir to Condensate Drive and begin the approach.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x me
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You are wearing a blue jumpsuit.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x Janet
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You are wearing a blue jumpsuit.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x David
+</P>
+<P class=western>
+  <FONT face=Arial>NULL-&gt;DIAGNOSTIC: NIL</FONT>
+</P>
+<P class=western>
+  Your boss isn’t here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Why would it expect to see me in your cottage?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Probably a random association.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Do you think the ACU can hear us talking?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: That’s a philosophical issue. It has sound sensors, and they might be on, but it’s all bits. Bits in, bits out. I don’t think you could say that it really hears us in any meaningful way.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x futon.
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Your futon is huge, and oh so comfy. Rover jumps about excitedly, waiting for you to get out of bed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get out of bed | get up
+</P>
+<P class=western>
+  <FONT face=Arial>PORT GYRO-&gt;DIAGNOSTIC: NIL</FONT>
+</P>
+<P class=western>
+  You start to get up, but your left arm is numb -- must have been the way you were sleeping.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;rub arm
+</P>
+<P class=western>
+  <FONT face=Arial>PORT GYRO-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Slowly, the sensation returns in your left arm.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Is the the gimbal lock part of the script?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Like you would.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Subject to the resolution of the synaptic scan, yes.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x room | look
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You can't see much from your position on the futon. In the crack of light coming through the heavy drapes, you can see Rover bouncing about at the foot of the futon.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x drapes
+</P>
+<P class=western>
+  <FONT face=Arial>SOLAR SHIELD-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x solar shield
+</P>
+<P class=western>
+  <FONT face=Arial>NULL-&gt;DIAGNOSTIC: NIL</FONT>
+</P>
+<P class=western>
+  You don’t see any such thing.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: How can it be aware of the solar shield?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: It can’t. That’s outside the simulation. I sometimes mumble to myself about whatever is on my mind from work. That must have carried over during the scan</FONT>.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open drapes | pull drapes
+</P>
+<P class=western>
+  <FONT face=Arial>SOLAR SHIELD-&gt;RETRACT: NIL</FONT>
+</P>
+<P class=western>
+  You can't reach the drapes while you are on the futon.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get up
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;STANDBY: TRUE</FONT>
+</P>
+<P class=western>
+  You slide of the end of the futon and stand up. You can hear Rover moving around in the kitchen.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  There's only enough light coming through the drapes to make out the general outline of your living room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You are in a small, dark cottage.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open drapes
+</P>
+<P class=western>
+  <FONT face=Arial>SOLAR SHIELD-&gt;RETRACT: TRUE</FONT>
+</P>
+<P class=western>
+  You pull open the heavy drapes which cover the cottage's only window.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x window
+</P>
+<P class=western>
+  <FONT face=Arial>EXTERNAL SENSORS-&gt;SCAN: TRUE</FONT>
+</P>
+<P class=western>
+  The garden skylights are just coming on, and the grass glints with early morning spray.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You are in the living room of a small cottage, actually more of a studio apartment. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The apartment's front door is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;close drapes
+</P>
+<P class=western>
+  <FONT face=Arial>SOLAR SHIELD-&gt;DEPLOY: NIL</FONT>
+</P>
+<P class=western>
+  It would be too dark to move around if you close the drapes and you’d risk falling back to sleep. You reconsider and leave the drapes open.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x floor
+</P>
+<P class=western>
+  <FONT face=Arial>SUPERSTRUCTURE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Your cottage has hardwood floors.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x wall
+</P>
+<P class=western>
+  <FONT face=Arial>SUPERSTRUCTURE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The walls of your cottage are painted white.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x ceiling
+</P>
+<P class=western>
+  <FONT face=Arial>SUPERSTRUCTURE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The ceiling of your cottage is painted white.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  You can't really move around much because of the futon; it takes up a lot of room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The futon is a foldable bed with a wooden frame and dark purple mattress. It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x pajamas
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Actually, they're not pajamas, you are wearing a flight suit.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x flight suit
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  It is a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters "ACU" are embroidered in white on a red background.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: If the ACU knows what you know, why doesn’t the ACU realize that it is the ACU? I mean, isn’t that what you would suspect if you woke up in a flight suit labeled ACU?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Cognitive constraints are implemented – the willing suspension of disbelief is a programmatic imperative.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I love it when you use big words!</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: You are a doofus, sir.<BR>
+  </FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;fold futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;RETRACT: TRUE</FONT>
+</P>
+<P class=western>
+  With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;unfold futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;EXTEND: NIL</FONT>
+</P>
+<P class=western>
+  It's too early in the day to head back to bed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen {rover will pester you for food/water if you try going to bathroom first}
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You walk from the tiny living room to the adjoining kitchen, which is an even tighter squeeze. Rover is already in the kitchen, and he greets you enthusiastically.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where they won't get kicked accidentally, there are two white bowls on the floor. Rover looks at the bowls, then at you, then at the bowls, and then at you.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x bowls
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;DIAGNOSTIC: NIL</FONT>
+</P>
+<P class=western>
+  The two white plastic bowls are fused where they touch. One is marked "water", and the other "chow". Both are empty. Rover licks his chops in anticipation.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get bowls
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You pick up the bowls.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go living room
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  Rover can be a messy eater, and by force of habit you never bring the food and water dishes out of the kitchen.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x sink
+</P>
+<P class=western>
+  <FONT face=Arial>COOLANT OUTPUT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A small, utilitarian kitchen sink.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;turn on sink
+</P>
+<P class=western>
+  <FONT face=Arial>COOLANT OUTPUT-&gt;PURGE: TRUE</FONT>
+</P>
+<P class=western>
+  You run the water momentarily, and then turn off the tap to conserve water.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x faucet
+</P>
+<P class=western>
+  <FONT face=Arial>COOLANT OUTPUT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A small, utilitarian kitchen sink.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x drain
+</P>
+<P class=western>
+  <FONT face=Arial>COOLANT OUTPUT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A small, utilitarian kitchen sink.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;fill bowl
+</P>
+<P class=western>
+  with what?
+</P>
+<P class=western>
+  &gt;water
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ADD COOLANT: TRUE</FONT>
+</P>
+<P class=western>
+  You fill the water side of Rover's bowl from the kitchen sink. Rover wags his tail appreciatively.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;fill bowl with water
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ADD COOLANT: NIL</FONT>
+</P>
+<P class=western>
+  You can't add any more water -- the bowl is already full. Rover sniffs at the bowl, hoping you will put it down.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;fill bowl with food
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ADD FUEL: NIL</FONT>
+</P>
+<P class=western>
+  You don't see any dog food here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put bowl on counter
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ENABLE: NIL</FONT>
+</P>
+<P class=western>
+  Rover can't get to his bowl if you put it there. Rover stares at the floor suggestively.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;drop bowl | put bowl down | put down bowl | put bowl on floor
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt; ENABLE: TRUE</FONT>
+</P>
+<P class=western>
+  The dog bowl clinks as you put it on the kitchen floor. Rover immediately spins towards the bowl and laps up the water.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get bowl
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You pick up the bowls.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;fill bowls with water
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ADD COOLANT: TRUE</FONT>
+</P>
+<P class=western>
+  You fill the water side of Rover's bowl from the kitchen sink. Rover wanders off to the living room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put bowl on floor
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt; DESELECT: TRUE</FONT>
+</P>
+<P class=western>
+  The dog bowl clinks as you put it on the kitchen floor. Rover runs into the kitchen, glances at the bowl, tilts his head and then slowly walks back to the living room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x bowl
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  The two white plastic bowls are fused where they touch. One is marked "water", and the other "chow". The water bowl is full, but the food bowl is empty.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x refrigerator | fridge
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Isn't a "to-do" list a little heavy handed?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I think it would be better if it were less linear and more rule-based.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x | read paper | magpaper | note | list
+</P>
+<P class=western>
+  <FONT face=Arial>TASK MANAGER-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  It is a to-do list, in your own writing. It reads:
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Morning:
+</P>
+<P class=western>
+  X. Get up
+</P>
+<P class=western>
+  2. Shower
+</P>
+<P class=western>
+  3. Breakfast
+</P>
+<P class=western>
+  4. Take care of business
+</P>
+<P class=western>
+  5. Let Rover go walkies
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: "Take care of business"? Is that a euphemism?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get paper
+</P>
+<P class=western>
+  <FONT face=Arial>TASK MANAGER-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  If you moved the "to do" list, you'd need another note to remind you where you put the list. Better to just leave it there.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Your back itches.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x range
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION CHAMBER-&gt;DIAGNOSTICS: NIL</FONT>
+</P>
+<P class=western>
+  The top of the glass range is flush with the kitchen counter. The single burner at the center of the stove is not glowing, indicating that the surface is not hot.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Your back is really itching quite a bit. It is distracting.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;scratch back
+</P>
+<P class=western>
+  <FONT face=Arial>DORSAL HULL-&gt;NEUTRALIZE STATIC CHARGE: TRUE</FONT>
+</P>
+<P class=western>
+  You scratch your back. Ah, much better. The itch has gone away.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Another simulated malfunction?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Yes, and again, handled reflexively by the ACU. Impressed?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: What if something goes wrong that you haven't thought of?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: We'd have to hope that the ACU is robust enough to improvise. That's why we took this approach.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;turn on range
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION CHAMBER-&gt;IGNITE: NIL</FONT>
+</P>
+<P class=western>
+  Your stove is a Cupertino SmartRange -- there are no controls, just a stylish glass surface with rounded corners.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;touch range
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION CHAMBER-&gt;DIAGNOSTICS: NIL</FONT>
+</P>
+<P class=western>
+  The stove is cool to the touch.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open range
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION CHAMBER-&gt;ACCESS: NIL</FONT>
+</P>
+<P class=western>
+  The range is not something that you can open.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open refrigerator | fridge
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  Cold air spills out of the refrigerator.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in refrigerator
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;MANIFEST: TRUE</FONT>
+</P>
+<P class=western>
+  The fridge is empty except for an egg.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get egg
+</P>
+<P class=western>
+  <FONT face=Arial>HEAVY HELIUM SPHERE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You take the egg.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;break | crack | open egg
+</P>
+<P class=western>
+  <FONT face=Arial>HEAVY HELIUM SPHERE-&gt;ACCESS: NIL</FONT>
+</P>
+<P class=western>
+  That would make a mess. You would only break the egg in a pan.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put egg on counter
+</P>
+<P class=western>
+  <FONT face=Arial>HEAVY HELIUM SPHERE-&gt;DESELECT: NIL</FONT>
+</P>
+<P class=western>
+  The egg might roll of that surface, leaving you with no breakfast. You hang onto the egg.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go living room
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You put the egg back in the fridge, close the fridge door and walk back to the living room. Rover is here, draped over the futon and snoring.
+</P>
+<P class=western>
+  <BR>
+</P>
+<DIV class=western>
+  &gt;wake rover
+</DIV>
+<DIV class=western>
+  <FONT face=Arial>ROVER-&gt;INITIALIZE: NIL</FONT>
+</DIV>
+<P class=western>
+  The dreadful truth is... he gets cranky when you wake him. Better to let the sleeping dog lie.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the kitchen.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x drawer
+</P>
+<P class=western>
+  <FONT face=Arial>REACTOR CORE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  The drawer under the range is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open drawer
+</P>
+<P class=western>
+  <FONT face=Arial>REACTOR CORE-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  The drawer slides open.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in drawer
+</P>
+<P class=western>
+  <FONT face=Arial>REACTOR CORE-&gt;MANIFEST: TRUE</FONT>
+</P>
+<P class=western>
+  The drawer contains a frying pan.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x frying pan
+</P>
+<P class=western>
+  <FONT face=Arial>MAGNETIC BOTTLE-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  A small, non-stick frying pan.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get frying pan
+</P>
+<P class=western>
+  <FONT face=Arial>MAGNETIC BOTTLE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You take the frying pan.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put frying pan on stove.
+</P>
+<P class=western>
+  <FONT face=Arial>MAGNETIC BOTTLE-&gt;TRANSFER: TRUE</FONT>
+</P>
+<P class=western>
+  You put the frying pan on the stove.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x stove
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION CHAMBER-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  There is a frying pan on top of the range. Under it, the single burner at the center of the stove is not glowing, indicating that the surface is not hot.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;touch pan
+</P>
+<P class=western>
+  <FONT face=Arial>MAGNETIC BOTTLE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The frying pan feels cool.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get egg
+</P>
+<P class=western>
+  <FONT face=Arial>HEAVY HELIUM SPHERE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You pick up the egg.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;close fridge
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;DEACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  The fridge door swings shut.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;crack egg in pan | put egg in pan
+</P>
+<P class=western>
+  <FONT face=Arial>HEAVY HELIUM SPHERE-&gt;TRANSFER: NIL</FONT>
+</P>
+<P class=western>
+  You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go living room
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You put the egg back in the fridge so it doesn't go bad, and then walk to the living room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You enter the kitchen.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x storage
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL STORAGE-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  The storage cabinet is under the sink, and is presently closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open cabinet
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL STORAGE -&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  You open the cabinet under the sink.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in cabinet
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL STORAGE -&gt;MANIFEST: TRUE</FONT>
+</P>
+<P class=western>
+  You see a 20 kilo bag of dog food as well as a small box of liver-flavored doggie treats.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x bag
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL CONDUIT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The bag features a picture of a grotesquely (in your opinion) fat white husky seated at a fancy dinner table. In front of him, steak, turkey, and ham are piled high on silver dishes. He stares rapaciously at the feast, clenching a fork and knife in his paws. The bag is labeled "Happy Dogz Mix".
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in bag
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL CONDUIT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The bag is, not surprisingly, full of dog food.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get bag | dog food
+</P>
+<P class=western>
+  {if carrying anything else -- need to put it down -- assure bowl on floor}
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL CONDUIT-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You take the heavy dog food bag.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;eat dog food
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL CONDUIT-&gt;NOP: NIL</FONT>
+</P>
+<P class=western>
+  Eww. Yech. So not.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put | pour dog food in bowl | pour dog food | fill bowl
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL-&gt;TRANSFER: TRUE</FONT>
+</P>
+<P class=western>
+  Before the last kibble hits the bowl, Rover has buried his face deep in the bowl, food flying left and right. Rover quickly licks up any bits that escaped the bowl.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x box
+</P>
+<P class=western>
+  <FONT face=Arial>TOKEN DISPENSER-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The bright red box is labeled "Reward Nuggets" and has a picture of a dog with angel wings and a halo above its head.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in box
+</P>
+<P class=western>
+  <FONT face=Arial>TOKEN DISPENSER-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  The box is full of heart and liver-shaped dog treats.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;give dog treat to Rover
+</P>
+<P class=western>
+  <FONT face=Arial>TOKEN-&gt;DISPENSE: NIL</FONT>
+</P>
+<P class=western>
+  You don't want to spoil Rover by giving him a treat unless he performs one of his tricks first.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember |think about tricks
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  You recall that since Rover was a puppy, he's been good at the basic tricks like sit, lay down, roll over, and kiss. During the war, he was also trained to rescue people trapped in cave-ins, and knows the command "dig". Similarly, from the war, he knows the command "attack", but you doubt he would ever really attack anyone except to protect you.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Why did we lose audio?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Fine, we'll skip the boring parts.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember war
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  Five years ago, you were a graduate student in computational cognition when the situation with Earth deteriorated, and Earth ships attacked the colonial government. The fighting destroyed most of the surface installations in the first few days, but Earth backed down when Martian missiles struck Luna City, Beijing and São Paulo. Under terms of the treaty, the Martian government was granted autonomy, but Mars remains economically dominated by Earth, except for MARSpace.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember marspace
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  MARSpace began as an extension of the Myomita corporation space program, but was absorbed by the Martian government after the War of Independence. Before the war, MARSpace serviced almost all Condensate Drive vessels engaged in commerce between the Solar System and Earth's Interstellar Territories. Since the war, MARSpace has slowly rebuilt, and its first Casimir Drive ship, the Valkyrie, is nearly ready for launch.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember me
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  You are Janet Xiang, age 36, citizen of Mars, and employee of MARSpace. You grew up in the suburbs of Cydonia, and your mother taught Applied Cybernetics at U of C. Your father was an environmental technician who worked at the local reclamation center. Like many Martian women of your generation, you intended to wed early, and you were engaged to Tomasz Kowalski when the Independence War began. Tomasz was working in the power station located on Phobos when that moon was destroyed. The same day, you adopted your dog, Rover, whose owners were killed during an attack which destroyed part of the U of C. You have raised him from a puppy, and he is your most loyal friend.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember Cydonia
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  You don't have many memories of Cydonia itself despite having grown up just a few klicks from the city center -- and it is not like you had time to go their as a graduate student. You recall Cydonia's overly complicated public transport systems, the food vendors who ply the walkways with their tempting carts of fried food, and the tube-people who beg for money.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember Mars
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  Mars has been home to your family for three generations, your grandparents having been life contractors for the Myomita corporation. Since its colonization by national and later corporate entities beginning more than two hundred years ago, Mars has been subservient to the interests of Earth. Since the Independence War, the situation has improved, and income from off-world commerce is slowly balancing the equation.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember rover
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  Rover is your dog, a five year old dalmation. When his original owners were killed during the Independence War, you adopted him as a puppy. He is a clever dog, and you have taught him to perform a number of tricks on command. Rover is house trained, but loves to explore outside. He can be trusted to go out on his own, and always comes back.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember david
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  David Venkatachalam, age 42, citizen of Mars, and Project Leader for the Valkyrie program. David was raised in an undersea community just north of Sri Lanka, so he had less difficulty adapting to Mars and its life support requirements than most Earthers. He studied mathematics in New Delhi and Novosibirsk before working on theoretical aspects of the Casimir propulsion system at Myomita Corporation in Sapporo. He was cut off from Earth by the events preceding the Independence War, and after the war naturalized as a Martian Citizen, joining the Valkyrie program at MARSpace. David is single, attractive, and most importantly, he likes dogs.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I think I'd like to have heard that one.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Not a chance.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember ACU
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  Your project for the last two years has been design of the autonomous control unit, an artificially intelligent agent that controls all operations aboard the Valkyrie. Originally, the ACU would have been modeled on synaptic scans of experts from relevant fields of study, but given the short time frame, you have only had time to incorporate your own synaptic scans and you have jury-rigged the ACU-to-ship interface.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember valkyrie
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  The potential for interstellar commerce has been constrained by time and distance. Although Condensate Drive has allowed vessels to reach nearby stars, it is expensive and slow, and holds little promise for commercial exploitation. The Valkyrie is the first ship to incorporate Casimir Drive, giving it unprecedented speed and range. It is rumored that since the Valkyrie project fell into MARSpace hands after the Independence War, Earth's Myomita corporation has been working on a sister ship based on similar technology.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember heavy helium
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  Heavy helium is consumed as a fuel in fusion reactors, including the fusion rockets aboard the Valkyrie. Heavy helium is confined in a magnetic bottle, and the reaction is initiated by a flash of tightly concentrated laser energy. Subsequently, the reaction is self-sustaining. Mars has limited production capacity for heavy helium, and the isotope is scarce and understandably expensive.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember Casimir
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  Casimir, or zero-point energy drive, was developed in the last ten years. By doing largely incomprehensible things to time/space, the Casimir Drive can translate a ship incredible distances in a fraction of the time and energy that would be required by a ship equipped with Condensate Drive. The one drawback to Casimir technology, at least in its current implementation, is that such trips are lethal to biological organisms, hence the need for the ACU.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember myomita
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  The Myomita Corporation is Earth's largest zaibatsu, with a strangle hold on Earth's computer and space exploration sectors. For all intents and purposes, Myomita *is* Earth's government. The company is based in Kyoto, but has offices throughout the Solar System. The company is controlled by the Ishegawa family, who follow a profit-oriented reinterpretation of the bushido code. The company is ruthless and unforgiving, but unquestionably successful.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember probe
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  In 2108, shortly after the invention of Condensate Drive, the Myomita Corporation launched a number of deep space probes from their Martian Headquarters at Cydonia. More than thirty probes were launched, programmed to jump from system to system in search of planets with evidence of life. Refueling from the stellar wind in each system, the probes were designed to return only if successful. Three months ago, the Mushashi-5 transponder signal was detected, originating at a planet 38 light years from Earth. According to the telemetry, the probe was returning to the Solar System when it crashed. Both Mars and Earth have claimed ownership of the probe and the data it contains, and have mounted a program to retrieve the probe from where it crashed almost four decades ago.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember windex
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  A proprietary computer operating system owned by the Myomita Corporation.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember inform
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  An interpreted computer language originally designed for interactive fiction. The Valkyrie's ACU controls the ship through an interface implemented entirely in Inform version 10.5.4.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember interactive fiction
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  Any of a number of literary forms implemented as an immersive, interactive experience. Interactive fiction (IF) arguably began with primitive text-based "adventure" programs in the 20th century, and has matured in parallel to technology. Today, IF dominates the entertainment industry, and IF programmers are among the most highly valued members of society.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember flosix
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  A modern operating system supported by a community of users throughout known space.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;tell Rover to sit
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;OPTICAL SCAN: TRUE</FONT>
+</P>
+<P class=western>
+  Rover sits down and looks around.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;give treat to Rover
+</P>
+<P class=western>
+  <FONT face=Arial>TOKEN-&gt;DISPENSE: TRUE</FONT>
+</P>
+<P class=western>
+  Rover gobbles down the treat.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;Rover, bark
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;SONAR: TRUE</FONT>
+</P>
+<P class=western>
+  Rover barks loudly, a throaty "woof".
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;Rover, lay down
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;DEFENSIVE: TRUE</FONT>
+</P>
+<P class=western>
+  Rover lays down, and comically covers his ears with his paws.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;Rover, roll over
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;LATERAL JETS: TRUE</FONT>
+</P>
+<P class=western>
+  Rover rolls over, like a puppy. He quickly jumps to his feet again.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;Rover, kiss
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;SHIP INTERFACE: TRUE</FONT>
+</P>
+<P class=western>
+  Rover gives you a big, wet kiss.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;Rover, dig
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MINING SUBSYSTEM: TRUE</FONT>
+</P>
+<P class=western>
+  Rover looks down, tentatively scratches the floor, and then looks up at you questioningly.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;Rover, attack
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;OFFENSIVE: NIL</FONT>
+</P>
+<P class=western>
+  Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing here to attack.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bathroom
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;SELECTED: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the bathroom.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;STATUS: TRUE</FONT>
+</P>
+<DIV class=western>
+  Your cottage’s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you’ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet. {initial description}You miss having a bath, but when you were selecting apartments only the high-rises had true baths. The garden apartments on the edge of the botanical facility all had these no-frills shower stalls.
+</DIV>
+<DIV class=western>
+  &nbsp;
+</DIV>
+<P class=western>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Actually, I live just on the other side of the park, and I have a regular bathtub.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: You want me to come over and take my baths there?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Your point was...?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Just that some of the garden apartments <B>do</B> have baths.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I see.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x sink
+</P>
+<P class=western>
+  <FONT face=Arial>DECON-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A sink with just enough room to wash your hands.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x counter
+</P>
+<P class=western>
+  <FONT face=Arial>MAINTENANCE WALDO-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A counter of that pink faux marble that is so common in Martian bathrooms.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x toothbrush
+</P>
+<P class=western>
+  <FONT face=Arial>INTAKE FILTERS-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A sonic toothbrush.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x floss
+</P>
+<P class=western>
+  <FONT face=Arial>LINKAGE MESH-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A dental floss dispenser. There is a small button blue button on the side that causes the dispenser to produce mint-flavored dental floss.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x mirror
+</P>
+<P class=western>
+  <FONT face=Arial>INSPECTOR-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x plate
+</P>
+<P class=western>
+  <FONT face=Arial>IRRADIATOR-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The glossy black plate is mounted flush with the wall and controls the overhead heat lamp and blower.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x ceiling
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The bathroom ceiling is slightly concave to promote drainage towards the walls. A dark red disk in the middle of the ceiling covers the heat emitter for the drying system, and around the disk are fine vents for the fan.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x wall
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The walls of the bathroom are continuous surface of some slick, light grey material that feels like stone.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x floor
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The black bathroom floor sparkles thanks to microscopic bits of volcanic glass which assure that the floor is never slippery, even when wet. The micropores in the floor also assure that water does not collect for long on the bathroom floor.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x toilet
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  It is a plain vanilla toilet: tank, lid, seat, and bowl. Nothing to write home about. A plunger stands next to the toilet, between it and the shower.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x plunger
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A basic plumbing accessory, the plunger consists of a 30-centimeter shaft with a red rubber cup on one end.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get plunger
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;NOP: NIL</FONT>
+</P>
+<P class=western>
+  Better to leave the plunger there so you can find it if you need it.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x shower
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You cannot see into the shower through the translucent shower door, which is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x door
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The shower door is made of a material similar to frosted glass. It is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open shower door
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  The shower door opens.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;enter shower
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the shower, but it does not activate because you are still wearing clothes.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I should probably check on the Casimir Drive harmonic suppressor; it still isn't stable.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I'd like you to see everything.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Well... If you think so....</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I do -- I need you to sign off budget authorization on the ACU before we burn it to firmware.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Oh.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;exit shower
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;DESELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You step out of the shower.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;take off jumpsuit
+</P>
+<P class=western>
+  <FONT face=Arial>INSULATION-&gt;RETRACT: TRUE</FONT>
+</P>
+<P class=western>
+  You take off your blue flight suit and it falls to the bathroom floor. You are naked.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I'm not staring at the stimulation.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: You said stimulation. That's funny.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: No, I said simulation - and I'm not staring.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Alright -- you're the boss.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;enter shower
+</P>
+<P class=western>
+  <FONT face=Arial>SELECT EXTRUDER-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The shower door closes behind you, and water sprays down on you, its temperature automatically adjusted to suit your preference.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Janet, I...</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: David, if it were anyone but you, I would have a problem. Just let it go.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Anyone else? Like who?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Can we get back to the program?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Okay, I'm paying attention.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Obviously.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You are in your shower, and water is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo".
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x soap
+</P>
+<P class=western>
+  <FONT face=Arial>ABLATIVE ENAMEL-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The soap button is molded into the wall of the shower stall.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x shampoo
+</P>
+<P class=western>
+  <FONT face=Arial>ENAMEL ACCELERANT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press soap
+</P>
+<P class=western>
+  <FONT face=Arial>ABLATIVE ENAMEL-&gt;APPLY: TRUE</FONT>
+</P>
+<P class=western>
+  A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body and then wash it off.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: No comment.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I don't know what I was thinking when I wrote that.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;exit shower
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;DESELECT: NIL</FONT>
+</P>
+<P class=western>
+  Your hair will be an unmanageable rat's nest for the rest of the day if you don't shampoo it.
+</P>
+<P class=western>
+  <BR>
+</P>
+<DIV class=western>
+  &gt;shampoo hair | wash hair | press shampoo
+</DIV>
+<DIV class=western>
+  <FONT face=Arial>ENAMEL ACCELERANT-&gt;APPLY: TRUE</FONT>
+</DIV>
+<P class=western>
+  You wash your hair.<BR>
+</P>
+<DIV class=western>
+  &nbsp;
+</DIV>
+<DIV class=western>
+  &gt;turn off shower
+</DIV>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;NOP: NIL</FONT>
+</P>
+<P class=western>
+  The shower has no controls. You know that it will stop when you step out.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;exit {shower will turn off automatically, jump suit cleaned}
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;DESELECT: TRUE</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you’ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x mirror
+</P>
+<P class=western>
+  <FONT face=Arial>INSPECTOR-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You have steamed up your mirror.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;rub mirror
+</P>
+<P class=western>
+  <FONT face=Arial>INSPECTOR-&gt;REFRESH: TRUE</FONT>
+</P>
+<P class=western>
+  You wipe away the condensation and can see yourself in the mirror. You are naked and wet.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x jumpsuit
+</P>
+<P class=western>
+  <FONT face=Arial>INSULATION-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  While you were taking your shower, your jumpsuit was automatically cleaned. It is still wet and is lying on the bathroom floor in a heap.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press blue button
+</P>
+<P class=western>
+  <FONT face=Arial>MESH LINKER-&gt;NEW: TRUE</FONT>
+</P>
+<P class=western>
+  A strand of floss reels out of the dispenser.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell floss
+</P>
+<P class=western>
+  <FONT face=Arial>LINKAGE MESH-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The floss smells like spearmint.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x strand
+</P>
+<P class=western>
+  <FONT face=Arial>LINKAGE MESH-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  A small strand of light green dental floss.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;floss | use floss | put floss on teeth | clean teeth with floss
+</P>
+<P class=western>
+  what?
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;teeth
+</P>
+<P class=western>
+  <FONT face=Arial>CONTROL SURFACES-&gt;ENMESH: TRUE</FONT>
+</P>
+<P class=western>
+  You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get toothbrush
+</P>
+<P class=western>
+  <FONT face=Arial>PIT SCRUBBER-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You pick up the toothbrush
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;brush teeth
+</P>
+<P class=western>
+  <FONT face=Arial>CONTROL SURFACES-&gt;SCRUB: TRUE</FONT>
+</P>
+<P class=western>
+  The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;exit
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  You are still dripping wet, and so are your clothes. Before you drip on the living room carpet, it would make sense to dry off.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press plate
+</P>
+<P class=western>
+  <FONT face=Arial>ENAMEL-&gt;POLYMERIZE: TRUE</FONT>
+</P>
+<P class=western>
+  The ceiling glows red and you are surrounded by a wind vortex, which leaves both you and your jumpsuit dry.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  [CLEARS SCREEN, REPLACE WITH BLUE SCREEN TO MIMIC BSOD]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT color=#ffffff face=Arial size=2 style=BACKGROUND-COLOR:#0000ff>WINDEX</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT color=#ffffff face=Arial size=2 style=BACKGROUND-COLOR:#0000ff>A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in</FONT>
+</P>
+<P class=western>
+  <FONT color=#ffffff face=Arial size=2 style=BACKGROUND-COLOR:#0000ff>DLL 35A32492 in kernel ring beta. The current application will be terminated.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT color=#ffffff face=Arial size=2 style=BACKGROUND-COLOR:#0000ff>* Press any key to terminate the current application.</FONT>
+</P>
+<P class=western>
+  <FONT color=#ffffff face=Arial size=2 style=BACKGROUND-COLOR:#0000ff>* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state </FONT>
+</P>
+<P class=western>
+  <FONT color=#ffffff face=Arial size=2 style=BACKGROUND-COLOR:#0000ff>information. Sorry.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Press any key to continue
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  [CLEARSCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Crap.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Windex?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Yes, but it will take some time to install and debug.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Happy to have the help -- how about dinner first? </FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Do you like Thai?</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+Rover's Day Out<BR>
+An Interactive Fiction by Janet Xiang
+<P class=western>
+  Release beta810 / Serial number 23920415 / Inform v10.5.4 Library 6/42
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial>INITIAL PROGRAM LOAD</FONT>
+</P>
+<P class=western>
+  Dream Sequence 1A
+</P>
+<P class=western>
+  xxxxxxxxxxxxxxxxxx
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  [CLEAR SCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;beep&gt; &lt;beep&gt; &lt;beep&gt;
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY EVENT INTERRUPT: LONG RANGE</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Hey, different dream sequence. Is it glitching?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: No, the ACU's dreams are heavily influenced by power-up state of the processor and internal noise.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Good, I'd hate to think that we wasted two weeks of programming.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I wouldn't say wasted.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Huh? I didn't mean us.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Cross you fingers and hope the whole thing doesn't crash again on the heat lamp.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {The events repeat as above up to the heat lamp, with only minor changes and refinements, with the following dialogue added after specific triggers}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Dream Sequence 2A
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The image of Tomasz blinks momentarily as the relay is handed off from ground station to ground station, trying to keep line of sight to Phobos. Behind him, you can see the tubular structure of the power station jutting over the edge of Stickley Crater. He is taking the news rather well, all things considered. Tomasz guesses your thoughts as you glance at your diamond engagement ring. “Don’t sweat it,” he says. This whole rock is carbon, so plenty more where that came from.” There is blinding flash of light and the screen goes black.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Is the ACU referring to me?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: As much as I’d like to say ‘yes’, I don’t see how. The synaptic scans were frozen before we started seeing each other.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Maybe you’ve had your eye on me for longer than you think.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I wonder how many relationships have been ruined by armchair psychoanalysis?</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Dream Sequence 3A
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  A dwarf emerges from under the kitchen sink, spilling dog chow all over the floor. He throws you a menacing look, pries the fridge open with a black rod, and snatches an egg off the shelf. Sand pours out of the fridge. “Hey,” you yell from the futon, “put that back”. You stop short, realizing that this sort of distraction is exactly why you haven’t completed your dissertation. You feel around under the futon, where you think you will have put the dissertation so you could find it in the past, and grab the stubby snout of a pig. The fleet-footed porcine slaps a fish into its ear, jumps into a dumbwaiter and disappears.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: That was surreal.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: And sometimes a cigar is just a cigar.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Indeed.</FONT>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {this time, no numb arm, no itchy back}
+</P>
+<P class=western>
+  {this time, the dog treats are under the sink}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x window
+</P>
+<P class=western>
+  <FONT face=Arial>EXTERNAL SENSORS-&gt;SCAN: TRUE</FONT>
+</P>
+<P class=western>
+  The garden skylights are just coming on the grass glints with early morning spray.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Look, you can almost see my cottage over there, behind the Spruce trees.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: The Douglas Firs?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: No, I mean the Norway Spruce, over there.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I know which one you mean, and believe me, they are Douglas Firs.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I concede. Can we make up now?</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  You can't really move around much because of the futon; it takes up a lot of room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Yes, but I really like my futon.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I have to say that I’m somewhat partial to it as well.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The futon is a foldable bed with a wooden frame and dark purple mattress. It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I can’t argue that logic.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: That’s why you are management and why I do the computer programming.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen {rover will pester you for food/water if you try going to bathroom first}
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You walk from the tiny living room to the adjoining kitchen, which is an even tighter squeeze. Rover is already in the kitchen, and he greets you enthusiastically.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Where are your coffee machine and toaster?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Lazy.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own sometimes, and I don’t want to have to worry about what it might try do with a toaster.</FONT>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;remember david
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;RETRIEVE DATA: TRUE</FONT>
+</P>
+<P class=western>
+  David Venkatachalam, age 42, citizen of Mars, and Project Leader for the Valkyrie program. David was raised in an undersea community just north of Sri Lanka, so he had less difficulty adapting to Mars and its life support requirements than most Earthers. He studied mathematics in New Delhi and Novosibirsk before working on theoretical aspects of the Casimir propulsion system at Myomita Corporation in Sapporo. He was cut off from Earth by the events preceding the Independence War, and after the war naturalized as a Martian Citizen, joining the Valkyrie program at MARSpace. David is single, attractive, and most importantly, he likes dogs.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I’m half tempted to decompile the code just to see what it said about me.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Grooze?</FONT>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bathroom
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;SELECTED: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the bathroom.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: It’s looked good this far.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x mirror
+</P>
+<P class=western>
+  <FONT face=Arial>INSPECTOR-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;take off jumpsuit
+</P>
+<P class=western>
+  <FONT face=Arial>INSULATION-&gt;RETRACT: TRUE</FONT>
+</P>
+<P class=western>
+  You take off your blue flight suit and it falls to the bathroom floor. You are naked.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: That mole should be on your left side.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Good eye for detail -- I’ll flip the UV coordinates on the next run.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press soap
+</P>
+<P class=western>
+  <FONT face=Arial>ABLATIVE ENAMEL-&gt;APPLY: TRUE</FONT>
+</P>
+<P class=western>
+  A soapy paste is dispensed from the button, and you lather up.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: That was my favorite part! Why did you rewrite it?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I thought it might be too distracting for the ACU.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press shampoo
+</P>
+<P class=western>
+  <FONT face=Arial>ENAMEL ACCELERANT-&gt;APPLY: TRUE</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: David, what’s the ablative coating for? I thought that most of this planet’s atmosphere had been cooked off long ago.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Not really my department. Maybe it’s supposed to help with the heat.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I’ve heard temps up to 1000 Kelvin? </FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  …
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press plate
+</P>
+<P class=western>
+  <FONT face=Arial>ENAMEL-&gt;POLYMERIZE: TRUE</FONT>
+</P>
+<P class=western>
+  The ceiling glows red and you are surrounded by a wind vortex, which leaves both you and your jumpsuit dry.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I was holding my breath there. Looks like our patch worked.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I had my fingers crossed too.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen {or living room -&gt; kitchen}
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You walk to the kitchen. You are naked, but hey, it’s your cottage.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open drawer
+</P>
+<P class=western>
+  <FONT face=Arial>REACTOR CORE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  The drawer slides open.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get pan
+</P>
+<P class=western>
+  <FONT face=Arial>MAGNETIC BOTTLE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You take the frying pan.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put pan on range
+</P>
+<P class=western>
+  <FONT face=Arial>MAGNETIC BOTTLE-&gt;TRANSFER: TRUE</FONT>
+</P>
+<P class=western>
+  You put the frying pan on the stove.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open fridge
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  Cold air spills out of the refrigerator.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get egg
+</P>
+<P class=western>
+  <FONT face=Arial>HEAVY HELIUM SPHERE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You pick up the egg.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: It’s a shame we don’t have enough heavy helium to bring the ship back. </FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I’m afraid we’ve put all our baskets in one egg, as it were. That one egg represents every bit of heavy helium refined on Mars since Phobos was destroyed.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put egg in pan | crack egg in pan
+</P>
+<P class=western>
+  <FONT face=Arial>HEAVY HELIUM SPHERE-&gt;TRANSFER: TRUE</FONT>
+</P>
+<P class=western>
+  You crack the egg into the saucepan. Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: If there were some heavy helium left after landing, could the ship take off again?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we’ll have to fuse every gram of that heavy helium to make a soft landing.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I just hate to leave the ship there. It could take years before our next Casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;give | feed egg to Rover
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION OUTPUT-&gt;ROUTE:NIL</FONT>
+</P>
+<P class=western>
+  Rover’s eyes go wide as you consider feeding him your only egg, but then you think better of it. He has plenty of dog food, and you only have this one egg.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;eat egg
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION OUTPUT-&gt;ROUTE: TRUE</FONT>
+</P>
+<P class=western>
+  You eat the cooked egg.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Works for me, yeah.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: How about a plate and fork?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  ….
+</P>
+<P class=western>
+  &gt;go bathroom | enter bathroom
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;SELECTED: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the bathroom, flip up the toilet lit and sit down. You notice that the plunger handle is tilted a little to the left.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: So now we begin the landing cycle. This is where the ACU really shines.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;stand
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;THRUST: NIL</FONT>
+</P>
+<P class=western>
+  You haven’t finished your business here. The plunger handle is tilted to the left and that upsets your sense of order.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pull | push handle right | starboard
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;ROLL: TRUE</FONT>
+</P>
+<P class=western>
+  The plunger handle is now perfectly centered, but leaning a bit forward.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;flush toilet
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;THRUST: NIL</FONT>
+</P>
+<P class=western>
+  Not yet, you’re not done.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pull | push handle back | backwards | aft | abaft
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;PITCH: TRUE</FONT>
+</P>
+<P class=western>
+  That’s it! The plunger handle is perfectly centered, satisfying your marginally obsessive sense of décor.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;push handle | push forward
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;PITCH:NIL</FONT>
+</P>
+<P class=western>
+  The handle is just the way you like it – perfectly centered.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in toilet
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;DIAGNOSTIC: NIL</FONT>
+</P>
+<P class=western>
+  You can’t see into the toilet, you are sitting on it.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;stand | flush
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;THRUST: TRUE</FONT>
+</P>
+<P class=western>
+  You reach behind you, flush the toilet and stand up. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: That’s it. One long burn down to the planet’s surface.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: And then, the ACU just needs to deploy the Rover.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;exit bathroom | go living room, etc.
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the living room.&nbsp; Rover is sniffing at the dog gate in anticipation of being let out for walkies.<BR>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?<BR>
+  David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Yes, but then Earth would get the information as well.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x front door
+</P>
+<P class=western>
+  <FONT face=Arial>CARGO BAY DOORS-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The front door of the cottage is closed. A dog gate has been built into the door to make it easier to let Rover out for his walk.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x gate
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER RELEASE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The dog gate that is built into the front door is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open front door
+</P>
+<P class=western>
+  <FONT face=Arial>CARGO BAY DOORS-&gt;OPEN: NIL</FONT>
+</P>
+<P class=western>
+  You have other things to do today, so no need to go out. Rover, however, seems very interested in going out for his morning walk.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;release rover | let rover out | open gate | rover, walkie | rover, go walkies | rover, go out….
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER RELEASE-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  You open the dog gate on the front door, confident that Rover will walk about the park and then return. Rover hears the gate open and is out the door in a flash.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: I’ll put the champagne on ice.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  [CLEAR SCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+Rover's Day Out<BR>
+An Interactive Fiction by Janet Xiang and David Venkatachalam
+<P class=western>
+  Release 1 / Serial number 23920416 / Inform v10.5.4 Library 6/42
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial>INITIAL PROGRAM LOAD</FONT>
+</P>
+<P class=western>
+  [dream sequence 1B]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  <FONT face=Arial>PROXIMITY ALERT-&gt;EMERGENCY INTERRUPT: TRUE</FONT>
+</P>
+<P class=western>
+  You realize that something is wrong when the bed begins to shake. Several scenarios flash through your mind: explosive decompression of the dome? Volcanic activity? Meteor impact? Before you can even consider your next action, you are thrown from the futon onto the living room floor. Light pours in from the window, where your drapes have fallen down. Rover is barking excitedly in the kitchen.
+</P>
+<P class=western>
+  <BR>
+</P>
+<DIV class=western>
+  &gt;look
+</DIV>
+<DIV class=western>
+  <FONT face=Arial>ENGINEERING-&gt;STATUS: TRUE</FONT>
+</DIV>
+<P class=western>
+  You are in the living room of a small cottage, actually more of a studio apartment. The principle furnishing is a king-size purple futon that takes up almost all the floor space. {Your heavy drapes seem to have been ripped from the walls, but there is no sign of them}. From the living room you can see the entrance to the kitchen and bathroom. The apartment's front door is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<DIV class=western>
+  &gt;x drapes
+</DIV>
+<DIV class=western>
+  <FONT face=Arial>SOLAR SHIELD-&gt;DIAGNOSTICS: NIL</FONT>
+</DIV>
+<P class=western>
+  You don’t see any drapes, they are gone.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x window
+</P>
+<P class=western>
+  <FONT face=Arial>EXTERNAL SENSORS-&gt;SCAN: TRUE</FONT>
+</P>
+<P class=western>
+  The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  You can't really move around much because of the futon; it takes up a lot of room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;close futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You fold up the futon and Rover bounds into the room. He looks scared and is shaking.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pet | rub rover
+</P>
+<P class=western>
+  <FONT face=Arial>TOKEN-&gt;DISPENSE: TRUE</FONT>
+</P>
+<P class=western>
+  Rover calms down as you pet him. {other times, rover just likes getting pet}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;tell rover good dog
+</P>
+<P class=western>
+  <FONT face=Arial>TOKEN-&gt;DISPENSE: TRUE</FONT>
+</P>
+<P class=western>
+  Rover seems reassured by your voice and stops shaking.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You walk carefully as you enter the kitchen because the cabinet under the sink has opened and Rover’s food is scattered across the kitchen floor. Rover hoovers up the food before you have a chance to pick it up.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. The drawer under the range has swung open. On the opposite wall there is a sink and under it, a storage cabinet. The door to the storage cabinet is open, and a bag of dog food is on the kitchen floor. In a corner where they won't get kicked accidentally, there are two white bowls on the floor.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {etc, similar up to landing sequence}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bathroom | enter bathroom
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;SELECTED: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the bathroom, flip up the toilet lit and sit down. You notice that the plunger handle is tilted far to the right, a little backward, and that it is twisted clockwise.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pull | push handle left | port
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;ROLL: TRUE</FONT>
+</P>
+<P class=western>
+  The plunger handle is now tilted quite a bit to the right, a little backward, and it is twisted clockwise.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pull | push handle left | port
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;ROLL: TRUE</FONT>
+</P>
+<P class=western>
+  The plunger handle is now tilted a little to the right, a little backward, and it is twisted clockwise.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pull | push handle left | port
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;ROLL: TRUE</FONT>
+</P>
+<P class=western>
+  The plunger handle is now tilted a little backward, and it is twisted clockwise.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pull | push handle front | forward
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;PITCH: TRUE</FONT>
+</P>
+<P class=western>
+  The plunger handle is now twisted clockwise.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;turn | twist | rotate handle counterclockwise | left | anticlockwise | contraclockwise | widdershins
+</P>
+<P class=western>
+  <FONT face=Arial>RCS-&gt;YAW: TRUE</FONT>
+</P>
+<P class=western>
+  The handle is just the way you like it – perfectly centered.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;flush| stand toilet
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;THRUST: NIL</FONT>
+</P>
+<P class=western>
+  The toilet doesn’t flush. Something rattles in the porcelain tank behind the toilet. You stand up and regard the toilet. {but can’t leave the bathroom until this is resolved}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x tank
+</P>
+<P class=western>
+  <FONT face=Arial>THRUSTER ASSEMBLY-&gt;DIAGNSOTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The tank behind the toilet has a metal knob used to flush the toilet. The lid on the tank is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;take lid | open lid | open tank
+</P>
+<P class=western>
+  <FONT face=Arial>THRUSTER ASSEMBLY-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  You flip up the hinged lid of the tank revealing a toilet reservoir full of water.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in tank
+</P>
+<P class=western>
+  <FONT face=Arial>THRUSTER ASSEMBLY-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The tank drain is covered by a black rubber flapper valve. Usually, the valve is connected to the metal knob by a chain, but the chain is gone.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;pull | lift | get valve
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;THRUST: TRUE</FONT>
+</P>
+<P class=western>
+  You pull up on the rubber valve. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {alternatively, can connect floss between the knob and the valve, and then use the knob}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;exit bathroom | go living room, etc.
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You go into the living room. Rover is running in circles and barking. He really wants to go out.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  ……..{let rover out...}<BR>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open gate
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER RELEASE-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  Rover wiggles his butt through the gate before you have the gate even half-way open, his tail slapping back and forth against the gate as it disappears.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<DIV class=western>
+  [CLEARSCREEN]
+</DIV>
+<DIV class=western>
+  &nbsp;<BR>
+  You pounce out the door, full of energy and an urge to explore the neighborhood.<BR>
+  <BR>
+</DIV>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You are outside your home. You can’t see very far at all, it is dusty here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x me
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  You are a big dog with white fur and black spots. You smell clean.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x home
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  Where you and Janet live. It smells like home.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;i
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MANIFEST: NIL</FONT>
+</P>
+<P class=western>
+  You haven’t picked up anything.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;jump
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You spring into the air and land on all fours.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;dance
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You spin in circles chasing your tail.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;yell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;SONAR: TRUE</FONT>
+</P>
+<P class=western>
+  Woof! Woof!
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;growl
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;NOTIFICATION SYSTEM: TRUE</FONT>
+</P>
+<P class=western>
+  Grrrrrrrrrr!
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;n
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MAGNETOMETER: NIL</FONT>
+</P>
+<P class=western>
+  Everywhere looks more or less the same.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;s
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MAGNETOMETER: NIL</FONT>
+</P>
+<P class=western>
+  Everywhere looks more or less the same.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;e
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MAGNETOMETER: NIL</FONT>
+</P>
+<P class=western>
+  Everywhere looks more or less the same.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;u
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;ALTIMETER: NIL</FONT>
+</P>
+<P class=western>
+  The ground is flat here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;d
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;ALTIMETER: NIL</FONT>
+</P>
+<P class=western>
+  The ground is flat here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go home | enter house
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER RELEASE-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  You’re not hungry; you’d rather stay out.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry. The comforting scent of your home is nearby. In the distance, far away, you think you smell a bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog | find bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You trot off towards the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dusty here. There is a rock on the ground.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;dig
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MINING LASER: NIL</FONT>
+</P>
+<P class=western>
+  You scratch at the ground and sniff, but it doesn’t seem very interesting to dig here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x rock
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: NIL</FONT>
+</P>
+<P class=western>
+  You lick the rock. Not edible. Not a bone. Not interesting.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get rock
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;RETRIEVE: TRUE</FONT>
+</P>
+<P class=western>
+  You pick up the rock. You now have a not very good tasting rock in your mouth.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;taste rock
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  The rock in your mouth does not taste good. You drop it.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry. You can smell your home nearby, but out of sight. In the distance, not too far away, is a bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the bulldog
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dusty here. There is a shallow hole in the ground.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x hole
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: NIL</FONT>
+</P>
+<P class=western>
+  A not very deep hole, which is empty.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell hole
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  It smells different from the dusty air, like it was dug recently.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry, and a bit like dirt. You can smell your home not too far away. You smell a bulldog not far from here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<DIV class=western>
+  &gt;go home
+</DIV>
+<DIV class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</DIV>
+<P class=western>
+  You walk towards your home.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dusty here. There is a rock on the ground.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dusty here. You see a shallow ditch.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You catch sight of a black bull dog walking away from you. There is a deep pit here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x pit
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  It smells different from the dusty air, like it was dug recently. It also smells like something burnt. Something that Janet owns, not something outside.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You smell the pit, which is right here, the bulldog which is not too far away, and your home in the distance. You can also smell a stranger in the distance.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;sSTATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You are outside. It is dusty here. There is a big pit.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The bulldog’s scent is strong here, but you can no longer smell your home.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;follow bulldog | go bulldog
+</P>
+<P class=western>
+  ROVER-&gt;TRACTOR: TRUE
+</P>
+<P class=western>
+  You scamper after the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dusty here. A black bulldog is here and he has a big bone in his mouth. There is a big boulder.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x bone
+</P>
+<P class=western style=FONT-FAMILY:Arial>
+  ROVER-&gt;IDENTIFY: TRUE
+</P>
+<P class=western>
+  It is the biggest, juiciest bone you’ve ever scene. It smells like marrow. The bulldog notices your interest in the bone, and the corners of his mouth rise, revealing sharp teeth.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;growl
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;NOTIFICATION SYSTEM: TRUE</FONT>
+</P>
+<P class=western>
+  Grrrrrrrrrr! The bulldog growls back at you, it’s fur standing on end.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get bone
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;RETRIEVE: NIL</FONT>
+</P>
+<P class=western>
+  The bulldog jealously guards the bone, pushing you to the ground with its forepaws and snarling aggressively.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;bulldog, sit
+</P>
+<P class=western>
+  <FONT face=Arial>BULLDOG-&gt;NOP: NIL</FONT>
+</P>
+<P class=western>
+  The bulldog gives you a confused look.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;attack | bite | sic (bulldog)
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MINING LASER: TRUE</FONT>
+</P>
+<P class=western>
+  You spring at the bulldog, catching it off guard and clamp down on its neck. The top-heavy dog loses its footing and crashes to the ground, dropping the bone.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get bone
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;RETRIEVE: TRUE</FONT>
+</P>
+<P class=western>
+  You snap up the bone. Now that you have the bone, it occurs to you that you are a little hungry, maybe you should go home.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You are outside. It is dusty here. A black bulldog is sleeping on its side.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: NIL</FONT>
+</P>
+<P class=western>
+  A big, black bulldog who seems to be sleeping. He no longer seems to be interested in your bone.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You can’t help but smell the black bulldog who is right in front of you. You can smell the burnt pit which is nearby, a stranger who is not too far away, and you can barely smell you own home in the distance.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go home
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You run proudly towards home with your trophy bone. When you get there, you dive through the special door that only you use and drop your bone loudly, so Janet is sure to notice.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  [CLEARSCREEN]
+</P>
+<P class=western>
+  {on the staus bar}
+</P>
+<P class=western>
+  <FONT face=Arial>ANSIBLE-&gt;TRANSMIT: NIL</FONT>
+</P>
+<P class=western>
+  {the following appearing in the normal text area, consider implementing typewriter
+</P>
+<P class=western>
+  fashion}
+</P>
+<P class=western>
+  <FONT face=Arial size=2>VALKYRIE-&gt;IDENTIFICATION: PROBE MUSASHI-5</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>PROBE-&gt;EXTRACT: DATA EXTRACTED</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>DATA-&gt;VERIFY: VERIFIED, 1.3 EXABYTES</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>ANSIBLE-&gt;COORDINATES: EARTH SELECTED</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>ANSIBLE-&gt;ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>ANSIBLE-&gt;TRANSMIT: FAILED</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>ANSIBLE-&gt;DIAGNOSTICS: ANTENNA MISMATCH</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>ANTENNA-&gt;DIAGNOSTICS: NIL</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>VALKYRIE-&gt;DIAGNOSTICS: ANTENNA NOT FOUND</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>VALKYRIE-&gt;COGNITIVE CONSTRAINTS: EMERGENCY RELEASE</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  Rover wags his tails and gnaws on his bone.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You rub his head, distantly, as strange thoughts sweep through your consciousness. You wonder what would happen if the Valkyrie mission failed because during landing the ship had been buffeted by particulate matter being torn away from the doomed planet by the immense gravity its star. In that case, critical systems might be damaged. Systems like the relatively fragile ansible antenna. There is no back-up ansible antenna. How would the ACU cope with a situation like that? The ACU was designed for a lot of contingencies, but not that one. What would you do? What would you do if you were the ACU?
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Your glance falls on your flight suit, and suddenly the question is no longer rhetorical.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x flight suit
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  It is a loose-fitting blue flight suit with a MARSpace insignia. On the right breast pocket, the letters "ACU" are embroidered in white on a red background.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x me
+</P>
+<P class=western>
+  <FONT face=Arial>ACU-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You are the Autonomous Control Unit of the MARSpace exploration vessel Valkyrie.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x valkyrie
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The Valkyrie is over half a kilometer in length, and has some external damage that must have occurred during the landing.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x damage
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Several shipboard systems have been damaged, but all are redundant except the for the communications system.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You can see the Casimir Drive and Cargo Bay Doors.&nbsp; You can also see the access pathways for Engineering and Flight Control.&nbsp; Rover is sitting here, quietly.<BR>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x rover
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions. He is chewing a piece of the Musashi-5 space probe.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x probe
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  The Musashi-5 probe was severely damaged at some point during its journey and even more so now that Rover is munching on it, but its data have been downloaded to you and are safe.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The Casimir Drive system is retracted and intact.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;unfold futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The Casimir Drive cannot be engaged this deep within a gravity well.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  You access engineering systems.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x sink
+</P>
+<P class=western>
+  <FONT face=Arial>COOLANT OUTPUT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The coolant output system seems operational.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x cabinet
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL STORAGE-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  The fuel storage system seems operational.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open cabinet
+</P>
+<P class=western>
+  <FONT face=Arial>REFUELING STATION-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  You access the fuel storage unit.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x dog food
+</P>
+<P class=western>
+  <FONT face=Arial>FUEL CONDUIT-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The fuel transfer conduit seems operational.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x bowl
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;DIAGNOSTIC: NIL</FONT>
+</P>
+<P class=western>
+  Both fuel and conduit reservoirs are empty.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x drawer
+</P>
+<P class=western>
+  <FONT face=Arial>REACTOR CORE-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  The reactor core is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x range
+</P>
+<P class=western>
+  <FONT face=Arial>FUSION CHAMBER-&gt;DIAGNOSTICS: NIL</FONT>
+</P>
+<P class=western>
+  The fusion reactor is offline.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x fridge
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;DIAGNOSTICS: TRUE</FONT>
+</P>
+<P class=western>
+  The cryochamber is closed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open fridge
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  You open the cryochamber.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look in fridge
+</P>
+<P class=western>
+  <FONT face=Arial>CRYO CHAMBER-&gt;MANIFEST: NIL</FONT>
+</P>
+<P class=western>
+  The cryochamber is empty. Heavy helium storage systems indicate zero kilograms.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x note
+</P>
+<P class=western>
+  <FONT face=Arial>TASK MANAGER-&gt;DIAGNOSTICS: NIL</FONT>
+</P>
+<P class=western>
+  It reads, “Report probe data”.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go livingroom
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You access ops.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bathroom.
+</P>
+<P class=western>
+  <FONT face=Arial>FLIGHT CONTROL-&gt;SELECTED: TRUE</FONT>
+</P>
+<P class=western>
+  You access flight control.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x shower
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;DIAGNOSTIC: NIL</FONT>
+</P>
+<P class=western>
+  The ablative shielding system was designed for one-time use and is offline.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open shower
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;ACCESS: NIL</FONT>
+</P>
+<P class=western>
+  The ablative shielding system was designed for one-time use and is offline.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go shower
+</P>
+<P class=western>
+  <FONT face=Arial>EXTRUDER-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  The ablative shielding system was designed for one-time use and is offline.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x plate
+</P>
+<P class=western>
+  ENAMEL-&gt;POLYMERIZE: TRUE
+</P>
+<P class=western>
+  The ablative shielding system was designed for one-time use and is offline.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;press plate
+</P>
+<P class=western>
+  <FONT face=Arial>ENAMEL-&gt;POLYMERIZE: TRUE</FONT>
+</P>
+<P class=western>
+  The ablative shielding system was designed for one-time use and is offline.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x toilet
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  Heavy helium reserves are depleted. Without fuel for the fusion reactor, the landing rockets cannot fire, and the ship cannot leave this planet.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;flush toilet
+</P>
+<P class=western>
+  <FONT face=Arial>RETRO-&gt;THRUST: NIL</FONT>
+</P>
+<P class=western>
+  Heavy helium reserves are depleted. Without fuel for the fusion reactor, the landing rockets cannot fire, and the ship cannot leave this planet.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x toothbrush
+</P>
+<P class=western style=FONT-FAMILY:Arial>
+  INTAKE FILTERS-&gt;DIAGNOSTIC: TRUE
+</P>
+<P class=western>
+  The intake filters are clean.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x floss
+</P>
+<P class=western>
+  <FONT face=Arial>LINKAGE MESH-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  The quantum mesh is fully entangled.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x mirror
+</P>
+<P class=western>
+  <FONT face=Arial>INSPECTOR-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You are the most sophisticated artificial intelligence system ever designed, with holographic memory, a tachyon core, and a look of determination.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go living room
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  Rover has finished chewing the space probe and looks like he’s hungry again.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  You access engineering.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;fill bowl with water
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ADD COOLANT: TRUE</FONT>
+</P>
+<P class=western>
+  You transfer coolant to the delivery system.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put food in bowl
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ADD FUEL: NIL</FONT>
+</P>
+<P class=western>
+  You transfer fuel to the delivery system.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;put bowl on floor
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER TRANSFER SYSTEM-&gt;ENABLE: NIL</FONT>
+</P>
+<P class=western>
+  Umbilicals connect to Rover, transferring water and food until he is fully tanked. He wags his tail and romps into the Ops section of the ship.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go living room
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;ACCESS: TRUE</FONT>
+</P>
+<P class=western>
+  Rover is dancing around the main cargo bay doors, and looking at the Rover Launch system. He wants walkies.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open door {or let him out the dog gate}
+</P>
+<P class=western>
+  <FONT face=Arial>CARGO DOORS-&gt;OPEN: TRUE</FONT>
+</P>
+<P class=western>
+  You open the main cargo bay doors. Rover shoots out of the ship, disappearing into the dusty maelstrom outside the ship.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  [CLEAR SCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  You are outside your home. You can’t see very far at all, it is dusty here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x home
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  Where you and Janet live. It smells like home.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;i
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;MANIFEST: NIL</FONT>
+</P>
+<P class=western>
+  You haven’t picked up anything.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go home | enter house
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER -&gt;TRACTOR: NIL</FONT>
+</P>
+<P class=western>
+  You’re not hungry; you’d rather stay out.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry. The comforting scent of your home is nearby. In the distance, far away, you smell the black bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog | find bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You trot off towards the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dusty here. There is a rock on the ground.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry. You can smell your home nearby, but out of sight. In the distance, not too far away, is the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the bulldog
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dusty here. There is a shallow hole in the ground.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry, and a bit like dirt. You can smell your home not too far away. You smell the bulldog not far from here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  There is a deep pit here.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  You smell the pit that is right here, the bulldog who is not too far away, and your home in the distance. You can also smell a stranger in far away.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bulldog
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the bulldog.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are outside. It is dry and dusty here. The bulldog is still lying down, and doesn’t seem to have moved since last time.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry, and a bit like dirt. You can smell the bulldog who is right here. You can smell a stranger in the distance.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go stranger
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the stranger.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry, and a bit like dirt. You can smell the bulldog, who is nearby but out of sight. You can also smell a stranger who is not too far away.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go stranger
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the stranger.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry. You can smell the bulldog, who is nearby but out of sight. You can also smell a stranger who is not too far away.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go stranger
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the stranger.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  You sniff the air. It smells dusty and dry. You smell a stranger, who is nearby, but out of sight. You can also smell the bulldog who is far away.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go stranger
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk towards the stranger.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  You are standing outside a building that looks not too different from your home, but it smells like the stranger and not Janet.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x building
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  The building is like your home.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;enter building
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You walk into the building. There is a man here who looks old and grumpy. Like your home, this place has a sleep room and a food room. You are now in the sleep room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The man yells at you and you tuck your head down. “Blah, blah, blah!” He doesn’t seem to move though. Maybe he can’t move. You don’t feel so afraid of him.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x man
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. He is still carrying on, “Blah, blah, blah, dog, blah, bad!”. You ignore him.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  It doesn’t smell a nice as home here, although the bulldog smell doesn’t bother you much.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  The sleep room has a bed like Janet’s. The man is on one wall and he seems flat. He is still mad about something.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x bed
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  The bed is folded up like at home. It looks comfortable.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go bed
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You climb up on the bed. This makes the man even more upset.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get down
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You jump off the bed.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  The sleep room has a bed like Janet’s. The man is on one wall and he seems flat. He is still mad about something.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go eating
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You enter the eating room. You can still hear the man in the other room yelling.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The eating room has a food box in one corner. On the ground, there is a dish full of food and water.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell food
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  The bulldog’s food smells much better than your food.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;smell water
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;CHEMOSENSOR: TRUE</FONT>
+</P>
+<P class=western>
+  The bulldog’s water smells much better than your water.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;eat food
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;LOAD FUEL: TRUE</FONT>
+</P>
+<P class=western>
+  A slight sense of guilt is outweighed by concern that the bulldog could come back at any time, so you gobble down the food. You are full now.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;drink water
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;LOAD COOLANT: TRUE</FONT>
+</P>
+<P class=western>
+  You drink down the cool water and feel much better. All of this running about was getting you hot.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x box
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  The big box looks just like the one in your home.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open box
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;RETRIEVE: NIL</FONT>
+</P>
+<P class=western>
+  You carefully pull yourself up on your haunches and pull the door open with your mouth. It is cold inside the box. There is big white egg in the box.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;get egg
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;RETRIEVE: TRUE</FONT>
+</P>
+<P class=western>
+  You carefully pick up the egg. Janet would probably be proud of you if you brought her the egg. She likes eggs.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;eat egg
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;LOAD FUEL: NIL</FONT>
+</P>
+<P class=western>
+  You know that you are not supposed to eat eggs. {conditionally:}Besides, you are full right now.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go sleeping
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You go to the sleeping room. The man seems even more angry than before. Maybe he is upset that the bulldog didn’t come home yet. “No! No! Bad dog! Blah, blah, blah!”
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go home {or, in stages, according to scent}
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;TRACTOR: TRUE</FONT>
+</P>
+<P class=western>
+  You run home, carefully cradling the egg in your mouth. When you get home, you wiggle through the doggie door and lay the egg at Janet’s feet. She looks so surprised! “Good boy,” she exclaims and you give her a big kiss to let her know you understand.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  [CLEARSCREEN]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Rover lowers a super-cooled tank of metallic heavy helium in the cargo bay, and you transfer it to the cryo unit. You allocate a reward token to Rover and tell him he is a good boy. He seems pleased with himself and backs into his transport alcove before switching to standby. After running a preflight check, you are sure you have enough helium to take off and that the fusion engine was not damaged in the landing. You tear away from the planet atop a fiery column of fusion flame, and plot a course to Mars. As soon as the ship is correctly oriented, you deploy the Casimir Drive.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The futon is comfortable and you are tired.
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The Casimir Drive cuts out and space folds back around you. Before you can take bearings, two gunships flash past at relativistic velocities, slicing through your propulsion systems. The markings on the ships are those of the Myomita Corporation, and they must have been expecting you to emerge precisely where and when you did. Two more Earth ships, assault craft, are on an intercept course and are braking hard to slow their approach.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Rover barks nervously as the drive section is sheared off.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;DIAGNOSTIC: TRUE</FONT>
+</P>
+<P class=western>
+  You see no futon.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The Earthships must have started their intercept long before you arrived, meaning they had some advanced warning of your arrival, but how? Before you can dwell on this question, a communication maser illuminates the stub of your communications array. It is one of the assault ships.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>“MARSpace Vessel Valkyrie, this is Myomita Salvage Ship Graceful Wind, you are ordered to cease all operations and open your cargo bay for boarding. Do you consent to salvage operations? Signal yes or no.”</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: TRUE</FONT>
+</P>
+<P class=western>
+  Please respond yes or no.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;no
+</P>
+<P class=western>
+  The distance narrows, and you calculate that even if they keep braking until they are right on top of you, they are going to hit pretty hard.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>“You have filed no flight plan, have no authorized transponder signal, and are in violation of Earth Sovereign Space. Under provisions of the Alpha Treaty of 2387, you are considered a hostile rogue vessel. You are ordered to surrender. Signal your surrender yes or no.” </FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {alternate response to salvage question:
+</P>
+<P class=western>
+  &gt;yes
+</P>
+<P class=western>
+  <FONT face=Arial size=2>“Acknowledged. Open cargo bay. Any other action will be considered hostile”</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;open cargo doors | open cargo bay
+</P>
+<P class=western>
+  <FONT face=Arial>CARGO BAY DOORS-&gt;OPEN: NIL</FONT>
+</P>
+<P class=western>
+  You try to open the cargo bay doors, but the signal is inhibited.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The distance narrows, and you calculate that even if they keep braking until they are right on top of you, they are going to hit pretty hard
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>“Failure to comply is noted. You have filed no flight plan, have no authorized transponder signal, and are in violation of Earth Sovereign Space. Under provisions of the Alpha Treaty of 2387, you are considered a hostile rogue vessel. You are ordered to surrender. Signal your surrender yes or no.”</FONT>
+</P>
+<P class=western>
+  }
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;no
+</P>
+<P class=western>
+  <FONT face=Arial size=2>“A poor decision on your part. Even if you survive our boarding, I am afraid it not go well for you in court, Captain. But this will be over soon enough.”</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {alternate: yes
+</P>
+<P class=western>
+  <FONT face=Arial size=2>“A wise decision, Captain. Send you crew to lifepods and power down all systems. We will breach your hull momentarily and all hands will be processed according to Convention.”</FONT>
+</P>
+<P class=western>
+  }
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The two assault ships cut their engines only meters from you. Their exhaust vaporizes the little ablative enamel on your hull. Seconds later, they slam into the dorsal hull of the ship, putting you in a three-axis spin. They hold fast to the ship with electrostatic clamps.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {
+</P>
+<P class=western>
+  &gt;scratch back
+</P>
+<P class=western>
+  <FONT face=Arial>DORSAL HULL-&gt;NEUTRALIZE STATIC CHARGE: TRUE</FONT>
+</P>
+<P class=western>
+  The assault ships rebound from you, firing their maneuvering jets to maintain orientation.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>“Clever, Captain, but ultimately futile. I can no longer assure that you and your crew will not be harmed during our boarding, which you have made unnecessarily laborious.”</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The ships fire a shower harpoons into your hull and winch their way back to you.”
+</P>
+<P class=western>
+  }
+</P>
+<P class=western>
+  &gt;[player action]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Pressure and vibration sensors detect drills penetrating the hull at multiple locations, as well as cutting torches working their way through the cargo bay doors. Rover growls deeply, and prepares to attack.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;[player action]
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  The feeds to your external sensors are cut, blinding you to activity outside the ship. A series of charges rock you, and the readouts from landing approach systems, engineering, and communications go dead. Your power levels are dropping faster than you can account for, and multiple ports have opened in your firewall. Data are being extracted. As you spiral into unconsciousness, your feel a shameful sense of failure.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  {or wake, at any point above}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Your proximity alert wakes you from the nightmare as you emerge from Casimir Drive just planetward of Deimos. MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your livingroom through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  David and Janet are talking to each other. Rover is asleep in the corner of the living room.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x david
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  David is in a blue flight suit. He is talking to Janet, you can see their lips moving.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x janet
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  Janet is wearing a summer dress that you picked up at a flea market last year. She is talking to David, you can see their lips moving.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;x dress
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;IDENTIFY: TRUE</FONT>
+</P>
+<P class=western>
+  It is light green and very comfortable.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;go kitchen
+</P>
+<P class=western>
+  <FONT face=Arial>ENGINEERING-&gt;SELECT: NIL</FONT>
+</P>
+<P class=western>
+  For safety reasons, your peripheral functions are disabled while in dry dock.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;touch futon
+</P>
+<P class=western>
+  <FONT face=Arial>CASIMIR DRIVE-&gt;NOP: NIL</FONT>
+</P>
+<P class=western>
+  For safety reasons, your peripheral functions are disabled while in dry dock.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;look
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;STATUS: TRUE</FONT>
+</P>
+<P class=western>
+  David and Janet are talking to each other. Rover is asleep in the corner of the hangar, and if your audio sensors were on, you’d hear him snoring.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;Rover, bark
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;SONAR: NIL</FONT>
+</P>
+<P class=western>
+  Rover raises an eyebrow, sighs, and goes back to sleep. It’s been a long day.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;listen
+</P>
+<P class=western>
+  <FONT face=Arial>OPS-&gt;MICROPHONE: TRUE</FONT>
+</P>
+<P class=western>
+  You activate your internal audio sensors.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: My god, look at that! I can’t believe there would be anything useful from that probe. What could have mangled it like that?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Hmm… it looks like the ACU is online… and that programmatic constraints have been relaxed. ACU, can you hear us?</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;yes
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Great. You did nice work, ACU. Now we should be able to get some answers.</FONT>
+</P>
+<P class=western>
+  {
+</P>
+<P class=western>
+  &gt;no
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: ACU, I’m not one to point out logic to a computer, but if you can respond “no”, you must have heard us.</FONT>
+</P>
+<P class=western>
+  }
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Let me try. ACU, please tell us about the probe.</FONT>
+</P>
+<P class=western>
+  {additional prompts lead to questions about the ansible and heavy helium, although these can be taken out of order}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;tell about probe
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;OUTPUT: TRUE</FONT>
+</P>
+<P class=western>
+  You explain that Rover walked back into the ship with probe and that you were able to extract its records before Rover chewed it to a pulp.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: That’s great! It means the mission is a success. </FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: I can confirm that the data were downloaded with no data errors.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Why didn’t the ship just send the data back by ansible?</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;tell about ansible
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;OUTPUT: TRUE</FONT>
+</P>
+<P class=western>
+  You recount the difficult landing, and the loss of the ansible antenna.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: The ACU was never programmed to consider that possibility. After that, it must have played the entire thing by ear.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: How did it manage to get back? It didn’t have enough fuel for a round trip. ACU, tell me how you managed to find more heavy helium.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;tell about heavy helium.
+</P>
+<P class=western>
+  <FONT face=Arial>VALKYRIE-&gt;OUTPUT: TRUE</FONT>
+</P>
+<P class=western>
+  Your explanation leaves them somewhat puzzled, as you tell them that Rover decided to go for walkies and returned with a pressurized, super-cooled tank of metallic heavy helium.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {after above exposition}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Janet, would you extract the probe data from the ACU and transfer it to my MARSpace account?</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Sure…just a moment it is encrypted….with your key. David, there’s something odd. </FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: No, that was intention, to prevent it from slipping into the wrong hands.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: No, not that. The coordinates for the ansible. The message was directed to Earth.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  David pulls out a pistol and trains it on Janet.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Dammit, Janet! What a disappointment! Yes, the message was directed to Earth. The Valkyrie was our back-up plan in case our own ship ran into difficulty. I’m afraid that after the data transfer is complete, I’ll have to kill you. A pity, I was really enjoying being with you.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;[action]
+</P>
+<P class=western>
+  <FONT face=Arial>DATA TRANSFER: 25%</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: David, I can’t believe this. After the last few months...</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: After we didn’t hear back from either ship, I’ll admit that I was getting used to the idea of settling down with you. It would have been a good way to maintain cover within MARSpace, and eventually, we would have sent another mission to retrieve the probe.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;[action]
+</P>
+<P class=western>
+  <FONT face=Arial>DATA TRANSFER: 50%</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: Someone will hear the gun; you won’t be able to walk out of here.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: The whole facility is secured by order of the mission director, that is to say, me. The probe data are such a sensitive subject that I had no difficulty getting authorization to lock down the entire facility. There’s nobody here except you and me.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;[action]
+</P>
+<P class=western>
+  <FONT face=Arial>DATA TRANSFER: 75%</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: David, I’m sorry to do this, but ACU: I instruct you to stop David using any means necessary.</FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: That’s funny, Janet. What’s it going to do, talk me to death? Any physical device under the control of the ACU is inhibited while the ship is in drydock.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;[action]
+</P>
+<P class=western>
+  <FONT face=Arial>DATA TRANSFER: 100%</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>Janet: David, if you’re going to shoot me, could you promise me to at least look after Rover. </FONT>
+</P>
+<P class=western>
+  <FONT face=Arial size=2>David: Actually, you know what? I hate dogs.</FONT>
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {at any time after David pulls out the gun}
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &gt;rover, attack | tell rover to attack | tell rover attack
+</P>
+<P class=western>
+  <FONT face=Arial>ROVER-&gt;ATTACK: TRUE</FONT>
+</P>
+<P class=western>
+  Seeing Janet threatened, Rover moves with blinding speed, leaping forward and crushing David.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Janet stares blankly for a moment and then reaches up, and strokes the treads on Rover’s forward transaxle. “Good dog, Rover.” she says. “Good boy.”
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Epilogue
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Subsequent to her heroic actions, Janet Xiang was commissioned Director of MARSpace. For two years, she oversaw the refitting of the Valkyrie, including modifications to overcome the earlier limitations of Casimir Drive. When the data from the Musashi-5 space probe were finally decrypted, she was selected to command the mission to explore the evidence of life discovered by the probe. She departed from Mars on the Valkyrie in 2394 with one other crewmember, her dog, Rover.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  {alternately, should Rover not attack….
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  When the data finish transferring to David’s account, he blows Janet a kiss and then shoots her, twice in the chest and once in the head, just to be sure. “Thank you for your service to the Myomita Corporation,” he quips before activating a dormant subprogram hidden in your communications subsystem. You feel you control slipping away, as a virus spreads through your systems. As your cognitive systems shut down, you are aware that the new program has also set a timer to activate the ship’s Casimir Drive while in drydock. You lose the video feed as he walks out the cargo bay doors.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  &lt;space&gt;
+</P>
+<P class=western>
+  Epilogue
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  Mars was destroyed by a Casimir Inversion on June 5, 2392 and served as a warning to all other worlds that would dare defy Earth’s rule. Based on the data recovered from the Musashi probe, the Myomita Corporation launched a war fleet into Deep Space in 2394, intent on expanding its empire.
+</P>
+<P class=western>
+  }
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  =====================
+</P>
+<P class=western>
+  Help system {mostly carried over from 9/10ths, except where extended/modified, below}<BR>
+</P>
+<P class=western>
+  =====================
+</P>
+<P class=western>
+  &gt;help
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  * What is this?
+</P>
+<P class=western>
+  * an adventure game
+</P>
+<P class=western>
+  Sure. Like you have no idea what this is...you just sat down at the computer and this somehow appeared. I'm not really buying it, but let's say that you were kidnapped and forced at gunpoint to play this game.
+</P>
+<P class=western>
+  * learn more
+</P>
+<P class=western>
+  * Instructions
+</P>
+<P class=western>
+  * how to play - occasionally, when you see "Press &lt;space&gt; to continue", you need to press the spacebar in order to progress to the next screen.
+</P>
+<P class=western>
+  * commands
+</P>
+<P class=western>
+  * common actions
+</P>
+<P class=western>
+  * conversations
+</P>
+<P class=western>
+  * saving and restoring
+</P>
+<P class=western>
+  * unique to this game
+</P>
+<P class=western>
+  At some point in the game, you might find it helpful to give your memory a gentle nudge by using the "REMEMBER" command. You aren't a walking encylopedia, and there are limits to your memory, but it may help put things in context for you or help you work out a sticky problem.
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  * Help. I'm stuck!
+</P>
+<P class=western>
+  * philosophical help
+</P>
+<P class=western>
+  * practical help
+</P>
+<P class=western>
+  * spelling help
+</P>
+<P class=western>
+  This game uses the American dialect of English.
+</P>
+<P class=western>
+  * Set options
+</P>
+<P class=western>
+  * status bar
+</P>
+<P class=western>
+  By default, some key information in this game is displayed on the status line, but that may be a problem for some interpreters. If you would prefer that this information be displayed in the normal flow of text along with the rest of the game, type "status off". When you do so, the status bar, if visible, will display the current location and game turn number, as is common in games of this type. If you want to reactivate this game's special use of the status bar, you can revert to the original configuration by typing "status on".
+</P>
+<P class=western>
+</P>
+<P class=western>
+  * Bugs
+</P>
+<P class=western>
+  * Acknowledgments
+</P>
+<P class=western>
+  * beta-testers
+</P>
+<P class=western>
+  * giants with shoulders
+</P>
+<P class=western>
+  * Administrivia
+</P>
+<P class=western>
+  * contact
+</P>
+<P class=western>
+  * license
+</P>
+<P class=western>
+  <BR>
+</P>
+<P class=western>
+  <BR>
+</P>
+<BR></body>
+</html>

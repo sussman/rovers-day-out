@@ -1,0 +1,386 @@
+GENERAL NOTES / SCRATCHPAD / BRAINSTORM
+=======================================
+
+(Jack's email response to Ben's response:)
+
+    I've always wanted to write a game this way! 
+
+ 
+I didn't do this for my "one to throw away" I7 project, and after
+getting halfway into the project, I wished that I had. It's a little
+repetitive writing all the responses, but after a few days, I got into
+a sort of flow.
+ 
+
+    That said, your take on the idea has the awesome "everything is a
+    metaphor" theme going on, which is just wonderful.  
+
+ 
+That sounds like I7esque.  Perhaps that should be the first rule:
+"Every thing is a metaphor.  Instead of doing stuff, do metaphorical
+stuff."
+
+    The external
+    commentary by David and Janet is great too, a real treat.  And you've
+    got solid sci-fi plot and suspense!
+
+ 
+The David/Janet dialogue was originally comic relief. I had intended
+their interstitial comments to be like the punctuating commentary of
+the talking heads in MST3K.  As I went along, I used them more for
+supplying background/context and motivation. As the writing unfolded,
+I realized that David and Janet could have a budding romance, with
+repressed workplace sexual tension moving towards flirtation in the
+first simulation, an developing relationship in the 2nd run, and a
+steady relationship by the time the ship returns. I was looking for
+some twist at the end, the sort of rapid development that happens in
+the last few pages of a novel when you wonder how the book can take
+such a fatal turn with so few pages remaining. At the end, you realize
+that David is a sociopathic manipulator, an extension of the Myomita
+corporation (whose motto is don't do evil, unless it's profitable).
+
+Speaking of Myomita Corporation, you can Google almost any of the
+strange terms encountered in the game and hit relevant material from a
+certain related ficton.
+
+    Instead of TRUE and NIL at the end of each status line, I think a more
+    accurate description would be "OK", or "FAIL"... that's basically
+    what's going on, right?  Reporting whether an action succeeded or
+    failed?
+
+ 
+Exactly. Originally, I had more extensive descriptions like
+"Succceeded, 3 items", or "Failed: No Match". Thinking a bit about
+implementation, I thought that it would be more generalizable to just
+concentrate on the success or failure. Since the ACU is a computer, I
+opted for a binary view of the world and borrowed t and nil from
+LISP. I can see how a player would get more from OK/FAIL,
+though. After all, hopefully we have people playing the game and not
+computers.
+ 
+
+    When pouring the dog food for Rover, the response is that he has his
+    face buried in the bowl... except that he was supposed to be asleep.
+    You should at least mention the dog waking up and running to the bowl
+    (which means tracking his sleep-state programmatically, I guess.)
+
+ 
+I'll have to take a look at this, it might be possible to just link
+Rover's response to events rather than to have some kind of daemon
+always keeping track of Rover (when the player isn't directly
+controlling Rover).  Here, I am thinking of Ginger, my dog.  Her
+default state is semicomatose, but pouring dog food into the bowl
+results in her appearing next to the dog bowl, without intermediate
+states. I'm not sure how she does it either....
+ 
+Rover needs to do a few things at discrete times -- make whining
+commentary at certain points, make a fuss about being fed, and jump
+around when he wants to go out. He also needs to obey some commands.
+I think we could get away with all of this as reactions to other
+events.
+
+    How is the 'remember' verb going to work?  Are there synonyms?  I
+    guess it's a standard 'book' type thing in I7, which is well
+    supported... but how will the player figure out to use that verb to
+    get backstory?  (We want to avoid the 'guess the verb' trap here.)
+
+ 
+I think that if players type the word "possess", the program will tell
+them that the secret hidden verb for this game is "remember" :-)
+ 
+You're right: remember serves the purpose of "consult" in this
+game. Remember isn't absolutely essential to the game as we can give a
+lot of explication via non-optional the dreams and Janet/David
+dialogue. Remember is mentioned specifically in the help as a verb
+that is used in the game. Beyond that, I'll see what I can do about
+dropping some hints in text about being able to remember things.
+ 
+We can be relatively generous with synonyms, and some reasonable
+alternatives could be:
+
+* recall ~
+* think [about] ~
+* consider ~
+* wonder [about] ~
+* consult memory [about] ~
+* look up ~ in memory
+ 
+We could take it a step further and allow just the verb to prompt helpful text like
+
+>think
+About what?
+
+>remember
+Remember what?
+
+We could have Janet explicity tell David about the remember mechanism,
+or work in the other direction, with David suggesting it as a program
+enhancement.
+
+    How does telling rover to 'sit' equate to an 'optical scan'?  Seems
+    like a bit of a stretch.
+
+ 
+You got me, there.  I think I had something else, did a global
+replace, and lost track.  I'd like to tighten some of Rover's
+tricks. "Roll" isn't really integral to the game either.
+
+What do you think of the dog fight [sic]?
+
+    Can there be multiple solutions at the end to preventing Janet's
+    murder?  In general, one needs to be careful about overly-linear
+    storytelling, where there's only a single solution to critical
+    obstacles.  This is something that needs to be examined throughout the
+    course of the game as well.  While there's certainly some "freedom"
+    allowed in exploring the apartment, the overall plot is still very
+    linear: you go through mundane household motions in a specific order.
+    It would be neat to add more obstacles, different orderings, and more
+    solutions.  For example, the being-boarded part is fun storytelling,
+    but the player can't really affect it.
+
+
+Yes, there are two sequences that are too linear: boarding and the
+resolution.  The apartment is also fairly linear (and David even
+complains about the linearity of a task list) but I hope it feels more
+flexible. To reduce the complexity of the simulation, a lot of items
+are simplified (e.g., you can turn on the sink, but it turns off
+immediately) or limited (you can't take the dog food out of the
+kitchen).  I think players will cut us some slack because the story
+really takes pains to acknowledge the limitations of the simulation
+(and, that it *is* a simulation).
+
+I went short on the boarding party sequence because it felt like the
+writing was taking forever and I thought that players would have the
+same perception. For players to have gotten to the boarding scene,
+they must have gone through the first simulation (which ended in
+BSOD), the second simulation, the visit to the planet, recovery of the
+probe and heavy-helium. I'm not sure how much play time that is, but
+it seemed like a lot, and I was really pushing towards the ending. I
+was also worried about biting off too large a project.  However, now
+that I have ACE programmer on the project, I'm less worried.
+
+The other limitation on the boarding party sequence was a desire to
+limit dialogue, which I find particularly clunky. The yes/no responses
+also prevent any revelation that the Valkyrie is being flown by a
+computer rather than a person.
+
+So, I'll put my thinking cap on about how to extend this scene. Any
+suggestions in that regard would be appreciated.  I'd particularly
+like to give the player the chance to make clever use of the objects
+and/or methods which they encountered earlier in the story, like the
+back-scratching.
+
+In the second simulation, I'd like to add two more simulated failures,
+like the gimbal lock and static charge in the first simulation.  We
+could tie those solutions to fighting off the Earth ships.
+
+I'd like to stay away from a typical space shootem-up because the
+Valkyrie is an exploration ship and was never meant for combat, and it
+wouldn't make much sense for it to be bristling with weapons. We might
+reasonably use some of the ship's other hardware (e.g., fusion rocket
+exhaust) to cook the attacking vessels.
+
+I'm toying with an idea that the Earth ships succeed in boarding and
+spend some time looking around the ship for the crew that they "know"
+must be there.
+
+I'd conceived of this dream sequence being a real nightmare and
+spiraling downward into a worse and worse predicament, from which the
+only escape would be to wake up.  This means that the ACU can't really
+succeed in this scene, although it can have some partial successes
+along the way.
+
+
+      And it could be entered into IFComp at the end of the year, too.
+
+
+Let's see -- if we go by last year, projects were due at the end of
+September. Working backwards, here's a proposed schedule: a rough
+release in early July to see if we need any big game mechanic/plot
+kind of changes; an early beta at beginning of August; a polished beta
+by beginning of September. You've done more of this sort of thing --
+is that reasonable?
+
+I'll have more time over this summer than most. My job here finished
+June 26th, and we're flying back June 29th.  I've been talking with
+the National Cancer Institute about a job to start in October, which
+would leave me an unusual amount of spare time over the summer.
+
+
+
+    I got excited on the plane and implemented some initial prototype I7
+    code for the very beginning of the game.  It's attached to this email,
+    and it should compile.  Just shows some initial setup stuff.  I'm excited
+    at the idea of using I7 to build a metaphor-mapping mechanism between
+    game objects and 'status bar' objects.
+
+Yes, it worked right off, and it looks more or less like what had in
+mind. I've combined what you wrote with some very stubby layout,
+below.
+
+Some implementation thoughts: 
+
+* Generally, I'd like to keep the main game text in paragraph-like
+  blocks, rather than have a lot of single lines and floating objects,
+  e.g., the way the futon and alarm clock work below. So, descriptions
+  with conditions.
+
+* No compass directions in this game. The Valkyrie ship is a solid
+  body, with a cargo bay -- the kitchen, livingroom and bathroom are
+  projections only. The ACU "moves" between these pseudorooms by
+  saying "go kitchen", "exit", etc.
+
+* When in the Valkyrie Region, the player is the ACU; outside of it,
+  the player is Rover.
+
+* I think that one of the challenges will be to consistently convey
+  the "release of cognitive constraints", where the ACU starts
+  recognizing that familiar objects are actually the Casimir Drive,
+  etc.  Perhaps it would make sense for the last scene to use a new
+  room where objects are defined differently.
+
+   * I just had a thought -- when the cognitivie restraints release
+     and the ACU realizes it's a computer, let's change the prompt to
+     "READY>" reminiscent of TRS-80 days.  Is that too crazy?
+
+Other plot/items to add:
+ 
+* Dream sequences - there is room for up to 9 dream sequences plus the
+  boarding.  Only the first of each run of three is obligatory, as the
+  player can opt to get out of bed which prevent hitting snooze.  I
+  have some placeholders for some dream sequences, and I haven't
+  decided what to do with these. They should add to the background,
+  advance the plot or otherwise lead to deeper understanding of the
+  characters. This can be written late, as it is static text, but for
+  the moment I'm drawing a blank on these.
+
+* two more minor simulated failures in the second simulation.
+
+* what the heck does the toothbrush do?  Really, I have no idea. I'd
+  like it to be part of a clever solution to something.
+
+* the ending. As written, the ship is limited in its physical actions
+  at the end. The intention was to push the player to consider Rover.
+  Here are some other alternatives, please feel free to add more:
+
+  1) other ways to kill/disable David. Mars gets the data.
+        -- unfold the futon on him. Probably kills Janet too, though.
+ 
+  2) other ways to prevent data from falling into Earth's hands. Might
+  lead to an odd ending in which another hundred years go by and
+  aliens sweep into the Solar System without warning. (see future
+  thoughts, below).
+
+      -- erase memory -- nobody gets the data.
+      -- self-destruct (also, of limited enjoyment)
+      -- turn on the Casimir Drive (probably destroys Mars).
+
+  3) other
+       -- xyzzy - Janet's supersecret embedded override protocol?
+
+A thought for the future:
+
+* My marketing executives tell me that sequels are where you make the
+  *big* money in this IF racket. In the sequel that I have in mind,
+  Janet and Rover head off in search of the planet discovered by
+  Musashi-5. It's a boring place. There is algae and fungus there...
+  because it is where the Lysithians grow their food.  Or maybe, the
+  food that they feed to their food.  OK, I don't have anything more
+  in mind than this, but I'd like to leave some hooks for a sequel if
+  RDO is well received.  I'm not sure which perspective to use in the
+  sequel, but it might be fun to at least start as the real Janet. The
+  other characters could be Val (the ship), and Rover (the dog).
+
+
+---------------------------------------------------------
+
+Some random topics to talk about...  (brainstorm from Jack)
+
+
+
+Major
+
+General Outline - how to chunk up the writing
+
+  thoughts to consider:
+
+  * geographic division - divide by regions, and then within regions
+    by rooms.
+
+  * time division - following the course of events in the game.
+
+  * functional division - more programming-like, with kinds defined at
+    the top, then actions, and the objects, perhaps according to
+    rooms.
+
+  * other
+
+Progression - scenes versus a generate counter/value which keeps
+tracks of the "parts" of the game, e.g., first simulation, second
+simulation, actual run, boarding dream, resolution, epilogue.  And
+another which keeps track of tasks completed: get out of bed, shower,
+breakfast, toilet, walkies. These counters go in one direction only,
+and prevent backslippage.
+
+A general approach to avoid overlap.
+
+Timeline & Goals
+
+Further development of outline versus jumping in with coding. Updating
+of outline, if any.
+
+Intended "memory model" z5, z8 / glulx -- if glulx, no basic screen
+effects extension.
+
+Minor
+
+Room navigation, without compass directions (e.g., before doing
+something when the current action involves directions other than up
+and down:...). General solution versus practical solution.
+Smell-based on the planet, but visual indoors.  Indoors consider
+doors, just overiding the directions; preserves other mechanisms
+(e.g., paths) that are meant to be used with doors.
+
+An idea for outside navigation on Mars -smell navigation based on
+proximity (6.11). The planet region is a matrix, with the Ginsu and
+Valkyrie entrances on opposing corners, and other interesting objects
+such as the shallow pit, the impact crater, and the rock scattered
+randomly. Rover can either walk towards a smell, or away from a smell.
+As a dog, he doesn't know about left and right, and directions have no
+meaning on the planet. The intensity of the smell increases with
+proximity. If Rover walks away from a smell, he will only walk to
+maximum range of the last smell (any further and he'd have no way to
+orient and would be lost). In the interest of not being cruel, he
+would stop there.  The matrix of locations could either be a literal
+matrix of rooms laid in a grid, or a single room where props are
+swapped in and out, while a coordinates variable keeps track of
+Rover's actual position.
+
+Let's lose the dog door.  Rover can go out the cargo bay door, and
+scratch the door or bark to be let back in.
+
+It would be signal that the audio is muted during memory
+playback. Maybe a red "MUTE" in the upper right hand corner of the
+display area for that turn?
+
+
+----------------------
+
+>open drapes
+SOLAR SHIELD->RETRACT: TRUE
+
+>close drapes
+SOLAR SHIELD->DEPLOY: NIL
+
+>get up | stand
+CASIMIR DRIVE->STANDBY: TRUE
+
+-----------------------
+switching from Windex to Flosix should drop the memory requirement.
+-----------------------
+
+Could the bulldog follow orders from Rover?
+
+------------------------
+
+
