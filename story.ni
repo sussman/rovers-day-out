@@ -115,7 +115,6 @@ Chapter General Routines
 
 [Let's do a random walk, shall we?  :-) ]
 Memory-updating is an action applying to nothing.
-
 Carry out memory-updating:
 	let memdelta be a random number from -25 to 25;
 	now the current memory usage is the current memory usage plus memdelta;
@@ -149,6 +148,20 @@ To say (dialogue - some text) in metaspeak:
 	say "[fixed letter spacing][blue letters][dialogue][default letters]";
 	say variable letter spacing;
 	say paragraph break;
+	
+
+BSODing is an action applying to nothing.
+Carry out BSODing:
+	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
+	wait for any key;
+	turn the background blue;
+	clear the screen;
+	say "[white letters]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue.[default letters]";
+	wait for any key;
+	turn the background white;
+	clear the screen.
+
+
 	
 Chapter Verbs
 	
@@ -529,7 +542,7 @@ After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 	say "[metatext in metaspeak]";
 
-Some drapes are furniture in the living room. Understand "curtains" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
+Some drapes are furniture in the living room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
 
 Instead of opening the drapes:
 	if the futon encloses the player:
@@ -1101,24 +1114,33 @@ Chapter First Sim
 First Sim is a scene. First Sim begins when play begins. First Sim ends when the black plate is switched on for the first time.
 
 When First Sim ends:
-	say "BLUE SCREEN OF DEATH!!!!";
+	try BSODing;
+	let metatext be "Janet: Crap.[line break]David: Windex?[line break]Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.[line break]David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?[line break]Janet: Yes, but it will take some time to install and debug.[line break]David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.[line break]Janet: Happy to have the help -- how about dinner first?[line break]David: Do you like Thai?";
+	say "[metatext in metaspeak]";
+	wait for any key;
+	clear the screen;
 	now the irradiator is patched;
 	now the current memory usage is 260;
 	now load average is 256;
-	Restore the World;
-	Setup the World.
+	
 
 Chapter Second Sim
 
 Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim ends when the front door is open for the first time.
 
+When Second Sim begins:
+	say "[ACU Boot Banner]";
+	Restore the World;
+	Setup the World.
+
 When Second Sim ends:
 	Restore the World;
 	[description of waking up again]
-	Setup the World.
+	Setup the World;
+	
 
 Chapter Real Thing
-
+	
 Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [i.e., eaten]
 
 Chapter Walkies
