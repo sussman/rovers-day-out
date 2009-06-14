@@ -819,6 +819,9 @@ To say delicious bone status:
 			say "The bulldog notices your interest in the bone, and the corners of his mouth rise, revealing sharp teeth";
 	otherwise:
 		say "It the bone the dog dragged in from the park. He's already gnawed on it a bit".
+		
+Instead of taking the delicious bone when the player is the acu:
+	say "Rover growls mildly reminding you that it is [italic type]his[if the player is self-aware]space probe[otherwise]bone[end if][roman type]."
 
 The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a strange house. [inconsequential outside detail]"
 
@@ -854,23 +857,18 @@ The water maker is a sink in the Galley. The description of the water maker is "
 
 The table is an enterable furniture in the Galley. The description of the table is "A big wooden table. Probably used for cooking stuff.[if nothing is on the table] Unfortunately, there is nothing, food or otherwise, on the table at the moment." The aware-name of the table is "reactor core". The clueless-name of the table is "table".
 
-The bulldog water bowl and the bulldog food bowl are portable containers in the Galley. [portable, but slick, add a before action to prevent Rover from walking off with them].
+The bulldog water bowl and the bulldog food bowl are fixed in place bowls in the Galley.
 
-The description of the bulldog food bowl is "The bulldog's food smells much better than yours."
+The description of the bulldog food bowl is "[if the bulldog food bowl is empty]Even empty, the[otherwise]The [end if]bulldog's food bowl smells much better than yours." The clueless-name of the bulldog food bowl is "food bowl". The aware-name of the bulldog food bowl is "fuel reservoir".
 
-The description of the bulldog water bowl is "The bulldog's water bowl smells much better than yours."[TODO think about how to handle water/food quantities in game; consider extension.]
+The description of the bulldog water bowl is "[if the bulldog water bowl is empty]Even empty, the [otherwise]The [end if]bulldog's water bowl looks much better than yours." The clueless-name of the bulldog water bowl is "water bowl". The aware-name of the bulldog water bowl is "coolant reservoir".
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
 
-David Venkatachalam is a man. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving."
+David Venkatachalam is a man. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "EXTERNAL".
 
-Janet Xiang is a woman. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving."  
-
-The space probe is a prop. The clueless-name of the space probe is "dog bone". The aware-name of the space probe is "space probe". The clueless-description of the space probe is "A partially gnawed dog bone." The aware-description of the space probe is "The Musashi-5 probe was severely damaged at some point during its journey and even more so now that Rover is munching on it, but its data have been downloaded to you and are safe."
-
-Instead of taking the space probe when the player is the acu:
-	say "Rover growls mildly reminding you that it is [italic type]his[if the player is self-aware]space probe[otherwise]bone[end if][roman type]."
+Janet Xiang is a woman. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
 
 There are some assault ships. They are scenery. The description of the assault ships is "The black hulls of the Lamprey Class assault ships are barely visible against the background of space."
 
@@ -878,17 +876,15 @@ There are some gunships. They are scenery. The description of the gunships is "A
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container. Understand "outside" or "outdoors" as the window.
-Instead of examining the window:
-		say "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]."
+The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
 		
-Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park."
+Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". 
 
-The park is scenery in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors."
+The park is scenery in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors." The clueless-name of the park is "park". The aware-name of the park is "viewer".
 
-Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass."
+Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer".
 
-There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park."
+There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park." The clueless-name of the spruce trees is "spruce trees". The aware-name of the spruce trees is "viewer".
 
 Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gunships, the window, and the spruce trees are in Limbo.
 
