@@ -62,7 +62,7 @@ Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
 A hole is a kind of container. A hole is always open not openable and fixed in place.
 
-A bowl is a kind of container. The carrying capacity of a bowl is always 1.
+A bowl is a kind of thing. A bowl can be empty or full. A bowl is usually full.
 
 An message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".
 
@@ -194,7 +194,8 @@ Check reading:
 			say "Nothing is printed on [the noun]." instead.
 			
 Carry out reading:
-	say "[inscription][paragraph break]".
+	say the inscription of the noun;
+	say paragraph break.
 	
 Section Going Towards
 
@@ -548,9 +549,9 @@ The flight suit is a wearable prop. The ACU wears the flight suit. Understand "f
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. 
 
-The alarm clock is furniture on the futon.  The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A button and a switch are part of the alarm clock. The clueless-name of the alarm clock is "alarm clock". The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top.".  
+The alarm clock is furniture on the futon.  The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" and "transgressor" as the alarm clock-proxy.  
 
-The aware-name of the button is "mf toggle".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle.".
+The clueless-name of the button is "button". The aware-name of the button is "mf toggle".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle." The button-proxy is an aware-proxy that is part of the button. Understand "mf" and "magno-fluctuator" and "toggle" as the button-proxy.
 
 After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
@@ -575,30 +576,26 @@ Instead of closing the drapes:
 	otherwise:
 		say "They are as closed as they're going to get."
 
-The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." 
+The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" and "bay" and "floor" as the cargo bay floor-proxy.
 
-The front door is east of the front yard. It is a door and scenery. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". 
-
-The aware-description of the front door is "The massive titanium cargo bay door are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]."
-
-The clueless-description of the front door is "[front door status]"
+The front door is east of the front yard. It is a door and scenery. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay door are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" and "bay" and "door" as the front door-proxy.
 
 To say front door status:
 	say "The front door of the cottage is ";
 	if the front door is closed: 
-		say "closed.";
+		say "closed";
 	otherwise:
 		say "open. ";
 		if the player is in the front yard:
-			say "You can see light from inside the house, and the smell of home wafts out the front door.";
+			say "You can see light from inside the house, and the smell of home wafts out the front door";
 		otherwise:
-			say "Outside, it looks like a nice day."  
+			say "Outside, it looks like a nice day".  
 
 Section Kitchen
 
-The Kitchen is a room. The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
+The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]."
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy.
 
 Instead of searching a refrigerator (called R):
 	if the player is clueless:
@@ -606,21 +603,13 @@ Instead of searching a refrigerator (called R):
 	otherwise:
 		say "The cryo unit contains [a list of things in R][if nothing is in R] but the super-chilled interior of the cryo unit itself[end if]."
 
-The magpaper is message which is part of the the old fridge.  The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue."
+The magpaper is message which is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" and "jobs" and "list" and "queue" and "priority" and "task" and "manager" as the magpaper-proxy. The magpaper can be applied. The magpaper can be ignited. The magpaper can be landed. The magpaper can be sent. The magpaper is not applied, not ignited, not landed, and not sent. The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]."
 
-The inscription of the magpaper is "[if the player is clueless]Morning:[line break]
-X. Get up[line break]
-2. Shower[line break]
-3. Breakfast[line break]
-4. Take care of business[line break]
-5. Let Rover go walkies[otherwise][fixed letter spacing]PID   TTY          STATUS      CMD
-[line break]301   ttys000      Done.       Initial Program Load
-[line break]323	  ttys000      Done.       Apply Ablative Enamel
-[line break]515   ttys000      Done.       Ignite Fusion Reactor
-[line break]525   ttys000      Done.       Landing Sequence
-[line break]540	  ttys000      Pending.    Send Probe Data[variable letter spacing]";
-
-[for the advanced class -- make these process IDs correspond to the turn number in which these actions actually were accomplished!]
+To say magpaper-clueless:
+	say "Morning:[line break]X. Get up[line break][if the magpaper is applied]X[otherwise]2[end if]. Shower[line break][if the magpaper is ignited]X[otherwise]3[end if]. Breakfast[line break][if the magpaper is landed]X[otherwise]4[end if]. Take care of business[line break][if the magpaper is sent]X[otherwise]5[end if]. Let Rover go walkies";
+		
+To say magpaper-aware:
+	say "[fixed letter spacing]PID   TTY          STATUS      CMD[line break]301   ttys000      Done.       Initial Program Load [line break]323	  ttys000      [if the magpaper is applied]Done   [otherwise]Pending[end if].    Apply Ablative Enamel [line break]515   ttys000      [if the magpaper is ignited]Done   [otherwise]Pending[end if].    Ignite Fusion Reactor [line break]525   ttys000      [if the magpaper is landed]Done   [otherwise]Pending[end if].    Landing Sequence [line break]540	  ttys000      [if the magpaper is sent]Done   [otherwise]Pending[end if].    Send Probe Data[variable letter spacing]".
 
 Instead of taking the magpaper:
 	if the player is clueless:
@@ -636,17 +625,32 @@ After examining the old fridge for the first time:
 	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 	say "[metatext in metaspeak]";
 
-In the fridge is the white egg. It is an edible prop.  The clueless-name of the white egg is "white egg". The aware-name of the white egg is "helium-4 sphere".  The clueless-description of the white egg is "A big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy of super-chilled metallic Helium-4."
+In the fridge is the white egg. It is an edible prop.  The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The clueless-description of the white egg is "A big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy of super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy.
 
 The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range.
 
-The clueless-name of the range is "the range". The aware-name of the range is "fusion chamber". The clueless-description of the range is "The top of the glass range is flush with the kitchen counter. The surface of the stove is not glowing, indicating that it is not hot. The stove does not have an oven, but below the cooking surface, a drawer [if the drawer is closed]is flush with the kitchen counter[otherwise]hangs open[end if]." The aware-description of the range is "The majority of the engineering deck is occupied by the towering hulk of the industrial fusion reactor that powers the ship[apostrophe]s landing thrusters. The reactor core at the base of the fusion reactor is [if the drawer is closed]closed[otherwise]open[end if].[if the frying pan is on the range] It is illuminated from above by the faint plasma glow of a magnetic bottle which has formed at the focal point of multiple ignition lasers." [TODO: indicate if fusion has occurred or not. egg cooked or not]
+The clueless-name of the range is "the cooking range". Understand "cooking" as the range. The aware-name of the range is "fusion chamber". The clueless-description of the range is "The top of the glass range is flush with the kitchen counter. The surface of the stove is not glowing, indicating that it is not hot. The stove does not have an oven, but below the cooking surface, a drawer [if the drawer is closed]is flush with the kitchen counter[otherwise]hangs open[end if]." The aware-description of the range is "The majority of the engineering deck is occupied by the towering hulk of the industrial fusion reactor that powers the ship[apostrophe]s landing thrusters. The reactor core at the base of the fusion reactor is [if the drawer is closed]closed[otherwise]open[end if].[if the frying pan is on the range] It is illuminated from above by the faint plasma glow of a magnetic bottle which has formed at the focal point of multiple ignition lasers." [TODO: indicate if fusion has occurred or not. egg cooked or not] The range-proxy is an aware-proxy that is part of the range. Understand "fusion" and "chamber" as the range-proxy.
 
-A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers."
+A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
 
-The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep drawer under the cooking range. The drawer [if open]has been opened[otherwise]is shut[end if]."
+The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep [drawer] under [the range]. [The drawer][if open]has been opened[otherwise]is shut[end if]." The aware-description of the drawer is "[if the drawer is open]The closed [drawer] shields the engineering section of the ship from residual radiation[otherwise]With [the drawer] open, hard radiation bathes the engineering section[end if]." The drawer-proxy is an aware-proxy that is part of the drawer. Understand "reactor" and "core" and "shielding" and "shield" as the drawer-proxy. 
 
-The dog dish is a prop in the kitchen. The water trough and the food trough are bowls which are parts of the dog dish. The dog dish is proper-named. The clueless-name of the dog dish is "Rover's dog dish". The aware-name of the dog dish is "Rover's transfer device". The description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl  marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. Both are empty." [TODO: handle empty/full]
+The dog dish is a prop in the kitchen. The water trough and the food trough are bowls which are parts of the dog dish. The water trough and the food trough are privately-named. The clueless-name of the dog dish is "dog dish". The aware-name of the dog dish is "transfer device". The clueless-description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. [dog dish status]."  The aware-description of the dog dish is "A ROVER servicing unit with hoses and clamps for connecting fuel and coolant lines to the ROVER prior to field deployment. [dog dish status]."
+
+To say dog dish status:
+	If the water trough is full and the food trough is full:
+		say "Both [the water trough] and [the food trough] are full";
+	otherwise if the water trough is empty and the food trough are empty:
+		say "Both [the water trough] and [the food trough] are empty";
+	otherwise:
+		say "[The food trough][if the food trough is full]is full[otherwise]is empty[end if], but [the water trough] is [if the water trough is full]full[otherwise]empty[end if]".
+
+Understand "water" and "bowl" as the water trough. The clueless-name of the water trough is "water bowl". The aware-name of the water trough is "coolant reservoir". The clueless-description of the water trough is "[emptyness of the water trough]." The aware-description of the water trough is the "[emptyness of the water trough]." The water trough-proxy is an aware-proxy that is part of the water trough. Understand "coolant" and "line" and "reservoir" and "transfer" and "device" as the water trough-proxy.
+
+To say emptyness of (vessel - a bowl):
+	say "[The vessel] is [if the vessel is empty]empty[otherwise]full".
+
+Understand "food" and "bowl" as the food trough. The clueless-name of the food trough is "food bowl". The aware-name of the food trough is "fuel reservoir". The clueless-description of the food trough is "[emptyness  of the food trough]." The aware-description of the food trough is "[emptyness of the food trough]". The food trough-proxy is an aware-proxy that is part of the food trough. Understand "fuel" and "line" and "reservoir" and "transfer" and "device" as the food trough-proxy.
 
 The counter is an enterable furniture in the kitchen.[do not increment this counter] The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber."
 
