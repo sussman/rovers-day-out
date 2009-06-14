@@ -23,6 +23,9 @@ Enroute is a truth state that varies. Enroute is false. [en route is a flag that
 Aware-references is a number that varies. Aware-references is 1.
 [Tracks the number of times, up to 3, that the ACU has referred to objects by their aware-names. Used to switch between David/Janet comments]
 
+Dream index is a number that varies. Dream index is 1.
+[points to the next dream]
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -339,7 +342,11 @@ After printing the banner text:
 	say paragraph break;
 	wait for any key;
 	clear the screen;
-	say "[ACU Boot Banner]".	
+	say "[ACU Boot Banner]";
+	dream;
+	let metatext be "David: You have some weird dreams.[line break]Janet: You can't hold me responsible for the subconscious ramblings of the ACU.";
+	say "[metatext in metaspeak]";
+	beep.
 	
 To Save the World: [programmatically store inital state of class properties]
 	Repeat with selection running through persons:
@@ -1102,7 +1109,8 @@ Every turn:
 		change the command prompt to "READY>";
 	otherwise:
 		change the command prompt to ">";
-
+	[avoid penalizing time for non-actions, a nuance]
+	if the current action is taking inventory or the current action is looking:		change the time of day to 1 minute before the time of day.
 
 
 [	say "action: [current action][line break]"; 
@@ -1117,17 +1125,44 @@ Book 2  Scenes
 Chapter Bedtime
 
 Bedtime is a recurring scene. Bedtime begins when play begins. Bedtime ends when the player is not enclosed by the futon. 
+
+When Bedtime begins:
+	now the player is groggy.
+	
+Every turn during Bedtime:
+	beep.
 	
 When Bedtime ends:
 	move the alarm clock to Limbo;
 	say "Rover bats the alarm clock off the bed.".
+	
+Instead of doing something other than waiting, looking, listening, examining, exiting, getting off, touching, waking or memory-updating during Bedtime:
+	say "Default block of action text";
+	say paragraph break;
+	
+Instead of looking for the first time during bedtime:
+	do nothing. [to avoid the room description at the start of bedtime, to convey the sense that the beeping of the alarm clock is waking the player].
+	
+Instead of looking for the less than sixth time during bedtime:
+	say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]So loud. Stop the beeping. Evil beeping alarm clock[stopping]."
 
 After exiting when a bed encloses the ACU:
 	now the player is alert.	
+	
+To dream:
+	say description in row dream index of the Table of Dreams;
+	say paragraph break;
+	wait for any key;
+	clear the screen.
+	
+To beep:
+	say "<beep> <beep> <beep>";
+	say line break.
 
 Chapter First Sim
 
 First Sim is a scene. First Sim begins when play begins. First Sim ends when the black plate is switched on for the first time.
+
 
 When First Sim ends:
 	try BSODing;
@@ -1138,6 +1173,8 @@ When First Sim ends:
 	now the irradiator is patched;
 	now the current memory usage is 260;
 	now load average is 256;
+	
+
 	
 
 Chapter Second Sim
