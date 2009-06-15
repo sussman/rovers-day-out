@@ -343,10 +343,10 @@ After printing the banner text:
 	wait for any key;
 	clear the screen;
 	say "[ACU Boot Banner]";
-	dream;
+	try dreaming;
 	let metatext be "David: You have some weird dreams.[line break]Janet: You can't hold me responsible for the subconscious ramblings of the ACU.";
 	say "[metatext in metaspeak]";
-	beep.
+	try beeping.
 	
 To Save the World: [programmatically store inital state of class properties]
 	Repeat with selection running through persons:
@@ -554,9 +554,9 @@ The flight suit is a wearable prop. The ACU wears the flight suit. Understand "f
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. 
 
-The alarm clock is furniture on the futon.  The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" and "transgressor" as the alarm clock-proxy.  
+The alarm clock is furniture on the futon.  The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" and "transgressor" as the alarm clock-proxy.  
 
-The clueless-name of the button is "button". The aware-name of the button is "mf toggle".  The clueless-description of the button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle." The button-proxy is an aware-proxy that is part of the button. Understand "mf" and "magno-fluctuator" and "toggle" as the button-proxy.
+The clueless-name of the large button is "large button". The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" and "magno-fluctuator" and "toggle" as the large button-proxy.
 
 After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
@@ -1125,45 +1125,89 @@ Book 2  Scenes
 
 Chapter Bedtime
 
-Bedtime is a recurring scene. Bedtime begins when play begins. Bedtime ends when the player is not enclosed by the futon. 
+Bedtime is a recurring scene. Bedtime begins when the player is asleep. Bedtime ends when the player is not enclosed by the futon. 
+
+[unfortunately, there is no way to "locally" zero the scene, so that you could, for instance, "look for the first time" during the first simulation and again during the second simulation]
+
+Bedtime-did-look is a number that varies.
+Bedtime-did-examine-flight-suit is a truth state that varies.
+Bedtime-did-examine-player is a truth state that varies.
+Bedtime-did-take-inventory is a truth state that varies.
+Bedtime-did-examine-alarm-clock is a truth state that varies.
+
+To ResetBedtime:
+	now Bedtime-did-look is 0;
+	now Bedtime-did-examine-flight-suit is false;
+	now Bedtime-did-examine-player is false;
+	now Bedtime-did-take-inventory is false;	
+	now Bedtime-did-examine-alarm-clock is false.
+	
 
 When Bedtime begins:
+	ResetBedTime;
 	now the player is groggy.
 	
 Every turn during Bedtime:
-	beep.
+	try beeping;
+	if a random chance of 1 in 12 succeeds:
+		say "[one of]Rover howls; clearly, he is not very fond of the alarm clock either[or]From somewhere in the cottage, Rover sneezes loudly to let you know that he's annoyed by the alarm clock[or]Rover scratches at the side of the futon[or]Rover tip-taps loudly across the living room floor[at random].";
 	
 When Bedtime ends:
+	now the player is alert;
 	move the alarm clock to Limbo;
 	say "Rover bats the alarm clock off the bed.".
 	
-Instead of doing something other than waiting, looking, listening, examining, exiting, getting off, touching, waking or memory-updating during Bedtime:
+Instead of examining the player when the Bedtime-did-examine-player is false during bedtime:
+	now Bedtime-did-examine-player is true;
+	say "Laying down. Wearing pajamas. That's all the description you can handle at this time in the morning." 
+	
+Instead of taking inventory when Bedtime-did-take-inventory is false during bedtime:
+	now Bedtime-did-take-inventory is true;
+	say "You are carrying nothing, which is more often than not the case when you wake up most days."
+	
+Instead of examining the flight suit when the Bedtime-did-examine-flight-suit is false during bedtime:
+	now Bedtime-did-examine-flight-suit is true;
+	say "Actually, you are wearing a plain blue flight suit just like the one that pilots wear. There is some writing on the right breast pocket, but you can't make it out in this light."
+	
+Instead of examining the alarm clock when Bedtime-did-examine-alarm-clock is false during bedtime:
+	now Bedtime-did-examine-alarm-clock is true;
+	say "Alarm clock. That annoying alarm clock. The alarm clock is beeping." 
+	
+Understand "pajama" and "pajamas" as the flight suit when bedtime is happening.	
+
+Instead of doing something other than beeping, dreaming, waiting, looking, listening, examining, exiting, getting off, pushing, touching, waking up, memory-updating, or taking inventory during Bedtime:
 	say "Default block of action text";
 	say paragraph break;
 	
-Instead of looking for the first time during bedtime:
+Instead of looking when Bedtime-did-look is zero during First Sim:
+	now Bedtime-did-look is Bedtime-did-look plus one;
 	do nothing. [to avoid the room description at the start of bedtime, to convey the sense that the beeping of the alarm clock is waking the player].
 	
-Instead of looking for the less than sixth time during bedtime:
-	say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]So loud. Stop the beeping. Evil beeping alarm clock[stopping]."
-
-After exiting when a bed encloses the ACU:
-	now the player is alert.	
+Instead of looking when Bedtime-did-look is zero during Second Sim:
+	now Bedtime-did-look is Bedtime-did-look plus one;
+	do nothing. [to avoid the room description at the start of bedtime, to convey the sense that the beeping of the alarm clock is waking the player].
 	
-To dream:
+Instead of looking when Bedtime-did-look is less than five during bedtime:
+	now Bedtime-did-look is Bedtime-did-look plus one;
+	say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]Evil, evil beeping alarm clock. So loud. Stop the beeping[stopping]."
+	
+Dreaming is an action applying to nothing.
+	
+Carry out dreaming:
 	say description in row dream index of the Table of Dreams;
 	say paragraph break;
 	wait for any key;
 	clear the screen.
+
+Beeping is an action applying to nothing.
 	
-To beep:
+Carry out beeping:
 	say "<beep> <beep> <beep>";
 	say line break.
 
 Chapter First Sim
 
 First Sim is a scene. First Sim begins when play begins. First Sim ends when the black plate is switched on for the first time.
-
 
 When First Sim ends:
 	try BSODing;
@@ -1174,19 +1218,17 @@ When First Sim ends:
 	now the irradiator is patched;
 	now the current memory usage is 260;
 	now load average is 256;
-	
-
-	
 
 Chapter Second Sim
 
 Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim ends when the front door is open for the first time.
 
 When Second Sim begins:
-	say "[ACU Boot Banner]";
 	Restore the World;
-	Setup the World.
-
+	Setup the World;
+	clear the screen;
+	say "[ACU Boot Banner]".
+	
 When Second Sim ends:
 	Restore the World;
 	[description of waking up again]
