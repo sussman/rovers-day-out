@@ -1130,6 +1130,7 @@ Bedtime is a recurring scene. Bedtime begins when the player is asleep. Bedtime 
 [unfortunately, there is no way to "locally" zero the scene, so that you could, for instance, "look for the first time" during the first simulation and again during the second simulation]
 
 Bedtime-did-look is a number that varies.
+Bedtime-did-examine-button is a truth state that varies.
 Bedtime-did-examine-flight-suit is a truth state that varies.
 Bedtime-did-examine-player is a truth state that varies.
 Bedtime-did-take-inventory is a truth state that varies.
@@ -1137,6 +1138,7 @@ Bedtime-did-examine-alarm-clock is a truth state that varies.
 
 To ResetBedtime:
 	now Bedtime-did-look is 0;
+	now Bedtime-did-examine-button is false;
 	now Bedtime-did-examine-flight-suit is false;
 	now Bedtime-did-examine-player is false;
 	now Bedtime-did-take-inventory is false;	
@@ -1157,6 +1159,15 @@ When Bedtime ends:
 	move the alarm clock to Limbo;
 	say "Rover bats the alarm clock off the bed.".
 	
+Instead of doing something other than beeping, dreaming, waiting, looking, listening, examining, exiting, getting off, pushing, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
+	say "Default block of action text";
+	say paragraph break;
+	
+Instead of examining the large button when the Bedtime-did-examine-button is false:
+	now Bedtime-did-examine-button is true;
+	let metatext be "David: You could use a new alarm clock.[line break]Janet: You could increase my salary.";
+	say "[metatext in metaspeak]."
+
 Instead of examining the player when the Bedtime-did-examine-player is false during bedtime:
 	now Bedtime-did-examine-player is true;
 	say "Laying down. Wearing pajamas. That's all the description you can handle at this time in the morning." 
@@ -1167,29 +1178,32 @@ Instead of taking inventory when Bedtime-did-take-inventory is false during bedt
 	
 Instead of examining the flight suit when the Bedtime-did-examine-flight-suit is false during bedtime:
 	now Bedtime-did-examine-flight-suit is true;
-	say "Actually, you are wearing a plain blue flight suit just like the one that pilots wear. There is some writing on the right breast pocket, but you can't make it out in this light."
+	say "Actually, you are wearing a plain blue flight suit just like the one that pilots wear."
 	
 Instead of examining the alarm clock when Bedtime-did-examine-alarm-clock is false during bedtime:
 	now Bedtime-did-examine-alarm-clock is true;
 	say "Alarm clock. That annoying alarm clock. The alarm clock is beeping." 
 	
 Understand "pajama" and "pajamas" as the flight suit when bedtime is happening.	
-
-Instead of doing something other than beeping, dreaming, waiting, looking, listening, examining, exiting, getting off, pushing, touching, waking up, memory-updating, or taking inventory during Bedtime:
-	say "Default block of action text";
-	say paragraph break;
 	
 Instead of looking when Bedtime-did-look is zero during First Sim:
 	now Bedtime-did-look is Bedtime-did-look plus one;
 	do nothing. [to avoid the room description at the start of bedtime, to convey the sense that the beeping of the alarm clock is waking the player].
 	
-Instead of looking when Bedtime-did-look is zero during Second Sim:
-	now Bedtime-did-look is Bedtime-did-look plus one;
-	do nothing. [to avoid the room description at the start of bedtime, to convey the sense that the beeping of the alarm clock is waking the player].
-	
 Instead of looking when Bedtime-did-look is less than five during bedtime:
 	now Bedtime-did-look is Bedtime-did-look plus one;
-	say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]Evil, evil beeping alarm clock. So loud. Stop the beeping[stopping]."
+	if the player is not enclosed by the bed: 
+		do nothing;[suppresses the "look" after the player is moved to the living rm]
+	otherwise:
+		say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]Evil, evil beeping alarm clock. So loud. Stop the beeping[stopping]."
+		
+After dreaming when the dream index is 3 and First Sim is happening:
+	let metatext be "David: Do you always hit the snooze button so many times?[line break]Janet: Yeah. That[apostrophe]s why the alarm is set so early -- I don't have to be at the spaceport until 08:30. It serves its purpose in the simulation, though. Minimal resources are expended on each wake cycle, but if there were a problem during the approach, the ACU would elevate to full op status rapidly.[line break]David: I don[apostrophe]t really make that expression do I? I looked pouty.[line break]Janet: All the time, but I like the word [quotation mark]petulant[quotation mark] better than [quotation mark]pouty[quotation mark].[line break]David: I’ll stick with pouty.";
+	say "[metatext in metaspeak]".
+	
+After dreaming when the dream index is 6 and the Second Sim is happening:
+	let metatext be "David: That was surreal.[line break]Janet: And sometimes a cigar is just a cigar.[line break]David: Indeed.";
+	say "[metatext in metaspeak]".
 	
 Dreaming is an action applying to nothing.
 	
@@ -1204,6 +1218,31 @@ Beeping is an action applying to nothing.
 Carry out beeping:
 	say "<beep> <beep> <beep>";
 	say line break.
+	
+Snoozing is an action applying to nothing.
+
+Understand "snooze" as snoozing.
+
+Understand "sleep" as snoozing when bedtime is happening.
+
+Check snoozing:
+	if (the dream index is 3 and First Sim is happening)
+		 or (the dream index is 6 and Second Sim is happening):
+		try rude-awakening instead. 
+
+Carry out snoozing:
+	now dream index is dream index + 1;
+	clear the screen;
+	try dreaming.
+	
+Instead of snoozing when bedtime is not happening:
+	say "You're too wired to snooze!"
+	
+Rude-awakening is an action applying to nothing.
+
+Carry out rude-awakening:
+	say "rude awakening!!!!";
+	move the player to the living room.
 
 Chapter First Sim
 
