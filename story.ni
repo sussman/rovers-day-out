@@ -556,7 +556,7 @@ The insignia is part of the flight suit. The clueless-description of the insigni
 
 The alarm clock is furniture on the futon.  The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" and "transgressor" as the alarm clock-proxy.  
 
-The clueless-name of the large button is "large button". The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" and "magno-fluctuator" and "toggle" as the large button-proxy.
+The clueless-name of the large button is "large button". Understand "snoo" or "snooze" as the large button. The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magno-fluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" and "magno-fluctuator" and "toggle" as the large button-proxy.
 
 After examining the alarm clock for the second time:
 	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
@@ -1162,11 +1162,6 @@ When Bedtime ends:
 Instead of doing something other than beeping, dreaming, waiting, looking, listening, examining, exiting, getting off, pushing, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
 	say "Default block of action text";
 	say paragraph break;
-	
-Instead of examining the large button when the Bedtime-did-examine-button is false:
-	now Bedtime-did-examine-button is true;
-	let metatext be "David: You could use a new alarm clock.[line break]Janet: You could increase my salary.";
-	say "[metatext in metaspeak]."
 
 Instead of examining the player when the Bedtime-did-examine-player is false during bedtime:
 	now Bedtime-did-examine-player is true;
@@ -1197,6 +1192,19 @@ Instead of looking when Bedtime-did-look is less than five during bedtime:
 	otherwise:
 		say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]Evil, evil beeping alarm clock. So loud. Stop the beeping[stopping]."
 		
+Instead of taking the alarm clock during bedtime:
+	say "[one of]You reach clumsily in the general direction of the alarm clock and graze the over-sized snooze button[or]You fumble with the alarm clock and accidentally push the snooze button[or]In your early morning stupor, you squeeze the alarm clock like a water melon pit, sending it even nearer to the edge of the bed and incidentally hitting the snooze button[or]You poke the clock smartly in the middle of the snooze button[or]The alarm clock tumbles off the bed, and catch it before hits the ground. Setting it back on the bed, you depress the snooze button[or]A dalmation paw beats you to the alarm clock and scrapes the snooze button before you even have a chance to accidentally do it yourself[at random].";
+	try snoozing.
+	
+After examining the large button when the Bedtime-did-examine-button is false:
+	now Bedtime-did-examine-button is true;
+	let metatext be "David: You could use a new alarm clock.[line break]Janet: You could increase my salary.";
+	say "[metatext in metaspeak]".
+	
+After dreaming when the dream index is 2 and the First Sim is happening:
+	let metatext be "David: The ACU certainly has that dog on its mind.[line break]Janet: Well, I do think about Rover a lot. Besides, the Rover is central to the mission, so a lot of the code is dedicated to the Rover.[line break]David: Was that what it was like?[line break]Janet: Yes, that was the last day of War of Independence.";
+	say "[metatext in metaspeak]".
+		
 After dreaming when the dream index is 3 and First Sim is happening:
 	let metatext be "David: Do you always hit the snooze button so many times?[line break]Janet: Yeah. That[apostrophe]s why the alarm is set so early -- I don't have to be at the spaceport until 08:30. It serves its purpose in the simulation, though. Minimal resources are expended on each wake cycle, but if there were a problem during the approach, the ACU would elevate to full op status rapidly.[line break]David: I don[apostrophe]t really make that expression do I? I looked pouty.[line break]Janet: All the time, but I like the word [quotation mark]petulant[quotation mark] better than [quotation mark]pouty[quotation mark].[line break]David: I’ll stick with pouty.";
 	say "[metatext in metaspeak]".
@@ -1204,14 +1212,23 @@ After dreaming when the dream index is 3 and First Sim is happening:
 After dreaming when the dream index is 6 and the Second Sim is happening:
 	let metatext be "David: That was surreal.[line break]Janet: And sometimes a cigar is just a cigar.[line break]David: Indeed.";
 	say "[metatext in metaspeak]".
+
+Instead of attacking the large button during bedtime:
+	try pushing the large button.
+
+Instead of pushing the large button during bedtime:
+	say must have more sleep;
+	try snoozing.
+	
+To say must have more sleep:
+	say "[one of]With as much coordination as you can muster in the morning, you brush your fingers over the snooze button[or]Your fingers drum reflexively against the snooze button[or]The snooze button clicks[or]The weight of your hand lands on the snooze button[or]You press the snooze button[at random].".
 	
 Dreaming is an action applying to nothing.
 	
 Carry out dreaming:
 	say description in row dream index of the Table of Dreams;
 	say paragraph break;
-	wait for any key;
-	clear the screen.
+	wait for any key.
 
 Beeping is an action applying to nothing.
 	
@@ -1232,7 +1249,6 @@ Check snoozing:
 
 Carry out snoozing:
 	now dream index is dream index + 1;
-	clear the screen;
 	try dreaming.
 	
 Instead of snoozing when bedtime is not happening:
