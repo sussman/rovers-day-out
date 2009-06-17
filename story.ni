@@ -328,8 +328,10 @@ Report resetting:
 Chapter Initialize
 
 When play begins:
+	[recurrent setup]	
 	Save the World;
 	Setup the World;
+	[display setup]
 	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
 	
@@ -546,7 +548,7 @@ The clueless-name of the belly is "belly". Understand "stomach" and "chest" as b
 
 The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." The body-proxy is an aware-proxy that is part of the body. Understand "superstructure" as body-proxy.
 
-The clueless-name of the giblets is "parts". Understand "eye" and "eyes" and "ear" and "ears" and "nose" and "neck" and "hair" and "shoulder" and "shoulders" and "groin" and "buttocks" and "leg" and "legs" and and "left" and "right" and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the parts is "Software and hardware components serving multiple functions." Understand "subsystem" and "component" and "hardware" and "software" as the body-proxy.
+The clueless-name of the giblets is "parts". Understand "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the parts is "Software and hardware components serving multiple functions." Understand "subsystem" and "component" and "hardware" and "software" as the body-proxy.
 
 Audio is a device which is part of the ACU. The aware-name of Audio is "Internal Microphones". Audio is switched off.
 
@@ -595,6 +597,12 @@ To say front door status:
 			say "You can see light from inside the house, and the smell of home wafts out the front door";
 		otherwise:
 			say "Outside, it looks like a nice day".  
+
+Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
+
+The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's[otherwise]You're[end if] a big, happy dalmation."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the space probe] He is chewing a piece of the Musashi-5 space probe[end if]." The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
+
+Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
 Section Kitchen
 
@@ -674,12 +682,6 @@ The clueless-name of the dog food is "dog food". Understand "kibble" and "kibble
 The reward nuggets box is an open not openable container. The carrying capacity of the reward nuggets box is 1. The reward nuggets box contains some dog treats. 
 
 The clueless-name of the reward nuggets box is "box of dog treats". The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "neural" and "net" and "reinforcement" and "token" as the reward nuggets box-proxy.
-
-Rover is a male animal in the Kitchen. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
-
-The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's[otherwise]You're[end if] a big, happy dalmation."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the space probe] He is chewing a piece of the Musashi-5 space probe[end if]." The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
-
-Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
 The kitchen floor is a privately-named scenery supporter in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder" and "girders" and "strut" and "struts" and "mesh" and "metal" and "hull" and "inner" as the kitchen floor-proxy.
 
@@ -1130,6 +1132,7 @@ Bedtime is a recurring scene. Bedtime begins when the player is asleep. Bedtime 
 [unfortunately, there is no way to "locally" zero the scene, so that you could, for instance, "look for the first time" during the first simulation and again during the second simulation]
 
 Bedtime-did-look is a number that varies.
+Bedtime-dream-sequence-complaint is a truth state that varies. Bedtime-dream-sequence-complaint is false.
 Bedtime-did-examine-button is a truth state that varies.
 Bedtime-did-examine-flight-suit is a truth state that varies.
 Bedtime-did-examine-player is a truth state that varies.
@@ -1138,12 +1141,12 @@ Bedtime-did-examine-alarm-clock is a truth state that varies.
 
 To ResetBedtime:
 	now Bedtime-did-look is 0;
+	[note: bedtime-dream-sequence-complaint is not reset]
 	now Bedtime-did-examine-button is false;
 	now Bedtime-did-examine-flight-suit is false;
 	now Bedtime-did-examine-player is false;
 	now Bedtime-did-take-inventory is false;	
 	now Bedtime-did-examine-alarm-clock is false.
-	
 
 When Bedtime begins:
 	ResetBedTime;
@@ -1152,12 +1155,16 @@ When Bedtime begins:
 Every turn during Bedtime:
 	try beeping;
 	if a random chance of 1 in 12 succeeds:
-		say "[one of]Rover howls; clearly, he is not very fond of the alarm clock either[or]From somewhere in the cottage, Rover sneezes loudly to let you know that he's annoyed by the alarm clock[or]Rover scratches at the side of the futon[or]Rover tip-taps loudly across the living room floor[at random].";
+		say "[one of]Rover howls; clearly, he is not very fond of the alarm clock either[or]From somewhere in the cottage, Rover sneezes loudly to let you know that he's annoyed by the alarm clock[or]Rover scratches at the side of the futon[or]Rover tip-taps loudly across the living room floor[or]Rover is licking your right arm with gusto. Either you really taste good or he really wants you to get up. Rover tugs on your arm[at random].";
 	
 When Bedtime ends:
 	now the player is alert;
-	move the alarm clock to Limbo;
-	say "Rover bats the alarm clock off the bed.".
+	if dream index is greater than one and bedtime-dream-sequence-complaint is false:
+		let metatext be "David: Thank you. I can only take so many dream sequences.[line break]Janet: No problem. So, at this point, the Valkyrie would be at the edge of the probe's stellar system, and ready to switch over from Casimir to Condensate Drive and begin the approach.";
+		say "[metatext in metaspeak]";
+	if First Sim is happening:
+		now arm-numb is 1.
+
 	
 Instead of doing something other than beeping, dreaming, waiting, looking, listening, examining, exiting, getting off, pushing, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
 	say "Default block of action text";
@@ -1192,9 +1199,11 @@ Instead of looking when Bedtime-did-look is less than five during bedtime:
 	otherwise:
 		say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]Evil, evil beeping alarm clock. So loud. Stop the beeping[stopping]."
 		
-Instead of taking the alarm clock during bedtime:
-	say "[one of]You reach clumsily in the general direction of the alarm clock and graze the over-sized snooze button[or]You fumble with the alarm clock and accidentally push the snooze button[or]In your early morning stupor, you squeeze the alarm clock like a water melon pit, sending it even nearer to the edge of the bed and incidentally hitting the snooze button[or]You poke the clock smartly in the middle of the snooze button[or]The alarm clock tumbles off the bed, and catch it before hits the ground. Setting it back on the bed, you depress the snooze button[or]A dalmation paw beats you to the alarm clock and scrapes the snooze button before you even have a chance to accidentally do it yourself[at random].";
+Instead of taking the alarm clock during Bedtime:
+	say "[one of]You reach clumsily in the general direction of the alarm clock and graze the over-sized snooze button[or]You fumble with the alarm clock and accidentally push the snooze button[or]In your early morning stupor, you squeeze the alarm clock like a water melon pit, sending it even nearer to the edge of the bed and incidentally hitting the snooze button[or]You poke the clock smartly in the middle of the snooze button[or]The alarm clock tumbles off the bed, but you catch it before it hits the ground. Setting it back on the bed, you depress the snooze button[or]A dalmation paw beats you to the alarm clock and scrapes the snooze button before you even have a chance to accidentally do it yourself[at random].";
 	try snoozing.
+	
+Instead of switching on or switching off the alarm clock during Bedtime, try taking the alarm clock.
 	
 After examining the large button when the Bedtime-did-examine-button is false:
 	now Bedtime-did-examine-button is true;
@@ -1213,13 +1222,20 @@ After dreaming when the dream index is 6 and the Second Sim is happening:
 	let metatext be "David: That was surreal.[line break]Janet: And sometimes a cigar is just a cigar.[line break]David: Indeed.";
 	say "[metatext in metaspeak]".
 
-Instead of attacking the large button during bedtime:
+Instead of attacking, touching, switching on, or switching off the large button during bedtime:
 	try pushing the large button.
 
 Instead of pushing the large button during bedtime:
 	say must have more sleep;
 	try snoozing.
 	
+Instead of waking up during bedtime:
+	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral behind the futon. Oh well, you can dig it out tonight. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
+	move the player to the living room.
+	
+Instead of getting off during bedtime:
+	try waking up instead.
+		
 To say must have more sleep:
 	say "[one of]With as much coordination as you can muster in the morning, you brush your fingers over the snooze button[or]Your fingers drum reflexively against the snooze button[or]The snooze button clicks[or]The weight of your hand lands on the snooze button[or]You press the snooze button[at random].".
 	
@@ -1257,9 +1273,43 @@ Instead of snoozing when bedtime is not happening:
 Rude-awakening is an action applying to nothing.
 
 Carry out rude-awakening:
-	say "rude awakening!!!!";
+	say "As you reach for the alarm clock, your excited dog deftly bats it off the cushion with his tail. The clock tumbles behind your futon and thuds smartly as it hits the floor, ending the beeping. Rover looks puzzled that the noise has stopped.[paragraph break]Realizing that without the alarm clock you would probably sleep through the entire day, you reluctantly get out of bed.";
 	move the player to the living room.
+	
+Chapter Arm Hurts
 
+Arm Hurts is a scene. Arm Hurts begins when Arm-numb is one.
+
+Arm-numb is a number that varies. Arm-numb is zero.
+
+Arm Hurts ends when arm-numb is zero.
+
+When Arm Hurts begins:
+	say "As you get out of bed, you notice that your left arm is numb -- must have been the way you were sleeping."
+
+Every turn during Arm Hurts:
+	now Arm-numb is Arm-numb plus one;
+	if Arm-numb is greater than 36:
+		say "The pain in your left arm is so strong that you can think of little else!";
+	otherwise if Arm-numb is greater than 24:
+		if a random chance of 1 in 2 succeeds:
+			say "[one of]Your left arm is rather painful[or]You are unconfortable; your left arm hurts[or]Something is not at all right with your left arm, it feels alternately numb and painful[at random]";
+	otherwise if Arm-numb is greater than 12:
+		if a random chance of 1 in 3 succeeds:
+			say "[one of]Your left arm is bothering you[or]You feel sharp little pains in your left arm, like little pin pricks[or]Your left arm is smarting a bit[at random]";
+	otherwise if Arm-numb is greater than 2:
+		if a random chance of 1 in 4 succeeds:
+			say "[one of]Your left arm is all pins and needles[or]Your left arm feels weird[or]There is a strange, electrical sensation running up and down your left arm[or]You left arm feels strange. Not quite itchy, not quite painful[at random].";
+
+Understand "scratch [something]" as rubbing.
+
+Instead of rubbing the left arm during Arm Hurts :
+	now arm-numb is zero;
+	say "Ooooo. Ahhhh...slowly, the sensation returns in your left arm. That feels [italic type]so[roman type] good.";
+	let metatext be "David: Is the the gimbal lock part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
+	say "[metatext in metaspeak]".
+
+				
 Chapter First Sim
 
 First Sim is a scene. First Sim begins when play begins. First Sim ends when the black plate is switched on for the first time.
@@ -1273,7 +1323,7 @@ When First Sim ends:
 	now the irradiator is patched;
 	now the current memory usage is 260;
 	now load average is 256;
-
+	
 Chapter Second Sim
 
 Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim ends when the front door is open for the first time.
