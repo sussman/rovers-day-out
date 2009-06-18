@@ -516,6 +516,22 @@ Section Going Walkies
 
 Chapter The Valkyrie
 
+David-proxy is a backdrop. David-proxy is everywhere. The description of David-proxy is "x". David-proxy is privately-named. Understand "David" and "Venkatachalam" and "boss" and "director" as David-proxy. The aware-name of David-proxy is "Authority".
+
+David-mentioned is a number that varies. David-mentioned is zero.
+
+Instead of doing something when the noun is David-proxy:
+	[ok as a general rule since david-proxy is hidden away after the simulations]
+	now David-mentioned is David-mentioned plus one;
+	say "Your boss isn't here.";
+	if David-mentioned is one:
+		let metatext be "David: Why would it expect to see me in your cottage?[line break]Janet: Probably a random association.[line break]David: Do you think the ACU can hear us talking?[line break]Janet: That’s a philosophical issue. It has sound sensors, and they might be on, but it’s all bits. Bits in, bits out. I don’t think you could say that it really hears us in any meaningful way.";
+		say "[metatext in metaspeak]";
+	otherwise if David-mentioned is two:
+		let metatext be "David: Again, about me![line break]Janet: Whoa Nelly, let[apostrophe]s reign in that ego, cowboy. ";
+		say "[metatext in metaspeak]";
+	do nothing.
+		
 Section Living Room
  
 The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and The Shower are simrooms in the Valkyrie Area.
@@ -1286,6 +1302,10 @@ Arm Hurts ends when arm-numb is zero.
 
 When Arm Hurts begins:
 	say "As you get out of bed, you notice that your left arm is numb -- must have been the way you were sleeping."
+	
+When Arm Hurts ends:
+	let metatext be "David: Is the the gimbal lock part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
+	say "[metatext in metaspeak]".
 
 Every turn during Arm Hurts:
 	now Arm-numb is Arm-numb plus one;
@@ -1301,13 +1321,26 @@ Every turn during Arm Hurts:
 		if a random chance of 1 in 4 succeeds:
 			say "[one of]Your left arm is all pins and needles[or]Your left arm feels weird[or]There is a strange, electrical sensation running up and down your left arm[or]You left arm feels strange. Not quite itchy, not quite painful[at random].";
 
+Instead of doing something during Arm Hurts:
+	if arm-numb is greater than 36:
+		if the noun is left arm and the current action is examining, rubbing, or touching:
+			continue the action;
+		otherwise if the current action is memory-updating or waving hands:
+			continue the action;
+		otherwise:
+			say "You can't! Your arm hurts too much. [run paragraph on]";
+	otherwise:
+		continue the action.
+		
+Instead of waving hands during Arm Hurts:
+	say "You flail your left arm back and forth, slowly restoring feeling. [if arm-numb is greater than 30]It's a great relief![otherwise if arm-numb is greater than 20]That's much, much better[otherwise if arm-numb is greater than 10]Ah, the tingling has gone away.[otherwise]That did the trick. Your left arm is back to its old, frisbee-throwing self[end if]."; 
+	now arm-numb is zero.
+
 Understand "scratch [something]" as rubbing.
 
 Instead of rubbing the left arm during Arm Hurts :
 	now arm-numb is zero;
-	say "Ooooo. Ahhhh...slowly, the sensation returns in your left arm. That feels [italic type]so[roman type] good.";
-	let metatext be "David: Is the the gimbal lock part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
-	say "[metatext in metaspeak]".
+	say "Ooooo. Ahhhh...slowly, the sensation returns in your left arm. That feels [italic type]so[roman type] good.".
 
 				
 Chapter First Sim
@@ -1338,7 +1371,7 @@ When Second Sim ends:
 	Restore the World;
 	[description of waking up again]
 	Setup the World;
-	
+	now the David-proxy is in Limbo.
 
 Chapter Real Thing
 	
