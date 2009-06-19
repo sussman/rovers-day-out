@@ -661,6 +661,15 @@ Instead of closing the drapes:
 		say "It would be too dark to move around if you close the drapes and you’d risk falling back to sleep. You reconsider and leave the drapes open.";
 	otherwise:
 		say "They are as closed as they're going to get."
+		
+Instead of examining when the player is in the living room and the drapes are closed:
+	if the noun is the player or the noun is the futon, or the noun is the mattress, or the noun is the frame, or the noun is the drapes or the noun is the flight suit:
+		continue the action;
+	otherwise:
+		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping].";
+	
+Instead of going towards when the player is in the living room and the drapes are closed:
+	say "It's too dark to move around much.[if a random chance of 1 in 20 succeeds] Grues and all that, you know."
 
 The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" and "bay" and "floor" as the cargo bay floor-proxy.
 
@@ -966,13 +975,13 @@ There are some gunships. They are scenery. The description of the gunships is "A
 
 The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
 		
-Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". 
+Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
 The park is scenery in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors." The clueless-name of the park is "park". The aware-name of the park is "viewer".
 
-Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer".
+Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer". Understand "orange" and "lawn" and "luscious" as the grass.
 
-There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park." The clueless-name of the spruce trees is "spruce trees". The aware-name of the spruce trees is "viewer".
+There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park." The clueless-name of the spruce trees is "spruce trees". The aware-name of the spruce trees is "viewer". Understand "Norwegian" as the spruce trees.
 
 Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gunships, the window, and the spruce trees are in Limbo.
 
@@ -1310,6 +1319,7 @@ Instead of pushing the large button during bedtime:
 	
 Instead of waking up during bedtime:
 	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral behind the futon. Oh well, you can dig it out tonight. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
+	move the alarm clock to Limbo;
 	move the player to the living room.
 	
 Instead of getting off during bedtime:
@@ -1353,8 +1363,15 @@ Rude-awakening is an action applying to nothing.
 
 Carry out rude-awakening:
 	say "As you reach for the alarm clock, your excited dog deftly bats it off the cushion with his tail. The clock tumbles behind your futon and thuds smartly as it hits the floor, ending the beeping. Rover looks puzzled that the noise has stopped.[paragraph break]Realizing that without the alarm clock you would probably sleep through the entire day, you reluctantly get out of bed.";
+	move the alarm clock to Limbo;
 	move the player to the living room.
 	
+Instead of listening during bedtime:
+	say "You hear a little something like...".
+	
+Instead of searching or looking under the futon:
+	say "It's too early to delve into the dust-bunny infested recesses of the futon. Certainly not before some strong coffee."
+
 Chapter Arm Hurts
 
 Arm Hurts is a scene. Arm Hurts begins when Arm-numb is one.
