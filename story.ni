@@ -242,6 +242,69 @@ Before going a direction (called the way):
 		say "Woof?";
 	rule succeeds;
 	
+Futon-block is a number that varies. Futon-block is zero.
+
+Instead of going towards when the player is in the living room and the futon is not folded:
+	now futon-block is futon-block plus one;
+	say "You can't really move around much because of the futon. It takes up a lot of room.";
+	if futon-block is one:
+		let metatext be "David: Isn't that a tad inconvenient?[line break]Janet: Yeah, but it kind of made sense when I got it.";
+		say "[metatext in metaspeak] ";
+	otherwise if futon-block is two and Second Sim is happening:
+		let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
+		say "[metatext in metaspeak]". 
+		
+Section Folding and Unfolding
+
+Folding is an action applying to one thing. Understand "fold [something]" as folding. Understand "fold up [something]" as folding. Understand "collapse [something]" as folding.  
+
+Check folding:
+	say "You can't fold [the noun]."
+	
+Instead of folding the futon:
+	if the futon is folded:
+		say "It's already as small as it gets.";
+	otherwise if the futon encloses the player:
+		say "That would be painful.";
+	otherwise:
+		now the futon is folded;
+		say "With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage."
+	
+Unfolding is an action applying to one thing. Understand "unfold [something]" as unfolding.
+
+Check unfolding:
+	say "[The noun] is not something you can just go around unfolding."
+	
+Instead of unfolding the futon:
+	if the futon is not folded:
+		say "What? It doesn't already take up just about the entire living room?";
+	otherwise:
+		say "It's too early in the day to head back to bed."
+		
+Instead of pushing the futon:
+	try folding the futon.
+	
+Instead of pulling the futon:
+	try unfolding the futon.
+
+Instead of folding or pushing the mattress:
+	try folding the futon.
+	
+Instead of unfolding or pulling the mattress:
+	try unfolding the futon.
+	
+Instead folding or pushing the frame:
+	try folding the futon.
+	
+Instead of unfolding or pulling the frame:
+	try unfolding the mattress. 	
+	
+Instead of taking the mattress:
+	say "The mattress is molecularly bonded to the bed's frame. Besides, it would be awfully unwieldy to carry about."
+	
+Instead of taking the frame:
+	say "The frame is an integral part of the futon."
+	
 Chapter General Insteads
 
 Instead of examining a room:
