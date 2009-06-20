@@ -36,9 +36,9 @@ A bed is a kind of furniture. It is usually enterable.
 
 A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. 
 
-A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "knob" as a sink.  
+A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "knob" and "drain" as a sink.  
 
-Wakefulness is a kind of value. The wakefulnesses are asleep, hypnopompic, groggy, and alert.
+Wakefulness is a kind of value. The wakefulnesses are asleep, groggy, and alert.
 
 Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
 
@@ -65,7 +65,9 @@ Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
 A hole is a kind of container. A hole is always open not openable and fixed in place.
 
-A bowl is a kind of container. The carrying capacity of a bowl is one. A bowl can be empty or full. A bowl is usually empty.
+A bowl is a kind of container. The carrying capacity of a bowl is one. 
+
+Definition: a bowl is full if something is in it.
 
 An message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".
 
@@ -737,7 +739,7 @@ After examining the old fridge for the first time:
 	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 	say "[metatext in metaspeak]";
 
-In the fridge is the white egg. It is an edible prop.  The egg can be fried. The egg is not fried. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The clueless-description of the white egg is "A [if the white egg is fried]exquisitely fried[end if]big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy [if the white egg is fried]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy.
+In the old fridge is the white egg. It is an edible prop.  The egg can be fried. The egg is not fried. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The clueless-description of the white egg is "A [if the white egg is fried]exquisitely fried[end if]big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy [if the white egg is fried]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy.
 
 The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range.
 
@@ -752,24 +754,42 @@ The dog dish is a prop in the kitchen. Understand "dog" and "bowl" and "bowls" a
 To say dog dish status:
 	If the water trough is full and the food trough is full:
 		say "Both [the water trough] and [the food trough] are full";
-	otherwise if the water trough is empty and the food trough are empty:
+	otherwise if the water trough is not full and the food trough is not full:
 		say "Both [the water trough] and [the food trough] are empty";
 	otherwise:
-		say "[The food trough][if the food trough is full]is full[otherwise]is empty[end if], but [the water trough] is [if the water trough is full]full[otherwise]empty[end if]".
+		say "[The food trough] [if the food trough is full]is full[otherwise]is empty[end if], but [the water trough] is [if the water trough is full]full[otherwise]empty[end if]".
 		
-Instead of going towards the living room when the player carries the dog dish:
-	move the dog dish to the kitchen;
-	say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.";
-	try going towards the living room.
+Instead of going towards the living room:
+	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the floss dispenser:
+		if the player carries the dog dish:		
+			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
+			move the dog dish to the kitchen;
+		if the player carries the dog food:
+			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
+			move the dog food to the food trough;
+		if the player carries the white egg:	
+			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before returning to operations[end if].[run paragraph on]";
+			move the white egg to the old fridge;
+		if the player carries the toothbrush:
+			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
+			move the toothbrush to the marble counter;
+		if the player carries the floss dispenser:
+			say "[if the player is clueless]The floss dispenser almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
+			move the floss dispenser to the marble counter;			
+		say paragraph break; 
+		try going towards the living room;
+	otherwise:
+		continue the action.
 
 Understand "water" and "bowl" as the water trough. The clueless-name of the water trough is "water bowl". The aware-name of the water trough is "coolant reservoir". The clueless-description of the water trough is "[emptyness of the water trough]." The aware-description of the water trough is the "[emptyness of the water trough]." The water trough-proxy is an aware-proxy that is part of the water trough. Understand "coolant" and "line" and "reservoir" and "transfer" and "device" as the water trough-proxy.
 
 Understand "food" and "bowl" and "chow" as the food trough. The clueless-name of the food trough is "food bowl". The aware-name of the food trough is "fuel reservoir". The clueless-description of the food trough is "[emptyness  of the food trough]." The aware-description of the food trough is "[emptyness of the food trough]". The food trough-proxy is an aware-proxy that is part of the food trough. Understand "fuel" and "line" and "reservoir" and "transfer" and "device" as the food trough-proxy.
 
 To say emptyness of (vessel - a bowl):
-	say "[The vessel] is [if the vessel is empty]empty[otherwise]full".
+	say "[The vessel] is [if the vessel is not full]empty[otherwise]full".
 
 Before doing something to a bowl in the kitchen:
+	[to make sure that the two bowls are treated as a united object in most cases]
 	if the current action is filling it with or examining:
 		continue the action;
 	otherwise:
@@ -788,12 +808,20 @@ Check filling it with:
 			say "Rover would not appreciate it if you put anything aside from [if the player is clueless]water[otherwise]coolant[end if] in his [water trough]." instead;
 	if the noun is the food trough:
 		if the second noun is not dog food:
-			say "[if the player is clueless]Only dog food in the dog bowl. Vet's orders[otherwise]The fuel reservoir was designed only to handle Rover's radioisotopic fuel[end if]." instead.
+			say "[if the player is clueless]Only dog food in the dog bowl. Vet's orders[otherwise]The fuel reservoir was designed only to handle Rover's radioisotopic fuel[end if]." instead;
+		otherwise:
+			if the dog chow bag is not held by the player:
+				say "([if the player is clueless]taking the bag of dog chow[otherwise]accessing the conduit output valve[end if])";
+				try silently taking the dog chow bag.
 			
 Carry out filling it with:
+	move the second noun to the noun.
+	
+Report filling it with:
 	say "You fill the [noun] with some [second noun]."
 	
 Instead of inserting something into a bowl in the kitchen:
+	[try to route anything going into the bowls through the filling it wth action]
 	try filling the second noun with the noun.
 	
 To say pick a side:
@@ -813,6 +841,15 @@ Instead of doing something with the tap water:
 			continue the action;
 		otherwise:
 			say "You don't want to mess with Rover's [tap water]."
+			
+Instead of doing something with the dog food:
+	if the current action is examining:
+		continue the action;
+	otherwise:
+		if the dog chow bag encloses the dog food:
+			say "[if the player is clueless]You're not very keen to reach into a bag of stinky dog food[otherwise]For optimal containment, the fuel isotopes should remain in the fuel conduit or reservoir[end if].";
+		otherwise:
+			say "You don't want to mess with Rover's [dog food]."
 	
 The counter is an enterable furniture in the kitchen. The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber." The counter-proxy is an aware-proxy that is part of the counter. Understand "bulkhead" as the counter-proxy.
 
@@ -821,7 +858,6 @@ The kitchen sink is a sink in the kitchen. The clueless-name of the sink is "sin
 The tap water is a water that is part of the kitchen sink. The clueless-name of the tap water is "water". The aware-name of the tap water is "coolant". The clueless-description of the tap water is "Clear, cool water." The aware-description of the tap water is "Clear, thermoconductive liquid." Understand "water" as tap water. 
 
 Does the player mean filling a bowl with the tap water: it is very likely. Does the player mean doing something with a bowl: it is likely. Does the player mean filling a bowl with the dog food: it is very likely. Does the player mean inserting tap water into something: it is very likely. Does the player mean inserting dog food into something: it is very likely.
-
 
 Instead of opening or switching on a sink:
 	if the player is clueless:
@@ -843,7 +879,7 @@ The dog chow bag is an open openable container.  The carrying capacity of the do
 
 The clueless-name of the dog chow bag is "bag of dog food". The aware-name of the dog chow bag is "fuel conduit". The clueless-description of the dog chow bag is "The bag features a picture of a grotesquely (in your opinion) fat white husky seated at a fancy dinner table. In front of him, steak, turkey, and ham are piled high on silver dishes. He stares rapaciously at the feast, clenching a fork and knife in his paws. The bag is labeled [quotation mark]Happy Dogz Mix[quotation mark]". The aware-description of the dog chow bag is "A fully automated delivery system designed to safely pump radionuclide fuels from the storage unit to the ROVER transfer device." The dog chow bag-proxy is an aware-proxy that is part of the dog chow bag. Understand "fuel" and "conduit" as the dog chow bag-proxy.
 
-The clueless-name of the dog food is "dog food". Understand "kibble" and "kibbles" as dog food. The aware-name of the dog food is "polonium 210". The clueless-description of the dog food is "Tasty brown kibbles". The aware-description of the dog food is "Red hot pellets of Polonium 210". The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
+The clueless-name of the dog food is "dog food". Understand "kibble" and "kibbles" as dog food. The aware-name of the dog food is "polonium 210". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210". The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
 
 The reward nuggets box is an open not openable container. The carrying capacity of the reward nuggets box is 1. The reward nuggets box contains some dog treats. 
 
@@ -1034,9 +1070,9 @@ The table is an enterable furniture in the Galley. The description of the table 
 
 The bulldog water bowl and the bulldog food bowl are fixed in place bowls in the Galley.
 
-The description of the bulldog food bowl is "[if the bulldog food bowl is empty]Even empty, the[otherwise]The [end if]bulldog's food bowl smells much better than yours." The clueless-name of the bulldog food bowl is "food bowl". The aware-name of the bulldog food bowl is "fuel reservoir".
+The description of the bulldog food bowl is "[if the bulldog food bowl is not full]Even empty, the[otherwise]The [end if]bulldog's food bowl smells much better than yours." The clueless-name of the bulldog food bowl is "food bowl". The aware-name of the bulldog food bowl is "fuel reservoir".
 
-The description of the bulldog water bowl is "[if the bulldog water bowl is empty]Even empty, the [otherwise]The [end if]bulldog's water bowl looks much better than yours." The clueless-name of the bulldog water bowl is "water bowl". The aware-name of the bulldog water bowl is "coolant reservoir".
+The description of the bulldog water bowl is "[if the bulldog water bowl is not full]Even empty, the [otherwise]The [end if]bulldog's water bowl looks much better than yours." The clueless-name of the bulldog water bowl is "water bowl". The aware-name of the bulldog water bowl is "coolant reservoir".
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
@@ -1471,10 +1507,10 @@ Every turn during Arm Hurts:
 		say "The pain in your left arm is so strong that you can think of little else!";
 	otherwise if Arm-numb is greater than 24:
 		if a random chance of 1 in 2 succeeds:
-			say "[one of]Your left arm is rather painful[or]You are unconfortable; your left arm hurts[or]Something is not at all right with your left arm, it feels alternately numb and painful[at random]";
+			say "[one of]Your left arm is rather painful[or]You are unconfortable; your left arm hurts[or]Something is not at all right with your left arm, it feels alternately numb and painful[at random].";
 	otherwise if Arm-numb is greater than 12:
 		if a random chance of 1 in 3 succeeds:
-			say "[one of]Your left arm is bothering you[or]You feel sharp little pains in your left arm, like little pin pricks[or]Your left arm is smarting a bit[at random]";
+			say "[one of]Your left arm is bothering you[or]You feel sharp little pains in your left arm, like little pin pricks[or]Your left arm is smarting a bit[at random].";
 	otherwise if Arm-numb is greater than 2:
 		if a random chance of 1 in 4 succeeds:
 			say "[one of]Your left arm is all pins and needles[or]Your left arm feels weird[or]There is a strange, electrical sensation running up and down your left arm[or]You left arm feels strange. Not quite itchy, not quite painful[at random].";
