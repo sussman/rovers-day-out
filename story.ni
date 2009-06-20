@@ -4,6 +4,7 @@ The story headline is "An Interactive Fiction".
 The release number is 0.
 The story genre is "Science Fiction".
 
+Include Glulx Text Effects by Emily Short.
 Include Basic Screen Effects by Emily Short.
 Include Menus by Emily Short.
 Include Case Management by Emily Short.
@@ -118,6 +119,16 @@ Instead of examining a closed chest when something is on a lid (called the top) 
 
 Chapter General Routines
 
+[Text styles defined by Glulx]
+Table of Common Color Values (continued)
+glulx color value	assigned number
+g-pure-blue	255
+
+Table of User Styles (continued)
+style name	justification	obliquity		indentation	first-line indentation		boldness		fixed width	relative size 	glulx color
+special-style-1	left-justified	no-obliquity	0		0			light-weight	fixed-width-font	0		g-pure-blue
+
+
 [Let's do a random walk, shall we?  :-) ]
 Memory-updating is an action applying to nothing.
 Carry out memory-updating:
@@ -150,7 +161,8 @@ To say ACU Boot Banner:
 [General routine for displaying dialogue between Janet and David.]
 To say (dialogue - some text) in metaspeak:
 	say line break; 
-	say "[fixed letter spacing][blue letters][dialogue][default letters]";
+	say "[first custom style][dialogue]";
+	say roman type;
 	say variable letter spacing;
 	say paragraph break;
 	
@@ -159,11 +171,11 @@ BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
 	wait for any key;
-	turn the background blue;
+	[TODO:  there's no equivalent in Glulx??  turn the background blue;]
 	clear the screen;
-	say "[white letters]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue.[default letters]";
+	say "[bold type]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue.[roman type]";
 	wait for any key;
-	turn the background white;
+	[TODO:  there's no equivalent in Glulx??  turn the background white;]
 	clear the screen.
 
 Chapter Verbs
