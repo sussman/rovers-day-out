@@ -24,11 +24,16 @@ Enroute is a truth state that varies. Enroute is false. [en route is a flag that
 Aware-references is a number that varies. Aware-references is 1.
 [Tracks the number of times, up to 3, that the ACU has referred to objects by their aware-names. Used to switch between David/Janet comments]
 
+Remember-invoked is a truth state that varies. Remember-invoked is false.
+David-remembered is a truth state that varies. David-remembered is false.
+[tracks use of remember]
+
 Dream index is a number that varies. Dream index is 1.
 [points to the next dream]
 
 [Magpaper-related]
 The IPL_pid, enamel_pid, ignite_pid, landing_pid, and rover_pid are numbers that vary. The IPL_pid, enamel_pid, ignite_pid, landing_pid, and rover_pid are zero.
+
 
 Chapter Class Definitions
 
@@ -797,6 +802,8 @@ Instead of attacking the white egg:
 Cracking it into is an action applying to two things. Understand "crack [something] into/in/on/over [something]" as cracking it into. Understand "open [something] into/in/on/over [something]" as cracking it into. Understand "break [something] into/in/on/over [something]" as cracking it into.
 
 Check cracking it into:
+	if the enamel_pid is zero:
+		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster." instead;
 	if the noun is not the white egg:
 		say "Could you rephrase that?" instead;
 	otherwise:
@@ -820,9 +827,13 @@ After putting the frying pan on the range:
 		fry the white egg;
 	otherwise:
 		continue the action.
+		
+Instead of putting the white egg on a supporter:
+	say "The egg might roll of its flat surface, leaving you with no breakfast. You hang onto the egg."
 	
 To fry the white egg:
 	now the white egg is cooked;
+	now the ignite_pid is the turn count;
 	say "[if the player is clueless]Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades[otherwise]A spherical array of powerful lasers discharges instantly, their combined output focused on the heavy helium being injected into the magnetic bottle within the reactor chamber. The ship surges with power as the fusion rockets are energized[end if].";
 	if the Second Sim is happening:
 		let metatext be "Janet: If there were some heavy helium left after landing, could the ship take off again?[line break]David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we’ll have to fuse every gram of that heavy helium to make a soft landing.[line break]Janet: I just hate to leave the ship there. It could take years before our next Casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.[line break]David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.";
@@ -1003,23 +1014,28 @@ The clueless-name of the cabinet is "cabinet". The aware-name of the cabinet is 
 
 The dog chow bag is an open openable container.  The carrying capacity of the dog chow bag is 1.  The dog chow bag contains some dog food.
 
-The clueless-name of the dog chow bag is "bag of dog food". The aware-name of the dog chow bag is "fuel conduit". The clueless-description of the dog chow bag is "The bag features a picture of a grotesquely (in your opinion) fat white husky seated at a fancy dinner table. In front of him, steak, turkey, and ham are piled high on silver dishes. He stares rapaciously at the feast, clenching a fork and knife in his paws. The bag is labeled [quotation mark]Happy Dogz Mix[quotation mark]". The aware-description of the dog chow bag is "A fully automated delivery system designed to safely pump radionuclide fuels from the storage unit to the ROVER transfer device." The dog chow bag-proxy is an aware-proxy that is part of the dog chow bag. Understand "fuel" and "conduit" as the dog chow bag-proxy.
+The clueless-name of the dog chow bag is "20 kilo bag of dog chow". Understand "20" and "kilo" and "food" and "chow" as the dog chow bag. The aware-name of the dog chow bag is "fuel conduit". The clueless-description of the dog chow bag is "The bag features a picture of a grotesquely (in your opinion) fat white husky seated at a fancy dinner table. In front of him, steak, turkey, and ham are piled high on silver dishes. He stares rapaciously at the feast, clenching a fork and knife in his paws. The bag is labeled [quotation mark]Happy Dogz Mix[quotation mark]". The aware-description of the dog chow bag is "A fully automated delivery system designed to safely pump radionuclide fuels from the storage unit to the ROVER transfer device." The dog chow bag-proxy is an aware-proxy that is part of the dog chow bag. Understand "fuel" and "conduit" as the dog chow bag-proxy.
 
-The clueless-name of the dog food is "dog food". Understand "kibble" and "kibbles" as dog food. The aware-name of the dog food is "polonium 210". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210". The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
+The clueless-name of the dog food is "doggie kibbles". Understand "kibble" and "kibbles" and "doggie" as dog food. The aware-name of the dog food is "polonium 210". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210". The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
 
-The reward nuggets box is an open not openable container. The carrying capacity of the reward nuggets box is 1. The reward nuggets box contains some dog treats. 
+Before eating dog food:
+	say "[if the player is clueless]Eww. Yech. So not[otherwise]Po-210 is not a suitable fuel source for the Valkyrie. The limited quantity, and its slow rate of heat production would not significantly contribute to the ship's power budget[end if].";
+	the rule succeeds.
 
-The clueless-name of the reward nuggets box is "box of dog treats". The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "neural" and "net" and "reinforcement" and "token" as the reward nuggets box-proxy.
+The reward nuggets box is an open not openable container. The carrying capacity of the reward nuggets box is 1. The reward nuggets box contains a dog treat. 
+
+The clueless-name of the reward nuggets box is "small box of liver-flavored reward nuggets". Understand "small" and "box" and "liver" and "flavor" and "reward" and "nugget" and "nuggets" as the reward nuggets box. The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "token" and "dispenser" as the reward nuggets box-proxy.
+
+The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" and "nuggets" and "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them.". The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural" and "net" and "reinforcement" and "token" and "positive" and "feedback" as the dog treat-proxy.
+
+Instead of eating the dog treat:
+	say "[if the player is clueless]The thought of eating anything liver-flavored puts you off[otherwise]The checksum on Rover's reward tokens is not valid within your neural net[end if]."
 
 The kitchen floor is a privately-named scenery supporter in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder" and "girders" and "strut" and "struts" and "mesh" and "metal" and "hull" and "inner" as the kitchen floor-proxy.
 
 Section Bathroom
 
-The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.[if the bathroom is unvisited][paragraph break]You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence."
-
-After going towards the bathroom for the first time:
-	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
-	say "[metatext in metaspeak]";
+The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence."
  
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a floss dispenser. The toothbrush and floss dispenser are props.
 
@@ -1105,6 +1121,11 @@ The clueless-name of the red rubber cup is the "red rubber cup". The aware-name 
 The shower door is a door and scenery.  It is north of the bathroom and south of the shower. 
 
 The clueless-name of the shower door is "shower door". The aware-name of the shower door is "extruder latch". The clueless-description of the shower door is "A translucent polyglass door." The aware-description of the shower door is "A circuit which enables or disables the extruder." The shower door-proxy is an aware-proxy that is part of the shower door. Understand "extruder" and "latch" as the shower door.
+
+After opening the shower door for the first time:
+	say "You open the shower door, which is more flimsy that it would at first appear.[paragraph break]You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.";
+	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
+	say "[metatext in metaspeak]";
 
 The soap dispenser, the shampoo dispenser, and the shower drain are scenery in the shower. The shower walls are scenery in the shower. Understand "wall" as shower walls. The soap button is part of the shower walls. The shampoo button is part of the shower walls.
 
@@ -1235,7 +1256,16 @@ Carry out remembering:
 Instead of remembering a topic listed in the Table of Remembered Stuff:
 	if the player is self-aware:
 		say "You consult your memory banks: ";
-	say "[description entry][paragraph break]".
+	say "[description entry][paragraph break]";
+	if remember-invoked is false:
+		let metatext be "David: Why did we lose audio?[line break]Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.[line break]David: Fine, we'll skip the boring parts.";
+		say "[metatext in metaspeak]";
+	otherwise:
+		if the topic is "David Venkatachalam":
+			let metatext be "David: I think I'd like to have heard that one.[line break]Janet: Not a chance.";
+			say "[metatext in metaspeak]";
+			now david-remembered is true;
+	now remember-invoked is true.
 	
 Table of Remembered Stuff
 topic							description
