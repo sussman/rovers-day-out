@@ -630,6 +630,14 @@ The futon is a bed in the living room. The futon can be folded. The futon is not
 
 The mattress and frame are parts of the futon. The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is [if the futon is folded]offline[otherwise]online[end if]." The mattress-proxy is an aware-proxy that is part of the mattress. Understand "spatial" and "manifold" and "attenuator" as the mattress-proxy.
 
+Before opening the futon:
+	try unfolding the futon;
+	rule succeeds.
+	
+Before closing the futon:
+	try folding the futon;
+	rule succeeds.
+	
 The clueless-name of the frame is "bed frame". The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of engineering and geometry." The aware-description of the frame is "The casimir drive extension strut is [if the futon is folded]contracted[otherwise]extended[end if]." The aware-name of the frame is "extension strut".  The frame-proxy is an aware-proxy that is part of the frame. Understand "extension" and "strut" as the frame-proxy.
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body and giblets are parts of the ACU. 
@@ -751,14 +759,53 @@ After examining the old fridge for the first time:
 	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 	say "[metatext in metaspeak]";
 
-In the old fridge is the white egg. It is an edible prop.  The egg can be fried. The egg is not fried. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The clueless-description of the white egg is "A [if the white egg is fried]exquisitely fried[end if]big white egg.[if a random chance of 1 in 10 succeeds] From a chicken, if you had to guess."  The aware-description of the white egg is "A reinforced carboy [if the white egg is fried]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy.
+The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success.[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
+
+Instead of attacking the white egg:
+	if the white egg is in the frying pan:
+		try cracking the white egg into the frying pan;
+	otherwise:
+		say "That would make a mess. You'd only break the egg into a pan."
+	
+Cracking it into is an action applying to two things. Understand "crack [something] into/in/on/over [something]" as cracking it into. Understand "open [something] into/in/on/over [something]" as cracking it into. Understand "break [something] into/in/on/over [something]" as cracking it into.
+
+Check cracking it into:
+	if the noun is not the white egg:
+		say "Could you rephrase that?" instead;
+	otherwise:
+		if the second noun is not the frying pan:
+			say "[if the player is clueless]That's crazy talk[otherwise]It would be in advisable to vent the heavy helium into anything but a magnetic containment bottle[end if]." instead.
+
+Carry out cracking it into:
+	move the white egg to the frying pan;
+	now the white egg is broken;
+	if the player is clueless:
+		say "You crack the egg into the frying pan. The neoegg shell sublimates as the contents spill into the pan.";
+	otherwise:
+		say "The heavy helium feed is now coupled to the input port of the magnetic bottle."
+	
+Instead of doing something to the white egg when the white egg is broken:
+	if the current action is eating or examining:
+		continue the action;
+	otherwise:
+		if the player is clueless:
+			say "[one of]Momma always said, [quotation mark]don't play with your food[quotation mark][or]Are you going to eat it, or what?[or]Cooked eggs are good for one thing (well, two if you count modern art)[or]You can eat the egg, or not eat the egg. It doesn't seem to care[or]To eat the egg or not. That is the question[at random].";
+		otherwise:
+			say "The He-4 carboy is empty and can be recycled."
+			
+Instead of eating the white egg:
+	if the white egg is raw:
+		if the player is clueless:
+			say "That's disgusting (not to mention a good way to get food poisoning)! The egg is raw!";
+		otherwise:
+			say "The fuel has not been ignited; it would be premature to recycle the containment unit."
 
 The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range.
 
-The clueless-name of the range is "the cooking range". Understand "cooking" as the range. The aware-name of the range is "fusion chamber". The clueless-description of the range is "The top of the glass range is flush with the kitchen counter. The surface of the stove is not glowing, indicating that it is not hot. The stove does not have an oven, but below the cooking surface, a drawer [if the drawer is closed]is flush with the kitchen counter[otherwise]hangs open[end if]." The aware-description of the range is "The majority of the engineering deck is occupied by the towering hulk of the industrial fusion reactor that powers the ship[apostrophe]s landing thrusters. The reactor core at the base of the fusion reactor is [if the drawer is closed]closed[otherwise]open[end if].[if the frying pan is on the range] It is illuminated from above by the faint plasma glow of a magnetic bottle which has formed at the focal point of multiple ignition lasers." The range-proxy is an aware-proxy that is part of the range. Understand "fusion" and "chamber" as the range-proxy.
+The clueless-name of the range is "the cooking range". Understand "cooking" and "stove" as the range. The aware-name of the range is "fusion chamber". The clueless-description of the range is "The top of the glass range is flush with the kitchen counter. The surface of the stove is not glowing, indicating that it is not hot. The stove does not have an oven, but below the cooking surface, a drawer [if the drawer is closed]is flush with the kitchen counter[otherwise]hangs open[end if]." The aware-description of the range is "The majority of the engineering deck is occupied by the towering hulk of the industrial fusion reactor that powers the ship[apostrophe]s landing thrusters. The reactor core at the base of the fusion reactor is [if the drawer is closed]closed[otherwise]open[end if].[if the frying pan is on the range] It is illuminated from above by the faint plasma glow of a magnetic bottle which has formed at the focal point of multiple ignition lasers." The range-proxy is an aware-proxy that is part of the range. Understand "fusion" and "chamber" as the range-proxy.
 
 Before switching on the range:
-	say "[if the player is clueless]Your stove is a Cupertino SmartRange -- there are no controls, just a stylish glass surface with rounded corners[otherwise]The fusion chamber is designed to activate automatically when heavy helium is contained in a magnetic bottle at the focal point[end if].";
+	say "[if the player is clueless]Your stove is a Cupertino SmartRange[unicode 174] -- there are no controls, just a stylish glass surface with rounded corners[otherwise]The fusion chamber is designed to activate automatically when heavy helium is contained in a magnetic bottle at the focal point[end if].";
 	the rule succeeds.
 	
 After touching the range:
@@ -768,7 +815,7 @@ Before opening the range:
 	say "There is no obvious way to open the range.";
 	the rule succeeds. 
 
-A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
+A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan [if the white egg is not in the frying pan][otherwise if the white egg is cooked]from which a single cooked egg stares up at you[otherwise if the egg is broken]containing a gooky, uncooked egg[otherwise]in which a big white neoegg rolls around[end if]." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
 
 The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep [drawer] under [the range]. [The drawer][if open]has been opened[otherwise]is shut[end if]." The aware-description of the drawer is "[if the drawer is open]The closed [drawer] shields the engineering section of the ship from residual radiation[otherwise]With [the drawer] open, hard radiation bathes the engineering section[end if]." The drawer-proxy is an aware-proxy that is part of the drawer. Understand "reactor" and "core" and "shielding" and "shield" as the drawer-proxy. 
 
@@ -1391,8 +1438,8 @@ When Bedtime ends:
 		now arm-numb is 1.
 
 	
-Instead of doing something other than beeping, dreaming, waiting, looking, listening, examining, exiting, getting off, pushing, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
-	say "Default block of action text";
+Instead of doing something other than beeping, dreaming, opening, closing, waiting, looking, listening, examining, exiting, getting off, pushing, remembering, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
+	say "[one of]First things first, you're still in bed[or]Six impossible things before breakfast is one thing, but you have to at least get out of bed[or]Not while you're in your futon, you won't[or]Maybe after you get up[at random].";
 	say paragraph break;
 
 Instead of examining the player when the Bedtime-did-examine-player is false during bedtime:
@@ -1459,7 +1506,7 @@ Instead of waking up during bedtime:
 	move the alarm clock to Limbo;
 	move the player to the living room.
 	
-Instead of getting off during bedtime:
+Instead of getting off during bedtime:[context is everything]
 	try waking up instead.
 		
 To say must have more sleep:
