@@ -27,6 +27,9 @@ Aware-references is a number that varies. Aware-references is 1.
 Dream index is a number that varies. Dream index is 1.
 [points to the next dream]
 
+[Magpaper-related]
+The IPL_pid, enamel_pid, ignite_pid, landing_pid, and rover_pid are numbers that vary. The IPL_pid, enamel_pid, ignite_pid, landing_pid, and rover_pid are zero.
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -453,11 +456,11 @@ To Save the World: [programmatically store inital state of class properties]
 To Setup the World: [explictly set initial conditions]
 [globals]	
 	now the time of day is 5:30 am;
+	reset magpaper;
 [persons]
 	now the player is the ACU;
 	now Rover is hungry;
 	now the ACU is asleep;
-
 
 To Restore The World: [programmatically reset by class]
 [reset all rooms visited]
@@ -737,13 +740,37 @@ Instead of searching a refrigerator (called R):
 	otherwise:
 		say "The cryo unit contains [a list of things in R][if nothing is in R] but the super-chilled interior of the cryo unit itself[end if]."
 
-The magpaper is message which is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" and "jobs" and "list" and "queue" and "priority" and "task" and "manager" as the magpaper-proxy. The magpaper can be applied. The magpaper can be ignited. The magpaper can be landed. The magpaper can be sent. The magpaper is not applied, not ignited, not landed, and not sent. The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]."
+The magpaper is message which is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" and "jobs" and "list" and "queue" and "priority" and "task" and "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]." 
+
+To reset magpaper:
+	Now the IPL_pid is zero;
+	Now the enamel_pid is zero;
+	Now the ignite_pid is zero;
+	Now the landing_pid is zero;
+	Now the rover_pid is zero.
 
 To say magpaper-clueless:
-	say "Morning:[line break]X. Get up[line break][if the magpaper is applied]X[otherwise]2[end if]. Shower[line break][if the magpaper is ignited]X[otherwise]3[end if]. Breakfast[line break][if the magpaper is landed]X[otherwise]4[end if]. Take care of business[line break][if the magpaper is sent]X[otherwise]5[end if]. Let Rover go walkies";
+	say "Morning:[line break]X. Get up[line break][if enamel_pid is zero]2[otherwise]-[end if]. Shower[line break][if ignite_pid is zero]3[otherwise]-[end if]. Breakfast[line break][if landing_pid is zero]4[otherwise]X[end if]. Take care of business[line break][if the rover_pid is zero]5[otherwise]X[end if]. Let Rover go walkies";
 		
 To say magpaper-aware:
-	say "[fixed letter spacing]PID   TTY          STATUS      CMD[line break]301   ttys000      Done.       Initial Program Load [line break]323	  ttys000      [if the magpaper is applied]Done   [otherwise]Pending[end if].    Apply Ablative Enamel [line break]515   ttys000      [if the magpaper is ignited]Done   [otherwise]Pending[end if].    Ignite Fusion Reactor [line break]525   ttys000      [if the magpaper is landed]Done   [otherwise]Pending[end if].    Landing Sequence [line break]540	  ttys000      [if the magpaper is sent]Done   [otherwise]Pending[end if].    Send Probe Data[variable letter spacing]".
+	say "[fixed letter spacing]PID     TTY          STATUS    CMD[line break][if IPL_pid is zero]-----[otherwise][right justify IPL_pid][end if]   ttys000      [doneness of IPL_pid]Initial Program Load [line break][if enamel_pid is zero]-----[otherwise][right justify enamel_pid][end if]	  ttys000      [doneness of enamel_pid]Apply Ablative Enamel [line break][if ignite_pid is zero]-----[otherwise][right justify ignite_pid][end if]   ttys000      [doneness of ignite_pid]Ignite Fusion Reactor [line break][if landing_pid is zero]-----[otherwise][right justify landing_pid][end if]   ttys000      [doneness of landing_pid]Landing Sequence [line break][if rover_pid is zero]-----[otherwise][right justify rover_pid][end if]	  ttys000      [doneness of rover_pid]Send Probe Data[variable letter spacing]".
+	
+To say doneness of (process - a number):
+	if process is zero:
+		say "Pending.  ";
+	otherwise:
+		say "Done.     ".
+		
+To say right justify (process - a number):
+	if process is less than 10:
+		say "0000";
+	else if process is less than 100:
+		say "000";
+	else if process is less than 1000:
+		say "00";
+	else if the process is less than 10000:
+		say "0";
+	say process.
 
 Instead of taking the magpaper:
 	if the player is clueless:
@@ -1460,6 +1487,7 @@ Every turn during Bedtime:
 	
 When Bedtime ends:
 	now the player is alert;
+	now the IPL_pid is the turn count;
 	if dream index is greater than one and bedtime-dream-sequence-complaint is false:
 		let metatext be "David: Thank you. I can only take so many dream sequences.[line break]Janet: No problem. So, at this point, the Valkyrie would be at the edge of the probe's stellar system, and ready to switch over from Casimir to Condensate Drive and begin the approach.";
 		say "[metatext in metaspeak]";
@@ -1467,7 +1495,7 @@ When Bedtime ends:
 		now arm-numb is 1.
 
 	
-Instead of doing something other than beeping, dreaming, opening, closing, waiting, looking, listening, examining, exiting, getting off, pushing, remembering, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
+Instead of doing something other than beeping, dreaming, opening, closing, waiting, looking, listening, examining, exiting, getting off, pushing, reading, remembering, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
 	say "[one of]First things first, you're still in bed[or]Six impossible things before breakfast is one thing, but you have to at least get out of bed[or]Not while you're in your futon, you won't[or]Maybe after you get up[at random].";
 	say paragraph break;
 
