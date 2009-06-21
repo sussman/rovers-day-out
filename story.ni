@@ -780,9 +780,26 @@ Carry out cracking it into:
 	move the white egg to the frying pan;
 	now the white egg is broken;
 	if the player is clueless:
-		say "You crack the egg into the frying pan. The neoegg shell sublimates as the contents spill into the pan.";
+		say "You crack the egg into the frying pan. The neoegg shell sublimates as the contents spread over the pan's non-stick surface. [run paragraph on]";
 	otherwise:
-		say "The heavy helium feed is now coupled to the input port of the magnetic bottle."
+		say "The heavy helium feed is now coupled to the input port of the magnetic bottle. [run paragraph on]";
+	if the frying pan is on the range:
+		fry the white egg;
+	otherwise:
+		say paragraph break.
+		
+After putting the frying pan on the range:
+	if the white egg is in the frying pan and the white egg is raw and the white egg is broken:
+		fry the white egg;
+	otherwise:
+		continue the action.
+	
+To fry the white egg:
+	now the white egg is cooked;
+	say "[if the player is clueless]Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades[otherwise]A spherical array of powerful lasers discharges instantly, their combined output focused on the heavy helium being injected into the magnetic bottle within the reactor chamber. The ship surges with power as the fusion rockets are energized[end if].";
+	if the Second Sim is happening:
+		let metatext be "Janet: If there were some heavy helium left after landing, could the ship take off again?[line break]David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we’ll have to fuse every gram of that heavy helium to make a soft landing.[line break]Janet: I just hate to leave the ship there. It could take years before our next Casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.[line break]David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.";
+		say "[metatext in metaspeak]".	
 	
 Instead of doing something to the white egg when the white egg is broken:
 	if the current action is eating or examining:
@@ -793,12 +810,22 @@ Instead of doing something to the white egg when the white egg is broken:
 		otherwise:
 			say "The He-4 carboy is empty and can be recycled."
 			
-Instead of eating the white egg:
-	if the white egg is raw:
-		if the player is clueless:
-			say "That's disgusting (not to mention a good way to get food poisoning)! The egg is raw!";
-		otherwise:
-			say "The fuel has not been ignited; it would be premature to recycle the containment unit."
+Before eating the white egg:
+	if the player is rover:
+		say "You know that you are not supposed to eat eggs.[if rover is stuffed] Besides, you are full right now.";
+		the rule succeeds;
+	otherwise:
+		if the white egg is raw:
+			if the player is clueless:
+				say "A raw egg? Disgusting!";
+			otherwise:
+				say "The fuel has not been ignited; it would be premature to recycle the containment unit.";
+			the rule succeeds.
+			
+After taking the white egg for the first time:
+	say "You pluck the white egg out of the fridge.";
+	let metatext be "Janet: It[apostrophe]s a shame we don[apostrophe]t have enough heavy helium to bring the ship back.[line break]David: I[apostrophe]m afraid we[apostrophe]ve put all our baskets in one egg, as it were. That one egg represents every bit of heavy helium refined on Mars since Phobos was destroyed.[line break]Janet: [quotation mark]All Your Egg Are Belong to Us?[quotation mark][line break]David: Huh? Didn[apostrophe]t quite catch that.[line break]Janet: Never mind.";
+	say "[metatext in metaspeak]".
 
 The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range.
 
@@ -814,6 +841,8 @@ After touching the range:
 Before opening the range:
 	say "There is no obvious way to open the range.";
 	the rule succeeds. 
+	
+
 
 A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan [if the white egg is not in the frying pan][otherwise if the white egg is cooked]from which a single cooked egg stares up at you[otherwise if the egg is broken]containing a gooky, uncooked egg[otherwise]in which a big white neoegg rolls around[end if]." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
 
@@ -1596,9 +1625,14 @@ Instead of doing something during Arm Hurts:
 	otherwise:
 		continue the action.
 		
+Instead of waving the left arm during Arm Hurts:
+	try waving hands.
+		
 Instead of waving hands during Arm Hurts:
 	say "You flail your left arm back and forth, slowly restoring feeling. [if arm-numb is greater than 30]It's a great relief![otherwise if arm-numb is greater than 20]That's much, much better[otherwise if arm-numb is greater than 10]Ah, the tingling has gone away.[otherwise]That did the trick. Your left arm is back to its old, frisbee-throwing self[end if]."; 
-	now arm-numb is zero.
+	now arm-numb is zero;
+	the rule succeeds.
+
 
 Understand "scratch [something]" as rubbing.
 
