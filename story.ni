@@ -660,7 +660,11 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise]It's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.
+
+To reset the ACU:
+	now the ACU is dry;
+	now the ACU is asleep.
 
 The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is the ACU]Your left arm. The one that you throw frisbees with[otherwise][the clueless-name of the ACU]'s left arm[end if]." The aware-name of the left arm is "laser gyro". The aware-description of the left arm is "The multiaxial ring laser gyroscope is buried deep in the ship's inertial reference system." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "multiaxial" and "laser" and "ring" and "gyro" and "gyroscope" and "fiber" and "optic" and "optical" and "inertial" and "reference" and "system" as the left arm-proxy.
 
@@ -678,7 +682,7 @@ The clueless-name of the giblets is "parts". Understand "eye", "eyes", "ear", "e
 
 Audio is a device which is part of the ACU. The aware-name of Audio is "Internal Microphones". Audio is switched off.
 
-The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "ACU quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. Some letters are also sewn on the front." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" and "isolator" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed.
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "ACU quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. Some letters are also sewn on the front." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" and "isolator" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed.
 
 After taking off the flight suit:
 	say "You take off your blue flight suit and it ";
@@ -906,8 +910,6 @@ Before opening the range:
 	say "There is no obvious way to open the range.";
 	the rule succeeds. 
 	
-
-
 A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan [if the white egg is not in the frying pan][otherwise if the white egg is cooked]from which a single cooked egg stares up at you[otherwise if the egg is broken]containing a gooky, uncooked egg[otherwise]in which a big white neoegg rolls around[end if]." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
 
 The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep [drawer] under [the range]. [The drawer][if open]has been opened[otherwise]is shut[end if]." The aware-description of the drawer is "[if the drawer is open]The closed [drawer] shields the engineering section of the ship from residual radiation[otherwise]With [the drawer] open, hard radiation bathes the engineering section[end if]." The drawer-proxy is an aware-proxy that is part of the drawer. Understand "reactor" and "core" and "shielding" and "shield" as the drawer-proxy. 
@@ -938,9 +940,11 @@ Instead of going towards the living room:
 			move the toothbrush to the marble counter;
 		if the player carries the floss dispenser:
 			say "[if the player is clueless]The floss dispenser almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
-			move the floss dispenser to the marble counter;			
+			move the floss dispenser to the marble counter;	
 		say paragraph break; 
 		try going towards the living room;
+	otherwise if the player is wet:
+		say "[if the player is clueless]You are still dripping wet! Before you drip all over the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
 	otherwise:
 		continue the action.
 
@@ -1087,11 +1091,24 @@ The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspec
 Instead of rubbing the mirror:
 	if the mirror is steamed:
 		now the mirror is not steamed;
-		say "You [if the player is clueless]wipe off the mirror[otherwise]calibrate the inspector[end if].";
+		if the player is clueless:
+			say "You wipe away the condensation and can see yourself in the mirror. [run paragraph on]";
+			if the player is wet or the player is not wearing the flight suit:
+				say "You are ";
+				if player is wet: 
+					say "wet";
+					if player is not wearing the flight suit:
+						say " and ";
+				if player is not wearing the flight suit:
+					 say "naked";
+				say ".";
+		otherwise:
+			say "calibrate the inspector.";
 	otherwise:
 		say "[if the player is clueless]It makes a squeaky noise[otherwise]The inspector voltage reference goes low, signaling normal operation[end if]."
 
-Instead of looking in the mirror:  try examining the mirror.
+Instead of looking in the mirror:  
+	try examining the mirror.
 
 After examining the mirror for the first time:
 	let metatext be "David:  Wait, is that memory usage correct?[line break]Janet:  Sure, it's fairly conservative.  The system has 640 PB available.[line break]David:  That's it?[line break]Janet:  C'mon, nobody will ever need more than 640 PB.";
@@ -1107,6 +1124,8 @@ The clueless-name of the black plate is the "black plate". The black plate is sw
 
 Instead of attacking, pushing, or touching the black plate:
 	try switching on the black plate.
+	
+
 
 The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination" and "sterilization" and "biohazard" and "response" and "system" and "protocol" as the bathroom sink-proxy.
 
@@ -1178,6 +1197,7 @@ Every turn when the player is in the shower:
 				let metatext be "David: I should probably check on the Casimir Drive harmonic suppressor; it still isn't stable.[line break]Janet: I'd like you to see everything.[line break]David: Well... If you think so....[line break]Janet: I do -- I need you to sign off budget authorization on the ACU before we burn it to firmware.[line break]David: Oh.";
 				say "[metatext in metaspeak]";
 		otherwise:
+			now the player is wet;
 			now the mirror is steamed;
 			if the shower is not sprayed:
 				now the shower is sprayed;
@@ -1187,8 +1207,16 @@ Every turn when the player is in the shower:
 Instead of taking off the flight suit when the player is in the shower:
 	say "Your flight suit would get soaked if you took it off in here."
 	
-Instead of exiting when the player is in the shower:
-	try going towards bathroom.
+Instead of exiting:
+	if the player is in the shower:
+		try going towards bathroom;
+	otherwise if the player is in the kitchen:
+		try going towards living room;
+	otherwise if the player is in the bathroom:
+		try going towards living room;
+	otherwise:
+		continue the action.
+	
 	
 Instead of going towards when the player is in the shower:
 	if the player is wearing the flight suit:
@@ -1203,7 +1231,7 @@ Instead of going towards when the player is in the shower:
 			if the shampoo button is unpressed:
 				say "Your hair will be an unmanageable rat's nest for the rest of the day if you don't shampoo it."
 
-The soap dispenser and the shampoo dispense are scenery in the shower. The shower walls are scenery in the shower. Understand "wall" as shower walls. The soap button is part of the shower walls. The shampoo button is part of the shower walls.
+The soap dispenser and the shampoo dispenser are scenery in the shower. The shower walls are scenery in the shower. Understand "wall" as shower walls. The soap button is part of the shower walls. The shampoo button is part of the shower walls.
 
 The clueless-name of the soap dispenser is "soap dispenser". The aware-name of the soap dispenser is "ablative enamel injector". The clueless-description of the soap dispenser is "The soap button is molded into the wall of the shower stall." The aware-description of the soap dispenser is "A high pressure injector which delivers the solution to the extruder system for mixing with accelerant." The soap dispenser-proxy is an aware-proxy that is part of the soap dispenser. Understand "ablative" and "neoadamite" and "monomer" and "precursor" and "solution" and "injector" and "high" and "pressure" as the soap dispenser-proxy.
 
