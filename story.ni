@@ -42,7 +42,7 @@ Dream index is a number that varies. Dream index is 1.
 [points to the next dream]
 
 [Magpaper-related]
-The IPL_pid, enamel_pid, ignite_pid, landing_pid, and rover_pid are numbers that vary. The IPL_pid, enamel_pid, ignite_pid, landing_pid, and rover_pid are zero.
+The IPL_pid, enamel_pid, ignite_pid, landing_pid, rover_pid, and epoch_pid are numbers that vary. The IPL_pid, enamel_pid, ignite_pid, landing_pid, rover_pid, and epoch_pid are zero.
 
 
 Chapter Class Definitions
@@ -469,13 +469,18 @@ To Save the World: [programmatically store inital state of class properties]
 			now the initial-onoff of the selection is false.
 	
 To Setup the World: [explictly set initial conditions]
-[globals]	
+[globals]
+	now epoch_pid is the turn count;	
 	now the time of day is 5:30 am;
 	reset magpaper;
 [persons]
 	now the player is the ACU;
-	now Rover is hungry;
+	now the ACU is dry;
 	now the ACU is asleep;
+	now Rover is hungry;
+[other obects with specific properties]
+	now the ACU wears the flight suit;
+	now the futon is not folded.
 
 To Restore The World: [programmatically reset by class]
 [reset all rooms visited]
@@ -488,7 +493,9 @@ To Restore The World: [programmatically reset by class]
 	Repeat with selection running through persons:
 		move the selection to the initial-enclosure of the selection;
 	Repeat with selection running through props:
-		move the 	selection to the initial-enclosure of the selection;
+		if the selection is not a part of the initial-enclosure of the selection:
+			[otherwise the magpaper ends up *in* the fridge]
+			move the 	selection to the initial-enclosure of the selection;
 [reset the open/closed or on/off properties of containers, doors, and devices]
 	Repeat with selection running through containers:	
 		if the initial-overture of the selection is true:
@@ -684,6 +691,10 @@ Audio is a device which is part of the ACU. The aware-name of Audio is "Internal
 
 The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "ACU quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. Some letters are also sewn on the front." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" and "isolator" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed.
 
+Before wearing the flight suit when the player is wet:
+	say "[if the player is clueless]Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed)[otherwise]If the enamel is not activated by UV irradiation, it will not harden into a protective coating[end if].";
+	the rule succeeds.
+
 After taking off the flight suit:
 	say "You take off your blue flight suit and it ";
 	if the player is on a supporter:
@@ -740,7 +751,7 @@ Instead of examining when the player is in the living room and the drapes are cl
 		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping].";
 	
 Instead of going towards when the player is in the living room and the drapes are closed:
-	say "It's too dark to move around much.[if a random chance of 1 in 20 succeeds] Grues and all that, you know."
+	say "It's too dark to move around much[if a random chance of 1 in 20 succeeds]. Grues and all that, you know[end if]."
 
 The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" and "bay" and "floor" as the cargo bay floor-proxy.
 
@@ -785,10 +796,10 @@ To reset magpaper:
 	Now the rover_pid is zero.
 
 To say magpaper-clueless:
-	say "Morning:[line break]X. Get up[line break][if enamel_pid is zero]2[otherwise]-[end if]. Shower[line break][if ignite_pid is zero]3[otherwise]-[end if]. Breakfast[line break][if landing_pid is zero]4[otherwise]X[end if]. Take care of business[line break][if the rover_pid is zero]5[otherwise]X[end if]. Let Rover go walkies";
+	say "Morning:[line break]X. Get up[line break][if enamel_pid is zero]2[otherwise]X[end if]. Shower[line break][if ignite_pid is zero]3[otherwise]X[end if]. Breakfast[line break][if landing_pid is zero]4[otherwise]X[end if]. Take care of business[line break][if the rover_pid is zero]5[otherwise]X[end if]. Let Rover go walkies";
 		
 To say magpaper-aware:
-	say "[fixed letter spacing]PID     TTY          STATUS    CMD[line break][if IPL_pid is zero]-----[otherwise][right justify IPL_pid][end if]   ttys000      [doneness of IPL_pid]Initial Program Load [line break][if enamel_pid is zero]-----[otherwise][right justify enamel_pid][end if]	  ttys000      [doneness of enamel_pid]Apply Ablative Enamel [line break][if ignite_pid is zero]-----[otherwise][right justify ignite_pid][end if]   ttys000      [doneness of ignite_pid]Ignite Fusion Reactor [line break][if landing_pid is zero]-----[otherwise][right justify landing_pid][end if]   ttys000      [doneness of landing_pid]Landing Sequence [line break][if rover_pid is zero]-----[otherwise][right justify rover_pid][end if]	  ttys000      [doneness of rover_pid]Send Probe Data[variable letter spacing]".
+	say "[fixed letter spacing]PID     TTY          STATUS    CMD[line break][if IPL_pid is zero]-----[otherwise][right justify IPL_pid minus epoch_pid][end if]   ttys000      [doneness of IPL_pid]Initial Program Load [line break][if enamel_pid is zero]-----[otherwise][right justify enamel_pid minus epoch_pid][end if]	  ttys000      [doneness of enamel_pid]Apply Ablative Enamel [line break][if ignite_pid is zero]-----[otherwise][right justify ignite_pid minus epoch_pid][end if]   ttys000      [doneness of ignite_pid]Ignite Fusion Reactor [line break][if landing_pid is zero]-----[otherwise][right justify landing_pid minus epoch_pid][end if]   ttys000      [doneness of landing_pid]Landing Sequence [line break][if rover_pid is zero]-----[otherwise][right justify rover_pid minus epoch_pid][end if]	  ttys000      [doneness of rover_pid]Send Probe Data[variable letter spacing]".
 	
 To say doneness of (process - a number):
 	if process is zero:
@@ -944,7 +955,7 @@ Instead of going towards the living room:
 		say paragraph break; 
 		try going towards the living room;
 	otherwise if the player is wet:
-		say "[if the player is clueless]You are still dripping wet! Before you drip all over the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
+		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
 	otherwise:
 		continue the action.
 
@@ -1125,7 +1136,16 @@ The clueless-name of the black plate is the "black plate". The black plate is sw
 Instead of attacking, pushing, or touching the black plate:
 	try switching on the black plate.
 	
-
+Before switching on the black plate when the First Sim is not happening:
+	if the player is not wet:
+		say "[if player is clueless]The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on[otherwise]Monomer and accelerant are not present on the surface of the hull. Powering the irradiator would waste energy[end if].";
+		the rule succeeds;
+		
+After switching on the black plate when the First Sim is not happening:
+	say "[if the player is clueless]The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day[otherwise]The UV light diffuses over the entire surface of the ship and causes the chemical mixture on the hull to polymerize into an durable, clear ablative coating[end if].";
+	now the enamel_pid is the turn count;
+	now the player is dry;
+	now the black plate is switched off.
 
 The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination" and "sterilization" and "biohazard" and "response" and "system" and "protocol" as the bathroom sink-proxy.
 
@@ -1180,6 +1200,9 @@ The shower door is a door and scenery.  It is north of the bathroom and south of
 
 The clueless-name of the shower door is "shower door". The aware-name of the shower door is "extruder latch". The clueless-description of the shower door is "[if the location is the bathroom]A translucent polyglass door at the back of the bathroom leads into the shower stall[otherwise]The polyglass door leads back to the bathroom[end if]. It is [if open]open[otherwise]closed." The aware-description of the shower door is "A circuit which enables or disables the extruder." The shower door-proxy is an aware-proxy that is part of the shower door. Understand "extruder" and "latch" as the shower door.
 
+Before entering the shower door:
+	try silently opening the shower door.
+
 After opening the shower door for the first time:
 	say "You open the shower door, which is more flimsy that it would at first appear.[paragraph break]You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.";
 	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
@@ -1217,7 +1240,6 @@ Instead of exiting:
 	otherwise:
 		continue the action.
 	
-	
 Instead of going towards when the player is in the shower:
 	if the player is wearing the flight suit:
 		continue the action;
@@ -1250,16 +1272,23 @@ Instead of pushing or touching the shampoo dispenser:
 	try pushing the shampoo button.
 	
 Instead of pushing or touching the soap button:
-	say "A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body and then wash it off.";
-	if the soap button is unpressed:
-		now the soap button is pressed;
-		let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
-		say "[metatext in metaspeak]".
+	if the player is wearing the flight suit:
+		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The ACU quantum isolator is interfering with emission of the accelerant[end if].";
+		the rule succeeds;
+	otherwise:
+		say "[if the player is clueless]A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body and then wash it off[otherwise]The accelerant for the ablative enamel spreads quickly over the ship's hull[end if].";
+		if the soap button is unpressed:
+			now the soap button is pressed;
+			let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
+			say "[metatext in metaspeak]".
 	
 Instead of pushing or touching the shampoo button:
-	say "You wash your hair. It no longer feels like a straw-encrusted swarm of yellow-headed tommygoffs.";
-	if the shampoo button is unpressed:
-		now the shampoo button is pressed.
+	if the player is wearing the flight suit:
+		say "[if the player is clueless]You don't want to get shampoo all over the flight suit[otherwise]The monomer ejection system is dampened by the ACU quantum isolator[end if].";
+	otherwise:
+		say "[if the player is clueless]You wash your hair. It no longer feels like a straw-encrusted swarm of yellow-headed tommygoffs[otherwise]Monomer solution is spread uniformly over the ship's hull[end if].";
+		if the shampoo button is unpressed:
+			now the shampoo button is pressed.
 
 Chapter The Planet
 
@@ -1841,6 +1870,7 @@ When Second Sim begins:
 	Restore the World;
 	Setup the World;
 	clear the screen;
+	now arm-numb is zero;
 	say "[ACU Boot Banner]".
 	
 When Second Sim ends:
