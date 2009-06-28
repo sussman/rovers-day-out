@@ -1093,7 +1093,7 @@ The clueless-name of the floss dispenser is "floss dispenser". Understand "white
 
 The blue button is part of the floss dispenser.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed floss dispenser." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem." The blue button-proxy is an aware-proxy that is part of the blue button. Understand "linkage" and "actuation" and "circuit" as the blue button-proxy.
 
-The strand of dental floss is an edible prop. It is in Limbo. Understand "light" and "green" as the strand of dental floss. The clueless-name of the strand of dental floss is "strand of dental floss". The aware-name of the strand of dental floss is "entangled keys". The clueless-description of the strand of dental floss is "A strand of pale green dental floss". The aware-description of the strand of dental floss is "A pair of quantum-entangled keys which can be linked transputer control nodes". The strand-proxy is an aware-proxy that is part of the strand of dental floss. Understand "key" and "pair" as the strand-proxy.
+The strand of dental floss is an edible prop. It is in Limbo. Understand "light" and "green" as the strand of dental floss. The clueless-name of the strand of dental floss is "strand of dental floss". The aware-name of the strand of dental floss is "entangled key pair". The clueless-description of the strand of dental floss is "A strand of pale green dental floss". The aware-description of the strand of dental floss is "A pair of quantum-entangled keys which can be linked transputer control nodes". The strand-proxy is an aware-proxy that is part of the strand of dental floss. Understand "key" and "pair" as the strand-proxy.
 
 Instead of pushing the blue button:
 	if the player does not hold the floss dispenser:
@@ -1109,7 +1109,26 @@ Instead of pushing the blue button:
 	
 Instead of eating the dental floss:
 	move dental floss to Limbo;
-	say "Yummy." [you are here]
+	say "[if the player is clueless]Mmm. Quite tasty[otherwise]Key pair decohered and ready for regeneration[end if]."
+	
+Flossing is an action applying to one thing. Understand "floss [something]" as flossing.
+
+Check flossing:
+	if the strand of dental floss is not held by the player:
+		say "[if the player is clueless]You don't have any floss[otherwise]Before linking anything, you will need to generate a pair of mutually entangled keys[end if].";
+		rule fails;
+	if the noun is not teeth:
+		say "[if the player is clueless]Floss [the noun]? Flossing is for teeth. You could tie the floss to [the noun] if that would float your boat, but that's hardly the same as flossing it[otherwise]The key pair is usually used to link transputational intellinodes within the hull plating. If you want to bind other nodal representations, you should tie the keys to those specific nodes[end if].";
+		rule fails.
+		
+Carry out flossing:
+	move dental floss to Limbo;
+	say "[if the player is clueless]You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now[otherwise]The hull plating is now synchronously enmeshed[end if]."
+	
+Instead of putting the strand of dental floss on teeth:
+	try flossing teeth.
+	
+[TODO: tie ends of floss to stuff]
 
 The clueless-name of the toothbrush is "toothbrush".  Understand "brush" and "green" and "bristle" and "bristles" and "sonic" as the toothbrush. The aware-name of the toothbrush is "pit scrubber". The clueless-description of the toothbrush is "A green sonic toothbrush with slightly worn bristles." The aware-description of the toothbrush is "The pit scrubber system appears to be operational. The countless nanobots it contains are dormant until they are released on the skin of the ship to polish out micropits from collisions with microscopic particles during the flight." The toothbrush-proxy is an aware-proxy that is part of the toothbrush. Understand "pit" and "scrubber" and "nanobot" and "nanobots" as the toothbrush-proxy.
 
