@@ -44,6 +44,11 @@ Dream index is a number that varies. Dream index is 1.
 [Magpaper-related]
 The IPL_pid, enamel_pid, ignite_pid, landing_pid, rover_pid, and epoch_pid are numbers that vary. The IPL_pid, enamel_pid, ignite_pid, landing_pid, rover_pid, and epoch_pid are zero.
 
+[Ship orientation]
+Roll, pitch, and yaw are numbers that vary. 
+The roll is -60.
+The yaw is 90.
+The pitch is 30.
 
 Chapter Class Definitions
 
@@ -839,7 +844,7 @@ After examining the old fridge for the first time:
 	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 	say "[metatext in metaspeak]";
 
-The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success.[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
+The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
 
 Instead of attacking the white egg:
 	if the white egg is in the frying pan:
@@ -881,14 +886,13 @@ Instead of putting the white egg on a supporter:
 	
 To fry the white egg:
 	now the white egg is cooked;
-	now the ignite_pid is the turn count;
 	say "[if the player is clueless]Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades[otherwise]A spherical array of powerful lasers discharges instantly, their combined output focused on the heavy helium being injected into the magnetic bottle within the reactor chamber. The ship surges with power as the fusion rockets are energized[end if].";
 	if the Second Sim is happening:
 		let metatext be "Janet: If there were some heavy helium left after landing, could the ship take off again?[line break]David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we’ll have to fuse every gram of that heavy helium to make a soft landing.[line break]Janet: I just hate to leave the ship there. It could take years before our next Casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.[line break]David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.";
 		say "[metatext in metaspeak]".	
 	
 Instead of doing something to the white egg when the white egg is broken:
-	if the current action is eating or examining:
+	if the current action is examining:
 		continue the action;
 	otherwise:
 		if the player is clueless:
@@ -906,7 +910,16 @@ Before eating the white egg:
 				say "A raw egg? Disgusting!";
 			otherwise:
 				say "The fuel has not been ignited; it would be premature to recycle the containment unit.";
-			the rule succeeds.
+			the rule succeeds;
+		otherwise:[cooked]
+			say "[if the player is clueless]You gobble down what might well have been the best neoegg you've ever had[otherwise]The components are the heavy helium containment unit are reallocated to ship's needs[end if].";
+			let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?[line break]Janet: Works for me, yeah.[line break]David: How about a plate and fork?[line break]Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";			
+			say "[metatext in metaspeak]";
+			now the ignite_pid is the turn count;
+			move the white egg to the cold box;
+			now the white egg is not cooked;
+			now the white egg is not broken;	
+			the rule succeeds;
 			
 After taking the white egg for the first time:
 	say "You pluck the white egg out of the fridge.";
@@ -1247,11 +1260,39 @@ The clueless-name of the toilet cover is the "toilet cover." The aware-name of t
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
 
-The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup." The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude" and "control" and "RCS" as the plunger.
+The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude" and "control" and "RCS" as the plunger.
 
 The clueless-name of the shaft is "shaft". The aware-name of the shaft is "vector input port". The clueless-description of the shaft is "A wooden stick." The aware-description of the shaft is "A multiaxial control device which outputs ship orientation instructions to the nose cone drivers." The shaft-proxy is an aware-proxy that is part of the shaft. Understand "vector" and "input" and "port" as the shaft-proxy.
 
 The clueless-name of the red rubber cup is the "red rubber cup". The aware-name of the red rubber cup is the "nose cone driver". The clueless-description of the red rubber cup is "The business end of the plunger.[if a random chance of one in eight succeeds] [quotation mark]Exterminate! Exterminate![quotation mark]". The red rubber cup-proxy is an aware-proxy that is part of the red rubber cup. Understand "nose" and "cone" and "driver" as the red rubber cup-proxy.
+
+To say yoke position:
+	if the player is clueless:
+		if the pitch is zero and the roll is zero and the yaw is zero:
+			say "The plunger stands perfectly straight, just the way you like it"; 
+		otherwise:
+			say "Something about the plunger is not right, though. The handle of the plunger is ";
+			if the pitch is not zero:
+				say "tilted [magnitude of pitch] [if the pitch is greater than zero]backwards[otherwise]forwards[end if][run paragraph on]";
+				if the roll is not zero:
+					say " and it's also ";
+				otherwise:
+					say ".";
+			if the roll is not zero:
+				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if]. [run paragraph on]"; 
+			if the yaw is not zero:
+				if pitch is not zero or the roll is not zero:
+					say "Furthermore, it's handle is ";
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise."
+							
+To say magnitude of (degrees - a number):
+	if degrees is less than zero:
+		now degrees is degrees times -1;
+	if degrees is greater than 180:
+		say "error - angle magnitude out of limits";
+		[for debuggage only -- bad orc, exceeded pi]
+		rule fails;
+	say the Inclination corresponding to the Angle of degrees in the Table of Orientations.
 
 The shower door is a door and scenery.  It is north of the bathroom and south of the shower. 
 
@@ -1294,7 +1335,10 @@ Instead of exiting:
 	otherwise if the player is in the kitchen:
 		try going towards living room;
 	otherwise if the player is in the bathroom:
-		try going towards living room;
+		if the player is on the toilet seat and the Landing Sequence is happening:		
+			say "You haven’t finished your business here. The plunger handle is tilted to the XXXXXX and upsets your sense of order.";
+		otherwise:
+			try going towards the living room;
 	otherwise:
 		continue the action.
 	
@@ -1600,7 +1644,6 @@ Last-success is a text that varies.  The last-success is "TRUE".
 First after an actor doing something:
 	change last-successful-action to the action-name part of the current action;
 	continue the action.
-
 
 [a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
 
@@ -1933,6 +1976,9 @@ When Second Sim begins:
 	Setup the World;
 	clear the screen;
 	now arm-numb is zero;
+	now roll is -90;
+	now pitch is 60;
+	now yaw is 0;
 	say "[ACU Boot Banner]".
 	
 When Second Sim ends:
@@ -1940,6 +1986,30 @@ When Second Sim ends:
 	[description of waking up again]
 	Setup the World;
 	now the David-proxy is in Limbo.
+	
+Chapter Landing Sequence
+
+Landing Sequence is a scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
+
+When Landing Sequence begins:
+	now the toilet cover is open;
+	now the toilet bowl is closed;
+	now the player is on the toilet seat;
+	say "You walk into the bathroom, flip up the toilet lit and sit down. You notice that the plunger handle is tilted a little to the left.";
+	let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
+	say "[metatext in metaspeak]".
+	
+Landing Sequence ends when the landing_pid is not zero.
+
+Table of Orientations
+Angle		Inclination
+0				"perfect"
+30				"just the tinyest little bit"
+60				"a tad"
+90				""
+120				"strongly"
+150				"almost completely"
+180				"completely"
 
 Chapter Real Thing
 	
