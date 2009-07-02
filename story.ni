@@ -27,7 +27,7 @@ Current memory usage is a number that varies. Current memory usage is 508.
 Load average is a number that varies. Load average is 500.
 [Load average takes a dive after the switch from Windix to Flosix.]
 
-Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs.]
+Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs. TOCONSIDER: should this be an action variable a la example 196?]
 
 Aware-references is a number that varies. Aware-references is 1.
 [Tracks the number of times, up to 3, that the ACU has referred to objects by their aware-names. Used to switch between David/Janet comments]
@@ -94,6 +94,16 @@ A bowl is a kind of container. The carrying capacity of a bowl is one.
 Definition: a bowl is full if something is in it.
 
 An message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".
+
+forwards is a direction. The opposite of forwards is backwards.
+backwards is a direction. The opposite of backwards is forwards.
+leftwards is a direction. The opposite of leftwards is rightwards.
+rightwards is a direction. The opposite of rightwards is leftwards.
+clockwise is a direction. The opposite of clockwise is counterclockwise.
+counterclockwise is a direction. The opposite of counterclockwise is clockwise.
+ Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "port" and "leftward" as leftwards. Understand "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.
+
+A direction can be built-in or custom. A direction is usually built-in. Forwards, backwards, leftwards, rightwards, clockwise and counterclockwise are custom.
 
 [classs-wise resettable properties:]
 A person has an object called initial-enclosure. The initial-enclosure of a person is usually nothing.
@@ -189,7 +199,6 @@ To say (dialogue - some text) in metaspeak:
 	say variable letter spacing;
 	say paragraph break;
 	
-
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
@@ -277,6 +286,9 @@ Before going a direction (called the way):
 		continue the action;
 	if the way is up or the way is down:
 		continue the action;
+	if the way is custom:
+		say "You move slightly [the way].";
+		the rule succeeds;
 	if the ACU is the player: 
 		if the player is clueless:
 			say "Compass directions? On Mars? The magnetic field here is too weak.";
@@ -1269,7 +1281,7 @@ The clueless-name of the red rubber cup is the "red rubber cup". The aware-name 
 To say yoke position:
 	if the player is clueless:
 		if the pitch is zero and the roll is zero and the yaw is zero:
-			say "The plunger stands perfectly straight, just the way you like it"; 
+			say "The plunger stands perfectly straight, just the way you like it."; 
 		otherwise:
 			say "Something about the plunger is not right, though. The handle of the plunger is ";
 			if the pitch is not zero:
@@ -1277,12 +1289,12 @@ To say yoke position:
 				if the roll is not zero:
 					say " and it's also ";
 				otherwise:
-					say ".";
+					say ". [run paragraph on]";
 			if the roll is not zero:
 				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if]. [run paragraph on]"; 
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
-					say "Furthermore, it's handle is ";
+					say "Furthermore, its handle is ";
 				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise."
 							
 To say magnitude of (degrees - a number):
@@ -1293,6 +1305,52 @@ To say magnitude of (degrees - a number):
 		[for debuggage only -- bad orc, exceeded pi]
 		rule fails;
 	say the Inclination corresponding to the Angle of degrees in the Table of Orientations.
+
+Yoking it more is an action applying to one thing and one visible thing.
+
+Check yoking it more:
+	if the noun is not the plunger:
+		try pushing the noun.
+		
+Carry out yoking it more: 
+	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
+	let D be the delta corresponding to the custom-direction of second noun in the Table of Axes;
+	if A is 1:
+		now pitch is pitch plus 30 times D;
+		now the pitch is the limited pitch range;
+	otherwise if A is 2:
+		now roll is roll plus 30 times D;
+		now the roll is the limited roll range;
+	otherwise if A is 3:
+		now yaw is yaw plus 30 times D;
+		now the yaw is the limited yaw range;
+	otherwise:
+		say "error in the yoking it more table look up :-(".
+		
+Report yoking it more:
+	say "You adjust the plunger handle [second noun]."
+	
+To decide what number is the limited (measured - a number) range:
+	if measured is greater than 180:
+		let measured be 180;
+	otherwise if measured is less than -180:
+		let measured be -180;
+	decide on measured.
+	
+Table of Axes
+custom-direction		axis			delta				
+forwards					1[pitch]		-1
+backwards					1			 	1
+leftwards					2[roll]			-1
+rightwards				2			 	1
+counterclockwise		3[yaw]			-1
+clockwise					3				1
+
+Understand "push [something] [a custom direction]" as yoking it more.
+Understand "pull [something] [a custom direction]" as yoking it more.
+Understand "twist [something] [a custom direction]" as yoking it more.
+Understand "turn [something] [a custom direction]" as yoking it more.
+Understand "spin [something] [a custom direction]" as yoking it more.
 
 The shower door is a door and scenery.  It is north of the bathroom and south of the shower. 
 
