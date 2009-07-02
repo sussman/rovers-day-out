@@ -1328,8 +1328,20 @@ Carry out yoking it more:
 		say "error in the yoking it more table look up :-(".
 		
 Report yoking it more:
-	say "You adjust the plunger handle [second noun]."
-	
+	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
+	let D be the delta corresponding to the custom-direction of second noun in the Table of Axes;
+	say "You adjust the plunger handle [second noun][run paragraph on]";
+	if A is 1:
+		let the angle be the pitch;
+	otherwise if A is 2:
+		let the angle be the roll;
+	otherwise if A is 3:
+		let the angle be the yaw;
+	if the angle is 180 times D:
+		say ". It doesn't look like it will move any further in that direction.";
+	otherwise:
+		say "."
+
 To decide what number is the limited (measured - a number) range:
 	if measured is greater than 180:
 		let measured be 180;
