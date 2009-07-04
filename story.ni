@@ -1339,6 +1339,25 @@ Before entering a flipchair (called the flop):
 		
 Instead of taking the toilet:
 	say "That's hardly potable."
+	
+Flushing is an action applying to one thing.  Understand "flush [something]" as flushing.
+
+Check flushing:
+	if the noun is the toilet or the noun is the silver handle:
+		if the landing sequence is happening:
+			continue the action;
+		otherwise:
+			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing[otherwise]The ship is not on planetary approach. Retros are offline[end if].";
+			the rule fails; 
+	otherwise: 
+		say "[if the player is clueless]That would be difficult to explain to the plumber[otherwise]Thruster discharge can only be actuated via the retro trigger circuit[end if].";
+		the rule fails.
+		
+Carry out flushing:
+	now the landing_pid is the turn count.
+	
+Report flushing:
+	say "You flush the toilet."
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
 
@@ -2141,7 +2160,8 @@ Chapter Landing Sequence
 Landing Sequence is a scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
 
 When Landing Sequence begins:
-	now the toilet bowl is open;
+	now the toilet cover is open;
+	now the toilet seat is closed;
 	now the player is on the toilet seat;
 	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger handle is tilted a little to the left.";
 	let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
