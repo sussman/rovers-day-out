@@ -383,4 +383,12 @@ Could the bulldog follow orders from Rover?
 
 ------------------------
 
+code review
+unit testing
+debug-mode only messages
+fix status line:
+  - flesh out verbs
+  - come up with new way of measuring success.
+     'last-successful-action' method doesn't work at all.
+
 
