@@ -124,7 +124,7 @@ Section Chests and Lids
 
 A chest is a kind of container. A chest is always openable. A chest is usually fixed in place. A chest is usually closed. The specification of a chest is "Represents a container with a separately implemented lid; the lid is itself a supporter."
 
-A lid is a kind of supporter. A lid is part of every chest. The specification of a lid is "A supporter attached to a chest, which can only support things when the chest is closed."
+A lid is a kind of supporter. A lid is part of every chest. Lids can be raisable. Lids are usually raisable. The specification of a lid is "A supporter attached to a chest, which can only support things when the chest is closed."
 
 Before opening a lid which is part of a chest (called the item): 
 	try opening the item instead.
@@ -149,6 +149,11 @@ Before putting something on a chest when a lid (called the item) is part of the 
 	
 Instead of examining a closed chest when something is on a lid (called the top) which is part of the noun: 
 	say "[The noun] is closed, and there [is-are a list of things on the top] on top."
+	
+[closely related is the flipchair:]
+
+A flipchair is a kind of furniture. Flipchairs are enterable scenery. Flipchairs can be raisable. Flipchairs are usually raisable. Flipchairs can be open or closed. Flipchairs are usually open.
+
 
 Chapter General Routines
 
@@ -1231,9 +1236,11 @@ After switching on the black plate when the First Sim is not happening:
 
 The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination" and "sterilization" and "biohazard" and "response" and "system" and "protocol" as the bathroom sink-proxy.
 
-The toilet is furniture in the bathroom. The toilet bowl and water tank are chests which are parts of the toilet. The toilet#interior is a privately-named fixed in place thing in the water tank. The flapper valve is a scenery which is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver handle is scenery which is part of the water tank.  The tank top is a lid which is part of the water tank. The toilet cover is a lid which is part of the toilet bowl. The toilet seat is enterable furniture which is part of the toilet bowl.
+The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
 
-The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy.
+The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
+
+The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The toilet#interior is a privately-named fixed in place thing in the water tank. The flapper valve is a scenery which is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver handle is scenery which is part of the water tank.
 
 The clueless-name of the water tank is the "water tank". The aware-name of the water tank is "plasma constrictor". The clueless-description of the water tank is "A porcelain reservoir containing several liters of water to flush the toilet. On the front of the tank there is a silver handle used to flush the toilet and on the top of the tank there is a lid[if the water tank is open] which has been flipped up[end if]." The aware-description of the water tank is "A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch [if the water tank is open]has been swung open[otherwise]is tightly sealed[end if]."  The water tank-proxy is an aware-proxy which is part of the water tank. Understand "plasma" and "constrictor" and "ring" as the water tank-proxy. 
 
@@ -1241,34 +1248,97 @@ The clueless-name of the tank top is the "tank lid". The aware-name of the tank 
 
 The clueless-name of the flapper valve is the "flapper valve".  The aware-name of the flapper valve is "thrust aperture". The clueless-description of the flapper valve is "A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever." The aware-description of the flapper valve is "The most critical component of the retro assembly, and its only moving part, the thrust aperature controls the flow rate of the ship's breaking thrusters." The flapper valve-proxy is an aware-proxy that is part of the flapper valve. Understand "thrust" and "aperture" as the flapper valve-proxy.
 
-The chain can be broken or intact. The chain is intact.
+The clueless-name of the chain is the "flush chain". The aware-name of the chain is "thruster linkage servo". The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has broken, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the thruster actuation relay and the thrust aperture." The chain-proxy is an aware-proxy that is part of the chain. Understand "thruster" and "linkage" and "servo" and "link" as the chain-proxy. The chain can be broken or intact. The chain is intact.
 
-The clueless-name of the chain is the "flush chain." The aware-name of the chain is "thruster linkage servo." The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has broken, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the thruster actuation relay and the thrust aperture." The chain-proxy is an aware-proxy that is part of the chain. Understand "thruster" and "linkage" and "servo" and "link" as the chain-proxy.
+The clueless-name of the lever is the "flush lever". The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver handle on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unforunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
 
-The clueless-name of the lever is the "flush lever." The aware-name of the lever is "thruster actuation relay." The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver handle on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unforunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
+The clueless-name of the silver handle is the "silver handle". The aware-name of the silver handle is "trigger circuit". The clueless-description of the silver handle is "A silver-plated handle on upper part of the toilet's water tank." The aware-description of the silver handle is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver handle-proxy is an aware-proxy that is part of the silver handle. Understand "trigger" and "circuit" as the silver handle-proxy. 
 
-The clueless-name of the silver handle is the "silver handle." The aware-name of the silver handle is "trigger circuit." The clueless-description of the silver handle is "A silver-plated handle on upper part of the toilet's water tank." The aware-description of the silver handle is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver handle-proxy is an aware-proxy that is part of the silver handle. Understand "trigger" and "circuit" as the silver handle-proxy. 
+The clueless-name of the toilet#interior is the "inside of the tank". The aware-name of the toilet#interior is "interior of the plasma constrictor ring." The clueless-description of the toilet#interior is "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve.[if the chain is broken] The situation here is slightly complication, however, as the chain is broken." The aware-description of the toilet#interior is "Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay [if the chain is broken]but here there is a discontinuity and the signal does not reach[otherwise]and the servo linkage to the[end if] thrust aperature. [if the chain is broken] It looks like the servo linkage has been damaged."
 
-The clueless-name of the toilet#interior is the "inside of the tank." The aware-name of the toilet#interior is "interior of the plasma constrictor ring." The clueless-description of the toilet#interior is "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve.[if the chain is broken] The situation here is slightly complication, however, as the chain is broken." The aware-description of the toilet#interior is "Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay [if the chain is broken]but here there is a discontinuity and the signal does not reach[otherwise]and the servo linkage to the[end if] thrust aperature. [if the chain is broken] It looks like the servo linkage has been damaged."
+The toilet bowl is an enterable scenery furniture in the bathroom. 
 
-The clueless-name of the toilet bowl is the "toilet bowl." The aware-name of the toilet bowl is the "reaction chamber".  The clueless-description of the toilet bowl is "The white porcelain bowl is the bottom part of the toilet. [throne status]." The aware-description of the toilet bowl is "The fusion output mixes with reactant in the glossy white chamber at the bottom of the retro assembly, just distal to the thrust aperature. [throne status]." The toilet bowl-proxy is an aware-proxy that is part of the toilet bowl. Understand "reaction" and "chamber" as the toilet bowl-proxy.
+The clueless-name of the toilet bowl is the "toilet bowl". The aware-name of the toilet bowl is the "reaction chamber".  The clueless-description of the toilet bowl is "The white porcelain bowl is the bottom part of the toilet. [throne status]." The aware-description of the toilet bowl is "The fusion output mixes with reactant in the glossy white chamber at the bottom of the retro assembly, just distal to the thrust aperature. [throne status]." The toilet bowl-proxy is an aware-proxy that is part of the toilet bowl. Understand "reaction" and "chamber" as the toilet bowl-proxy.
+
+The toilet seat is a flipchair which is in the bathroom. The clueless-name of the toilet seat is the "toilet seat". The aware-name of the toilet seat is "pressure seating". The clueless-description of the toilet seat is "A padded and heated seat, which is presently [if the toilet seat is open]raised[otherwise]in the down position[end if]." The aware-description of the toilet seat is "A black mevolar gasket that assures a perfect seal between the shield and the reactant chamber. The pressure seating is presently [if the toilet seat is open]not [end if]making a seal with the chamber."  The toilet seat-proxy is an aware-proxy which is part of the toilet seat. Understand "pressure" and "seating" and "mevolar" and "gasket" as the toilet seat-proxy.
+
+The toilet cover is a flipchair which is in the bathroom. The clueless-name of the toilet cover is the "toilet cover". The aware-name of the toilet cover is "reactant shield". The clueless-description of the toilet cover is "The cover is made of plastic, but has been laminated to give it the appearance of unstained wood. It toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured." Understand "lid" as the toilet cover. The toilet cover-proxy is an aware-proxy that is part of the toilet cover. Understand "reactant" and "shield" as the toilet cover-proxy.
+
+Does the player mean opening the toilet cover: it is likely.
+Does the player mean closing the toilet cover: it is likely.
+
+[The toilet bowl, cover and seat are not part of the toilet because it would great all kinds of problems regardng entering (i.e., sitting) on the toilet -- deflecting the entering action aimed at the toilet to the seat would create a recursive situation, as enter the seat would require entering the parent object, the toilet. Also, entering a part of the toilet or bowl would result in darkness. The solution seems to be to put discrete items into the room, but to make them scenery]
 
 To say throne status:
 	if the toilet seat is closed:
-		if the toilet bowl is closed:
+		if the toilet cover is closed:
 			say "[if the player is clueless]Both the cover and seat are down[otherwise]Both the reactant shield and pressure seating are clamped down";
 		otherwise:
 			say "[if the player is clueless]The toilet seat is down, but the cover is raised[otherwise]The pressure seating is engaged but the reactant shield is raised";
 	otherwise:
 		say "[if the player is clueless]Someone left both the cover and seat up. How rude[otherwise]Both the reactant shield and the pressure seating are presently disengaged";
+		
+Before entering the toilet:
+	if the toilet cover is closed:
+		try entering the toilet cover;
+		the rule succeeds;
+	otherwise if the toilet seat is closed:
+		try entering the toilet seat;
+		the rule succeeds;
+	otherwise:
+		say "[if the player is clueless]Sitting on the ceramic rim of the toilet bowl would be absolutely too gross to contemplate[otherwise]The mevolar pressure seating is not in place[end if].";
+		the rule fails.
 
-The toilet seat can be open or closed. The toilet seat is open.
+Before opening a flipchair (called the flop):
+	if a flipchair holds the player:
+		say "You can't do that while you are [if the player is clueless]on[otherwise]accessing[end if] [the holder of the player].";
+		the rule fails;
+	if the flop is open:
+		say "[The flop] is already [if the player is clueless]raised[otherwise]disengaged[end if].";
+		the rule fails;
+	otherwise:	
+		now the flop is open;
+		if the toilet seat is open:
+			now the toilet cover is open;
+		say "You [if the player is clueless]lift[otherwise]disengage[end if] [the flop].";
+		the rule succeeds.
+		
+Before closing a flipchair (called the flop):
+	if a flipchair holds the player:
+		say "You can't do that while you are [if the player is clueless]on[otherwise]accessing[end if] [the holder of the player].";
+		the rule fails;
+	if the flop is closed:
+		say "[The flop] is already [if the player is clueless]down[otherwise]in position[end if].";
+		the rule fails;
+	otherwise:
+		now the flop is closed;	
+		if the toilet cover is closed:
+			now the toilet seat is closed;
+		say "You lower [the flop] into position.";
+		rule succeeds.
 
-[TODO: routine to intercept open/close of the toilet seat, taking into consideration the status of the toilet cover]
+After opening a flipchair (called the flop):
+	say "You [if the player is clueless]raise[otherwise]access[end if] [the flop]."
+	
+After closing a flipchair (called the flop):
+	say "You [if the player is clueless]lower[otherwise]raise[end if] [the flop]."
+	
+Understand "raise [something raisable]" as opening. Understand "lift [something raisable]" as opening.
 
-The clueless-name of the toilet seat is the "toilet seat". The aware-name of the toilet seat is "pressure seating". The clueless-description of the toilet seat is "A padded and heated seat, which is presently [if the toilet seat is open]raised[otherwise]in the down position[end if]." The aware-description of the toilet seat is "A black mevolar gasket that assures a perfect seal between the shield and the reactant chamber. The pressure seating is presently [if the toilet seat is open]not [end if]making a seal with the chamber."  The toilet seat-proxy is an aware-proxy which is part of the toilet seat. Understand "pressure" and "seating" and "mevolar" and "gasket" as the toilet seat-proxy.
+Understand "lower [something raisable]" as closing.
 
-The clueless-name of the toilet cover is the "toilet cover." The aware-name of the toilet cover is "reactant shield". The clueless-description of the toilet cover is "The cover is made of plastic, but has been laminated to give it the appearance of unstained wood. It toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured." The toilet cover-proxy is an aware-proxy that is part of the toilet cover. Understand "reactant" and "shield" as the toilet cover-proxy.
+Before entering a flipchair (called the flop):
+	if the flop is open:
+		say "(first [if the player is clueless]lowering[otherwise]engaging[end if] [the flop])[command clarification break]";
+		if the flop is the toilet cover:
+			now the toilet cover is closed;
+		now the toilet seat is closed;
+	if the flop is the toilet seat and the toilet cover is closed:
+		say "(first [if the player is clueless]raising[otherwise]disengaging[end if] [the toilet cover])[command clarification break]";
+		now the toilet cover is open.
+		
+Instead of taking the toilet:
+	say "That's hardly potable."
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
 
@@ -1287,15 +1357,14 @@ To say yoke position:
 			if the pitch is not zero:
 				say "tilted [magnitude of pitch] [if the pitch is greater than zero]backwards[otherwise]forwards[end if][run paragraph on]";
 				if the roll is not zero:
-					say " and it's also ";
-				otherwise:
-					say ". [run paragraph on]";
+					say " and it's also [run paragraph on]";
 			if the roll is not zero:
-				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if]. [run paragraph on]"; 
+				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if] [run paragraph on]"; 
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
-					say "Furthermore, its handle is ";
-				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise."
+					say ". Furthermore, its handle is ";
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise [run paragraph on]";
+			say "."
 							
 To say magnitude of (degrees - a number):
 	if degrees is less than zero:
@@ -1357,6 +1426,16 @@ leftwards					2[roll]			-1
 rightwards				2			 	1
 counterclockwise		3[yaw]			-1
 clockwise					3				1
+
+Table of Orientations
+Angle		Inclination
+0				"perfect"
+30				"just the tinyest little bit"
+60				"a tad"
+90				""
+120				"strongly"
+150				"almost completely"
+180				"completely"
 
 Understand "push [something] [a custom direction]" as yoking it more.
 Understand "pull [something] [a custom direction]" as yoking it more.
@@ -2062,24 +2141,13 @@ Chapter Landing Sequence
 Landing Sequence is a scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
 
 When Landing Sequence begins:
-	now the toilet cover is open;
-	now the toilet bowl is closed;
+	now the toilet bowl is open;
 	now the player is on the toilet seat;
-	say "You walk into the bathroom, flip up the toilet lit and sit down. You notice that the plunger handle is tilted a little to the left.";
+	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger handle is tilted a little to the left.";
 	let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
 	say "[metatext in metaspeak]".
 	
 Landing Sequence ends when the landing_pid is not zero.
-
-Table of Orientations
-Angle		Inclination
-0				"perfect"
-30				"just the tinyest little bit"
-60				"a tad"
-90				""
-120				"strongly"
-150				"almost completely"
-180				"completely"
 
 Chapter Real Thing
 	
