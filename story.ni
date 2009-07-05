@@ -24,8 +24,8 @@ The examine described devices rule is not listed in any rulebook.
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
-Load average is a number that varies. Load average is 500.
-[Load average takes a dive after the switch from Windex to Flosix.]
+kernel is a number that varies. kernel is 500.
+[kernel takes a dive after the switch from Windex to Flosix.]
 
 Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs. TOCONSIDER: should this be an action variable a la example 196?]
 
@@ -93,7 +93,7 @@ A bowl is a kind of container. The carrying capacity of a bowl is one.
 
 Definition: a bowl is full if something is in it.
 
-A message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".  [###ben sez: Props are portable by default.  Do we want this to be portable?]
+A message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".  [ben said: Props are portable by default.  Do we want this to be portable? Jack replied: I think so. I wasn't sure how many messages we would have in the game, and what they'd be. The message is the item that bears the inscription rather than the inscription itself. Most things I can think of that have writing on them (books, coins, birthday cards, etc.) are portable, so this seemed natural. If there is an inscription-bearing object that is not portable, we can always override it.]
 
 forwards is a direction. The opposite of forwards is backwards.
 backwards is a direction. The opposite of backwards is forwards.
@@ -101,7 +101,7 @@ leftwards is a direction. The opposite of leftwards is rightwards.
 rightwards is a direction. The opposite of rightwards is leftwards.
 clockwise is a direction. The opposite of clockwise is counterclockwise.
 counterclockwise is a direction. The opposite of counterclockwise is clockwise.
- Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "port" and "leftward" as leftwards. Understand "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [###ben sez:  how about "left" and "right"?]
+ Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "left", "port" and "leftward" as leftwards. Understand "right", "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [ben said:  how about "left" and "right"? Jack replied: Yes, I've added them. Leftwards and rightwards were originally left and right, so left/right were implicitly understood, but then I added "-wards" for consistency. We might need to add some disambiguation versus other left/right objects like arms.]
 
 A direction can be built-in or custom. A direction is usually built-in. Forwards, backwards, leftwards, rightwards, clockwise and counterclockwise are custom.
 
@@ -172,10 +172,10 @@ Memory-updating is an action applying to nothing.
 Carry out memory-updating:
 	let memdelta be a random number from -25 to 25;
 	now the current memory usage is the current memory usage plus memdelta;
-	if current memory usage is greater than load average + 140:
-		now the current memory usage is load average + 120;
-	if current memory usage is less than load average - 100:
-		now the current memory usage is load average. [###ben sez:  are we really conflating memory usage with cpu usage?  my inner computer scientist cringes.  :-) ]
+	if current memory usage is greater than kernel + 140:
+		now the current memory usage is kernel + 120;
+	if current memory usage is less than kernel - 100:
+		now the current memory usage is kernel. [ben said:  are we really conflating memory usage with cpu usage?  my inner computer scientist cringes.  :-) jack replied: Sometimes you grab a nice sounding variable name out of the air without really thinking about it. The first thing that occurred to me was "commit charge", but that's very microsofty.]
 
 To say ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
@@ -218,7 +218,7 @@ Chapter Verbs
 	
 Section Computer Humor
 
-[ben sez:  this is hilarious!]
+[ben said:  this is hilarious! Jack said: Thanks; feel free to add more as they occur to you.]
 
 Before touching something (called the item):
 	if the player is the acu and the player is self-aware:
@@ -276,11 +276,11 @@ Check going towards:
 	if the player is the ACU and the noun is not in the Valkyrie, say "You're not ready to go out yet." instead.
 
 Carry out going towards:
-	let the heading be the best route from the location to the location of the noun, using even locked doors;
-	if heading is not a direction, say "You can't figure out how to get there." instead;
-	let the destination be the room the heading from the location; [###ben sez:  huh?  english grammar parse failure...]
+	let the way be the best route from the location to the location of the noun, using even locked doors;
+	if the way is not a direction, say "You can't figure out how to get there." instead;
+	let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
 	now enroute is true;
-	try going heading;
+	try going the way;
 	if the player is not in the destination, rule fails.
 	
 Rule for reaching inside a room when the current action is going towards: 
@@ -401,7 +401,7 @@ Instead of doing something when the player is clueless and the noun is an aware-
 			say "[metatext in metaspeak]";
 			now aware-references is aware-references + 1.
 	
-[###ben sez:  how do I trigger this next rule to test it?  When I reorient myself to self-aware, commands like 'x walls' and 'fold futon' work fine...?]
+[ben said:  how do I trigger this next rule to test it?  When I reorient myself to self-aware, commands like 'x walls' and 'fold futon' work fine...? Jack replied: Since the ACU only accepts the non-aware dictionary words, you need to trigger the error by referring to items using one of their aware synonyms, e.g., 'x bulkheads' and 'x drive']
 Instead of doing something when the player is self-aware and the noun is an aware-proxy:
 	say "You can't see that here; but you vaguely [one of]recollect[or]remember[or]recall[at random] something [one of]called[or]termed[or]referred to as[at random] the [quotation mark][the clueless-name of the holder of the noun][quotation mark]."[I'd prefer to put "the" in the brackets, but it is not substituted properly here; just ignored.]
 		
@@ -650,7 +650,7 @@ Section Going Walkies
 
 Chapter The Valkyrie
 
-[###ben sez:  why no janet proxy as well?  because presumably you'd be examining yourself?  we need something for 'x janet'.]
+[ben said:  why no janet proxy as well?  because presumably you'd be examining yourself?  we need something for 'x janet'. Jack said: the purpose of the David-proxy is to catch any mention of David by the ACU. During the first and second sim, David makes metaremarks the first few times his name is mentioned. The David-proxy is everywhere just to be sure that his name is in scope. When the ACU is clueless, "Janet" is understood as referring to the ACU itself, the word should always be in scope when appropriate. Later in the game, when the real Janet is present in the final scene, the ACU will be aware, and Janet will refer to the person.]
 
 David-proxy is a backdrop. David-proxy is everywhere. The description of David-proxy is "x". David-proxy is privately-named. Understand "David" and "Venkatachalam" and "boss" and "director" as David-proxy. The aware-name of David-proxy is "Authority".
 
@@ -696,7 +696,7 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless.
 
 To reset the ACU:
 	now the ACU is dry;
@@ -2128,7 +2128,7 @@ When First Sim ends:
 	clear the screen;
 	now the irradiator is patched;
 	now the current memory usage is 260;
-	now load average is 256;
+	now kernel is 256;
 	
 Chapter Second Sim
 
