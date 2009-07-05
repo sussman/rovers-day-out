@@ -15,17 +15,17 @@ Book 1 Mechanics
 
 Chapter Rules Modifications
 
-[Supporters are explicitly responsible for mentioning their contents through out the game. If things seem to be going missing for no good reason, keep this in mind:]
+[Supporters are explicitly responsible for mentioning their contents throughout the game. If things seem to be going missing for no good reason, keep this in mind:]
 The describe what's on scenery supporters in room descriptions rule is not listed in any rulebook.
 
-[Device are responsible for giving their on/off status -- if desired -- as part of their description. There's only a few devices in the game, so not a biggie.]
+[Devices are responsible for giving their on/off status -- if desired -- as part of their description. There's only a few devices in the game, so not a biggie.]
 The examine described devices rule is not listed in any rulebook.
 
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
 Load average is a number that varies. Load average is 500.
-[Load average takes a dive after the switch from Windix to Flosix.]
+[Load average takes a dive after the switch from Windex to Flosix.]
 
 Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs. TOCONSIDER: should this be an action variable a la example 196?]
 
@@ -87,13 +87,13 @@ An outside room is a kind of room. The description of an outside room is usually
 
 Satiety is a kind of value. The satieties are hungry, peckish, and stuffed.
 
-A hole is a kind of container. A hole is always open not openable and fixed in place.
+A hole is a kind of container. A hole is always open, not openable and fixed in place.
 
 A bowl is a kind of container. The carrying capacity of a bowl is one. 
 
 Definition: a bowl is full if something is in it.
 
-An message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".
+A message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".  [###ben sez: Props are portable by default.  Do we want this to be portable?]
 
 forwards is a direction. The opposite of forwards is backwards.
 backwards is a direction. The opposite of backwards is forwards.
@@ -101,7 +101,7 @@ leftwards is a direction. The opposite of leftwards is rightwards.
 rightwards is a direction. The opposite of rightwards is leftwards.
 clockwise is a direction. The opposite of clockwise is counterclockwise.
 counterclockwise is a direction. The opposite of counterclockwise is clockwise.
- Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "port" and "leftward" as leftwards. Understand "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.
+ Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "port" and "leftward" as leftwards. Understand "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [###ben sez:  how about "left" and "right"?]
 
 A direction can be built-in or custom. A direction is usually built-in. Forwards, backwards, leftwards, rightwards, clockwise and counterclockwise are custom.
 
@@ -175,7 +175,7 @@ Carry out memory-updating:
 	if current memory usage is greater than load average + 140:
 		now the current memory usage is load average + 120;
 	if current memory usage is less than load average - 100:
-		now the current memory usage is load average.
+		now the current memory usage is load average. [###ben sez:  are we really conflating memory usage with cpu usage?  my inner computer scientist cringes.  :-) ]
 
 To say ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
@@ -208,16 +208,17 @@ BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
 	wait for any key;
-	[TODO:  there's no equivalent in Glulx??  turn the background blue;]
+	[###TODO:  how do we make the background blue in glulx?  my guess is to open a new blue window on "top" of existing window, of exactly the same size, and then kill the window to resume]
 	clear the screen;
 	say "[bold type]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue.[roman type]";
 	wait for any key;
-	[TODO:  there's no equivalent in Glulx??  turn the background white;]
 	clear the screen.
 
 Chapter Verbs
 	
 Section Computer Humor
+
+[ben sez:  this is hilarious!]
 
 Before touching something (called the item):
 	if the player is the acu and the player is self-aware:
@@ -277,7 +278,7 @@ Check going towards:
 Carry out going towards:
 	let the heading be the best route from the location to the location of the noun, using even locked doors;
 	if heading is not a direction, say "You can't figure out how to get there." instead;
-	let the destination be the room the heading from the location;
+	let the destination be the room the heading from the location; [###ben sez:  huh?  english grammar parse failure...]
 	now enroute is true;
 	try going heading;
 	if the player is not in the destination, rule fails.
@@ -338,7 +339,7 @@ Check unfolding:
 	
 Instead of unfolding the futon:
 	if the futon is not folded:
-		say "What? It doesn't already take up just about the entire living room?";
+		say "What?  Doesn't it already take up just about the entire living room?";
 	otherwise:
 		say "It's too early in the day to head back to bed."
 		
@@ -400,6 +401,7 @@ Instead of doing something when the player is clueless and the noun is an aware-
 			say "[metatext in metaspeak]";
 			now aware-references is aware-references + 1.
 	
+[###ben sez:  how do I trigger this next rule to test it?  When I reorient myself to self-aware, commands like 'x walls' and 'fold futon' work fine...?]
 Instead of doing something when the player is self-aware and the noun is an aware-proxy:
 	say "You can't see that here; but you vaguely [one of]recollect[or]remember[or]recall[at random] something [one of]called[or]termed[or]referred to as[at random] the [quotation mark][the clueless-name of the holder of the noun][quotation mark]."[I'd prefer to put "the" in the brackets, but it is not substituted properly here; just ignored.]
 		
@@ -457,7 +459,7 @@ When play begins:
 	Setup the World;
 	[display setup]
 	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
-	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
+	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9]PB";
 	
 After printing the banner text:
 	say "Type [quotation mark]help[quotation mark] for instructions, credits and license or just blaze on impetuously.";
@@ -520,7 +522,7 @@ To Restore The World: [programmatically reset by class]
 	Repeat with selection running through props:
 		if the selection is not a part of the initial-enclosure of the selection:
 			[otherwise the magpaper ends up *in* the fridge]
-			move the 	selection to the initial-enclosure of the selection;
+			move the selection to the initial-enclosure of the selection;
 [reset the open/closed or on/off properties of containers, doors, and devices]
 	Repeat with selection running through containers:	
 		if the initial-overture of the selection is true:
@@ -574,7 +576,7 @@ Persuasion rule for asking an animal to try attacking:
 	
 Instead of an animal attacking when Rover is enclosed by the Valkyrie Area:
 	if the second noun is not David Venkatachalam:
-		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threating here.";
+		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threatening here.";
 	otherwise:
 		say "Rover stomps on David, coming down like a truckload of bricks.";
 	rule succeeds.
@@ -647,6 +649,8 @@ Section Giving Kisses
 Section Going Walkies
 
 Chapter The Valkyrie
+
+[###ben sez:  why no janet proxy as well?  because presumably you'd be examining yourself?  we need something for 'x janet'.]
 
 David-proxy is a backdrop. David-proxy is everywhere. The description of David-proxy is "x". David-proxy is privately-named. Understand "David" and "Venkatachalam" and "boss" and "director" as David-proxy. The aware-name of David-proxy is "Authority".
 
@@ -1871,7 +1875,7 @@ Every turn:
 	if the noun is something:
 		change last-noun to "[aware-name of the noun]";
 	otherwise:
-		change last-noun to "nil";	
+		change last-noun to "ops";	
 	now last-action is the action-name part of the current action;
 	if last-action is a verb listed in the Table of Technoverbs:
 		change the status-line-action to technoverb entry;
@@ -1881,6 +1885,7 @@ Every turn:
 		change last-success to "TRUE";
 	otherwise:
 		change last-success to "NIL";
+		[say "(last action was [last-action], last-successful-action was [last-successful-action])";]
 	[update memory usage]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
