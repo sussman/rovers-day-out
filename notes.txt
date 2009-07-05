@@ -391,4 +391,15 @@ fix status line:
   - come up with new way of measuring success.
      'last-successful-action' method doesn't work at all.
 
+-----------------
+
+Code review questions:
+
+is memory on status line being cut off for you too?  'PB' is either
+cut off, or only 'P' is visible.  Happens in Zoom, or in I7 as well.
+Wonder if it's a Glulx/Cocoa-GLK bug.
+
+
+aware-proxies need more 'understand foo as' options, which combine words.
+
 
