@@ -410,7 +410,7 @@ could be to define a maximum width for the ACU status message on the left and
 then pad that message to the maximum with space, then add the memory usage.
 We'd need to be somewhat conservative to make sure that the game could run on 
 devices with a narrow display. This wouldn't look as pretty as having the
-memory flush with the right side of the display.
+memory flush with the right side of the display. Alternatively -- maybe you could just put a spaces to the right of the "PB" and push it leftward enough to work.
 
 Q. aware-proxies need more 'understand foo as' options, which combine words.
 A. Agreed: TODO.

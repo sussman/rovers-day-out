@@ -506,6 +506,7 @@ To Setup the World: [explictly set initial conditions]
 	now the ACU is asleep;
 	now Rover is hungry;
 [other obects with specific properties]
+	now the alarm clock is on the futon;
 	now the ACU wears the flight suit;
 	now the futon is not folded.
 
@@ -680,7 +681,13 @@ The ceiling is a backdrop. It is in the living room and kitchen.  Understand "ro
 
 The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
 
-The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy.
+The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed.
+
+After examining the futon:
+	if the futon is not discussed and the Second Sim is happening:
+		now the futon is discussed;
+		let metatext be "David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.[line break]Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.[line break]David: I can’t argue that logic.[line break]Janet: That’s why you are management and why I do the computer programming.";
+		say "[metatext in metaspeak]".
 
 The mattress and frame are parts of the futon. The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is [if the futon is folded]offline[otherwise]online[end if]." The mattress-proxy is an aware-proxy that is part of the mattress. Understand "spatial" and "manifold" and "attenuator" as the mattress-proxy.
 
@@ -1552,7 +1559,7 @@ Instead of pushing or touching the soap button:
 		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The ACU quantum isolator is interfering with emission of the accelerant[end if].";
 		the rule succeeds;
 	otherwise:
-		say "[if the player is clueless]A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body and then wash it off[otherwise]The accelerant for the ablative enamel spreads quickly over the ship's hull[end if].";
+		say "[if the player is clueless]A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off[otherwise]The accelerant for the ablative enamel spreads quickly over the ship's hull[end if].";
 		if the soap button is unpressed:
 			now the soap button is pressed;
 			let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
@@ -1659,7 +1666,7 @@ There are some gunships. They are scenery. The description of the gunships is "A
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
+The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
@@ -1667,7 +1674,19 @@ The park is scenery in the window. The description of the park is "Lincoln Park 
 
 Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer". Understand "orange" and "lawn" and "luscious" as the grass.
 
-There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park." The clueless-name of the spruce trees is "spruce trees". The aware-name of the spruce trees is "viewer". Understand "Norwegian" as the spruce trees.
+Some trees are scenery in the window. The clueless-description of the trees is "A line of tall, dark green [trees] stands at the far edge of the park." The clueless-name of the trees is "[if the trees are debated and the Real Thing is happening]Norway Spruce [end if]trees". Understand "tree", "douglas", "firs" and "fir" as the trees. Understand "norway" and "spruce" as the trees when the trees are debated and the Real Thing is happening. The aware-name of the trees is "viewer". The trees can be debated. The trees are not debated. 
+
+After examining the window:
+	debate trees.
+	
+After examining the trees:
+	debate trees.
+	
+To debate trees:
+	if the trees are not debated and the Second Sim is happening:
+		now the trees are debated;
+		let metatext be "David: Look, you can almost see my cottage over there, behind the Spruce trees.[line break]Janet: The Douglas Firs?[line break]David: No, I mean the Norway Spruce, over there.[line break]Janet: I know which one you mean, and believe me, they are Douglas Firs.[line break]David: I concede. Can we make up now?";
+		say "[metatext in metaspeak]".
 
 Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gunships, the window, and the spruce trees are in Limbo.
 
@@ -1686,7 +1705,7 @@ Instead of remembering a topic listed in the Table of Remembered Stuff:
 		let metatext be "David: Why did we lose audio?[line break]Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.[line break]David: Fine, we'll skip the boring parts.";
 		say "[metatext in metaspeak]";
 	otherwise:
-		if the topic is "David Venkatachalam":
+		if the topic is "David Venkatachalam" and david-remembered is false:
 			let metatext be "David: I think I'd like to have heard that one.[line break]Janet: Not a chance.";
 			say "[metatext in metaspeak]";
 			now david-remembered is true;
@@ -2072,8 +2091,9 @@ When Arm Hurts begins:
 	say "As you get out of bed, you notice that your left arm is numb -- must have been the way you were sleeping."
 	
 When Arm Hurts ends:
-	let metatext be "David: Is the the gimbal lock part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
-	say "[metatext in metaspeak]".
+	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the black plate before rubbing the left arm]
+		let metatext be "David: Is the the gimbal lock part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
+		say "[metatext in metaspeak]".
 
 Every turn during Arm Hurts:
 	now Arm-numb is Arm-numb plus one;
