@@ -35,7 +35,7 @@ Aware-references is a number that varies. Aware-references is 1.
 Remember-invoked is a truth state that varies. Remember-invoked is false.
 [tracks use of remember; used to trigger david/janet commentary]
 
-David-remembered is a truth state that varies. David-remembered is false.
+David-remembered is a number that varies. David-remembered is 1.
 [tracks whether an attempt has been made to remember david; used to trigger david/janet commentary]
 
 Dream index is a number that varies. Dream index is 1.
@@ -1004,6 +1004,11 @@ Instead of going towards the living room:
 		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
 	otherwise:
 		continue the action.
+		
+After going towards the kitchen:
+	if the counter is not discussed and the Second Sim is happening:
+		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own sometimes, and I don’t want to have to worry about what it might try do with a toaster.";
+		say "[metatext in metaspeak]".
 
 Understand "water" and "bowl" as the water trough. The clueless-name of the water trough is "water bowl". The aware-name of the water trough is "coolant reservoir". The clueless-description of the water trough is "[emptyness of the water trough]." The aware-description of the water trough is the "[emptyness of the water trough]." The water trough-proxy is an aware-proxy that is part of the water trough. Understand "coolant" and "line" and "reservoir" and "transfer" and "device" as the water trough-proxy.
 
@@ -1075,7 +1080,7 @@ Instead of doing something with the dog food:
 		otherwise:
 			say "You don't want to mess with Rover's [dog food]."
 	
-The counter is an enterable furniture in the kitchen. The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber." The counter-proxy is an aware-proxy that is part of the counter. Understand "bulkhead" as the counter-proxy.
+The counter is an enterable furniture in the kitchen. The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber." The counter-proxy is an aware-proxy that is part of the counter. Understand "bulkhead" as the counter-proxy. The counter can be discussed. The counter is not discussed.
 
 The kitchen sink is a sink in the kitchen. The clueless-name of the sink is "sink". The aware-name of the sink is "coolant output". The clueless-description of the sink is "A small, utilitarian kitchen sink. Below the sink, there is a small cabinet." The aware-description of the kitchen sink is "The coolant output nozzle leads towards the Rover transfer system." The kitchen sink-proxy is an aware-proxy that is part of the kitchen sink. Understand "coolant" and "output" and "nozzle" as the kitchen sink-proxy.
 
@@ -1701,14 +1706,18 @@ Instead of remembering a topic listed in the Table of Remembered Stuff:
 	if the player is self-aware:
 		say "You consult your memory banks: ";
 	say "[description entry][paragraph break]";
-	if remember-invoked is false:
+	if remember-invoked is false and (the First Sim is happening or the Second Sim is happening):[I hope parens work here, as I assume that "and" binds tighter than "or" operator]
 		let metatext be "David: Why did we lose audio?[line break]Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.[line break]David: Fine, we'll skip the boring parts.";
 		say "[metatext in metaspeak]";
 	otherwise:
-		if the topic is "David Venkatachalam" and david-remembered is false:
-			let metatext be "David: I think I'd like to have heard that one.[line break]Janet: Not a chance.";
-			say "[metatext in metaspeak]";
-			now david-remembered is true;
+		if the topic is "David Venkatachalam" and (the First Sim is happening or the Second Sim is happening):
+			if david-remembered is less than three:
+				if david-remembered is 1:
+					let metatext be "David: I think I'd like to have heard that one.[line break]Janet: Not a chance.";
+				otherwise if david-remembered is 2:
+					let metatext be "David: I’m half tempted to decompile the code just to see what it said about me.[line break]Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.[line break]David: Grooze?";
+				say "[metatext in metaspeak]";
+			now david-remembered is david-remembered plus one;
 	now remember-invoked is true.
 	
 Table of Remembered Stuff
