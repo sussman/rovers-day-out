@@ -303,19 +303,19 @@ Before going a direction (called the way):
 	otherwise: [maybe safer to say 'if Rover is the player'?]
 		say "Woof?";
 	rule succeeds;
-	
-Futon-block is a number that varies. Futon-block is zero.
 
 Instead of going towards when the player is in the living room and the futon is not folded:
-	now futon-block is futon-block plus one;
-	say "You can't really move around much because of the futon. It takes up a lot of room.";
-	if futon-block is one:
-		let metatext be "David: Isn't that a tad inconvenient?[line break]Janet: Yeah, but it kind of made sense when I got it.";
-		say "[metatext in metaspeak] ";
-	otherwise if futon-block is two and Second Sim is happening:
-		let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
-		say "[metatext in metaspeak]". 
-		
+	if the futon is not obstructed and (the First Sim is happening or the Second Sim is happening):
+		now the futon is obstructed;
+		if the First Sim is happening:	
+			let metatext be "David: Isn't that a tad inconvenient?[line break]Janet: Yeah, but it kind of made sense when I got it.";
+			say "[metatext in metaspeak] ";
+		otherwise if the Second Sim is happening:
+			let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
+			say "[metatext in metaspeak]";
+	otherwise:
+		say "You can't really move around much because of the futon. It takes up a lot of room.";
+
 Section Folding and Unfolding
 
 Folding is an action applying to one thing. Understand "fold [something]" as folding. Understand "fold up [something]" as folding. Understand "collapse [something]" as folding.  
@@ -508,6 +508,10 @@ To Setup the World: [explictly set initial conditions]
 [other obects with specific properties]
 	now the alarm clock is on the futon;
 	now the ACU wears the flight suit;
+	now the flight suit is not already-doffed;
+	now the soap button is not pressed;
+	now the shampoo button is not pressed;
+	now the futon is not obstructed;
 	now the futon is not folded.
 
 To Restore The World: [programmatically reset by class]
@@ -675,13 +679,37 @@ The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and T
 
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
 
+Instead of going towards the living room:
+	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the floss dispenser:
+		if the player carries the dog dish:		
+			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
+			move the dog dish to the kitchen;
+		if the player carries the dog food:
+			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
+			move the dog food to the food trough;
+		if the player carries the white egg:	
+			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before returning to operations[end if].[run paragraph on]";
+			move the white egg to the old fridge;
+		if the player carries the toothbrush:
+			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
+			move the toothbrush to the marble counter;
+		if the player carries the floss dispenser:
+			say "[if the player is clueless]The floss dispenser almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
+			move the floss dispenser to the marble counter;	
+		say paragraph break; 
+		try going towards the living room;
+	otherwise if the player is wet:
+		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
+	otherwise:
+		continue the action.
+
 The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy.
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." 
 
 The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
 
-The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed.
+The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed.
 
 After examining the futon:
 	if the futon is not discussed and the Second Sim is happening:
@@ -742,10 +770,14 @@ After taking off the flight suit:
 	say ". You are naked.";
 	if the flight suit is not already-doffed:
 		now the flight suit is already-doffed;
-		let metatext be "David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.[line break]Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.[line break]David: I'm not staring at the stimulation.[line break]Janet: You said stimulation. That's funny.[line break]David: No, I said simulation - and I'm not staring.[line break]Janet: Alright -- you're the boss.";
-		say "[metatext in metaspeak]".
+		if the First Sim is happening:
+			let metatext be "David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.[line break]Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.[line break]David: I'm not staring at the stimulation.[line break]Janet: You said stimulation. That's funny.[line break]David: No, I said simulation - and I'm not staring.[line break]Janet: Alright -- you're the boss.";
+			say "[metatext in metaspeak]";
+		if the Second Sim is happening:
+			let metatext be "David: That mole should be on your left side.[line break]Janet: Good eye for detail -- I’ll flip the UV coordinates on the next run.";
+			say "[metatext in metaspeak]".
 		
-[TODO add verbs/synonyms to enable "get dressed/dress/dress up", "get undressed/strip/disrobe/etc.", ]
+[###TODO add verbs/synonyms to enable "get dressed/dress/dress up", "get undressed/strip/disrobe/etc.", ]
 
 The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
 
@@ -815,6 +847,11 @@ Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "
 Section Kitchen
 
 The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "[if the kitchen is unvisited]You walk from the tiny living room to the adjoining kitchen, which is an even tighter squeeze. [paragraph break][end if]The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
+
+After going towards the kitchen:
+	if the counter is not discussed and the Second Sim is happening:
+		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
+		say "[metatext in metaspeak]".
 
 The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy.
 
@@ -980,35 +1017,6 @@ To say dog dish status:
 		say "Both [the water trough] and [the food trough] are empty";
 	otherwise:
 		say "[The food trough] [if the food trough is full]is full[otherwise]is empty[end if], but [the water trough] is [if the water trough is full]full[otherwise]empty[end if]".
-		
-Instead of going towards the living room:
-	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the floss dispenser:
-		if the player carries the dog dish:		
-			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
-			move the dog dish to the kitchen;
-		if the player carries the dog food:
-			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
-			move the dog food to the food trough;
-		if the player carries the white egg:	
-			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before returning to operations[end if].[run paragraph on]";
-			move the white egg to the old fridge;
-		if the player carries the toothbrush:
-			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
-			move the toothbrush to the marble counter;
-		if the player carries the floss dispenser:
-			say "[if the player is clueless]The floss dispenser almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
-			move the floss dispenser to the marble counter;	
-		say paragraph break; 
-		try going towards the living room;
-	otherwise if the player is wet:
-		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
-	otherwise:
-		continue the action.
-		
-After going towards the kitchen:
-	if the counter is not discussed and the Second Sim is happening:
-		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own sometimes, and I don’t want to have to worry about what it might try do with a toaster.";
-		say "[metatext in metaspeak]".
 
 Understand "water" and "bowl" as the water trough. The clueless-name of the water trough is "water bowl". The aware-name of the water trough is "coolant reservoir". The clueless-description of the water trough is "[emptyness of the water trough]." The aware-description of the water trough is the "[emptyness of the water trough]." The water trough-proxy is an aware-proxy that is part of the water trough. Understand "coolant" and "line" and "reservoir" and "transfer" and "device" as the water trough-proxy.
 
@@ -1127,8 +1135,14 @@ The kitchen floor is a privately-named scenery supporter in the kitchen. The clu
 
 Section Bathroom
 
-The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence."
- 
+The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
+
+After going towards the bathroom:
+	if the bathroom is not really-visited and the Second Sim is happening:
+		now the bathroom is really-visited;
+		let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
+		say "[metatext in metaspeak]".
+	
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a floss dispenser. The toothbrush and floss dispenser are props.
 
 The clueless-name of the marble counter is "marble counter". Understand "pink" and "faux" as the marble counter. The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms.[if something is on the marble counter] On it [is-are a list of things on the marble counter]."  The aware-description of the marble counter is "A fully automated flight control console. [if something is on the marble counter]On it [is-are a list of things on the marble counter]." The marble counter-proxy is an aware-proxy that is part of the marble counter. Understand "flight" and "console" as the marble counter-proxy.
@@ -1237,7 +1251,7 @@ The clueless-name of the black plate is the "black plate". The black plate is sw
 Instead of attacking, pushing, or touching the black plate:
 	try switching on the black plate.
 	
-Before switching on the black plate when the First Sim is not happening:
+Before switching on the black plate:
 	if the player is not wet:
 		say "[if player is clueless]The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on[otherwise]Monomer and accelerant are not present on the surface of the hull. Powering the irradiator would waste energy[end if].";
 		the rule succeeds;
@@ -1564,10 +1578,19 @@ Instead of pushing or touching the soap button:
 		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The ACU quantum isolator is interfering with emission of the accelerant[end if].";
 		the rule succeeds;
 	otherwise:
-		say "[if the player is clueless]A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off[otherwise]The accelerant for the ablative enamel spreads quickly over the ship's hull[end if].";
+		if the player is clueless:
+			if the First Sim is happening:
+				say "A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off.";
+			otherwise if the Second Sim is happening:
+				say "A soapy paste is dispensed from the button, and you lather up.";
+		otherwise:	
+			say "The accelerant for the ablative enamel spreads quickly over the ship's hull.";
 		if the soap button is unpressed:
 			now the soap button is pressed;
-			let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
+			if the First Sim is happening:
+				let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
+			otherwise if the Second Sim is happening:
+				let metatext be "David: That was my favorite part! Why did you rewrite it?[line break]Janet: I thought it might be too distracting for the ACU.";
 			say "[metatext in metaspeak]".
 	
 Instead of pushing or touching the shampoo button:
@@ -1576,7 +1599,10 @@ Instead of pushing or touching the shampoo button:
 	otherwise:
 		say "[if the player is clueless]You wash your hair. It no longer feels like a straw-encrusted swarm of yellow-headed tommygoffs[otherwise]Monomer solution is spread uniformly over the ship's hull[end if].";
 		if the shampoo button is unpressed:
-			now the shampoo button is pressed.
+			now the shampoo button is pressed;
+			if the Second Sim is happening:
+				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of this planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
+				say "[metatext in metaspeak]".
 
 Chapter The Planet
 
