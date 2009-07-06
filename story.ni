@@ -24,8 +24,8 @@ The examine described devices rule is not listed in any rulebook.
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
-kernel is a number that varies. kernel is 500.
-[kernel takes a dive after the switch from Windex to Flosix.]
+Malloc is a number that varies. Malloc is 500.
+[Malloc takes a dive after the switch from Windex to Flosix.]
 
 Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs. TOCONSIDER: should this be an action variable a la example 196?]
 
@@ -172,10 +172,10 @@ Memory-updating is an action applying to nothing.
 Carry out memory-updating:
 	let memdelta be a random number from -25 to 25;
 	now the current memory usage is the current memory usage plus memdelta;
-	if current memory usage is greater than kernel + 140:
-		now the current memory usage is kernel + 120;
-	if current memory usage is less than kernel - 100:
-		now the current memory usage is kernel. [ben said:  are we really conflating memory usage with cpu usage?  my inner computer scientist cringes.  :-) jack replied: Sometimes you grab a nice sounding variable name out of the air without really thinking about it. The first thing that occurred to me was "commit charge", but that's very microsofty.]
+	if current memory usage is greater than malloc + 140:
+		now the current memory usage is malloc + 120;
+	if current memory usage is less than malloc - 100:
+		now the current memory usage is malloc. [ben said:  are we really conflating memory usage with cpu usage?  my inner computer scientist cringes.  :-) jack replied: Sometimes you grab a nice sounding variable name out of the air without really thinking about it. The first thing that occurred to me was "commit charge", but that's very microsofty.]
 
 To say ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
@@ -505,6 +505,8 @@ To Setup the World: [explictly set initial conditions]
 	now the ACU is dry;
 	now the ACU is asleep;
 	now Rover is hungry;
+[ship orientation]
+	reset the yoke;
 [other obects with specific properties]
 	now the alarm clock is on the futon;
 	now the ACU wears the flight suit;
@@ -512,6 +514,7 @@ To Setup the World: [explictly set initial conditions]
 	now the soap button is not pressed;
 	now the shampoo button is not pressed;
 	now the futon is not obstructed;
+	now the living is not visited-during-havoc;
 	now the futon is not folded.
 
 To Restore The World: [programmatically reset by class]
@@ -544,6 +547,18 @@ To Restore The World: [programmatically reset by class]
 			now the selection is switched on;
 		otherwise:
 			now the selection is switched off.
+			
+To reset the yoke:
+	now pitch is the new vector;
+	now roll is the new vector;
+	now yaw is the new vector;
+	while pitch is 0 and roll is 0 and yaw is 0:
+	[unlikely, but don't want the landing puzzle to be too easy]
+		reset the yoke.
+			
+To decide what number is the new vector:
+	decide on (a random number from 0 to 12) times 30 plus -180.
+
 
 Chapter Teaching An Old Dog
 
@@ -677,7 +692,7 @@ Section Living Room
  
 The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and The Shower are simrooms in the Valkyrie Area.
 
-The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
+The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. The living room can be visited-during-havoc. The living room is not visited-during-havoc.[Keeps track of whether the living room has been visited for the first time during the recurring "Cry Havoc" scene.]
 
 Instead of going towards the living room:
 	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the floss dispenser:
@@ -707,7 +722,7 @@ The walls are a backdrop.  They are in the living room and kitchen.  Understand 
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." 
 
-The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
+The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
 
 The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed.
 
@@ -837,6 +852,12 @@ To say front door status:
 			say "You can see light from inside the house, and the smell of home wafts out the front door";
 		otherwise:
 			say "Outside, it looks like a nice day".  
+			
+Instead of opening the front door when the front door is closed:
+	if Cry Havoc is happening:
+		continue the action;
+	otherwise:
+		say "You do not open the front door."
 
 Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
 
@@ -850,6 +871,7 @@ The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-
 
 After going towards the kitchen:
 	if the counter is not discussed and the Second Sim is happening:
+		now the counter is discussed;
 		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
 		say "[metatext in metaspeak]".
 
@@ -1254,10 +1276,13 @@ Instead of attacking, pushing, or touching the black plate:
 Before switching on the black plate:
 	if the player is not wet:
 		say "[if player is clueless]The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on[otherwise]Monomer and accelerant are not present on the surface of the hull. Powering the irradiator would waste energy[end if].";
-		the rule succeeds;
+		the rule succeeds
 		
 After switching on the black plate when the First Sim is not happening:
 	say "[if the player is clueless]The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day[otherwise]The UV light diffuses over the entire surface of the ship and causes the chemical mixture on the hull to polymerize into an durable, clear ablative coating[end if].";
+	if the enamel_pid is 0 and the Second Sim is happening:
+		let metatext be "Janet: I was holding my breath there. Looks like our patch worked.[line break]David: I had my fingers crossed too.";
+		say "[metatext in metaspeak]";
 	now the enamel_pid is the turn count;
 	now the player is dry;
 	now the black plate is switched off.
@@ -1266,7 +1291,7 @@ The bathroom sink is a privately-named sink in the bathroom.  The clueless-name 
 
 The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
 
-The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
+The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
 
 The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The toilet#interior is a privately-named fixed in place thing in the water tank. The flapper valve is a scenery which is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver handle is scenery which is part of the water tank.
 
@@ -1372,8 +1397,12 @@ Flushing is an action applying to one thing.  Understand "flush [something]" as 
 
 Check flushing:
 	if the noun is the toilet or the noun is the silver handle:
-		if the landing sequence is happening:
-			continue the action;
+		if the Landing Sequence is happening:
+			if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
+				say "Not yet, you’re not done.";
+				the rule fails;
+			otherwise:			
+				continue the action;
 		otherwise:
 			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing[otherwise]The ship is not on planetary approach. Retros are offline[end if].";
 			the rule fails; 
@@ -1382,16 +1411,20 @@ Check flushing:
 		the rule fails.
 		
 Carry out flushing:
+	now the player is in the bathroom;
 	now the landing_pid is the turn count.
 	
 Report flushing:
-	say "You flush the toilet."
+	say "You reach behind you, flush the toilet and stand up. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes."
+	
+Instead of exiting when holder of the player is the toilet seat and the landing sequence is happening:
+	try flushing the toilet.
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
 
 The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude" and "control" and "RCS" as the plunger.
 
-The clueless-name of the shaft is "shaft". The aware-name of the shaft is "vector input port". The clueless-description of the shaft is "A wooden stick." The aware-description of the shaft is "A multiaxial control device which outputs ship orientation instructions to the nose cone drivers." The shaft-proxy is an aware-proxy that is part of the shaft. Understand "vector" and "input" and "port" as the shaft-proxy.
+The clueless-name of the shaft is "shaft". The aware-name of the shaft is "vector input port". The clueless-description of the shaft is "A wooden stick." The aware-description of the shaft is "A multiaxial control device which outputs ship orientation instructions to the nose cone drivers." Understand "handle" as the shaft. The shaft-proxy is an aware-proxy that is part of the shaft. Understand "vector" and "input" and "port" as the shaft-proxy.
 
 The clueless-name of the red rubber cup is the "red rubber cup". The aware-name of the red rubber cup is the "nose cone driver". The clueless-description of the red rubber cup is "The business end of the plunger.[if a random chance of one in eight succeeds] [quotation mark]Exterminate! Exterminate![quotation mark]". The red rubber cup-proxy is an aware-proxy that is part of the red rubber cup. Understand "nose" and "cone" and "driver" as the red rubber cup-proxy.
 
@@ -1406,7 +1439,7 @@ To say yoke position:
 				if the roll is not zero:
 					say " and it's also [run paragraph on]";
 			if the roll is not zero:
-				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if] [run paragraph on]"; 
+				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if][run paragraph on]"; 
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
@@ -1425,6 +1458,8 @@ To say magnitude of (degrees - a number):
 Yoking it more is an action applying to one thing and one visible thing.
 
 Check yoking it more:
+	if the noun is the shaft:
+		now the noun is the plunger;
 	if the noun is not the plunger:
 		try pushing the noun.
 		
@@ -1446,7 +1481,7 @@ Carry out yoking it more:
 Report yoking it more:
 	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
 	let D be the delta corresponding to the custom-direction of second noun in the Table of Axes;
-	say "You adjust the plunger handle [second noun][run paragraph on]";
+	say "You adjust the plunger handle [second noun]. [run paragraph on]";
 	if A is 1:
 		let the angle be the pitch;
 	otherwise if A is 2:
@@ -1454,9 +1489,9 @@ Report yoking it more:
 	otherwise if A is 3:
 		let the angle be the yaw;
 	if the angle is 180 times D:
-		say ". It doesn't look like it will move any further in that direction.";
+		say "It doesn't look like it will move any further in that direction.";
 	otherwise:
-		say "."
+		say yoke position.
 
 To decide what number is the limited (measured - a number) range:
 	if measured is greater than 180:
@@ -1601,7 +1636,7 @@ Instead of pushing or touching the shampoo button:
 		if the shampoo button is unpressed:
 			now the shampoo button is pressed;
 			if the Second Sim is happening:
-				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of this planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
+				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
 				say "[metatext in metaspeak]".
 
 Chapter The Planet
@@ -2183,7 +2218,7 @@ When First Sim ends:
 	clear the screen;
 	now the irradiator is patched;
 	now the current memory usage is 260;
-	now kernel is 256;
+	now malloc is 256;
 	
 Chapter Second Sim
 
@@ -2194,40 +2229,70 @@ When Second Sim begins:
 	Setup the World;
 	clear the screen;
 	now arm-numb is zero;
-	now roll is -90;
-	now pitch is 60;
-	now yaw is 0;
 	say "[ACU Boot Banner]";
 	now the dream index is 4;
 	try dreaming.
 	
 When Second Sim ends:
 	Restore the World;
-	[description of waking up again]
-	Setup the World;
-	now the David-proxy is in Limbo.
+	Setup the World.
 	
 Chapter Landing Sequence
 
-Landing Sequence is a scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
+Landing Sequence is a recurring scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
 
 When Landing Sequence begins:
+	reset the yoke;
 	now the toilet cover is open;
 	now the toilet seat is closed;
 	now the player is on the toilet seat;
-	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger handle is tilted a little to the left.";
+	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger is a bit tilted.";
 	let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
 	say "[metatext in metaspeak]".
 	
 Landing Sequence ends when the landing_pid is not zero.
 
+[###TODO: suppress bathroom description when moving player onto/off of the toilet seat]
+
+When the Landing Sequence ends:
+	if the Second Sim is happening:
+		let metatext be "David: That’s it. One long burn down to the planet’s surface.[line break]Janet: And then, the ACU just needs to deploy the Rover.";
+		say "[metatext in metaspeak]".
+		
+Chapter Cry Havoc
+
+Cry Havoc is a recurring scene. Cry Havoc begins when Landing Sequence ends.
+	
+Every Turn when Cry Havoc is happening and Second Sim is happening:
+	if the player is in the living room and the living room is not visited-during-havoc:
+		now the living room is visited-during-havoc;
+		[TODO: programmed in either here, or within Rover object: his behavior -- either bouncing around near the door if he is full, or indicating that he needs to be fed before going out]
+		let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
+		say "[metatext in metaspeak]".
+
+Cry Havoc ends when the front door is open.
+
+When Cry Havoc ends:
+	say "You open the dog gate on the front door, confident that Rover will walk about the park and then return. Rover hears the gate open and is out the door in a flash.";
+	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
+	say "[metatext in metaspeak]";
+	wait for any key;
+	
 Chapter Real Thing
 	
-Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [i.e., eaten]
+Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [###TODO figure out the real out point later]
+
+When Real Thing begins:
+	Restore the World;
+	Setup the World;
+	clear the screen;
+	say "[ACU Boot Banner]";
+	now the dream index is 7;
+	try dreaming.
 
 Chapter Walkies
 
-Walkies is a scene. Walkies begins when Rover is not in the Valkyrie Area. Walkies ends when Rover is in the Valkyrie Area.
+Walkies is a recurring scene. Walkies begins when Rover is not in the Valkyrie Area. Walkies ends when Rover is in the Valkyrie Area.
 
 Chapter Boarding Party
 
