@@ -1895,21 +1895,43 @@ Chapter Status Line Magic
 [See the "every turn" and "initialize" sections to understand how this works.  Big thanks to Andrew Plotkin and Ron Newcomb for helping with this stuff.]
 Last-noun, last-success, and the status-line-action are texts that vary.
 Last-noun is usually "ACU".  Last-success is usually "NIL".   Status-line-action is usually "NOOP".
+Test-action is an action-name which varies.
+Got-action is a truth state that varies.  Got-action is usually false.
+
+         
+After reading a command (this is the re-initialize rule):
+        change last-noun to "ACU"; 
+        change last-success to "NIL";
+        change the status-line-action to "NOOP";
+        change got-action to false.
 
 First before an actor doing something (this is the catch failed actions rule):
-	if the action-name part of the current action is a verb listed in the Table of Technoverbs, change the status-line-action to technoverb entry.
+	if got-action is true:
+		do nothing;
+	otherwise:
+		if the action-name part of the current action is a verb listed in the Table of Technoverbs:
+			change got-action to true;
+			change the status-line-action to technoverb entry;
+	if the noun is something then change last-noun to "[aware-name of the noun]".
 
 First after an actor doing something (this is the catch successful actions rule):
-	if the action-name part of the current action is a verb listed in the Table of Technoverbs, change the status-line-action to technoverb entry;
-	if the noun is something, change last-noun to "[aware-name of the noun]";
+	if got-action is true:
+		do nothing;
+	otherwise:
+		change got-action to true;
+		change test-action to the action-name part of the current action;
+		if test-action is a verb listed in the Table of Technoverbs:
+			change the status-line-action to technoverb entry;
+		otherwise:
+			if test-action is:  [ignore these actions, they shouldn't be reported]
+				-- the memory-updating action:
+					continue the action;
+				-- otherwise:
+					say "(Note:  [test-action] isn't in technoverb-table)" in metaspeak;
+					continue the action;
+	if the noun is something then change last-noun to "[aware-name of the noun]";
 	change last-success to "TRUE";
-	[say "[last-noun] -> [status-line-action] : [last-success]" in metaspeak;]
 	continue the action.
-	 
-After reading a command (this is the re-initialize rule):
-	change last-noun to "ACU"; 
-	change last-success to "NIL";
-	change the status-line-action to "NOOP".
 
 
 [a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
