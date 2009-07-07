@@ -24,8 +24,8 @@ The examine described devices rule is not listed in any rulebook.
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
-Load average is a number that varies. Load average is 500.
-[Load average takes a dive after the switch from Windex to Flosix.]
+Malloc is a number that varies. Malloc is 500.
+[Malloc takes a dive after the switch from Windex to Flosix.]
 
 Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs. TOCONSIDER: should this be an action variable a la example 196?]
 
@@ -35,7 +35,7 @@ Aware-references is a number that varies. Aware-references is 1.
 Remember-invoked is a truth state that varies. Remember-invoked is false.
 [tracks use of remember; used to trigger david/janet commentary]
 
-David-remembered is a truth state that varies. David-remembered is false.
+David-remembered is a number that varies. David-remembered is 1.
 [tracks whether an attempt has been made to remember david; used to trigger david/janet commentary]
 
 Dream index is a number that varies. Dream index is 1.
@@ -93,7 +93,7 @@ A bowl is a kind of container. The carrying capacity of a bowl is one.
 
 Definition: a bowl is full if something is in it.
 
-A message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".  [###ben sez: Props are portable by default.  Do we want this to be portable?]
+A message is a kind of prop. A message has some text called inscription. The inscription of a message is usually "".  [ben said: Props are portable by default.  Do we want this to be portable? Jack replied: I think so. I wasn't sure how many messages we would have in the game, and what they'd be. The message is the item that bears the inscription rather than the inscription itself. Most things I can think of that have writing on them (books, coins, birthday cards, etc.) are portable, so this seemed natural. If there is an inscription-bearing object that is not portable, we can always override it.]
 
 forwards is a direction. The opposite of forwards is backwards.
 backwards is a direction. The opposite of backwards is forwards.
@@ -101,7 +101,7 @@ leftwards is a direction. The opposite of leftwards is rightwards.
 rightwards is a direction. The opposite of rightwards is leftwards.
 clockwise is a direction. The opposite of clockwise is counterclockwise.
 counterclockwise is a direction. The opposite of counterclockwise is clockwise.
- Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "port" and "leftward" as leftwards. Understand "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [###ben sez:  how about "left" and "right"?]
+ Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "left", "port" and "leftward" as leftwards. Understand "right", "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [ben said:  how about "left" and "right"? Jack replied: Yes, I've added them. Leftwards and rightwards were originally left and right, so left/right were implicitly understood, but then I added "-wards" for consistency. We might need to add some disambiguation versus other left/right objects like arms.]
 
 A direction can be built-in or custom. A direction is usually built-in. Forwards, backwards, leftwards, rightwards, clockwise and counterclockwise are custom.
 
@@ -172,10 +172,10 @@ Memory-updating is an action applying to nothing.
 Carry out memory-updating:
 	let memdelta be a random number from -25 to 25;
 	now the current memory usage is the current memory usage plus memdelta;
-	if current memory usage is greater than load average + 140:
-		now the current memory usage is load average + 120;
-	if current memory usage is less than load average - 100:
-		now the current memory usage is load average. [###ben sez:  are we really conflating memory usage with cpu usage?  my inner computer scientist cringes.  :-) ]
+	if current memory usage is greater than malloc + 140:
+		now the current memory usage is malloc + 120;
+	if current memory usage is less than malloc - 100:
+		now the current memory usage is malloc. [ben said:  are we really conflating memory usage with cpu usage?  my inner computer scientist cringes.  :-) jack replied: Sometimes you grab a nice sounding variable name out of the air without really thinking about it. The first thing that occurred to me was "commit charge", but that's very microsofty.]
 
 To say ACU Boot Banner:
 	say "[bold type]Rover's Day Out[roman type]";
@@ -218,7 +218,7 @@ Chapter Verbs
 	
 Section Computer Humor
 
-[ben sez:  this is hilarious!]
+[ben said:  this is hilarious! Jack said: Thanks; feel free to add more as they occur to you.]
 
 Before touching something (called the item):
 	if the player is the acu and the player is self-aware:
@@ -276,11 +276,11 @@ Check going towards:
 	if the player is the ACU and the noun is not in the Valkyrie, say "You're not ready to go out yet." instead.
 
 Carry out going towards:
-	let the heading be the best route from the location to the location of the noun, using even locked doors;
-	if heading is not a direction, say "You can't figure out how to get there." instead;
-	let the destination be the room the heading from the location; [###ben sez:  huh?  english grammar parse failure...]
+	let the way be the best route from the location to the location of the noun, using even locked doors;
+	if the way is not a direction, say "You can't figure out how to get there." instead;
+	let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
 	now enroute is true;
-	try going heading;
+	try going the way;
 	if the player is not in the destination, rule fails.
 	
 Rule for reaching inside a room when the current action is going towards: 
@@ -303,19 +303,19 @@ Before going a direction (called the way):
 	otherwise: [maybe safer to say 'if Rover is the player'?]
 		say "Woof?";
 	rule succeeds;
-	
-Futon-block is a number that varies. Futon-block is zero.
 
 Instead of going towards when the player is in the living room and the futon is not folded:
-	now futon-block is futon-block plus one;
-	say "You can't really move around much because of the futon. It takes up a lot of room.";
-	if futon-block is one:
-		let metatext be "David: Isn't that a tad inconvenient?[line break]Janet: Yeah, but it kind of made sense when I got it.";
-		say "[metatext in metaspeak] ";
-	otherwise if futon-block is two and Second Sim is happening:
-		let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
-		say "[metatext in metaspeak]". 
-		
+	if the futon is not obstructed and (the First Sim is happening or the Second Sim is happening):
+		now the futon is obstructed;
+		if the First Sim is happening:	
+			let metatext be "David: Isn't that a tad inconvenient?[line break]Janet: Yeah, but it kind of made sense when I got it.";
+			say "[metatext in metaspeak] ";
+		otherwise if the Second Sim is happening:
+			let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
+			say "[metatext in metaspeak]";
+	otherwise:
+		say "You can't really move around much because of the futon. It takes up a lot of room.";
+
 Section Folding and Unfolding
 
 Folding is an action applying to one thing. Understand "fold [something]" as folding. Understand "fold up [something]" as folding. Understand "collapse [something]" as folding.  
@@ -401,7 +401,7 @@ Instead of doing something when the player is clueless and the noun is an aware-
 			say "[metatext in metaspeak]";
 			now aware-references is aware-references + 1.
 	
-[###ben sez:  how do I trigger this next rule to test it?  When I reorient myself to self-aware, commands like 'x walls' and 'fold futon' work fine...?]
+[ben said:  how do I trigger this next rule to test it?  When I reorient myself to self-aware, commands like 'x walls' and 'fold futon' work fine...? Jack replied: Since the ACU only accepts the non-aware dictionary words, you need to trigger the error by referring to items using one of their aware synonyms, e.g., 'x bulkheads' and 'x drive']
 Instead of doing something when the player is self-aware and the noun is an aware-proxy:
 	say "You can't see that here; but you vaguely [one of]recollect[or]remember[or]recall[at random] something [one of]called[or]termed[or]referred to as[at random] the [quotation mark][the clueless-name of the holder of the noun][quotation mark]."[I'd prefer to put "the" in the brackets, but it is not substituted properly here; just ignored.]
 		
@@ -505,8 +505,16 @@ To Setup the World: [explictly set initial conditions]
 	now the ACU is dry;
 	now the ACU is asleep;
 	now Rover is hungry;
+[ship orientation]
+	reset the yoke;
 [other obects with specific properties]
+	now the alarm clock is on the futon;
 	now the ACU wears the flight suit;
+	now the flight suit is not already-doffed;
+	now the soap button is not pressed;
+	now the shampoo button is not pressed;
+	now the futon is not obstructed;
+	now the living is not visited-during-havoc;
 	now the futon is not folded.
 
 To Restore The World: [programmatically reset by class]
@@ -539,6 +547,18 @@ To Restore The World: [programmatically reset by class]
 			now the selection is switched on;
 		otherwise:
 			now the selection is switched off.
+			
+To reset the yoke:
+	now pitch is the new vector;
+	now roll is the new vector;
+	now yaw is the new vector;
+	while pitch is 0 and roll is 0 and yaw is 0:
+	[unlikely, but don't want the landing puzzle to be too easy]
+		reset the yoke.
+			
+To decide what number is the new vector:
+	decide on (a random number from 0 to 12) times 30 plus -180.
+
 
 Chapter Teaching An Old Dog
 
@@ -650,7 +670,7 @@ Section Going Walkies
 
 Chapter The Valkyrie
 
-[###ben sez:  why no janet proxy as well?  because presumably you'd be examining yourself?  we need something for 'x janet'.]
+[ben said:  why no janet proxy as well?  because presumably you'd be examining yourself?  we need something for 'x janet'. Jack said: the purpose of the David-proxy is to catch any mention of David by the ACU. During the first and second sim, David makes metaremarks the first few times his name is mentioned. The David-proxy is everywhere just to be sure that his name is in scope. When the ACU is clueless, "Janet" is understood as referring to the ACU itself, the word should always be in scope when appropriate. Later in the game, when the real Janet is present in the final scene, the ACU will be aware, and Janet will refer to the person.]
 
 David-proxy is a backdrop. David-proxy is everywhere. The description of David-proxy is "x". David-proxy is privately-named. Understand "David" and "Venkatachalam" and "boss" and "director" as David-proxy. The aware-name of David-proxy is "Authority".
 
@@ -672,7 +692,31 @@ Section Living Room
  
 The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and The Shower are simrooms in the Valkyrie Area.
 
-The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. 
+The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. The living room can be visited-during-havoc. The living room is not visited-during-havoc.[Keeps track of whether the living room has been visited for the first time during the recurring "Cry Havoc" scene.]
+
+Instead of going towards the living room:
+	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the floss dispenser:
+		if the player carries the dog dish:		
+			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
+			move the dog dish to the kitchen;
+		if the player carries the dog food:
+			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
+			move the dog food to the food trough;
+		if the player carries the white egg:	
+			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before returning to operations[end if].[run paragraph on]";
+			move the white egg to the old fridge;
+		if the player carries the toothbrush:
+			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
+			move the toothbrush to the marble counter;
+		if the player carries the floss dispenser:
+			say "[if the player is clueless]The floss dispenser almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
+			move the floss dispenser to the marble counter;	
+		say paragraph break; 
+		try going towards the living room;
+	otherwise if the player is wet:
+		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
+	otherwise:
+		continue the action.
 
 The walls are a backdrop.  They are in the living room and kitchen.  Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy.
 
@@ -680,7 +724,13 @@ The ceiling is a backdrop. It is in the living room and kitchen.  Understand "ro
 
 The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
 
-The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy.
+The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed.
+
+After examining the futon:
+	if the futon is not discussed and the Second Sim is happening:
+		now the futon is discussed;
+		let metatext be "David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.[line break]Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.[line break]David: I can’t argue that logic.[line break]Janet: That’s why you are management and why I do the computer programming.";
+		say "[metatext in metaspeak]".
 
 The mattress and frame are parts of the futon. The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is [if the futon is folded]offline[otherwise]online[end if]." The mattress-proxy is an aware-proxy that is part of the mattress. Understand "spatial" and "manifold" and "attenuator" as the mattress-proxy.
 
@@ -696,7 +746,7 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless.
 
 To reset the ACU:
 	now the ACU is dry;
@@ -736,10 +786,14 @@ After taking off the flight suit:
 	say ". You are naked.";
 	if the flight suit is not already-doffed:
 		now the flight suit is already-doffed;
-		let metatext be "David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.[line break]Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.[line break]David: I'm not staring at the stimulation.[line break]Janet: You said stimulation. That's funny.[line break]David: No, I said simulation - and I'm not staring.[line break]Janet: Alright -- you're the boss.";
-		say "[metatext in metaspeak]".
+		if the First Sim is happening:
+			let metatext be "David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.[line break]Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.[line break]David: I'm not staring at the stimulation.[line break]Janet: You said stimulation. That's funny.[line break]David: No, I said simulation - and I'm not staring.[line break]Janet: Alright -- you're the boss.";
+			say "[metatext in metaspeak]";
+		if the Second Sim is happening:
+			let metatext be "David: That mole should be on your left side.[line break]Janet: Good eye for detail -- I’ll flip the UV coordinates on the next run.";
+			say "[metatext in metaspeak]".
 		
-[TODO add verbs/synonyms to enable "get dressed/dress/dress up", "get undressed/strip/disrobe/etc.", ]
+[###TODO add verbs/synonyms to enable "get dressed/dress/dress up", "get undressed/strip/disrobe/etc.", ]
 
 The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
 
@@ -799,6 +853,12 @@ To say front door status:
 			say "You can see light from inside the house, and the smell of home wafts out the front door";
 		otherwise:
 			say "Outside, it looks like a nice day".  
+			
+Instead of opening the front door when the front door is closed:
+	if Cry Havoc is happening:
+		continue the action;
+	otherwise:
+		say "You do not open the front door."
 
 Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
 
@@ -809,6 +869,12 @@ Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "
 Section Kitchen
 
 The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "[if the kitchen is unvisited]You walk from the tiny living room to the adjoining kitchen, which is an even tighter squeeze. [paragraph break][end if]The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
+
+After going towards the kitchen:
+	if the counter is not discussed and the Second Sim is happening:
+		now the counter is discussed;
+		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
+		say "[metatext in metaspeak]".
 
 The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy.
 
@@ -974,30 +1040,6 @@ To say dog dish status:
 		say "Both [the water trough] and [the food trough] are empty";
 	otherwise:
 		say "[The food trough] [if the food trough is full]is full[otherwise]is empty[end if], but [the water trough] is [if the water trough is full]full[otherwise]empty[end if]".
-		
-Instead of going towards the living room:
-	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the floss dispenser:
-		if the player carries the dog dish:		
-			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
-			move the dog dish to the kitchen;
-		if the player carries the dog food:
-			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
-			move the dog food to the food trough;
-		if the player carries the white egg:	
-			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before returning to operations[end if].[run paragraph on]";
-			move the white egg to the old fridge;
-		if the player carries the toothbrush:
-			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
-			move the toothbrush to the marble counter;
-		if the player carries the floss dispenser:
-			say "[if the player is clueless]The floss dispenser almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
-			move the floss dispenser to the marble counter;	
-		say paragraph break; 
-		try going towards the living room;
-	otherwise if the player is wet:
-		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
-	otherwise:
-		continue the action.
 
 Understand "water" and "bowl" as the water trough. The clueless-name of the water trough is "water bowl". The aware-name of the water trough is "coolant reservoir". The clueless-description of the water trough is "[emptyness of the water trough]." The aware-description of the water trough is the "[emptyness of the water trough]." The water trough-proxy is an aware-proxy that is part of the water trough. Understand "coolant" and "line" and "reservoir" and "transfer" and "device" as the water trough-proxy.
 
@@ -1069,7 +1111,7 @@ Instead of doing something with the dog food:
 		otherwise:
 			say "You don't want to mess with Rover's [dog food]."
 	
-The counter is an enterable furniture in the kitchen. The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber." The counter-proxy is an aware-proxy that is part of the counter. Understand "bulkhead" as the counter-proxy.
+The counter is an enterable furniture in the kitchen. The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber." The counter-proxy is an aware-proxy that is part of the counter. Understand "bulkhead" as the counter-proxy. The counter can be discussed. The counter is not discussed.
 
 The kitchen sink is a sink in the kitchen. The clueless-name of the sink is "sink". The aware-name of the sink is "coolant output". The clueless-description of the sink is "A small, utilitarian kitchen sink. Below the sink, there is a small cabinet." The aware-description of the kitchen sink is "The coolant output nozzle leads towards the Rover transfer system." The kitchen sink-proxy is an aware-proxy that is part of the kitchen sink. Understand "coolant" and "output" and "nozzle" as the kitchen sink-proxy.
 
@@ -1116,8 +1158,14 @@ The kitchen floor is a privately-named scenery supporter in the kitchen. The clu
 
 Section Bathroom
 
-The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence."
- 
+The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
+
+After going towards the bathroom:
+	if the bathroom is not really-visited and the Second Sim is happening:
+		now the bathroom is really-visited;
+		let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
+		say "[metatext in metaspeak]".
+	
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a floss dispenser. The toothbrush and floss dispenser are props.
 
 The clueless-name of the marble counter is "marble counter". Understand "pink" and "faux" as the marble counter. The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms.[if something is on the marble counter] On it [is-are a list of things on the marble counter]."  The aware-description of the marble counter is "A fully automated flight control console. [if something is on the marble counter]On it [is-are a list of things on the marble counter]." The marble counter-proxy is an aware-proxy that is part of the marble counter. Understand "flight" and "console" as the marble counter-proxy.
@@ -1226,13 +1274,16 @@ The clueless-name of the black plate is the "black plate". The black plate is sw
 Instead of attacking, pushing, or touching the black plate:
 	try switching on the black plate.
 	
-Before switching on the black plate when the First Sim is not happening:
+Before switching on the black plate:
 	if the player is not wet:
 		say "[if player is clueless]The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on[otherwise]Monomer and accelerant are not present on the surface of the hull. Powering the irradiator would waste energy[end if].";
-		the rule succeeds;
+		the rule succeeds
 		
 After switching on the black plate when the First Sim is not happening:
 	say "[if the player is clueless]The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day[otherwise]The UV light diffuses over the entire surface of the ship and causes the chemical mixture on the hull to polymerize into an durable, clear ablative coating[end if].";
+	if the enamel_pid is 0 and the Second Sim is happening:
+		let metatext be "Janet: I was holding my breath there. Looks like our patch worked.[line break]David: I had my fingers crossed too.";
+		say "[metatext in metaspeak]";
 	now the enamel_pid is the turn count;
 	now the player is dry;
 	now the black plate is switched off.
@@ -1241,7 +1292,7 @@ The bathroom sink is a privately-named sink in the bathroom.  The clueless-name 
 
 The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
 
-The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
+The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
 
 The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The toilet#interior is a privately-named fixed in place thing in the water tank. The flapper valve is a scenery which is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver handle is scenery which is part of the water tank.
 
@@ -1347,8 +1398,12 @@ Flushing is an action applying to one thing.  Understand "flush [something]" as 
 
 Check flushing:
 	if the noun is the toilet or the noun is the silver handle:
-		if the landing sequence is happening:
-			continue the action;
+		if the Landing Sequence is happening:
+			if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
+				say "Not yet, you’re not done.";
+				the rule fails;
+			otherwise:			
+				continue the action;
 		otherwise:
 			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing[otherwise]The ship is not on planetary approach. Retros are offline[end if].";
 			the rule fails; 
@@ -1357,16 +1412,20 @@ Check flushing:
 		the rule fails.
 		
 Carry out flushing:
+	now the player is in the bathroom;
 	now the landing_pid is the turn count.
 	
 Report flushing:
-	say "You flush the toilet."
+	say "You reach behind you, flush the toilet and stand up. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes."
+	
+Instead of exiting when holder of the player is the toilet seat and the landing sequence is happening:
+	try flushing the toilet.
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
 
 The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude" and "control" and "RCS" as the plunger.
 
-The clueless-name of the shaft is "shaft". The aware-name of the shaft is "vector input port". The clueless-description of the shaft is "A wooden stick." The aware-description of the shaft is "A multiaxial control device which outputs ship orientation instructions to the nose cone drivers." The shaft-proxy is an aware-proxy that is part of the shaft. Understand "vector" and "input" and "port" as the shaft-proxy.
+The clueless-name of the shaft is "shaft". The aware-name of the shaft is "vector input port". The clueless-description of the shaft is "A wooden stick." The aware-description of the shaft is "A multiaxial control device which outputs ship orientation instructions to the nose cone drivers." Understand "handle" as the shaft. The shaft-proxy is an aware-proxy that is part of the shaft. Understand "vector" and "input" and "port" as the shaft-proxy.
 
 The clueless-name of the red rubber cup is the "red rubber cup". The aware-name of the red rubber cup is the "nose cone driver". The clueless-description of the red rubber cup is "The business end of the plunger.[if a random chance of one in eight succeeds] [quotation mark]Exterminate! Exterminate![quotation mark]". The red rubber cup-proxy is an aware-proxy that is part of the red rubber cup. Understand "nose" and "cone" and "driver" as the red rubber cup-proxy.
 
@@ -1381,7 +1440,7 @@ To say yoke position:
 				if the roll is not zero:
 					say " and it's also [run paragraph on]";
 			if the roll is not zero:
-				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if] [run paragraph on]"; 
+				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if][run paragraph on]"; 
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
@@ -1400,6 +1459,8 @@ To say magnitude of (degrees - a number):
 Yoking it more is an action applying to one thing and one visible thing.
 
 Check yoking it more:
+	if the noun is the shaft:
+		now the noun is the plunger;
 	if the noun is not the plunger:
 		try pushing the noun.
 		
@@ -1421,7 +1482,7 @@ Carry out yoking it more:
 Report yoking it more:
 	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
 	let D be the delta corresponding to the custom-direction of second noun in the Table of Axes;
-	say "You adjust the plunger handle [second noun][run paragraph on]";
+	say "You adjust the plunger handle [second noun]. [run paragraph on]";
 	if A is 1:
 		let the angle be the pitch;
 	otherwise if A is 2:
@@ -1429,9 +1490,9 @@ Report yoking it more:
 	otherwise if A is 3:
 		let the angle be the yaw;
 	if the angle is 180 times D:
-		say ". It doesn't look like it will move any further in that direction.";
+		say "It doesn't look like it will move any further in that direction.";
 	otherwise:
-		say "."
+		say yoke position.
 
 To decide what number is the limited (measured - a number) range:
 	if measured is greater than 180:
@@ -1553,10 +1614,19 @@ Instead of pushing or touching the soap button:
 		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The ACU quantum isolator is interfering with emission of the accelerant[end if].";
 		the rule succeeds;
 	otherwise:
-		say "[if the player is clueless]A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body and then wash it off[otherwise]The accelerant for the ablative enamel spreads quickly over the ship's hull[end if].";
+		if the player is clueless:
+			if the First Sim is happening:
+				say "A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off.";
+			otherwise if the Second Sim is happening:
+				say "A soapy paste is dispensed from the button, and you lather up.";
+		otherwise:	
+			say "The accelerant for the ablative enamel spreads quickly over the ship's hull.";
 		if the soap button is unpressed:
 			now the soap button is pressed;
-			let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
+			if the First Sim is happening:
+				let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
+			otherwise if the Second Sim is happening:
+				let metatext be "David: That was my favorite part! Why did you rewrite it?[line break]Janet: I thought it might be too distracting for the ACU.";
 			say "[metatext in metaspeak]".
 	
 Instead of pushing or touching the shampoo button:
@@ -1565,7 +1635,10 @@ Instead of pushing or touching the shampoo button:
 	otherwise:
 		say "[if the player is clueless]You wash your hair. It no longer feels like a straw-encrusted swarm of yellow-headed tommygoffs[otherwise]Monomer solution is spread uniformly over the ship's hull[end if].";
 		if the shampoo button is unpressed:
-			now the shampoo button is pressed.
+			now the shampoo button is pressed;
+			if the Second Sim is happening:
+				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
+				say "[metatext in metaspeak]".
 
 Chapter The Planet
 
@@ -1660,7 +1733,7 @@ There are some gunships. They are scenery. The description of the gunships is "A
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
+The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
@@ -1668,7 +1741,19 @@ The park is scenery in the window. The description of the park is "Lincoln Park 
 
 Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer". Understand "orange" and "lawn" and "luscious" as the grass.
 
-There are some spruce trees. They are scenery.  The description of the spruce trees is "A stand of Norwegian Spruce Trees is visible at far edge of the park." The clueless-name of the spruce trees is "spruce trees". The aware-name of the spruce trees is "viewer". Understand "Norwegian" as the spruce trees.
+Some trees are scenery in the window. The clueless-description of the trees is "A line of tall, dark green [trees] stands at the far edge of the park." The clueless-name of the trees is "[if the trees are debated and the Real Thing is happening]Norway Spruce [end if]trees". Understand "tree", "douglas", "firs" and "fir" as the trees. Understand "norway" and "spruce" as the trees when the trees are debated and the Real Thing is happening. The aware-name of the trees is "viewer". The trees can be debated. The trees are not debated. 
+
+After examining the window:
+	debate trees.
+	
+After examining the trees:
+	debate trees.
+	
+To debate trees:
+	if the trees are not debated and the Second Sim is happening:
+		now the trees are debated;
+		let metatext be "David: Look, you can almost see my cottage over there, behind the Spruce trees.[line break]Janet: The Douglas Firs?[line break]David: No, I mean the Norway Spruce, over there.[line break]Janet: I know which one you mean, and believe me, they are Douglas Firs.[line break]David: I concede. Can we make up now?";
+		say "[metatext in metaspeak]".
 
 Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gunships, the window, and the spruce trees are in Limbo.
 
@@ -1683,14 +1768,18 @@ Instead of remembering a topic listed in the Table of Remembered Stuff:
 	if the player is self-aware:
 		say "You consult your memory banks: ";
 	say "[description entry][paragraph break]";
-	if remember-invoked is false:
+	if remember-invoked is false and (the First Sim is happening or the Second Sim is happening):[I hope parens work here, as I assume that "and" binds tighter than "or" operator]
 		let metatext be "David: Why did we lose audio?[line break]Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.[line break]David: Fine, we'll skip the boring parts.";
 		say "[metatext in metaspeak]";
 	otherwise:
-		if the topic is "David Venkatachalam":
-			let metatext be "David: I think I'd like to have heard that one.[line break]Janet: Not a chance.";
-			say "[metatext in metaspeak]";
-			now david-remembered is true;
+		if the topic is "David Venkatachalam" and (the First Sim is happening or the Second Sim is happening):
+			if david-remembered is less than three:
+				if david-remembered is 1:
+					let metatext be "David: I think I'd like to have heard that one.[line break]Janet: Not a chance.";
+				otherwise if david-remembered is 2:
+					let metatext be "David: I’m half tempted to decompile the code just to see what it said about me.[line break]Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.[line break]David: Grooze?";
+				say "[metatext in metaspeak]";
+			now david-remembered is david-remembered plus one;
 	now remember-invoked is true.
 	
 Table of Remembered Stuff
@@ -2065,8 +2154,9 @@ When Arm Hurts begins:
 	say "As you get out of bed, you notice that your left arm is numb -- must have been the way you were sleeping."
 	
 When Arm Hurts ends:
-	let metatext be "David: Is the the gimbal lock part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
-	say "[metatext in metaspeak]".
+	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the black plate before rubbing the left arm]
+		let metatext be "David: Is the the gimbal lock part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
+		say "[metatext in metaspeak]".
 
 Every turn during Arm Hurts:
 	now Arm-numb is Arm-numb plus one;
@@ -2121,7 +2211,7 @@ When First Sim ends:
 	clear the screen;
 	now the irradiator is patched;
 	now the current memory usage is 260;
-	now load average is 256;
+	now malloc is 256;
 	
 Chapter Second Sim
 
@@ -2132,40 +2222,70 @@ When Second Sim begins:
 	Setup the World;
 	clear the screen;
 	now arm-numb is zero;
-	now roll is -90;
-	now pitch is 60;
-	now yaw is 0;
 	say "[ACU Boot Banner]";
 	now the dream index is 4;
 	try dreaming.
 	
 When Second Sim ends:
 	Restore the World;
-	[description of waking up again]
-	Setup the World;
-	now the David-proxy is in Limbo.
+	Setup the World.
 	
 Chapter Landing Sequence
 
-Landing Sequence is a scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
+Landing Sequence is a recurring scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
 
 When Landing Sequence begins:
+	reset the yoke;
 	now the toilet cover is open;
 	now the toilet seat is closed;
 	now the player is on the toilet seat;
-	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger handle is tilted a little to the left.";
+	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger is a bit tilted.";
 	let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
 	say "[metatext in metaspeak]".
 	
 Landing Sequence ends when the landing_pid is not zero.
 
+[###TODO: suppress bathroom description when moving player onto/off of the toilet seat]
+
+When the Landing Sequence ends:
+	if the Second Sim is happening:
+		let metatext be "David: That’s it. One long burn down to the planet’s surface.[line break]Janet: And then, the ACU just needs to deploy the Rover.";
+		say "[metatext in metaspeak]".
+		
+Chapter Cry Havoc
+
+Cry Havoc is a recurring scene. Cry Havoc begins when Landing Sequence ends.
+	
+Every Turn when Cry Havoc is happening and Second Sim is happening:
+	if the player is in the living room and the living room is not visited-during-havoc:
+		now the living room is visited-during-havoc;
+		[TODO: programmed in either here, or within Rover object: his behavior -- either bouncing around near the door if he is full, or indicating that he needs to be fed before going out]
+		let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
+		say "[metatext in metaspeak]".
+
+Cry Havoc ends when the front door is open.
+
+When Cry Havoc ends:
+	say "You open the dog gate on the front door, confident that Rover will walk about the park and then return. Rover hears the gate open and is out the door in a flash.";
+	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
+	say "[metatext in metaspeak]";
+	wait for any key;
+	
 Chapter Real Thing
 	
-Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [i.e., eaten]
+Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [###TODO figure out the real out point later]
+
+When Real Thing begins:
+	Restore the World;
+	Setup the World;
+	clear the screen;
+	say "[ACU Boot Banner]";
+	now the dream index is 7;
+	try dreaming.
 
 Chapter Walkies
 
-Walkies is a scene. Walkies begins when Rover is not in the Valkyrie Area. Walkies ends when Rover is in the Valkyrie Area.
+Walkies is a recurring scene. Walkies begins when Rover is not in the Valkyrie Area. Walkies ends when Rover is in the Valkyrie Area.
 
 Chapter Boarding Party
 
