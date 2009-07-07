@@ -1,4 +1,5 @@
 "Rover's Day Out" by Jack Welch and Ben Collins-Sussman
+[###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]
 
 The story headline is "An Interactive Fiction".
 The release number is 0.
@@ -105,7 +106,7 @@ counterclockwise is a direction. The opposite of counterclockwise is clockwise.
 
 A direction can be built-in or custom. A direction is usually built-in. Forwards, backwards, leftwards, rightwards, clockwise and counterclockwise are custom.
 
-[classs-wise resettable properties:]
+[class-wise resettable properties:]
 A person has an object called initial-enclosure. The initial-enclosure of a person is usually nothing.
 
 A prop has an object called initial-enclosure. The initial-enclosure of a prop is usually nothing.
@@ -722,7 +723,13 @@ The walls are a backdrop.  They are in the living room and kitchen.  Understand 
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." 
 
-The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
+The clueless-name of the living room is "living room". The clueless-description of the living room is "[living room status]." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are [if the front door is open]open[otherwise]closed." 
+
+To say living room status:
+	if the drapes are in the living room and the drapes are closed:
+		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room";
+	otherwise:
+		say "You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window [if the drapes are in Limbo]-- strangely, your drapes are nowhere to be seen [end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed"
 
 The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed.
 
@@ -801,7 +808,7 @@ After reading the lettering for the first time:
 	let metatext be "David: If the ACU knows what you know, why doesn[apostrophe]t the ACU realize that it is the ACU? I mean, isn[apostrophe]t that what you would suspect if you woke up in a flight suit labeled ACU?[line break]Janet: Cognitive constraints are implemented – the willing suspension of disbelief is a programmatic imperative.[line break]David: I love it when you use big words![line break]Janet: You are a doofus, sir.";
 	say "[metatext in metaspeak]".
 
-The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. 
+The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia".
 
 The alarm clock is furniture on the futon.  The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" and "transgressor" as the alarm clock-proxy.  
 
@@ -837,7 +844,7 @@ Instead of examining when the player is in the living room and the drapes are cl
 		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping].";
 	
 Instead of going towards when the player is in the living room and the drapes are closed:
-	say "It's too dark to move around much[if a random chance of 1 in 20 succeeds]. Grues and all that, you know[end if]." [###ben sez:  this is too cute to be a 1 in 20.  Maybe just use 'the first time'?  We want judges to see it.]
+	say "It's too dark to move around much[one of]. Grues and all that, you know[or][stopping]." [ben said:  this is too cute to be a 1 in 20.  Maybe just use 'the first time'?  We want judges to see it.  Jack replied: OK, had originally considered this a low-frequency easter egg, but agree that if it is never seen, the value is somewhat lost -- made it a one-shot.]
 
 The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" and "bay" and "floor" as the cargo bay floor-proxy.
 
@@ -858,7 +865,7 @@ Instead of opening the front door when the front door is closed:
 	if Cry Havoc is happening:
 		continue the action;
 	otherwise:
-		say "You do not open the front door."
+		say "If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first."
 
 Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
 
@@ -1412,7 +1419,7 @@ Check flushing:
 		the rule fails.
 		
 Carry out flushing:
-	now the player is in the bathroom;
+	move the player to the bathroom, without printing a room description;
 	now the landing_pid is the turn count.
 	
 Report flushing:
@@ -1420,6 +1427,10 @@ Report flushing:
 	
 Instead of exiting when holder of the player is the toilet seat and the landing sequence is happening:
 	try flushing the toilet.
+	
+Instead of entering a flipchair (called the flop):
+	move the player to the flop, without printing a room description;
+	say "You sit on the [flop]."
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
 
@@ -1444,7 +1455,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise [run paragraph on]";
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
 			say "."
 							
 To say magnitude of (degrees - a number):
@@ -1569,6 +1580,7 @@ Instead of exiting:
 	otherwise if the player is in the bathroom:
 		if the player is on the toilet seat and the Landing Sequence is happening:		
 			say "You haven’t finished your business here. The plunger handle is tilted to the XXXXXX and upsets your sense of order.";
+			[TOCONSIDER: is this ever hit?]
 		otherwise:
 			try going towards the living room;
 	otherwise:
@@ -1813,7 +1825,7 @@ index		description		comment
 4	"Rover sniffs the air and tears away from the picnic blanket. You and Tomasz watch with surprise as he runs, for once, away from the food. Rover bounds over the hedges, howling wildly, and spooks a xihuahua which had been playing with a tiny red ball. The so-called [quotation mark]shaved rat[quotation mark] gulps an oversized portion of air, extends its membranous ears and flys across the park into the arms of a douty grey-haired woman with a cane. Rover picks up the ball triumphantly, ignoring the piercing wavetrain of yips and indignant scolding coming, respectively, from the xihuahua and its owner. Shaking her cane limply towards Rover, she admonishes in an a strong Earth accent [quotation mark]That mongrel should be on a leash![quotation mark] Her own, unleashed, uncollared neodog stares accusingly from the safety of her arms, its distensible ribs alternately inflating and deflating like bellows. [quotation mark]Your kind is ruining Mars, ignoring every law, dissing your elders! You never lived on the surface, you never don't know what you've got![quotation mark]. You try to give the ball back to her, but she pushes it away in disgust, [quotation mark]Kids. Meh.[quotation mark]"		"David: Hey, different dream sequence. Is it glitching?[line break]Janet: No, the ACU's dreams are heavily influenced by power-up state of the processor and internal noise.[line break]David: Good, I'd hate to think that we wasted two weeks of programming.[line break]Janet: I wouldn't say wasted.[line break]David: Huh? I didn't mean us.[line break]Janet: Cross you fingers and hope the whole thing doesn't crash again on the heat lamp."
 5	"The image of Tomasz blinks momentarily as the relay is handed off from ground station to ground station, trying to keep line of sight to Phobos. Behind him, you can see the tubular structure of the power station jutting over the edge of Stickley Crater. He is taking the news rather well, all things considered. Tomasz guesses your thoughts as you glance at your diamond engagement ring. [quotation mark]Don’t sweat it,[quotation mark]he says. [quotation mark]This whole rock is carbon, so plenty more where that came from.[quotation mark] There is blinding flash of light and the screen goes black."			"David: Is the ACU referring to me?[line break]Janet: As much as I’d like to say [quotation mark]yes[quotation mark], I don’t see how. The synaptic scans were frozen before we started seeing each other.[line break]David: Maybe you[apostrophe]ve had your eye on me for longer than you think.[line break]Janet: I wonder how many relationships have been ruined by armchair psychoanalysis?"
 6	"A dwarf emerges from under the kitchen sink, spilling dog chow all over the floor. He throws you a menacing look, pries the fridge open with a black rod, and snatches an egg off the shelf. Sand pours out of the fridge. [quotation mark]Hey,[quotation mark] you yell from the futon, [quotation mark]put that back[quotation mark]. You stop short, realizing that this sort of distraction is exactly why you haven’t completed your dissertation. You feel around under the futon, where you think you will have put the dissertation so you could find it in the past, and grab the stubby snout of a pig. The fleet-footed porcine slaps a fish into its ear, jumps into a dumbwaiter and disappears."			"David: That was surreal.[line break]Janet: And sometimes a cigar is just a cigar.[line break]David: Indeed."
-7	"xxxxxx."
+7	"Even mildly drugged and reclining on an overstuffed couch in the MARSpace human resources office, it's hard to relax in the presence of the MARSpace political officer conducting the final interview. You didn't catch her name, probably because she never mentioned it. After three such interviews and six months of background check, what more could they want?  [paragraph break][quotation mark]Ms. Xiang, thank you for your cooperation. Your tests show no hint of disloyalty to the Republic or MARSpace. We hope you understand the need for these measures, particularly for personnel with access to the Valkyrie's command and control functions. Now that you are cleared, I can inform you that credible sources have warned that the project may have been infiltrated by[quotation mark]"	""
 
 Chapter Menus
 
@@ -2100,7 +2112,8 @@ After examining the large button when the Bedtime-did-examine-button is false:
 	
 After dreaming:
 	let metatext be the comment corresponding to the index of dream index in the Table of Dreams;
-	say "[metatext in metaspeak]".
+	if metatext is not "":
+		say "[metatext in metaspeak]".
 
 Instead of attacking, touching, switching on, or switching off the large button during bedtime:
 	try pushing the large button.
@@ -2237,7 +2250,7 @@ When First Sim ends:
 	
 Chapter Second Sim
 
-Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim ends when the front door is open for the first time.
+Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim ends when the front door is open.
 
 When Second Sim begins:
 	Restore the World;
@@ -2249,6 +2262,9 @@ When Second Sim begins:
 	try dreaming.
 	
 When Second Sim ends:
+	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
+	say "[metatext in metaspeak]";
+	wait for any key;
 	Restore the World;
 	Setup the World.
 	
@@ -2260,14 +2276,12 @@ When Landing Sequence begins:
 	reset the yoke;
 	now the toilet cover is open;
 	now the toilet seat is closed;
-	now the player is on the toilet seat;
+	move the player to the toilet seat, without printing a room description;
 	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger is a bit tilted.";
 	let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
 	say "[metatext in metaspeak]".
 	
 Landing Sequence ends when the landing_pid is not zero.
-
-[###TODO: suppress bathroom description when moving player onto/off of the toilet seat]
 
 When the Landing Sequence ends:
 	if the Second Sim is happening:
@@ -2286,12 +2300,6 @@ Every Turn when Cry Havoc is happening and Second Sim is happening:
 		say "[metatext in metaspeak]".
 
 Cry Havoc ends when the front door is open.
-
-When Cry Havoc ends:
-	say "You open the dog gate on the front door, confident that Rover will walk about the park and then return. Rover hears the gate open and is out the door in a flash.";
-	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
-	say "[metatext in metaspeak]";
-	wait for any key;
 	
 Chapter Real Thing
 	
@@ -2303,11 +2311,21 @@ When Real Thing begins:
 	clear the screen;
 	say "[ACU Boot Banner]";
 	now the dream index is 7;
-	try dreaming.
-
+	try dreaming;
+	say "<BEEP> <BEEP> <BEEP>[paragraph break]You realize that something is wrong when the bed begins to shake. Several scenarios flash through your mind: explosive decompression of the dome? Volcanic activity? Meteor impact? Before you can even consider your next action, you are thrown from the futon onto the living room floor. Light pours in from the window. It looks like the drapes were somehow torn away from the window.";
+	now the drapes are in Limbo;
+	now the drawer is open;
+	now the cabinet is open;
+	now the chain is broken;
+	now the player is alert;
+	move the player to the living room, without printing a room description.
+	
 Chapter Walkies
 
 Walkies is a recurring scene. Walkies begins when Rover is not in the Valkyrie Area. Walkies ends when Rover is in the Valkyrie Area.
+
+When walkies begins:
+	say "You open the dog gate on the front door, confident that Rover will walk about the park and then return. Rover hears the gate open and is out the door in a flash.";
 
 Chapter Boarding Party
 
