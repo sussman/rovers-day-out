@@ -678,7 +678,7 @@ The walls are a backdrop.  They are in the living room and kitchen.  Understand 
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." 
 
-The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottages's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
+The clueless-name of the living room is "living room". The clueless-description of the living room is "[if the drapes are closed]Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.[otherwise]You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks." 
 
 The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy.
 
@@ -701,6 +701,7 @@ The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU 
 To reset the ACU:
 	now the ACU is dry;
 	now the ACU is asleep.
+	[###ben sez;  and wearing the flight suit too?  I realize you've got this happening elsewhere, but I'm a bit confounded by the way things are divided up among our global 'save world', 'reset world', etc.]
 
 The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is the ACU]Your left arm. The one that you throw frisbees with[otherwise][the clueless-name of the ACU]'s left arm[end if]." The aware-name of the left arm is "laser gyro". The aware-description of the left arm is "The multiaxial ring laser gyroscope is buried deep in the ship's inertial reference system." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "multiaxial" and "laser" and "ring" and "gyro" and "gyroscope" and "fiber" and "optic" and "optical" and "inertial" and "reference" and "system" as the left arm-proxy.
 
@@ -760,7 +761,7 @@ Some drapes are furniture in the living room. Understand "curtains" or "curtain"
 
 Instead of opening the drapes:
 	if the futon encloses the player:
-		say "You'll need to stand up first."; [perhaps better handled by limiting the scope to the futon and things on it -- prevents the player from opening
+		say "You'll need to stand up first."; [### perhaps better handled by limiting the scope to the futon and things on it -- prevents the player from opening
 		  the front door, touching the floor, etc.]
 		rule succeeds;
 	otherwise:
@@ -782,7 +783,7 @@ Instead of examining when the player is in the living room and the drapes are cl
 		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping].";
 	
 Instead of going towards when the player is in the living room and the drapes are closed:
-	say "It's too dark to move around much[if a random chance of 1 in 20 succeeds]. Grues and all that, you know[end if]."
+	say "It's too dark to move around much[if a random chance of 1 in 20 succeeds]. Grues and all that, you know[end if]." [###ben sez:  this is too cute to be a 1 in 20.  Maybe just use 'the first time'?  We want judges to see it.]
 
 The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" and "bay" and "floor" as the cargo bay floor-proxy.
 

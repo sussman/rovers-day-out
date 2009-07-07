@@ -403,3 +403,17 @@ Wonder if it's a Glulx/Cocoa-GLK bug.
 aware-proxies need more 'understand foo as' options, which combine words.
 
 
+Need object (photo frame?) to encourage player to discover memories
+with a series of "remember foo" commands.  Which thing is best to
+remember as a starting point (i.e. most likely to branch out to all
+the memories?)  The backstory is really awesome here, so ideally we'd
+like the player to discover it before The Real Thing happens.
+
+A book about Inform, perhaps...
+
+
+--------
+
+failed phrases that ought to work!  THE LIST.
+
+"look out window"
