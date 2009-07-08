@@ -1,0 +1,355 @@
+[Note from sussman:  the "fooverb isn't in technoverb-table" messages
+are debugging statements I accidentially forgot to remove before
+handing the game to John.  I told him to simply ignore them.
+
+---------------------
+
+Rover's Day Out
+An Interactive Fiction by Jack Welch and Ben Collins-Sussman
+Release 0 / Serial number 090707 / Inform 7 build 5U92 (I6/v6.31 lib 6/12N) 
+Type "help" for instructions, credits and license or just blaze on impetuously.
+
+
+
+Janet: David, are you hooked in?
+David: Ready to go. Is this the final version of the ACU, or another beta?
+Janet: A program is never finished, but I think we're ready to go.
+David: I hope so, Earth could launch any day now.
+Janet: Run program.
+
+
+
+Rover's Day Out
+An Interactive Fiction by Janet Xiang
+Release beta 732 / Serial number 23920401 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?
+
+
+(Note:  dreaming isn't in technoverb-table)
+
+
+David: You have some weird dreams.
+Janet: You can't hold me responsible for the subconscious ramblings of the ACU.
+
+<beep> <beep> <beep>
+
+>d.nl
+Six impossible things before breakfast is one thing, but you have to at least get out of bed.
+
+
+<beep> <beep> <beep>
+
+That's not a verb I recognize.
+
+>x..l
+You can't see any such thing.
+
+>iajt
+That's not a verb I recognize.
+
+>glycm.
+That's not a verb I recognize.
+
+>,dr
+That's not a verb I recognize.
+
+>,
+That's not a verb I recognize.
+
+>no
+First things first, you're still in bed.
+
+
+<beep> <beep> <beep>
+
+
+(Note:  beeping isn't in technoverb-table)
+
+>no
+Not while you're in your futon, you won't.
+
+
+<beep> <beep> <beep>
+
+
+(Note:  beeping isn't in technoverb-table)
+
+>i.y gl
+You are carrying nothing, which is more often than not the case when you wake up most days.
+
+<beep> <beep> <beep>
+
+
+(Note:  beeping isn't in technoverb-table)
+
+Rover tip-taps loudly across the living room floor.
+
+I only understood you as far as wanting to y.
+
+>ls
+I didn't understand that sentence.
+
+>who
+I didn't understand that sentence.
+
+>w
+Compass directions? On Mars? The magnetic field here is too weak.
+
+<beep> <beep> <beep>
+
+>uptime
+That's not a verb I recognize.
+
+>shutdown -r now
+That's not a verb I recognize.
+
+>get up
+Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral behind the futon. Oh well, you can dig it out tonight. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.
+
+As you get out of bed, you notice that your left arm is numb -- must have been the way you were sleeping.
+
+>l
+Living Room
+Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room.
+
+You can see Rover here.
+
+>x rover
+Darkness is great for sleeping, not so good for looking at stuff.
+
+>i
+You are carrying:
+  a flight suit (being worn)
+
+
+(Note:  taking inventory isn't in technoverb-table)
+
+>turn on light
+You can't see any such thing.
+
+>x switch
+You can't see any such thing.
+
+>push switch
+You can't see any such thing.
+
+>x drapes
+The heavy brown drapes are closed. The room is dark.
+
+>open drapes
+You push aside the drapes.
+
+You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window . The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+>l
+Living Room
+You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window . The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>x rover
+He's a big, happy dalmation.
+
+>open door
+(the front door)
+If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first.
+
+>x futon
+Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress that is pulled out to form a bed.
+
+>look under bed
+It's too early to delve into the dust-bunny infested recesses of the futon. Certainly not before some strong coffee.
+
+>x coffee
+You can't see any such thing.
+
+>l
+Living Room
+You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window . The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>go bathroom
+
+David: Isn't that a tad inconvenient?
+Janet: Yeah, but it kind of made sense when I got it.
+
+ 
+>l
+Living Room
+You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window . The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>go kitchen
+You can't really move around much because of the futon. It takes up a lot of room.
+
+>move futon
+With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage.
+
+>n
+Compass directions? On Mars? The magnetic field here is too weak.
+
+Your left arm is smarting a bit.
+
+>go bathroom
+
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you've mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+>get brush
+Taken.
+
+You feel sharp little pains in your left arm, like little pin pricks.
+
+>x arm
+Which do you mean, the left arm, or the right arm?
+
+>x arm left
+Your left arm. The one that you throw frisbees with.
+
+>brush teeth
+The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved.
+
+
+(Note:  brushing isn't in technoverb-table)
+
+>get floss
+Taken.
+
+Your left arm is bothering you.
+
+>floss teeth
+You don't have any floss.
+
+Your left arm is smarting a bit.
+
+>i
+You are carrying:
+  a floss dispenser
+  a toothbrush
+  a flight suit (being worn)
+
+
+(Note:  taking inventory isn't in technoverb-table)
+
+You are unconfortable; your left arm hurts.
+
+>get floss
+You already have that.
+
+Something is not at all right with your left arm, it feels alternately numb and painful.
+
+>x left arm
+Your left arm. The one that you throw frisbees with.
+
+>l
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you've mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+Your left arm is rather painful.
+
+>l mirror
+I only understood you as far as wanting to look.
+
+>touch plate
+The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on.
+
+You are unconfortable; your left arm hurts.
+
+>go shower
+You open the shower door, which is more flimsy that it would at first appear.
+
+You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.
+
+David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.
+Janet: You want me to come over and take my baths there?
+David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.
+Janet: Your point was...?
+David: Just that some of the cottages do have baths.
+Janet: I see.
+
+The Shower
+Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". The shower has not activated because you are still wearing clothes.
+
+
+David: I should probably check on the Casimir Drive harmonic suppressor; it still isn't stable.
+Janet: I'd like you to see everything.
+David: Well... If you think so....
+Janet: I do -- I need you to sign off budget authorization on the ACU before we burn it to firmware.
+David: Oh.
+
+>sign off
+That's not a verb I recognize.
+
+>take off clothes
+Your flight suit would get soaked if you took it off in here.
+
+>exit
+
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you've mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+Something is not at all right with your left arm, it feels alternately numb and painful.
+
+>take off clothes
+You take off your blue flight suit and it falls to The Bathroom floor. You are naked.
+
+David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.
+Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.
+David: I'm not staring at the stimulation.
+Janet: You said stimulation. That's funny.
+David: No, I said simulation - and I'm not staring.
+Janet: Alright -- you're the boss.
+
+You are unconfortable; your left arm hurts.
+
+>go shower
+That's already open.
+
+The Shower
+You are in your shower and water of just the right temperature is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". 
+
+
+David: Janet, I...
+Janet: David, if it were anyone but you, I would have a problem. Just let it go.
+David: Anyone else? Like who?
+Janet: Can we get back to the program?
+David: Okay, I'm paying attention.
+Janet: Obviously.
+
+Your left arm is rather painful.
+
+>get soap
+(the soap dispenser)
+That's hardly portable.
+
+You are unconfortable; your left arm hurts.
+
+>push soap dispenser
+A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off.
+
+David: No comment.
+Janet: I don't know what I was thinking when I wrote that.
+
+>l
+The Shower
+You are in your shower and water of just the right temperature is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". 
+
+The pain in your left arm is so strong that you can think of little else!
+
+>take shower
+You can't! Your arm hurts too much. The pain in your left arm is so strong that you can think of little else!
+
+>jump
+You can't! Your arm hurts too much. The pain in your left arm is so strong that you can think of little else!
+
+>wait
+You can't! Your arm hurts too much. The pain in your left arm is so strong that you can think of little else!
+
+>look
+You can't! Your arm hurts too much. The pain in your left arm is so strong that you can think of little else!
+
+>quit
+Are you sure you want to quit? y
