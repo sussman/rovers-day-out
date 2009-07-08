@@ -1,0 +1,28 @@
+
+  *** Things we should fix, mainly discovered via testing. ***
+
+
+* Wha?  The bits below make no sense.
+
+   >get floss
+   Taken.
+
+   >floss teeth
+   You don't have any floss.
+
+
+* "l mirror" should probably be understood as wanting to look *in* the
+  mirror.
+
+* should "get soap" be understood as pushing the soap dispenser?
+
+* "You can't! Your arm hurts too much. The pain in your left arm is so
+  strong that you can think of little else!"  We should vary this a
+  bit so it doesn't sound like a broken record.
+
+* If the left arm is hurting, examining it should give a hint.  It
+  should say something like "...and it's currently itching like
+  crazy", rather than just a generic description.
+
+* flesh out unix commands more.  what should happen if user tries them
+  while clueless?
