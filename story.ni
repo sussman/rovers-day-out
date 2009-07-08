@@ -714,7 +714,7 @@ Instead of going towards the living room:
 			move the floss dispenser to the marble counter;	
 		say paragraph break; 
 		try going towards the living room;
-	otherwise if the player is wet:
+	otherwise if the player is wet:[###TODO This needs to be more general -- fails to catch a "go kitchen" if the player is in the bathroom. Consider pooling all of the "instead of going towards" rules and then winnowing down according to location]
 		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
 	otherwise:
 		continue the action.
@@ -862,11 +862,17 @@ To say front door status:
 			say "Outside, it looks like a nice day".  
 			
 Instead of opening the front door when the front door is closed:
-	if Cry Havoc is happening:
-		continue the action;
+	if the landing_pid is not zero:
+		if the player is clueless:
+			say "[one of]You open the front door, confident that Rover will walk about the park and then return. Rover hears the door open and is out in a flash[or]Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[at random].";
+		otherwise: [aware]
+			say "[one of]The ROVER deploys to the planet surface through the cargo bay doors[or]ROVER spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship[or]ROVER oscillates his aft sensor array at high frequency and rolls down the cargo ramp, disappearing into the sand storm[at random].";
+		if the Real Thing is happening:
+			move Rover to the Front Yard;
+		now the front door is open;
 	otherwise:
-		say "If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first."
-
+		say "[if the player is clueless]If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first[otherwise]ROVER release is not the current task[end if]."
+		
 Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
 
 The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's[otherwise]You're[end if] a big, happy dalmation."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the space probe] He is chewing a piece of the Musashi-5 space probe[end if]." The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
@@ -1006,8 +1012,9 @@ Before eating the white egg:
 			the rule succeeds;
 		otherwise:[cooked]
 			say "[if the player is clueless]You gobble down what might well have been the best neoegg you've ever had[otherwise]The components are the heavy helium containment unit are reallocated to ship's needs[end if].";
-			let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?[line break]Janet: Works for me, yeah.[line break]David: How about a plate and fork?[line break]Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";			
-			say "[metatext in metaspeak]";
+			if the Second Sim is happening:
+				let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?[line break]Janet: Works for me, yeah.[line break]David: How about a plate and fork?[line break]Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";	
+				say "[metatext in metaspeak]";
 			now the ignite_pid is the turn count;
 			move the white egg to the cold box;
 			now the white egg is not cooked;
@@ -1629,7 +1636,7 @@ Instead of pushing or touching the soap button:
 		if the player is clueless:
 			if the First Sim is happening:
 				say "A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off.";
-			otherwise if the Second Sim is happening:
+			otherwise:
 				say "A soapy paste is dispensed from the button, and you lather up.";
 		otherwise:	
 			say "The accelerant for the ablative enamel spreads quickly over the ship's hull.";
@@ -1745,11 +1752,11 @@ There are some gunships. They are scenery. The description of the gunships is "A
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
+The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
-The park is scenery in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors." The clueless-name of the park is "park". The aware-name of the park is "viewer".
+The park is scenery in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors." The clueless-name of the park is "park". Understand "lincoln" and "dome" as the park. The aware-name of the park is "viewer".
 
 Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer". Understand "orange" and "lawn" and "luscious" as the grass.
 
@@ -1846,6 +1853,7 @@ title	subtable	description	toggle
 "Help! I'm stuck!"	Table of Stuck	--	--
 "Entomology"		Table of Bugs	--	--
 "Acknowledgements"	Table of Acknowledgements	--	--
+"License"		Table of License	--		--
 
 Table of Adventures
 title	subtable	description	toggle
@@ -1897,6 +1905,12 @@ Table of Acknowledgements
 title	subtable	description	toggle
 "Beta Testers"	--	"Who are the fearless, dedicated individuals who put their very lives on the line to test this game?[paragraph break]* John Doe, Sleepy Hollow[line break]* Jimmy Tester, Utopia Planetia[line break]* Betty TestSweet, Lake Eridania[line break]* Joe Keypounder, Deimos Colony[paragraph break]Note: Any omissions, errors, or outright offensive bits of the game that made it through beta-testing are not the fault of the beta-testers, nor, we should point out of the authors, who would take be entirely ready to take the blame were it their fault. The truth is that any fault whatsoever lies with Richard Millhouse Nixon, the 37th (depending on the method of counting) President of the United States of America. We will be held accountable for his poor spelling, loose grammar, and penchant for elaborate data structures named after the suprising numerous flavors of goat cheeses."	--
 "The Ultra-Prestigious Bug Finder List"	--	"So far, no one aside from beta testers has reported a bug... you could be the first..."	--
+"Giant Shoulders"	--	"This is built upon work... Graham for Inform, Emily and others for modules ###TODO - finish this as game nears completion."		--
+"Consultants"	--		"During writing, on several occassions we asked the community for help and advice...Rob Newcomb, Andrew Plotkin, etc. ###TODO - flush this out as game nears completion."	--
+"Animals"		--		"No animals, not even cybernetic ones, were harmed in the creation of this work."	--
+
+Table of License
+title	subtable	description	toggle
 "Creative Commons License"	--	"This game is released under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States license. As a consequence, you are free to copy, distribute, display and use this work and to make derivative works under the following conditions:[paragraph break]Attribution. You must attribute such works mentioning our names [story author] and the title of this work [quotation mark][story title][quotation mark]. This can 
   appear in the title, with the Release Information, or in the 
   acknowledgements section of a menu system. Attribution does not 
@@ -1951,7 +1965,7 @@ First after an actor doing something (this is the catch successful actions rule)
 Table of Technoverbs
 Verb				Technoverb
 the going action			"SELECT"  [go, or any compass direction]
-the taking off action		"RETRACT"  [take off, remove]
+the taking off action		"DISENGAGE"  [take off, remove]
 the wearing action		"ENGAGE"  [put on, wear]
 the taking action		"SELECT"  [take, get]
 the dropping action		"DESELECT"  [drop]
@@ -1963,21 +1977,34 @@ the entering action		"ACTIVATE"  [enter, sit on]
 the exiting action		"DEACTIVATE" [exit, stand up]
 the opening action		"ACCESS"  [open]
 the closing action		"DEACCESS" [close]
-the eating action		"ROUTE"  [eat]
+the eating action		"RECYCLE"  [eat]
 the pushing action		"APPLY"  [press]
 the remembering action		"DATA_FETCH" [remember]
+the dreaming action	"RANDOMIZE ADDRESS SPACE" [dream]
+the rubbing action		"ENERGIZE" [rub, clean, scratch]
+the touching action		"UPDATE" [touch]
+the folding action		"RETRACT" [fold]
+the unfolding action	"EXTEND" [unfold]
+the reading action		"READLINE" [read]
+the putting it on action	"TRANSFER" [put on]
+the cracking it into action	"DISCHARGE" [crack, break, etc.]
+the taking inventory action		"MANIFEST" [inventory]
+the switching on action	"TRIGGER"		[turn on, switch on]
+the switching off action 	"RESET"		[turn off]
+the yoking it more action	"VECTOR ADJUST" [push, pull, twist...plunger]
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
+	
+waiting
+flossing
+brushing
+ 
 
-"fold"		"RETRACT"
-"unfold"		"EXTEND"
 "fill"		"ADD"
 "scratch"		"NEUTRALIZE STATIC CHARGE"
 "wake"		"INITIALIZE"
 "sleep"		"SUSPEND"
 "give"		"DISPENSE"
-"pull"		"ROLL"
-"push"		"PITCH"
 "flush"		"THRUST"
 "roll over"	"LATERAL JETS"
 "lay down"	"DEFENSIVE MODE"
@@ -2026,7 +2053,7 @@ Book 2  Scenes
 
 Chapter Bedtime
 
-Bedtime is a recurring scene. Bedtime begins when the player is asleep. Bedtime ends when the player is not enclosed by the futon. 
+Bedtime is a recurring scene. Bedtime begins when the ACU is asleep. Bedtime ends when the player is not enclosed by the futon. 
 
 [unfortunately, there is no way to "locally" zero the scene, so that you could, for instance, "look for the first time" during the first simulation and again during the second simulation]
 
@@ -2261,6 +2288,13 @@ When Second Sim begins:
 	now the dream index is 4;
 	try dreaming.
 	
+Every turn when the Second Sim is happening and the landing_pid is not 0:
+	if the player is in the living room and the living room is not visited-during-havoc:
+		now the living room is visited-during-havoc;
+		[TODO: programmed in either here, or within Rover object: his behavior -- either bouncing around near the door if he is full, or indicating that he needs to be fed before going out]
+		let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
+		say "[metatext in metaspeak]".
+
 When Second Sim ends:
 	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
 	say "[metatext in metaspeak]";
@@ -2278,8 +2312,9 @@ When Landing Sequence begins:
 	now the toilet seat is closed;
 	move the player to the toilet seat, without printing a room description;
 	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger is a bit tilted.";
-	let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
-	say "[metatext in metaspeak]".
+	if the Second Sim is happening:
+		let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
+		say "[metatext in metaspeak]".
 	
 Landing Sequence ends when the landing_pid is not zero.
 
@@ -2287,19 +2322,6 @@ When the Landing Sequence ends:
 	if the Second Sim is happening:
 		let metatext be "David: That’s it. One long burn down to the planet’s surface.[line break]Janet: And then, the ACU just needs to deploy the Rover.";
 		say "[metatext in metaspeak]".
-		
-Chapter Cry Havoc
-
-Cry Havoc is a recurring scene. Cry Havoc begins when Landing Sequence ends.
-	
-Every Turn when Cry Havoc is happening and Second Sim is happening:
-	if the player is in the living room and the living room is not visited-during-havoc:
-		now the living room is visited-during-havoc;
-		[TODO: programmed in either here, or within Rover object: his behavior -- either bouncing around near the door if he is full, or indicating that he needs to be fed before going out]
-		let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
-		say "[metatext in metaspeak]".
-
-Cry Havoc ends when the front door is open.
 	
 Chapter Real Thing
 	
@@ -2322,10 +2344,16 @@ When Real Thing begins:
 	
 Chapter Walkies
 
-Walkies is a recurring scene. Walkies begins when Rover is not in the Valkyrie Area. Walkies ends when Rover is in the Valkyrie Area.
+Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and the Real Thing is happening. Walkies ends when Rover is in the Living Room.
 
-When walkies begins:
-	say "You open the dog gate on the front door, confident that Rover will walk about the park and then return. Rover hears the gate open and is out the door in a flash.";
+When Walkies begins:
+	say "You go bounding out the front door, full of energy.";
+	now the player is Rover;
+	try looking.
+	
+When Walkies ends:
+	now the front door is closed;
+	now the player is the ACU.
 
 Chapter Boarding Party
 
