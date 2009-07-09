@@ -10,9 +10,15 @@
    >floss teeth
    You don't have any floss.
 
+   We need to better disambiguate between 'box of floss' and the floss
+   string itself.
+
 
 * "l mirror" should probably be understood as wanting to look *in* the
   mirror.
+
+  And "look in mirror" does nothing at all.  Only 'x mirror' does what
+  we want.  Instead of looking in mirror, try examining the mirror instead.
 
 * should "get soap" be understood as pushing the soap dispenser?
 
@@ -26,3 +32,84 @@
 
 * flesh out unix commands more.  what should happen if user tries them
   while clueless?
+
+* 'go room' shouldn't show 'ACU -> SELECT' but rather
+  'room's-aware-name -> SELECT'
+
+* "cook egg" 
+
+*  Wait, our "go room" system simply moves you along a path toward the
+   room, rather than directly into the room?  That's a bit odd.  If
+   we're going to ban compass directions, it means that users have
+   *no* sense of how rooms are arranged relative to each other, so
+   pathfinding is rather confusing.  Why not just go right to room, as
+   long as its in the same region?
+
+* "exit shower" fails but just "exit" leaves the shower.
+
+* "pet rover"
+
+* oddness with showering:  taking off the flight suit allows one to
+  shower, but it's still being carried in the inventory!  We should be
+  more strict and force the player to *drop* it on the bathroom floor.
+
+* should 'wait' while sitting on toilet do something?
+
+   -> I think the bigger issue is that we should hint that 'something
+      seems odd' about the room once we're sitting on the toilet.  we
+      need to guide people to examine the toilet, so that they notice
+      the plunger at all.
+
+   -> bigger confusion:  *I* fell into the trap of thinking that I had
+      to make myself poop during the second sim.  I wasted 10 mins on
+      it!  If I don't have the urge to defecate, let's say so.
+      Granted, I had forgotten about the magpaper ordering.  But let's
+      hint that we only need to take care of business after eating.
+
+   -> I don't like our current system of "automatically" sitting on the
+      toilet after eating the egg.  Let the player do that, since they
+      feel an urge anyway, right?  Likewise, let the player know that
+      they're "done" with business after fixing the plunger.6
+
+   -> BUG:  I fixed the plunger perfectly before eating.  After
+      eating, it's all wrong again.  Let's either remember the
+      plunger's state, or not allow me to move the plunger before eating.
+
+* "poop" is not recognized
+
+* need to understand 'chow' as 'bag of dog chow'
+
+* grammar error?
+
+   >x cover 
+
+   The cover is made of plastic, but has been laminated to
+   give it the appearance of unstained wood. It toilet cover is
+   closed.
+
+* typo in bathroom description?  " you've mounted mirror on the wall."
+
+* "take plunger" needs a real excuse, not a generic response.
+
+* uhoh:  this seems to read like there are three sibling objects.  And
+  they're not siblings.
+
+  >x bowl
+  Which do you mean, the dog dish, the water bowl, or the food bowl
+
+* buglet in proper noun capitalization: "You take off your blue flight
+  suit and it falls to The Bathroom floor."
+
+* no status-line update when we stand up and toilet flushes??
+
+* in The Real Thing, I expected toilet to not flush and be broken.
+  Guess we haven't written that yet?
+
+* uhoh, is this intended?  I discovered accidentally when being Rover
+  during the Real Thing.  Perhaps the new directions are too general?
+
+  >backwards
+  You move slightly backwards.
+
+  >forwards
+  You move slightly forwards.

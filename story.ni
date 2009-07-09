@@ -1462,7 +1462,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
+				say "twisted [magnitude of yaw][if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
 			say "."
 							
 To say magnitude of (degrees - a number):
@@ -1656,7 +1656,7 @@ Instead of pushing or touching the shampoo button:
 		if the shampoo button is unpressed:
 			now the shampoo button is pressed;
 			if the Second Sim is happening:
-				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
+				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballpark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
 				say "[metatext in metaspeak]".
 
 Chapter The Planet
@@ -1998,6 +1998,7 @@ the yoking it more action	"VECTOR ADJUST" [push, pull, twist...plunger]
 waiting
 flossing
 brushing
+looking under
  
 
 "fill"		"ADD"
