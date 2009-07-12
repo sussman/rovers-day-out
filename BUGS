@@ -1,4 +1,3 @@
-
   *** Things we should fix, mainly discovered via testing. ***
 
 
@@ -12,7 +11,9 @@
 
    We need to better disambiguate between 'box of floss' and the floss
    string itself.
-
+@@@ OK, the floss dispenser is now the plastic box, and a clarification
+message is printed if the player tries to floss his teeth with the
+box.
 
 * "l mirror" should probably be understood as wanting to look *in* the
   mirror.
@@ -20,18 +21,58 @@
   And "look in mirror" does nothing at all.  Only 'x mirror' does what
   we want.  Instead of looking in mirror, try examining the mirror instead.
 
+@@@ OK, look in mirror is a synonym for search mirror, so search mirror 
+has been redirectd with an instead. Look [something] is now redirected to 
+searching as well. So, look window or look mirror both work now (even 
+if they're not very grammatical). 
+
 * should "get soap" be understood as pushing the soap dispenser?
+
+@@@ OK. Attempts to get/take the soap or shampoo now elicit a message 
+in which the player recalls that the get some soap/shampoo, they need
+to touch the dispenser. This seems reasonable since this should be 
+"routine" knowledge for the player.
 
 * "You can't! Your arm hurts too much. The pain in your left arm is so
   strong that you can think of little else!"  We should vary this a
   bit so it doesn't sound like a broken record.
 
+@@@ Agreed. I've added some alternate text. Even so, players will cycle 
+through them relatively quickly. The intent is to suggest that the problem
+has become big enough to displace other thoughts, and that if the problem
+is not dealt with, it becomes a single-track priority.
+
 * If the left arm is hurting, examining it should give a hint.  It
   should say something like "...and it's currently itching like
   crazy", rather than just a generic description.
 
+@@@ Done.
+
 * flesh out unix commands more.  what should happen if user tries them
   while clueless?
+
+@@@ This is worth some discussion -- Initially, I was just going for
+the overlap between normal English (e.g., touch) and unix commands. In that 
+case, the command would be interpreted normally (e.g., touch, jump, etc.)
+except when the ACU is self-aware. I can expand this, but can't come near
+the full repertoire of unix commands (without making that a full time project
+in itself. I'm not keen to emulate unix in I7). I don't think that commands
+like 'ls' should do anything when the ACU is clueless, as they don't have 
+any meaning in English.  I do think it's worth adding those commands that roll
+easily off the fingers (who, ps, ls, etc.). Here's what I've added:
+
+A) Clueless
+	- who: replies rhetorically, "you."
+	- uptime - time since waking up.
+	-
+
+B) Aware - Man pages for all aware objects in the game. (This may take a
+	   while...). Try "man casimir" while self-aware.
+	-  uptime - time since IPL
+	- shutdown/reboot/halt
+	- sudo
+
+
 
 * 'go room' shouldn't show 'ACU -> SELECT' but rather
   'room's-aware-name -> SELECT'

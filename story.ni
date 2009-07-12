@@ -84,7 +84,7 @@ Rule for printing the name of the a thing (called the item):
 		otherwise:
 			say the printed name of the item;
 			
-An aware-proxy is a kind of thing. The aware-name of an aware-proxy is usually "#REF".  Aware-proxies are always privately-named.
+An aware-proxy is a kind of thing. The aware-name of an aware-proxy is usually "#REF".  Aware-proxies are always privately-named. Aware-proxies have some text called manpage. The manpage of an aware-proxy is usually "".
 
 A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location". A simroom has some text called clueless-name. The clueless-name is usually "".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
@@ -238,11 +238,11 @@ Section Computer Humor
 [ben said:  this is hilarious! Jack said: Thanks; feel free to add more as they occur to you.]
 
 Before touching something (called the item):
-	if the player is the acu and the player is self-aware:
+	if the player is self-aware:
 		say "[aware-name of the item]: file timestamp updated.";
 		
 Before jumping:
-	if the player is the acu and the player is self-aware:
+	if the player is self-aware:
 		say "Branch instruction ignored. Instruction pointer unaffected.";
 		rule succeeds.
 		
@@ -252,12 +252,53 @@ Understand "grep [something]" as searching when the player is self-aware.
 
 Understand "man" as asking for help when the player is self-aware.
 
+Manpaging is an action applying to one thing. Understand "man [any aware-proxy]" as manpaging when the player is self-aware. 
+
+Carry out manpaging:
+	if the manpage of the noun is "":
+		say "No manual entry is available.";
+	otherwise:
+		say the manpage of the noun.
+
 Understand "cd [any room]" as going towards when the player is self-aware.
 
-Whoing is an action applying to nothing. Understand "who" as whoing when the player is self-aware.
+Whoing is an action applying to nothing. Understand "who" as whoing.
 
 Carry out whoing:
-	say "ACU        console        [right justify turn count minus epoch_pid][paragraph break]".
+	if the player is clueless:
+		say "You.";
+	otherwise if the player is the ACU and the ACU is self-aware:
+		say "ACU        console        [right justify turn count minus epoch_pid][paragraph break]".	
+		
+Uptiming is an action applying to nothing. Understand "uptime" as uptiming.
+
+Carry out uptiming:
+	if the player is clueless:
+		if the IPL_pid is 0:
+			say "You still haven't dragged your sorry butt out of bed.";
+		otherwise:
+			say "Your alarm clock started going off at 5:30 this morning, and took you another [IPL_pid] minutes to haul yourself to consciousness. You've been up since then. Congratulations.";
+	otherwise:
+		say "[time of day]  up [turn count - epoch_pid] minutes,   1 user,    load average 0.99 [paragraph break]".
+		
+Shutdowning is an action applying to nothing. Understand "shutdown" or "reboot" or "halt" as shutdowning when player is self-aware.
+
+Fancyshutdowning is an action applying to one topic. Understand "shutdown [text]" as fancyshutdowning when the player is self-aware.
+
+ Instead of fancyshutdowning:
+	try shutdowning.
+
+Carry out shutdowning:
+	say "Preparing to shutdown.";
+	[###TOCONSIDER: delay between these lines, or progress dots.......]
+	say "Preparing to unmount all volumes.";
+	say "Preparing to disengage sensors and effectors.[paragraph break]";
+	say "Root authentication failed. Command aborted."
+	
+Sudoing is an action applying to nothing. Understand "sudo" as sudoing.
+
+Carry out sudoing:
+	say "Enter root password:".
 		
 Section Reading
 		
@@ -322,6 +363,7 @@ Before going a direction (called the way):
 	rule succeeds;
 
 Instead of going towards when the player is in the living room and the futon is not folded:
+	say "You can't really move around much because of the futon. It takes up a lot of room.";
 	if the futon is not obstructed and (the First Sim is happening or the Second Sim is happening):
 		now the futon is obstructed;
 		if the First Sim is happening:	
@@ -329,9 +371,7 @@ Instead of going towards when the player is in the living room and the futon is 
 			say "[metatext in metaspeak] ";
 		otherwise if the Second Sim is happening:
 			let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
-			say "[metatext in metaspeak]";
-	otherwise:
-		say "You can't really move around much because of the futon. It takes up a lot of room.";
+			say "[metatext in metaspeak]".
 
 Section Folding and Unfolding
 
@@ -419,7 +459,7 @@ Instead of doing something when the player is clueless and the noun is an aware-
 			now aware-references is aware-references + 1.
 	
 [ben said:  how do I trigger this next rule to test it?  When I reorient myself to self-aware, commands like 'x walls' and 'fold futon' work fine...? Jack replied: Since the ACU only accepts the non-aware dictionary words, you need to trigger the error by referring to items using one of their aware synonyms, e.g., 'x bulkheads' and 'x drive']
-Instead of doing something when the player is self-aware and the noun is an aware-proxy:
+Instead of doing something other than manpaging when the player is self-aware and the noun is an aware-proxy:
 	say "You can't see that here; but you vaguely [one of]recollect[or]remember[or]recall[at random] something [one of]called[or]termed[or]referred to as[at random] the [quotation mark][the clueless-name of the holder of the noun][quotation mark]."[I'd prefer to put "the" in the brackets, but it is not substituted properly here; just ignored.]
 	
 Instead of taking inventory when Rover is the player:
@@ -744,7 +784,7 @@ The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and T
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. The living room can be visited-during-havoc. The living room is not visited-during-havoc.[Keeps track of whether the living room has been visited for the first time during the recurring "Cry Havoc" scene.]
 
 Instead of going towards the living room:
-	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the floss dispenser:
+	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the plastic box:
 		if the player carries the dog dish:		
 			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
 			move the dog dish to the kitchen;
@@ -757,9 +797,9 @@ Instead of going towards the living room:
 		if the player carries the toothbrush:
 			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
 			move the toothbrush to the marble counter;
-		if the player carries the floss dispenser:
-			say "[if the player is clueless]The floss dispenser almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
-			move the floss dispenser to the marble counter;	
+		if the player carries the plastic box:
+			say "[if the player is clueless]The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
+			move the plastic box to the marble counter;	
 		say paragraph break; 
 		try going towards the living room;
 	otherwise if the player is wet:[###TODO This needs to be more general -- fails to catch a "go kitchen" if the player is in the bathroom. Consider pooling all of the "instead of going towards" rules and then winnowing down according to location]
@@ -779,7 +819,7 @@ To say living room status:
 	otherwise:
 		say "You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window [if the drapes are in Limbo]-- strangely, your drapes are nowhere to be seen [end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed"
 
-The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. 
+The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. The manpage of the futon-proxy is "The zero-point energy drive creates a time-space gradient across which the ship travels. In conjunction with the ship's temporal transgressor, the ship is capable of faster-than-light travel without incurring substantial time debt. The drive must be extended for interstellar flight, but retracted to make planetfall. The drive cannot be used within stellar systems or near other gravitic distortions. The drive is delicate and should be protected from physical damage, particularly to the field plates."
 
 After examining the futon:
 	if the futon is not discussed and the Second Sim is happening:
@@ -808,7 +848,7 @@ To reset the ACU:
 	now the ACU is asleep.
 	[###ben sez;  and wearing the flight suit too?  I realize you've got this happening elsewhere, but I'm a bit confounded by the way things are divided up among our global 'save world', 'reset world', etc.]
 
-The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is the ACU]Your left arm. The one that you throw frisbees with[otherwise][the clueless-name of the ACU]'s left arm[end if]." The aware-name of the left arm is "laser gyro". The aware-description of the left arm is "The multiaxial ring laser gyroscope is buried deep in the ship's inertial reference system." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "multiaxial" and "laser" and "ring" and "gyro" and "gyroscope" and "fiber" and "optic" and "optical" and "inertial" and "reference" and "system" as the left arm-proxy.
+The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is not the ACU][the clueless-name of the ACU]'s left arm[otherwise if Arm Hurts is not happening]Your left arm. The one that you throw frisbees with[otherwise]That's odd. Your left arm is itching like the dickens, but it looks entirely normal[end if]." The aware-name of the left arm is "laser gyro". The aware-description of the left arm is "The multiaxial ring laser gyroscope is buried deep in the ship's inertial reference system." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "multiaxial" and "laser" and "ring" and "gyro" and "gyroscope" and "fiber" and "optic" and "optical" and "inertial" and "reference" and "system" as the left arm-proxy.
 
 The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "tachyon sieve". The aware-description of the right arm is "The tachyon sieve feeds into the temporal transgressor." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "tachyon" and "sieve" as the right arm-proxy.
 
@@ -1220,7 +1260,7 @@ The kitchen floor is a privately-named scenery supporter in the kitchen. The clu
 
 Section Bathroom
 
-The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter, with a toothbrush and some floss on it. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
+The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter[if something is on the marble counter], with [a list of things on the marble counter] on it[end if]. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence[if something is on the marble counter]. On the console [is-are a list of things on the marble counter][end if]." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
 
 After going towards the bathroom:
 	if the bathroom is not really-visited and the Second Sim is happening:
@@ -1228,27 +1268,27 @@ After going towards the bathroom:
 		let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
 		say "[metatext in metaspeak]".
 	
-The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a floss dispenser. The toothbrush and floss dispenser are props.
+The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a plastic box. The toothbrush and plastic box are props.
 
 The clueless-name of the marble counter is "marble counter". Understand "pink" and "faux" as the marble counter. The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms.[if something is on the marble counter] On it [is-are a list of things on the marble counter]."  The aware-description of the marble counter is "A fully automated flight control console. [if something is on the marble counter]On it [is-are a list of things on the marble counter]." The marble counter-proxy is an aware-proxy that is part of the marble counter. Understand "flight" and "console" as the marble counter-proxy.
 
-The clueless-name of the floss dispenser is "floss dispenser". Understand "white" and "box" as the floss dispenser. The aware-name of the floss dispenser is "object linker". The clueless-description of the floss dispenser is "A small white box with a blue button just below where the floss comes out." The aware-description of the floss dispenser is "A featureless and perfectly cube-shaped grey box." The floss dispenser-proxy is an aware-proxy that is part of the floss dispenser. Understand "object" and "linker" as the floss dispenser-proxy.
+The clueless-name of the plastic box is "plastic box". Understand "plastic" and "box" as the plastic box. The aware-name of the plastic box is "object linker". The clueless-description of the plastic box is "A small plastic box labeled [quotation mark]Tooth Floss,[quotation mark] with a blue button just below where the floss comes out." The aware-description of the plastic box is "A featureless and perfectly cube-shaped grey box." The plastic box-proxy is an aware-proxy that is part of the plastic box. Understand "box", "grey", "gray", "object" and "linker" as the plastic box-proxy.  
 
-The blue button is part of the floss dispenser.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed floss dispenser." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem." The blue button-proxy is an aware-proxy that is part of the blue button. Understand "linkage" and "actuation" and "circuit" as the blue button-proxy.
+The blue button is part of the plastic box.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed plastic box." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem." The blue button-proxy is an aware-proxy that is part of the blue button. Understand "linkage" and "actuation" and "circuit" as the blue button-proxy.
 
 The strand of dental floss is an edible prop. It is in Limbo. Understand "light" and "green" as the strand of dental floss. The clueless-name of the strand of dental floss is "strand of dental floss". The aware-name of the strand of dental floss is "entangled key pair". The clueless-description of the strand of dental floss is "A strand of pale green dental floss". The aware-description of the strand of dental floss is "A pair of quantum-entangled keys which can be linked transputer control nodes". The strand-proxy is an aware-proxy that is part of the strand of dental floss. Understand "key" and "pair" as the strand-proxy.
 
 Instead of pushing the blue button:
-	if the player does not hold the floss dispenser:
-		say "(first [if the player is clueless]taking[otherwise]accessing[end if] [the floss dispenser])[command clarification break]";
-		try silently taking the floss dispenser;
-		if the player does not hold the floss dispenser:
+	if the player does not hold the plastic box:
+		say "(first [if the player is clueless]taking[otherwise]accessing[end if] [the plastic box])[command clarification break]";
+		try silently taking the plastic box;
+		if the player does not hold the plastic box:
 			the rule fails;
 	if the strand of dental floss is in limbo:
 		move the strand of dental floss to the player;
 		say "[if the player is clueless]You grab a strand of light green dental floss as it reels out of the dispenser[otherwise]You push the entanglement key pair onto the stack for rapid retrieval[end if].";
 	otherwise:
-		say "[if the player is clueless]The floss dispenser beeps, indicating that it is waiting for you to use the dental floss that it has already dispensed. Never underestimate the intelligence of your average floss dispenser[otherwise]The object linker flags an error: a quantum entanglement key pair has already been generated[end if]."
+		say "[if the player is clueless]The plastic box beeps, indicating that it is waiting for you to use the dental floss that it has already dispensed. Never underestimate the intelligence of your average plastic box[otherwise]The object linker flags an error: a quantum entanglement key pair has already been generated[end if]."
 	
 Instead of eating the dental floss:
 	move dental floss to Limbo;
@@ -1258,7 +1298,10 @@ Flossing is an action applying to one thing. Understand "floss [something]" as f
 
 Check flossing:
 	if the strand of dental floss is not held by the player:
-		say "[if the player is clueless]You don't have any floss[otherwise]Before linking anything, you will need to generate a pair of mutually entangled keys[end if].";
+		if the plastic box is held by the player:
+			say "[if the player is clueless]You have the little plastic box that dispenses floss, but no actual dental floss[otherwise]You have the object linker, but have not generated keys[end if].";
+		otherwise:[has neither the dispenser nor the floss]
+			say "[if the player is clueless]You don't have any floss[otherwise]Before linking anything, you will need to generate a pair of mutually entangled keys[end if].";
 		rule fails;
 	if the noun is not teeth:
 		say "[if the player is clueless]Floss [the noun]? Flossing is for teeth. You could tie the floss to [the noun] if that would float your boat, but that's hardly the same as flossing it[otherwise]The key pair is usually used to link transputational intellinodes within the hull plating. If you want to bind other nodal representations, you should tie the keys to those specific nodes[end if].";
@@ -1318,8 +1361,10 @@ Instead of rubbing the mirror:
 	otherwise:
 		say "[if the player is clueless]It makes a squeaky noise[otherwise]The inspector voltage reference goes low, signaling normal operation[end if]."
 
-Instead of looking in the mirror:  
+Instead of searching the mirror:  
 	try examining the mirror.
+
+Understand "look [something]" as searching.
 
 After examining the mirror for the first time:
 	let metatext be "David:  Wait, is that memory usage correct?[line break]Janet:  Sure, it's fairly conservative.  The system has 640 PB available.[line break]David:  That's it?[line break]Janet:  C'mon, nobody will ever need more than 640 PB.";
@@ -1510,7 +1555,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw][if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
 			say "."
 							
 To say magnitude of (degrees - a number):
@@ -1658,6 +1703,12 @@ The soap dispenser and the shampoo dispenser are scenery in the shower. The show
 
 The clueless-name of the soap dispenser is "soap dispenser". The aware-name of the soap dispenser is "ablative enamel injector". The clueless-description of the soap dispenser is "The soap button is molded into the wall of the shower stall." The aware-description of the soap dispenser is "A high pressure injector which delivers the solution to the extruder system for mixing with accelerant." The soap dispenser-proxy is an aware-proxy that is part of the soap dispenser. Understand "ablative" and "neoadamite" and "monomer" and "precursor" and "solution" and "injector" and "high" and "pressure" as the soap dispenser-proxy.
 
+Instead of taking the soap dispenser:
+	say "You recall that to get some soap, you need only touch the dispenser."
+	
+Instead of taking the shampoo dispenser:
+	say "You recall that to get some shampoo, all you need to do is touch the dispenser."
+
 The clueless-name of the shampoo dispenser is "shampoo dispenser". The aware-name of the shampoo dispenser is "accelerant pump". The clueless-description of the shampoo dispenser is "The button for the shampoo dispenser is right next to the one for the soap dispenser". The aware-description of the shampoo dispenser is "A solenoid pump which delivers a catalyst to the extruder system for mixing with monomer solution." The shampoo dispenser-proxy is an aware-proxy that is part of the shampoo dispenser. Understand "accelerant" and "pump" and "solenoid" as the shampoo dispenser-proxy. 
 
 The clueless-name of the shower walls is "shower walls". The shower walls are privately-named. Understand "walls" as the shower walls. The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull." The shower walls-proxy is an aware-proxy that is part of the shower walls. Understand "fluidics", "network" , "tubes", "valves" and "pumps" as the shower walls-proxy.
@@ -1704,7 +1755,7 @@ Instead of pushing or touching the shampoo button:
 		if the shampoo button is unpressed:
 			now the shampoo button is pressed;
 			if the Second Sim is happening:
-				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballpark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
+				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
 				say "[metatext in metaspeak]".
 
 Chapter The Planet
@@ -1808,11 +1859,11 @@ The window is a transparent scenery closed not openable container. The window ca
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
-The park is scenery in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors." The clueless-name of the park is "park". Understand "lincoln" and "dome" as the park. The aware-name of the park is "viewer".
+The park is in the window. The description of the park is "Lincoln Park is the largest park dome in Cydonia. Later today, you'd expect it to be full of people playing frisbee, picnicking and otherwise enjoying the great outdoors." The clueless-name of the park is "park". Understand "lincoln" and "dome" as the park. The aware-name of the park is "viewer".
 
-Some grass is scenery in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer". Understand "orange" and "lawn" and "luscious" as the grass.
+Some grass is in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer". Understand "orange" and "lawn" and "luscious" as the grass.
 
-Some trees are scenery in the window. The clueless-description of the trees is "A line of tall, dark green [trees] stands at the far edge of the park." The clueless-name of the trees is "[if the trees are debated and the Real Thing is happening]Norway Spruce [end if]trees". Understand "tree", "douglas", "firs" and "fir" as the trees. Understand "norway" and "spruce" as the trees when the trees are debated and the Real Thing is happening. The aware-name of the trees is "viewer". The trees can be debated. The trees are not debated. 
+Some trees are in the window. The clueless-description of the trees is "A line of tall, dark green [trees] stands at the far edge of the park." The clueless-name of the trees is "[if the trees are debated and the Real Thing is happening]Norway Spruce [end if]trees". Understand "tree", "douglas", "firs" and "fir" as the trees. Understand "norway" and "spruce" as the trees when the trees are debated and the Real Thing is happening. The aware-name of the trees is "viewer". The trees can be debated. The trees are not debated. 
 
 After examining the window:
 	debate trees.
@@ -2050,7 +2101,6 @@ the yoking it more action	"VECTOR ADJUST" [push, pull, twist...plunger]
 waiting
 flossing
 brushing
-looking under
  
 
 "fill"		"ADD"
@@ -2146,7 +2196,7 @@ When Bedtime ends:
 		now arm-numb is 1.
 
 	
-Instead of doing something other than beeping, dreaming, opening, closing, waiting, looking, listening, examining, exiting, getting off, pushing, reading, remembering, rude-awakening,  snoozing, touching, waking up, memory-updating, or taking inventory during Bedtime:
+Instead of doing something other than beeping, dreaming, opening, closing, waiting, looking, listening, examining, exiting, getting off, pushing, reading, remembering, rude-awakening,  snoozing, touching, waking up, memory-updating, taking inventory, or uptiming during Bedtime:
 	say "[one of]First things first, you're still in bed[or]Six impossible things before breakfast is one thing, but you have to at least get out of bed[or]Not while you're in your futon, you won't[or]Maybe after you get up[at random].";
 	say paragraph break;
 
@@ -2275,17 +2325,18 @@ When Arm Hurts ends:
 
 Every turn during Arm Hurts:
 	now Arm-numb is Arm-numb plus one;
-	if Arm-numb is greater than 36:
-		say "The pain in your left arm is so strong that you can think of little else!";
+	if Arm-Numb is greater than 37:
+		now Arm-Numb is 37;
+		[just in case there is someone out there who would wait 32,768 times]
 	otherwise if Arm-numb is greater than 24:
 		if a random chance of 1 in 2 succeeds:
-			say "[one of]Your left arm is rather painful[or]You are unconfortable; your left arm hurts[or]Something is not at all right with your left arm, it feels alternately numb and painful[at random].";
+			say "[one of]Your left arm is somewhat painful, like pin pricks[or]You are unconfortable; your left arm hurts[or]Something is not at all right with your left arm, it feels alternately numb and painful[at random].";
 	otherwise if Arm-numb is greater than 12:
 		if a random chance of 1 in 3 succeeds:
-			say "[one of]Your left arm is bothering you[or]You feel sharp little pains in your left arm, like little pin pricks[or]Your left arm is smarting a bit[at random].";
+			say "[one of]Your left arm is bothering you[or]It feels like a swarm of spiders is running up and down your left arm, tickling you[or]Your left arm feels fat and numb[at random].";
 	otherwise if Arm-numb is greater than 2:
 		if a random chance of 1 in 4 succeeds:
-			say "[one of]Your left arm is all pins and needles[or]Your left arm feels weird[or]There is a strange, electrical sensation running up and down your left arm[or]You left arm feels strange. Not quite itchy, not quite painful[at random].";
+			say "[one of]Your left arm is all pins and needles[or]Your left arm feels weird[or]There is a strange, electrical sensation running up and down your left arm[or]You left arm feels strange. Maybe a little bit numb[at random].";
 
 Instead of doing something during Arm Hurts:
 	if arm-numb is greater than 36:
@@ -2294,7 +2345,8 @@ Instead of doing something during Arm Hurts:
 		otherwise if the current action is memory-updating or waving hands:
 			continue the action;
 		otherwise:
-			say "You can't! Your arm hurts too much. [run paragraph on]";
+			say "[one of]You can't! Your arm hurts too much[or]Arrgghhh. Your left arm is driving you crazy[or]What is up with that left arm? Man, that's annoying[or]It's hard to think of anything besides your left arm which is really bugging you[or]What a weird feeling. That tingling sensation in your left arm is driving you to distraction[or]You try to ignore your left arm, but the strange feeling won't go away[or]Nothing you do gets your mind off your left arm[or]How are you supposed to get anything accomplished when you left arm feels so funky?[or]If your left arm would stop feeling so strange, you might be able to get something else done[at random].";
+			  [TOCONSIDER: Could always add more of these...]
 	otherwise:
 		continue the action.
 		
