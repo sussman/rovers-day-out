@@ -246,7 +246,25 @@ Before jumping:
 		say "Branch instruction ignored. Instruction pointer unaffected.";
 		rule succeeds.
 		
-Understand "ls" as looking when the player is self-aware.
+Cataloguing is an action applying to nothing. Understand "ls" as cataloguing when the player is self-aware.
+
+Carry out cataloguing:	
+	let L be a list of text;
+	let T be indexed text;
+	let M be a number;
+	repeat with item running through aware-proxies in the Valkyrie Area:
+		add the aware-name of the holder of the item to L;
+	sort L;
+	repeat with item running through L:
+		[crazy hash]
+		now M is 16384;
+		let T be item;
+		repeat with N running from 1 to the number of characters in T:
+			if character number N in T matches the regular expression "<aeiouy>":
+				now M is M minus 1024;
+			otherwise:
+				now M is M plus 213;
+		say "-rwxr--r--   valkyrie  staff  [right justify M]  [item][line break]".
 
 Understand "grep [something]" as searching when the player is self-aware.
 
@@ -280,25 +298,57 @@ Carry out uptiming:
 			say "Your alarm clock started going off at 5:30 this morning, and took you another [IPL_pid] minutes to haul yourself to consciousness. You've been up since then. Congratulations.";
 	otherwise:
 		say "[time of day]  up [turn count - epoch_pid] minutes,   1 user,    load average 0.99 [paragraph break]".
-		
-Shutdowning is an action applying to nothing. Understand "shutdown" or "reboot" or "halt" as shutdowning when player is self-aware.
 
-Fancyshutdowning is an action applying to one topic. Understand "shutdown [text]" as fancyshutdowning when the player is self-aware.
-
- Instead of fancyshutdowning:
-	try shutdowning.
-
-Carry out shutdowning:
-	say "Preparing to shutdown.";
-	[###TOCONSIDER: delay between these lines, or progress dots.......]
-	say "Preparing to unmount all volumes.";
-	say "Preparing to disengage sensors and effectors.[paragraph break]";
-	say "Root authentication failed. Command aborted."
+After reading a command when the player is self-aware: 
+	[Bypassing the parser allows for unpredictable variety of arguments and flags, e.g., shutdown -r now
+	Eventually, we could shove all of the unix-ish commands here, although there might be a performance price to pay]
+	let T be indexed text; 
+	let U be text;
+	let T be the player's command;
+	if T matches the regular expression "^(shutdown|halt|reboot)":
+		say "Preparing to shutdown.";
+		[###TOCONSIDER: delay between these lines, or progress dots.......]
+		say "Preparing to unmount all volumes.";
+		say "Preparing to disengage sensors and effectors.[paragraph break]";
+		say "Root authentication failed. Command aborted.";		
+		the rule succeeds;
+	otherwise if T matches the regular expression "^find|^locate (.+?)":
+		replace the regular expression "^find|^locate (.+)" in T with "\1";
+		repeat with item running through aware-proxies in the Valkyrie Area:
+			let U be the aware-name of the holder of item;
+			if T matches the text U, case insensitively:
+				say "MATCH!";
+			say "U = [U] ; T = [T] [line break]".
+			[INCOMPLETE]
 	
-Sudoing is an action applying to nothing. Understand "sudo" as sudoing.
 
-Carry out sudoing:
-	say "Enter root password:".
+		
+[Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware.
+
+Carry out elevating:
+	Change the command prompt to "Enter root authentication [DavidVenkatachalam]:".
+	
+To decide when entering_authentication:
+	if the 
+	no.]
+	
+[
+cat
+echo
+ps
+top
+csh,tcsh, zsh  -> %
+bash -> $
+vi
+emacs
+sed
+awk
+exit
+logout
+wall
+find / locate
+]
+	
 		
 Section Reading
 		
