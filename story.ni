@@ -239,7 +239,10 @@ Section Computer Humor
 
 Before touching something (called the item):
 	if the player is self-aware:
-		say "[aware-name of the item]: file timestamp updated.";
+		say "[";
+		say "[if item is an aware-proxy][aware-name of the holder of the item][otherwise][aware-name of the item][end if]";
+		say "]: file timestamp updated.";
+		the rule succeeds.
 		
 Before jumping:
 	if the player is self-aware:
@@ -252,18 +255,31 @@ Carry out cataloguing:
 	let L be a list of text;
 	let T be indexed text;
 	let M be a number;
-	repeat with item running through aware-proxies in the Valkyrie Area:
+	if the location is the Living Room:
+		add "engineering" to L;
+		add "flight control" to L;
+	otherwise if the location is the Bathroom:
+		add "extruder" to L;
+	repeat with item running through aware-proxies enclosed by the location:
 		add the aware-name of the holder of the item to L;
 	sort L;
 	repeat with item running through L:
 		[crazy hash]
-		now M is 16384;
+		now M is 16353; [237 * 69, as close as you can get to 2^14]
 		let T be item;
 		repeat with N running from 1 to the number of characters in T:
 			if character number N in T matches the regular expression "<aeiouy>":
-				now M is M minus 1024;
+				now M is M minus 1380;
 			otherwise:
-				now M is M plus 213;
+				now M is M plus 69;
+		if item is "engineering" or the item is "flight control" or the item is "extruder":
+			say "d";
+			if M is 0:
+				now M is 69;
+			otherwise:
+				now M is M divided by 69;
+		otherwise:
+			say "-";
 		say "-rwxr--r--   valkyrie  staff  [right justify M]  [item][line break]".
 
 Understand "grep [something]" as searching when the player is self-aware.
@@ -312,14 +328,35 @@ After reading a command when the player is self-aware:
 		say "Preparing to disengage sensors and effectors.[paragraph break]";
 		say "Root authentication failed. Command aborted.";		
 		the rule succeeds;
-	otherwise if T matches the regular expression "^find|^locate (.+?)":
-		replace the regular expression "^find|^locate (.+)" in T with "\1";
+	otherwise if T matches the regular expression "^find|^locate (.+)":
+		replace the regular expression "^find|^locate (.+?)" in T with "\1";
 		repeat with item running through aware-proxies in the Valkyrie Area:
 			let U be the aware-name of the holder of item;
 			if T matches the text U, case insensitively:
-				say "MATCH!";
-			say "U = [U] ; T = [T] [line break]".
-			[INCOMPLETE]
+				say "[the path of item][paragraph break]";
+				the rule succeeds;
+		say "Not found.";
+		the rule fails.
+				
+To say the path of (item - an object):
+	let S be a list of text; 
+	while the holder of item is not a room:
+		add the aware-name of the holder of the item to S;
+		now item is the holder of item;
+	say "valkyrie\\";
+	if the holder of item is not Living Room:
+		say "[the aware-name of the living room]\";
+	if the holder of the item is the Shower:
+		say "[the aware-name of the bathroom]\";
+	say "[aware-name of the holder of the item]\";
+	reverse S;
+	repeat with D running through S:
+		say "[D]\".
+		
+Pwding is an action applying to nothing. Understand "pwd" as pwding.
+
+Carry out pwding:
+	say the path of the acu-proxy;
 	
 
 		
@@ -339,14 +376,25 @@ ps
 top
 csh,tcsh, zsh  -> %
 bash -> $
+exit
 vi
 emacs
 sed
 awk
-exit
 logout
 wall
 find / locate
+ping
+mv
+cp
+rm
+rmdir
+perl
+python
+services
+crontab
+clear
+--- probably want a catch all for unimplemented commands, something like "command cannot be implemented from virtual host".
 ]
 	
 		
