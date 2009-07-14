@@ -53,6 +53,8 @@ The pitch is 30.
 
 The last mentioned thing is a thing that varies.
 
+Shells is a list of text that varies. Depth is a number that varies.
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -269,7 +271,7 @@ Carry out cataloguing:
 		let T be item;
 		repeat with N running from 1 to the number of characters in T:
 			if character number N in T matches the regular expression "<aeiouy>":
-				now M is M minus 1380;
+				now M is M minus 1380;[20*69]
 			otherwise:
 				now M is M plus 69;
 		if item is "engineering" or the item is "flight control" or the item is "extruder":
@@ -353,12 +355,38 @@ To say the path of (item - an object):
 	repeat with D running through S:
 		say "[D]\".
 		
-Pwding is an action applying to nothing. Understand "pwd" as pwding.
+Pwding is an action applying to nothing. Understand "pwd" as pwding when the player is self-aware.
 
 Carry out pwding:
 	say the path of the acu-proxy;
 	
+Bashing is an action applying to nothing. Understand "bash" as bashing when the player is self-aware.
 
+Carry out bashing:
+	add "$" to shells.
+	
+Cshing is an action applying to nothing. Understand "csh" or "zsh" or "tcsh" as cshing when the player is self-aware.
+
+Carry out cshing:
+	add "%" to shells.
+	
+Logoutting is an action applying to nothing. Understand "logout" as logoutting when the player is self-aware.
+
+Carry out logoutting:
+	now depth is the number of entries in shells;
+	if depth is zero:
+		say "ACU logout interdicted.";
+	otherwise:
+		say "logout: not login shell: use [apostrophe]exit[apostrophe]".
+		
+Shellupping is an action applying to nothing. Understand "exit" as shellupping when the player is self-aware.
+
+Carry out shellupping:
+	now depth is the number of entries in shells;
+	if depth is zero:
+		try logoutting;
+	otherwise:
+		truncate shells to depth minus 1 entries.
 		
 [Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware.
 
@@ -374,8 +402,6 @@ cat
 echo
 ps
 top
-csh,tcsh, zsh  -> %
-bash -> $
 exit
 vi
 emacs
@@ -383,7 +409,6 @@ sed
 awk
 logout
 wall
-find / locate
 ping
 mv
 cp
@@ -2235,7 +2260,8 @@ Every turn:
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
 	[update prompt]
 	if the player is self-aware:
-		change the command prompt to "READY>";
+		now depth is the number of entries of shells;
+		change the command prompt to "READY[if depth is greater than zero]([depth])[entry depth of shells][otherwise]>";
 	otherwise:
 		change the command prompt to ">";
 	[avoid penalizing time for non-actions, a nuance]
