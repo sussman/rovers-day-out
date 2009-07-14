@@ -274,12 +274,11 @@ Carry out cataloguing:
 				now M is M minus 1380;[20*69]
 			otherwise:
 				now M is M plus 69;
+		if M is 0:
+			now M is 69;
 		if item is "engineering" or the item is "flight control" or the item is "extruder":
 			say "d";
-			if M is 0:
-				now M is 69;
-			otherwise:
-				now M is M divided by 69;
+			now M is M divided by 69;
 		otherwise:
 			say "-";
 		say "-rwxr--r--   valkyrie  staff  [right justify M]  [item][line break]".
@@ -330,7 +329,7 @@ After reading a command when the player is self-aware:
 		say "Preparing to disengage sensors and effectors.[paragraph break]";
 		say "Root authentication failed. Command aborted.";		
 		the rule succeeds;
-	otherwise if T matches the regular expression "^find|^locate (.+)":
+	otherwise if T matches the regular expression "^find|^locate (.+?)":
 		replace the regular expression "^find|^locate (.+?)" in T with "\1";
 		repeat with item running through aware-proxies in the Valkyrie Area:
 			let U be the aware-name of the holder of item;
@@ -375,7 +374,7 @@ Logoutting is an action applying to nothing. Understand "logout" as logoutting w
 Carry out logoutting:
 	now depth is the number of entries in shells;
 	if depth is zero:
-		say "ACU logout interdicted.";
+		say "ACU metavisor shell logout interdicted.";
 	otherwise:
 		say "logout: not login shell: use [apostrophe]exit[apostrophe]".
 		
@@ -402,12 +401,10 @@ cat
 echo
 ps
 top
-exit
 vi
 emacs
 sed
 awk
-logout
 wall
 ping
 mv
