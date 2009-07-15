@@ -191,13 +191,13 @@ To say ACU Boot Banner:
 	say line break;
 	if First Sim is happening:
 		let release be "beta 732";
-		let serial be "23920401";
+		let serial be "23920401"; [wed]
 	otherwise if Second Sim is happening:
 		let release be "beta810";
-		let serial be "23920415";
+		let serial be "23920415";[wed]
 	otherwise if Real Thing is happening:
 		let release be "1";
-		let serial be "23920416";
+		let serial be "23920416";[thur]
 	otherwise:
 		say "Boot banner error.";
 	say "Release [release] / Serial number [serial] / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)";
@@ -344,13 +344,15 @@ Global rpts;
 				glk_request_timer_events(0);
 			}
 			else {
-				if (rpts==50) print "^Preparing to shutdown";
-				else if (rpts==40) print "^Preparing to unmount all volumes";
-				else if (rpts==30) print "^Preparing to disengage sensors";
-				else if (rpts==20) print "^Preparing to disengage effectors";
-				else if (rpts==10) print "^Preparing ACU executive shutdown";
-				else if (rpts==1) print "^Root authentication failed.^^Command aborted.^"; 
-				else print ".";
+				switch (rpts) {
+					50: print "^Preparing to shutdown";
+					40: print "^Preparing to unmount all volumes";
+					30: print "^Preparing to disengage sensors";
+					20: print "^Preparing to disengage effectors";
+					10: print "^Preparing ACU executive shutdown";
+					 1: print "^Root authentication failed.^^Command aborted.^"; 
+					default: print ".";
+				}
 				rpts--;
 			}
 	}
@@ -399,7 +401,7 @@ Pwding is an action applying to nothing. Understand "pwd" as pwding when the pla
 Carry out pwding:
 	say the path of the acu-proxy;
 	
-Bashing is an action applying to nothing. Understand "bash" as bashing when the player is self-aware.
+Bashing is an action applying to nothing. Understand "bash" or "sh" or "ksh" as bashing when the player is self-aware.
 
 Carry out bashing:
 	add "$" to shells.
@@ -426,6 +428,41 @@ Carry out shellupping:
 		try logoutting;
 	otherwise:
 		truncate shells to depth minus 1 entries.
+		
+Fingering is an action applying to one topic. Understand "finger [text]" as fingering when the player is self-aware.
+
+Rule for reaching inside a room when the current action is fingering: 
+    allow access.[necessary to allow finger people who are in limbo or otherwise out of scope]
+
+Carry out fingering:
+	if the noun is rover:
+		say "finger: [noun]: no such user[paragraph break]".
+		
+Instead of fingering a topic listed in the Table of Fingers:
+	say "Login: [login entry][line break]";
+	say "Name: [name entry][line break]";
+	say "Directory: [dir entry][line break]";
+	say "Shell: /bin/[shell entry][line break]";
+	if the name entry is not "Autonomous Control Unit":
+		say "Last login [laston entry]";
+	otherwise:
+		say "On since ";
+		if The Real Thing is happening:
+			say "Tue Jul 21";
+		otherwise:
+			say "Wed Oct 21";
+		say " 05:30";
+	say line break;
+	say "No Mail.";
+	say "Plan: [plan entry]."
+		
+Table of Fingers
+topic		name		dir		login		shell		laston		plan
+"David" or "Venkatachalam"	"David Venkatachalam"		"/home/dave"	"dave"		"tcsh"		"Fri Apr 17 04:30 (CST) on console"	"Thank God men cannot as yet fly and lay waste the sky as well as the earth! (Thoreau, 1817-1862)"
+"Janet" or "Xiang"		"Janet Xiang"	"home/xyzzy"		"xyzzy"		"bash"		"Thu Apr 16 17:17 (CST) on ttys001"		"Memorable quote here[line break]-----BEGIN GEEK CODE BLOCK-----[line break]Version: 8.2[line break]
+GCS d-- s--:- a C++++$ FL? P E++ W N o K-- w-- O M++ V PS++ PE++ Y+$ PGP++ t+++ R+++ 3d++ b++++  D G+++ e++++ h+ r-- x+[line break]------END GEEK CODE BLOCK------"
+"ACU" or "autonomous" or "control" or "unit" or "me"		"Autonomous Control Unit"		"/operations"		"acu"		"bash"		--		"No plan"
+"root" or "administrator" or "admin"		"root"		"/var/root"		"root"		"bash"		"Fri Apr 17 04:32 (CST) on console"		"No plan"
 		
 [Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware.
 
@@ -456,6 +493,9 @@ python
 services
 crontab
 clear
+date
+time
+finger
 --- probably want a catch all for unimplemented commands, something like "command cannot be implemented from virtual host".
 ]
 	
