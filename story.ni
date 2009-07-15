@@ -55,6 +55,8 @@ The last mentioned thing is a thing that varies.
 
 Shells is a list of text that varies. Depth is a number that varies.
 
+Elevate flag is a truth state that varies. Elevate flag is false.
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -371,16 +373,25 @@ After reading a command when the player is self-aware:
 		shutdown;
 		say line break;
 		the rule succeeds;
-	otherwise if T matches the regular expression "^find|^locate (.+?)":
-		replace the regular expression "^find|^locate (.+?)" in T with "\1";
+	otherwise if T matches the regular expression "^find|^locate (.+)":
+		replace the regular expression "^find|^locate (.+)" in T with "\1";
 		repeat with item running through aware-proxies in the Valkyrie Area:
 			let U be the aware-name of the holder of item;
 			if T matches the text U, case insensitively:
 				say "[the path of item][paragraph break]";
 				the rule succeeds;
 		say "Not found.";
+		the rule fails;
+	otherwise if T matches the regular expression "^cat (.+)":
+		replace the regular expression "^cat (.+)" in T with "\1";
+		repeat with item running through aware-proxies in the Valkyrie Area:
+			let U be the aware-name of the holder of item;
+			if T matches the text U, case insensitively:
+				say "No alphanumerical display available.";
+				the rule succeeds;
+		say "No such device or directory.";
 		the rule fails.
-				
+
 To say the path of (item - an object):
 	let S be a list of text; 
 	while the holder of item is not a room:
@@ -431,9 +442,6 @@ Carry out shellupping:
 		
 Fingering is an action applying to one topic. Understand "finger [text]" as fingering when the player is self-aware.
 
-Rule for reaching inside a room when the current action is fingering: 
-    allow access.[necessary to allow finger people who are in limbo or otherwise out of scope]
-
 Carry out fingering:
 	if the noun is rover:
 		say "finger: [noun]: no such user[paragraph break]".
@@ -463,15 +471,26 @@ topic		name		dir		login		shell		laston		plan
 GCS d-- s--:- a C++++$ FL? P E++ W N o K-- w-- O M++ V PS++ PE++ Y+$ PGP++ t+++ R+++ 3d++ b++++  D G+++ e++++ h+ r-- x+[line break]------END GEEK CODE BLOCK------"
 "ACU" or "autonomous" or "control" or "unit" or "me"		"Autonomous Control Unit"		"/operations"		"acu"		"bash"		--		"No plan"
 "root" or "administrator" or "admin"		"root"		"/var/root"		"root"		"bash"		"Fri Apr 17 04:32 (CST) on console"		"No plan"
-		
-[Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware.
+
+Catting is an action applying to one thing. Understand "cat [something]" as catting when the player is clueless.
+
+Carry out catting:
+	if the player is the acu:
+		say "You're more of a dog person, actually.";
+	otherwise: [i.e., rover]
+		say "Bah, cats. They're good for chasing, but not much else."
+			
+Elevating is an action applying to nothing. Understand "su" as elevating when the player is self-aware.
 
 Carry out elevating:
-	Change the command prompt to "Enter root authentication [DavidVenkatachalam]:".
+	now elevate flag is true;
+	change the command prompt to "Password: ".
 	
-To decide when entering_authentication:
-	if the 
-	no.]
+After reading a command when elevate flag is true:
+	now elevate flag is false;
+	update prompt;
+	say "Authorization violation logged.";
+	reject the player's command.
 	
 [
 cat
@@ -2335,16 +2354,21 @@ Every turn:
 	[update memory usage]
 	try memory-updating;
 	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
-	[update prompt]
-	if the player is self-aware:
-		now depth is the number of entries of shells;
-		change the command prompt to "READY[if depth is greater than zero]([depth])[entry depth of shells][otherwise]>";
-	otherwise:
-		change the command prompt to ">";
+	if the elevate flag is false:
+		update prompt;
 	[avoid penalizing time for non-actions, a nuance]
 	if the current action is taking inventory or the current action is looking:
 		change the time of day to 1 minute before the time of day.
 
+To update prompt:
+	if the player is self-aware:
+		now depth is the number of entries of shells;
+		change the command prompt to "READY[if depth is greater than zero]([depth])[entry depth of shells][otherwise]>";
+	otherwise:
+		change the command prompt to ">".
+
+
+	
 
 [	say "action: [current action][line break]"; 
 	say "action-name: [action-name part of the current action][line break]"; 
