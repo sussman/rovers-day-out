@@ -315,6 +315,49 @@ Carry out uptiming:
 			say "Your alarm clock started going off at 5:30 this morning, and took you another [IPL_pid] minutes to haul yourself to consciousness. You've been up since then. Congratulations.";
 	otherwise:
 		say "[time of day]  up [turn count - epoch_pid] minutes,   1 user,    load average 0.99 [paragraph break]".
+		
+To shutdown:
+	(- I6dots(); -)
+		
+Include (-
+
+Global rpts;
+
+[ I6dots; 
+	if (glk_gestalt(gestalt_Timer, 0)){
+		!to confirm that terp supports real time events
+		rpts=50;
+		!rpts is a global that sets the number of repeats; 
+		glk_request_timer_events(300);
+		!300 millisecond delay seems ok
+		rtrue;
+	}  
+	else {!if real time event handling not available
+		print "Preparing to shutdown.....^Preparing to unmount all volumes.....^Preparing to disengage sensors.....^Preparing to disengage effectors.....^Preparing to ACU shutdown.....^^Root authentication failed.^ Command aborted.^";
+	}
+];
+
+[ HandleGlkEvent ev context;
+	switch (ev-->0) {
+		evtype_Timer:
+			if (rpts < 1) {
+				glk_request_timer_events(0);
+			}
+			else {
+				if (rpts==50) print "^Preparing to shutdown";
+				else if (rpts==40) print "^Preparing to unmount all volumes";
+				else if (rpts==30) print "^Preparing to disengage sensors";
+				else if (rpts==20) print "^Preparing to disengage effectors";
+				else if (rpts==10) print "^Preparing ACU executive shutdown";
+				else if (rpts==1) print "^Root authentication failed.^^Command aborted.^"; 
+				else print ".";
+				rpts--;
+			}
+	}
+	rtrue;
+];
+
+-) before "Glulx.i6t".
 
 After reading a command when the player is self-aware: 
 	[Bypassing the parser allows for unpredictable variety of arguments and flags, e.g., shutdown -r now
@@ -323,11 +366,8 @@ After reading a command when the player is self-aware:
 	let U be text;
 	let T be the player's command;
 	if T matches the regular expression "^(shutdown|halt|reboot)":
-		say "Preparing to shutdown.";
-		[###TOCONSIDER: delay between these lines, or progress dots.......]
-		say "Preparing to unmount all volumes.";
-		say "Preparing to disengage sensors and effectors.[paragraph break]";
-		say "Root authentication failed. Command aborted.";		
+		shutdown;
+		say line break;
 		the rule succeeds;
 	otherwise if T matches the regular expression "^find|^locate (.+?)":
 		replace the regular expression "^find|^locate (.+?)" in T with "\1";
