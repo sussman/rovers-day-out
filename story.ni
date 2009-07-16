@@ -374,7 +374,7 @@ After reading a command when the player is self-aware:
 		say line break;
 		the rule succeeds;
 	otherwise if T matches the regular expression "^find|^locate (.+)":
-		replace the regular expression "^find|^locate (.+)" in T with "\1";
+		replace the regular expression "^find|^locate\s*" in T with "";
 		repeat with item running through aware-proxies in the Valkyrie Area:
 			let U be the aware-name of the holder of item;
 			if T matches the text U, case insensitively:
@@ -382,15 +382,43 @@ After reading a command when the player is self-aware:
 				the rule succeeds;
 		say "Not found.";
 		the rule fails;
-	otherwise if T matches the regular expression "^cat (.+)":
-		replace the regular expression "^cat (.+)" in T with "\1";
+	otherwise if T matches the regular expression "^cat":
+		replace the regular expression "^cat\s*" in T with "";
 		repeat with item running through aware-proxies in the Valkyrie Area:
 			let U be the aware-name of the holder of item;
 			if T matches the text U, case insensitively:
 				say "No alphanumerical display available.";
 				the rule succeeds;
 		say "No such device or directory.";
-		the rule fails.
+		the rule fails;
+	otherwise if T matches the regular expression "^echo":
+		replace the regular expression "^echo\s*" in T with "";
+		if T matches the regular expression "\$PATH":
+			say "/operations;/operations/flight control;/operations/flight control/extruder;/operations/engineering";
+		otherwise:
+			say T;
+		say paragraph break;
+		the rule succeeds;
+	otherwise if T matches the regular expression "^ping":
+		if T matches the regular expression "^ping \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}":
+			replace the regular expression "^ping (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})" in T with "\1";
+			if T matches the regular expression "127\.0{1,3}\.0{1,3}\.0{0,2}1":
+				repeat with X running from 1 to 5:
+					let routetime be a random number from 1 to 9;
+					say "ping 127.0.0.1 with 56 bytes: [5 + routetime] attoseconds[line break]";
+				say "100% packets received[paragraph break]";
+				the rule succeeds;
+			otherwise:
+				say "Host not available on network[paragraph break]";
+				the rule fails;
+		otherwise:
+			say "usage: ping address[paragraph break]";
+			the rule fails;
+	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|mount|net)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
+		say "command not available from virtual console[paragraph break]";
+		the rule fails. 
+		
+	[This is expressed as a few conditions or'ed together because a single long regexp generates a runtime error.  Also, it is not possible to perform a substitution within the regexp, so defining the whole group of nonimplemented unix commands as a token does not work.]
 
 To say the path of (item - an object):
 	let S be a list of text; 
@@ -467,8 +495,7 @@ Instead of fingering a topic listed in the Table of Fingers:
 Table of Fingers
 topic		name		dir		login		shell		laston		plan
 "David" or "Venkatachalam"	"David Venkatachalam"		"/home/dave"	"dave"		"tcsh"		"Fri Apr 17 04:30 (CST) on console"	"Thank God men cannot as yet fly and lay waste the sky as well as the earth! (Thoreau, 1817-1862)"
-"Janet" or "Xiang"		"Janet Xiang"	"home/xyzzy"		"xyzzy"		"bash"		"Thu Apr 16 17:17 (CST) on ttys001"		"Memorable quote here[line break]-----BEGIN GEEK CODE BLOCK-----[line break]Version: 8.2[line break]
-GCS d-- s--:- a C++++$ FL? P E++ W N o K-- w-- O M++ V PS++ PE++ Y+$ PGP++ t+++ R+++ 3d++ b++++  D G+++ e++++ h+ r-- x+[line break]------END GEEK CODE BLOCK------"
+"Janet" or "Xiang"		"Janet Xiang"	"/home/xyzzy"		"xyzzy"		"bash"		"Thu Apr 16 17:17 (CST) on ttys001"		"Memorable quote here[line break]-----BEGIN GEEK CODE BLOCK-----[line break]Version: 8.2[line break]GCS d-- s--:- a C++++$ FL?P E++ [line break]W N o K-- w-- O M++ V PS++ PE++[line break]Y+$ PGP++ t+++ R+++ 3d++ b++++[line break]D G+++ e++++ h+ r-- x+[line break]------END GEEK CODE BLOCK------"
 "ACU" or "autonomous" or "control" or "unit" or "me"		"Autonomous Control Unit"		"/operations"		"acu"		"bash"		--		"No plan"
 "root" or "administrator" or "admin"		"root"		"/var/root"		"root"		"bash"		"Fri Apr 17 04:32 (CST) on console"		"No plan"
 
@@ -480,7 +507,7 @@ Carry out catting:
 	otherwise: [i.e., rover]
 		say "Bah, cats. They're good for chasing, but not much else."
 			
-Elevating is an action applying to nothing. Understand "su" as elevating when the player is self-aware.
+Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware. 
 
 Carry out elevating:
 	now elevate flag is true;
@@ -489,35 +516,13 @@ Carry out elevating:
 After reading a command when elevate flag is true:
 	now elevate flag is false;
 	update prompt;
-	say "Authorization violation logged.";
+	say "Access violation logged.";
 	reject the player's command.
 	
-[
-cat
-echo
-ps
-top
-vi
-emacs
-sed
-awk
-wall
-ping
-mv
-cp
-rm
-rmdir
-perl
-python
-services
-crontab
-clear
-date
-time
-finger
---- probably want a catch all for unimplemented commands, something like "command cannot be implemented from virtual host".
-]
-	
+Clearing is an action applying to nothing. Understand "clear" or "cls" as clearing when the player is self-aware.
+
+Carry out clearing:
+	clear the screen.	
 		
 Section Reading
 		
