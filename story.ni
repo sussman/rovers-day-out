@@ -110,7 +110,7 @@ leftwards is a direction. The opposite of leftwards is rightwards.
 rightwards is a direction. The opposite of rightwards is leftwards.
 clockwise is a direction. The opposite of clockwise is counterclockwise.
 counterclockwise is a direction. The opposite of counterclockwise is clockwise.
- Understand "forward", "front", "down" as forwards. Understand "backward", "back", and "up" as backwards. Understand "left", "port" and "leftward" as leftwards. Understand "right", "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [ben said:  how about "left" and "right"? Jack replied: Yes, I've added them. Leftwards and rightwards were originally left and right, so left/right were implicitly understood, but then I added "-wards" for consistency. We might need to add some disambiguation versus other left/right objects like arms.]
+ Understand "forward", "front" as forwards. Understand "backward", "back" as backwards. Understand "left", "port" and "leftward" as leftwards. Understand "right", "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [ben said:  how about "left" and "right"? Jack replied: Yes, I've added them. Leftwards and rightwards were originally left and right, so left/right were implicitly understood, but then I added "-wards" for consistency. We might need to add some disambiguation versus other left/right objects like arms.]
 
 A direction can be built-in or custom. A direction is usually built-in. Forwards, backwards, leftwards, rightwards, clockwise and counterclockwise are custom.
 
@@ -297,7 +297,7 @@ Carry out manpaging:
 	otherwise:
 		say "[manpage of the noun][paragraph break]".
 
-Understand "cd [any room]" as going towards when the player is self-aware.
+Understand "cd [any room]" as going towards when the player is self-aware. [###TODO: since flosix commands work on the real (i.e, proxy) names of things, it would be more proper for cd to work on "operations" rather than living room.  The "going towards" action includes a check to limit the ACU to rooms in the Valkyrie area, so no need to restrict it more here.]
 
 Whoing is an action applying to nothing. Understand "who" as whoing.
 
@@ -576,7 +576,7 @@ Clearing is an action applying to nothing. Understand "clear" or "cls" as cleari
 Carry out clearing:
 	clear the screen.	
 	
-[###TODO: time, date]
+[###TODO: implement a variable for date, and use it in the banner, and consistent throughout rest of story, including implementing a display-only flosix date command]
 		
 Section Reading
 		
@@ -597,7 +597,9 @@ Section Going Towards
 
 Going towards is an action applying to one thing.
 
-Understand "go [any room]" or "go to [any room]" or "go toward [any room]" or "go towards [any room]"  or "go [any person]" or "go to [any person]" or "go toward [any person]" or "go towards [any person]" as going towards.  
+Understand "go [any room]" or "go to [any room]" or "go toward [any room]" or "go towards [any room]" as going towards.
+
+Understand "go [any person]" or "go to [any person]" or "go toward [any person]" or "go towards [any person]" as going towards when the player is Rover.
 
 Check going towards:
 	if the noun is a person:
@@ -609,28 +611,30 @@ Check going towards:
 			if the player is the ACU:
 				say "You'd have to look for [the noun]." instead;
 	if the noun is the location, say "You're already here." instead;
-	if the player is the ACU and the noun is not in the Valkyrie, say "You're not ready to go out yet." instead.
+	if the player is the ACU and the noun is not in the Valkyrie Area, say "You're not ready to go out yet." instead.
 
 Carry out going towards:
-	let the way be the best route from the location to the location of the noun, using even locked doors;
-	if the way is not a direction, say "You can't figure out how to get there." instead;
-	let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
-	now enroute is true;
-	try going the way;
-	if the player is not in the destination, rule fails.
+	if the player is the ACU and the noun is in the Valkyrie Area:
+		move the player to the location of the noun;
+		the rule succeeds;
+	otherwise:
+		let the way be the best route from the location to the location of the noun, using even locked doors;
+		if the way is not a direction, say "You can't figure out how to get there." instead;
+		let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
+		now enroute is true;
+	[when enroute is true, the game can give a compass direction without generating the "no compass directions on mars" or other messages, since in fact, locations are still (interally) represented as compass directions.]
+		try going the way;
+		if the player is not in the destination, rule fails.
 	
 Rule for reaching inside a room when the current action is going towards: 
     allow access.[necessary to allow the going towards rule to work on a person that is out of local scope; otherwise would throw a "you can't reach inside the kitchen" sort of error.]
 
-Before going a direction (called the way):
+Before going a built-in direction (called the way):
 	if enroute is true:
 		now enroute is false;
 		continue the action;
 	if the way is up or the way is down:
 		continue the action;
-	if the way is custom:
-		say "You move slightly [the way].";
-		the rule succeeds;
 	if the ACU is the player: 
 		if the player is clueless:
 			say "Compass directions? On Mars? The magnetic field here is too weak.";
@@ -639,6 +643,10 @@ Before going a direction (called the way):
 	otherwise: [maybe safer to say 'if Rover is the player'?]
 		say "Woof?";
 	rule succeeds;
+	
+Before going a custom direction:
+	say "You move slightly, but are more or less in the same place. If you want to go somewhere else, just say so.";
+	the rule succeeds.
 
 Instead of going towards when the player is in the living room and the futon is not folded:
 	say "You can't really move around much because of the futon. It takes up a lot of room.";
@@ -881,7 +889,6 @@ To Setup the World: [explictly set initial conditions]
 	now the soap button is not pressed;
 	now the shampoo button is not pressed;
 	now the futon is not obstructed;
-	now the living is not visited-during-havoc;
 	now the futon is not folded.
 
 To Restore The World: [programmatically reset by class]
@@ -1059,7 +1066,7 @@ Section Living Room
  
 The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and The Shower are simrooms in the Valkyrie Area.
 
-The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. The living room can be visited-during-havoc. The living room is not visited-during-havoc.[Keeps track of whether the living room has been visited for the first time during the recurring "Cry Havoc" scene.]
+The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
 
 Instead of going towards the living room:
 	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the plastic box:
@@ -1247,7 +1254,7 @@ Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "
 
 Section Kitchen
 
-The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "[if the kitchen is unvisited]You walk from the tiny living room to the adjoining kitchen, which is an even tighter squeeze. [paragraph break][end if]The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
+The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet. In a corner where it won't get kicked accidentally, there is a dog dish on the floor."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles which line the boundaries of this alcove.".
 
 After going towards the kitchen:
 	if the counter is not discussed and the Second Sim is happening:
@@ -1302,12 +1309,14 @@ Instead of taking the magpaper:
 		say "The task list cannot be relocated; it has a fixed address in system priority memory."
 
 After reading the magpaper for the first time:
-	let metatext be "David: 'Take care of business'? Is that a euphemism?[line break]Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
-	say "[metatext in metaspeak]".
+	if the first sim is happening or the second sim is happening:
+		let metatext be "David: 'Take care of business'? Is that a euphemism?[line break]Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
+		say "[metatext in metaspeak]".
 
 After examining the old fridge for the first time:
-	let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
-	say "[metatext in metaspeak]";
+	if the first sim is happening or the second sim is happening:
+		let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
+		say "[metatext in metaspeak]";
 
 The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
 
@@ -1361,7 +1370,7 @@ Instead of doing something to the white egg when the white egg is broken:
 		continue the action;
 	otherwise:
 		if the player is clueless:
-			say "[one of]Momma always said, [quotation mark]don't play with your food[quotation mark][or]Are you going to eat it, or what?[or]Cooked eggs are good for one thing (well, two if you count modern art)[or]You can eat the egg, or not eat the egg. It doesn't seem to care[or]To eat the egg or not. That is the question[at random].";
+			say "[one of]Momma always said, [quotation mark]don't play with your food.[quotation mark][or]Are you going to eat it, or what?[or]Cooked eggs are good for one thing (well, two if you count modern art).[or]You can eat the egg, or not eat the egg. It doesn't seem to care.[or]To eat the egg or not. That is the question. [at random]";
 		otherwise:
 			say "The He-4 carboy is empty and can be recycled."
 			
@@ -1409,7 +1418,7 @@ Before opening the range:
 	
 A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan [if the white egg is not in the frying pan][otherwise if the white egg is cooked]from which a single cooked egg stares up at you[otherwise if the egg is broken]containing a gooky, uncooked egg[otherwise]in which a big white neoegg rolls around[end if]." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
 
-The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep [drawer] under [the range]. [The drawer][if open]has been opened[otherwise]is shut[end if]." The aware-description of the drawer is "[if the drawer is open]The closed [drawer] shields the engineering section of the ship from residual radiation[otherwise]With [the drawer] open, hard radiation bathes the engineering section[end if]." The drawer-proxy is an aware-proxy that is part of the drawer. Understand "reactor" and "core" and "shielding" and "shield" as the drawer-proxy. 
+The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep [drawer] under [the range]. [The drawer] [if open]has been opened[otherwise]is shut[end if]." The aware-description of the drawer is "[if the drawer is open]The closed [drawer] shields the engineering section of the ship from residual radiation[otherwise]With [the drawer] open, hard radiation bathes the engineering section[end if]." The drawer-proxy is an aware-proxy that is part of the drawer. Understand "reactor" and "core" and "shielding" and "shield" as the drawer-proxy. 
 
 The dog dish is a prop in the kitchen. Understand "dog" and "bowl" and "bowls" and "dish" as the dog dish. The water trough and the food trough are bowls which are parts of the dog dish. The water trough and the food trough are privately-named. The clueless-name of the dog dish is "dog dish". The aware-name of the dog dish is "transfer device". The clueless-description of the dog dish is "Rover[apostrophe]s dog dish is divided into two sections, a bowl marked [quotation mark]water[quotation mark], and another labeled [quotation mark]chow[quotation mark]. [dog dish status]."  The aware-description of the dog dish is "A ROVER servicing unit with hoses and clamps for connecting fuel and coolant lines to the ROVER prior to field deployment. [dog dish status]." The dog dish-proxy is an aware-proxy that is part of the dog dish. Understand "transfer" and "system" and "device" as the dog dish-proxy.
 
@@ -2045,7 +2054,7 @@ To say inconsequential outside detail:
 
 The Front Yard is west of the front door. The description of the front yard is "You are right outside the front door to your home.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".  
 
-Home is a scenery fixed in place thing in the Front Yard. Understand "house" as home.
+Home-exterior is a privately-named scenery fixed in place thing in the Front Yard. Understand "house" and "home" as home-exterior.
 
 [###TODO redirect actions as necessary from home towards livingroom]
 
@@ -2362,7 +2371,7 @@ the eating action			"RECYCLE"  [eat]
 the pushing action			"APPLY"  [press]
 the remembering action		"DATA_FETCH" [remember]
 the dreaming action		"RANDOMIZE ADDRESS SPACE" [dream]
-the rubbing action			"ENERGIZE" [rub, clean, scratch]
+the rubbing action			"INTERRUPT" [rub, clean, scratch]
 the touching action		"UPDATE" [touch]
 the folding action			"RETRACT" [fold]
 the unfolding action		"EXTEND" [unfold]
@@ -2392,6 +2401,9 @@ the echoing action			"ECHO" [echo]
 the pinging action			"PING" [ping]
 the nopping action			"\DEV\NULL" [unix commands not available]
 the kittying action		"CONCATENATE" [cat, when aware]
+the waiting action			"TIMER" [wait]
+the flushing action		"THRUST" [flush]
+
 
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
@@ -2748,6 +2760,7 @@ When Real Thing begins:
 	now the cabinet is open;
 	now the chain is broken;
 	now the player is alert;
+	now the alarm clock is in Limbo;
 	move the player to the living room, without printing a room description.
 	
 Chapter Walkies
