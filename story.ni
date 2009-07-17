@@ -77,7 +77,10 @@ Insightfulness is a kind of value. The insightfulnesses are self-aware and cluel
 
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
-Everything has some text called scent. The scent of something is usually "". Every room has some text called scent. The scent of a room is usually "".
+Everything has some text called scent. The scent of something is usually "". Every room has some text called scent. The scent of a room is usually "".  
+
+Definition: a room is scented if the scent of it is not "".
+Definition: a thing is scented if the scent of it is not "".
 
 Rule for printing the name of the a thing (called the item):
 	if the player is self-aware and the aware-name of the item is not "":
@@ -234,6 +237,9 @@ To say is-are:
 To say it-they: 
     if the last mentioned thing is plural-named, say "they"; 
     otherwise say "it".
+
+To say (regular verb - some text) in correct agreement:
+	say "[regular verb][if the last mentioned thing is not plural-named]s".
 
 Chapter Verbs
 	
@@ -754,31 +760,32 @@ Instead of taking inventory when Rover is the player:
 	otherwise:
 		say "In your mouth, you are carrying [a list of props held by Rover]."
 		
-Instead of smelling:
-	if the noun is nothing:
-		try smelling the location;
+Instead of smelling:  
+	if the player is the ACU and the ACU is self-aware:
+		say "Internal atmospheric analysis: 78% diatomic nitrogen, 21% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure 101.325 kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
+		the rule succeeds;
 	otherwise:
-		if the player is the ACU and the ACU is self-aware:
-			say "Internal atmospheric analysis: 78% diatomic nitrogen, 21% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure 101.325 kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
-			the rule succeeds;
+		let the verb be "smell";
+		if the noun is the player:
+			say "You [the verb] ";				
+		otherwise if the noun is not a room:
+			if the noun is a part of the player:
+				say "Your [noun]";
+			otherwise:
+				say "[The noun]";
+			say " [the verb in correct agreement] ";
 		otherwise:
-			if the noun is the player:
-				say "You smell ";				
-			otherwise if the noun is not a room:
-				if the noun is a part of the player:
-					say "Your [noun]";
-				otherwise:
-					say "[The noun]";
-				say " smell[if the last mentioned thing is not plural-named]s[end if] ";
-			otherwise:
-				say "It smells ";
-			if the scent of the noun is "":
-				say "[one of]unremarkable[or]ordinary[or]not particularly interesting[at random]";
-			otherwise:
-				say the scent of the noun;
-			if the noun is a room:
-				say " here"; [add directional cues for Rover]
-			say "."
+			let the pronoun be "[it-they]" in title case;
+			say "[the pronoun] [the verb in correct agreement] ";
+		if the scent of the noun is "":
+			say "[one of]unremarkable[or]ordinary[or]not particularly interesting[at random]";
+		otherwise:
+			say the scent of the noun;
+		if the noun is a room:				
+			say " here"; 
+			if rover is the player and something scented can be touched by the player:
+				say ". You also [one of]get a wiff of[or]detect the fragrance of[or]can smell[or]get a noseful of the[at random] [list of scented things which can be touched by the player]";
+		say "."
 
 Chapter Not Ready For Prime Time - Not for release
 
@@ -825,6 +832,18 @@ Carry out resetting:
 	
 Report resetting:
 	say "World Reset!".
+	
+Section Trim
+
+Trimming is an action applying to nothing. Understand "trim" as trimming.
+
+Carry out trimming:
+	now the pitch is zero;
+	now the roll is zero;
+	now the yaw is zero.
+	
+Report trimming:
+	say "All ship shape and Bristol fashion, cap'n. Halyards (whatever they are) and mainsheets are trimmed smartly, and she's coming about aleeward (a direction not even implemented in the game). Arr."; 
 	
 Chapter Initialize
 
@@ -1069,6 +1088,7 @@ The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and T
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
 
 Instead of going towards the living room:
+	[###TODO this needs to be updated, after the going to rules allow arbitrary room changes within the Valkyrie]	
 	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the plastic box:
 		if the player carries the dog dish:		
 			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
@@ -2457,9 +2477,6 @@ To update prompt:
 		change the command prompt to "READY[if depth is greater than zero]([depth])[entry depth of shells][otherwise]>";
 	otherwise:
 		change the command prompt to ">".
-
-
-	
 
 [	say "action: [current action][line break]"; 
 	say "action-name: [action-name part of the current action][line break]"; 
