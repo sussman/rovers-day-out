@@ -295,7 +295,7 @@ Carry out manpaging:
 	if the manpage of the noun is "":
 		say "No manual entry is available.";
 	otherwise:
-		say the manpage of the noun.
+		say "[manpage of the noun][paragraph break]".
 
 Understand "cd [any room]" as going towards when the player is self-aware.
 
@@ -316,9 +316,48 @@ Carry out uptiming:
 		otherwise:
 			say "Your alarm clock started going off at 5:30 this morning, and took you another [IPL_pid] minutes to haul yourself to consciousness. You've been up since then. Congratulations.";
 	otherwise:
-		say "[time of day]  up [turn count - epoch_pid] minutes,   1 user,    load average 0.99 [paragraph break]".
+		say "[time of day]  up [turn count - epoch_pid] minutes,   1 user,    load average 0.99 [paragraph break]".	
+
+After reading a command when the player is self-aware (this is the bypass parser for unix commands rule): 
+	[Bypassing the parser allows for unpredictable variety of arguments and flags, e.g., shutdown -r now
+	Eventually, we could shove all of the unix-ish commands here, although there might be a performance price to pay]
+	let T be indexed text; 
+	let U be text;
+	let T be the player's command;
+	if T matches the regular expression "^(shutdown|halt|reboot)":
+		change got-action to false;
+		try shutdowning;
+		the rule succeeds;
+	otherwise if T matches the regular expression "^find|^locate (.+)":
+		change got-action to false;
+		try locating;
+		the rule succeeds;
+	otherwise if T matches the regular expression "^cat":
+		change got-action to false;
+		try kittying;
+		the rule succeeds;
+	otherwise if T matches the regular expression "^echo":
+		change got-action to false;
+		try echoing;
+		the rule succeeds;
+	otherwise if T matches the regular expression "^ping":
+		change got-action to false;
+		try pinging;
+		the rule succeeds;
+	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|mount|net|svn)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
+		change got-action to false;
+		try nopping;
+		the rule fails. 
 		
-To shutdown:
+	[This laundry list is expressed as a few conditions or'ed together because a single long regexp generates a runtime error.  Also, it is not possible to perform a substitution within the regexp, so defining the whole group of nonimplemented unix commands as a token does not work.]
+	
+Shutdowning is an action applying to nothing.
+
+Carry out shutdowning:
+	shutdown;
+	say line break.
+	
+To shutdown:	
 	(- I6dots(); -)
 		
 Include (-
@@ -362,63 +401,74 @@ Global rpts;
 ];
 
 -) before "Glulx.i6t".
+	
+Locating is an action applying to nothing.  
 
-After reading a command when the player is self-aware: 
-	[Bypassing the parser allows for unpredictable variety of arguments and flags, e.g., shutdown -r now
-	Eventually, we could shove all of the unix-ish commands here, although there might be a performance price to pay]
+Carry out locating:
 	let T be indexed text; 
 	let U be text;
 	let T be the player's command;
-	if T matches the regular expression "^(shutdown|halt|reboot)":
-		shutdown;
-		say line break;
-		the rule succeeds;
-	otherwise if T matches the regular expression "^find|^locate (.+)":
-		replace the regular expression "^find|^locate\s*" in T with "";
-		repeat with item running through aware-proxies in the Valkyrie Area:
-			let U be the aware-name of the holder of item;
-			if T matches the text U, case insensitively:
-				say "[the path of item][paragraph break]";
-				the rule succeeds;
-		say "Not found.";
-		the rule fails;
-	otherwise if T matches the regular expression "^cat":
-		replace the regular expression "^cat\s*" in T with "";
-		repeat with item running through aware-proxies in the Valkyrie Area:
-			let U be the aware-name of the holder of item;
-			if T matches the text U, case insensitively:
-				say "No alphanumerical display available.";
-				the rule succeeds;
-		say "No such device or directory.";
-		the rule fails;
-	otherwise if T matches the regular expression "^echo":
-		replace the regular expression "^echo\s*" in T with "";
-		if T matches the regular expression "\$PATH":
-			say "/operations;/operations/flight control;/operations/flight control/extruder;/operations/engineering";
-		otherwise:
-			say T;
+	replace the regular expression "^find|^locate\s*" in T with "";
+	repeat with item running through aware-proxies in the Valkyrie Area:
+		let U be the aware-name of the holder of item;
+		if T matches the text U, case insensitively:
+			say "[the path of item][paragraph break]";
+			the rule succeeds;
+	say "Not found.";
+	the rule fails.
+
+Kittying is an action applying to nothing. 
+
+Carry out kittying: 
+	let T be indexed text; 
+	let U be text;
+	let T be the player's command;
+	replace the regular expression "^cat\s*" in T with "";
+	repeat with item running through aware-proxies in the Valkyrie Area:
+		let U be the aware-name of the holder of item;
+		if T matches the text U, case insensitively:
+			say "No alphanumerical display available.";
+			the rule succeeds;
+	say "No such device or directory.";
+	the rule fails.
+	
+Echoing is an action applying to nothing. 
+
+Carry out echoing:
+	let T be indexed text; 
+	let T be the player's command;
+	replace the regular expression "^echo\s*" in T with "";
+	if T matches the regular expression "\$PATH":
+		say "/operations;/operations/flight control;/operations/flight control/extruder;/operations/engineering";
+	otherwise:
+		say T;
 		say paragraph break;
-		the rule succeeds;
-	otherwise if T matches the regular expression "^ping":
-		if T matches the regular expression "^ping \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}":
-			replace the regular expression "^ping (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})" in T with "\1";
-			if T matches the regular expression "127\.0{1,3}\.0{1,3}\.0{0,2}1":
-				repeat with X running from 1 to 5:
-					let routetime be a random number from 1 to 9;
-					say "ping 127.0.0.1 with 56 bytes: [5 + routetime] attoseconds[line break]";
-				say "100% packets received[paragraph break]";
-				the rule succeeds;
-			otherwise:
-				say "Host not available on network[paragraph break]";
-				the rule fails;
+	the rule succeeds.
+	
+Pinging is an action applying to nothing. 
+
+Carry out pinging: 
+	let T be indexed text; 
+	let T be the player's command;
+	if T matches the regular expression "^ping \d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}":
+		replace the regular expression "^ping (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})" in T with "\1";
+		if T matches the regular expression "127\.0{1,3}\.0{1,3}\.0{0,2}1":
+			repeat with X running from 1 to 5:
+				let routetime be a random number from 1 to 9;
+				say "ping 127.0.0.1 with 56 bytes: [5 + routetime] attoseconds[line break]";
+			say "100% packets received[paragraph break]";
+			the rule succeeds;[TOCONSIDER: disable pinging when the ansible is down]
 		otherwise:
-			say "usage: ping address[paragraph break]";
+			say "Host not available on network[paragraph break]";
 			the rule fails;
-	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|mount|net)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
-		say "command not available from virtual console[paragraph break]";
-		the rule fails. 
-		
-	[This is expressed as a few conditions or'ed together because a single long regexp generates a runtime error.  Also, it is not possible to perform a substitution within the regexp, so defining the whole group of nonimplemented unix commands as a token does not work.]
+	otherwise:
+		say "usage: ping address[paragraph break]";
+		the rule fails.
+
+Nopping is an action applying to nothing. 
+
+Carry out nopping: 
+	say "command not available from virtual console[paragraph break]".
 
 To say the path of (item - an object):
 	let S be a list of text; 
@@ -438,16 +488,18 @@ To say the path of (item - an object):
 Pwding is an action applying to nothing. Understand "pwd" as pwding when the player is self-aware.
 
 Carry out pwding:
-	say the path of the acu-proxy;
+	say "[the path of the acu-proxy][paragraph break]";
 	
 Bashing is an action applying to nothing. Understand "bash" or "sh" or "ksh" as bashing when the player is self-aware.
 
 Carry out bashing:
+	say paragraph break;
 	add "$" to shells.
 	
 Cshing is an action applying to nothing. Understand "csh" or "zsh" or "tcsh" as cshing when the player is self-aware.
 
 Carry out cshing:
+	say paragraph break;
 	add "%" to shells.
 	
 Logoutting is an action applying to nothing. Understand "logout" as logoutting when the player is self-aware.
@@ -457,7 +509,7 @@ Carry out logoutting:
 	if depth is zero:
 		say "ACU metavisor shell logout interdicted.";
 	otherwise:
-		say "logout: not login shell: use [apostrophe]exit[apostrophe]".
+		say "logout: not login shell: use [apostrophe]exit[apostrophe][line break]".
 		
 Shellupping is an action applying to nothing. Understand "exit" as shellupping when the player is self-aware.
 
@@ -466,6 +518,7 @@ Carry out shellupping:
 	if depth is zero:
 		try logoutting;
 	otherwise:
+		say paragraph break;
 		truncate shells to depth minus 1 entries.
 		
 Fingering is an action applying to one topic. Understand "finger [text]" as fingering when the player is self-aware.
@@ -523,6 +576,8 @@ Clearing is an action applying to nothing. Understand "clear" or "cls" as cleari
 
 Carry out clearing:
 	clear the screen.	
+	
+[###TODO: time, date]
 		
 Section Reading
 		
@@ -2293,32 +2348,52 @@ Table of Technoverbs
 Verb				Technoverb
 the going action			"SELECT"  [go, or any compass direction]
 the taking off action		"DISENGAGE"  [take off, remove]
-the wearing action		"ENGAGE"  [put on, wear]
-the taking action		"SELECT"  [take, get]
+the wearing action			"ENGAGE"  [put on, wear]
+the taking action			"SELECT"  [take, get]
 the dropping action		"DESELECT"  [drop]
 the inserting it into action	"TRANSFER"  [put]
 the searching action		"MANIFEST"  [look in]
-the looking action		"STATUS"  [look]
+the looking action			"STATUS"  [look]
 the examining action		"DIAGNOSTIC" [examine, read]
 the entering action		"ACTIVATE"  [enter, sit on]
-the exiting action		"DEACTIVATE" [exit, stand up]
-the opening action		"ACCESS"  [open]
-the closing action		"DEACCESS" [close]
-the eating action		"RECYCLE"  [eat]
-the pushing action		"APPLY"  [press]
+the exiting action			"DEACTIVATE" [exit, stand up]
+the opening action			"ACCESS"  [open]
+the closing action			"DEACCESS" [close]
+the eating action			"RECYCLE"  [eat]
+the pushing action			"APPLY"  [press]
 the remembering action		"DATA_FETCH" [remember]
-the dreaming action	"RANDOMIZE ADDRESS SPACE" [dream]
-the rubbing action		"ENERGIZE" [rub, clean, scratch]
+the dreaming action		"RANDOMIZE ADDRESS SPACE" [dream]
+the rubbing action			"ENERGIZE" [rub, clean, scratch]
 the touching action		"UPDATE" [touch]
-the folding action		"RETRACT" [fold]
-the unfolding action	"EXTEND" [unfold]
-the reading action		"READLINE" [read]
-the putting it on action	"TRANSFER" [put on]
+the folding action			"RETRACT" [fold]
+the unfolding action		"EXTEND" [unfold]
+the reading action			"READLINE" [read]
+the putting it on action		"TRANSFER" [put on]
 the cracking it into action	"DISCHARGE" [crack, break, etc.]
 the taking inventory action		"MANIFEST" [inventory]
 the switching on action	"TRIGGER"		[turn on, switch on]
-the switching off action 	"RESET"		[turn off]
+the switching off action	"RESET"		[turn off]
 the yoking it more action	"VECTOR ADJUST" [push, pull, twist...plunger]
+the cataloguing action	"LIST DIRECTORY" [ls]
+the manpaging action		"MANUAL PAGE" [man]
+the whoing action			"WHO" [who]
+the uptiming action		"UPTIME" [uptime]
+the pwding action			"PRINT WORKING DIRECTORY" [pwd]
+the bashing action			"SHELL" [bash, ksh, sh]
+the cshing action			"SHELL" [csh, zsh, tcsh]
+the logoutting action 	"LOGOUT" [logout]
+the shellupping action 	"EXIT SHELL" [exit]
+the fingering action 		"FINGER" [finger]
+the catting action			"CAT" [cat]
+the elevating action 		"ELEVATE PRIVILEGE" [su, sudo]
+the clearing action 		"CLEAR" [clear]
+the locating action		"LOCATE" [find, locate]
+the shutdowning action	"SHUTDOWN" [shutdown, reboot, halt]
+the echoing action			"ECHO" [echo]
+the pinging action			"PING" [ping]
+the nopping action			"\DEV\NULL" [unix commands not available]
+the kittying action		"CONCATENATE" [cat, when aware]
+
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 	
@@ -2594,7 +2669,6 @@ Understand "scratch [something]" as rubbing.
 Instead of rubbing the left arm during Arm Hurts :
 	now arm-numb is zero;
 	say "Ooooo. Ahhhh...slowly, the sensation returns in your left arm. That feels [italic type]so[roman type] good.".
-
 				
 Chapter First Sim
 
