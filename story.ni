@@ -1087,8 +1087,7 @@ The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and T
 
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
 
-Instead of going towards the living room:
-	[###TODO this needs to be updated, after the going to rules allow arbitrary room changes within the Valkyrie]	
+Instead of going towards when the player is the ACU:
 	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the plastic box:
 		if the player carries the dog dish:		
 			say "Rover can be a messy eater.  By force of habit you never bring the dog dish out of the kitchen, so you set it down.  [run paragraph on]";
@@ -1097,18 +1096,18 @@ Instead of going towards the living room:
 			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
 			move the dog food to the food trough;
 		if the player carries the white egg:	
-			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before returning to operations[end if].[run paragraph on]";
+			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before switching out of engineering[end if].[run paragraph on]";
 			move the white egg to the old fridge;
 		if the player carries the toothbrush:
 			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
 			move the toothbrush to the marble counter;
 		if the player carries the plastic box:
-			say "[if the player is clueless]The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping back into the living room[otherwise]You disengage the object linker and reassign it to the flight console before transferring to operations[end if]. [run paragraph on]";
+			say "[if the player is clueless]The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping out[otherwise]You disengage the object linker and reassign it to the flight console before transferring outs[end if]. [run paragraph on]";
 			move the plastic box to the marble counter;	
 		say paragraph break; 
-		try going towards the living room;
-	otherwise if the player is wet:[###TODO This needs to be more general -- fails to catch a "go kitchen" if the player is in the bathroom. Consider pooling all of the "instead of going towards" rules and then winnowing down according to location]
-		say "[if the player is clueless]You are still dripping wet! Before you drench the living room floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
+		continue the action;
+	otherwise if the player is wet and (the noun is the Kitchen or the noun is the Living Room):
+		say "[if the player is clueless]You are still dripping wet! Before you drench the cottage [the noun in lower case] floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
 	otherwise:
 		continue the action.
 
@@ -1946,7 +1945,7 @@ Understand "spin [something] [a custom direction]" as yoking it more.
 
 The shower door is a door and scenery.  It is north of the bathroom and south of the shower. 
 
-The clueless-name of the shower door is "shower door". The aware-name of the shower door is "extruder latch". The clueless-description of the shower door is "[if the location is the bathroom]A translucent polyglass door at the back of the bathroom leads into the shower stall[otherwise]The polyglass door leads back to the bathroom[end if]. It is [if open]open[otherwise]closed." The aware-description of the shower door is "A circuit which enables or disables the extruder." The shower door-proxy is an aware-proxy that is part of the shower door. Understand "extruder" and "latch" as the shower door.
+The clueless-name of the shower door is "shower door". The aware-name of the shower door is "extruder latch". The clueless-description of the shower door is "[if the location is the bathroom]A translucent polyglass door at the back of the bathroom leads into the shower stall[otherwise]The polyglass door leads back to the bathroom[end if]. It is [if open]open[otherwise]closed." The aware-description of the shower door is "A circuit which enables or disables the extruder." The shower door-proxy is an aware-proxy that is part of the shower door. Understand "extruder" and "latch" as the shower door.[TO CONSIDER: In the future, do they really need shower doors? Could we dispense with this; also: review the way that "enter" is handled with respect to rooms. Perhaps "any adjacent room" would be better.]
 
 Before entering the shower door:
 	try silently opening the shower door.
