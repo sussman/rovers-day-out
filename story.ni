@@ -305,7 +305,7 @@ Carry out whoing:
 	if the player is clueless:
 		say "You.";
 	otherwise if the player is the ACU and the ACU is self-aware:
-		say "ACU        console        [right justify turn count minus epoch_pid][paragraph break]".	
+		say "ACU        vconsole        [right justify turn count minus epoch_pid][paragraph break]".	
 		
 Uptiming is an action applying to nothing. Understand "uptime" as uptiming.
 
@@ -324,32 +324,32 @@ After reading a command when the player is self-aware (this is the bypass parser
 	let T be indexed text; 
 	let U be text;
 	let T be the player's command;
+	let S be some text;
+	change S to "";
 	if T matches the regular expression "^(shutdown|halt|reboot)":
-		change got-action to false;
-		try shutdowning;
-		the rule succeeds;
-	otherwise if T matches the regular expression "^find|^locate (.+)":
-		change got-action to false;
-		try locating;
-		the rule succeeds;
+		change S to "shutdown";
+	otherwise if T matches the regular expression "^find|^locate":
+		change S to "locate";
 	otherwise if T matches the regular expression "^cat":
-		change got-action to false;
-		try kittying;
-		the rule succeeds;
+		change S to "concatenate";
 	otherwise if T matches the regular expression "^echo":
-		change got-action to false;
-		try echoing;
-		the rule succeeds;
+		change S to "echo";
 	otherwise if T matches the regular expression "^ping":
-		change got-action to false;
-		try pinging;
-		the rule succeeds;
+		change S to "ping";
 	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|mount|net|svn)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
+		change S to "nop";
+	if S is not "":
 		change got-action to false;
-		try nopping;
-		the rule fails. 
+		if S is:
+			-- "shutdown": try shutdowning;
+			-- "locate": try locating;
+			-- "concatenate": try kittying;
+			-- "echo": try echoing;
+			-- "ping": try pinging;
+			-- "nop": try nopping;
+		the rule succeeds.
 		
-	[This laundry list is expressed as a few conditions or'ed together because a single long regexp generates a runtime error.  Also, it is not possible to perform a substitution within the regexp, so defining the whole group of nonimplemented unix commands as a token does not work.]
+	[The catch-all laundry list is expressed as a few conditions or'ed together because a single long regexp generates a runtime error.  Also, it is not possible to perform a substitution within the regexp, so defining the whole group of nonimplemented unix commands as a token does not work.]
 	
 Shutdowning is an action applying to nothing.
 
@@ -524,8 +524,7 @@ Carry out shellupping:
 Fingering is an action applying to one topic. Understand "finger [text]" as fingering when the player is self-aware.
 
 Carry out fingering:
-	if the noun is rover:
-		say "finger: [noun]: no such user[paragraph break]".
+		say "finger: no such user[paragraph break]".
 		
 Instead of fingering a topic listed in the Table of Fingers:
 	say "Login: [login entry][line break]";
