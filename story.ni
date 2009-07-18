@@ -603,7 +603,7 @@ Section Going Towards
 
 Going towards is an action applying to one thing.
 
-Understand "go [any room]" or "go to [any room]" or "go toward [any room]" or "go towards [any room]" as going towards.
+Understand "enter [any room]" or "go [any room]" or "go to [any room]" or "go toward [any room]" or "go towards [any room]" as going towards.
 
 Understand "go [any person]" or "go to [any person]" or "go toward [any person]" or "go towards [any person]" as going towards when the player is Rover.
 
@@ -639,7 +639,7 @@ Before going a built-in direction (called the way):
 	if enroute is true:
 		now enroute is false;
 		continue the action;
-	if the way is up or the way is down:
+	if the way is up or the way is down or the way is inside or the way is outside:
 		continue the action;
 	if the ACU is the player: 
 		if the player is clueless:
@@ -708,7 +708,7 @@ Instead folding or pushing the frame:
 	try folding the futon.
 	
 Instead of unfolding or pulling the frame:
-	try unfolding the mattress. 	
+	try unfolding the mattress. 
 	
 Instead of taking the mattress:
 	say "The mattress is molecularly bonded to the bed's frame. Besides, it would be awfully unwieldy to carry about."
@@ -782,10 +782,37 @@ Instead of smelling:
 		otherwise:
 			say the scent of the noun;
 		if the noun is a room:				
-			say " here"; 
-			if rover is the player and something scented can be touched by the player:
-				say ". You also [one of]get a wiff of[or]detect the fragrance of[or]can smell[or]get a noseful of the[at random] [list of scented things which can be touched by the player]";
+			say " here[run paragraph on]"; 
+			if rover is the player:
+				if something scented can be touched by the player:
+					say ". You also [one of]get a wiff of[or]detect the fragrance of[or]can smell[or]get a noseful of the[at random] [a list of scented things which can be touched by the player][run paragraph on]";
+				try sniffscanning;
 		say "."
+		
+Sniffscanning is an action applying to nothing. Understand "scan" or "olfactory" or "scent" as sniffscanning when the player is Rover.
+
+Report Sniffscanning:
+	let manrange be a number;
+	let dogrange be a number;
+	let homerange be a number;
+	change manrange to the number of moves from the location to the Studio, using doors;
+	change dogrange to the number of moves from the location to the location of the Black Bulldog, using doors;
+	change homerange to the number of moves from the location to the Living Room, using doors;
+	[the following say phrases are broken up because the compiler choked on them as one long "say" phrase]
+	say ". From [the manscent corresponding to the range of manrange in the Table of Nasal Rangefinding] you smell the [one of]disagreeable scent[or]odor[or]stale funk[or]stench[at random] of a[if a random chance of 1 in 10 succeeds], if nose serves, not very hygienic[end if] man. [run paragraph on]";
+	say "You also detect the more [one of]diverting[or]intriguing[or]captivating[or]thought-provoking[or]riveting[or]engrossing[or]stimulating[or]enthralling[or]attractive[or]appealing[or]amusing[or]entertaining[at random] [one of]scent[or]perfume[or]fragrance[or]bouquet[or]aroma[at random] of a female dog [dogscent corresponding to the range of dogrange in the Table of Nasal Rangefinding]. [run paragraph on]";
+	say "The [one of]comforting[or]cheerful[or]heartening[or]reassuring[or]pleasant[or]soothing[at random] smell of home is [homescent corresponding to the range of homerange in the Table of Nasal Rangefinding][run paragraph on]";
+	
+Table of Nasal Rangefinding
+range		manscent				dogscent				homescent
+0			"right here"			"at muzzle's distance from you"		"just on the other side of that wall"
+1			"just around the corner"	"coming from somewhere really close"	"a hop, lick and a bark away"
+2			"not too far away"	"coloring the air with its lovely scent from only a short run away"		"two shakes of a tail from here"
+3			"some distance"		"wafting enticingly from not too far away"	"a short run from here"
+4			"a ways off"			"carried across the park by the wind"		"still present"
+5			"a considerable distance"	"coming from a reasonable distance away"		"getting fainter"
+6			"a long way off"	"delicately scenting the air"		"worringly faint from here"
+7			"far away"			"faintly, but definitely, tickling your nose from some remote, and no doubt exotic, location."		"all but undetectable from here"
 
 Chapter Not Ready For Prime Time - Not for release
 
@@ -1085,7 +1112,7 @@ Section Living Room
  
 The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and The Shower are simrooms in the Valkyrie Area.
 
-The living room is west of the kitchen, south of the bathroom, and east of the front door.  The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
+The living room is west of the kitchen, south of the bathroom, and east of the front door.  The bathroom is south of the shower. The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
 
 Instead of going towards when the player is the ACU:
 	if the player carries the dog dish or the player carries the dog food or the player carries the white egg or the player carries the toothbrush or the player carries the plastic box:
@@ -1152,9 +1179,9 @@ To reset the ACU:
 	now the ACU is asleep.
 	[###ben sez;  and wearing the flight suit too?  I realize you've got this happening elsewhere, but I'm a bit confounded by the way things are divided up among our global 'save world', 'reset world', etc.]
 
-The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is not the ACU][the clueless-name of the ACU]'s left arm[otherwise if Arm Hurts is not happening]Your left arm. The one that you throw frisbees with[otherwise]That's odd. Your left arm is itching like the dickens, but it looks entirely normal[end if]." The aware-name of the left arm is "laser gyro". The aware-description of the left arm is "The multiaxial ring laser gyroscope is buried deep in the ship's inertial reference system." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "multiaxial" and "laser" and "ring" and "gyro" and "gyroscope" and "fiber" and "optic" and "optical" and "inertial" and "reference" and "system" as the left arm-proxy.
+The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is not the ACU][the clueless-name of the ACU]'s left arm[otherwise if Arm Hurts is not happening]Your left arm. The one that you throw frisbees with[otherwise]That's odd. Your left arm is itching like the dickens, but it looks entirely normal[end if]." The aware-name of the left arm is "laser gyro". The aware-description of the left arm is "The multiaxial ring laser gyroscope is buried deep in the ship's inertial reference system." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "multiaxial" and "laser" and "ring" and "gyro" and "gyroscope" and "fiber" and "optic" and "optical" and "inertial" and "reference" and "system" as the left arm-proxy. 
 
-The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "tachyon sieve". The aware-description of the right arm is "The tachyon sieve feeds into the temporal transgressor." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "tachyon" and "sieve" as the right arm-proxy.
+The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "tachyon sieve". The aware-description of the right arm is "The tachyon sieve feeds into the temporal transgressor." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "tachyon" and "sieve" as the right arm-proxy. 
 
 The clueless-name of the back is "back". The clueless-description of the back is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]back." The aware-name of the back is "dorsal hull". The aware-description of the back is "The dorsal hull." The back-proxy is an aware-proxy that is part of the back. Understand "dorsal" and "hull" as back-proxy.
 
@@ -1943,15 +1970,8 @@ Understand "twist [something] [a custom direction]" as yoking it more.
 Understand "turn [something] [a custom direction]" as yoking it more.
 Understand "spin [something] [a custom direction]" as yoking it more.
 
-The shower door is a door and scenery.  It is north of the bathroom and south of the shower. 
-
-The clueless-name of the shower door is "shower door". The aware-name of the shower door is "extruder latch". The clueless-description of the shower door is "[if the location is the bathroom]A translucent polyglass door at the back of the bathroom leads into the shower stall[otherwise]The polyglass door leads back to the bathroom[end if]. It is [if open]open[otherwise]closed." The aware-description of the shower door is "A circuit which enables or disables the extruder." The shower door-proxy is an aware-proxy that is part of the shower door. Understand "extruder" and "latch" as the shower door.[TO CONSIDER: In the future, do they really need shower doors? Could we dispense with this; also: review the way that "enter" is handled with respect to rooms. Perhaps "any adjacent room" would be better.]
-
-Before entering the shower door:
-	try silently opening the shower door.
-
-After opening the shower door for the first time:
-	say "You open the shower door, which is more flimsy that it would at first appear.[paragraph break]You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.";
+After going to the shower for the first time:
+	say "You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.";
 	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
 	say "[metatext in metaspeak]";
 	
@@ -2017,9 +2037,9 @@ Instead of taking the shampoo dispenser:
 
 The clueless-name of the shampoo dispenser is "shampoo dispenser". The aware-name of the shampoo dispenser is "accelerant pump". The clueless-description of the shampoo dispenser is "The button for the shampoo dispenser is right next to the one for the soap dispenser". The aware-description of the shampoo dispenser is "A solenoid pump which delivers a catalyst to the extruder system for mixing with monomer solution." The shampoo dispenser-proxy is an aware-proxy that is part of the shampoo dispenser. Understand "accelerant" and "pump" and "solenoid" as the shampoo dispenser-proxy. 
 
-The clueless-name of the shower walls is "shower walls". The shower walls are privately-named. Understand "walls" as the shower walls. The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull." The shower walls-proxy is an aware-proxy that is part of the shower walls. Understand "fluidics", "network" , "tubes", "valves" and "pumps" as the shower walls-proxy.
+The clueless-name of the shower walls is "shower walls". The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull." The shower walls-proxy is an aware-proxy that is part of the shower walls. Understand "fluidics", "network" , "tubes", "valves" and "pumps" as the shower walls-proxy.
 
-Before switching on the shower door:
+Before switching on the shower walls:
 	say "[if the player is clueless]The shower is fully automated and adjusts temperature, pressure and direction of the water stream as needed[otherwise]The fluidics network is slaved to the ships autonomic network and activates automatically, as needed[end if].";
 	the rule succeeds.
 	
@@ -2071,15 +2091,18 @@ The Planet Area is a region. The Front Yard, The Barren Plain, The Dug-Up Field,
 To say inconsequential outside detail:
 	say " You can't see far because it is so dusty here. [one of][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[or]The ground shakes forcefully.[as decreasingly likely outcomes]"
 
-The Front Yard is west of the front door. The description of the front yard is "You are right outside the front door to your home.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".  
+The Front Yard is west of the front door. The description of the front yard is "You are right outside the front door to your house.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".
 
-Home-exterior is a privately-named scenery fixed in place thing in the Front Yard. Understand "house" and "home" as home-exterior.
+Home-exterior is a privately-named backdrop in the Front Yard. Understand "house" and "home" as home-exterior. The description of home-exterior is "Home sweet home, where Janet lives, where you get fed, and where you sleep. Even out here, the smell of home is comforting." 
 
-[###TODO redirect actions as necessary from home towards livingroom]
+Before entering the home-exterior:
+	try going towards the Living Room;
+	the rule succeeds.
+[as both the backdrop and living room are understood as "home", and otherwise the backdrop would interfere with going home from the front yard.]
 
-The Barren Plain is west of the Front Yard. A rock is a prop in the Barren Plain. 
+The Barren Plain is west of the Front Yard. A rock is a prop in the Barren Plain. The scent of the barren plain is "dry and stale".
 
-The clueless-name of the rock is "rock". The aware-name of the rock is "thorium ore". The clueless-description of the rock is "[if the player is rover]You lick the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore." The rock-proxy is an aware-proxy that is part of the rock. Understand "black" and "ore" as the rock.
+The clueless-name of the rock is "rock". The aware-name of the rock is "thorium ore". The clueless-description of the rock is "[if the player is rover]You lick the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore." The rock-proxy is an aware-proxy that is part of the rock. Understand "black" and "ore" as the rock. The scent of the rock is "strangely chemical".
 
 Dug-Up Field is west of the Barren Plain. The small ditch is a not enterable hole in the Dug-Up Field. The description of the small ditch is "It smells like fresh dirt and you can see somes paw marks. Someone has recently dug this hole." The carrying capacity of the ditch is 1.
 
@@ -2422,6 +2445,7 @@ the nopping action			"\DEV\NULL" [unix commands not available]
 the kittying action		"CONCATENATE" [cat, when aware]
 the waiting action			"TIMER" [wait]
 the flushing action		"THRUST" [flush]
+the smelling action		"CHEMOSENSOR" [smell]
 
 
 
