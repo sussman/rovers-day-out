@@ -1020,7 +1020,7 @@ The general form of these is:
 
 Section Barking
 
-Persuasion rule for asking an animal to try barking:
+Persuasion rule for asking Rover to try barking:
 	persuasion succeeds.
 
 Barking is an action applying to nothing. Understand "bark" as barking.
@@ -1047,7 +1047,7 @@ To say doggerel:
 
 Section Attacking
 
-Persuasion rule for asking an animal to try attacking:
+Persuasion rule for asking Rover to try attacking:
 	persuasion succeeds.
 	
 Instead of Rover attacking when Rover is in the Valkyrie Area:
@@ -1059,7 +1059,7 @@ Instead of Rover attacking when Rover is in the Valkyrie Area:
 	
 Section Lying Down
 
-Persuasion rule for asking an animal to try lying down:
+Persuasion rule for asking Rover to try lying down:
 	persuasion succeeds.
 
 Lying down is an action applying to nothing. Understand "lie" or "lie down" as lying down.
@@ -1167,16 +1167,32 @@ Instead of Rover coming when Rover is not the player:
 
 Section Giving Kisses
 
-Section Going Walkies
+Persuasion rule for asking Rover to try smooching:
+	persuasion succeeds.
 
-Section Growling
+Smooching is an action applying to nothing. Understand "give kisses" or "give kiss" as smooching.
+
+Carry out smooching:
+	if the player is clueless:
+		say "You make kissy sounds, resembling nothing so much as a goldfish drowning in air. If you want to kiss someone, just say so (like, [quotation mark]kiss the postman[quotation mark]). Don't be bashful about it for cripes sake.";
+	otherwise:
+		say "You renegotiate handshakes on all devices."
+	
+Instead of Rover smooching:
+	if the player is clueless:
+		say "Rover gives you a wet, slobbery kiss.";
+	otherwise:
+		say "You perform handshaking functions with Rover.";
+	the rule succeeds.
+
+Section Growl
 
 Growling is an action applying to nothing. Understand "growl" as growling when the player is Rover.
 
 Report Growling:
 	say "Grrrrrrrrrrrrrr!"
 
-Section Dancing
+Section Dance
 
 Dancing is an action applying to nothing. Understand "dance" as dancing.
 
@@ -1202,6 +1218,24 @@ Report Yelling:
 		otherwise:
 			say "You emit a 160 dB test tone throughout the ship.";
 			[TOCONSIDER: useful against pirates, shouldn't work if the ship is depressurized]
+			
+Section Sit
+
+Buttdowning is an action applying to nothing. Understand "sit" as buttdowning.
+
+Persuasion rule for asking Rover to try buttdowning:
+	persuasion succeeds.
+	
+Carry out buttdowning:
+	if the noun is nothing:
+		if the player is self-aware:
+			say "Specify object.";
+		otherwise:
+			say "Sit on what?";
+	
+Instead of an animal buttdowning:
+	say "Rover grazes the ground with his rear end, like a suborbital glider aborting a landing.";
+	the rule succeeds.
 
 Chapter The Valkyrie
 
@@ -2234,7 +2268,7 @@ Dug-Up Field is west of the Barren Plain. The description of the dug-up field is
 
 Some paw marks are fixed in place things in the dug-up field.  The description of the paw marks are "Paw marks from a medium-sized dog. From the look of the field, they must belong to a dog that either likes digging or was trying to find something important buried around here." The scent of the paw prints is "reminiscent of the sweet perfume of a lady dog out for a stroll". 
 
-Some mounds are scenery in the dug-up field. Understand "mound" or "hole" or "holes" as the mounds. The description of the mounds is "An apparently haphazard pattern of excavated holes in the ground, and piled up next to them, dirt." The scent of the mounds is "no different from the dust that is in the air, just less, well, dusty."
+Some mounds are scenery in the dug-up field. Understand "mound" or "hole" or "holes" as the mounds. The description of the mounds is "An apparently haphazard pattern of excavated holes in the ground, and piled up next to them, dirt." The scent of the mounds is "no different from the dust that is in the air, just less, well, dusty"
 
 Instead of looking in the mounds:
 	say "The holes in this field aren't very big, and it doesn't look like there's anything in them."
@@ -2376,7 +2410,7 @@ Instead of remembering a topic listed in the Table of Remembered Stuff:
 	
 Table of Remembered Stuff
 topic							description
-"trick" or "tricks"		"You recall that since Rover was a puppy, he[apostrophe]s been good at the basic tricks like sit, lay down, roll over, and kiss. During the war, he was also trained to rescue people trapped in cave-ins, and knows the command [quotation mark]dig[quotation mark]. Similarly, from the war, he knows the command [quotation mark]attack[quotation mark], but you doubt he would ever really attack anyone except to protect you."
+"trick" or "tricks"		"You recall that since Rover was a puppy, he[apostrophe]s been good at the basic tricks like sit, lie down, roll over, bark, and give kisses. During the war, he was also trained to rescue people trapped in cave-ins, and knows the command [quotation mark]dig[quotation mark]. Similarly, from the war, he knows the command [quotation mark]attack[quotation mark], but you doubt he would ever really attack anyone except to protect you. Rover is an obedient dog and always comes when you call him."
 "war"							"Five years ago, you were a graduate student in computational cognition when the situation with Earth deteriorated, and Earth ships attacked the colonial government. The fighting destroyed most of the surface installations in the first few days, but Earth backed down when Martian missiles struck Luna City, Beijing and São Paulo. Under terms of the treaty, the Martian government was granted autonomy, but Mars remains economically dominated by Earth, except for MARSpace."
 "marspace"					"MARSpace began as an extension of the Myomita corporation space program, but was absorbed by the Martian government after the War of Independence. Before the war, MARSpace serviced almost all Condensate Drive vessels engaged in commerce between the Solar System and Earth[apostrophe]s Interstellar Territories. Since the war, MARSpace has slowly rebuilt, and its first Casimir Drive ship, the Valkyrie, is nearly ready for launch."
 "me" or "self" or "myself" or "Janet"		"You are Janet Xiang, age 36, citizen of Mars, and employee of MARSpace. You grew up in the suburbs of Cydonia, and your mother taught Applied Cybernetics at U of C. Your father was an environmental technician who worked at the local reclamation center. Like many Martian women of your generation, you intended to wed early, and you were engaged to Tomasz Kowalski when the Independence War began. Tomasz was working in the power station located on Phobos when that moon was destroyed. The same day, you adopted your dog, Rover, whose owners were killed during an attack which destroyed part of the U of C. You have raised him from a puppy, and he is your most loyal friend."
@@ -2957,6 +2991,17 @@ When Walkies begins:
 	try looking.
 	
 When Walkies ends:
+	if Rover carries the white egg:
+		say "You lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.";
+		now the white egg is in the Living Room;
+	otherwise if Rover carries the delicious bone:
+		say "You jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]";
+		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND SET[paragraph break]";
+		wait for any key;
+		say "Rover wags his tails and gnaws on his bone.[paragraph break]You rub his head, distantly, as strange thoughts sweep through your consciousness. You wonder what would happen if the Valkyrie mission failed because during landing the ship had been buffeted by particulate matter being torn away from the doomed planet by the immense gravity its star. In that case, critical systems might be damaged. Systems like the relatively fragile ansible antenna. There is no back-up ansible antenna. How would the ACU cope with a situation like that? The ACU was designed for a lot of contingencies, but not that one. What would you do? What would you do if you were the ACU?[paragraph break]Your glance falls on your flight suit, and suddenly the question is no longer rhetorical.";
+		now the player is the ACU;
+		try reorienting;
+		the rule succeeds;
 	now the front door is closed;
 	now the player is the ACU.
 
