@@ -1,4 +1,4 @@
-"Rover's Day Out" by Jack Welch and Ben Collins-Sussman
+"Rover's Day Out" by Jack Welch and Ben Collins-Sussmanfemale dog
 [###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]
 
 The story headline is "An Interactive Fiction".
@@ -219,11 +219,11 @@ To say (dialogue - some text) in metaspeak:
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
-	wait for any key;
+	[wait for any key;  !!! commented out for testing]
 	[###TODO:  how do we make the background blue in glulx?  my guess is to open a new blue window on "top" of existing window, of exactly the same size, and then kill the window to resume]
 	clear the screen;
 	say "[bold type]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue.[roman type]";
-	wait for any key;
+	[wait for any key;  !!! commented out for testing]
 	clear the screen.
 	
 [borrowed from example I7 documentation, example 424 Odins:]
@@ -716,6 +716,86 @@ Instead of taking the mattress:
 Instead of taking the frame:
 	say "The frame is an integral part of the futon."
 	
+Section Smelling
+
+After deciding the scope of the player while smelling:
+	if the player is rover:
+		place the female dog in scope;
+		place the smelly man in scope;
+		place home in scope.
+		
+A procedural rule while smelling:
+	ignore the can't reach inside rooms rule.
+
+Instead of smelling:  
+	let the regverb be "smell";
+	if the player is the ACU:
+		if the player is clueless:
+			say "You smell nothing [one of]unusual[or]exciting[or]special[or]exotic[or]unexpected[or]remarkable[or]to write home about[or]worth mentioning[or]of note[at random].";
+		otherwise:
+			say "Internal atmospheric analysis: 78% diatomic nitrogen, 21% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure 101.325 kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
+		the rule succeeds;
+	otherwise:
+		if the noun is the location:
+			if the scent of the noun is "":
+				say "This place doesn't have any particular smell, so you point your snout up in the air and take a good sniff. [run paragraph on]";
+			otherwise:
+				say "It smells [scent of the noun] here. [run paragraph on]";
+			try sniffscanning;
+			the rule succeeds;
+		otherwise	 if the noun is not in the location:
+			say "[The noun] is not here, so you sniff the air. ";
+			if the noun is:
+				-- the smelly man: say "[man-smell].";
+				-- the female dog: say "[dog-smell].";
+				-- home: say "[home-smell].";
+			the rule succeeds;
+		otherwise if the noun is the player:
+			say "You smell";
+		otherwise if the noun is the female dog:
+			say "She smells";
+		otherwise if the noun is part of the player:
+			say "Your [noun] [the regverb in correct agreement]";
+		otherwise:
+			say "[The noun] [the regverb in correct agreement]";
+		if the scent of the noun is "":
+			say " [one of]unremarkable[or]ordinary[or]not particularly interesting[at random].";
+		otherwise:
+			say " [scent of the noun]."
+				
+Sniffscanning is an action applying to nothing. 
+
+Report Sniffscanning:
+	say "[man-smell]. ";
+	say "[dog-smell]. ";
+	say "[home-smell]."
+	
+To say man-smell:
+	let manrange be a number;
+	change manrange to the number of moves from the location to the Studio, using doors;
+	say "From [the manscent corresponding to the range of manrange in the Table of Nasal Rangefinding] you smell the [one of]disagreeable scent[or]odor[or]stale funk[or]stench[at random] of a[if a random chance of 1 in 10 succeeds] (not very hygienic)[end if] man"
+	
+To say dog-smell:
+	let dogrange be a number;
+	change dogrange to the number of moves from the location to the location of the female dog, using doors;
+	say "Interestingly, you detect the [one of]diverting[or]intriguing[or]captivating[or]thought-provoking[or]riveting[or]engrossing[or]stimulating[or]enthralling[or]attractive[or]appealing[or]amusing[or]entertaining[at random] [one of]scent[or]perfume[or]fragrance[or]bouquet[or]aroma[at random] of a female dog [dogscent corresponding to the range of dogrange in the Table of Nasal Rangefinding]"
+
+To say home-smell:	
+	let homerange be a number;
+	change homerange to the number of moves from the location to the Living Room, using doors;
+	say "The [one of]comforting[or]cheerful[or]heartening[or]reassuring[or]pleasant[or]soothing[at random] smell of home is [homescent corresponding to the range of homerange in the Table of Nasal Rangefinding]"
+	
+Table of Nasal Rangefinding
+range		manscent				dogscent				homescent
+0			"an unfortunately small distance"			"at muzzle's distance from you"		"just on the other side of that wall"
+1			"just around the corner"	"coming from somewhere really close"	"a hop, lick and a bark away"
+2			"not too far away"	"coloring the air with its lovely scent from only a short run away"		"two shakes of a tail from here"
+3			"some distance"		"wafting enticingly from not too far away"	"a short run from here"
+4			"a ways off"			"carried across the park by the wind"		"still present"
+5			"a considerable distance"	"coming from a reasonable distance away"		"getting fainter"
+6			"a long way off"	"delicately scenting the air"		"worringly faint from here"
+7			"far away"			"faintly, but definitely, tickling your nose from some remote, and no doubt exotic, location."		"all but undetectable from here"
+	
 Chapter General Insteads
 
 Instead of examining a room:
@@ -759,60 +839,6 @@ Instead of taking inventory when Rover is the player:
 		say "You haven’t picked up anything.";
 	otherwise:
 		say "In your mouth, you are carrying [a list of props held by Rover]."
-		
-Instead of smelling:  
-	if the player is the ACU and the ACU is self-aware:
-		say "Internal atmospheric analysis: 78% diatomic nitrogen, 21% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure 101.325 kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
-		the rule succeeds;
-	otherwise:
-		let the verb be "smell";
-		if the noun is the player:
-			say "You [the verb] ";				
-		otherwise if the noun is not a room:
-			if the noun is a part of the player:
-				say "Your [noun]";
-			otherwise:
-				say "[The noun]";
-			say " [the verb in correct agreement] ";
-		otherwise:
-			let the pronoun be "[it-they]" in title case;
-			say "[the pronoun] [the verb in correct agreement] ";
-		if the scent of the noun is "":
-			say "[one of]unremarkable[or]ordinary[or]not particularly interesting[at random]";
-		otherwise:
-			say the scent of the noun;
-		if the noun is a room:				
-			say " here[run paragraph on]"; 
-			if rover is the player:
-				if something scented can be touched by the player:
-					say ". You also [one of]get a wiff of[or]detect the fragrance of[or]can smell[or]get a noseful of the[at random] [a list of scented things which can be touched by the player][run paragraph on]";
-				try sniffscanning;
-		say "."
-		
-Sniffscanning is an action applying to nothing. Understand "scan" or "olfactory" or "scent" as sniffscanning when the player is Rover.
-
-Report Sniffscanning:
-	let manrange be a number;
-	let dogrange be a number;
-	let homerange be a number;
-	change manrange to the number of moves from the location to the Studio, using doors;
-	change dogrange to the number of moves from the location to the location of the Black Bulldog, using doors;
-	change homerange to the number of moves from the location to the Living Room, using doors;
-	[the following say phrases are broken up because the compiler choked on them as one long "say" phrase]
-	say ". From [the manscent corresponding to the range of manrange in the Table of Nasal Rangefinding] you smell the [one of]disagreeable scent[or]odor[or]stale funk[or]stench[at random] of a[if a random chance of 1 in 10 succeeds], if nose serves, not very hygienic[end if] man. [run paragraph on]";
-	say "You also detect the more [one of]diverting[or]intriguing[or]captivating[or]thought-provoking[or]riveting[or]engrossing[or]stimulating[or]enthralling[or]attractive[or]appealing[or]amusing[or]entertaining[at random] [one of]scent[or]perfume[or]fragrance[or]bouquet[or]aroma[at random] of a female dog [dogscent corresponding to the range of dogrange in the Table of Nasal Rangefinding]. [run paragraph on]";
-	say "The [one of]comforting[or]cheerful[or]heartening[or]reassuring[or]pleasant[or]soothing[at random] smell of home is [homescent corresponding to the range of homerange in the Table of Nasal Rangefinding][run paragraph on]";
-	
-Table of Nasal Rangefinding
-range		manscent				dogscent				homescent
-0			"right here"			"at muzzle's distance from you"		"just on the other side of that wall"
-1			"just around the corner"	"coming from somewhere really close"	"a hop, lick and a bark away"
-2			"not too far away"	"coloring the air with its lovely scent from only a short run away"		"two shakes of a tail from here"
-3			"some distance"		"wafting enticingly from not too far away"	"a short run from here"
-4			"a ways off"			"carried across the park by the wind"		"still present"
-5			"a considerable distance"	"coming from a reasonable distance away"		"getting fainter"
-6			"a long way off"	"delicately scenting the air"		"worringly faint from here"
-7			"far away"			"faintly, but definitely, tickling your nose from some remote, and no doubt exotic, location."		"all but undetectable from here"
 
 Chapter Not Ready For Prime Time - Not for release
 
@@ -886,7 +912,7 @@ After printing the banner text:
 	say "[metatext in metaspeak]";
 	say variable letter spacing;
 	say paragraph break;
-	wait for any key;
+	[wait for any key;  !!! commented out for testing]
 	clear the screen;
 	[display setup]
 	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
@@ -1227,7 +1253,7 @@ After reading the lettering for the first time:
 	let metatext be "David: If the ACU knows what you know, why doesn[apostrophe]t the ACU realize that it is the ACU? I mean, isn[apostrophe]t that what you would suspect if you woke up in a flight suit labeled ACU?[line break]Janet: Cognitive constraints are implemented – the willing suspension of disbelief is a programmatic imperative.[line break]David: I love it when you use big words![line break]Janet: You are a doofus, sir.";
 	say "[metatext in metaspeak]".
 
-The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A stylized rocket ship that looks like it came from the pages of a ancient pulp novel points away from the ship, and its exhaust plume encircles the planet. The symbol evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia".
+The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. The fiery exhaust plume of a pulp novel rocket ship encircles the red planet. The picture evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia".
 
 The alarm clock is furniture on the futon.  The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with bright green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" and "transgressor" as the alarm clock-proxy.  
 
@@ -2091,11 +2117,11 @@ The Planet Area is a region. The Front Yard, The Barren Plain, The Dug-Up Field,
 To say inconsequential outside detail:
 	say " You can't see far because it is so dusty here. [one of][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[or]The ground shakes forcefully.[as decreasingly likely outcomes]"
 
-The Front Yard is west of the front door. The description of the front yard is "You are right outside the front door to your house.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".
+The Front Yard is west of the front door. The description of the front yard is "The scent of your house is strong here, and you are right next to its front door.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".  The scent of the Front Yard is "like the outdoors".
 
-Home-exterior is a privately-named backdrop in the Front Yard. Understand "house" and "home" as home-exterior. The description of home-exterior is "Home sweet home, where Janet lives, where you get fed, and where you sleep. Even out here, the smell of home is comforting." 
+Home is a backdrop in the front yard. Understand "house" and "home" as home. The description of home is "Home sweet home, where Janet lives, where you get fed, and where you sleep. Even out here, the smell of home is comforting." The scent of home is "like food, and love, and the best place to be when you're not running around outside"
 
-Before entering the home-exterior:
+Before entering home:
 	try going towards the Living Room;
 	the rule succeeds.
 [as both the backdrop and living room are understood as "home", and otherwise the backdrop would interfere with going home from the front yard.]
@@ -2104,8 +2130,23 @@ The Barren Plain is west of the Front Yard. A rock is a prop in the Barren Plain
 
 The clueless-name of the rock is "rock". The aware-name of the rock is "thorium ore". The clueless-description of the rock is "[if the player is rover]You lick the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore." The rock-proxy is an aware-proxy that is part of the rock. Understand "black" and "ore" as the rock. The scent of the rock is "strangely chemical".
 
-Dug-Up Field is west of the Barren Plain. The small ditch is a not enterable hole in the Dug-Up Field. The description of the small ditch is "It smells like fresh dirt and you can see somes paw marks. Someone has recently dug this hole." The carrying capacity of the ditch is 1.
+Dug-Up Field is west of the Barren Plain. The description of the dug-up field is "A field strewn with paw prints, and signs of digging. Small mounds of earth and shallow holes pocket the area." The scent of the dug-up field is "of freshly turned soil".  
 
+Some paw marks are fixed in place things in the dug-up field.  The description of the paw marks are "Paw marks from a medium-sized dog. From the look of the field, they must belong to a dog that either likes digging or was trying to find something important buried around here." The scent of the paw prints is "reminiscent of the sweet perfume of a lady dog out for a stroll". 
+
+Some mounds are scenery in the dug-up field. Understand "mound" or "hole" or "holes" as the mounds. The description of the mounds is "An apparently haphazard pattern of excavated holes in the ground, and piled up next to them, dirt." The scent of the mounds is "no different from the dust that is in the air, just less, well, dusty."
+
+Instead of looking in the mounds:
+	say "The holes in this field aren't very big, and it doesn't look like there's anything in them."
+	
+Before entering the mounds:
+	say "The holes are too small climb into.";
+	the rule fails.
+	
+Before going down when the location is the dug-up field:
+	say "The holes scattered around this area were dug very quickly, but shallowly. You wouldn't fit into an of them.";
+	the rule fails.
+			
 The Smoking Pit is west of the Dug-Up Field. A long furrow is an enterable hole in the Smoking Pit. 
 
 The description of the long furrow is "The long, deep furrow smells burnt." The carrying capacity of the furrow is 5.
@@ -2114,9 +2155,9 @@ The furrow walls is scenery. It is part of the furrow. The description of the fu
 
 The Featureless Desert is west of the Smoking Pit. 
 
-The Black Bulldog is a male animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. 
+The female dog is a female animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. Understand "female", "dog", "girl" and "bitch" as the female dog.
 
-The clueless-description of the Black Bulldog is "A squat little beast with bristly fur and tiny, unintelligent eyes.[if the black bulldog carries the delicious bone] In his mouth, he is carrying a bone almost as big as he is." The aware-description of the black bulldog is "A modified ten-ton bulldozer." The clueless-name of the black bulldog is "black bulldog". The aware-name of the black bulldog is "robotic bulldozer". The black bulldog-proxy is an aware-proxy that is part of the black bulldog. Understand "bulldozer" and "robot" and "robotic" as the black bulldog-proxy.
+The clueless-description of the female dog is "A squat little beast with bristly fur and tiny, unintelligent eyes.[if the female dog carries the delicious bone] In his mouth, he is carrying a bone almost as big as he is." The aware-description of the female dog is "A modified ten-ton bulldozer." The clueless-name of the female dog is "female dog". The aware-name of the female dog is "robotic bulldozer". The female dog-proxy is an aware-proxy that is part of the female dog. Understand "bulldozer" and "robot" and "robotic" as the female dog-proxy.
 
 The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe." 
 
@@ -2135,7 +2176,7 @@ The Strange Porch is west of the Featureless Desert. The printed name of the the
 
 The Strange House is scenery in the strange porch.  The description of the Strange House is "A house just like where you and Janet live, except it doesn't smell like home. [inconsequential outside detail]"
 
-The Splintered Door is west of the Strange Porch and east of the Studio.  It is an open not openable scenery door. The description of the splintered door is "The door of the stranger's house does not close all the way." 
+The Splintered Door is west of the Strange Porch and east of the Studio.  It is an open not openable scenery door. The description of the splintered door is "The door of the smelly man's house does not close all the way." 
 
 The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above."
 
@@ -2143,9 +2184,9 @@ Chapter The Ginsu
 
 The Ginsu Area [i.e., the Earth ship] is a region.  The Studio and the Galley are rooms in the Ginsu Area.
 
-The description of the Studio is "[if The Studio is not visited]You walk into the building. There is a man here who looks old and grumpy. Like your home, this place has a sleep room and a food room. It looks like you've walked right into the sleep room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move. You don[apostrophe]t feel so afraid of him.[otherwise]The stranger[apostrophe]s house is boring. The only furniture in the room is a bed. In one direction lies the eating room, in the other, the door that leads back to the park. The stranger is still here and carrying on, [rantings] You ignore him."
+The description of the Studio is "[if The Studio is not visited]You walk into the building. There is a man here who looks old and grumpy. Like your home, this place has a sleep room and a food room. It looks like you've walked right into the sleep room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move. You don[apostrophe]t feel so afraid of him.[otherwise]The smelly man[apostrophe]s house is boring. The only furniture in the room is a bed. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings] You ignore him."
 
-In The Studio is a man called the stranger. He is scenery. The description of the stranger is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. Boy, does he seem mad, [rantings]!" The clueless-name of the stranger is "stranger". The aware-name of the stranger is "Myomita AI".
+In The Studio is a man called the smelly man. He is scenery. The description of the smelly man is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. Boy, does he seem mad, [rantings]!" The clueless-name of the smelly man is "smelly man". The aware-name of the smelly man is "Myomita AI". Understand "flat", "strange" as the smelly man.
 
 To say rantings:
  say "[quotation mark][one of]Blah, blah, blah, dog, blah, bad[or]Bad dog! Blah[or]Blah, blah, blah, blah, dog? Blah! Blah, blah[or]Blah, blah, blah, blah, blah, blah[or]Blah, out, blah, blah, dog[at random]![quotation mark]".
@@ -2446,6 +2487,7 @@ the kittying action		"CONCATENATE" [cat, when aware]
 the waiting action			"TIMER" [wait]
 the flushing action		"THRUST" [flush]
 the smelling action		"CHEMOSENSOR" [smell]
+the sniffscanning action	"SPECTOGRAPHY" [sniff]
 
 
 
@@ -2623,8 +2665,8 @@ Dreaming is an action applying to nothing.
 	
 Carry out dreaming:
 	say description in row dream index of the Table of Dreams;
-	say paragraph break;
-	wait for any key.
+	say paragraph break.
+	[wait for any key;  !!! commented out for testing]
 
 Beeping is an action applying to nothing.
 	
@@ -2729,7 +2771,7 @@ When First Sim ends:
 	try BSODing;
 	let metatext be "Janet: Crap.[line break]David: Windex?[line break]Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.[line break]David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?[line break]Janet: Yes, but it will take some time to install and debug.[line break]David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.[line break]Janet: Happy to have the help -- how about dinner first?[line break]David: Do you like Thai?";
 	say "[metatext in metaspeak]";
-	wait for any key;
+	[wait for any key;  !!! commented out for testing];
 	clear the screen;
 	now the irradiator is patched;
 	now the current memory usage is 260;
@@ -2758,7 +2800,7 @@ Every turn when the Second Sim is happening and the landing_pid is not 0:
 When Second Sim ends:
 	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
 	say "[metatext in metaspeak]";
-	wait for any key;
+	[wait for any key;  !!! commented out for testing];
 	Restore the World;
 	Setup the World.
 	
