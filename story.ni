@@ -651,7 +651,7 @@ Before going a built-in direction (called the way):
 	rule succeeds;
 	
 Before going a custom direction:
-	say "You move slightly, but are more or less in the same place. If you want to go somewhere else, just say so.";
+	say "If you want to go somewhere, just say so (like, [quotation mark]go towards the living room[quotation mark]).";
 	the rule succeeds.
 
 Instead of going towards when the player is in the living room and the futon is not folded:
@@ -1008,6 +1008,16 @@ To decide what number is the new vector:
 
 Chapter Teaching An Old Dog
 
+[most of these commands should be tested for the acu when in bed, when out of bed, when aware, for rover, and as a command given to rover; no one other than Rover should be persuaded to follow these commands.
+
+The general form of these is:
+	
+- persuasion rule for rover: he'll do it.
+- definition of the action and its synonyms
+- check rules: something reasonable happens if the acu does the verb.
+- carry out rule: what happens when rover does the action of his own accord.
+- instead of an animal doing the verb: what rover does when he is obeying the command.]
+
 Section Barking
 
 Persuasion rule for asking an animal to try barking:
@@ -1018,7 +1028,7 @@ Barking is an action applying to nothing. Understand "bark" as barking.
 Check barking:
 	if the player is not an animal:
 		if the player is self-aware:
-			say "Your byte is worse than your bark.";
+			say "Your byte is worse than your bark." instead;
 		otherwise:
 			say "Leave barking to the dogs." instead.
 		
@@ -1040,7 +1050,7 @@ Section Attacking
 Persuasion rule for asking an animal to try attacking:
 	persuasion succeeds.
 	
-Instead of an animal attacking when Rover is enclosed by the Valkyrie Area:
+Instead of Rover attacking when Rover is in the Valkyrie Area:
 	if the second noun is not David Venkatachalam:
 		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threatening here.";
 	otherwise:
@@ -1056,7 +1066,7 @@ Lying down is an action applying to nothing. Understand "lie" or "lie down" as l
 		
 check lying down:
 	if the player is an animal:
-		say "You're too excited to lie down! Woof!pos" instead;
+		say "You're too excited to lie down! Woof!" instead;
 	otherwise:
 		say "[if player is clueless]You know that if you lie down this early in the morning you'll feel weird the entire day and that no amount of coffee in the afternoon with put things right again[otherwise]You rest for 0.0[a random number from 100 to 999][a random number from 100 to 999] femtoseconds. How [one of]refreshing[or]invigorating[or]energizing[or]exhilarating[or]stimulating[at random][end if]." instead.
 			
@@ -1064,8 +1074,8 @@ carry out lying down:
 	do nothing.
 	
 Instead of lying down when the player is the ACU and the player is not alert:
-	say "Snooze the Alarm."
-	[TODO: write a Snooze the Alarm routine]
+	say "You slothfully tap the snooze button.";
+	try snoozing.
 	
 Instead of an animal lying down:
 	say "[The actor] dives towards the floor, holds the required position as briefly as he dares, and then jumps back on all fours in front of you, ready to play again.";
@@ -1084,12 +1094,57 @@ Instead of an animal lying on:
 	rule succeeds.
 
 Section Rolling Over
+	
+Persuasion rule for asking Rover to try rollovering:
+	persuasion succeeds.
+	
+Rollovering is an action applying to nothing. Understand "roll over" and "roll" as rollovering.
 
+Check rollovering:
+	if the player is the acu:
+		if the acu is self-aware:
+			say "Cache refreshed.";
+			the rule succeeds;		
+		if the acu is not alert:
+			say "You roll over and slap the alarm clock for a few more minute of sleep.";
+			try snoozing;
+			the rule succeeds;
+		otherwise:
+			say "You're not lying down.";
+			the rule fails.
+			
+Carry out rollovering:
+	say "You roll on the ground, enjoying the spinning view of the world.";
+
+Instead of an animal rollovering:
+	say "Rover rolls over like a puppy. He quickly jumps to his feet again.";
+	the rule succeeds.
+		
 Section Digging
+
+Persuasion rule for asking Rover to try digging:
+	persuasion succeeds.
+
+Digging is an action applying to nothing. Understand "dig" and "excavate" as digging.
+
+check digging:
+	if the player is the acu:
+		if the player is clueless:
+			say "You're a interactive fiction professional, not a ditch digger. Nope, nothing so lucrative.";
+		otherwise:
+			say "You're a giant network of quantum transputational circuitry; you don't dig ditches. Besides, that's why you are equipped with a ROVER.";
+		the rule fails;
+		
+Carry out digging:
+	say "You dig for a while with your front paws. Finding nothing, you kick the dirt back in again so you won't be blamed for digging up the yard."
+	
+Instead of an animal digging:
+	say "Rover scratches the ground and sniffs, but doesn't seem interested in digging here.";
+	the rule succeeds.
 
 Section Coming
 
-Persuasion rule for asking an animal to try coming:
+Persuasion rule for asking Rover to try coming:
 	persuasion succeeds.
 
 Coming is an action applying to nothing. Understand "come" or "come here" or "here boy" or "food" as coming.
@@ -1103,7 +1158,7 @@ carry out coming:
 		say "Rover cocks his head quizzically.";
 	otherwise:
 		now Rover is in the location;
-		say "Rover tears around the corner excitedly, arriving in [the location]."
+		say "Rover tears around the corner excitedly, arriving in [the location in lower case]."
 		
 Instead of Rover coming when Rover is not the player:
 	[e.g., if Rover is in the room (and therefore scope) and you say "Rover, come" ]
@@ -1113,6 +1168,40 @@ Instead of Rover coming when Rover is not the player:
 Section Giving Kisses
 
 Section Going Walkies
+
+Section Growling
+
+Growling is an action applying to nothing. Understand "growl" as growling when the player is Rover.
+
+Report Growling:
+	say "Grrrrrrrrrrrrrr!"
+
+Section Dancing
+
+Dancing is an action applying to nothing. Understand "dance" as dancing.
+
+Report Dancing:
+	if the player is Rover:
+		say "You spring into the air and land on all fours.";
+	otherwise if the player is the ACU:
+		if the player is clueless:
+			say "You try to remember some of the steps that you and Tomasz learned during your ill-fated attempt at ballroom dancing. You think you recall the [one of]cha-cha, but can't quite what number it goes to. Is it seven or eight?[or]lambada, but perhaps you're mixing it up with the rumba. Rumba, lambada, what's the difference in the grand scheme of things?[or]tango, but the more you think about it, the more you are convinced that you learned to lead, and thinking about reversing the steps makes your head hurt[or]waltz. One-two-veer off, one-two veer off.[at random][paragraph break]";
+		otherwise:
+			say "You test cycle the RCS thrusters, firing opposing pairs."
+
+Section Yell
+
+Yelling is an action applying to nothing.  Understand "yell", "shout", "scream", "screach", "howl", "cry", and "holler" as yelling.
+
+Report Yelling:
+	if the player is Rover:
+		say "You howl balefully, or at least as balefully as you can manage, not being entirely sure what it means.";
+	otherwise if the player is the ACU:
+		if the player is clueless:
+			say "Confident that your neighbors won't hear a thing through the cottages's excellent sound insulation, you let loose with a primal scream.";
+		otherwise:
+			say "You emit a 160 dB test tone throughout the ship.";
+			[TOCONSIDER: useful against pirates, shouldn't work if the ship is depressurized]
 
 Chapter The Valkyrie
 
@@ -1234,7 +1323,8 @@ After taking off the flight suit:
 	if the player is on a supporter:
 		say "bunches up in a crumpled heap on the [holder of the player]";
 	otherwise:
-		say "falls to [the location] floor";
+		say "falls to [the location in lower case] floor";
+	now the flight suit is in the holder of the player;
 	say ". You are naked.";
 	if the flight suit is not already-doffed:
 		now the flight suit is already-doffed;
@@ -1619,7 +1709,7 @@ The kitchen floor is a privately-named scenery supporter in the kitchen. The clu
 
 Section Bathroom
 
-The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter[if something is on the marble counter], with [a list of things on the marble counter] on it[end if]. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence[if something is on the marble counter]. On the console [is-are a list of things on the marble counter][end if]." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
+The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter[if something is on the marble counter], with [a list of things on the marble counter] on it[end if]. A shallow sink is inset into the counter, and above it, you[apostrophe]ve mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence[if something is on the marble counter]. On the console [is-are a list of things on the marble counter][end if]." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
 
 After going towards the bathroom:
 	if the bathroom is not really-visited and the Second Sim is happening:
@@ -1893,7 +1983,17 @@ Instead of entering a flipchair (called the flop):
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
 
-The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude" and "control" and "RCS" as the plunger.
+The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude" and "control" and "RCS" as the plunger.  The plunger can be yanked. The plunger is not yanked.
+
+Instead of taking the plunger:
+	if the player is clueless:
+		if the plunger is not yanked:
+			say "Since the day Tomasz jammed the plunger down on the bathroom floor, it has been stuck there like a barbed harpoon in the side of a great whale. Well, maybe more like a giant squid on wrapped around an unfortunate whale, since squids have (you have heard) suckers. Some kind of weird interaction between the rubber cup and the micropores in the floor have effectively bonded the plunger to the floor, and any attempt to remove it would probably destroy one or the other. The plunger doesn't really bother you, and most of the time you just ignore it."; 
+			now the plunger is yanked;
+		otherwise:
+			say "Nah. You like it where it is. It kind of reminds you of Tomasz, and his efforts at home repair that never quite went right.";
+	otherwise:
+		say "Disarticulating the attitude control would be counterproductive."
 
 The clueless-name of the shaft is "shaft". The aware-name of the shaft is "vector input port". The clueless-description of the shaft is "A wooden stick." The aware-description of the shaft is "A multiaxial control device which outputs ship orientation instructions to the nose cone drivers." Understand "handle" as the shaft. The shaft-proxy is an aware-proxy that is part of the shaft. Understand "vector" and "input" and "port" as the shaft-proxy.
 
@@ -2433,7 +2533,9 @@ First after an actor doing something (this is the catch successful actions rule)
 	continue the action.
 
 
-[a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!]
+[a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!
+
+###TOCONSIDER: two columns for technoverbs, one for rover, one for acu since sometimes the same action has different meanings]
 
 Table of Technoverbs
 Verb				Technoverb
@@ -2487,7 +2589,8 @@ the kittying action		"CONCATENATE" [cat, when aware]
 the waiting action			"TIMER" [wait]
 the flushing action		"THRUST" [flush]
 the smelling action		"CHEMOSENSOR" [smell]
-the sniffscanning action	"SPECTOGRAPHY" [sniff]
+the sniffscanning action	"SPECTROMETRY" [sniff]
+the beeping action			"PROXIMITY ALERT" [beeping]
 
 
 
@@ -2503,7 +2606,6 @@ brushing
 "wake"		"INITIALIZE"
 "sleep"		"SUSPEND"
 "give"		"DISPENSE"
-"flush"		"THRUST"
 "roll over"	"LATERAL JETS"
 "lay down"	"DEFENSIVE MODE"
 "lie down"	"DEFENSIVE MODE"
@@ -2594,7 +2696,7 @@ When Bedtime ends:
 		now arm-numb is 1.
 
 	
-Instead of doing something other than beeping, dreaming, opening, closing, waiting, looking, listening, examining, exiting, getting off, pushing, reading, remembering, rude-awakening,  snoozing, touching, waking up, memory-updating, taking inventory, or uptiming during Bedtime:
+Instead of doing something other than beeping, dreaming, opening, closing, waiting, looking, listening, lying down, examining, exiting, getting off, pushing, reading, remembering, rollovering, rude-awakening,  snoozing, touching, waking up, memory-updating, taking inventory, or uptiming during Bedtime:
 	say "[one of]First things first, you're still in bed[or]Six impossible things before breakfast is one thing, but you have to at least get out of bed[or]Not while you're in your futon, you won't[or]Maybe after you get up[at random].";
 	say paragraph break;
 

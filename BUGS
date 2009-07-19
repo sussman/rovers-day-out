@@ -1,6 +1,5 @@
   *** Things we should fix, mainly discovered via testing. ***
 
-
 * Wha?  The bits below make no sense.
 
    >get floss
@@ -11,7 +10,7 @@
 
    We need to better disambiguate between 'box of floss' and the floss
    string itself.
-@@@ OK, the floss dispenser is now the plastic box, and a clarification
+@@@ Resolved. the floss dispenser is now the plastic box, and a clarification
 message is printed if the player tries to floss his teeth with the
 box.
 
@@ -21,14 +20,11 @@ box.
   And "look in mirror" does nothing at all.  Only 'x mirror' does what
   we want.  Instead of looking in mirror, try examining the mirror instead.
 
-@@@ OK, look in mirror is a synonym for search mirror, so search mirror 
-has been redirectd with an instead. Look [something] is now redirected to 
-searching as well. So, look window or look mirror both work now (even 
-if they're not very grammatical). 
+@@@ Resolved. look in mirror is a synonym for search mirror, so search mirror  has been redirectd with an instead. Look [something] is now redirected to searching as well. So, look window or look mirror both work now (even  if they're not very grammatical). 
 
 * should "get soap" be understood as pushing the soap dispenser?
 
-@@@ OK. Attempts to get/take the soap or shampoo now elicit a message 
+@@@ Resolved. Attempts to get/take the soap or shampoo now elicit a message 
 in which the player recalls that the get some soap/shampoo, they need
 to touch the dispenser. This seems reasonable since this should be 
 "routine" knowledge for the player.
@@ -37,7 +33,7 @@ to touch the dispenser. This seems reasonable since this should be
   strong that you can think of little else!"  We should vary this a
   bit so it doesn't sound like a broken record.
 
-@@@ Agreed. I've added some alternate text. Even so, players will cycle 
+@@@ Resolved. I've added some alternate text. Even so, players will cycle 
 through them relatively quickly. The intent is to suggest that the problem
 has become big enough to displace other thoughts, and that if the problem
 is not dealt with, it becomes a single-track priority.
@@ -46,38 +42,22 @@ is not dealt with, it becomes a single-track priority.
   should say something like "...and it's currently itching like
   crazy", rather than just a generic description.
 
-@@@ Done.
+@@@ Resolved.
 
 * flesh out unix commands more.  what should happen if user tries them
   while clueless?
 
-@@@ This is worth some discussion -- Initially, I was just going for
-the overlap between normal English (e.g., touch) and unix commands. In that 
-case, the command would be interpreted normally (e.g., touch, jump, etc.)
-except when the ACU is self-aware. I can expand this, but can't come near
-the full repertoire of unix commands (without making that a full time project
-in itself. I'm not keen to emulate unix in I7). I don't think that commands
-like 'ls' should do anything when the ACU is clueless, as they don't have 
-any meaning in English.  I do think it's worth adding those commands that roll
-easily off the fingers (who, ps, ls, etc.). Here's what I've added:
-
-A) Clueless
-	- who: replies rhetorically, "you."
-	- uptime - time since waking up.
-	-
-
-B) Aware - Man pages for all aware objects in the game. (This may take a
-	   while...). Try "man casimir" while self-aware.
-	-  uptime - time since IPL
-	- shutdown/reboot/halt
-	- sudo
-
+@@@  ###TODO: implement date, flesh out the manpages, add a reference to flosix commands being available when the ACU becomes aware. Perhaps drop some other hints towards these commands being available.  Flosix commands that have meaning in English are treated normally; those that are uniquely flosix are ignored until the acu becomes aware.
 
 
 * 'go room' shouldn't show 'ACU -> SELECT' but rather
   'room's-aware-name -> SELECT'
 
+### TODO status line when going towards
+
 * "cook egg" 
+
+### TODO cook egg
 
 *  Wait, our "go room" system simply moves you along a path toward the
    room, rather than directly into the room?  That's a bit odd.  If
@@ -86,13 +66,25 @@ B) Aware - Man pages for all aware objects in the game. (This may take a
    pathfinding is rather confusing.  Why not just go right to room, as
    long as its in the same region?
 
+@@@ Resolved. This arrangement provoked some deep thinking. Although the player doesn't have any orientation to absolute directions, the player can tell which rooms are connected via the room description. So, the branching pattern is known. Having each movement bring you one step closer to the goal actually evolved from the way that Rover navigates outside. He is following scents which get stronger as he approaches his target. So for him, I think it makes sense that "go female dog", "go home", "go towards the smelly man" would bring him in the right direction.  
+
+For the ACU, however, I agree, and have modified the movement mechanism. When clueless, the ACU would naturally expect to go from room to room without thinking much about it. So, if she's in the bathroom and says "go to the kitchen", there's no mention of the living room which is located between the bathroom and kitchen. Likewise, for the acu when aware, switching between rooms is not a physical action at all, so the acu can just flit between rooms with "go room" or "cd room".
+
+###TOCONSIDER: It would make more sense to model the rooms with inside from/outside from relationships. This would more closely follow the directory level paradigm suggested with the flosix commands. It would also make going out of the shower, or out the front door make more sense.
+
 * "exit shower" fails but just "exit" leaves the shower.
 
+###TODO exit shower
+
 * "pet rover"
+
+###TODO pet rover
 
 * oddness with showering:  taking off the flight suit allows one to
   shower, but it's still being carried in the inventory!  We should be
   more strict and force the player to *drop* it on the bathroom floor.
+
+@@@ Resolved, taking off the flight suit drops it where ever you are.
 
 * should 'wait' while sitting on toilet do something?
 
@@ -116,7 +108,12 @@ B) Aware - Man pages for all aware objects in the game. (This may take a
       eating, it's all wrong again.  Let's either remember the
       plunger's state, or not allow me to move the plunger before eating.
 
+###TODO better implementation of taking care of business
+@@@ In writing the "taking care of business" section, I was trying to avoid  giving the impression that the game was written by a 13-year old focused on potty humor. On the other hand, if one is presented with a toilet, it does seem natural... I'll need to come back to this section. I don't want it to come across as puerile or overly graphic.
+
 * "poop" is not recognized
+
+###TODO: poop/shit/defecate .... "Even real adventurers have to go sometime."
 
 * need to understand 'chow' as 'bag of dog chow'
 
@@ -130,7 +127,11 @@ B) Aware - Man pages for all aware objects in the game. (This may take a
 
 * typo in bathroom description?  " you've mounted mirror on the wall."
 
+@@@ Resolved typo.
+
 * "take plunger" needs a real excuse, not a generic response.
+
+@@@ Resolved get plunger.
 
 * uhoh:  this seems to read like there are three sibling objects.  And
   they're not siblings.
@@ -138,13 +139,21 @@ B) Aware - Man pages for all aware objects in the game. (This may take a
   >x bowl
   Which do you mean, the dog dish, the water bowl, or the food bowl
 
+###TODO: disambiguate dog bowl objects in kitchen
+
 * buglet in proper noun capitalization: "You take off your blue flight
   suit and it falls to The Bathroom floor."
 
+@@@ Resolved capitalization error.
+
 * no status-line update when we stand up and toilet flushes??
+
+###TODO: update status after flush
 
 * in The Real Thing, I expected toilet to not flush and be broken.
   Guess we haven't written that yet?
+
+###TODO: broken toilet puzzle in real thing
 
 * uhoh, is this intended?  I discovered accidentally when being Rover
   during the Real Thing.  Perhaps the new directions are too general?
@@ -154,3 +163,9 @@ B) Aware - Man pages for all aware objects in the game. (This may take a
 
   >forwards
   You move slightly forwards.
+
+@@@ Resolved custom direction problem -- I think.  When you give one of these custom directions, you'll now get the slightly mimesis-breaking response of:
+
+If you want to go somewhere, just say so (like, "go towards the living room")
+
+I think this is reasonable, since the game itself is framed as taking place within a text adventure interpreter.
