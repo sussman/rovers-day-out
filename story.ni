@@ -69,7 +69,7 @@ A refrigerator is a kind of container. A refrigerator is usually closed, openabl
 
 A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "knob" and "drain" as a sink.  
 
-Wakefulness is a kind of value. The wakefulnesses are asleep, groggy, and alert.
+Wakefulness is a kind of value. The wakefulnesses are asleep, sleepwalking, groggy, and alert.
 
 Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
 
@@ -1033,7 +1033,11 @@ Check barking:
 			say "Leave barking to the dogs." instead.
 		
 Carry out barking:
-	say "[doggerel]".
+	say "[doggerel]";
+	if the female dog is in the location and the female dog carries the delicious bone:
+		say "[one of]No doubt in awe of your rhetorical skills, the lovely damsel drops the bone. Her gift to you, you suppose[or]Stunned by your eloquence, the beautiful young hound again drops her bone, in tribute to your virile superiority[or]Somewhat predictably now, she drops the bone[stopping].";
+		[multiple phrases because the female dog should be given the behaviour of picking up the bone after a turn or two if it's just lying there o the ground.]
+		now the delicious bone is in the location.
 	
 Instead of an animal barking:
 	say "[The actor] barks out a meaty, [doggerel]";
@@ -1272,7 +1276,7 @@ Instead of going towards when the player is the ACU:
 			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
 			move the dog food to the food trough;
 		if the player carries the white egg:	
-			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the frige before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before switching out of engineering[end if].[run paragraph on]";
+			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the fridge before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before switching out of engineering[end if].[run paragraph on]";
 			move the white egg to the old fridge;
 		if the player carries the toothbrush:
 			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
@@ -1374,8 +1378,9 @@ After taking off the flight suit:
 The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
 
 After reading the lettering for the first time:
-	let metatext be "David: If the ACU knows what you know, why doesn[apostrophe]t the ACU realize that it is the ACU? I mean, isn[apostrophe]t that what you would suspect if you woke up in a flight suit labeled ACU?[line break]Janet: Cognitive constraints are implemented – the willing suspension of disbelief is a programmatic imperative.[line break]David: I love it when you use big words![line break]Janet: You are a doofus, sir.";
-	say "[metatext in metaspeak]".
+	if the first sim is happening or the second sim is happening:
+		let metatext be "David: If the ACU knows what you know, why doesn[apostrophe]t the ACU realize that it is the ACU? I mean, isn[apostrophe]t that what you would suspect if you woke up in a flight suit labeled ACU?[line break]Janet: Cognitive constraints are implemented – the willing suspension of disbelief is a programmatic imperative.[line break]David: I love it when you use big words![line break]Janet: You are a doofus, sir.";
+		say "[metatext in metaspeak]".
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. The fiery exhaust plume of a pulp novel rocket ship encircles the red planet. The picture evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia".
 
@@ -1586,6 +1591,11 @@ Before eating the white egg:
 			if the Second Sim is happening:
 				let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?[line break]Janet: Works for me, yeah.[line break]David: How about a plate and fork?[line break]Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";	
 				say "[metatext in metaspeak]";
+			otherwise if the Real Thing is happening and the landing_pid is not 0:
+				[i.e., taking off from the planet]
+				remove the white egg from play;
+				the rule succeeds;
+			[so, for second sim, or for the first time during real thing -- i.e, the approach to the planet]
 			now the ignite_pid is the turn count;
 			move the white egg to the cold box;
 			now the white egg is not cooked;
@@ -1994,8 +2004,14 @@ Check flushing:
 				the rule fails;
 			otherwise:			
 				continue the action;
+		otherwise if the Real Thing is happening and the player is self-aware:
+			if the location of the white egg is nowhere:
+				continue the action;
+			otherwise:
+				say "Full thruster burn to achieve escape velocity requires repletion of the heavy helium supply and ignition of the fusion engines.";
+				the rule fails;
 		otherwise:
-			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing[otherwise]The ship is not on planetary approach. Retros are offline[end if].";
+			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing.";
 			the rule fails; 
 	otherwise: 
 		say "[if the player is clueless]That would be difficult to explain to the plumber[otherwise]Thruster discharge can only be actuated via the retro trigger circuit[end if].";
@@ -2003,10 +2019,17 @@ Check flushing:
 		
 Carry out flushing:
 	move the player to the bathroom, without printing a room description;
-	now the landing_pid is the turn count.
+	if the location of the white egg is nowhere:
+		now the landing_pid is 0;
+	otherwise:
+		now the landing_pid is the turn count.
 	
 Report flushing:
-	say "You reach behind you, flush the toilet and stand up. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes."
+	if the location of the white egg is nowhere:
+		say "You actuate the retro trigger circuit and fire all thrusters in synchrony. The surface of the planet around the ship vanishes in a cloud of plasma, and the ship slams through the thin, dusty atmosphere towards space.[paragraph break]When you reach orbit, you plot a course towards Mars, extend the Casimir Drive, arm the proximity alert system and enter stand-by mode[paragraph break]The futon is comfortable and you are tired.";
+		now the player is sleepwalking;
+	otherwise:
+		say "You reach behind you, flush the toilet and stand up. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes."
 	
 Instead of exiting when holder of the player is the toilet seat and the landing sequence is happening:
 	try flushing the toilet.
@@ -2963,7 +2986,7 @@ When the Landing Sequence ends:
 	
 Chapter Real Thing
 	
-Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is self-aware and the white egg is nowhere. [###TODO figure out the real out point later]
+Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is sleepwalking. [###TODO figure out the real out point later]
 
 When Real Thing begins:
 	Restore the World;
@@ -2996,8 +3019,7 @@ When Walkies ends:
 		now the white egg is in the Living Room;
 	otherwise if Rover carries the delicious bone:
 		say "You jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]";
-		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND SET[paragraph break]";
-		wait for any key;
+		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND LINE[paragraph break]";
 		say "Rover wags his tails and gnaws on his bone.[paragraph break]You rub his head, distantly, as strange thoughts sweep through your consciousness. You wonder what would happen if the Valkyrie mission failed because during landing the ship had been buffeted by particulate matter being torn away from the doomed planet by the immense gravity its star. In that case, critical systems might be damaged. Systems like the relatively fragile ansible antenna. There is no back-up ansible antenna. How would the ACU cope with a situation like that? The ACU was designed for a lot of contingencies, but not that one. What would you do? What would you do if you were the ACU?[paragraph break]Your glance falls on your flight suit, and suddenly the question is no longer rhetorical.";
 		now the player is the ACU;
 		try reorienting;
@@ -3007,10 +3029,21 @@ When Walkies ends:
 
 Chapter Boarding Party
 
-Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not asleep.
+Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not sleepwalking.
 
+When Boarding Party begins:
+	say "Boarding party hijinx ensue."
+
+Instead of waking up during Boarding Party:
+	now the ACU is alert.
+	
+[otherwise, bad stuff happens ... you wish you could just wake up from this nightmare...]
+ 
 Chapter Back On Mars
 
 Back on Mars is a scene.  Back on Mars begins when Boarding Party ends. 
+
+When Back on Mars begins:
+	say "The dreadful truth is...oh, wait a minute.[paragraph break]Your proximity alert system wakes you from the nightmare as you emerge from Casimir Drive just planetward of Deimos. MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.[paragraph break]After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your living room through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang."
 
 	
