@@ -2271,6 +2271,8 @@ Chapter The Planet
 
 The Planet Area is a region. The Front Yard, The Barren Plain, The Dug-Up Field, The Smoking Pit, The Featureless Desert, and The Strange Porch are outside rooms in the Planet Area.
 
+The ground is a backdrop in the Planet Area.  The description of the ground is "Light-colored soil, with many small rocks and pebbles." The scent of the ground is "chalky and dry, not moist and grassy like usual". Understand "soil" or "rocks" or "pebbles" as the ground.
+
 To say inconsequential outside detail:
 	say " You can't see far because it is so dusty here. [one of][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[or]The ground shakes forcefully.[as decreasingly likely outcomes]"
 
@@ -2285,37 +2287,58 @@ Before entering home:
 
 The Barren Plain is west of the Front Yard. A rock is a prop in the Barren Plain. The scent of the barren plain is "dry and stale".
 
-The clueless-name of the rock is "rock". The aware-name of the rock is "thorium ore". The clueless-description of the rock is "[if the player is rover]You lick the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore." The rock-proxy is an aware-proxy that is part of the rock. Understand "black" and "ore" as the rock. The scent of the rock is "strangely chemical".
+The clueless-name of the rock is "rock". The aware-name of the rock is "thorium ore". The clueless-description of the rock is "[if the player is rover]You lick the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore." The rock-proxy is an aware-proxy that is part of the rock. Understand "black" and "ore" as the rock. The scent of the rock is "strangely chemical. Your nose tickles as it sniffs the rock".
 
-Dug-Up Field is west of the Barren Plain. The description of the dug-up field is "A field strewn with paw prints, and signs of digging. Small mounds of earth and shallow holes pocket the area." The scent of the dug-up field is "of freshly turned soil".  
+Dug-Up Field is west of the Barren Plain. The description of the dug-up field is "A dug-up field pock marked by small holes and accompanying mounds of dirt." The scent of the dug-up field is "of freshly turned soil".  
 
-Some paw marks are fixed in place things in the dug-up field.  The description of the paw marks are "Paw marks from a medium-sized dog. From the look of the field, they must belong to a dog that either likes digging or was trying to find something important buried around here." The scent of the paw prints is "reminiscent of the sweet perfume of a lady dog out for a stroll". 
+Some paw marks are fixed in place things in the dug-up field.  Understand "prints" or "impression" or "tracks" as paw marks. The description of the paw marks are "Paw marks from a medium-sized dog. From the look of the field, they must belong to a dog that either likes digging or was trying to find something important buried around here." The scent of the paw marks is "reminiscent of the sweet perfume of a lady dog out for a stroll". 
 
-Some mounds are scenery in the dug-up field. Understand "mound" or "hole" or "holes" as the mounds. The description of the mounds is "An apparently haphazard pattern of excavated holes in the ground, and piled up next to them, dirt." The scent of the mounds is "no different from the dust that is in the air, just less, well, dusty"
+Some mounds are scenery in the dug-up field. Understand "mound" or "pile" or "piles" or "dirt" or "hill" or "hills" as the mounds. The description of the mounds is "Small piles of dirt standing next to the holes that dot this field." The scent of the mounds is "no different from the dust that is in the air, just less, well, dusty".
 
-Instead of looking in the mounds:
+Some divets are scenery in the dug-up field. The printed name of the divets is "holes". Understand "hole" or "holes" as divets.  The description of the divets is "An apparently haphazard pattern of excavated holes in the ground. None of them are very impressive." The scent of the divets is "like the ground, just more so". 
+
+Before inserting something (called the item) into the divets:
+	say "The holes are not large enough to hold [the item].";
+	the rule fails.
+
+Instead of looking in the divets:
 	say "The holes in this field aren't very big, and it doesn't look like there's anything in them."
 	
-Before entering the mounds:
+Before entering the divets:
 	say "The holes are too small climb into.";
 	the rule fails.
 	
+Before entering the mounds:
+	say "The mounds are not very high and standing on top of the mound doesn't really improve the view.";
+	the rule fails.
+
 Before going down when the location is the dug-up field:
 	say "The holes scattered around this area were dug very quickly, but shallowly. You wouldn't fit into an of them.";
 	the rule fails.
 			
-The Smoking Pit is west of the Dug-Up Field. A long furrow is an enterable hole in the Smoking Pit. 
+Smoke is a backdrop in the Smoking pit. The description of the smoke is "Wispy strands of black and grey smoke spiral upward from the furrow and dissipate almost immediately into the billowing clouds of dust that swirl over the park this fine morning." The scent of the smoke is "like beef jerky".
 
-The description of the long furrow is "The long, deep furrow smells burnt." The carrying capacity of the furrow is 5.
+The Smoking Pit is west of the Dug-Up Field. The description of the Smoking Pit is "A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole." The scent of the smoking pit is "like burnt marshmellows".
 
-The furrow walls is scenery. It is part of the furrow. The description of the furrow walls is "The walls and the floor of the furrow are hard and shiny, more like glass. The dirt here smells burnt." Understand "wall" or "walls" or "floor" or "dirt" or "soil" or "ground" or "crater" or "ditch" or "excavation" as the furrow walls.
+A long furrow is an enterable hole in the Smoking Pit. Understand "trench" as the long furrow. The description of the long furrow is "On your muzzle, you can feel heat radiating from the furrow walls, which are shiny and black. On the walls and floor of the trench, you can see some scratches that look like they could have been made by dog paws." The carrying capacity of the furrow is 2. The scent of the furrow is "like freshly poured tar".
+
+The furrow walls are scenery. It is part of the furrow. The description of the furrow walls is "The walls and the floor of the furrow are hard and shiny, more like glass. At places, the shiny layer has cracked and peeled off, and you can see dirt behind it. There are scratches on the walls and floor, long grooves that have somehow hardened like the walls themselves." Understand "wall" or "walls" or "floor" or "dirt" or "soil" or "ground" or "crater" or "ditch" or "excavation" as the furrow walls.
+
+Instead of looking when Rover is in the furrow, say "[the description of the furrow walls][paragraph break]".
+
+Instead of touching the furrow walls, say "The walls and floor of the long, narrow trench are quite warm."
+
+The grooves are a backdrop in the Smoking Pit. Understand "groove" or "scratch" or "scratches" as the grooves. The description of the grooves is "Parallel scratches in the hardened soil, just the right shape and spacing to suggest a fellow canine digging for something here." The scent of the grooves is "strongly of charred earth, but there is also a certain lingering suggestion of the perfume that might be worn by a high-born lady". 
 
 The Featureless Desert is west of the Smoking Pit. 
 
-The female dog is a female animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. Understand "female", "dog", "girl" and "bitch" as the female dog.
+The female dog is a female animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. Understand "female", "dog", "girl" and "bitch" as the female dog. 
 
-The clueless-description of the female dog is "A squat little beast with bristly fur and tiny, unintelligent eyes.[if the female dog carries the delicious bone] In his mouth, he is carrying a bone almost as big as he is." The aware-description of the female dog is "A modified ten-ton bulldozer." The clueless-name of the female dog is "female dog". The aware-name of the female dog is "robotic bulldozer". The female dog-proxy is an aware-proxy that is part of the female dog. Understand "bulldozer" and "robot" and "robotic" as the female dog-proxy.
+The clueless-description of the female dog is "[one of]Your heart catches in your throat as you stand in her glorious presence. Graceful, athletic, and possessed of a noble bearing, she smites you with a glance down her long, fine muzzle[or]Your eyes are drawn to her perfectly rounded shoulders and haunches, her long arcing tail, and her soft, pendulous ears. You avert your gaze so as not to appear overly forward[stopping].[if the female dog carries the delicious bone] In her [one of]sweet[or]angelic[or]sultry[or]alluring[or]toothsome[or]luscious[or]tempting[or]amorous[or]sensual[at random] mouth, she is [one of]daintily[or]elegantly[or]agilely[or]seductively[or]coquettishly[or]flirtaciously[or]provocatively[at random] carrying a bone almost as big as she is." The aware-description of the female dog is "A modified ten-ton bulldozer." The clueless-name of the female dog is "female dog". The aware-name of the female dog is "robotic bulldozer". The female dog-proxy is an aware-proxy that is part of the female dog. Understand "bulldozer" and "robot" and "robotic" as the female dog-proxy.
 
+Instead of attacking the female dog:
+	say "Hurt her? The object of your desire? The dog of your dreams? She who holds your very heart in her tender paws? Better that you would go without dog chow for a week or be locked for all eternity in a kennel than to bear that thought. No, the way with women is to charm them. A careful word, a shrewd compliment, some clever banter -- that is the way to win her over."
+	
 The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe." 
 
 To say delicious bone status:
