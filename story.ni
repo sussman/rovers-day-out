@@ -772,7 +772,7 @@ Report Sniffscanning:
 	
 To say man-smell:
 	let manrange be a number;
-	change manrange to the number of moves from the location to the Studio, using doors;
+	change manrange to the number of moves from the location to the sleeping room, using doors;
 	say "From [the manscent corresponding to the range of manrange in the Table of Nasal Rangefinding] you smell the [one of]disagreeable scent[or]odor[or]stale funk[or]stench[at random] of a[if a random chance of 1 in 10 succeeds] (not very hygienic)[end if] man"
 	
 To say dog-smell:
@@ -1301,7 +1301,7 @@ To say living room status:
 	if the drapes are in the living room and the drapes are closed:
 		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room";
 	otherwise:
-		say "You are in the living room of a small cottage, actually more of a studio apartment. Light pours in through the room's single window [if the drapes are in Limbo]-- strangely, your drapes are nowhere to be seen [end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed"
+		say "You are in the living room of a small cottage, actually more of a eating room apartment. Light pours in through the room's single window [if the drapes are in Limbo]-- strangely, your drapes are nowhere to be seen [end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed"
 
 The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. The manpage of the futon-proxy is "The zero-point energy drive creates a time-space gradient across which the ship travels. In conjunction with the ship's temporal transgressor, the ship is capable of faster-than-light travel without incurring substantial time debt. The drive must be extended for interstellar flight, but retracted to make planetfall. The drive cannot be used within stellar systems or near other gravitic distortions. The drive is delicate and should be protected from physical damage, particularly to the field plates."
 
@@ -2330,67 +2330,115 @@ Instead of touching the furrow walls, say "The walls and floor of the long, narr
 
 The grooves are a backdrop in the Smoking Pit. Understand "groove" or "scratch" or "scratches" as the grooves. The description of the grooves is "Parallel scratches in the hardened soil, just the right shape and spacing to suggest a fellow canine digging for something here." The scent of the grooves is "strongly of charred earth, but there is also a certain lingering suggestion of the perfume that might be worn by a high-born lady". 
 
-The Featureless Desert is west of the Smoking Pit. 
+The Featureless Desert is west of the Smoking Pit. The description of the featureless desert is "A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park." The scent of the Featureless Desert is "barren and lifeless".
 
-The female dog is a female animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. Understand "female", "dog", "girl" and "bitch" as the female dog. 
+The female dog is a female animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. Understand "female", "dog", "girl" and "bitch" as the female dog. The scent of the female dog is "[one of]sweeter than the marrow of the tastiest bone[or]heavenly, like the essence of dogly beauty distilled to a few drops and sprayed at nose-level on everything in sight[or]at once exquisite and unpretentious, unattainable and everyday, wild and yet somehow timid. She is a complex dog[or]fetching, in the way that a stick isn't[or]wonderful[stopping]"
 
-The clueless-description of the female dog is "[one of]Your heart catches in your throat as you stand in her glorious presence. Graceful, athletic, and possessed of a noble bearing, she smites you with a glance down her long, fine muzzle[or]Your eyes are drawn to her perfectly rounded shoulders and haunches, her long arcing tail, and her soft, pendulous ears. You avert your gaze so as not to appear overly forward[stopping].[if the female dog carries the delicious bone] In her [one of]sweet[or]angelic[or]sultry[or]alluring[or]toothsome[or]luscious[or]tempting[or]amorous[or]sensual[at random] mouth, she is [one of]daintily[or]elegantly[or]agilely[or]seductively[or]coquettishly[or]flirtaciously[or]provocatively[at random] carrying a bone almost as big as she is." The aware-description of the female dog is "A modified ten-ton bulldozer." The clueless-name of the female dog is "female dog". The aware-name of the female dog is "robotic bulldozer". The female dog-proxy is an aware-proxy that is part of the female dog. Understand "bulldozer" and "robot" and "robotic" as the female dog-proxy.
+The clueless-description of the female dog is "[one of]Your heart catches in your throat as you stand in her glorious presence. Graceful, athletic, and possessed of a noble bearing, she smites you with a glance down her long, fine muzzle[or]Your eyes are drawn to her perfectly rounded shoulders and haunches, her long arcing tail, and her soft, pendulous ears. You avert your gaze so as not to appear overly forward[or]You glance at her slyly while pretending to survey the ground near her feet. The fine columns of her legs rise magnificently from the ground, standing proudly atop her perfectly trimmed paws. The fur on her legs is bristly, and you wonder what it would be like to rub against it. Distractedly, your gaze drifts over her until a blowing clod of dust ricochets off your head, cutting short your revery[or]She remains silent and statuesque, but you sense that she quietly harbors the same feelings for you, but is afraid to admit it to herself. Perhaps she has had some past history, a bad master, an unrequited episode of pupply love, but none of that matters. You catch her eye for just a fraction of a second and teeter on the edge of a bottomless cavern as you are drawn deeper and deeper into the depths of her dark, beckoning eyes. You think you have shared a moment with her. Not wanting to push her too far, too fast, you gather your strength and turn your head virtously away[or]As you once again regard her grandeur, you catch her looking at you. Not directly at you, more at the horizon, but clearly, she was looking you over. Your heart races to know that your initial impression was right, her feelings for you run like an underground stream coursing through a mountain, just below the surface, where they wait to be tapped like a geyser. Her resolve and self-control are astounding[or]A beautiful female dog[stopping].[if the female dog carries the delicious bone] In her [one of]sweet[or]angelic[or]sultry[or]alluring[or]toothsome[or]luscious[or]tempting[or]amorous[or]sensual[at random] mouth, she is [one of]daintily[or]elegantly[or]agilely[or]seductively[or]coquettishly[or]flirtaciously[or]provocatively[at random] carrying a bone[one of] almost as big as she is[or][stopping]." The aware-description of the female dog is "A modified ten-ton bulldozer." The clueless-name of the female dog is "female dog". The aware-name of the female dog is "robotic bulldozer". The female dog-proxy is an aware-proxy that is part of the female dog. Understand "bulldozer" and "robot" and "robotic" as the female dog-proxy.
+
+Instead of entering a person (called the target):
+	say "You are already close enough to [the target]."
 
 Instead of attacking the female dog:
-	say "Hurt her? The object of your desire? The dog of your dreams? She who holds your very heart in her tender paws? Better that you would go without dog chow for a week or be locked for all eternity in a kennel than to bear that thought. No, the way with women is to charm them. A careful word, a shrewd compliment, some clever banter -- that is the way to win her over."
+	say "[one of]Hurt her? The object of your desire? The dog of your dreams? She who holds your very heart in her tender paws? Better that you would go without dog chow for a week or be locked for all eternity in a kennel than to bear that thought. No, the way with women is to charm them. A careful word, a shrewd compliment, some clever banter -- that is the way to win her over[or]You don't know how you could even entertain the idea of harming such a sweet and vulnerable young lady. No, you have a responsibility to her to protect her and shield her from all harm that may come her way. You are no wolf, but a dog, a refined creature of manners and customs that distinguish and elevate you above the more base species. A few kinds words are all that you need to turn her affections in your direction, a far finer victory than could be achieved by paws and teeth[or]To throw yourself at her in that manner would be unthinkably gauche[or]You would rather swallow your own tail[or]You wouldn't dare[stopping]."
 	
-The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe." 
+The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]."
 
 To say delicious bone status:
 	if the player is rover:
-		say "It is the biggest, juiciest bone you’ve ever scene. It smells like marrow";
-		if the delicious bone is carried by the bulldog:
-			say "The bulldog notices your interest in the bone, and the corners of his mouth rise, revealing sharp teeth";
+		say "It is the biggest, juiciest bone you’ve ever seen.";
+		if the delicious bone is carried by the female dog:
+			say "[one of]You envy the bone, which is clamped between the bewitchingly white teeth of the female dog[or]The voluptuous female is all but motionless, but somehow conveys a come hither look, as she holds the bone in her luscious mouth[or]The female dog holds the bone in her jaws, like a dowry[or]The female dog maintains a tight grip on the bone with her impeccably straight, but alarmingly sharp teeth[stopping].";
 	otherwise:
-		say "It the bone the dog dragged in from the park. He's already gnawed on it a bit".
+		say "The bone the dog dragged in from the park. He's already gnawed on it a bit".
 		
 Instead of taking the delicious bone when the player is the acu:
-	say "Rover growls mildly reminding you that it is [italic type]his[if the player is self-aware]space probe[otherwise]bone[end if][roman type]."
+	say "Rover growls mildly reminding you that it is [italic type]his[if the player is self-aware]space probe[otherwise]bone[end if][roman type][if the player is self-aware]. In any event, the data have already been downloaded, so you might as well let him have fun with what's left of the antique hardware[end if]."
 
-The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a strange house. [inconsequential outside detail]"
+The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a dilapidated cottage, that has clearly been neglected. [inconsequential outside detail]". The scent of the Strange Porch is "metallic, like when you lick aluminium foil".
 
-The Strange House is scenery in the strange porch.  The description of the Strange House is "A house just like where you and Janet live, except it doesn't smell like home. [inconsequential outside detail]"
+The shabby cottage is scenery in the strange porch.  The description of the shabby cottage is "The shabby cottage could use more than a coat of paint. The walls are bent at strange angles, and the door is askew. [inconsequential outside detail]". The scent of the shabby cottage is "uninviting: a mixture of garbage and chemical waste smells -- what you might expect to smell in a sewage line minus the good stuff". Understand "house", "shack", and "building" as the shabby cottage.
 
-The Splintered Door is west of the Strange Porch and east of the Studio.  It is an open not openable scenery door. The description of the splintered door is "The door of the smelly man's house does not close all the way." 
+Before entering the shabby cottage:
+	try entering the splintered door;
+	the rule succeeds.
+
+The Splintered Door is west of the Strange Porch and east of the sleeping room.  It is an open not openable scenery door. The description of the splintered door is "A heavy plastrex door hangs loosely in the door frame, tenuously attached by one frail hinge. The door swings wildly in the wind." The scent of the Splintered Door is "like burning plastic". 
 
 The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above."
 
-Chapter The Ginsu
+Instead of smelling the sky:
+	try sniffscanning.
 
-The Ginsu Area [i.e., the Earth ship] is a region.  The Studio and the Galley are rooms in the Ginsu Area.
+Chapter Blazing Sunrise
 
-The description of the Studio is "[if The Studio is not visited]You walk into the building. There is a man here who looks old and grumpy. Like your home, this place has a sleep room and a food room. It looks like you've walked right into the sleep room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move. You don[apostrophe]t feel so afraid of him.[otherwise]The smelly man[apostrophe]s house is boring. The only furniture in the room is a bed. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings] You ignore him."
+The Blazing Sunrise Area [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Blazing Sunrise Area.
 
-In The Studio is a man called the smelly man. He is scenery. The description of the smelly man is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. Boy, does he seem mad, [rantings]!" The clueless-name of the smelly man is "smelly man". The aware-name of the smelly man is "Myomita AI". Understand "flat", "strange" as the smelly man.
+The description of the Sleeping Room is "[one of]You walk into the tumbledown cottage. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him.[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings] You ignore him[stopping]." The scent of the sleeping room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here"
+
+In The sleeping room is a man called the smelly man. Understand "angry" , "irate", "ranting", "flat" and "strange" as the smelly man. He is scenery. The description of the smelly man is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. He just stays up against one wall. Boy, does he seem mad, [rantings]!" The clueless-name of the smelly man is "smelly man". The aware-name of the smelly man is "Myomita AI". The scent of the smelly man is "unbearable at this close range. It is like something out of a nightmare: a combination of mouthwash, carpet cleaner and air fresheners. Entirely sickening."
 
 To say rantings:
- say "[quotation mark][one of]Blah, blah, blah, dog, blah, bad[or]Bad dog! Blah[or]Blah, blah, blah, blah, dog? Blah! Blah, blah[or]Blah, blah, blah, blah, blah, blah[or]Blah, out, blah, blah, dog[at random]![quotation mark]".
+ say "[quotation mark][one of]Blah, blah, blah, dog, blah, bad[or]Bad dog! Blah[or]Blah, blah, blah, blah, dog? Blah! Blah, blah[or]Blah, blah, blah, blah, blah, blah[or]Blah, blah, Myomita, blah, blah, blah, Earth, blah, blah, dog, blah, blah[or]Blah? Blah, blah, blah, blah, dog. Blah, blah, blah, blah, Mars? Blah! Blah, blah, blah, dog, blah[or]Blah, out, blah, blah, dog[at random]![quotation mark]".
 
-The pullout sofa is bed in The Studio. The pillow is a prop on the pullout sofa.
+Instead of touching the smelly man:
+	say "Your paw passes right through him. He must be like one of those videos that Janet watches. [one of]Just to be sure, you sniff your paw. Thankfully, none of his stench has rubbed off on you.[or][stopping]"
+	
+Instead of attacking the smelly man:
+	say "You're not really supposed to attack people unless they are a threat. This smelly old windbag is loud and malodorous, but so are suborbital shuttles, and you leave them alone. So, you let him rant on while you go about your business."
 
-The description of the pullout sofa is "The sofa looks wrong somehow, like maybe it[apostrophe]s broken. It is more or less unfolded and looks even bigger than Janet[apostrophe]s futon." The clueless-name of the pullout sofa is "pullout sofa". The aware-name of the sofa is "casimir drive".
+The pullout sofa is a bed in The Sleeping Room. 
 
-The Galley is north of the Studio.
+The description of the pullout sofa is "The sofa looks wrong somehow, like maybe it[apostrophe]s broken. It is more or less unfolded and looks even bigger than Janet[apostrophe]s futon." The clueless-name of the pullout sofa is "pullout sofa". The aware-name of the sofa is "casimir drive". The scent of the sofa is "musty, like a wet dog. On the whole, not a bad smell at that".  Understand "bed" as the pullout sofa.
 
-The description of the Galley is "[if the Galley is not visited]You enter the eating room.[paragraph break][end if]The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]".
+The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pink pillow". The aware-name of the pillow is "NPT". Understand "pink" and "puffy" as the pillow when the player is clueless. The clueless-description of the pillow is "[if the player is Rover]A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays[otherwise]A fluffy pink pillow bearing the Myomita corporate logo, and a small label[end if]." The aware-description of the pillow is "A nanotronic paratemporospatial transgressor, of a design that was rejected some time ago by MARSpace. Ths transgressor's supraverbation matrix has evidently crystallized, rendering it non-functional. The NPT bears the corporate logo of the Myomita corporation, a modernized version of the Imperial Japanese flag, centered on a the disc of the Milky Way galaxy rather than the rising sun. An RFID tag is embedded in the logo." The scent of the pillow is "slightly feminine, perhaps even perfumed."  The pillow-proxy is an aware-proxy that is part of the pillow. Understand "transgressor", "supraverberation", "matrix", "nanotronic" and "paratemporospatial" as the pillow-proxy. 
 
-A cold box is a refrigerator in the Galley.  The description of the cold box is "A bright orange box, just like the one that Janet keeps food in at home." The aware-name of the cold box is "cryochamber". The clueless-name of the cold box is "cold box".
-[there is no egg in the Ginsu's fridge because it's the same egg as in the Valkyrie. A byte saved is a byte earned.]
+[###TODO fix "smell pillow" while on the sofa; add description handling for items placed on the sofa. ]
 
-The water maker is a sink in the Galley. The description of the water maker is "A thing that people have in their homes.  They can get water out of it to put in your bowl." The clueless-name of the water maker is "kitchen sink". The aware-name of the water maker is "coolant output". 
+The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID tag". The clueless-description of the small label is a "a small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Katana[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL."
 
-The table is an enterable furniture in the Galley. The description of the table is "A big wooden table. Probably used for cooking stuff.[if nothing is on the table] Unfortunately, there is nothing, food or otherwise, on the table at the moment." The aware-name of the table is "reactor core". The clueless-name of the table is "table".
+[###TODO handling of what happens if you pull of the lable. The intention is that this can be a lethal countermeasure for either the Boarding Scene or Back to Mars]
 
-The bulldog water bowl and the bulldog food bowl are fixed in place bowls in the Galley.
+The eating room is north of the sleeping room.
 
-The description of the bulldog food bowl is "[if the bulldog food bowl is not full]Even empty, the[otherwise]The [end if]bulldog's food bowl smells much better than yours." The clueless-name of the bulldog food bowl is "food bowl". The aware-name of the bulldog food bowl is "fuel reservoir".
+The description of the eating room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the eating room is "more interesting than the sleeping room, with hints of kibbles and treats in the air".
 
-The description of the bulldog water bowl is "[if the bulldog water bowl is not full]Even empty, the [otherwise]The [end if]bulldog's water bowl looks much better than yours." The clueless-name of the bulldog water bowl is "water bowl". The aware-name of the bulldog water bowl is "coolant reservoir".
+A cold box is a refrigerator in the eating room.  The description of the cold box is "A bright orange box, similar in shape to the one that Janet keeps food in at home." The aware-name of the cold box is "cryochamber". The clueless-name of the cold box is "cold box". The scent of the cold box is "like refried beans, Peking duck and peppermint patties, or something to that effect".
+[there is no egg in the Blazing Sunrise's fridge because it's the same egg as in the Valkyrie. A byte saved is a byte earned.]
+
+The water maker is a sink in the eating room. The description of the water maker is "A thing that people have in their homes.  They can get water out of it to put in your bowl." The clueless-name of the water maker is "kitchen sink". The aware-name of the water maker is "coolant output". The scent of the water maker is "like rust".
+
+The table is an enterable furniture in the eating room. The description of the table is "A big wooden table. Probably used for cooking stuff.[if nothing is on the table] Unfortunately, there is nothing, food or otherwise, on the table at the moment." The aware-name of the table is "reactor core". The clueless-name of the table is "table". The scent of the table is "like someone made a tuna sandwich here a couple weeks ago. Also, a hint of something like horseradish which makes you sneeze"
+
+The food dish and the water dish are fixed in place bowls in the eating room.
+
+The description of the food dish is "[if the food dish is not full]Even empty, the[otherwise]The [end if]other dog's metal food dish smells much better than yours." The clueless-name of the food dish is "food dish". The aware-name of the food dish is "fuel reservoir". Understand "metal" as the food dish.
+
+The canned food is an edible thing in the food dish. The indefinite article of the canned food is "some". Understand "dog", "meat", "cubes", "brown", and "gravy" as the canned food. The description of the canned food is "A large helping of smelly, brown cubes of meat smothered in gravy. The kind of food that comes from a can, not a bag. The good stuff." The scent of the canned dog food is "rich and meaty, with bacony overtones, and a slightly caramelized gravy. Delectable."
+
+Instead of taking the canned food:
+	say "You consider taking the canned food, and maybe saving it for some special occassion. On second thought, you eat it. Delayed gratification has never been your strong suit. [run paragraph on]";
+	try eating the canned food.
+	
+Before eating the canned food:
+	say "One second the canned food is right there in front of you, the next you are staring at the bottom of the bowl. A warm, satisfied feeling flows from your snout to your tail.";
+	remove the canned food from play;
+	the rule succeeds.
+
+The description of the water dish is "[if the water dish is not full]Even empty, the [otherwise]The [end if]other dog's plastic water dish looks much better than yours." The clueless-name of the water dish is "water dish". The aware-name of the water dish is "coolant reservoir". Understand "plastic" as the water dish.
+
+The crystal clear water is an edible thing in the water dish. The description of the water is "Clean, pure water. You are convinced that it must be much better than any water that has ever graced your own dog bowl." The scent of the crystal clear water is "like a mountain stream".
+
+Instead of taking the crystal clear water:
+	say "Having nothing else to carry the water in, you drink your fill.";
+	try drinking the crystal clear water.
+	
+Before drinking the crystal clear water:
+	say "You gulp down the crystal clear water, all the time bearing in mind that it properly belongs to the enticing young female dog. It tastes all the better for that knowledge.";
+	remove the crystal clear water from play;
+	the rule succeeds.
+	
+[###TODO: fix "smell" 1) so you can smell things in a container that is open and in the same location; 2) so that the description of a location's smell doesn't have to end with "here" -- that turns out to be too limiting.]
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
@@ -3055,7 +3103,7 @@ Chapter Boarding Party
 Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not sleepwalking.
 
 When Boarding Party begins:
-	say "Boarding party hijinx ensue."
+	say "BOARDING PARTY STUB."
 
 Instead of waking up during Boarding Party:
 	now the ACU is alert.
@@ -3067,6 +3115,7 @@ Chapter Back On Mars
 Back on Mars is a scene.  Back on Mars begins when Boarding Party ends. 
 
 When Back on Mars begins:
-	say "The dreadful truth is...oh, wait a minute.[paragraph break]Your proximity alert system wakes you from the nightmare as you emerge from Casimir Drive just planetward of Deimos. MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.[paragraph break]After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your living room through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang."
+	say "The dreadful truth is...oh, wait a minute.[paragraph break]Your proximity alert system wakes you from the nightmare as you emerge from Casimir Drive just planetward of Deimos. MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.[paragraph break]After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your living room through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.";
+	say "BACK ON MARS STUB."
 
 	
