@@ -905,6 +905,8 @@ After printing the banner text:
 	try dreaming;
 	try beeping.
 	
+Section Save the World
+
 To Save the World: [programmatically store inital state of class properties]
 	Repeat with selection running through persons:
 		now the initial-enclosure of the selection is the holder of the selection;
@@ -926,6 +928,8 @@ To Save the World: [programmatically store inital state of class properties]
 		otherwise:
 			now the initial-onoff of the selection is false.
 	
+Section Setup the World
+
 To Setup the World: [explictly set initial conditions]
 [globals]
 	now epoch_pid is the turn count;	
@@ -945,6 +949,9 @@ To Setup the World: [explictly set initial conditions]
 	now the shampoo button is not pressed;
 	now the futon is not obstructed;
 	now the futon is not folded.
+	
+Section Restore the World
+
 
 To Restore The World: [programmatically reset by class]
 [reset all rooms visited]
@@ -955,7 +962,9 @@ To Restore The World: [programmatically reset by class]
 		now selection is not handled;
 [reset containment of persons, props, and anything else not nailed down]
 	Repeat with selection running through persons:
-		move the selection to the initial-enclosure of the selection;
+		if the selection is not the player:
+			move the selection to the initial-enclosure of the selection;
+		move the player to the initial-enclosure of the player, without printing a room description;
 	Repeat with selection running through props:
 		if the selection is not a part of the initial-enclosure of the selection:
 			[otherwise the magpaper ends up *in* the fridge]
@@ -1570,7 +1579,7 @@ Before eating the white egg:
 				say "The fuel has not been ignited; it would be premature to recycle the containment unit.";
 			the rule succeeds;
 		otherwise:[cooked]
-			say "[if the player is clueless]You gobble down what might well have been the best neoegg you've ever had[otherwise]The components are the heavy helium containment unit are reallocated to ship's needs[end if].";
+			say "[if the player is clueless]You gobble down what might well have been the best neoegg you've ever had[otherwise]You recycle the components of the heavy helium containment unit and reallocate them according to the ship's needs[end if].";
 			if the Second Sim is happening:
 				let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?[line break]Janet: Works for me, yeah.[line break]David: How about a plate and fork?[line break]Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";	
 				say "[metatext in metaspeak]";
@@ -3086,14 +3095,15 @@ When Walkies ends:
 
 Chapter Boarding Party
 
+Definition: A person (called character) is human if the character is not an animal and the character is not the ACU.  
+
 Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not sleepwalking.
 
 When Boarding Party begins:
-	[wait for any key;]
+	wait for any key;
 	clear the screen;
-	now the front door is closed;
-	[###TOCONSIDER: the room description is generated when the player is moved as part of the Restore World section. This might not be apparent when Restore World is followed immediately by a clear screen, but I think it occurs. Consider modifying Restore World to avoid moving the player around as one of the persons objectloop, but to do it specifically, using the "without printing a room description" option. This might impact at several points, so it is not yet implemented. It may be necessary to manually <<look>> in some cases if player movement is removed from Restore World.]
 	say "The Casimir Drive cuts out and space folds back around you. Before you can take bearings, two gunships flash past at relativistic velocities, slicing through your propulsion systems. The markings on the ships are those of the Myomita Corporation. To have been in position, they must have been expecting you to emerge precisely where and when you did. Two more Earth ships, assault craft, are on an intercept course and are braking hard to slow their approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
+	say "[paragraph break]BOARDING PARTY STUB.";
 	Restore the World;
 	Setup the World;
 	move the player to the Living Room, without printing a room description;
@@ -3105,7 +3115,9 @@ When Boarding Party begins:
 
 
 Instead of waking up during Boarding Party:
+	say "The dreadful truth is...oh, wait a minute. That really was a nightmare.";
 	now the ACU is alert.
+	
 	
 [Ways to get out of this scene: 1) wake up; 2) be taken out by the Earth Forces and then wake up]
  
@@ -3114,7 +3126,11 @@ Chapter Back On Mars
 Back on Mars is a scene.  Back on Mars begins when Boarding Party ends. 
 
 When Back on Mars begins:
-	say "The dreadful truth is...oh, wait a minute.[paragraph break]Your proximity alert system wakes you from the nightmare as you emerge from Casimir Drive just planetward of Deimos. MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.[paragraph break]After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your living room through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.";
-	say "BACK ON MARS STUB."
+	say "Your proximity alert system wakes you as you emerge from casimir drive just planetward of Deimos. MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.[paragraph break]After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your living room through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.";
+	Restore the World;
+	Setup the World;	
+	move the futon to the living room;
+	move the player to the living room, without printing a room description;
+	say "[paragraph break]BACK ON MARS STUB."
 
 	
