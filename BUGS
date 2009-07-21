@@ -164,8 +164,16 @@ For the ACU, however, I agree, and have modified the movement mechanism. When cl
   >forwards
   You move slightly forwards.
 
-@@@ Resolved custom direction problem -- I think.  When you give one of these custom directions, you'll now get the slightly mimesis-breaking response of:
+ Resolved custom direction problem -- I think.  When you give one of
+ these custom directions, you'll now get the slightly mimesis-breaking
+ response of:
 
-If you want to go somewhere, just say so (like, "go towards the living room")
+If you want to go somewhere, just say so (like, "go towards the living
+room")
 
-I think this is reasonable, since the game itself is framed as taking place within a text adventure interpreter.
+I think this is reasonable, since the game itself is framed as taking
+place within a text adventure interpreter.
+
+
+* bug:  status-line noun shouldn't default to "ACU" all the time -- it
+  should be aware of whether we're playing Janet or Rover.
