@@ -1,0 +1,171 @@
+  *** Things we should fix, mainly discovered via testing. ***
+
+* Wha?  The bits below make no sense.
+
+   >get floss
+   Taken.
+
+   >floss teeth
+   You don't have any floss.
+
+   We need to better disambiguate between 'box of floss' and the floss
+   string itself.
+@@@ Resolved. the floss dispenser is now the plastic box, and a clarification
+message is printed if the player tries to floss his teeth with the
+box.
+
+* "l mirror" should probably be understood as wanting to look *in* the
+  mirror.
+
+  And "look in mirror" does nothing at all.  Only 'x mirror' does what
+  we want.  Instead of looking in mirror, try examining the mirror instead.
+
+@@@ Resolved. look in mirror is a synonym for search mirror, so search mirror  has been redirectd with an instead. Look [something] is now redirected to searching as well. So, look window or look mirror both work now (even  if they're not very grammatical). 
+
+* should "get soap" be understood as pushing the soap dispenser?
+
+@@@ Resolved. Attempts to get/take the soap or shampoo now elicit a message 
+in which the player recalls that the get some soap/shampoo, they need
+to touch the dispenser. This seems reasonable since this should be 
+"routine" knowledge for the player.
+
+* "You can't! Your arm hurts too much. The pain in your left arm is so
+  strong that you can think of little else!"  We should vary this a
+  bit so it doesn't sound like a broken record.
+
+@@@ Resolved. I've added some alternate text. Even so, players will cycle 
+through them relatively quickly. The intent is to suggest that the problem
+has become big enough to displace other thoughts, and that if the problem
+is not dealt with, it becomes a single-track priority.
+
+* If the left arm is hurting, examining it should give a hint.  It
+  should say something like "...and it's currently itching like
+  crazy", rather than just a generic description.
+
+@@@ Resolved.
+
+* flesh out unix commands more.  what should happen if user tries them
+  while clueless?
+
+@@@  ###TODO: implement date, flesh out the manpages, add a reference to flosix commands being available when the ACU becomes aware. Perhaps drop some other hints towards these commands being available.  Flosix commands that have meaning in English are treated normally; those that are uniquely flosix are ignored until the acu becomes aware.
+
+
+* 'go room' shouldn't show 'ACU -> SELECT' but rather
+  'room's-aware-name -> SELECT'
+
+### TODO status line when going towards
+
+* "cook egg" 
+
+### TODO cook egg
+
+*  Wait, our "go room" system simply moves you along a path toward the
+   room, rather than directly into the room?  That's a bit odd.  If
+   we're going to ban compass directions, it means that users have
+   *no* sense of how rooms are arranged relative to each other, so
+   pathfinding is rather confusing.  Why not just go right to room, as
+   long as its in the same region?
+
+@@@ Resolved. This arrangement provoked some deep thinking. Although the player doesn't have any orientation to absolute directions, the player can tell which rooms are connected via the room description. So, the branching pattern is known. Having each movement bring you one step closer to the goal actually evolved from the way that Rover navigates outside. He is following scents which get stronger as he approaches his target. So for him, I think it makes sense that "go female dog", "go home", "go towards the smelly man" would bring him in the right direction.  
+
+For the ACU, however, I agree, and have modified the movement mechanism. When clueless, the ACU would naturally expect to go from room to room without thinking much about it. So, if she's in the bathroom and says "go to the kitchen", there's no mention of the living room which is located between the bathroom and kitchen. Likewise, for the acu when aware, switching between rooms is not a physical action at all, so the acu can just flit between rooms with "go room" or "cd room".
+
+###TOCONSIDER: It would make more sense to model the rooms with inside from/outside from relationships. This would more closely follow the directory level paradigm suggested with the flosix commands. It would also make going out of the shower, or out the front door make more sense.
+
+* "exit shower" fails but just "exit" leaves the shower.
+
+###TODO exit shower
+
+* "pet rover"
+
+###TODO pet rover
+
+* oddness with showering:  taking off the flight suit allows one to
+  shower, but it's still being carried in the inventory!  We should be
+  more strict and force the player to *drop* it on the bathroom floor.
+
+@@@ Resolved, taking off the flight suit drops it where ever you are.
+
+* should 'wait' while sitting on toilet do something?
+
+   -> I think the bigger issue is that we should hint that 'something
+      seems odd' about the room once we're sitting on the toilet.  we
+      need to guide people to examine the toilet, so that they notice
+      the plunger at all.
+
+   -> bigger confusion:  *I* fell into the trap of thinking that I had
+      to make myself poop during the second sim.  I wasted 10 mins on
+      it!  If I don't have the urge to defecate, let's say so.
+      Granted, I had forgotten about the magpaper ordering.  But let's
+      hint that we only need to take care of business after eating.
+
+   -> I don't like our current system of "automatically" sitting on the
+      toilet after eating the egg.  Let the player do that, since they
+      feel an urge anyway, right?  Likewise, let the player know that
+      they're "done" with business after fixing the plunger.6
+
+   -> BUG:  I fixed the plunger perfectly before eating.  After
+      eating, it's all wrong again.  Let's either remember the
+      plunger's state, or not allow me to move the plunger before eating.
+
+###TODO better implementation of taking care of business
+@@@ In writing the "taking care of business" section, I was trying to avoid  giving the impression that the game was written by a 13-year old focused on potty humor. On the other hand, if one is presented with a toilet, it does seem natural... I'll need to come back to this section. I don't want it to come across as puerile or overly graphic.
+
+* "poop" is not recognized
+
+###TODO: poop/shit/defecate .... "Even real adventurers have to go sometime."
+
+* need to understand 'chow' as 'bag of dog chow'
+
+* grammar error?
+
+   >x cover 
+
+   The cover is made of plastic, but has been laminated to
+   give it the appearance of unstained wood. It toilet cover is
+   closed.
+
+* typo in bathroom description?  " you've mounted mirror on the wall."
+
+@@@ Resolved typo.
+
+* "take plunger" needs a real excuse, not a generic response.
+
+@@@ Resolved get plunger.
+
+* uhoh:  this seems to read like there are three sibling objects.  And
+  they're not siblings.
+
+  >x bowl
+  Which do you mean, the dog dish, the water bowl, or the food bowl
+
+###TODO: disambiguate dog bowl objects in kitchen
+
+* buglet in proper noun capitalization: "You take off your blue flight
+  suit and it falls to The Bathroom floor."
+
+@@@ Resolved capitalization error.
+
+* no status-line update when we stand up and toilet flushes??
+
+###TODO: update status after flush
+
+* in The Real Thing, I expected toilet to not flush and be broken.
+  Guess we haven't written that yet?
+
+###TODO: broken toilet puzzle in real thing
+
+* uhoh, is this intended?  I discovered accidentally when being Rover
+  during the Real Thing.  Perhaps the new directions are too general?
+
+  >backwards
+  You move slightly backwards.
+
+  >forwards
+  You move slightly forwards.
+
+@@@ Resolved custom direction problem -- I think.  When you give one of these custom directions, you'll now get the slightly mimesis-breaking response of:
+
+If you want to go somewhere, just say so (like, "go towards the living room")
+
+I think this is reasonable, since the game itself is framed as taking place within a text adventure interpreter.
