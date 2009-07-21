@@ -1,5 +1,5 @@
 "Rover's Day Out" by Jack Welch and Ben Collins-Sussmanfemale dog
-[###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]
+[###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]quantum isolator
 
 The story headline is "An Interactive Fiction".
 The release number is 0.
@@ -800,22 +800,6 @@ Chapter General Insteads
 
 Instead of examining a room:
 	try looking;
-
-Instead of examining something (called the item):
-	if player is self-aware:
-		if the aware-description of the item is not "":	
-			say aware-description of the item;
-			say line break;
-			rule succeeds;
-	continue the action;
-	
-Instead of looking:
-	if player is self-aware:
-		if the aware-description of the location is not "":	
-			say aware-description of the location;
-			say line break;
-			rule succeeds;
-	continue the action;
 	
 Instead of doing something when the player is clueless and the noun is an aware-proxy:
 	say "You can't see any such thing.";
@@ -844,7 +828,7 @@ Chapter Not Ready For Prime Time - Not for release
 
 Section Reorienting
 
-Reorienting is an action applying to nothing. Understand "reorient" as reorienting.
+Reorienting is an action applying to nothing. Understand "reorient" as reorienting. [###TODO: for release, keep the verb, but remove the dictionary entry -- is there some way to give that as a compiler directive?]
 
 Carry out reorienting:
 	if the player is self-aware:
@@ -950,7 +934,6 @@ To Setup the World: [explictly set initial conditions]
 [persons]
 	now the player is the ACU;
 	now the ACU is dry;
-	now the ACU is asleep;
 	now Rover is hungry;
 [ship orientation]
 	reset the yoke;
@@ -1295,7 +1278,7 @@ The walls are a backdrop.  They are in the living room and kitchen.  The walls a
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." 
 
-The clueless-name of the living room is "living room". The clueless-description of the living room is "[living room status]." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave.  On one wall, the Casimir Drive intrudes slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are [if the front door is open]open[otherwise]closed." 
+The clueless-name of the living room is "living room". The clueless-description of the living room is "[living room status]." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave. [if Boarding Party is not happening]On one wall, the casimir drive intrudes slightly into the cargo area[otherwise]Nothing remains of the casimir drive, which was neatly sliced off the ship by Myomita energy weapons[end if]. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are [if the front door is open]open[otherwise]closed[end if]." 
 
 To say living room status:
 	if the drapes are in the living room and the drapes are closed:
@@ -1350,7 +1333,7 @@ The clueless-name of teeth is "teeth". Understand "teeth" or "tooth" as teeth. T
 
 Audio is a device which is part of the ACU. The aware-name of Audio is "Internal Microphones". Audio is switched off.
 
-The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "ACU quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. Some letters are also sewn on the front." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" and "isolator" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed.
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting blue flight suit with a MARSpace insignia. Some letters are also sewn on the front." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" and "isolator" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed.
 
 Before wearing the flight suit when the player is wet:
 	say "[if the player is clueless]Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed)[otherwise]If the enamel is not activated by UV irradiation, it will not harden into a protective coating[end if].";
@@ -2026,7 +2009,7 @@ Carry out flushing:
 	
 Report flushing:
 	if the location of the white egg is nowhere:
-		say "You actuate the retro trigger circuit and fire all thrusters in synchrony. The surface of the planet around the ship vanishes in a cloud of plasma, and the ship slams through the thin, dusty atmosphere towards space.[paragraph break]When you reach orbit, you plot a course towards Mars, extend the Casimir Drive, arm the proximity alert system and enter stand-by mode[paragraph break]The futon is comfortable and you are tired.";
+		say "You actuate the retro trigger circuit and fire all thrusters in synchrony. The surface of the planet around the ship vanishes in a cloud of plasma, and the ship slams through the thin, dusty atmosphere towards space.[paragraph break]When you reach orbit, you plot a course towards Mars, extend the casimir drive, arm the proximity alert system and enter stand-by mode.[paragraph break]The futon is comfortable and you are tired.";
 		now the player is sleepwalking;
 	otherwise:
 		say "You reach behind you, flush the toilet and stand up. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes."
@@ -2238,7 +2221,7 @@ Instead of pushing or touching the shampoo dispenser:
 	
 Instead of pushing or touching the soap button:
 	if the player is wearing the flight suit:
-		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The ACU quantum isolator is interfering with emission of the accelerant[end if].";
+		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The quantum isolator is interfering with emission of the accelerant[end if].";
 		the rule succeeds;
 	otherwise:
 		if the player is clueless:
@@ -2258,7 +2241,7 @@ Instead of pushing or touching the soap button:
 	
 Instead of pushing or touching the shampoo button:
 	if the player is wearing the flight suit:
-		say "[if the player is clueless]You don't want to get shampoo all over the flight suit[otherwise]The monomer ejection system is dampened by the ACU quantum isolator[end if].";
+		say "[if the player is clueless]You don't want to get shampoo all over the flight suit[otherwise]The monomer ejection system is dampened by the quantum isolator[end if].";
 	otherwise:
 		say "[if the player is clueless]You wash your hair. It no longer feels like a straw-encrusted swarm of yellow-headed tommygoffs[otherwise]Monomer solution is spread uniformly over the ship's hull[end if].";
 		if the shampoo button is unpressed:
@@ -3014,6 +2997,7 @@ Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim end
 When Second Sim begins:
 	Restore the World;
 	Setup the World;
+	now the ACU is asleep;
 	clear the screen;
 	now arm-numb is zero;
 	say "[ACU Boot Banner]";
@@ -3032,7 +3016,8 @@ When Second Sim ends:
 	say "[metatext in metaspeak]";
 	[wait for any key;  !!! commented out for testing];
 	Restore the World;
-	Setup the World.
+	Setup the World;
+	now the ACU is asleep.
 	
 Chapter Landing Sequence
 
@@ -3057,11 +3042,12 @@ When the Landing Sequence ends:
 	
 Chapter Real Thing
 	
-Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is sleepwalking. [###TODO figure out the real out point later]
+Real Thing is a scene.  Real Thing begins when the Second Sim ends. Real Thing ends when the ACU is sleepwalking. 
 
 When Real Thing begins:
 	Restore the World;
 	Setup the World;
+	now the ACU is asleep;
 	clear the screen;
 	say "[ACU Boot Banner]";
 	now the dream index is 7;
@@ -3103,12 +3089,25 @@ Chapter Boarding Party
 Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not sleepwalking.
 
 When Boarding Party begins:
-	say "BOARDING PARTY STUB."
+	[wait for any key;]
+	clear the screen;
+	now the front door is closed;
+	[###TOCONSIDER: the room description is generated when the player is moved as part of the Restore World section. This might not be apparent when Restore World is followed immediately by a clear screen, but I think it occurs. Consider modifying Restore World to avoid moving the player around as one of the persons objectloop, but to do it specifically, using the "without printing a room description" option. This might impact at several points, so it is not yet implemented. It may be necessary to manually <<look>> in some cases if player movement is removed from Restore World.]
+	say "The Casimir Drive cuts out and space folds back around you. Before you can take bearings, two gunships flash past at relativistic velocities, slicing through your propulsion systems. The markings on the ships are those of the Myomita Corporation. To have been in position, they must have been expecting you to emerge precisely where and when you did. Two more Earth ships, assault craft, are on an intercept course and are braking hard to slow their approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
+	Restore the World;
+	Setup the World;
+	move the player to the Living Room, without printing a room description;
+	move the futon to Limbo.
+	
+
+
+
+
 
 Instead of waking up during Boarding Party:
 	now the ACU is alert.
 	
-[otherwise, bad stuff happens ... you wish you could just wake up from this nightmare...]
+[Ways to get out of this scene: 1) wake up; 2) be taken out by the Earth Forces and then wake up]
  
 Chapter Back On Mars
 
