@@ -1,4 +1,4 @@
-"Rover's Day Out" by Jack Welch and Ben Collins-Sussmanfemale dog
+"Rover's Day Out" by Jack Welch and Ben Collins-Sussman
 [###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]
 
 The story headline is "An Interactive Fiction".
@@ -2065,7 +2065,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw][if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
 			say "."
 							
 To say magnitude of (degrees - a number):
@@ -2718,8 +2718,8 @@ the flushing action		"THRUST" [flush]
 the smelling action		"CHEMOSENSOR" [smell]
 the sniffscanning action	"SPECTROMETRY" [sniff]
 the beeping action			"PROXIMITY ALERT" [beeping]
-the brushing action		"IONIZE" [brush teeth]
-the flossing action		"VIBRATE" [floss teeth] 
+
+
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 	
@@ -2741,7 +2741,6 @@ brushing
 "sit"		"STANDBY"
 "kiss"		"SHIP INTERFACE"
 "dig"		"MINING SUBSYSTEM" ]
-
 
 Chapter Triggered Events
 
@@ -2881,7 +2880,7 @@ Instead of pushing the large button during bedtime:
 	try snoozing.
 	
 Instead of waking up during bedtime:
-	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral behind it.  Oh well, you can dig it out tonight. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
+	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral behind the futon. Oh well, you can dig it out tonight. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
 	move the alarm clock to Limbo;
 	move the player to the living room.
 	
@@ -3141,7 +3140,7 @@ Every turn when Boarding Party is happening:
 		if the assault ship distance is greater than zero:
 			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
 			say "[quotation mark][paragraph break]";
-			[this last bit of the quotation is not incorporated into the first because it seems to be ignored if that is done. Perhaps it makes too many substitutions or is too complex]
+			[this last bit of the quoted text is not incorporated into the first because it seems to be ignored if that is done. Perhaps it makes too many substitutions or is too complex]
 			if the assault ship distance is one:
 				say "The ship's hull rings as the assault ship impacts the hull.";
 			decrease the assault ship distance by 1.
@@ -3150,13 +3149,15 @@ Every turn when Boarding Party is happening:
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
 	if the assault ship approach is 1:
+		say "[quotation mark]";
 		if the comm status of the ACU is:
 			-- silent:
-				say "A wise choice.";
+				say "Good. For a moment I was wondering if anyone was home";
 			-- surrendered:
-				say "Yes, yes, we've got you down as [quotation mark]surrendered[quotation mark] already.";
+				say "[one of]Roger, your surrendered status[or]Signal Lima Charlie, good copy. We acknowledge your surrender[or]Yes, yes, we've got you down as [apostrophe]surrendered[apostrophe] already[or]Right...we already agreed that you had surrendered[or]Message received. Good copy. You've surrendered. Please stop signaling now[or]I'm beginning to wonder if you signal beacon is stuck. We got the message. Please stop signaling[or]I'm ignoring your signal beacon now[or]You know, you're wasting power. Some little kid on Pluto is freezing his toosh off, and here you are playing Christmas tree with your half megawatt beacon. Give it a rest, please[or]For the love of the CEO, stop it with the signal beacon already[stopping]";
 			-- refused:
-				say "Well, that's more like it, then.";
+				say "[one of]Well, that's more like it, then[or]Ah, glad you reconsidered[or]Well, let's hope you stick to that answer this time[or]OK, you can change your mind all you want, but I'm hitting submit...now. You have officially surrendered[stopping]";
+		say ".[quotation mark][paragraph break]";
 		now the ACU is surrendered;
 		the rule succeeds;
 	otherwise:
@@ -3166,13 +3167,15 @@ Instead of saying yes during Boarding Party:
 		
 Instead of saying no during Boarding Party:
 	if the assault ship approach is 1:
+		say "[quotation mark]";
 		if the comm status of the ACU is:
 			-- silent:
-				say "A poor choice.";
+				say "Hmmm. An unfortunate choice";
 			-- surrendered:
-				say "What? I've already completed the entire form in pen. You'll regret this.";
+				say "[one of]What? I've already completed the entire form in pen. You'll regret this[or]I thought you were so gung-ho to surrender a minute ago? Alright, I can scratch that out[or]Are you messing with me? Fine, don't surrender[or]If I had all day, I'd wait until the next time you surrender and then land, but I'm on a tight schedule today[or]Fine[stopping]";
 			-- refused:
-				say "We heard you the first time.";
+				say "[one of]Got it. No surrender[or]Roger that, negative on surrender. Surrender is a no-go[or]Acknowledge, Valkyrie. You are not surrendering[or]Right, we copied that. All received loud and clear -- you are not, repeat not surrendering. You can stop signaling now[or]Your signal beacon is still sending 'no' -- you can turn it off now[or]Yes, yes, we get it. You don't want to surrender[or]Captain, or whoever is on the signal beacon: please turn it off. We've registered you as not surrendering[or]This is getting old now. Stop signalling[or]I'm looking the other way now and can't see your signal[or]If you keep using that signal beacon, it's going to fall off[stopping]";
+		say ".[quotation mark][paragraph break]";
 		now the ACU is refused;
 		the rule succeeds;
 	otherwise:
@@ -3183,8 +3186,8 @@ Instead of saying no during Boarding Party:
 Table of Approach Chatter
 range		reply to silence	reply to surrender		reply to refusal
 10			"MARSpace Vessel Valkyrie, this is Captain Gruzni commanding the Myomita Salvage Vessel Graceful Wind, you are ordered to cease all operations and prepare to be boarded. Do you consent to salvage operations? Signal yes or no."	""		""
-9			"Valkyrie, from Graceful Wind. Your ship seems to have suffered some...damage.  Your unique drive system will shortly drift towards my associates and be recovered. My scan shows you have no fusion fuel reserve, and I can assure you that our ships can easily keep pace with your class C condensate drive. So, again, I ask: do you consent to salvage operations? Signal yes or no."		"As you have consented to salvage, I should advise you that we will dock shortly and conduct an orderly transfer of your officers and crew to this vessel, where you will be our...guests...until we can return to Luna for processing. Our ship is now closing with Valkyrie, maximum braking. Range: [calculated range]."		"I have to admit, though, that I'd likely say the same thing in your shoes, but I have to warn you that it would go easier for everyone if you'd surrender. It all ends up the same way at the end of the day, but if you surrender I just have to tick one box, whereas if you don't, several long forms are involved. We'll be signing paperwork into the wee hours.[quotation mark][paragraph break][quotation mark]If you'd reconsider, just signal [apostrophe]yes[apostrophe]. You're got another [calculated range] to think it over."
-8			"Is this thing on? Hello? Valkyrie? Is anybody home over there? I can see that your communication array has been fried, but you could at least do me the courtesy of signaling with your running lights. I am a patient man where profit is concerned, but don't try me. One final time: do you consent to salvage operations? Yes or no?  Signal me now."	"After we dock at Luna and transfer your officers and crew, we will need to complete some reports about the incident, and it is likely that Myomita security will have some questions for you. Nothing to strenuous, I hope. Range now [calculated range]."		"I really hope you're not taking this [apostrophe]no surrender[apostrophe] thing to seriously. We're not the military, we're businessmen. Still, I have to warn you: if you start taking pot shots at my mech droid when I send him down, I will call in the troops. They'd be just too happy to pin hole your ship with beam weapons. Of course, that would lower the value of the surviving equipment, so I'm not keen to do that."
+9			"Valkyrie, from Graceful Wind. Your ship seems to have suffered some...damage.  Your unique drive system will shortly drift towards my associates and be recovered. My scan shows you have no fusion fuel reserve, and I can assure you that our ships can easily keep pace with your class C condensate drive. So, again, I ask: do you consent to salvage operations? Signal yes or no."		"As you have consented to salvage, I should advise you that we will dock shortly and conduct an orderly transfer of your officers and crew to this vessel, where you will be our...guests...until we can return to Luna for processing. Our ship is now closing with Valkyrie, maximum braking. Range: [calculated range]."		"I have to admit, though, that I'd likely say the same thing in your shoes. Nonetheless, I have to warn you that it would go easier for everyone if you'd surrender. It all ends up the same way at the end of the day, but if you surrender I just have to tick one box, whereas if you don't, several long forms are involved. We'll be signing paperwork into the wee hours.[quotation mark][paragraph break][quotation mark]If you'd reconsider, just signal [apostrophe]yes[apostrophe]. You're got another [calculated range] to think it over."
+8			"Is this thing on? Hello? Valkyrie? Is anybody home over there? I can see that your communication array has been fried, but you could at least do me the courtesy of signaling with your running lights. I am a patient man where profit is concerned, but don't try me. One final time: do you consent to salvage operations? Yes or no?  Signal me now."	"After we dock at Luna and transfer your officers and crew, we will need to complete some reports about the incident, and it is likely that Myomita security will have some questions for you. Nothing to strenuous, I hope. Range now [calculated range]."		"I really hope you're not taking this [apostrophe]no surrender[apostrophe] thing to seriously. We're not the military, we're businessmen. Still, I have to warn you: if you start taking pot shots at my mech droid when I send him down, I will call in the troops. They'd be just too happy to pincushion your ship with beam weapons. Of course, that would lower the value of the surviving equipment, so I'm not keen to do that."
 7			"Valkyrie, Graceful Wind. I'm tired of this one-sided conversation, Valkyrie. I know you can hear me. You want me to break out the regs? Alright, then: You have filed no flight plan, have no authorized transponder signal, and are in violation of Earth Sovereign Space. Under provisions of the Alpha Treaty of 2387, you are considered a hostile rogue vessel. As an authorized member of the Earth Merchant Marine, I am ordering you to surrender. Signal your surrender yes or no."		"I'm quite interested to get a look at that casimir drive of yours. I wasn't aware that Mars had that kind of technology. Something they must have copied from Earth, no doubt. Still, it's the first I've seen. I'm sure we'll have a lot to talk about when we meet. Our range is now: [calculated range]."		"Regarding the mech droid: I'd recommend you stay out of his way. He's pretty tough, and I can tell you that he doesn't have any of those silly [apostrophe]interdiction rules[apostrophe] enabled. After we seal, I'm going to send him to flight control, engineering and finally ops. Make sure your people are out of those areas."
 6			"Graceful Wind to Valkyrie. You are either a very stupid or a very stubborn captain, but I can assure you that in either case, I shall have your ship as salvage. While I will be shortly blasting through your hull and collecting the various bits and pieces of our ship's machinery, I am offering you and your crew a pleasant ride back to Luna, where I assure you that it would go much easier if you would surrender now, rather than drag this out to its inevitable conclusion."	"I can't get over the size of your ship. I've neer seen something so large rigged for atmospheric flight. After the technicians get through, I'll have to pop over there for a look. We are continuing to deaccelerate and close, range: [calculated range]."		"We're about [calculated range] away, and closing. Still plenty of time to signal that yes, you'd like to surrender to us, and have a nice flight back to Luna."
 5			"Let me speak frankly, Captain. If you surrender, there's less paperwork for both of us. I understand that it might be hard for you to go back to MARSpace after losing such a jewel, but we can talk about job opportunities in Myomita, if you'd like. Now, how about surrendering?"		"After we clamp to the hull, we'll soft seal and send a maintenance droid in to secure the ship. Heck of a lot faster than human crew, and you don't have to worry about them breaking the equipment as they're taking it apart. Just keep your people out of the way and this should go smoothly. Continuing on present bearing, range: [calculated range]."		"After we strip the Valkyrie, we'll transfer your officers and crew. Since you have not surrendered, we will have to consider you [apostrophe]enemies of Earth[apostrophe] and take you into custody for questioning back on Luna. It would be a whole lot more fun ride if you'd just signal [apostrophe]yes[apostrophe] and declare your surrender."
