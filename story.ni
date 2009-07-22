@@ -2065,7 +2065,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
+				say "twisted [magnitude of yaw][if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
 			say "."
 							
 To say magnitude of (degrees - a number):
@@ -2718,8 +2718,8 @@ the flushing action		"THRUST" [flush]
 the smelling action		"CHEMOSENSOR" [smell]
 the sniffscanning action	"SPECTROMETRY" [sniff]
 the beeping action			"PROXIMITY ALERT" [beeping]
-
-
+the brushing action		"IONIZE" [brush teeth]
+the flossing action		"VIBRATE" [floss teeth] 
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 	
@@ -2741,6 +2741,7 @@ brushing
 "sit"		"STANDBY"
 "kiss"		"SHIP INTERFACE"
 "dig"		"MINING SUBSYSTEM" ]
+
 
 Chapter Triggered Events
 
@@ -2880,7 +2881,7 @@ Instead of pushing the large button during bedtime:
 	try snoozing.
 	
 Instead of waking up during bedtime:
-	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral behind the futon. Oh well, you can dig it out tonight. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
+	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral behind it.  Oh well, you can dig it out tonight. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
 	move the alarm clock to Limbo;
 	move the player to the living room.
 	
