@@ -1,5 +1,5 @@
 "Rover's Day Out" by Jack Welch and Ben Collins-Sussmanfemale dog
-[###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]quantum isolator
+[###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]
 
 The story headline is "An Interactive Fiction".
 The release number is 0.
@@ -1283,7 +1283,7 @@ Instead of going towards when the player is the ACU:
 	otherwise:
 		continue the action.
 
-The walls are a backdrop.  They are in the living room and kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy.
+The walls are a backdrop.  They are in the living room and kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. The walls can be damaged. The walls are not damaged.
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." 
 
@@ -1414,7 +1414,7 @@ Instead of going towards when the player is in the living room and the drapes ar
 
 The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-friction floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" and "bay" and "floor" as the cargo bay floor-proxy.
 
-The front door is east of the front yard. It is a door and scenery. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay door are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" and "bay" and "door" as the front door-proxy.
+The front door is east of the front yard. It is a door and scenery. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay door are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" and "bay" and "door" as the front door-proxy. The front door can be damaged. The front door is not damaged.
 
 To say front door status:
 	say "The front door of the cottage is ";
@@ -1444,6 +1444,8 @@ Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  
 The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the space probe] He is chewing a piece of the Musashi-5 space probe[end if]." The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
 
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
+
+The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A framed image of you, Tomasz and Rover in the park. Rover has a small red ball in his mouth. Behind him, Tomasz has a large stain on his pants from where Rover jarred his hand, spilling some red wine that proved to be an excellent textile dye. Every time you see the picture, you remember Rover, remember Tomasz, and remember the times that you had together." The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]." The picture-proxy is an aware-proxy that is part of the picture. Understand "deep", "memory", "data", and "records" as the picture-proxy.
 
 Section Kitchen
 
@@ -1825,7 +1827,7 @@ The bathroom walls are privately-named scenery in the bathroom.  Understand "wal
 
 The clueless-name of the bathroom walls is "bathroom walls". Understand "tan" and "tiles" and "tile" and "hexagon" and "hexagonal" as the bathroom walls. The aware-name of the bathroom walls is "panels". The clueless-description of the bathroom walls is "Tan hexagonal tiles cover the walls." The aware-description of the bathroom walls is "Panels with indicators showing the orientation of the ship in space, heading and speed, and other information useful for piloting and landing the ship." The bathroom walls-proxy is an aware-proxy that is part of the bathroom walls. Understand "panel" and "panels" and "indicator" and "indicators" and "heading" and "speed" and "information" as the bathroom walls-proxy.
  
-The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "[if the mirror is steamed]The mirror is covered with condensation[otherwise]You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination[end if]." The aware-description of the mirror is "[if the mirror is steamed]The inspector buffer is full and requires wiping[otherwise]About this ACU: You are a Burroughs model DT69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark][end if]." The mirror-proxy is an aware-proxy which is part of the mirror. Understand "inspector" as the mirror-proxy. The mirror can be steamed. The mirror is not steamed.
+The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "[if the mirror is steamed]The mirror is covered with condensation[otherwise]You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination[end if]." The aware-description of the mirror is "[if the mirror is steamed]The inspector buffer is full and requires wiping[otherwise]About this ACU: You are a Burroughs model DT69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark][end if]." The mirror-proxy is an aware-proxy which is part of the mirror. Understand "inspector" as the mirror-proxy. The mirror can be steamed. The mirror is not steamed. The mirror can be damaged. The mirror is not damaged.
 
 Instead of rubbing the mirror:
 	if the mirror is steamed:
@@ -2389,7 +2391,7 @@ The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pi
 
 The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID tag". The clueless-description of the small label is a "a small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Katana[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL."
 
-[###TODO handling of what happens if you pull of the lable. The intention is that this can be a lethal countermeasure for either the Boarding Scene or Back to Mars]
+[###TODO handling of what happens if you pull of the label. The intention is that this can be a lethal countermeasure for either the Boarding Scene or Back to Mars]
 
 The eating room is north of the sleeping room.
 
@@ -2439,13 +2441,17 @@ David Venkatachalam is a man. The description of David Venkatachalam is "David i
 
 Janet Xiang is a woman. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
 
-There are some assault ships. They are scenery. The description of the assault ships is "The black hulls of the Lamprey Class assault ships are barely visible against the background of space."
+There is an assault ship. It is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space." 
 
 There are some gunships. They are scenery. The description of the gunships is "A tight cluster of highly maneuverable gunships, each of which mounts a single-powerful excimer laser."
 
+The maintenance droid is an edible prop. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor."
+
+The technicians are persons. The clueless-name of the technicians is "technicians". The aware-name of the technicians is "technicians". The clueless-description of the technicians is "members of the technical staff." The aware-description of the technicians is "A cadre of space technicians. They seem to be well-equipped, and unfortunately competent at their trade."
+
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy.
+The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
@@ -3095,31 +3101,59 @@ When Walkies ends:
 
 Chapter Boarding Party
 
-Definition: A person (called character) is human if the character is not an animal and the character is not the ACU.  
-
 Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not sleepwalking.
 
 When Boarding Party begins:
 	wait for any key;
 	clear the screen;
-	say "The Casimir Drive cuts out and space folds back around you. Before you can take bearings, two gunships flash past at relativistic velocities, slicing through your propulsion systems. The markings on the ships are those of the Myomita Corporation. To have been in position, they must have been expecting you to emerge precisely where and when you did. Two more Earth ships, assault craft, are on an intercept course and are braking hard to slow their approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
-	say "[paragraph break]BOARDING PARTY STUB.";
+	say "The Casimir Drive cuts out and space folds back around you. Before you can take bearings, two gunships flash past at relativistic velocities, slicing through your propulsion systems. The markings on the ships are those of the Myomita Corporation. To have been in position, they must have been expecting you to emerge precisely where and when you did. Another Earth ship, an assault craft, is on an intercept course and is braking hard to slow its approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
 	Restore the World;
 	Setup the World;
 	move the player to the Living Room, without printing a room description;
 	move the futon to Limbo.
 	
+Definition: A person (called character) is human if the character is not an animal and the character is not the ACU.
+
+Instead of doing something to a human:
+	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
+
+Definition: The living room is compromised if the picture is damaged and the walls are damaged and the front door is damaged. [3 items]
+
+Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the toothbrush is in Limbo and the toilet is in Limbo and the plunger is in Limbo and the mirror is damaged. [6 items]
+
+Definition: The kitchen is compromised if the old fridge is in Limbo and the range is in Limbo and the drawer is in Limbo and the frying pan is in Limbo.[3 items]
+
+Definition: The ship is sunk if the living room is compromised and the kitchen is compromised and the bathroom is compromised.
+
+Definition: The ship is boarded if the maintenance droid is in the Valkyrie Area or the technicians are in the Valkyrie Area.
+
+The assault ship distance is a number that varies. The assault ship distance is 10. [range from assault ship to valkyrie]
+
+Assault ship approaches is a number that varies. Assault ship approaches is 0. [how many times the assault ship has approached valkyrie]
 
 
 
-
+Every turn when Boarding Party is happening:
+	if the ship is sunk:
+		end the nightmare;
+		the rule succeeds;
+	if the assault ship distance is greater than zero:
+		if the assault ship distance is one:
+			say "That ship's hull rings as the assault ship impacts the hull.";
+		decrease the assault ship distance by 1.
+	[more stuff here]
+	
+	
+	
+	
+	
+To end the nightmare:
+	say "You have lost control over all areas of the ship: flight control, operations, and engineering. The mission critical data which were your top priority have been leached from your membory banks. Now, power levels fluctuate just above zero, and remaining systems are failing faster than you can compensate. Cascading errors rip through your processors. Another series of explosive charges rock you, and all readouts go dead. As you spiral into unconsciousness, your feel a shameful sense of failure. You can't believe this is happening. It is too much to imagine. What kind of a sick nightmare...";
+	now the ACU is alert.
 
 Instead of waking up during Boarding Party:
 	say "The dreadful truth is...oh, wait a minute. That really was a nightmare.";
 	now the ACU is alert.
-	
-	
-[Ways to get out of this scene: 1) wake up; 2) be taken out by the Earth Forces and then wake up]
  
 Chapter Back On Mars
 
