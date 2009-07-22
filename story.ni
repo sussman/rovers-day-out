@@ -73,7 +73,7 @@ Wakefulness is a kind of value. The wakefulnesses are asleep, sleepwalking, grog
 
 Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
 
-[Continuity is a kind of value. The continuities are intact and broken.]
+Comm status is a kind of value. The comm statuses are surrendered, refused, or silent.
 
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
@@ -1317,7 +1317,7 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU can be surrendered. The ACU is not surrendered. The ACU can be penetrated. The ACU is not penetrated.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent.
 
 To reset the ACU:
 	now the ACU is dry;
@@ -2443,7 +2443,8 @@ David Venkatachalam is a man in Limbo. The description of David Venkatachalam is
 
 Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
 
-There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space." 
+There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space." The assault ship can be clamped on. The assault ship is not clamped on. The assault ship can be harpooned on. The assault ship is not clamped on.
+
 
 There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "A tight cluster of highly maneuverable gunships, each of which mounts a single-powerful excimer laser."
 
@@ -3129,43 +3130,86 @@ Definition: The ship is boarded if the maintenance droid is in the Valkyrie Area
 
 The assault ship distance is a number that varies. The assault ship distance is 10. [range from assault ship to valkyrie]
 
-Assault ship approaches is a number that varies. Assault ship approaches is 0. [how many times the assault ship has approached valkyrie]
-
-
+Assault ship approach is a number that varies. Assault ship approach is 1. [how many times the assault ship has approached valkyrie]
 
 Every turn when Boarding Party is happening:
 	if the ship is sunk:
 		end the nightmare;
 		the rule succeeds;
-	if the assault ship distance is greater than zero:
-		if the ACU is not surrendered:
-			say "[quotation mark][the transmission corresponding to the range of the assault ship distance in Table of Request Surrender][quotation mark][paragraph break]";
-		otherwise:
-			say "[quotation mark][the transmission corresponding to the range of the assault ship distance in the Table of Approach Banter][quotation mark][paragraph break]";
-		if the assault ship distance is one:
-			say "The ship's hull rings as the assault ship impacts the hull.";
-		decrease the assault ship distance by 1.
+	if the assault ship approach is 1:[first attempt to clamp on]
+		if the assault ship distance is greater than zero:
+			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
+			say "[quotation mark][paragraph break]";
+			[this last bit of the quotation is not incorporated into the first because it seems to be ignored if that is done. Perhaps it makes too many substitutions or is too complex]
+			if the assault ship distance is one:
+				say "The ship's hull rings as the assault ship impacts the hull.";
+			decrease the assault ship distance by 1.
 	[more stuff here]
 	
-Table of Request Surrender
-range		transmission
-10			"MARSpace Vessel Valkyrie, this is Captain Gruzni commanding the Myomita Salvage Vessel Graceful Wind, you are ordered to cease all operations and prepare to be boarded. Do you consent to salvage operations? Signal yes or no."
-9			"Valkyrie, from Graceful Wind. Your ship seems to have suffered some...damage.  Your unique drive system will shortly drift towards my associates and be recovered. My scan shows you have no fusion fuel reserve, and I can assure you that our ships can easily keep pace with your class C condensate drive. So, again, I ask: do you consent to salvage operations? Signal yes or no."
-8			"Is this thing on? Hello? Valkyrie? Is anybody home over there? I can see that your communication array has been fried, but you could at least do me the courtesy of signaling with your running lights. I am a patient man where profit is concerned, but don't try me. One final time: do you consent to salvage operations? Yes or no?  Signal me now."
-7			"Valkyrie, Graceful Wind. I'm tired of this one-sided conversation, Valkyrie. I know you can hear me. You want me to break out the regs? Alright, then: You have filed no flight plan, have no authorized transponder signal, and are in violation of Earth Sovereign Space. Under provisions of the Alpha Treaty of 2387, you are considered a hostile rogue vessel. As an authorized member of the Earth Merchant Marine, I am ordering you to surrender. Signal your surrender yes or no."
-6			"Graceful Wind to Valkyrie. You are either a very stupid or a very stubborn captain, but I can assure you that in either case, I shall have your ship as salvage. While I will be shortly blasting through your hull and collecting the various bits and pieces of our ship's machinery, I am offering you and your crew a pleasant ride back to Luna, where I assure you that it would go much easier if you would surrender now, rather than drag this out to its inevitable conclusion."
-5			"Let me speak frankly, Captain. If you surrender, there's less paperwork for both of us. I understand that it might be hard for you to go back to MARSpace after losing such a jewel, but we can talk about job opportunities in Myomita, if you'd like. Now, how about surrendering?"
-4			"Captain, your failure to communicate only strengthens my case that you ship is derelict. If you will not answer, I suggest to your crew that you are conducting yourself according to spacefaring standards, and that you be relieved of duty. I will accept surrender from any acting captain of your vessel. Do you surrender, Valkyrie?"
-3			"Valkyrie, the Graceful Wind will shortly clamp itself to your dorsal hull, cut through to you access conduits and send a robotic technician to begin dismantling your ship. If there is no one on your ship to signal surrender, I have to assume the ship is abandoned and ask him to begin with your life support systems. Be reasonable, now. Signal surrender."
-2			"Starship Valkyrie, this is the First Officer of the Myomita Vessel Graceful Wind, Commander Crothers. The captain has stepped away for a minute to supervise the approach. He's really not in a good mood about this whole surrender thing, but he's trying to stay civil with you about it. The fact is, we've got to fill out a form with the time and date of surrender, initial it, and so on. So how about it? Do you surrender?"
-1			"Give me that. Grozni here. You're out of time Valkyrie, we're practically on your deck plates. Final chance: surrender."
+Instead of saying yes during Boarding Party:
+	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
+	if the assault ship approach is 1:
+		if the comm status of the ACU is:
+			-- silent:
+				say "A wise choice.";
+			-- surrendered:
+				say "Yes, yes, we've got you down as [quotation mark]surrendered[quotation mark] already.";
+			-- refused:
+				say "Well, that's more like it, then.";
+		now the ACU is surrendered;
+		the rule succeeds;
+	otherwise:
+		continue the action.
+		[###TODO as needed, add additional code to handle yes/no responses at appropriate points later in the game; for now, the default response is enabled.]
+		
+Instead of saying no during Boarding Party:
+	if the assault ship approach is 1:
+		if the comm status of the ACU is:
+			-- silent:
+				say "A poor choice.";
+			-- surrendered:
+				say "What? I've already completed the entire form in pen. You'll regret this.";
+			-- refused:
+				say "We heard you the first time.";
+		now the ACU is refused;
+		the rule succeeds;
+	otherwise:
+		continue the action.
+
+	
+Table of Approach Chatter
+range		reply to silence	reply to surrender		reply to refusal
+10			"MARSpace Vessel Valkyrie, this is Captain Gruzni commanding the Myomita Salvage Vessel Graceful Wind, you are ordered to cease all operations and prepare to be boarded. Do you consent to salvage operations? Signal yes or no."	"Good idea.  [calculated range]"		"Bad idea."
+9			"Valkyrie, from Graceful Wind. Your ship seems to have suffered some...damage.  Your unique drive system will shortly drift towards my associates and be recovered. My scan shows you have no fusion fuel reserve, and I can assure you that our ships can easily keep pace with your class C condensate drive. So, again, I ask: do you consent to salvage operations? Signal yes or no."	"Good idea.  [calculated range]"		"Bad idea."
+8			"Is this thing on? Hello? Valkyrie? Is anybody home over there? I can see that your communication array has been fried, but you could at least do me the courtesy of signaling with your running lights. I am a patient man where profit is concerned, but don't try me. One final time: do you consent to salvage operations? Yes or no?  Signal me now."	"Good idea.  [calculated range]"		"Bad idea."
+7			"Valkyrie, Graceful Wind. I'm tired of this one-sided conversation, Valkyrie. I know you can hear me. You want me to break out the regs? Alright, then: You have filed no flight plan, have no authorized transponder signal, and are in violation of Earth Sovereign Space. Under provisions of the Alpha Treaty of 2387, you are considered a hostile rogue vessel. As an authorized member of the Earth Merchant Marine, I am ordering you to surrender. Signal your surrender yes or no."		"Good idea.  [calculated range]"		"Bad idea."
+6			"Graceful Wind to Valkyrie. You are either a very stupid or a very stubborn captain, but I can assure you that in either case, I shall have your ship as salvage. While I will be shortly blasting through your hull and collecting the various bits and pieces of our ship's machinery, I am offering you and your crew a pleasant ride back to Luna, where I assure you that it would go much easier if you would surrender now, rather than drag this out to its inevitable conclusion."	"Good idea.  [calculated range]"		"Bad idea."
+5			"Let me speak frankly, Captain. If you surrender, there's less paperwork for both of us. I understand that it might be hard for you to go back to MARSpace after losing such a jewel, but we can talk about job opportunities in Myomita, if you'd like. Now, how about surrendering?"		"Good idea.  [calculated range]"		"Bad idea."
+4			"Captain, your failure to communicate only strengthens my case that you ship is derelict. If you will not answer, I suggest to your crew that you are conducting yourself according to spacefaring standards, and that you be relieved of duty. I will accept surrender from any acting captain of your vessel. Do you surrender, Valkyrie?"		"Good idea.  [calculated range]"		"Bad idea."
+3			"Valkyrie, the Graceful Wind will shortly clamp itself to your dorsal hull, cut through to you access conduits and send a robotic technician to begin dismantling your ship. If there is no one on your ship to signal surrender, I have to assume the ship is abandoned and ask him to begin with your life support systems. Be reasonable, now. Signal surrender."		"Good idea.  [calculated range]"		"Bad idea."
+2			"Starship Valkyrie, this is the First Officer of the Myomita Vessel Graceful Wind, Commander Crothers. The captain has stepped away for a minute to supervise the approach. He's really not in a good mood about this whole surrender thing, but he's trying to stay civil with you about it. The fact is, we've got to fill out a form with the time and date of surrender, initial it, and so on. So how about it? Do you surrender?"		"Good idea.  [calculated range]"		"Bad idea."
+1			"Give me that. Grozni here. You're out of time Valkyrie, we're practically on your deck plates. Final chance: surrender."		"Good idea.  [calculated range]"		"Bad idea."
 
 	
 Table of Approach Banter
 range		transmission
-10			"Some banter"
+10			"Some banter: [calculated range]"
+9			"Some banter: [calculated range]"
+8			"Some banter: [calculated range]"
+7			"Some banter: [calculated range]"
+6			"Some banter: [calculated range]"
+5			"Some banter: [calculated range]"
+4			"Some banter: [calculated range]"
+3			"Some banter: [calculated range]"
+2			"Some banter: [calculated range]"
+1			"Some banter: [calculated range]"
 
-	
+
+To say calculated range:
+	let range be 1180;
+	repeat with X running from 0 to (10 minus assault ship distance):
+		change range to range divided by 2;
+	say range.
 	
 To end the nightmare:
 	say "You have lost control over all areas of the ship: flight control, operations, and engineering. The mission critical data which were your top priority have been leached from your membory banks. Now, power levels fluctuate just above zero, and remaining systems are failing faster than you can compensate. Cascading errors rip through your processors. Another series of explosive charges rock you, and all readouts go dead. As you spiral into unconsciousness, your feel a shameful sense of failure. You can't believe this is happening. It is too much to imagine. What kind of a sick nightmare...";
