@@ -1317,7 +1317,7 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU can be surrendered. The ACU is not surrendered. The ACU can be penetrated. The ACU is not penetrated.
 
 To reset the ACU:
 	now the ACU is dry;
@@ -1441,7 +1441,7 @@ Instead of opening the front door when the front door is closed:
 		
 Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
 
-The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the space probe] He is chewing a piece of the Musashi-5 space probe[end if]." The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
+The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the delicious bone] He is chewing a piece of the Musashi-5 space probe[end if]." The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
 
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
@@ -2437,21 +2437,23 @@ Before drinking the crystal clear water:
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
 
-David Venkatachalam is a man. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "EXTERNAL".
+Limbo is a room. 
 
-Janet Xiang is a woman. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
+David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "EXTERNAL".
 
-There is an assault ship. It is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space." 
+Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
 
-There are some gunships. They are scenery. The description of the gunships is "A tight cluster of highly maneuverable gunships, each of which mounts a single-powerful excimer laser."
+There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space." 
 
-The maintenance droid is an edible prop. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor."
+There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "A tight cluster of highly maneuverable gunships, each of which mounts a single-powerful excimer laser."
 
-The technicians are persons. The clueless-name of the technicians is "technicians". The aware-name of the technicians is "technicians". The clueless-description of the technicians is "members of the technical staff." The aware-description of the technicians is "A cadre of space technicians. They seem to be well-equipped, and unfortunately competent at their trade."
+The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor."
+
+The technicians are persons in Limbo. The clueless-name of the technicians is "technicians". The aware-name of the technicians is "technicians". The clueless-description of the technicians is "members of the technical staff." The aware-description of the technicians is "A cadre of space technicians. They seem to be well-equipped, and unfortunately competent at their trade."
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
+The window is a transparent scenery closed not openable container in Limbo. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
@@ -2472,8 +2474,6 @@ To debate trees:
 		now the trees are debated;
 		let metatext be "David: Look, you can almost see my cottage over there, behind the Spruce trees.[line break]Janet: The Douglas Firs?[line break]David: No, I mean the Norway Spruce, over there.[line break]Janet: I know which one you mean, and believe me, they are Douglas Firs.[line break]David: I concede. Can we make up now?";
 		say "[metatext in metaspeak]".
-
-Limbo is a room. David Venkatachalam, Janet Xiang, the space probe, the assault ships, the gunships, the window, and the spruce trees are in Limbo.
 
 Chapter Memories
 
@@ -3114,7 +3114,7 @@ When Boarding Party begins:
 	
 Definition: A person (called character) is human if the character is not an animal and the character is not the ACU.
 
-Instead of doing something to a human:
+Instead of the ACU doing something to a human:
 	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
 
 Definition: The living room is compromised if the picture is damaged and the walls are damaged and the front door is damaged. [3 items]
@@ -3138,13 +3138,33 @@ Every turn when Boarding Party is happening:
 		end the nightmare;
 		the rule succeeds;
 	if the assault ship distance is greater than zero:
+		if the ACU is not surrendered:
+			say "[quotation mark][the transmission corresponding to the range of the assault ship distance in Table of Request Surrender][quotation mark][paragraph break]";
+		otherwise:
+			say "[quotation mark][the transmission corresponding to the range of the assault ship distance in the Table of Approach Banter][quotation mark][paragraph break]";
 		if the assault ship distance is one:
-			say "That ship's hull rings as the assault ship impacts the hull.";
+			say "The ship's hull rings as the assault ship impacts the hull.";
 		decrease the assault ship distance by 1.
 	[more stuff here]
 	
+Table of Request Surrender
+range		transmission
+10			"MARSpace Vessel Valkyrie, this is Captain Gruzni commanding the Myomita Salvage Vessel Graceful Wind, you are ordered to cease all operations and prepare to be boarded. Do you consent to salvage operations? Signal yes or no."
+9			"Valkyrie, from Graceful Wind. Your ship seems to have suffered some...damage.  Your unique drive system will shortly drift towards my associates and be recovered. My scan shows you have no fusion fuel reserve, and I can assure you that our ships can easily keep pace with your class C condensate drive. So, again, I ask: do you consent to salvage operations? Signal yes or no."
+8			"Is this thing on? Hello? Valkyrie? Is anybody home over there? I can see that your communication array has been fried, but you could at least do me the courtesy of signaling with your running lights. I am a patient man where profit is concerned, but don't try me. One final time: do you consent to salvage operations? Yes or no?  Signal me now."
+7			"Valkyrie, Graceful Wind. I'm tired of this one-sided conversation, Valkyrie. I know you can hear me. You want me to break out the regs? Alright, then: You have filed no flight plan, have no authorized transponder signal, and are in violation of Earth Sovereign Space. Under provisions of the Alpha Treaty of 2387, you are considered a hostile rogue vessel. As an authorized member of the Earth Merchant Marine, I am ordering you to surrender. Signal your surrender yes or no."
+6			"Graceful Wind to Valkyrie. You are either a very stupid or a very stubborn captain, but I can assure you that in either case, I shall have your ship as salvage. While I will be shortly blasting through your hull and collecting the various bits and pieces of our ship's machinery, I am offering you and your crew a pleasant ride back to Luna, where I assure you that it would go much easier if you would surrender now, rather than drag this out to its inevitable conclusion."
+5			"Let me speak frankly, Captain. If you surrender, there's less paperwork for both of us. I understand that it might be hard for you to go back to MARSpace after losing such a jewel, but we can talk about job opportunities in Myomita, if you'd like. Now, how about surrendering?"
+4			"Captain, your failure to communicate only strengthens my case that you ship is derelict. If you will not answer, I suggest to your crew that you are conducting yourself according to spacefaring standards, and that you be relieved of duty. I will accept surrender from any acting captain of your vessel. Do you surrender, Valkyrie?"
+3			"Valkyrie, the Graceful Wind will shortly clamp itself to your dorsal hull, cut through to you access conduits and send a robotic technician to begin dismantling your ship. If there is no one on your ship to signal surrender, I have to assume the ship is abandoned and ask him to begin with your life support systems. Be reasonable, now. Signal surrender."
+2			"Starship Valkyrie, this is the First Officer of the Myomita Vessel Graceful Wind, Commander Crothers. The captain has stepped away for a minute to supervise the approach. He's really not in a good mood about this whole surrender thing, but he's trying to stay civil with you about it. The fact is, we've got to fill out a form with the time and date of surrender, initial it, and so on. So how about it? Do you surrender?"
+1			"Give me that. Grozni here. You're out of time Valkyrie, we're practically on your deck plates. Final chance: surrender."
+
 	
-	
+Table of Approach Banter
+range		transmission
+10			"Some banter"
+
 	
 	
 To end the nightmare:
