@@ -7,7 +7,8 @@
    The player really *needs* the backstory of politics, the valkyrie's
    mission, and the competition from earth.  Otherwise the whole Real
    Thing section (and especially rover's solution to liftoff) won't
-   make any sense to the player.
+   make any sense to the player.... nor will the solution be something
+   that occurs naturally to the player.
 
    Specifically, these topics *must* be read before Real Thing:
 
@@ -45,11 +46,6 @@
 
 ###TODO pet rover
 
-* oddness with showering:  taking off the flight suit allows one to
-  shower, but it's still being carried in the inventory!  We should be
-  more strict and force the player to *drop* it on the bathroom floor.
-
-@@@ Resolved, taking off the flight suit drops it where ever you are.
 
 * should 'wait' while sitting on toilet do something?
 
@@ -112,25 +108,6 @@ section. I don't want it to come across as puerile or overly graphic.
   Guess we haven't written that yet?
 
 ###TODO: broken toilet puzzle in real thing
-
-* uhoh, is this intended?  I discovered accidentally when being Rover
-  during the Real Thing.  Perhaps the new directions are too general?
-
-  >backwards
-  You move slightly backwards.
-
-  >forwards
-  You move slightly forwards.
-
- Resolved custom direction problem -- I think.  When you give one of
- these custom directions, you'll now get the slightly mimesis-breaking
- response of:
-
-If you want to go somewhere, just say so (like, "go towards the living
-room")
-
-I think this is reasonable, since the game itself is framed as taking
-place within a text adventure interpreter.
 
 
 * bug:  status-line noun shouldn't default to "ACU" all the time -- it
