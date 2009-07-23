@@ -1289,7 +1289,7 @@ Instead of going towards when the player is the ACU:
 	otherwise:
 		continue the action.
 
-The walls are a backdrop.  They are in the living room and kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. The walls can be damaged. The walls are not damaged.
+The walls are a backdrop.  They are in the living room and kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy.
 
 The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." 
 
@@ -1451,7 +1451,7 @@ The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The c
 
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
-The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A framed image of you, Tomasz and Rover in the park. Rover has a small red ball in his mouth. Behind him, Tomasz has a large stain on his pants from where Rover jarred his hand, spilling some red wine that proved to be an excellent textile dye. Every time you see the picture, you remember Rover, remember Tomasz, and remember the times that you had together." The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]." The picture-proxy is an aware-proxy that is part of the picture. Understand "deep", "memory", "data", and "records" as the picture-proxy.
+The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A framed image of you, Tomasz and Rover in the park. Rover has a small red ball in his mouth. Behind him, Tomasz has a large stain on his pants from where Rover jarred his hand, spilling some red wine that proved to be an excellent textile dye. Every time you see the picture, you remember Rover, remember Tomasz, and remember the times that you had together." The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]." The picture-proxy is an aware-proxy that is part of the picture. Understand "deep", "memory", "data", and "records" as the picture-proxy. The picture can be damaged. The picture is not damaged.
 
 Section Kitchen
 
@@ -2463,9 +2463,9 @@ There is an assault ship in Limbo. The assault ship is scenery. The description 
 
 There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "Four highly maneuverable Backstabber-class gunships fly an intricate englobement pattern around Valkyrie. At any time, at least two of the ships maintain a weapon lock on Valkyrie with their main excimer lasers."
 
-The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor."
+The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. 
 
-The technicians are persons in Limbo. The clueless-name of the technicians is "technicians". The aware-name of the technicians is "technicians". The clueless-description of the technicians is "members of the technical staff." The aware-description of the technicians is "A cadre of space technicians. They seem to be well-equipped, and unfortunately competent at their trade."
+The technician is a person in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be spacesuited. The technician is not spacesuited. The technician can be radsuited. The technician is not radsuited.
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
@@ -3140,11 +3140,11 @@ Definition: A person (called character) is human if the character is not an anim
 Instead of the ACU doing something to a human:
 	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
 
-Definition: The living room is compromised if the picture is damaged and the walls are damaged and the front door is damaged. [3 items]
-
 Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the toothbrush is in Limbo and the toilet is in Limbo and the plunger is in Limbo and the mirror is damaged. [6 items]
 
-Definition: The kitchen is compromised if the old fridge is in Limbo and the range is in Limbo and the drawer is in Limbo and the frying pan is in Limbo.[3 items]
+Definition: The kitchen is compromised if the old fridge is in Limbo and the range is in Limbo and the drawer is in Limbo and the frying pan is in Limbo.[4 items]
+
+Definition: The living room is compromised if the picture is damaged and the window is damaged and the front door is damaged. [3 items]
 
 Definition: The ship is sunk if the living room is compromised and the kitchen is compromised and the bathroom is compromised.
 
@@ -3152,12 +3152,34 @@ Definition: The ship is boarded if the maintenance droid is in the Valkyrie Area
 
 The assault ship distance is a number that varies. The assault ship distance is 10. [range from assault ship to valkyrie]
 
-Assault ship approach is a number that varies. Assault ship approach is 1. [how many times the assault ship has approached valkyrie]
+Assault ship approach is a number that varies. Assault ship approach is 1. 	[how many times the assault ship has approached valkyrie]
+
+Robot defeated is a number that varies. Robot defeated is 0.
+  	[the number of times that the mech droid has been defeated by the player]
+
+The underling is an object that varies. The underling is the maintenance droid.
+
+The damage counter is a number that varies. The damage counter is 1.
+	[each round that the assault ship has an underling on board, the counter goes up by one to advance the plot]
 
 Every turn when Boarding Party is happening:
 	if the ship is sunk:
 		end the nightmare;
 		the rule succeeds;
+	if the ship is boarded: [i.e., if agents are active onboard the Valkyrie, regardless of whether the assault ship is on the hull]
+		choose a row with a round of the damage counter in the Table of Underling Tasks; 
+		move the underling to the place entry;
+		if the player is in the place entry:
+			say the narrative entry;
+		if there is a destroyed item entry:
+			move the destroyed item entry to Limbo;
+			if the player is not in the place entry:
+				say "[The destroyed item entry] [is-are] offline";
+		if there is a vandalized item entry:
+			now the vandalized item entry is damaged;			
+			if the player is not in the place entry:
+				say "Diagnostic error: [vandalized item entry]";
+		increase the damage counter by one;
 	if the assault ship approach is 1:[first attempt to clamp on]
 		if the assault ship distance is greater than zero:
 			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
@@ -3185,8 +3207,14 @@ Every turn when Boarding Party is happening:
 			say "With a series of clanks and thuds, the assault ship establishes a seal with Valkyrie's dorsal hull.";
 			now the assault ship is sealed;
 		otherwise if the assault ship is sealed:
-			if the ACU is not penetrated:
-				say "Several bursts of noise and vibration echo through the ship as high speed drills penetrate the inner and outer layers of the dorsal hull. Some muffled, low frequency rumbling follows, probably a cutting machine of some sort. There is a slight drop in air pressure as the assault ship penetrates the hull and establishes a connection Valkyries access tunnel network. Unfortunately, the tunnels are a blind spot for you as you do not possess sensors within the network.";
+			if the ACU is penetrated:			
+				if the ship is not boarded:
+					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone is coming board.";		
+					if robot defeated is greater than 2:
+						now the underling is the technician;
+					move the underling to the place corresponding to the round of damage counter in the Table of Underling Tasks;
+			otherwise: [i.e., if the ACU is not penetrated]
+				say "Several bursts of noise and vibration echo through the ship as high speed drills penetrate the inner and outer layers of the dorsal hull. Some muffled, low frequency rumbling follows, probably a cutting machine of some sort. There is a slight drop in air pressure as the assault ship penetrates the hull and establishes a connection Valkyrie's access tunnel network. Unfortunately, the tunnels are a blind spot for you as you do not possess sensors within the network.";
 				now the ACU is penetrated.
 	
 		
@@ -3227,8 +3255,31 @@ Instead of saying no during Boarding Party:
 	otherwise:
 		say "too late";
 		continue the action.
+		
 
-	
+[narratives are just place holders for now:]
+Table of Underling Tasks
+round		place 		destroyed item		vandalized item		narrative
+1			bathroom		--						--					"The [underling] arrives in flight control section and sets out some tools to begin work."
+2			bathroom		--						mirror				"break mirror"
+3			bathroom		soap dispenser		--					"soap dispenser down"
+4			bathroom		shampoo dispenser	--					"shampoo dispenser down"
+5			bathroom		toothbrush			--					"toothbrush down"
+6			bathroom		toilet					--					"toilet"
+7			bathroom		plunger				--					"plunger down"
+8			bathroom		--						--					"leaving bathroom"
+9			kitchen		--						--					"arriving kitchen"
+10			kitchen		frying pan			--					"frying pan"
+11			kitchen		old fridge			--					"old fridge"
+12			kitchen		range					--					"range"
+13			kitchen		drawer					--					"drawer"
+14			kitchen		--						--					"leaving kitchen"
+15			living room	--						--					"arriving living room"
+16			living room	--						window				"window"
+17			living room	--						front door		"front door"
+18			living room	--						picture			"picture"
+
+[###TODO: add more dream/nightmare/etc. foreshadowing in this text, but lightly]
 Table of Approach Chatter
 range		reply to silence	reply to surrender		reply to refusal
 10			"MARSpace Vessel Valkyrie, this is Captain Gruzni commanding the Myomita Salvage Vessel Graceful Wind, you are ordered to cease all operations and prepare to be boarded. Do you consent to salvage operations? Signal yes or no."	""		""
