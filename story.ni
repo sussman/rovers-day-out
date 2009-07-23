@@ -75,6 +75,8 @@ Insightfulness is a kind of value. The insightfulnesses are self-aware and cluel
 
 Comm status is a kind of value. The comm statuses are surrendered, refused, or silent.
 
+Docking status is a kind of value. The docking statuses are free, contacting, or clamped.
+
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
 Everything has some text called scent. The scent of something is usually "". Every room has some text called scent. The scent of a room is usually "".  
@@ -1317,7 +1319,7 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth.
 
 To reset the ACU:
 	now the ACU is dry;
@@ -1475,10 +1477,16 @@ To reset magpaper:
 	Now the rover_pid is zero.
 
 To say magpaper-clueless:
-	say "Morning:[line break]X. Get up[line break][if enamel_pid is zero]2[otherwise]X[end if]. Shower[line break][if ignite_pid is zero]3[otherwise]X[end if]. Breakfast[line break][if landing_pid is zero]4[otherwise]X[end if]. Take care of business[line break][if the rover_pid is zero]5[otherwise]X[end if]. Let Rover go walkies";
-		
+	say "Morning:[line break]X. Get up[line break][if enamel_pid is zero]2[otherwise]X[end if]. Shower[line break][if ignite_pid is zero]3[otherwise]X[end if]. Breakfast[line break][if landing_pid is zero]4[otherwise]X[end if]. Take care of business[line break][if the rover_pid is zero]5[otherwise]X[end if]. Let Rover go walkies".
+
 To say magpaper-aware:
-	say "[fixed letter spacing]PID     TTY          STATUS    CMD[line break][if IPL_pid is zero]-----[otherwise][right justify IPL_pid minus epoch_pid][end if]   ttys000      [doneness of IPL_pid]Initial Program Load [line break][if enamel_pid is zero]-----[otherwise][right justify enamel_pid minus epoch_pid][end if]	  ttys000      [doneness of enamel_pid]Apply Ablative Enamel [line break][if ignite_pid is zero]-----[otherwise][right justify ignite_pid minus epoch_pid][end if]   ttys000      [doneness of ignite_pid]Ignite Fusion Reactor [line break][if landing_pid is zero]-----[otherwise][right justify landing_pid minus epoch_pid][end if]   ttys000      [doneness of landing_pid]Landing Sequence [line break][if rover_pid is zero]-----[otherwise][right justify rover_pid minus epoch_pid][end if]	  ttys000      [doneness of rover_pid]Send Probe Data[variable letter spacing]".
+	say "[fixed letter spacing]PID     TTY          STATUS    CMD[line break]";
+	say "[if IPL_pid is zero]-----[otherwise][right justify IPL_pid minus epoch_pid][end if]   ttys000      [doneness of IPL_pid]Initial Program Load [line break]";
+	say "[if enamel_pid is zero]-----[otherwise][right justify enamel_pid minus epoch_pid][end if]	  ttys000      [doneness of enamel_pid]Apply Ablative Enamel [line break]";
+	say "[if ignite_pid is zero]-----[otherwise][right justify ignite_pid minus epoch_pid][end if]   ttys000      [doneness of ignite_pid]Ignite Fusion Reactor [line break]";
+	say "[if landing_pid is zero]-----[otherwise][right justify landing_pid minus epoch_pid][end if]   ttys000      [doneness of landing_pid]Landing Sequence [line break]";
+	say "[if rover_pid is zero]-----[otherwise][right justify rover_pid minus epoch_pid][end if]	  ttys000      [doneness of rover_pid]Send Probe Data[variable letter spacing]".
+	[not sure why, but seemingly randomly after many, many, compilations, the compiler asked that the above phrase be broken into subphrases due to complexity. Hmm.]
 	
 To say doneness of (process - a number):
 	if process is zero:
@@ -2231,6 +2239,8 @@ Instead of pushing or touching the shampoo dispenser:
 	try pushing the shampoo button.
 	
 Instead of pushing or touching the soap button:
+	if the black plate is in Limbo:
+		say "The ablative enamel system is not functioning. UV irradiator node 100% failure.";
 	if the player is wearing the flight suit:
 		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The quantum isolator is interfering with emission of the accelerant[end if].";
 		the rule succeeds;
@@ -2251,6 +2261,8 @@ Instead of pushing or touching the soap button:
 			say "[metatext in metaspeak]".
 	
 Instead of pushing or touching the shampoo button:
+	if the black plate is in Limbo:
+		say "The ablative enamel system is not functioning. UV irradiator node 100% failure.";
 	if the player is wearing the flight suit:
 		say "[if the player is clueless]You don't want to get shampoo all over the flight suit[otherwise]The monomer ejection system is dampened by the quantum isolator[end if].";
 	otherwise:
@@ -2443,8 +2455,7 @@ David Venkatachalam is a man in Limbo. The description of David Venkatachalam is
 
 Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
 
-There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space." The assault ship can be clamped on. The assault ship is not clamped on. The assault ship can be harpooned on. The assault ship is not clamped on.
-
+There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.
 
 There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "A tight cluster of highly maneuverable gunships, each of which mounts a single-powerful excimer laser."
 
@@ -3141,10 +3152,25 @@ Every turn when Boarding Party is happening:
 			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
 			say "[quotation mark][paragraph break]";
 			[this last bit of the quoted text is not incorporated into the first because it seems to be ignored if that is done. Perhaps it makes too many substitutions or is too complex]
-			if the assault ship distance is one:
-				say "The ship's hull rings as the assault ship impacts the hull.";
-			decrease the assault ship distance by 1.
-	[more stuff here]
+		if the assault ship distance is 0 and (the ACU is silent or the ACU is refused):
+			now the ACU is an enemy of Earth;
+	otherwise:
+		do nothing;[for approaches after the first -- to be filled in]
+	if the assault ship distance is greater than 0:
+		decrease the assault ship distance by 1;
+	if the assault ship distance is 0:
+		if the assault ship is free:
+			now the assault ship is contacting;
+			say "The ship's hull rings as the assault ship impacts the hull.";
+			if the enamel_pid is not 0:
+				say "There is a strident crunch of metal as the assault ship's boarding port splinters and accordions against the neoadamite ablative coating which you applied to the hull. The midnight black assault ship spins wildly, its attitude thrusters firing in staccato bursts as it recovers and drifts away from the Valkyrie.[paragraph break][quotation mark]I should have anticipated that maneuver given the aerodyanmic cut of your ship. Still, I could hardly believe it, given the size. Yes, this round goes to you, Captain, although I had hoped that we might do this more like gentlepersons.[quotation mark][paragraph break]As the assault ship stabilizes, it fires string after string of plasma flares into the Valkyrie's dorsal hull. Each flare boils the ablative coating off of the surrounding hull. Seconds later, the assault ship's X-ray laser rakes Valkyrie's central enamel irradiator node which shatters explosively, sending spinning debris in all directions.[paragraph break][quotation mark]I need hardly tell you Captain, that without the irradiator, your ablative coating will not longer be an issue. It's a pity that I had to destroy it -- it looked military grade. At least I can still extract the injector and accelerant pump from your extruder. Now then, no more tricks.[quotation mark][paragraph break]The assault ship resumes its course towards Valkyrie, this time presenting a different boarding port.";
+				now the ACU is an enemy of Earth; 
+				now the assault ship is free;
+				now the assault ship distance is 6;
+				now the enamel_pid is 0;
+				increase the assault ship approach by 1;
+				move the black plate to Limbo.
+	
 	
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
