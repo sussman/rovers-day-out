@@ -57,6 +57,10 @@ Shells is a list of text that varies. Depth is a number that varies.
 
 Elevate flag is a truth state that varies. Elevate flag is false.
 
+Pressure is a number that varies. The pressure is 101. [kPa]
+
+FiO2 is a number that varies. The FiO2 is 21.
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -75,7 +79,7 @@ Insightfulness is a kind of value. The insightfulnesses are self-aware and cluel
 
 Comm status is a kind of value. The comm statuses are surrendered, refused, or silent.
 
-Docking status is a kind of value. The docking statuses are free, contacting, or clamped.
+Docking status is a kind of value. The docking statuses are free, contacting, or sealed.
 
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
@@ -735,7 +739,7 @@ Instead of smelling:
 		if the player is clueless:
 			say "You smell nothing [one of]unusual[or]exciting[or]special[or]exotic[or]unexpected[or]remarkable[or]to write home about[or]worth mentioning[or]of note[at random].";
 		otherwise:
-			say "Internal atmospheric analysis: 78% diatomic nitrogen, 21% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure 101.325 kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
+			say "Internal atmospheric analysis: [99 minus FiO2]% diatomic nitrogen, [FiO2]% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure [Pressure] kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
 		the rule succeeds;
 	otherwise:
 		if the noun is the location:
@@ -1319,7 +1323,7 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated.
 
 To reset the ACU:
 	now the ACU is dry;
@@ -2457,7 +2461,7 @@ Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is sho
 
 There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.
 
-There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "A tight cluster of highly maneuverable gunships, each of which mounts a single-powerful excimer laser."
+There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "Four highly maneuverable Backstabber-class gunships fly an intricate englobement pattern around Valkyrie. At any time, at least two of the ships maintain a weapon lock on Valkyrie with their main excimer lasers."
 
 The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor."
 
@@ -2465,7 +2469,7 @@ The technicians are persons in Limbo. The clueless-name of the technicians is "t
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container in Limbo. The window can be on or off. The window is off. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is off]is off[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
+The window is a transparent scenery closed not openable container in Limbo. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights ar just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is damaged]shows only static. Diagnostics indicate that it is malfunctioning.[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
@@ -3122,7 +3126,14 @@ When Boarding Party begins:
 	Restore the World;
 	Setup the World;
 	move the player to the Living Room, without printing a room description;
-	move the futon to Limbo.
+	move the futon to Limbo;
+	now the futon is folded;[to avoid satisfy the "instead of going anywhere while the player is in the living room and the futon isn't folded rule]
+	move the garden skylights to Limbo;[set up the viewer]
+	move the park to Limbo;
+	move the grass to Limbo;
+	move the trees to Limbo;
+	move the assault ship to the window;
+	move the gunships to the window.
 	
 Definition: A person (called character) is human if the character is not an animal and the character is not the ACU.
 
@@ -3155,21 +3166,30 @@ Every turn when Boarding Party is happening:
 		if the assault ship distance is 0 and (the ACU is silent or the ACU is refused):
 			now the ACU is an enemy of Earth;
 	otherwise:
-		do nothing;[for approaches after the first -- to be filled in]
+		do nothing;[for approaches after the first -- to be filled in later?]
 	if the assault ship distance is greater than 0:
 		decrease the assault ship distance by 1;
 	if the assault ship distance is 0:
 		if the assault ship is free:
 			now the assault ship is contacting;
 			say "The ship's hull rings as the assault ship impacts the hull.";
-			if the enamel_pid is not 0:
-				say "There is a strident crunch of metal as the assault ship's boarding port splinters and accordions against the neoadamite ablative coating which you applied to the hull. The midnight black assault ship spins wildly, its attitude thrusters firing in staccato bursts as it recovers and drifts away from the Valkyrie.[paragraph break][quotation mark]I should have anticipated that maneuver given the aerodyanmic cut of your ship. Still, I could hardly believe it, given the size. Yes, this round goes to you, Captain, although I had hoped that we might do this more like gentlepersons.[quotation mark][paragraph break]As the assault ship stabilizes, it fires string after string of plasma flares into the Valkyrie's dorsal hull. Each flare boils the ablative coating off of the surrounding hull. Seconds later, the assault ship's X-ray laser rakes Valkyrie's central enamel irradiator node which shatters explosively, sending spinning debris in all directions.[paragraph break][quotation mark]I need hardly tell you Captain, that without the irradiator, your ablative coating will not longer be an issue. It's a pity that I had to destroy it -- it looked military grade. At least I can still extract the injector and accelerant pump from your extruder. Now then, no more tricks.[quotation mark][paragraph break]The assault ship resumes its course towards Valkyrie, this time presenting a different boarding port.";
+			if the enamel_pid is not 0:[i.e., enamel system has been used during this scene]
+				say "The crunch of permalloy is strident enough to peel the very skin off your teeth -- or so you suppose, making certain inaccurate assumptions about skin and teeth. The assault ship's boarding port splinters and accordions against the neoadamite ablative coating which you applied to the Valkyrie's hull just moments ago. The midnight black assault ship spins wildly, its attitude thrusters firing in staccato bursts as it recovers and drifts away from the Valkyrie.[paragraph break][quotation mark]I should have anticipated that maneuver given the aerodyanmic cut of your ship. Still, I could hardly believe it, given its size. Yes, this round goes to you, Captain, although I had hoped that we might do this more like gentlepersons.[quotation mark][paragraph break]As the assault ship stabilizes, it fires string after string of plasma flares into the Valkyrie's dorsal hull. Each flare boils the ablative coating off the surrounding hull, buring down to bare metal. Seconds later, the assault ship's X-ray laser rakes Valkyrie's master enamel irradiator node which shatters explosively, sending spinning debris in all directions.[paragraph break][quotation mark]I need hardly tell you Captain, that without the irradiator, your ablative coating will no longer be an issue. It's a pity that I had to destroy it -- it looked military grade. At least I can still extract the injector and accelerant pump from your extruder. Now then, no more tricks.[quotation mark][paragraph break]The assault ship resumes its course towards Valkyrie, this time presenting a different boarding port.";
 				now the ACU is an enemy of Earth; 
 				now the assault ship is free;
 				now the assault ship distance is 6;
 				now the enamel_pid is 0;
 				increase the assault ship approach by 1;
-				move the black plate to Limbo.
+				move the black plate to Limbo;
+		otherwise if the assault ship is contacting:
+			say "With a series of clanks and thuds, the assault ship establishes a seal with Valkyrie's dorsal hull.";
+			now the assault ship is sealed;
+		otherwise if the assault ship is sealed:
+			if the ACU is not penetrated:
+				say "Several bursts of noise and vibration echo through the ship as high speed drills penetrate the inner and outer layers of the dorsal hull. Some muffled, low frequency rumbling follows, probably a cutting machine of some sort. There is a slight drop in air pressure as the assault ship penetrates the hull and establishes a connection Valkyries access tunnel network. Unfortunately, the tunnels are a blind spot for you as you do not possess sensors within the network.";
+				now the ACU is penetrated.
+	
+		
 	
 	
 Instead of saying yes during Boarding Party:
@@ -3218,7 +3238,7 @@ range		reply to silence	reply to surrender		reply to refusal
 6			"Graceful Wind to Valkyrie. You are either a very stupid or a very stubborn captain, but I can assure you that in either case, I shall have your ship as salvage. While I will be shortly blasting through your hull and collecting the various bits and pieces of our ship's machinery, I am offering you and your crew a pleasant ride back to Luna, where I assure you that it would go much easier if you would surrender now, rather than drag this out to its inevitable conclusion."	"I can't get over the size of your ship. I've neer seen something so large rigged for atmospheric flight. After the technicians get through, I'll have to pop over there for a look. We are continuing to deaccelerate and close, range: [calculated range]."		"We're about [calculated range] away, and closing. Still plenty of time to signal that yes, you'd like to surrender to us, and have a nice flight back to Luna."
 5			"Let me speak frankly, Captain. If you surrender, there's less paperwork for both of us. I understand that it might be hard for you to go back to MARSpace after losing such a jewel, but we can talk about job opportunities in Myomita, if you'd like. Now, how about surrendering?"		"After we clamp to the hull, we'll soft seal and send a maintenance droid in to secure the ship. Heck of a lot faster than human crew, and you don't have to worry about them breaking the equipment as they're taking it apart. Just keep your people out of the way and this should go smoothly. Continuing on present bearing, range: [calculated range]."		"After we strip the Valkyrie, we'll transfer your officers and crew. Since you have not surrendered, we will have to consider you [apostrophe]enemies of Earth[apostrophe] and take you into custody for questioning back on Luna. It would be a whole lot more fun ride if you'd just signal [apostrophe]yes[apostrophe] and declare your surrender."
 4			"Captain, your failure to communicate only strengthens my case that you ship is derelict. If you will not answer, I suggest to your crew that you are conducting yourself according to spacefaring standards, and that you be relieved of duty. I will accept surrender from any acting captain of your vessel. Do you surrender, Valkyrie?"		"You ship is bigger than most, but you should see how fast our maintenance droid works. I've seen him strip colony ship to nuts and bolts in less than an hour. Gah, you gotta love technology."		"I haven't hauled in an [apostrophe]enemy vessel[apostrophe] since the end of the Martian Revolt. Or, I suppose you'd call that the Independence War. A fat lot of good that did you."
-3			"Valkyrie, the Graceful Wind will shortly clamp itself to your dorsal hull, cut through to you access conduits and send a robotic technician to begin dismantling your ship. If there is no one on your ship to signal surrender, I have to assume the ship is abandoned and ask him to begin with your life support systems. Be reasonable, now. Signal surrender."		"OK, getting closer now. I don't know how you Martians can stand living in a ship with no port holes. Oh sure, I know there are sensors and monitors, but I can't imagine been cooped up in a can without a chance to peek out a real port hole from time to time. You'd think it would be bad for morale. Anyhow, range: [calculated range]"		"We're getting pretty close now, we're just [calculated range] off your dorsal hull. Still time to send me a 'yes' and surrender. I have to file my report as soon as we contact your hull."
+3			"Valkyrie, the Graceful Wind will shortly clamp itself to your dorsal hull, cut through to you access conduits and send a robotic technician to begin dismantling your ship. If there is no one on your ship to signal surrender, I have to assume the ship is abandoned and order the robot to begin with your life support systems. Be reasonable, now. Signal surrender."		"OK, getting closer now. I don't know how you Martians can stand living in a ship with no port holes. Oh sure, I know there are sensors and monitors, but I can't imagine been cooped up in a can without a chance to peek out a real port hole from time to time. You'd think it would be bad for morale. Anyhow, range: [calculated range]"		"We're getting pretty close now, we're just [calculated range] off your dorsal hull. Still time to send me a 'yes' and surrender. I have to file my report as soon as we contact your hull."
 2			"Starship Valkyrie, this is the First Officer of the Myomita Vessel Graceful Wind, Commander Crothers. The captain has stepped away for a minute to supervise the approach. He's really not in a good mood about this whole surrender thing, but he's trying to stay civil with you about it. The fact is, we've got to fill out a form with the time and date of surrender, initial it, and so on. So how about it? Do you surrender?"		"Don't worry about life support, our seal shouldn't cause much of a pressure drop, and we'll inject some oh-two to compensate. The mech droid should go to flight control first, then engineering and finally ops.  After it finishes up in ops, we'll start the crew transfer. Approach is slowing, range now: [calculated range]."		"It always happens like this. day 29 out of a 30 day rotation, and a gah-bedanked kilometer long casimir ship winks out right where they said it would. Do I need this aggrevation? Not hardly. This is your last chance to surrender, Valkyrie. Signal [apostrophe]yes[apostrophe] is that is your intention."
 1			"Give me that. Grozni here. You're out of time Valkyrie, we're practically on your deck plates. Final chance: surrender."		"We are right on top of you now, with shock attenuators extended. Brace for impact."		"Ah, one more thing. I'm supposed to read this before we hit: ...attention enemy vessel. You are in violation of Earth space. Stand by for boarding by authorized agents of the Earth government. Offer no resistance, and follow all orders precisely."
 
