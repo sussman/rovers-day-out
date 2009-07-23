@@ -2453,13 +2453,13 @@ Before drinking the crystal clear water:
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
 
-Limbo is a room. 
+Limbo is a room.[and a dance]
 
 David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "EXTERNAL".
 
 Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
 
-There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.
+There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.  The assault ship can be using harpoons. The assault ship is not using harpoons.
 
 There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "Four highly maneuverable Backstabber-class gunships fly an intricate englobement pattern around Valkyrie. At any time, at least two of the ships maintain a weapon lock on Valkyrie with their main excimer lasers."
 
@@ -3140,7 +3140,7 @@ Definition: A person (called character) is human if the character is not an anim
 Instead of the ACU doing something to a human:
 	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
 
-Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the toothbrush is in Limbo and the toilet is in Limbo and the plunger is in Limbo and the mirror is damaged. [6 items]
+Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the toothbrush is in Limbo and the toilet is in Limbo and the mirror is damaged. [5 items]
 
 Definition: The kitchen is compromised if the old fridge is in Limbo and the range is in Limbo and the drawer is in Limbo and the frying pan is in Limbo.[4 items]
 
@@ -3216,10 +3216,32 @@ Every turn when Boarding Party is happening:
 			otherwise: [i.e., if the ACU is not penetrated]
 				say "Several bursts of noise and vibration echo through the ship as high speed drills penetrate the inner and outer layers of the dorsal hull. Some muffled, low frequency rumbling follows, probably a cutting machine of some sort. There is a slight drop in air pressure as the assault ship penetrates the hull and establishes a connection Valkyrie's access tunnel network. Unfortunately, the tunnels are a blind spot for you as you do not possess sensors within the network.";
 				now the ACU is penetrated.
+				
+Does the player mean rubbing back:
+	it is likely.
+
+Instead of rubbing back during Boarding Party:
+	say "You neutralize the static charge on the dorsal hull plates.[paragraph break]";
+	if the assault ship is not using harpoons and the assault ship is not free:
+		say "It's deck clamps no longer secured by electrostatic attraction, the assault ship springs free of the Valkyrie, with shock attenuators extending like rifle shots, and the flexible boarding tunnel flailing wildly.[paragraph break]The assault ship comes to a relative stop some distance from Valkyrie, and reels in the docking port. A familiar voice crackes through the comm system: [quotation mark]Valkyrie, from Myomita Assault Vessel. That was dirty pool in my book, but I have to say it was clever. Not enough to put us off our job, though. Let's see you wiggle out of this one...[quotation mark][paragraph break]The assault ship fires a ring of burrowing harpoons into the deck, where they embed deeply in the permalloy. Slowly, the assault ship winches itself back into position.[paragraph break]";
+		now the assault ship is free;
+		increase the assault ship approach by one;
+		now the ACU is an enemy of Earth;
+		now the assault ship distance is 3.
 	
+After yoking the plunger more during Boarding Party:
+	say "The reaction control system thrusters mounted on the nosecone fire a brief impulse, spinning the Valkyrie.[paragraph break]";
+	if the assault ship is free:
+		say "[quotation mark]Valkyrie from Myomita Assault Vessel: Be advised that altering course is considered a provocative action.";
+	otherwise: [assault ship was making contact or establishing a seal]
+		say "The assault ship, which [if the assault ship is contacting]was just establishing a soft seal on[otherwise]had been attached by a semirigid docking port to[end if] Valkyrie's dorsal hull, is caught in the maneuver and spins like a top away from Valkyrie. [if the assault ship is sealed]Jagged-edged pieces of debris from the assault vessel's twisted docking port flash in the sunlight. [end if]A moment passes before the assault ship cancels its tumble and again begins an approach.[paragraph break]A queasy sounding voice comes over the comm system, [quotation mark]Myomita Assault Vessel to Valkyrie. That was... unpleasant. We will not tolerate maneuvering while this operation is in progress. ";
+		now the assault ship is free;
+		increase the assault ship approach by one;
+		now the ACU is an enemy of Earth;
+		now the assault ship distance is 4;
+	say "We are targeting your maneuvering thrusters, now.[quotation mark][paragraph break]A diffuse but powerful X-ray beam melts the ship's nosecone, and the RCS datastream is suddenly silenced.[paragraph break][quotation mark]That should help keep you in one place.[quotation mark][paragraph break]";
+	move the plunger to Limbo.
 		
-	
-	
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
 	if the assault ship approach is 1:
@@ -3266,18 +3288,17 @@ round		place 		destroyed item		vandalized item		narrative
 4			bathroom		shampoo dispenser	--					"shampoo dispenser down"
 5			bathroom		toothbrush			--					"toothbrush down"
 6			bathroom		toilet					--					"toilet"
-7			bathroom		plunger				--					"plunger down"
-8			bathroom		--						--					"leaving bathroom"
-9			kitchen		--						--					"arriving kitchen"
-10			kitchen		frying pan			--					"frying pan"
-11			kitchen		old fridge			--					"old fridge"
-12			kitchen		range					--					"range"
-13			kitchen		drawer					--					"drawer"
-14			kitchen		--						--					"leaving kitchen"
-15			living room	--						--					"arriving living room"
-16			living room	--						window				"window"
-17			living room	--						front door		"front door"
-18			living room	--						picture			"picture"
+7			bathroom		--						--					"leaving bathroom"
+8			kitchen		--						--					"arriving kitchen"
+9			kitchen		frying pan			--					"frying pan"
+10			kitchen		old fridge			--					"old fridge"
+11			kitchen		range					--					"range"
+12			kitchen		drawer					--					"drawer"
+13			kitchen		--						--					"leaving kitchen"
+14			living room	--						--					"arriving living room"
+15			living room	--						window				"window"
+16			living room	--						front door		"front door"
+17			living room	--						picture			"picture"
 
 [###TODO: add more dream/nightmare/etc. foreshadowing in this text, but lightly]
 Table of Approach Chatter
