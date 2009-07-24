@@ -61,6 +61,8 @@ Pressure is a number that varies. The pressure is 101. [kPa]
 
 FiO2 is a number that varies. The FiO2 is 21.
 
+A person can be failsafed. Persons are usually not failsafed.
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -2455,17 +2457,17 @@ Chapter Offstage
 
 Limbo is a room.[and a dance]
 
-David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "EXTERNAL".
+David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a blue MARSpace flightsuit. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "EXTERNAL". David Venkatachalam is failsafed.
 
-Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". 
+Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "EXTERNAL". Janet Xiang is failsafed.
 
 There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.  The assault ship can be using harpoons. The assault ship is not using harpoons.
 
 There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "Four highly maneuverable Backstabber-class gunships fly an intricate englobement pattern around Valkyrie. At any time, at least two of the ships maintain a weapon lock on Valkyrie with their main excimer lasers."
 
-The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. The maintenance droid can be shielded. The maintenance droid is not shielded.
+The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. The maintenance droid can be shielded. The maintenance droid is not shielded. Understand "robot" and "repairbot" as the maintenance droid. The maintenance droid can be either innocent or jaded. The maintenance droid is innocent.
 
-The technician is a person in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be spacesuited. The technician is not spacesuited. The technician can be radsuited. The technician is not radsuited.
+The technician is a man in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be spacesuited. The technician is not spacesuited. The technician can be radsuited. The technician is not radsuited. The technician is failsafed.
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
@@ -3136,10 +3138,8 @@ When Boarding Party begins:
 	move the trees to Limbo;
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
-	
-Definition: A person (called character) is a human if the character is not an animal and the character is not the ACU.
 
-Before the ACU doing something to a human:
+Before the player doing anything to failsafed person:
 	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
 
 Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the plastic box is in Limbo and the toilet is in Limbo and the mirror is damaged. [5 items]
@@ -3293,7 +3293,7 @@ Instead of inserting the maintenance droid into the old fridge:
 	if the old fridge is damaged:
 		say "The wiley droid dives into the broken cryochamber to avoid your grasp, and then clambers out again.";
 	otherwise:
-		say "You shove shaking droid into the cryochamber, slam the door shut, and run the unit at maximum. You hear a brief whine from the droid's power unit, followed by a muffled explosion as his microreactor goes critical trying to maintain thermal equilibrium. Unfortunately, the explosion seems to have damaged the cryochamber, which warms rapidly to the ambient temperature. You open the chamber and recycle what you can of the mess inside.";
+		say "You shove the shaking droid into the cryochamber, bang the door shut, and run the unit at maximum. You hear a brief whine from the droid's power unit, followed by a muffled explosion as his microreactor goes critical trying to maintain thermal equilibrium. Unfortunately, the explosion seems to have damaged the cryochamber, which warms rapidly towards the ambient temperature in the engineering section. You open the chamber and recycle what you can of the mess inside.";
 	increase henchmen defeated by one;
 	now the old fridge is damaged;
 	move the maintenance droid to Limbo.
@@ -3305,15 +3305,25 @@ Instead of inserting the maintenance droid into the water tank:
 		if the maintenance droid is carried by the player:
 			say "You [if the water tank is closed]retract the plasma constrictor access hatch, and [end if]deposit the ";
 			if the droid is shielded:
-				say "droid into the fiery, pulsating chamber, where he smiles knowingly and says, [quotation mark]Based on my cousin's experience, I requested an upgrade before coming over here: thick thermal insulation, and a Werutsky-MacArthur magnetic field suppressor. Money well spent, I'd say.[quotation mark]. The robot hops out of the plasma constrictor chamber, leaving the plasma swirling in magnetic eddies behind him.[paragraph break]";
+				say "droid into the fiery, pulsating chamber, where he smiles knowingly and says, [quotation mark]Based on my cousin's experience, I requested an upgrade before coming over here: a super-chilled vest, and a Werutsky-MacArthur magnetic field suppressor. Money well spent, I'd say.[quotation mark]. The robot hops out of the plasma constrictor chamber, leaving the plasma swirling in magnetic eddies behind him.[paragraph break]";
 				now the water tank is open;
 				move the maintenance droid to the place corresponding to the round of the damage counter in the Table of Underling Tasks;
 			otherwise:
-				say "hapless robot into the center of the chamber, where he is ripped to shreds by the circulating magnetic flux and incinerated immediately in the plasma stream. You momentarily experience a bout of indigestion as the plasma stream boils away the impurities, and then with great satisfaction, you slam shut the access hatch.";
+				say "hapless robot into the center of the chamber, where he is ripped to shreds by the magnetic vortex and incinerated immediately in the plasma stream. You momentarily experience a bout of indigestion as the plasma stream purges the impurities, and then with great satisfaction, you slam shut the access hatch.";
 				now the water tank is closed;
 				increase the henchmen defeated by one;
 				now the maintenance droid is shielded;
-				move the underling to Limbo.
+				move the maintenance droid to Limbo.
+				
+After taking off the flight suit in the presence of the maintenance droid:
+	if the maintenance droid is innocent:
+		say "The maintenance droid glances away from his work for a moment, and the does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core and its surrounding froth of quantum foam.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you modestly pull up the quantum isolation shield.";
+		increase the henchmen defeated by one;
+		now the maintenance droid is jaded;
+		now the ACU wears the flight suit;
+		move the maintenance droid to Limbo;
+	otherwise: [if the droid is already jaded:]
+		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
 	
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
@@ -3357,20 +3367,22 @@ Table of Underling Tasks
 round		place 		destroyed item		vandalized item		narrative
 1			bathroom		--						--					"The [underling] arrives in flight control section and sets out some tools to begin work."
 2			bathroom		--						mirror				"break mirror"
-3			bathroom		soap dispenser		--					"soap dispenser down"
-4			bathroom		shampoo dispenser	--					"shampoo dispenser down"
-5			bathroom		plastic box			--					"floss box down"
-6			bathroom		toilet					--					"toilet"
-7			bathroom		--						--					"leaving bathroom"
-8			kitchen		--						--					"arriving kitchen"
-9			kitchen		frying pan			--					"frying pan"
-10			kitchen		old fridge			--					"old fridge"
-11			kitchen		range					--					"range"
-12			kitchen		drawer					--					"drawer"
-13			kitchen		--						--					"leaving kitchen"
-14			living room	--						--					"arriving living room"
-15			living room	--						front door		"front door"
-16			living room	--						picture			"picture"
+3			bathroom		plastic box			--					"flossbox"
+4			bathroom		toilet					--					"toilet"
+5			bathroom		--						--					"bathroom leaving"
+6			shower			--						--					"shower arriving"
+7			shower			soap dispenser		--					"soap"
+8			shower			shampoo dispenser	--					"shampoo"
+9			shower			--						--					"shower leaving"
+10			kitchen		--						--					"arriving kitchen"
+11			kitchen		frying pan			--					"frying pan"
+12			kitchen		old fridge			--					"old fridge"
+13			kitchen		range					--					"range"
+14			kitchen		drawer					--					"drawer"
+15			kitchen		--						--					"leaving kitchen"
+16			living room	--						--					"arriving living room"
+17			living room	--						front door		"front door"
+18			living room	--						picture			"picture"
 
 [###TODO: add more dream/nightmare/etc. foreshadowing in this text, but lightly]
 Table of Approach Chatter
