@@ -2463,7 +2463,7 @@ There is an assault ship in Limbo. The assault ship is scenery. The description 
 
 There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "Four highly maneuverable Backstabber-class gunships fly an intricate englobement pattern around Valkyrie. At any time, at least two of the ships maintain a weapon lock on Valkyrie with their main excimer lasers."
 
-The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. 
+The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. The maintenance droid can be shielded. The maintenance droid is not shielded.
 
 The technician is a person in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be spacesuited. The technician is not spacesuited. The technician can be radsuited. The technician is not radsuited.
 
@@ -3137,9 +3137,9 @@ When Boarding Party begins:
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 	
-Definition: A person (called character) is human if the character is not an animal and the character is not the ACU.
+Definition: A person (called character) is a human if the character is not an animal and the character is not the ACU.
 
-Instead of the ACU doing something to a human:
+Before the ACU doing something to a human:
 	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
 
 Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the plastic box is in Limbo and the toilet is in Limbo and the mirror is damaged. [5 items]
@@ -3183,7 +3183,7 @@ Every turn when Boarding Party is happening:
 		otherwise:[no issues with a held maintenance droid]
 			move the underling to the place entry;
 			if the player is in the place entry:
-				say the narrative entry;
+				say "[the narrative entry][paragraph break]";
 			if there is a destroyed item entry:
 				move the destroyed item entry to Limbo;
 				if the player is not in the place entry:
@@ -3289,15 +3289,32 @@ After eating the maintenance droid:
 	increase henchmen defeated by one;
 	now the maintenance droid is toxic.
 	
-Instead of inserting the underling into the old fridge:
+Instead of inserting the maintenance droid into the old fridge:
 	if the old fridge is damaged:
-		say "[The underling] dives into the broken cryochamber to avoid your grasp, and then clambers out again.";
+		say "The wiley droid dives into the broken cryochamber to avoid your grasp, and then clambers out again.";
 	otherwise:
-		say "You shove [the underling] into the cryochamber, slam the door shut, and run the unit at maximum. [if the underling is the maintenance droid]You hear a brief whine from the droid's power unit, followed by a muffled explosion as his microreactor goes critical trying to maintain thermal equilibrium[otherwise]The technician pounds the inside of the chamber a few times before the cold gets to him. There is a shattering sound as he hits the floor of the chamber, followed by a muffled explosion as some piece of his equipment reacts poorly to the ultralow temperature[end if]. Unfortunately, the explosion seems to have damaged the cryochamber, which warms rapidly to the ambient temperature. You open the chamber and recycle what you can of the mess inside.";
+		say "You shove shaking droid into the cryochamber, slam the door shut, and run the unit at maximum. You hear a brief whine from the droid's power unit, followed by a muffled explosion as his microreactor goes critical trying to maintain thermal equilibrium. Unfortunately, the explosion seems to have damaged the cryochamber, which warms rapidly to the ambient temperature. You open the chamber and recycle what you can of the mess inside.";
 	increase henchmen defeated by one;
 	now the old fridge is damaged;
-	move the underling to Limbo.
-									
+	move the maintenance droid to Limbo.
+	
+Instead of inserting the maintenance droid into the water tank:
+	if the maintenance droid is not carried by the player:
+		say "(first attempting to grapple the droid) [command clarification break]";
+		try silently taking the maintenance droid;
+		if the maintenance droid is carried by the player:
+			say "You [if the water tank is closed]retract the plasma constrictor access hatch, and [end if]deposit the ";
+			if the droid is shielded:
+				say "droid into the fiery, pulsating chamber, where he smiles knowingly and says, [quotation mark]Based on my cousin's experience, I requested an upgrade before coming over here: thick thermal insulation, and a Werutsky-MacArthur magnetic field suppressor. Money well spent, I'd say.[quotation mark]. The robot hops out of the plasma constrictor chamber, leaving the plasma swirling in magnetic eddies behind him.[paragraph break]";
+				now the water tank is open;
+				move the maintenance droid to the place corresponding to the round of the damage counter in the Table of Underling Tasks;
+			otherwise:
+				say "hapless robot into the center of the chamber, where he is ripped to shreds by the circulating magnetic flux and incinerated immediately in the plasma stream. You momentarily experience a bout of indigestion as the plasma stream boils away the impurities, and then with great satisfaction, you slam shut the access hatch.";
+				now the water tank is closed;
+				increase the henchmen defeated by one;
+				now the maintenance droid is shielded;
+				move the underling to Limbo.
+	
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
 	if the assault ship approach is 1:
