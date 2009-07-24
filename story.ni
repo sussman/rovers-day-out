@@ -1463,7 +1463,7 @@ After going towards the kitchen:
 		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
 		say "[metatext in metaspeak]".
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy.
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged.
 
 Instead of searching a refrigerator (called R):
 	if the player is clueless:
@@ -2733,6 +2733,8 @@ the flushing action		"THRUST" [flush]
 the smelling action		"CHEMOSENSOR" [smell]
 the sniffscanning action	"SPECTROMETRY" [sniff]
 the beeping action			"PROXIMITY ALERT" [beeping]
+the saying yes action		"AFFIRMATIVE" [yes]
+the saying no action		"NEGATIVE" [no]
 
 
 
@@ -3161,25 +3163,36 @@ The underling is an object that varies. The underling is the maintenance droid.
 
 The damage counter is a number that varies. The damage counter is 1.
 	[each round that the assault ship has an underling on board, the counter goes up by one to advance the plot]
-
+		
 Every turn when Boarding Party is happening:
 	if the ship is sunk:
 		end the nightmare;
 		the rule succeeds;
 	if the ship is boarded: [i.e., if agents are active onboard the Valkyrie, regardless of whether the assault ship is on the hull]
 		choose a row with a round of the damage counter in the Table of Underling Tasks; 
-		move the underling to the place entry;
-		if the player is in the place entry:
-			say the narrative entry;
-		if there is a destroyed item entry:
-			move the destroyed item entry to Limbo;
-			if the player is not in the place entry:
-				say "[The destroyed item entry] [is-are] offline";
-		if there is a vandalized item entry:
-			now the vandalized item entry is damaged;			
-			if the player is not in the place entry:
-				say "Diagnostic error: [vandalized item entry]";
-		increase the damage counter by one;
+		if the underling is the maintenance droid and the maintenance droid is carried by the player:
+			if a random chance of 1 in 3 succeeds:
+				say "After some struggling, the droid manages to evade your grasp and your pressor fields collapse against each other. [run paragraph on]";
+				if the location of the maintenance droid is not the place entry:
+					say "In a flash, he is on his way towards the [place entry].";
+				otherwise:
+					say "The industrious little robot gets back to work immediately.";
+				move the maintenance droid to the place entry;
+			otherwise:[maintenance droid failed his saving throw to escape]
+				say "Struggle as he might, the perky little robot remains constrained by your pressor fields.";
+		otherwise:[no issues with a held maintenance droid]
+			move the underling to the place entry;
+			if the player is in the place entry:
+				say the narrative entry;
+			if there is a destroyed item entry:
+				move the destroyed item entry to Limbo;
+				if the player is not in the place entry:
+					say "[The destroyed item entry] is offline";
+			if there is a vandalized item entry:
+				now the vandalized item entry is damaged;			
+				if the player is not in the place entry:
+					say "Diagnostic error: [vandalized item entry]";
+			increase the damage counter by one;
 	if the assault ship approach is 1:[first attempt to clamp on]
 		if the assault ship distance is greater than zero:
 			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
@@ -3209,10 +3222,10 @@ Every turn when Boarding Party is happening:
 		otherwise if the assault ship is sealed:
 			if the ACU is penetrated:			
 				if the ship is not boarded:
-					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone [if the henchmen defeated is greater than 0]else [end if]is coming board.";		
+					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone [if the henchmen defeated is greater than 0]else [end if]is coming board. Shortly thereafter, your sensors determine that something is moving towards [the place corresponding to the round of the damage counter in the Table of Underling Tasks in lower case].";		
 					if henchmen defeated is greater than 2:
 						now the underling is the technician;
-					move the underling to the place corresponding to the round of damage counter in the Table of Underling Tasks;
+					move the underling to the place corresponding to the round of the damage counter in the Table of Underling Tasks;
 			otherwise: [i.e., if the ACU is not penetrated]
 				say "Several bursts of noise and vibration echo through the ship as high speed drills penetrate the inner and outer layers of the dorsal hull. Some muffled, low frequency rumbling follows, probably a cutting machine of some sort. There is a slight drop in air pressure as the assault ship penetrates the hull and establishes a connection Valkyrie's access tunnel network. Unfortunately, the tunnels are a blind spot for you as you do not possess sensors within the network.";
 				now the ACU is penetrated.
@@ -3253,16 +3266,38 @@ Instead of brushing teeth during Boarding Party:
 		now the assault ship distance is 8;
 		move the toothbrush to Limbo.
 		
+Instead of taking the maintenance droid:
+	if the maintenance droid is carried by the player:
+		say "You reinforce the pressor fields in which the maintenance droid is imprisoned. [run paragraph on]";
+	otherwise:
+		if a random chance of 1 in 2 succeeds:
+			say "You apply your pressor fields, but the [one of]lithe[or]supple[or]limber[or]nimble[or]deft[or]willowy[or]highly-articulated[or]lightning quick[or]clever[or]slick[or]quick-witted[or]fast little[stopping] robot [one of]shimmies[or]shoots[or]flies[or]twists[or]flashes[or]dashes[or]streaks[or]whizzes[or]zips[or]escapes[stopping] out of your grasp and returns to his work.";
+		otherwise:
+			say "You snare the maintenance droid between pressor fields, where he writhes spasmotically, trying to escape. [run paragraph on]";
+			now the maintenance droid is carried by the player.
+		
+Instead of eating the maintenance droid:
+	if the maintenance droid is toxic:
+		say "As you begin the reclamation cycle, you detect toxic amounts of iridium in the droid's exoskeleton. Unable to continue processing, the cycle aborts and the droid returns to his business.";
+		move the maintenance droid to the location;
+		the rule succeeds;
+	otherwise:
+		continue the action.
+	
 After eating the maintenance droid:
 	say "The maintenance droid wiggles and squirms as he enters the reclamation chute deep within the Valkyrie. His constituent parts are analyzed exhaustively as he passes through a series of scanners, and selected components are quickly dissected from his carcass for incorporation into Valkyrie's systems.";
 	increase henchmen defeated by one;
 	now the maintenance droid is toxic.
-		
-Before eating the maintenance droid:
-	if the maintenance droid is toxic:
-		say "As you begin the reclamation cycle, you detect toxic amounts of iridium in the droid's exoskeleton. Unable to continue processing, the cycle aborts and the droid returns to his business.";
-		the rule succeeds.
-								
+	
+Instead of inserting the underling into the old fridge:
+	if the old fridge is damaged:
+		say "[The underling] dives into the broken cryochamber to avoid your grasp, and then clambers out again.";
+	otherwise:
+		say "You shove [the underling] into the cryochamber, slam the door shut, and run the unit at maximum. [if the underling is the maintenance droid]You hear a brief whine from the droid's power unit, followed by a muffled explosion as his microreactor goes critical trying to maintain thermal equilibrium[otherwise]The technician pounds the inside of the chamber a few times before the cold gets to him. There is a shattering sound as he hits the floor of the chamber, followed by a muffled explosion as some piece of his equipment reacts poorly to the ultralow temperature[end if]. Unfortunately, the explosion seems to have damaged the cryochamber, which warms rapidly to the ambient temperature. You open the chamber and recycle what you can of the mess inside.";
+	increase henchmen defeated by one;
+	now the old fridge is damaged;
+	move the underling to Limbo.
+									
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
 	if the assault ship approach is 1:
