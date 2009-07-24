@@ -3140,7 +3140,7 @@ Definition: A person (called character) is human if the character is not an anim
 Instead of the ACU doing something to a human:
 	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
 
-Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the toothbrush is in Limbo and the toilet is in Limbo and the mirror is damaged. [5 items]
+Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the plastic box is in Limbo and the toilet is in Limbo and the mirror is damaged. [5 items]
 
 Definition: The kitchen is compromised if the old fridge is in Limbo and the range is in Limbo and the drawer is in Limbo and the frying pan is in Limbo.[4 items]
 
@@ -3241,7 +3241,18 @@ After yoking the plunger more during Boarding Party:
 		now the assault ship distance is 4;
 	say "We are targeting your maneuvering thrusters, now.[quotation mark][paragraph break]A diffuse but powerful X-ray beam melts the ship's nosecone, and the RCS datastream is suddenly silenced.[paragraph break][quotation mark]That should help keep you in one place.[quotation mark][paragraph break]";
 	move the plunger to Limbo.
-		
+	
+Instead of brushing teeth during Boarding Party:
+	if the assault ship is free:
+		continue the action;
+	otherwise:[assault ship is making contact or sealed to the hull]
+		say "Nanobristles swarm from their hatcheries and up the tubules towards the deck surface. They spread across the deck, abrading and oxidizing the surface, scrubbing it clean of any contaminant, and redistributing the permalloy skin of the ship to smooth microscopic dents from micrometeorite impacts.[paragraph break]When the microscopic cleaners encounter the docking port and struts from the assault ship, they immediately recognize it as a contaminant and chirp microwave signals to the host of nanobristles behind them. The message propagates back to the hatcheries where production is increased exponentially. Meanwhile, the vanguard has already swarmed up the docking port and across the surface of the assault ship. A lucky few nanobristles blaze the path into the assault ship through exhaust ports, thruster nozzles, and waste management duct work, where they continue to clean and organize, according to their programing.[paragraph break]A brilliant flash of light and a burst of hard radiation is followed an instant later by a hail of smaller particles and a few large crashes which shake the Valkyrie. This debris is all that remains of the assault ship.[paragraph break]In the distance, patrolling gunships move into supporting positions, while a second assault ship begins its approach, aiming for the approximately the same point on the hull as the Graceful Wind.[paragraph break]The second assault ship breaks the silence, [quotation mark]Winter Shadow to Valkyrie, this is Captain Rossini, speaking. Your unwarranted attack on our sister ship Graceful Wind has been recorded, and you will answer for it when we arrive at Luna.[quotation mark][paragraph break]The gunships sweep the Valkyrie from all angles with their phased tachyon beams, sterilizing the hull. The gunships then narrow their waveguides to focus the beams on the nanobristle mother hatchery, which vaporizes.";
+		now the assault ship is free;
+		increase the assault ship approach by one;
+		now the ACU is an enemy of Earth;
+		now the assault ship distance is 8;
+		move the toothbrush to Limbo.
+								
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
 	if the assault ship approach is 1:
@@ -3286,7 +3297,7 @@ round		place 		destroyed item		vandalized item		narrative
 2			bathroom		--						mirror				"break mirror"
 3			bathroom		soap dispenser		--					"soap dispenser down"
 4			bathroom		shampoo dispenser	--					"shampoo dispenser down"
-5			bathroom		toothbrush			--					"toothbrush down"
+5			bathroom		plastic box			--					"floss box down"
 6			bathroom		toilet					--					"toilet"
 7			bathroom		--						--					"leaving bathroom"
 8			kitchen		--						--					"arriving kitchen"
