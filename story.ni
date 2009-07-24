@@ -3127,12 +3127,12 @@ When Boarding Party begins:
 	Setup the World;
 	move the player to the Living Room, without printing a room description;
 	move the futon to Limbo;
-	now the futon is folded;[to avoid satisfy the "instead of going anywhere while the player is in the living room and the futon isn't folded rule]
+	now the futon is folded;[to satisfy the "instead of going anywhere while the player is in the living room and the futon isn't folded rule]
 	move the garden skylights to Limbo;[set up the viewer]
 	move the park to Limbo;
 	move the grass to Limbo;
 	move the trees to Limbo;
-	move the assault ship to the window;
+	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 	
 Definition: A person (called character) is human if the character is not an animal and the character is not the ACU.
@@ -3144,7 +3144,7 @@ Definition: The bathroom is compromised if the soap dispenser is in Limbo and th
 
 Definition: The kitchen is compromised if the old fridge is in Limbo and the range is in Limbo and the drawer is in Limbo and the frying pan is in Limbo.[4 items]
 
-Definition: The living room is compromised if the picture is damaged and the window is damaged and the front door is damaged. [3 items]
+Definition: The living room is compromised if the picture is damaged and the front door is damaged. [2 items]
 
 Definition: The ship is sunk if the living room is compromised and the kitchen is compromised and the bathroom is compromised.
 
@@ -3154,8 +3154,8 @@ The assault ship distance is a number that varies. The assault ship distance is 
 
 Assault ship approach is a number that varies. Assault ship approach is 1. 	[how many times the assault ship has approached valkyrie]
 
-Robot defeated is a number that varies. Robot defeated is 0.
-  	[the number of times that the mech droid has been defeated by the player]
+Henchmen defeated is a number that varies. Henchmen defeated is 0.
+  	[the number of times droids/technicians defeated by the player. After three robots are defeated, the assault ship will start sending human crew members.]
 
 The underling is an object that varies. The underling is the maintenance droid.
 
@@ -3209,8 +3209,8 @@ Every turn when Boarding Party is happening:
 		otherwise if the assault ship is sealed:
 			if the ACU is penetrated:			
 				if the ship is not boarded:
-					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone is coming board.";		
-					if robot defeated is greater than 2:
+					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone [if the henchmen defeated is greater than 0]else [end if]is coming board.";		
+					if henchmen defeated is greater than 2:
 						now the underling is the technician;
 					move the underling to the place corresponding to the round of damage counter in the Table of Underling Tasks;
 			otherwise: [i.e., if the ACU is not penetrated]
@@ -3252,6 +3252,16 @@ Instead of brushing teeth during Boarding Party:
 		now the ACU is an enemy of Earth;
 		now the assault ship distance is 8;
 		move the toothbrush to Limbo.
+		
+After eating the maintenance droid:
+	say "The maintenance droid wiggles and squirms as he enters the reclamation chute deep within the Valkyrie. His constituent parts are analyzed exhaustively as he passes through a series of scanners, and selected components are quickly dissected from his carcass for incorporation into Valkyrie's systems.";
+	increase henchmen defeated by one;
+	now the maintenance droid is toxic.
+		
+Before eating the maintenance droid:
+	if the maintenance droid is toxic:
+		say "As you begin the reclamation cycle, you detect toxic amounts of iridium in the droid's exoskeleton. Unable to continue processing, the cycle aborts and the droid returns to his business.";
+		the rule succeeds.
 								
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
@@ -3307,9 +3317,8 @@ round		place 		destroyed item		vandalized item		narrative
 12			kitchen		drawer					--					"drawer"
 13			kitchen		--						--					"leaving kitchen"
 14			living room	--						--					"arriving living room"
-15			living room	--						window				"window"
-16			living room	--						front door		"front door"
-17			living room	--						picture			"picture"
+15			living room	--						front door		"front door"
+16			living room	--						picture			"picture"
 
 [###TODO: add more dream/nightmare/etc. foreshadowing in this text, but lightly]
 Table of Approach Chatter
