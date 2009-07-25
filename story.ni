@@ -1725,14 +1725,51 @@ Does the player mean filling a bowl with the tap water: it is very likely. Does 
 Instead of opening or switching on a sink:
 	if the player is clueless:
 		say "You run the water momentarily, and then turn off the tap to conserve water.";
-	otherwise:
-		say "You verify that coolant pressure is nominal."
+	otherwise:[not clueless]
+		if the noun is the bathroom sink:
+			if the bathroom sink is depleted:
+				say "The ship's supply of dermatovore eels will take 5 minutes to regenerate. Please stand by.";
+				the rule succeeds;
+			otherwise:[worms are ready to rock]
+				say "Warning. The decontamination protocol is toxic to all biological forms and should only be used against Level 5 pathogens. Continue (Y/N)?";
+				if the technician is in the Valkyrie Area and the technician is not biosuited:
+					say "Over the local radio link you hear a man with an Earth accent shouting, [quotation mark]No! No! No! No! Bad computer! Abort! Abort decontamination! Stop![quotation mark]";
+				if the player consents:
+					if the technician is in the Valkyrie Area:
+						now the bathroom sink is depleted;
+						the eels hatch in four turns from now;
+						say "[paragraph break]Gengineered dermatovore eels shoot from recessed holes in the bulkheads throughout the ship, intent on devouring anything they can digest. [run paragraph on]";
+						if the technician is biosuited:
+							if the technician is in the location:
+								say "The eels surround the technician, but cannot penetrate the bioprotective paste on the outside of his spacesuit. Finding nothing but each other, that's what they eat. The last one swallows its own tail and succumbs to the unusually active digestive juices of its species.";
+							otherwise:[not in the location]
+								say "Your short range radio link beeps, and then you hear, [quotation mark]We've got more of those eels here, but the biopaste is working -- they don't seem to like the taste of the suit. I'm moving pretty briskly now, it shouldn't be too long. Keep my dinner warm![quotation mark]";
+						otherwise:[no biosuit]
+							if the technician is in the location:
+								say "The technician's flimsy space suit is merely an appetizer for the voracious eels, and they finish it -- and each other -- off in mere seconds.";
+							otherwise:[not in the location]
+								say "Your short range radio beeps abortively, and there are some chewing sounds, followed by static, and loss of the carrier.";
+							increase the henchmen defeated by one;
+							now the technician is biosuited;
+							move the technician to Limbo;
+					otherwise:[no meat in the ship]
+						say "Decontamination protocol aborted: bioscan negative.";
+				otherwise:[no consent]
+					say "Decontamination protocol aborted: confirmation failed.";
+		otherwise:[not the bathroom sink]
+			say "You verify that coolant pressure is nominal."
+				
+At the time when the eels hatch:
+	now the bathroom sink is not depleted.
 		
 Instead of closing or switching off a sink:
 	if the player is clueless:
 		say "It's already shut off.";
 	otherwise:
-		say "Coolant output flow is already zero."
+		if the noun is the bathroom sink:
+			say "The biohazard containment system automatically shuts off when the infestion is neutralized.";
+		otherwise:
+			say "Coolant output flow is already zero.".
 
 The cabinet is part of the kitchen sink.  The cabinet is an openable closed scenery container.  The dog chow bag and the reward nuggets box are in the cabinet.  
 
@@ -1896,7 +1933,7 @@ After switching on the black plate when the First Sim is not happening:
 	now the player is dry;
 	now the black plate is switched off.
 
-The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination" and "sterilization" and "biohazard" and "response" and "system" and "protocol" as the bathroom sink-proxy.
+The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination" and "sterilization" and "biohazard" and "response" and "system" and "protocol" as the bathroom sink-proxy. The bathroom sink can be depleted. The bathroom sink is not depleted. 
 
 The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
 
@@ -2467,7 +2504,7 @@ There are some gunships in Limbo. The gunships are scenery. The description of t
 
 The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. The maintenance droid can be shielded. The maintenance droid is not shielded. Understand "robot" and "repairbot" as the maintenance droid. The maintenance droid can be either innocent or jaded. The maintenance droid is innocent.
 
-The technician is a man in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be spacesuited. The technician is not spacesuited. The technician can be radsuited. The technician is not radsuited. The technician is failsafed.
+The technician is a man in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be spacesuited. The technician is not spacesuited. The technician can be radsuited. The technician is not radsuited. The technician can be biosuited. The technician is not biosuited. The technician is failsafed.
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
@@ -3139,7 +3176,7 @@ When Boarding Party begins:
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 
-Before the player doing anything to failsafed person:
+Before doing anything to failsafed person:
 	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from communications."
 
 Definition: The bathroom is compromised if the soap dispenser is in Limbo and the shampoo dispenser is in Limbo and the plastic box is in Limbo and the toilet is in Limbo and the mirror is damaged. [5 items]
@@ -3163,6 +3200,8 @@ The underling is an object that varies. The underling is the maintenance droid.
 
 The damage counter is a number that varies. The damage counter is 1.
 	[each round that the assault ship has an underling on board, the counter goes up by one to advance the plot]
+	
+[###TODO rules to handle suffocation of technician, changes in pressure, etc.]
 		
 Every turn when Boarding Party is happening:
 	if the ship is sunk:
@@ -3186,6 +3225,13 @@ Every turn when Boarding Party is happening:
 				say "[the narrative entry][paragraph break]";
 			if there is a destroyed item entry:
 				move the destroyed item entry to Limbo;
+				if the toilet is not in the Bathroom:
+					[the toilet is not just one assembly, so need to move all of its
+					 pieces when the "toilet" moves]
+					move the water tank to Limbo;
+					move the toilet bowl to Limbo;
+					move the toilet seat to Limbo;
+					move the toilet cover to Limbo;
 				if the player is not in the place entry:
 					say "[The destroyed item entry] is offline";
 			if there is a vandalized item entry:
@@ -3290,6 +3336,7 @@ After eating the maintenance droid:
 	now the maintenance droid is toxic.
 	
 Instead of inserting the maintenance droid into the old fridge:
+	[###TODO: check that it robot is held, and that fridge is open]
 	if the old fridge is damaged:
 		say "The wiley droid dives into the broken cryochamber to avoid your grasp, and then clambers out again.";
 	otherwise:
@@ -3298,7 +3345,10 @@ Instead of inserting the maintenance droid into the old fridge:
 	now the old fridge is damaged;
 	move the maintenance droid to Limbo.
 	
+[###TODO: make sure there is a reasonable response for attempting to put the robot in the toilet or sink]
+	
 Instead of inserting the maintenance droid into the water tank:
+	[###TODO: check that tank is open]
 	if the maintenance droid is not carried by the player:
 		say "(first attempting to grapple the droid) [command clarification break]";
 		try silently taking the maintenance droid;
@@ -3317,7 +3367,7 @@ Instead of inserting the maintenance droid into the water tank:
 				
 After taking off the flight suit in the presence of the maintenance droid:
 	if the maintenance droid is innocent:
-		say "The maintenance droid glances away from his work for a moment, and the does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core and its surrounding froth of quantum foam.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you modestly pull up the quantum isolation shield.";
+		say "The maintenance droid glances away from his work for a moment, and the does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core frothed with quantum foam, and ringed by a halo of dark matter.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you modestly pull up the quantum isolation shield.";
 		increase the henchmen defeated by one;
 		now the maintenance droid is jaded;
 		now the ACU wears the flight suit;
