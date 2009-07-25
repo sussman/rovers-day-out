@@ -457,30 +457,28 @@ Some thinking out loud about the "Boarding Party" scene
 	1) prolong the conversation with the Earth ships
 	2) perform an operation that affects the hull of the ship
 		a) before the assault ship attaches
-			- coat the ship in ablative enamel: the earth ship then blasts through it.
+			- coat the ship in ablative enamel: the earth ship then blasts through it. ok
 		b) after they lock on
-			- neutralize static charge (scratch back): earth ship falls off, reattaches with harpoon.
-			- use the pit scrubber: nanoscrubbers get into assault ship and wreak havoc; a second ship comes.
-			- fire RCS thrusters
+			- neutralize static charge (scratch back): earth ship falls off, reattaches with harpoon. ok
+			- use the pit scrubber: nanoscrubbers get into assault ship and wreak havoc; a second ship comes. ok
+			- fire RCS thrusters ok
 	3) take action against the agents who are sent:
 		- by its programming, the ship cannot take action concerning humans, so actions must be indirect
 		- as agents are killed, the earth ship sends successive waves, each better equipped than the previous. 
 		- the means available depend on the location and the agent
 		- if a robot is sent, the acu can interact directly with the robot do such nasty things as:
-			- eat (i.e., recycle) the robot (the next robot will have a toxic coating)
-			- flush the robot down the toilet (the first one jams the toilet)
-			- freeze the robot in the cryochamber (the exploding robot disables the cryochamber)
-			- fill the robot with water (the next is waterproof)
-			- disrobe in front of the robot, exposing it to eye-boggling quantum fluctuations
+			- eat (i.e., recycle) the robot (the next robot will have a toxic coating) ok
+			- put the robot in the water tank (cooks it in plasma/fluctuating magnetic fields; comes back with insulation) o
+			- freeze the robot in the cryochamber (the exploding robot disables the cryochamber) ok
+			- disrobe in front of the robot, exposing it to eye-boggling quantum fluctuations ok
 			- have rover attack it
 		- after losing a few robots, next humans are sent
 			a) operations
-				- open door: explosive decompression
+				- open door:  or other explosive decompression (have to think about this one}
 			b) flight control
-				- activate the decontamination protocol (sink)
+				- activate the decontamination protocol (sink) ok
 			c) engineering
 				- open the drawer, exposing them to the radioactive reactor core
-				- open the fridge, freezing them
 			d) any where
 				- pull the label on the pink pillow
 
