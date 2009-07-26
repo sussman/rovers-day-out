@@ -468,10 +468,10 @@ Some thinking out loud about the "Boarding Party" scene
 		- the means available depend on the location and the agent
 		- if a robot is sent, the acu can interact directly with the robot do such nasty things as:
 			- eat (i.e., recycle) the robot (the next robot will have a toxic coating) ok
-			- put the robot in the water tank (cooks it in plasma/fluctuating magnetic fields; comes back with insulation) o
+			- put the robot in the water tank (cooks it in plasma/fluctuating magnetic fields; comes back with insulation) ok
 			- freeze the robot in the cryochamber (the exploding robot disables the cryochamber) ok
 			- disrobe in front of the robot, exposing it to eye-boggling quantum fluctuations ok
-			- have rover attack it
+			- have rover attack it ok - for both people and robots
 		- after losing a few robots, next humans are sent
 			a) operations
 				- open door - blows the agent out the door ok
@@ -480,7 +480,7 @@ Some thinking out loud about the "Boarding Party" scene
 			c) engineering
 				- open the drawer, exposing them to the radioactive reactor core ok
 			d) any where
-				- pull the label on the pink pillow
+				- pull the label on the pink pillow - ok
 
 - eventually, the agents complete the job of disabling the Valkyrie. The situation becomes so dire that the ship wonders if it is a nightmare.
 
