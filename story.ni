@@ -2781,6 +2781,7 @@ the sniffscanning action	"SPECTROMETRY" [sniff]
 the beeping action			"PROXIMITY ALERT" [beeping]
 the saying yes action		"AFFIRMATIVE" [yes]
 the saying no action		"NEGATIVE" [no]
+the coming action			"SEEK" [come or "rover, come"]
 
 
 
@@ -3257,6 +3258,9 @@ Every turn when Boarding Party is happening:
 				if the player is not in the place entry:
 					say "Diagnostic error: [vandalized item entry]";
 			increase the damage counter by one;
+		if Rover is in the location and the underling is in the location:
+			if a random chance of 1 in 2 succeeds:
+				say "Rover [one of]growls at [the underling][or]gives [the underling] the evil eye[or]snarls at [the underling][or]bears his teeth towards [the underling][or]paces nervously, glancing towards [the underling][or]makes it clear that he is not amused by [the underling]'s antics[or]remains coiled on the floor, watching [the underling] intently[or]looks at you, and then at the [underling], and seems ready to pounce[or]barks a warning at the [underling][or]gnashes his teeth and makes sure that the [underling] sees how very sharp they are[or]bays at the [underling][at random].";
 	if the assault ship approach is 1:[first attempt to clamp on]
 		if the assault ship distance is greater than zero:
 			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
@@ -3286,10 +3290,14 @@ Every turn when Boarding Party is happening:
 		otherwise if the assault ship is sealed:
 			if the ACU is penetrated:			
 				if the ship is not boarded:
-					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone [if the henchmen defeated is greater than 0]else [end if]is coming board. Shortly thereafter, your sensors determine that something is moving towards [the place corresponding to the round of the damage counter in the Table of Underling Tasks in lower case].";		
 					if henchmen defeated is greater than 2:
 						now the underling is the technician;
 					move the underling to the place corresponding to the round of the damage counter in the Table of Underling Tasks;
+					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone [if the henchmen defeated is greater than 0]else [end if]is coming board. Shortly thereafter, your sensors determine that something is moving towards [the place corresponding to the round of the damage counter in the Table of Underling Tasks in lower case]. [run paragraph on]";
+					if the place corresponding to the round of the damage counter in the Table of Underling Tasks is the location:
+						say "Moments later, [if the henchmen defeated is 0 or the henchmen defeated is 3]a[otherwise]another[end if] [underling] enters the room.";
+					otherwise:
+						say paragraph break;		
 			otherwise: [i.e., if the ACU is not penetrated]
 				say "Several bursts of noise and vibration echo through the ship as high speed drills penetrate the inner and outer layers of the dorsal hull. Some muffled, low frequency rumbling follows, probably a cutting machine of some sort. There is a slight drop in air pressure as the assault ship penetrates the hull and establishes a connection Valkyrie's access tunnel network. Unfortunately, the tunnels are a blind spot for you as you do not possess sensors within the network.";
 				now the ACU is penetrated;
@@ -3315,7 +3323,7 @@ Does the player mean rubbing back:
 Instead of rubbing back during Boarding Party:
 	say "You neutralize the static charge on the dorsal hull plates.[paragraph break]";
 	if the assault ship is not using harpoons and the assault ship is not free:
-		say "It's deck clamps no longer secured by electrostatic attraction, the assault ship springs free of the Valkyrie, with shock attenuators extending like rifle shots, and the flexible boarding tunnel flailing wildly.[paragraph break]The assault ship comes to a relative stop some distance from Valkyrie, and reels in the docking port. A familiar voice crackes through the comm system: [quotation mark]Valkyrie, from Myomita Assault Vessel [assault ship designation]. That was dirty pool in my book, but I have to say it was clever. Not enough to put us off our job, though. Let's see you wiggle out of this one...[quotation mark][paragraph break]The assault ship fires a ring of burrowing harpoons into the deck, where they embed deeply in the permalloy. Slowly, the assault ship winches itself back into position.[paragraph break]";
+		say "Its deck clamps no longer secured by electrostatic attraction, the assault ship springs free of the Valkyrie, with shock attenuators extending like rifle shots, and the flexible boarding tunnel flailing wildly.[paragraph break]The assault ship comes to a relative stop some distance from Valkyrie, and reels in the docking port. A familiar voice crackes through the comm system: [quotation mark]Valkyrie, from Myomita Assault Vessel [assault ship designation]. That was dirty pool in my book, but I have to say it was clever. Not enough to put us off our job, though. Let's see you wiggle out of this one...[quotation mark][paragraph break]The assault ship fires a ring of burrowing harpoons into the deck, where they embed deeply in the permalloy. Slowly, the assault ship winches itself back into position.[paragraph break]";
 		now the assault ship is free;
 		increase the assault ship approach by one;
 		now the ACU is an enemy of Earth;
@@ -3408,8 +3416,17 @@ After taking off the flight suit in the presence of the maintenance droid:
 		move the maintenance droid to Limbo;
 	otherwise: [if the droid is already jaded:]
 		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
-		
-[###need to also check on encounters any time the ACU is running around butt-naked and might scandalise the naive droids]
+[###need to also check on encounters any time the ACU is running around butt-naked and might scandalise any naive droids]
+
+Instead of Rover attacking when Rover is in the Valkyrie Area during Boarding Party:
+	if the noun is the technician or the noun is the maintenance droid:
+		say "Rover starts forward, teeth bared. With paws reaching for [the underling]'s throat, he pounces.  Midway through Rover's leap, [the underling] draws a hand beamer and slices Rover through the neck. Momentum carries Rover's body forward, though, and it lands on the surprised [underling].[paragraph break]Reluctantly, you recycle the remains of both Rover and [the underling].[paragraph break]While you try to remind yourself that Rover is not your real dog, and that the real Rover is safe at home on Mars, the strength of the projection overcomes you, and you cry.";
+		increase the henchmen defeated by one;
+		move the underling to Limbo;
+		move Rover to Limbo;
+	otherwise:
+		say "Rover tilts his head questioningly, as if to say [quotation mark]The [noun]?  You really want me to attack [the noun]?[quotation mark][paragraph break]";
+	the rule succeeds.
 		
 Instead of opening the front door when the front door is closed during Boarding Party:
 	if the front door is broken:
