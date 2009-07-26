@@ -32,7 +32,7 @@ Enroute is a truth state that varies. Enroute is false. [en route is a flag that
 
 Aware-references is a number that varies. Aware-references is 1.
 [Tracks the number of times, up to 3, that the ACU has referred to objects by their aware-names. Used to switch between David/Janet comments]
-
+ 
 Remember-invoked is a truth state that varies. Remember-invoked is false.
 [tracks use of remember; used to trigger david/janet commentary]
 
@@ -2239,7 +2239,8 @@ Instead of exiting:
 			try going towards the living room;
 	otherwise:
 		continue the action.
-	
+
+[###TODO: tweak this so it doesn't come into play after Real Thing.]	
 Instead of going towards when the player is in the shower:
 	if the player is wearing the flight suit:
 		continue the action;
@@ -3220,7 +3221,7 @@ Every turn when Boarding Party is happening:
 					say "The technician stares in alarm at his spacesuit's geiger counter. He urgently calls his ship,[run paragraph on]";
 				otherwise:
 					say "From over the radio link you hear a nervous voice,[run paragraph on]";
-				say " [quotation mark]This is space technician to [assault ship designation].[quotation mark][paragraph break][quotation mark]Roger, spaceman, what's going on? Your vitals aren't doing well. Heart and respiration high, BP low, temp climbing. Over.[quotation mark][paragraph break][quotation mark][assault ship designation], do these space suits have radiation shielding? Over.[quotation mark][paragraph break][quotation mark]Let me check... um... no, not as such. Not *that* particular space suit. Over.[paragraph break]But there is no reply.[paragraph break]You clean the remains off the deck and recycle what you can.[paragraph break]";
+				say " [quotation mark]This is space technician to [assault ship designation].[quotation mark][paragraph break][quotation mark]Roger, spaceman, what's going on? Your vitals aren't doing well. Heart and respiration high, BP low, temp climbing. Over.[quotation mark][paragraph break][quotation mark][assault ship designation], do these space suits have radiation shielding? Over.[quotation mark][paragraph break][quotation mark]Let me check... um... no, not as such. Not *that* particular space suit. Over.[quotation mark][paragraph break]But there is no reply.[paragraph break]You clean the remains off the deck and recycle what you can.[paragraph break]";
 				now the technician is radsuited;
 				move the technician to Limbo;
 				increase the henchmen defeated by one;
@@ -3392,8 +3393,21 @@ After taking off the flight suit in the presence of the maintenance droid:
 	otherwise: [if the droid is already jaded:]
 		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
 		
-Instead of opening the front door during Boarding Party:
-	do nothing.
+Instead of opening the front door when the front door is closed during Boarding Party:
+	if the front door is broken:
+		say "You reach for the front door and pass right through it, ghost-like. The door remains shut.";
+	otherwise:
+		now the front door is open;
+		if the underling is in the living room:
+			if the pressure is greater than 50:
+				say "You manage to open the cargo bay door only a couple centimeters when [the underling] exits through it -- it is not a pretty sight. As the pressure equalizes, the windstorm gently subsides, and the living room is silent.";
+				increase the henchmen defeated by one;
+				move the underling to Limbo;
+			otherwise if the pressure is greater than 20:
+				say "As the door opens [the underling] struggles against the rapidly exhausting atmosphere, leaning into the wind, and maintaining a grip on the deck. As the atmosphere bleeds out and the pressure drops towards zero, [the underling] plants his gravitic boots back on the deck and resumes his activities.";
+			otherwise:
+				say "The cargo bay doors swing open to space, although from your perspective you still see a sunny day in the park outside.";
+	the rule succeeds.
 	
 Instead of saying yes during Boarding Party:
 	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
