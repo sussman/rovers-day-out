@@ -462,7 +462,7 @@ Some thinking out loud about the "Boarding Party" scene
 			- neutralize static charge (scratch back): earth ship falls off, reattaches with harpoon. ok
 			- use the pit scrubber: nanoscrubbers get into assault ship and wreak havoc; a second ship comes. ok
 			- fire RCS thrusters ok
-	3) take action against the agents who are sent:
+- to take action against the agents who are sent:
 		- by its programming, the ship cannot take action concerning humans, so actions must be indirect
 		- as agents are killed, the earth ship sends successive waves, each better equipped than the previous. 
 		- the means available depend on the location and the agent
@@ -474,11 +474,11 @@ Some thinking out loud about the "Boarding Party" scene
 			- have rover attack it
 		- after losing a few robots, next humans are sent
 			a) operations
-				- open door:  or other explosive decompression (have to think about this one}
+				- open door - blows the agent out the door ok
 			b) flight control
 				- activate the decontamination protocol (sink) ok
 			c) engineering
-				- open the drawer, exposing them to the radioactive reactor core
+				- open the drawer, exposing them to the radioactive reactor core ok
 			d) any where
 				- pull the label on the pink pillow
 
