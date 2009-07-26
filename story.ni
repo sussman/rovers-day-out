@@ -138,6 +138,10 @@ A device has an truth state called initial-onoff. The initial-onoff of a device 
 
 A water is a kind of thing. Waters are privately-named. The indefinite article of a water is usually "some".
 
+Conclusion is a kind of value. The conclusions are alive and pillowed.  
+
+Endgame is a conclusion that varies. The endgame is usually alive.
+
 Section Chests and Lids
 
 [borrowed more or less whole cloth from example 49 in the I7 documentation. Instead of keeping track of whether the lid is up or down, keep track of the open/close status of the chest.]
@@ -2441,13 +2445,25 @@ The pullout sofa is a bed in The Sleeping Room.
 
 The description of the pullout sofa is "The sofa looks wrong somehow, like maybe it[apostrophe]s broken. It is more or less unfolded and looks even bigger than Janet[apostrophe]s futon." The clueless-name of the pullout sofa is "pullout sofa". The aware-name of the sofa is "casimir drive". The scent of the sofa is "musty, like a wet dog. On the whole, not a bad smell at that".  Understand "bed" as the pullout sofa.
 
-The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pink pillow". The aware-name of the pillow is "NPT". Understand "pink" and "puffy" as the pillow when the player is clueless. The clueless-description of the pillow is "[if the player is Rover]A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays[otherwise]A fluffy pink pillow bearing the Myomita corporate logo, and a small label[end if]." The aware-description of the pillow is "A nanotronic paratemporospatial transgressor, of a design that was rejected some time ago by MARSpace. Ths transgressor's supraverbation matrix has evidently crystallized, rendering it non-functional. The NPT bears the corporate logo of the Myomita corporation, a modernized version of the Imperial Japanese flag, centered on a the disc of the Milky Way galaxy rather than the rising sun. An RFID tag is embedded in the logo." The scent of the pillow is "slightly feminine, perhaps even perfumed."  The pillow-proxy is an aware-proxy that is part of the pillow. Understand "transgressor", "supraverberation", "matrix", "nanotronic" and "paratemporospatial" as the pillow-proxy. 
+The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pink pillow". The aware-name of the pillow is "NPT". Understand "pink" and "puffy" as the pillow. The clueless-description of the pillow is "[if the player is Rover]A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays[otherwise]A fluffy pink pillow bearing the Myomita corporate logo, and a small label[end if]." The aware-description of the pillow is "A nanotronic paratemporospatial transgressor, of a design that was rejected some time ago by MARSpace. Ths transgressor's supraverbation matrix has evidently crystallized, rendering it non-functional. The NPT bears the corporate logo of the Myomita corporation, a modernized version of the Imperial Japanese flag, centered on a the disc of the Milky Way galaxy rather than the rising sun. An RFID tag is embedded in the logo." The scent of the pillow is "slightly feminine, perhaps even perfumed."  The pillow-proxy is an aware-proxy that is part of the pillow. Understand "transgressor", "supraverberation", "matrix", "nanotronic", "npt" and "paratemporospatial" as the pillow-proxy. 
 
 [###TODO fix "smell pillow" while on the sofa; add description handling for items placed on the sofa. ]
 
-The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID tag". The clueless-description of the small label is a "a small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Katana[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL."
+The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID tag". The clueless-description of the small label is a "a small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Sunrise[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL."
 
-[###TODO handling of what happens if you pull of the label. The intention is that this can be a lethal countermeasure for either the Boarding Scene or Back to Mars]
+Understand "pull off [something]" or "tear [something]" or "tear off [something]" or "rip [something]" or "rip off [something]" as pulling.
+
+Before taking off the small label:
+	try pulling the small label;
+	the rule succeeds.
+	
+Instead of pulling the small label:
+	if Boarding Party is happening:
+		say "You rip off the warning label, and confirm physicists speculations about the scale of destruction that would result from a  chronospatial rupture. The paradoxical pre-event is so powerful that you are catapulted several seconds into the future, from whence you observe the the devastation first hand. Eventually, the countercoup probabilities collide, and you wink out of existence, ending the nightmare.";
+		now the ACU is alert;
+	otherwise:
+		now the endgame is pillowed;
+		end the game in death.
 
 The eating room is north of the sleeping room.
 
@@ -2685,7 +2701,6 @@ Last-noun is usually "ACU".  Last-success is usually "NIL".   Status-line-action
 Test-action is an action-name which varies.
 Got-action is a truth state that varies.  Got-action is usually false.
 
-         
 After reading a command (this is the re-initialize rule):
         change last-noun to "ACU"; 
         change last-success to "NIL";
@@ -2741,7 +2756,8 @@ the exiting action			"DEACTIVATE" [exit, stand up]
 the opening action			"ACCESS"  [open]
 the closing action			"DEACCESS" [close]
 the eating action			"RECYCLE"  [eat]
-the pushing action			"APPLY"  [press]
+the pushing action			"PRESSOR FIELD"  [press]
+the pulling action			"TRACTOR FIELD" [pull, pull off, tear, rip, etc.]
 the remembering action		"DATA_FETCH" [remember]
 the dreaming action		"RANDOMIZE ADDRESS SPACE" [dream]
 the rubbing action			"INTERRUPT" [rub, clean, scratch]
@@ -3181,6 +3197,7 @@ When Boarding Party begins:
 	move the park to Limbo;
 	move the grass to Limbo;
 	move the trees to Limbo;
+	move the pillow to the Living Room;
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 
@@ -3546,6 +3563,19 @@ When Back on Mars begins:
 	Setup the World;	
 	move the futon to the living room;
 	move the player to the living room, without printing a room description;
+	move the gunships to Limbo;
+	move the assault ship to Limbo;
+	move the garden skylights to the window;
+	move the park to the window;
+	move the trees to the window;
+	move the pillow to the Living Room;
+	move the alarm clock to Limbo;
+	now the futon is folded;
 	say "[paragraph break]BACK ON MARS STUB."
+	
+Chapter The End
+
+Rule for printing the player's obituary:
+	say "You have died!"
 
 	
