@@ -2517,7 +2517,7 @@ David Venkatachalam wears a black business robe and a burgundy bowler hat. Under
 
 Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "Janet". Janet Xiang is failsafed.
 
-Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green armband." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band.
+Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green arm band." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band.
 
 There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.  The assault ship can be using harpoons. The assault ship is not using harpoons. The assault ship can be graceful wind. The assault ship is graceful wind.
 
@@ -3205,9 +3205,12 @@ When Boarding Party begins:
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 
-Before doing anything other than examining to failsafed person:
-	say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from scanning and communications.";
-	the rule succeeds.
+Before doing anything to a failsafed person:
+	if the current action is examining, querying, asking or telling:
+		continue the action;
+	otherwise:
+		say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from scanning and communications.";
+		the rule succeeds.
 
 Definition: The bathroom is compromised if the soap dispenser is damaged and the shampoo dispenser is damaged and the plastic box is in Limbo and the toilet is in Limbo and the mirror is damaged. [5 items]
 
@@ -3586,6 +3589,29 @@ When Back on Mars begins:
 	
 Every turn during Back on Mars:
 	let elapsed be the turn count minus epoch_pid;
+	if audio is switched on and David Venkatachalam is not exposed:
+		[some question and answer before David shows his hand]
+		if a random chance of 1 in 2 succeeds:
+			[Half the time, David/Janet will drive conversation topics]
+			sort the Table of Conversation in reverse required order;
+			choose row 1 in the Table of Conversation;
+			if the required entry is 0:[meaning, no obligatory topics are left]
+				now David Venkatachalam is exposed;[and will now pull a gun on Janet]
+			otherwise:
+				if the required entry is:
+					-- 1:[The first time Dave/Janet ask about a required topic, customized text is printed]
+						say "[query entry][paragraph break]";
+						increase the required entry by one;
+					-- 2:
+						say "test";
+					-- 3:
+						say "test";
+					-- otherwise:
+						say "test";
+		otherwise:
+			say "some random filler actions";
+		if David Venkatachalam is exposed:[David now turns out to be a bad guy]
+			say "David gets all crazy.";
 	if elapsed is greater than 10:
 		if audio is switched off:
 			say "[if the player is in the living room]Janet fiddles with some controls on her armband, and[otherwise]Abruptly,[end if] you become aware of noise coming from all areas of the ship: the hum of the plasma constrictor, the low vibration of the cryochamber, and other normal shipboard sounds, but also the footsteps and breathing of Janet and David, from the living room.[paragraph break]";
@@ -3596,24 +3622,7 @@ Every turn during Back on Mars:
 	otherwise:
 		if rover is not awake:
 			if a random chance of 1 in 3 succeeds:
-				wakeup-rover;
-	if audio is switched on and David Venkatachalam is not exposed:
-		[some question and answer before David shows his hand]
-		if a random chance of 1 in 2 succeeds:
-			[Half the time, David/Janet will drive conversation topics]
-			sort the Table of Conversation in reverse required order;
-			choose row 1 in the Table of Conversation;
-			if the required entry is 0:[meaning, no obligatory topics are left]
-				now David Venkatachalam is exposed;[and will now pull a gun on Janet]
-			otherwise:
-				say "test";
-		otherwise:
-			say "some random filler actions";
-		if David Venkatachalam is exposed:[David now turns out to be a bad guy]
-			say "David gets all crazy."
-	
-	
-	
+				wakeup-rover.
 			
 To wakeup-rover:
 	if Rover is in the location:
@@ -3643,32 +3652,58 @@ Instead of listening during Back on Mars:
 		try switching on audio;
 	otherwise:
 		say "You hear the normal backgrund sounds of the ship, plus David and Janet who are in the living room."
+		
+Instead of querying a topic listed in the Table of Conversation during Back on Mars:
+	if the asked entry is 0:
+		say "[ask-text entry][paragraph break]";
+		change the required entry to 0;
+		change the asked entry to 1;
+	otherwise:
+		if a random chance of 1 in asked entry succeeds:
+			say "[ask-reminder entry][paragraph break]";
+		otherwise:
+			say "[one of]David[or]Janet[purely at random] [one of]says[or]reminds you[or]replies[or]answers[or]responds[at random],[quotation mark][one of]You sure are repetitive for a computer. Are you sure there isn't a little man inside typing on a keyboard? We've already talked about [the item entry] and I don't want to go over it again[or]I think we've been over that already[or]We've beaten that topic to death[or]We already talked about [the item entry]. Let it go.[or][The item entry] again? We've already covered that[or]I'd rather cover some new ground, we've already discussed [the item entry].[stopping]".
+			
+Instead of asking someone about something during Back On Mars:
+	try querying.[divert "ask janet about..." to the query action]
+
+Querying is an action applying to one topic. Understand "ask about [text]" as querying.
+
+Carry out querying:
+	do nothing.[it cries out to be over-ridden]
 	
+Report querying:
+	say "Lame answer for not finding a topic in the conversation table."
+	[###TODO make not lame]
+	
+[###TODO -- parallel structure for tell -- e..g, "expound action". Don't forget to list telling, asking, etc. in the technoverb list]
 		
 Table of Conversation
-topic 			item					required	asked	told	ask-text	tell-text
-"probe"	"Musashi-5 space probe"	1	0	0	"blah"		"blah"
-"ansible"		"ansible"					1	0	0	"blah"		"blah"
-"planet"		"planet"					1	0	0	"blah"		"blah"
-"myomita ship"	"myomita ship"		1	0	0	"blah"		"blah"
-"earth"		"earth"					0	0	0	"blah"		"blah"
-"war"			"war"						0	0	0	"blah"		"blah"	
-"dream"		"dreams that you had while unconscious"	0	0 	0		"blah"		"blah"	
-"valkyrie"	"Valkyrie"				0	0	0	"blah"		"blah"	
-"ntp"			"NTP"						0	0	0	"blah"		"blah"	
-"inform"		"Inform language"		0	0	0	"blah"		"blah"	
-"acu" or "simulation"		"Autonomous Control Unit"	0	0	0		"blah"		"blah"
-"female dog"		"robot from Earth"	0	0	0	"blah"		"blah"
-"merchant marine"	"Earth merchant marine"		0	0	0	"blah"		"blah"
-"jade frog"		"jade frog"			0	0	0	"Janet looks amused, [quotation mark]Right, ACU. Um, the jade frog was just an example. There is no jade frog. Sorry.[quotation mark]"		"You explain the differences between jadite and nephrite, drawing on minerological knowledge that you are yourself surprised to find in your data banks. David and Janet look impressed." 
+topic 			item					required	told	asked	query	ask-text	ask-reminder	tell-text
+"probe"	"Musashi-5 space probe"		1	0	0	"Janet [if the player is in the living room]walks over to Rover and surveys the perforated, crushed husk of the space probe in his mouth. She [end if]says, [quotation mark]I suppose the first thing that we have to ask about is the space probe. After all, that *was* why we put this entire project together.[quotation mark][paragraph break]David sarcastically interjects, [quotation mark]Yes, and what a success it was. Look -- there's the probe. Or what's left of it after your cyberhound chewed it to death. I can't tell you how many gah-zillion Marx we spent on this project, and for what?[quotation mark][paragraph break]Janet [if the player is in the living room]rests her hand on the sleeve of David's robe and [end if]continues calmly, [quotation mark]Let's hear the whole story, David. ACU, please tell us what happened with the Musashi-5 space probe.[quotation mark]"			"blah"		"blah"		"blah"
+"ansible"		"ansible"						1	0	0	"blah"		"blah"		"blah"		"blah"
+"planet"		"planet"						1	0	0	"blah"		"blah"		"blah"		"blah"
+"myomita ship"	"myomita ship"			1	0	0	"blah"		"blah"		"blah"		"blah"
+"earth"		"earth"						0	0	0	--		"blah"		"blah"		"blah"
+"war"			"war"							0	0	0	--		"blah"		"blah"		"blah"
+"dream"		"dreams that you had while unconscious"	0 	0	0		--		"blah"		"blah"		"blah"
+"valkyrie"	"Valkyrie"					0	0	0	--		"blah"		"blah"		"blah"
+"ntp"			"NTP"							0	0	0	--		"blah"		"blah"		"blah"
+"inform"		"Inform language"			0	0	0	--		"blah"		"blah"		"blah"
+"acu" or "simulation"		"Autonomous Control Unit"	0	0	0		--		"blah"		"blah"		"blah"
+"female dog"		"robot from Earth"		0	0	0	--		"blah"		"blah"		"blah"
+"merchant marine"	"Earth merchant marine"		0	0	0	--		"blah"		"blah"		"blah"
+"jade frog" or "jade" or "frog" or "amphibian"		"jade frog"						0	0	0	--		"Janet looks amused, [quotation mark]Right, ACU. Um, the jade frog was just an example. There is no jade frog. Sorry.[quotation mark]"	"Janet [if the player is in the living room]rolls her eyes and [end if]explains, [quotation mark]I think you're being too concrete here. Again, there is no jade frog. Trust me on that.[quotation mark]"		"You explain the differences between jadite and nephrite, drawing on minerological knowledge that you are yourself surprised to find in your data banks. David and Janet look impressed." 
 
 [
 topic - keywords for the topic of conversation
 item - how the topic is referred to when embedded into text, e.g., "[the item]"
-required - "1" if it is integral to the plot; "0" otherwisee. After the topic has been addressed in either an ask or tell mode, the topic receives a 0 status. That way, we know that we've covered all the important topics if the sum of this column is zero.
-asked - number of times that ACU has been prompted about this topic
+required - 1 or more if it is integral to the plot; "0" otherwise. Each time the question is asked, this number increases. After the topic has been addressed in either an ask or tell mode, the topic receives a 0 status.
 told - number of times that the ACU has told about this topic
-ask-text - the answer provided to the ACU's questions
+asked - number of times that the ACU has asked about this topic
+query - the question that David/Janet pose for required topics
+ask-text - the answer provided by David/Janet to the ACU's questions
+ask-reminder - a shorter version of the ask-text which is said if the player asks the same question more than once
 tell-text - what the ACU tells janet/david
 
 Each topic is meant to come up once, although it can be brought up by either the humans or the ACU. The humans will continue to prompt for required topics. If the convesation time goes beyond a limit, the humans will become more expository with their conversation, pushing the required topics out, rather than waiting to be asked.
