@@ -2802,6 +2802,10 @@ the beeping action			"PROXIMITY ALERT" [beeping]
 the saying yes action		"AFFIRMATIVE" [yes]
 the saying no action		"NEGATIVE" [no]
 the coming action			"SEEK" [come or "rover, come"]
+the asking it about action			"QUERY" [ask s.o. about s.t.]
+the querying action		"QUERY" [ask about s.t.]
+the telling it about action			"SPEECH OUTPUT" [tell s.o. about s.t.]
+the expounding action		"SPEECH OUTPUT" [tell about s.t.]
 
 
 
@@ -3601,13 +3605,13 @@ Every turn during Back on Mars:
 				if the required entry is:
 					-- 1:[The first time Dave/Janet ask about a required topic, customized text is printed]
 						say "[query entry][paragraph break]";
-						increase the required entry by one;
 					-- 2:
-						say "test";
+						say "[one of]David[or]Janet[purely at random] [one of]asks[or]inquires[at random], [quotation mark][one of]Could we come back to the issue of [the item entry][or]We're still not clear on [the item entry]. What can you tell us[or]Could we get back to the topic of [the item entry]? Could you tell us about [the item entry][at random]?[quotation mark][paragraph break]";
 					-- 3:
-						say "test";
+						say "[one of]David[or]Janet[at random] [one of]demands[or]implores[or]requests[or]insists[or]enjoins you[at random], [quotation mark][one of]For the third time, ACU, could you please enlighten us regarding [the item entry][or]ACU, please listen to me, this is important. Could you please tell us about [the item entry][or]Are you listening? We've asked you three times, ACU -- what can you tell us about [the item entry][or]We're not getting very far with this conversation. Could you please tell us about [the item entry][at random]?[quotation mark][paragraph break]";
 					-- otherwise:
-						say "test";
+						say "David looks [one of]exasperated[or]annoyed[or]irritated[or]miffed[or]bent out of shape[or]tired[or]exhausted[or]weary[or]resigned[at random]. He asks, [quotation mark]ACU: we've asked you [required entry in words] times. Please tell us about [the item entry].[quotation mark][paragraph break]";
+				increase the required entry by one;
 		otherwise:
 			say "some random filler actions";
 		if David Venkatachalam is exposed:[David now turns out to be a bad guy]
@@ -3652,18 +3656,7 @@ Instead of listening during Back on Mars:
 		try switching on audio;
 	otherwise:
 		say "You hear the normal backgrund sounds of the ship, plus David and Janet who are in the living room."
-		
-Instead of querying a topic listed in the Table of Conversation during Back on Mars:
-	if the asked entry is 0:
-		say "[ask-text entry][paragraph break]";
-		change the required entry to 0;
-		change the asked entry to 1;
-	otherwise:
-		if a random chance of 1 in asked entry succeeds:
-			say "[ask-reminder entry][paragraph break]";
-		otherwise:
-			say "[one of]David[or]Janet[purely at random] [one of]says[or]reminds you[or]replies[or]answers[or]responds[at random],[quotation mark][one of]You sure are repetitive for a computer. Are you sure there isn't a little man inside typing on a keyboard? We've already talked about [the item entry] and I don't want to go over it again[or]I think we've been over that already[or]We've beaten that topic to death[or]We already talked about [the item entry]. Let it go.[or][The item entry] again? We've already covered that[or]I'd rather cover some new ground, we've already discussed [the item entry].[stopping]".
-			
+					
 Instead of asking someone about something during Back On Mars:
 	try querying.[divert "ask janet about..." to the query action]
 
@@ -3674,14 +3667,53 @@ Carry out querying:
 	
 Report querying:
 	say "Lame answer for not finding a topic in the conversation table."
-	[###TODO make not lame]
+	[###TODO make not lame, also handle audio off - maybe consolidate the audio off messages?]
 	
-[###TODO -- parallel structure for tell -- e..g, "expound action". Don't forget to list telling, asking, etc. in the technoverb list]
+Instead of querying a topic listed in the Table of Conversation during Back on Mars:
+	if audio is switched off:
+		say "You start to ask your question, but then you realize that the audio system is shut off and that no one can hear you.";
+		the rule succeeds;
+	if the asked entry is 0 and the told entry is 0:
+		say "[ask-text entry][paragraph break]";
+		change the required entry to 0;
+	otherwise:
+		if asked entry is greater than 0:
+			if a random chance of 1 in asked entry succeeds:
+				say "[ask-reminder entry][paragraph break]";
+			otherwise:
+				say "[stop being so repetitive]";
+	increase the asked entry by one.
+	
+To say stop being so repetitive:
+	say "[one of]David[or]Janet[purely at random] [one of][or]sighs and[or]coughs and then[or]takes a deep breath and[or]makes a throat-clearing sound and[or]pauses and[or]thinks for a moment and[or]gives it a second and[or]takes a moment to think and[or]moans and[or]groans and[or]exhales slowly and[as decreasingly likely outcomes] [one of]says[or]replies[or]answers[or]responds[at random], [quotation mark][one of]You sure are repetitive for a computer. Are you sure there isn't a little man inside typing on a keyboard? We've already talked about that topic[or]I think we've been over that already[or]We've beaten that topic to death[or]We already talked about that. Let it go.[or]Again? We've already covered that[or]Been there. Talked about that[or]Could we change to subject to something that we haven't already gone over? Surely, there are other things to discuss[or]I'd rather cover some new ground, we've already discussed that[stopping][quotation mark]."
+
+Instead of telling someone about something during Back on Mars:
+	try expounding instead. [divert "tell janet about..." to the expounding action]
+	
+Expounding is an action applying to one topic. Understand "tell about [text]" as expounding.
+
+Carry out expounding:
+	do nothing.
+	
+Report expounding:
+	say "Lame answer for not finding a topic in the conversation table."
+	[###TODO make not lame, also handle audio off]
+	
+Instead of expounding a topic listed in the Table of Conversation during Back on Mars:
+	if audio is switched off:
+		say "You try to talk, but you realize that the audio system is shut off, so no one can hear you.";
+		the rule succeeds;
+	if the told entry is 0 and the asked entry is 0:
+		say "[tell-text entry][paragraph break]";
+		change the required entry to 0;
+	otherwise:
+		say "[stop being so repetitive]";
+	increase the told entry by one.
 		
 Table of Conversation
 topic 			item					required	told	asked	query	ask-text	ask-reminder	tell-text
-"probe"	"Musashi-5 space probe"		1	0	0	"Janet [if the player is in the living room]walks over to Rover and surveys the perforated, crushed husk of the space probe in his mouth. She [end if]says, [quotation mark]I suppose the first thing that we have to ask about is the space probe. After all, that *was* why we put this entire project together.[quotation mark][paragraph break]David sarcastically interjects, [quotation mark]Yes, and what a success it was. Look -- there's the probe. Or what's left of it after your cyberhound chewed it to death. I can't tell you how many gah-zillion Marx we spent on this project, and for what?[quotation mark][paragraph break]Janet [if the player is in the living room]rests her hand on the sleeve of David's robe and [end if]continues calmly, [quotation mark]Let's hear the whole story, David. ACU, please tell us what happened with the Musashi-5 space probe.[quotation mark]"			"blah"		"blah"		"blah"
-"ansible"		"ansible"						1	0	0	"blah"		"blah"		"blah"		"blah"
+"probe"	"Musashi-5 space probe"		1	0	0	"Janet [if the player is in the living room]walks over to Rover and surveys the perforated, crushed husk of the space probe in his mouth. She [end if]says, [quotation mark]I suppose the first thing that we have to ask about is the space probe. After all, that *was* why we put this entire project together.[quotation mark][paragraph break]David sarcastically interjects, [quotation mark]Yes, and what a success it was. Look -- there's the probe. Or what's left of it after your cyberhound chewed it to death. I can't tell you how many gah-zillion Marx we spent on this project, and for what?[quotation mark][paragraph break]Janet [if the player is in the living room]rests her hand on the sleeve of David's robe and [end if]continues calmly, [quotation mark]Let's hear the whole story, David. ACU, please tell us what happened with the Musashi-5 space probe.[quotation mark]"			"David [if the player is in the living room]gestures towards the  space probe and [end if]explains, [quotation mark]Almost three hundred standard years ago, the Myomita corporation launched a bunch of space probes. Earth was crowded, and the Internationals were making it difficult for the Corporates to expand. The Solar System was looking like a limited proposition at the time, so they thought they looked further out. They shot the probes towards systems that had a good profile, although they knew it would be a fishing expedition. The probes themselves had enough smarts to fly to a system, check it out, and if it looked good, to report back.[quotation mark][paragraph break]Janet points out, [quotation mark]There were no ansibles in those days, so the probe itself had to return. Even condensate drive was faster than radio.[quotation mark][paragraph break][quotation mark]Right,[quotation mark] continues David, [quotation mark]the probes would dip into the stellar wind in each system and follow a search pattern until they hit something. Within the first hundred years, four probes came  back, but the worlds they reported were only marginal, none really panned out. We were gahsmacked when we picked up Mushashi-5's transponder signal, particularly since it was only 40 light years out. That probe must have gone further into space than anything before or since.[quotation mark]"		"David replies, [quotation mark]As I said, of the thirty or so probes that Myomita launched almost three centuries ago, four came back within the first hundred years, and none found any world really worthy of colonization.When we picked up the transponder signal from Musashi-5 coming from only 40 light years away, we knew that it meant that the probe was on its way back to Earth after finding something much further out.[quotation mark]"		"You tell them that the probe had crashed forty years ago, on its way back to Earth. Like its sister probes that were launched from Earth almost three centuries ago by the Myomita corporation, it had explored space in an ever-expanding search pattern, refueling its condensate drive from the stellar wind of each star system it visited.[paragraph break]Apparently, it found a world which satisfied its search parameters because it was on its way back to Earth when it crashed. The stellar wind of a chaotic dying star required a close approach, and the probe was damaged by a stellar flare. Instead of tumbling into the star and burning, the probe ditched on a large, rocky planet, perhaps the core of a former gas giant. The planet itself was untenably close to the star, and was slowly being ripped to shreds by tidal forces, but the probe followed its programming and activated its transponder.[paragraph break]Listening intently, David now remarks, [quotation mark]Whatever that probe found, it was out way beyond any of the other Musashi probes. Likely, it's gone deeper into space than any probe Earth has ever sent.[quotation mark]"
+"ansible"		"ansible"						1	0	0	"Janet [if the player is in the living room]strokes her chin and [end if]asks, [quotation mark]I don't understand why you didn't contact us when you found the probe. Instead, you broke through your cognitive constraints and decided to fly it back to Earth.[quotation mark][paragraph break]David puts in hastily, [quotation mark]Costing us another 3 months, while we assumed the ship was lost![quotation mark][paragraph break]Janet resumes, [quotation mark]Regardless of the condition of the probe, you should automatically have contacted earth by ansible... Unless, I suppose there was a problem with the ansible. ACU, please tell us about the ansible.[quotation mark]"		"Janet says, [quotation mark]The ansible is an FTL comm system which MARSpace only got working a few months before the mission. It uses a line of sight tachyon beam to send data from point to point. There are only a few ansibles in existence: the one on your ship, our consulate on Titan, and within some military installations in the Belt.[paragraph break]As soon as you had discovered the probe, you were programmed to download it and transmit it via the ansible.[quotation mark][paragraph break][quotation mark]It would have been a lot faster than flying the probe back to Mars,[quotation mark] adds David. He pauses [if the player is in the living room], scrutinizes readout on Janet's armband, [end if]and then continues, [quotation mark]wait a minute...according to these diagnostics, the ansible was destroyed.[quotation mark][paragraph break]You reply that indeed, the ansible was destroyed during the landing, as the conditions on the planet were very harsh."		"Janet replies, [quotation mark]As I mentioned, ansibles are faster than light communication devices, and you've got one of the few ones in existence. Unfortunately, it sounds like yours was busted during landing.[quotation mark]"		"You explain that the ship's ansible, a faster than light communication system, was damaged during the landing: the planet was breaking apart due to tidal forces, and the atmosphere was unexpectedly turbulent and full of particulate matter. As you descended, most of the communications array snapped off, including the delicate ansible web. When the ansible failed, your programming threw a cognitive constraint exception, and you tried your best to carry out your programming by literally bringing the probe back to Mars.[paragraph break][quotation mark]Ah, I knew there must have been a good explanation,[quotation mark] remarks Janet."
 "planet"		"planet"						1	0	0	"blah"		"blah"		"blah"		"blah"
 "myomita ship"	"myomita ship"			1	0	0	"blah"		"blah"		"blah"		"blah"
 "earth"		"earth"						0	0	0	--		"blah"		"blah"		"blah"
@@ -3693,7 +3725,7 @@ topic 			item					required	told	asked	query	ask-text	ask-reminder	tell-text
 "acu" or "simulation"		"Autonomous Control Unit"	0	0	0		--		"blah"		"blah"		"blah"
 "female dog"		"robot from Earth"		0	0	0	--		"blah"		"blah"		"blah"
 "merchant marine"	"Earth merchant marine"		0	0	0	--		"blah"		"blah"		"blah"
-"jade frog" or "jade" or "frog" or "amphibian"		"jade frog"						0	0	0	--		"Janet looks amused, [quotation mark]Right, ACU. Um, the jade frog was just an example. There is no jade frog. Sorry.[quotation mark]"	"Janet [if the player is in the living room]rolls her eyes and [end if]explains, [quotation mark]I think you're being too concrete here. Again, there is no jade frog. Trust me on that.[quotation mark]"		"You explain the differences between jadite and nephrite, drawing on minerological knowledge that you are yourself surprised to find in your data banks. David and Janet look impressed." 
+"jade frog" or "jade" or "frog" or "amphibian"		"jade frog"						0	0	0	--		"Janet looks amused, [quotation mark]Right, ACU. Um, the jade frog was just an example. There is no jade frog. Sorry.[quotation mark]"	"Janet [if the player is in the living room][one of]rolls her eyes[or]shakes her head[or]scratches her head[or]stares at her sandals[at random] and [end if]explains, [quotation mark]I think you're being too concrete here. Again, there is no jade frog. Trust me on that.[quotation mark]"		"You explain the differences between jadite and nephrite, drawing on minerological knowledge that you are yourself surprised to find in your data banks. David and Janet look impressed." 
 
 [
 topic - keywords for the topic of conversation
