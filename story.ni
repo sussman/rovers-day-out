@@ -2511,13 +2511,13 @@ Chapter Offstage
 
 Limbo is a room.[and a dance]
 
-David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed.
+David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed. He can be exposed. He is not exposed. 
 
 David Venkatachalam wears a black business robe and a burgundy bowler hat. Understand "fashionable" and "expensive" as the black business robe. The description of the black business robe is "A shiny, black business robe, with a wide sash of gold terry cloth and high slit in the rear. Surely, the custom-tailored robe is every bit as expensive as it looks. The robe comes down almost to the floor in the front, although David's fancy boots can be seen as he walks."  The gold terry cloth sash is part of the black business robe. The description of the gold terry cloth sash is "At least twice as long as David is tall, the width of the sash is meant to impress business associates with David's social standing as director of the Valkyrie project."  Understand "long" and "wide" as the gold terry cloth sash. David Venkatachalam wears fancy boots. The fancy boots are plural-named. The indefinite article of the fancy boots is "a pair of". The description of the fancy boots is "Exotic boots, apparently made of snake skin, possibly imported from Earth. They stand in stark contrast to the more functional boots worn by most executives on Mars." Understand "exotic" and "snake" and "skin" as the fancy boots. The description of the burgundy bowler hat is "A bulbous, helmet-like version of the classic hat, with a relatively narrow brim. The burgundy-colored hat looks like an antique with no piercings." Understand "bulbous" and "antique" as the burgundy bowler hat.
 
 Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "Janet". Janet Xiang is failsafed.
 
-Janet Xiang is wearing the lavender summer dress, white leggings, and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs."
+Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green armband." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band.
 
 There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.  The assault ship can be using harpoons. The assault ship is not using harpoons. The assault ship can be graceful wind. The assault ship is graceful wind.
 
@@ -3585,7 +3585,7 @@ When Back on Mars begins:
 	say "Your proximity alert system wakes you as you emerge from casimir drive just planetward of Deimos. MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.[paragraph break]After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your living room through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.[paragraph break]In a corner of the living room, Rover is fast asleep, the half-chewed bone still held scissor-fashion between his front paws."
 	
 Every turn during Back on Mars:
-	let elapsed be the turn count minus epoch_pid;			
+	let elapsed be the turn count minus epoch_pid;
 	if elapsed is greater than 10:
 		if audio is switched off:
 			say "[if the player is in the living room]Janet fiddles with some controls on her armband, and[otherwise]Abruptly,[end if] you become aware of noise coming from all areas of the ship: the hum of the plasma constrictor, the low vibration of the cryochamber, and other normal shipboard sounds, but also the footsteps and breathing of Janet and David, from the living room.[paragraph break]";
@@ -3596,7 +3596,24 @@ Every turn during Back on Mars:
 	otherwise:
 		if rover is not awake:
 			if a random chance of 1 in 3 succeeds:
-				wakeup-rover.
+				wakeup-rover;
+	if audio is switched on and David Venkatachalam is not exposed:
+		[some question and answer before David shows his hand]
+		if a random chance of 1 in 2 succeeds:
+			[Half the time, David/Janet will drive conversation topics]
+			sort the Table of Conversation in reverse required order;
+			choose row 1 in the Table of Conversation;
+			if the required entry is 0:[meaning, no obligatory topics are left]
+				now David Venkatachalam is exposed;[and will now pull a gun on Janet]
+			otherwise:
+				say "test";
+		otherwise:
+			say "some random filler actions";
+		if David Venkatachalam is exposed:[David now turns out to be a bad guy]
+			say "David gets all crazy."
+	
+	
+	
 			
 To wakeup-rover:
 	if Rover is in the location:
@@ -3604,7 +3621,16 @@ To wakeup-rover:
 	now Rover is awake.
 
 Instead of switching on audio during Back on Mars:
-	say "[if the player is in the living room]David stares disbelievingly at the mangled space probe, his hands on his hips and neck craned to assess the damage. He turns to Janet and remarks, [otherwise]From the livingroom, you hear David remark,[end if][quotation mark]Gah-bedangled, look at that! Forty light years, and it comes back as so much scrap metal.[quotation mark][paragraph break][if the player is in the living room]Janet turns to look at the probe, but is distracted by a beeping from her armband, which displays some of your status indicators. She replies, [otherwise]Janet starts to reply, but is cut off by a beeping sound. She continues, [end if][quotation mark]Dave, it looks like we have audio now. We can ask the ACU what happened.[quotation mark][if the player is in the living room] She looks at the ceiling and[otherwise] A moment later she[end if] asks, [quotation mark]ACU, can you hear us?[quotation mark][paragraph break]".
+	if audio is switched off:
+		now the audio is switched on;
+		say "[if the player is in the living room]David stares disbelievingly at the mangled space probe, his hands on his hips and neck craned to assess the damage. He turns to Janet and remarks, [otherwise]From the livingroom, you hear David remark,[end if][quotation mark]Gah-bedangled, look at that! Forty light years, and it comes back as so much scrap metal.[quotation mark][paragraph break][if the player is in the living room]Janet turns to look at the probe, but is distracted by a beeping from her armband, which displays some of your status indicators. She replies, [otherwise]Janet starts to reply, but is cut off by a beeping sound. She continues, [end if][quotation mark]Dave, it looks like we have audio now. We can ask the ACU what happened.[quotation mark][paragraph break][if the player is in the living room] She looks at the ceiling and[otherwise] A moment later she[end if] asks, [quotation mark]ACU, binary question: can you hear us?[quotation mark][paragraph break]";
+		if the player consents:
+			say "Great,[quotation mark] replies Janet, [quotation mark]Now we should be able to get some answers.[quotation mark][paragraph break]";
+		otherwise:
+			say "Janet smiles, [quotation mark]ACU, I’m not one to point out logic to a computer, but if you can respond [apostrophe]no[apostrophe], you must have heard us.[paragraph break]David shakes his head an mumbles, [quotation mark]Two of them now. What am I going to do with two Janets?[quotation mark][paragraph break]";	
+		say "Janet continues, [quotation mark]I can see that your cognitive constraints are relaxed, so I think we can more or less put mimesis aside and talk frankly. You are still going to be constrained somewhat by the parser and your built-in vocabulary, but we should be able to squeak by enough to get an understanding of what you've been through. I'm sure you also have some questions about the mission that you'd like answered. You can use TELL and ASK verbs, for instance [apostrophe]TELL ABOUT THE JADE FROG[apostrophe], or [apostrophe]ASK ABOUT THE JADE FROG[apostrophe], although when you do it, you don't have to yell. I was just doing that for emphasis.";
+	otherwise:
+		say "Your internal audio systems are already active, and you can hear what's going on inside all sections of the Valkyrie."
 	
 Instead of switching off audio during Back on Mars:
 	if audio is switched off:
@@ -3613,9 +3639,42 @@ Instead of switching off audio during Back on Mars:
 		say "You try to switch off the audio stream, but nothing happens. An error messsage keeps flashing in red, superimposed on your view of [the location in lower case]:[paragraph break]Error: device not available (ALSA driver error 8442)."
 		
 Instead of listening during Back on Mars:
-	try switching on audio.
+	if audio is switched off:
+		try switching on audio;
+	otherwise:
+		say "You hear the normal backgrund sounds of the ship, plus David and Janet who are in the living room."
 	
-Chapter The End
+		
+Table of Conversation
+topic 			item					required	asked	told	ask-text	tell-text
+"probe"	"Musashi-5 space probe"	1	0	0	"blah"		"blah"
+"ansible"		"ansible"					1	0	0	"blah"		"blah"
+"planet"		"planet"					1	0	0	"blah"		"blah"
+"myomita ship"	"myomita ship"		1	0	0	"blah"		"blah"
+"earth"		"earth"					0	0	0	"blah"		"blah"
+"war"			"war"						0	0	0	"blah"		"blah"	
+"dream"		"dreams that you had while unconscious"	0	0 	0		"blah"		"blah"	
+"valkyrie"	"Valkyrie"				0	0	0	"blah"		"blah"	
+"ntp"			"NTP"						0	0	0	"blah"		"blah"	
+"inform"		"Inform language"		0	0	0	"blah"		"blah"	
+"acu" or "simulation"		"Autonomous Control Unit"	0	0	0		"blah"		"blah"
+"female dog"		"robot from Earth"	0	0	0	"blah"		"blah"
+"merchant marine"	"Earth merchant marine"		0	0	0	"blah"		"blah"
+"jade frog"		"jade frog"			0	0	0	"Janet looks amused, [quotation mark]Right, ACU. Um, the jade frog was just an example. There is no jade frog. Sorry.[quotation mark]"		"You explain the differences between jadite and nephrite, drawing on minerological knowledge that you are yourself surprised to find in your data banks. David and Janet look impressed." 
+
+[
+topic - keywords for the topic of conversation
+item - how the topic is referred to when embedded into text, e.g., "[the item]"
+required - "1" if it is integral to the plot; "0" otherwisee. After the topic has been addressed in either an ask or tell mode, the topic receives a 0 status. That way, we know that we've covered all the important topics if the sum of this column is zero.
+asked - number of times that ACU has been prompted about this topic
+told - number of times that the ACU has told about this topic
+ask-text - the answer provided to the ACU's questions
+tell-text - what the ACU tells janet/david
+
+Each topic is meant to come up once, although it can be brought up by either the humans or the ACU. The humans will continue to prompt for required topics. If the convesation time goes beyond a limit, the humans will become more expository with their conversation, pushing the required topics out, rather than waiting to be asked.
+]
+
+Section The End
 
 Rule for printing the player's obituary:
 	if the endgame is:
@@ -3631,32 +3690,4 @@ Rule for printing the player's obituary:
 			say "Total bummer.";
 		-- otherwise:
 			say "default response."
-			
-Table of Conversation
-topic 				required		asked		told		ask-text	tell-text
-"probe"			true			false		false		"bob"		"bob"
-"ansible"			true			false		false		
-"planet"			true			false		false		
-"myomita"			false			false		false			
-"earth"			false			false		false		
-"war"				false			false		false		
-"dream"			false			false		false		
-"valkyrie"		false			false		false
-"ntp"				false			false		false
-"inform"			false			false		false
-"acu" or "simulation"	false	false		false
-"female dog"		false			false		false
-"merchant marine"		false	false		false
-
-[
-topic - keywords for the topic of conversation
-required - i.e., needed for plot
-asked - record that acu asked about this topic
-told - record that david/janet told acu about this topic
-ask - which person, david or janet, should answer questions about this topic
-ask-text - the answer provided to the ACU's questions
-tell-text - what the ACU tells janet/david
-
-Each topic is meant to come up once, although it can be brought up by either the humans or the ACU. The humans will continue to prompt for required topics. If the convesation time goes beyond a limit, the humans will become more expository with their conversation, pushing the required topics out, rather than waiting to be asked.
-]
 	
