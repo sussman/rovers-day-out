@@ -3571,6 +3571,9 @@ Chapter Back On Mars
 
 Back on Mars is a scene.  Back on Mars begins when Boarding Party ends. 
 
+Data transferred is a number that varies. Data transferred is 0.
+[the % completion for transfer of the encrypted probe data to David's account, and, not incidentally, how close David is to shooting Janet and ending the game.]
+
 When Back on Mars begins:
 	Restore the World;
 	Setup the World;	
@@ -3595,17 +3598,20 @@ When Back on Mars begins:
 	
 Every turn during Back on Mars:
 	let elapsed be the turn count minus epoch_pid;
-	if elapsed is greater than 10:
-		if audio is switched off:
-			say "[if the player is in the living room]Janet fiddles with some controls on her armband, and[otherwise]Abruptly,[end if] you become aware of noise coming from all areas of the ship: the hum of the plasma constrictor, the low vibration of the cryochamber, and other normal shipboard sounds, but also the footsteps and breathing of Janet and David, from the living room.[paragraph break]";
-			try switching on audio;
-	otherwise if elapsed is greater than 7:
-		if Rover is not awake:
-			wakeup-rover;
-	otherwise:
-		if rover is not awake:
-			if a random chance of 1 in 3 succeeds:
-				wakeup-rover;
+	if David Venkatachalam is exposed: [David now turns out to be a bad guy]
+		if the pistol is in Limbo: [He gets to make his bad guy speech]
+			now David Venkatachalam carries the pistol;
+			say "[the evil monologue]";
+		otherwise:
+			if the data transferred is 125:
+				now the endgame is janet-killed;
+				end the game in death;
+			otherwise:
+				say the narrative corresponding to the completion of data transferred in the Table of Final Countdown;
+				say paragraph break;
+				say "DATA TRANSFER: [data transferred]% COMPLETE[paragraph break]";
+				increase the data transferred by 25;						
+			the rule succeeds;
 	if audio is switched on and David Venkatachalam is not exposed:
 		[some question and answer before David shows his hand]
 		if a random chance of 1 in 2 succeeds:
@@ -3618,28 +3624,33 @@ Every turn during Back on Mars:
 				if the required entry is:
 					-- 1:[The first time Dave/Janet ask about a required topic, customized text is printed]
 						say "[query entry][paragraph break]";
-					-- 2:
+					-- 2:[ok, they ask the question again. Still polite]
 						say "[one of]David[or]Janet[purely at random] [one of]asks[or]inquires[at random], [quotation mark][one of]Could we come back to the issue of [the item entry][or]We're still not clear on [the item entry]. What can you tell us[or]Could we get back to the topic of [the item entry]? Could you tell us about [the item entry][at random]?[quotation mark][paragraph break]";
-					-- 3:
+					-- 3:[After three times, getting a bit miffed now]
 						say "[one of]David[or]Janet[at random] [one of]demands[or]implores[or]requests[or]insists[or]enjoins you[at random], [quotation mark][one of]For the third time, ACU, could you please enlighten us regarding [the item entry][or]ACU, please listen to me, this is important. Could you please tell us about [the item entry][or]Are you listening? We've asked you three times, ACU -- what can you tell us about [the item entry][or]We're not getting very far with this conversation. Could you please tell us about [the item entry][at random]?[quotation mark][paragraph break]";
-					-- otherwise:
+					-- otherwise:[OK, just answer the damn question already!]
 						say "David looks [one of]exasperated[or]annoyed[or]irritated[or]miffed[or]bent out of shape[or]tired[or]exhausted[or]weary[or]resigned[at random]. He asks, [quotation mark]ACU: we've asked you [required entry in words] times. Please tell us about [the item entry].[quotation mark][paragraph break]";
 				increase the required entry by one;
 		otherwise:
 			say "some random filler actions";
-	if David Venkatachalam is exposed: [David now turns out to be a bad guy]
-		if the pistol is in Limbo: [He gets to make his bad guy speech]
-			now David Venkatachalam carries the pistol;
-			say "[the evil monologue]";
-		otherwise:
-			do nothing.[this is where the count down goes.]
-		
+		the rule succeeds;
+	if elapsed is greater than 10:
+		if audio is switched off:
+			say "[if the player is in the living room]Janet fiddles with some controls on her armband, and[otherwise]Abruptly,[end if] you become aware of noise coming from all areas of the ship: the hum of the plasma constrictor, the low vibration of the cryochamber, and other normal shipboard sounds, but also the footsteps and breathing of Janet and David, from the living room.[paragraph break]";
+			try switching on audio;
+	otherwise if elapsed is greater than 7:
+		if Rover is not awake:
+			wakeup-rover;
+	otherwise:
+		if rover is not awake:
+			if a random chance of 1 in 3 succeeds:
+				wakeup-rover.
+
 To say the evil monologue:
 	say "David [if the player is in the living room] looks forlorn. He [end if]says dejectedly, [quotation mark]All that effort, and what do we have to show for it? Nothing. A rusty old heap of space junk. All the data, lost, and gone forever.[quotation mark][paragraph break][quotation mark]Actually, that's not the case[quotation mark], you say. [quotation mark]Before attempting to transmit the data, I downloaded the entire probe's data into my memory. The data are encrypted, but intact. When the ansible failed, the only way I could fulfill the mission was to return to the Sol System.[quotation mark][paragraph break]";
 	say "[if the player is in the living room]David's head snaps up, as if he's been given a new lease on life. [end if][quotation mark]Intact? Then you have the data? This is too good to be true! Janet, would you extract the probe data from the ACU and transfer it to my MARSpace account?[quotation mark][paragraph break]";
 	say "[quotation mark]Of course, just a moment. [if the player is in the living room][quotation mark]Janet's fingers play over the surface of her arm band. [quotation mark][end if]The data are encrypted... with your key. And there's something odd...[quotation mark][if the player is in the living room] Janet's forehead creases with concentration.[end if][paragraph break][quotation mark]No,[quotation mark] replies David, [quotation mark]that was intentional. To prevent it from falling into the wrong hands.[quotation mark][paragraph break]";
-	say "[quotation mark]No, not the encryption, David. The ansible coordinates -- the message was directed towards Earth. Isn't that odd?[quotation mark][if the player is in the living room] Janet looks up at David, perplexed.[end if][paragraph break]David pulls a pistol from his robe and trains it on Janet.";
-	say "Dammit, Janet,[quotation mark] cries David, [quotation mark]What a disappointment! Yes, the message was directed to Earth. The Valkyrie was our back-up plan in case our own ship ran into difficulty. I’m afraid that after the data transfer is complete, I’ll have to kill you. A pity, I was really enjoying being with you. I had even picked out a china pattern.[paragraph break]David enunciates his words very precisely now,[quotation mark]ACU, this is a root command, authorization RedMonkey737: start data transfer![quotation mark][paragraph break]".
+	say "[quotation mark]No, not the encryption, David. The ansible coordinates -- the message was directed towards Earth. Isn't that odd?[quotation mark][if the player is in the living room] Janet looks up at David, perplexed.[end if][paragraph break]David pulls a pistol from his robe and trains it on Janet.[paragraph break]".
 				
 To wakeup-rover:
 	if Rover is in the location:
@@ -3751,8 +3762,16 @@ ask-text - the answer provided by David/Janet to the ACU's questions
 ask-reminder - a shorter version of the ask-text which is said if the player asks the same question more than once
 tell-text - what the ACU tells janet/david
 
-Each topic is meant to come up once, although it can be brought up by either the humans or the ACU. The humans will continue to prompt for required topics. If the convesation time goes beyond a limit, the humans will become more expository with their conversation, pushing the required topics out, rather than waiting to be asked.
+Each topic is meant to come up once, although it can be brought up by either the humans or the ACU. The ACU can go out of order and mix mandatory/optional topics. The humans will continue to prompt for required topics. 
 ]
+
+Table of Final Countdown
+completion		narrative
+0					"Dammit, Janet,[quotation mark] cries David, [quotation mark]What a disappointment! Yes, the message was directed to Earth. The Valkyrie was our back-up plan in case our own ship ran into difficulty. I’m afraid that after the data transfer is complete, I’ll have to kill you. A pity, I was really enjoying being with you. I had even picked out a china pattern.[paragraph break]David enunciates his words very precisely now,[quotation mark]ACU, this is a root command, authorization RedMonkey737: start data transfer![quotation mark]"
+25					"Janet's voice quavers, [quotation mark]David, I can’t believe this. After the last few months...[quotation mark][paragraph break][if the player is in the living room]Without blinking, David walks towards the space probe, all the time maintaining a bead on Janet. [end if]David replies monotonically, [quotation mark]After we didn’t hear back from either ship, I’ll admit that I was getting used to the idea of settling down with you. It would have been a good way to maintain cover within MARSpace, and eventually, we would have sent another mission to retrieve the probe.[quotation mark]" 
+50					"[if the player is in the living room]Janet glances furtively towards the cargo bay doors, [end if][quotation mark]Someone will hear the gun; you won’t be able to walk out of here.[quotation mark][paragraph break][if the player is in the living room]David gives the door an off-handed glance, and replies with assurance, [end if][quotation mark]My dear, the whole facility is secured by order of the mission director, that is to say, me. The probe data are such a sensitive subject that I had no difficulty getting authorization to lock down the entire facility. There’s nobody here except us love birds.[quotation mark][if the player is in the living room][paragraph break]David leers like a predator at Janet, who recoils in disgust.[end if][paragraph break]" 
+75					"Janet takes a deep breath and says with resolve, [quotation mark]David, I’m sorry to do this, but ACU: I instruct you to stop David using any means necessary.[quotation mark][paragraph break]This elicits [if the player is in the living room]a wry smile and [end if]mocking laugh from David, who replies, [quotation mark]That’s funny, Janet. Really. What’s it going to do, talk me to death? You know as well as I do that the ACU is entirely locked down by failsafe interdictions. Nice try.[quotation mark]"
+100					"Janet [if the player is in the living room]closes her eyes with resignation and [end if]asks: [quotation mark]David, if you’re going to shoot me, could you promise me to at least look after Rover?[quotation mark][paragraph break]David snorts cynically, [quotation mark]Actually, you know what? I hate dogs.[quotation mark]" 
 
 Section The End
 
