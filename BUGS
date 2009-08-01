@@ -1,0 +1,149 @@
+  *** Things we should fix, mainly discovered via testing. ***
+
+* General concerns about 'remember':  how is a user going to know to
+  remember something?  We need an event to set off a flood of
+  'remember' actions -- like a textbook, perhaps?
+
+   The player really *needs* the backstory of politics, the valkyrie's
+   mission, and the competition from earth.  Otherwise the whole Real
+   Thing section (and especially rover's solution to liftoff) won't
+   make any sense to the player.... nor will the solution be something
+   that occurs naturally to the player.
+
+   Specifically, these topics *must* be read before Real Thing:
+
+      - probe
+      - myomita
+      - war
+      - valkyrie
+      - casimir
+
+
+
+
+* 'go room' shouldn't show 'ACU -> SELECT' but rather
+  'room's-aware-name -> SELECT'
+
+### TODO status line when going towards
+
+* "cook egg" 
+
+### TODO cook egg
+
+
+###TOCONSIDER: It would make more sense to model the rooms with inside
+   from/outside from relationships. This would more closely follow the
+   directory level paradigm suggested with the flosix commands. It
+   would also make going out of the shower, or out the front door make
+   more sense.
+
+
+* "exit shower" fails but just "exit" leaves the shower.
+
+###TODO exit shower
+
+* "pet rover"
+
+###TODO pet rover
+
+
+* should 'wait' while sitting on toilet do something?
+
+   -> I think the bigger issue is that we should hint that 'something
+      seems odd' about the room once we're sitting on the toilet.  we
+      need to guide people to examine the toilet, so that they notice
+      the plunger at all.
+
+   -> bigger confusion:  *I* fell into the trap of thinking that I had
+      to make myself poop during the second sim.  I wasted 10 mins on
+      it!  If I don't have the urge to defecate, let's say so.
+      Granted, I had forgotten about the magpaper ordering.  But let's
+      hint that we only need to take care of business after eating.
+
+   -> I don't like our current system of "automatically" sitting on the
+      toilet after eating the egg.  Let the player do that, since they
+      feel an urge anyway, right?  Likewise, let the player know that
+      they're "done" with business after fixing the plunger.6
+
+   -> BUG:  I fixed the plunger perfectly before eating.  After
+      eating, it's all wrong again.  Let's either remember the
+      plunger's state, or not allow me to move the plunger before eating.
+
+###TODO better implementation of taking care of business @@@ In
+writing the "taking care of business" section, I was trying to avoid
+giving the impression that the game was written by a 13-year old
+focused on potty humor. On the other hand, if one is presented with a
+toilet, it does seem natural... I'll need to come back to this
+section. I don't want it to come across as puerile or overly graphic.
+
+* "poop" is not recognized
+
+###TODO: poop/shit/defecate .... "Even real adventurers have to go sometime."
+
+* need to understand 'chow' as 'bag of dog chow'
+
+* grammar error?
+
+   >x cover 
+
+   The cover is made of plastic, but has been laminated to
+   give it the appearance of unstained wood. It toilet cover is
+   closed.
+
+
+* uhoh:  this seems to read like there are three sibling objects.  And
+  they're not siblings.
+
+  >x bowl
+  Which do you mean, the dog dish, the water bowl, or the food bowl
+
+###TODO: disambiguate dog bowl objects in kitchen
+
+
+* no status-line update when we stand up and toilet flushes??
+
+###TODO: update status after flush
+
+* in The Real Thing, I expected toilet to not flush and be broken.
+  Guess we haven't written that yet?
+
+###TODO: broken toilet puzzle in real thing
+
+
+* bug:  status-line noun shouldn't default to "ACU" all the time -- it
+  should be aware of whether we're playing Janet or Rover.
+
+
+* At the beginning of the game, we stand up and knock the clock behind
+  the futon.  Experienced gamers will want to find it by looking
+  behind/underneath the futon, and yet we move it to "Limbo"?  Why?
+
+* "look out window" should work.  try 'look outside' instead?
+
+* oops!  in the bathroom:
+
+  >x box
+  Which do you mean, the plastic box, or the plastic box-proxy?
+
+
+--------------------------------------------------------------------
+"Fleshing Out" section.
+
+Nothing wreaks of newbie-game-writer-ness than missing nouns and
+verbs.  If we describe things floridly, we need to be ready to respond
+to every verb and noun we conjure up in our descriptions.  When
+obvious commands fail, players get annoyed.
+
+
+* more nouns to define:
+
+    sunlight (mentioned in skylight description)
+
+    remember condensate (drive) (since we remember casimir)
+
+    remember earth
+
+    
+* more verbs/actions to define (or respond to):
+
+    wash hands  (sink description is "enough room to wash your hands")
