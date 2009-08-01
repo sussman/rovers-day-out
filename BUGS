@@ -1,5 +1,11 @@
   *** Things we should fix, mainly discovered via testing. ***
 
+Movement system needs some revision: in from/out from for ship rooms, and direct movement rather than direction movement -- will simplify a lot of issues. Also revise the checks on moving from room to room and make sure that all entry-triggered actions still work. Known issue: when janet takes the egg from livingroom to kitchen, it jumps to the fridge in Real Thing.
+
+Contained objects needs to be put in scope or otherwise worked around: need to allow eat food/drink water to work more smoothly with the objects that are in the dog bowls
+
+Consider simplifying Rover's food/drink bowl in Valkyrie.
+
 * General concerns about 'remember':  how is a user going to know to
   remember something?  We need an event to set off a flood of
   'remember' actions -- like a textbook, perhaps?
@@ -129,7 +135,7 @@ section. I don't want it to come across as puerile or overly graphic.
 --------------------------------------------------------------------
 "Fleshing Out" section.
 
-Nothing wreaks of newbie-game-writer-ness than missing nouns and
+Nothing reeks of newbie-game-writer-ness than missing nouns and
 verbs.  If we describe things floridly, we need to be ready to respond
 to every verb and noun we conjure up in our descriptions.  When
 obvious commands fail, players get annoyed.
@@ -147,3 +153,5 @@ obvious commands fail, players get annoyed.
 * more verbs/actions to define (or respond to):
 
     wash hands  (sink description is "enough room to wash your hands")
+
+- open drawer should kill David/Janet

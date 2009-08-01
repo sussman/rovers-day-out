@@ -919,6 +919,10 @@ Section Disabled For Testing
 When play begins:
 	change the wait-a-bit to false.
 	
+Section Unit Testing
+
+Test all with "test living_room". [and many, many more...Note test names are single words, so no whitespace.]
+	
 Chapter Initialize
 
 When play begins:
@@ -1308,6 +1312,8 @@ Section Living Room
  
 The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and The Shower are simrooms in the Valkyrie Area.
 
+Test living_room with "stand up / open drapes / look / test picture".[add tests for other objects in living room.]
+
 The living room is west of the kitchen, south of the bathroom, and east of the front door.  The bathroom is south of the shower. The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
 
 Instead of going towards when the player is the ACU:
@@ -1497,6 +1503,8 @@ The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The c
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
 The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "deep", "memory", "unit", "data", and "records" as the picture-proxy. The picture can be damaged. The picture is not damaged.  
+
+Test picture with "x picture / get picture / eat picture / read nameplate / read memory unit".
 
 The nameplate is a fixed in place message which is part of the picture. The clueless-description of the nameplate is "A brass nameplate with engraved black lettering. The nameplate is attached to the bottom of the picture." The aware-description of the nameplate is "A small plastic sign with engraved lettering. The sign is glued to the Deep Memory module." The clueless-name of the nameplate is "nameplate". The aware-name of the nameplate is "plastic sign". The nameplate-proxy is an aware-proxy that is part of the nameplate. Understand "plastic" and "sign" as the nameplate-proxy. The inscription of the nameplate is "".
 
