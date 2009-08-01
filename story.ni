@@ -1,5 +1,5 @@
 "Rover's Day Out" by Jack Welch and Ben Collins-Sussman
-[###jack sez: Is the title too close to "A Bear's Night Out"?  An alternative title would be "Walkies for Rover"]
+
 
 The story headline is "An Interactive Fiction".
 The release number is 0.
@@ -62,6 +62,9 @@ Pressure is a number that varies. The pressure is 101. [kPa]
 FiO2 is a number that varies. The FiO2 is 21.
 
 A person can be failsafed. Persons are usually not failsafed.
+
+Wait-a-bit is a truth state that varies. The wait-a-bit is usually true.
+[allows conditional compilation of the 'wait for any key' phrase depending on whether this is a testing version or a for-release version]
 
 Chapter Class Definitions
 
@@ -231,11 +234,11 @@ To say (dialogue - some text) in metaspeak:
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
-	[wait for any key;  !!! commented out for testing]
+	await keystroke;
 	[###TODO:  how do we make the background blue in glulx?  my guess is to open a new blue window on "top" of existing window, of exactly the same size, and then kill the window to resume]
 	clear the screen;
 	say "[bold type]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue.[roman type]";
-	[wait for any key;  !!! commented out for testing]
+	await keystroke;
 	clear the screen.
 	
 [borrowed from example I7 documentation, example 424 Odins:]
@@ -817,6 +820,22 @@ range		manscent				dogscent				homescent
 5			"a considerable distance"	"coming from a reasonable distance away"		"getting fainter"
 6			"a long way off"	"delicately scenting the air"		"worringly faint from here"
 7			"far away"			"faintly, but definitely, tickling your nose from some remote, and no doubt exotic, location."		"all but undetectable from here"
+
+Section Reorienting-release version
+
+Reorienting is an action applying to nothing. 
+	
+Carry out reorienting:
+	if the player is self-aware:
+		now the player is clueless;
+	otherwise if the player is not Rover:
+		now the player is self-aware.
+		
+Section Awaiting Keystroke-release version
+
+To await keystroke:
+	if the wait-a-bit is true:
+		wait for any key.
 	
 Chapter General Insteads
 
@@ -848,18 +867,9 @@ Instead of taking inventory when Rover is the player:
 
 Chapter Not Ready For Prime Time - Not for release
 
-Section Reorienting
+Section Reorienting-test version
 
-Reorienting is an action applying to nothing. Understand "reorient" as reorienting. [###TODO: for release, keep the verb, but remove the dictionary entry -- is there some way to give that as a compiler directive?]
-
-Carry out reorienting:
-	if the player is self-aware:
-		now the player is clueless;
-	otherwise:
-		if the player is Rover:
-			say "Sorry, Rover is [italic type]always[roman type] clueless. [run paragraph on]";
-		otherwise:
-			now the player is self-aware.
+Understand "reorient" as reorienting.
 		
 Report reorienting:
 	say "The player is now [if player is self-aware]self-aware[otherwise]clueless[end if].";
@@ -904,6 +914,11 @@ Carry out trimming:
 Report trimming:
 	say "All ship shape and Bristol fashion, cap'n. Halyards (whatever they are) and mainsheets are trimmed smartly, and she's coming about aleeward (a direction not even implemented in the game). Arr."; 
 	
+Section Disabled For Testing
+
+When play begins:
+	change the wait-a-bit to false.
+	
 Chapter Initialize
 
 When play begins:
@@ -918,7 +933,7 @@ After printing the banner text:
 	say "[metatext in metaspeak]";
 	say variable letter spacing;
 	say paragraph break;
-	[wait for any key;  !!! commented out for testing]
+	await keystroke;
 	clear the screen;
 	[display setup]
 	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
@@ -1640,7 +1655,7 @@ Before eating the white egg:
 			now the white egg is not broken;	
 			the rule succeeds;
 			
-After taking the white egg for the first time:
+After taking the white egg for the first time during the First Sim:
 	say "You pluck the white egg out of the fridge.";
 	let metatext be "Janet: It[apostrophe]s a shame we don[apostrophe]t have enough heavy helium to bring the ship back.[line break]David: I[apostrophe]m afraid we[apostrophe]ve put all our baskets in one egg, as it were. That one egg represents every bit of heavy helium refined on Mars since Phobos was destroyed.[line break]Janet: [quotation mark]All Your Egg Are Belong to Us?[quotation mark][line break]David: Huh? Didn[apostrophe]t quite catch that.[line break]Janet: Never mind.";
 	say "[metatext in metaspeak]".
@@ -2433,9 +2448,7 @@ The clueless-name of the delicious bone is "delicious bone". The aware-name of t
 
 To say delicious bone status:
 	if the player is rover:
-		say "It is the biggest, juiciest bone you’ve ever seen.";
-		if the delicious bone is carried by the female dog:
-			say "[one of]You envy the bone, which is clamped between the bewitchingly white teeth of the female dog[or]The voluptuous female is all but motionless, but somehow conveys a come hither look, as she holds the bone in her luscious mouth[or]The female dog holds the bone in her jaws, like a dowry[or]The female dog maintains a tight grip on the bone with her impeccably straight, but alarmingly sharp teeth[stopping].";
+		say "It is the biggest, juiciest bone you’ve ever seen [if the delicious bone is carried by the female dog]. [one of]You envy the bone, which is clamped between the bewitchingly white teeth of the female dog[or]The voluptuous female is all but motionless, but somehow conveys a come hither look, as she holds the bone in her luscious mouth[or]The female dog holds the bone in her jaws, like a dowry[or]The female dog maintains a tight grip on the bone with her impeccably straight, but alarmingly sharp teeth[stopping][end if].";
 	otherwise:
 		say "The bone the dog dragged in from the park. He's already gnawed on it a bit".
 		
@@ -2569,7 +2582,7 @@ The technician is a man in Limbo. The clueless-name of the technician is "techni
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
-The window is a transparent scenery closed not openable container in Limbo. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights ar just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is damaged]shows only static. Diagnostics indicate that it is malfunctioning.[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
+The window is a transparent scenery closed not openable container in Limbo. Understand "outside" or "outdoors" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is damaged]shows only static. Diagnostics indicate that it is malfunctioning.[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
@@ -2942,6 +2955,7 @@ When Bedtime ends:
 	if dream index is greater than one and bedtime-dream-sequence-complaint is false:
 		let metatext be "David: Thank you. I can only take so many dream sequences.[line break]Janet: No problem. So, at this point, the Valkyrie would be at the edge of the probe's stellar system, and ready to switch over from Casimir to Condensate Drive and begin the approach.";
 		say "[metatext in metaspeak]";
+		now bedtime-dream-sequence-complaint is true;
 	if First Sim is happening:
 		now arm-numb is 1.
 
@@ -3123,7 +3137,7 @@ When First Sim ends:
 	try BSODing;
 	let metatext be "Janet: Crap.[line break]David: Windex?[line break]Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.[line break]David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?[line break]Janet: Yes, but it will take some time to install and debug.[line break]David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.[line break]Janet: Happy to have the help -- how about dinner first?[line break]David: Do you like Thai?";
 	say "[metatext in metaspeak]";
-	[wait for any key;  !!! commented out for testing];
+	await keystroke;
 	clear the screen;
 	now the irradiator is patched;
 	now the current memory usage is 260;
@@ -3153,7 +3167,7 @@ Every turn when the Second Sim is happening and the landing_pid is not 0:
 When Second Sim ends:
 	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
 	say "[metatext in metaspeak]";
-	[wait for any key;  !!! commented out for testing];
+	await keystroke;
 	Restore the World;
 	Setup the World;
 	now the ACU is asleep.
@@ -3228,7 +3242,7 @@ Chapter Boarding Party
 Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding Party ends when the ACU is not sleepwalking.
 
 When Boarding Party begins:
-	[wait for any key; commented out for testing]
+	await keystroke;
 	clear the screen;
 	say "The Casimir Drive cuts out and space folds back around you. Before you can take bearings, two gunships flash past at relativistic velocities, slicing through your propulsion systems. The markings on the ships are those of the Myomita Corporation. To have been in position, they must have been expecting you to emerge precisely where and when you did. Another Earth ship, an assault craft, is on an intercept course and is braking hard to slow its approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
 	Restore the World;
@@ -3623,7 +3637,7 @@ When Back on Mars begins:
 	now the front door is open;
 	now Janet Xiang is in the Living Room;
 	now David Venkatachalam is in the Living Room;
-	wait for any key;
+	await keystroke;
 	now Rover is not awake;
 	now Rover carries the delicious bone;
 	clear screen;
@@ -3682,7 +3696,7 @@ Every turn during Back on Mars:
 
 To say the evil monologue:
 	say "David [if the player is in the living room] looks forlorn. He [end if]says dejectedly, [quotation mark]All that effort, and what do we have to show for it? Nothing. A rusty old heap of space junk. All the data, lost, and gone forever.[quotation mark][if the player is in the living room] He kicks Rover, quickly withdraws his bruised foot in pain, looking up at the macerated space probe.[paragraph break][quotation mark]Actually, that's not the case[quotation mark], you say. [quotation mark]Before attempting to transmit the data, I downloaded the entire probe's data into my memory. The data are encrypted, but intact. When the ansible failed, the only way I could fulfill the mission was to return to the Sol System.[quotation mark][paragraph break]";
-	say "[if the player is in the living room]David's head snaps up, as if he's been given a new lease on life. He points to the hopelessly junked spaceprobe above his dead. [end if][quotation mark]Intact? Then you have the data? This is too good to be true! Janet, would you extract the probe data from the ACU and transfer it to my MARSpace account?[quotation mark][paragraph break]";
+	say "[if the player is in the living room]David's head snaps up, as if he's been given a new lease on life. He points to the hopelessly junked spaceprobe above his head. [end if][quotation mark]Intact? Then you have the data? This is too good to be true! Janet, would you extract the probe data from the ACU and transfer it to my MARSpace account?[quotation mark][paragraph break]";
 	say "[quotation mark]Of course, just a moment. [if the player is in the living room][quotation mark]Janet's fingers play over the surface of her arm band. [quotation mark][end if]The data are encrypted... with your key. And there's something odd...[quotation mark][if the player is in the living room] Janet's forehead creases with concentration.[end if][paragraph break][quotation mark]No,[quotation mark] replies David, [quotation mark]that was intentional. To prevent it from falling into the wrong hands.[quotation mark][paragraph break]";
 	say "[quotation mark]No, not the encryption, David. The ansible coordinates -- the message was directed towards Earth. Isn't that odd?[quotation mark][if the player is in the living room] Janet looks up at David, perplexed.[end if][paragraph break][if the player is in the living room]David pulls a pistol from his robe and trains it on Janet[otherwise]You hear the whine of a charged ray gun, and the mechnical click of its safety being released[end if].[paragraph break]".
 				
@@ -3773,7 +3787,7 @@ topic 			item					required	told	asked	query	ask-text	ask-reminder	tell-text
 "probe"	"Musashi-5 space probe"		1	0	0	"Janet [if the player is in the living room]peers across the room at Rover and surveys the perforated, crushed husk of the space probe in his mouth. She [end if]says, [quotation mark]I suppose the first thing that we have to ask about is the space probe. After all, that *was* why we put this entire project together.[quotation mark][paragraph break]David sarcastically interjects, [quotation mark]Yes, and what a success it was. Look -- there's the probe. Or what's left of it after your cyberhound chewed it to death. I can't tell you how many gah-zillion Marx we spent on this project, and for what?[quotation mark][paragraph break]Janet [if the player is in the living room]rests her hand on the sleeve of David's robe and [end if]continues calmly, [quotation mark]Let's hear the whole story, David. ACU, please tell us what happened with the Musashi-5 space probe.[quotation mark]"			"David [if the player is in the living room]gestures towards the  space probe and [end if]explains, [quotation mark]Almost three hundred standard years ago, the Myomita corporation launched a bunch of space probes. Earth was crowded, and the Internationals were making it difficult for the Corporates to expand. The Solar System was looking like a limited proposition at the time, so they thought they looked further out. They shot the probes towards systems that had a good profile, although they knew it would be a fishing expedition. The probes themselves had enough smarts to fly to a system, check it out, and if it looked good, to report back.[quotation mark][paragraph break]Janet points out, [quotation mark]There were no ansibles in those days, so the probe itself had to return. Even condensate drive was faster than radio.[quotation mark][paragraph break][quotation mark]Right,[quotation mark] continues David, [quotation mark]the probes would dip into the stellar wind in each system and follow a search pattern until they hit something. Within the first hundred years, four probes came  back, but the worlds they reported were only marginal, none really panned out. We were gahsmacked when we picked up Mushashi-5's transponder signal, particularly since it was only 40 light years out. That probe must have gone further into space than anything before or since.[quotation mark]"		"David replies, [quotation mark]As I said, of the thirty or so probes that Myomita launched almost three centuries ago, four came back within the first hundred years, and none found any world really worthy of colonization.When we picked up the transponder signal from Musashi-5 coming from only 40 light years away, we knew that it meant that the probe was on its way back to Earth after finding something much further out.[quotation mark]"		"You tell them that the probe had crashed forty years ago, on its way back to Earth. Like its sister probes that were launched from Earth almost three centuries ago by the Myomita corporation, it had explored space in an ever-expanding search pattern, refueling its condensate drive from the stellar wind of each star system it visited.[paragraph break]Apparently, it found a world which satisfied its search parameters because it was on its way back to Earth when it crashed. The stellar wind of a chaotic dying star required a close approach, and the probe was damaged by a stellar flare. Instead of tumbling into the star and burning, the probe ditched on a large, rocky planet, perhaps the core of a former gas giant. The planet itself was untenably close to the star, and was slowly being ripped to shreds by tidal forces, but the probe followed its programming and activated its transponder.[paragraph break]Listening intently, David now remarks, [quotation mark]Whatever that probe found, it was out way beyond any of the other Musashi probes. Likely, it's gone deeper into space than any probe Earth has ever sent.[quotation mark]"
 "ansible"		"ansible"						1	0	0	"Janet [if the player is in the living room]strokes her chin and [end if]asks, [quotation mark]I don't understand why you didn't contact us when you found the probe. Instead, you broke through your cognitive constraints and decided to fly it back to Earth.[quotation mark][paragraph break]David puts in hastily, [quotation mark]Costing us another 3 months, while we assumed the ship was lost![quotation mark][paragraph break]Janet resumes, [quotation mark]Regardless of the condition of the probe, you should automatically have contacted earth by ansible... Unless, I suppose there was a problem with the ansible. ACU, please tell us about the ansible.[quotation mark]"		"Janet says, [quotation mark]The ansible is an FTL comm system which MARSpace only got working a few months before the mission. It uses a line of sight tachyon beam to send data from point to point. There are only a few ansibles in existence: the one on your ship, our consulate on Titan, and within some military installations in the Belt.[paragraph break]As soon as you had discovered the probe, you were programmed to download it and transmit it via the ansible.[quotation mark][paragraph break][quotation mark]It would have been a lot faster than flying the probe back to Mars,[quotation mark] adds David. He pauses [if the player is in the living room], scrutinizes readout on Janet's armband, [end if]and then continues, [quotation mark]wait a minute...according to these diagnostics, the ansible was destroyed.[quotation mark][paragraph break]You reply that indeed, the ansible was destroyed during the landing, as the conditions on the planet were very harsh."		"Janet replies, [quotation mark]As I mentioned, ansibles are faster than light communication devices, and you've got one of the few ones in existence. Unfortunately, it sounds like yours was busted during landing.[quotation mark]"		"You explain that the ship's ansible, a faster than light communication system, was damaged during the landing: the planet was breaking apart due to tidal forces, and the atmosphere was unexpectedly turbulent and full of particulate matter. As you descended, most of the communications array snapped off, including the delicate ansible web. When the ansible failed, your programming threw a cognitive constraint exception, and you tried your best to carry out your programming by literally bringing the probe back to Mars.[paragraph break][quotation mark]Ah, I knew there must have been a good explanation,[quotation mark] remarks Janet."
 "planet"		"planet"						1	0	0	"David asks, [quotation mark]So, what can you tell us about this planet where you landed?[quotation mark]"		"David laughs, [quotation mark]Well, you'd know better than us. From our long range observation, we knew that the planet was located quite close to it's star, a relatively normal sequence star that was at the end of its rope and undergoing somewhat choppy expansion. The planet you landed on was next on its hit list, I'm afraid, and we think that in another few years, the star would have swallowed the planet.[quotation mark][paragraph break][quotation mark]We had thought that the planet was quite large and dense, but apparently we were far off in our estimates, or you would never have had the fusion fuel to lift off again.[quotation mark][paragraph break]You say that no, the planet was, in fact, rocky and dense, and that the predictions were dead on. You were able to lift off again only after obtaining fuel from the Myomita ship that had crash landed on the same planet, not far away from the probe site."		"David reiterates, [quotation mark]As we said, the planet's in a bad spot, too close to a dying star that occassionally burps.[quotation mark]"		"You describe the way the planet looked from orbit, its turbulent atmosphere boiling off into the unbridled gravity of the neighboring red star. You recount the hot, dusty atmosphere and the barren surface.[paragraph break][quotation mark]Wait a minute, it sounds very rocky and dense,[quotation mark] observes David. [quotation mark]We had estimated surface gravity of nine or ten gee.[quotation mark][paragraph break]You congratulate David on the accuracy of his prediction. The gravity was about nine and half times standard, or 93 meters per second squared.[paragraph break][quotation mark]What?[quotation mark] cries David in surprise, [quotation mark]You wouldn't have had enough fusion fuel to get back into space![quotation mark][paragraph break]You explain to David and Janet that you were able to salvage the required heavy helium from a similarly configured Myomita ship that had crashed on the same planet, not far away from the probe site."
-"myomita ship"	"myomita ship"			1	0	0	"[quotation mark]ACU, could you tell us about this Myomita ship that you mentioned?[quotation mark] asks Janet."		"David answers, [quotation mark]It sounds like Earth dispatched a mission not too different from Valkyrie's[quotation mark][paragraph break][quotation mark]But how,[quotation mark] counters Janet, [quotation mark]could they have gotten their ship there so quickly? Did they pick up the probe signal before us?[quotation mark][paragraph break][quotation mark]Doubtful. It's possible, though, that they also developed a Casimir ship[quotation mark][paragraph break]To both David and Janet's amazement, you confirm David's hypothesis, that the ship you had discovered on the alien world was also equipped with a casimir drive, and that it deployed a robot to retrieve the probe, much as Valkyrie sent ROVER. You describe the other ship, it's inferior artificial intelligence, and Rover's adventure including his heroic discovery of heavy helium aboard the other ship, which allowed you to return home."		"David reminds you, [quotation mark]It sounds like Myomita managed to pull off a project equivalent to our Valkyrie project. Their ship must have sustained more damage, though.[quotation mark]"		"You describe the ship with which you shared the planet, a slightly smaller ship, similarly configured to Valkyrie, and also outfitted with a zero-point energy drive.[paragraph break][quotation mark]But, how is that possible?[quotation mark] asks Janet incredulously. [quotation mark]I thought we were months, maybe years ahead of Earth in developing the casimir drive.[quotation mark][paragraph break]David replies, [quotation mark]That was a guess. They lost a lot of the casimir team after the Independence War, but if anyone has resources to throw at a project, it would be Myomita.[quotation mark]"
+"myomita ship" or "myomita" or "ship"		"myomita ship"			1	0	0	"[quotation mark]ACU, could you tell us about this Myomita ship that you mentioned?[quotation mark] asks Janet."		"David answers, [quotation mark]It sounds like Earth dispatched a mission not too different from Valkyrie's[quotation mark][paragraph break][quotation mark]But how,[quotation mark] counters Janet, [quotation mark]could they have gotten their ship there so quickly? Did they pick up the probe signal before us?[quotation mark][paragraph break][quotation mark]Doubtful. It's possible, though, that they also developed a Casimir ship[quotation mark][paragraph break]To both David and Janet's amazement, you confirm David's hypothesis, that the ship you had discovered on the alien world was also equipped with a casimir drive, and that it deployed a robot to retrieve the probe, much as Valkyrie sent ROVER. You describe the other ship, it's inferior artificial intelligence, and Rover's adventure including his heroic discovery of heavy helium aboard the other ship, which allowed you to return home."		"David reminds you, [quotation mark]It sounds like Myomita managed to pull off a project equivalent to our Valkyrie project. Their ship must have sustained more damage, though.[quotation mark]"		"You describe the ship with which you shared the planet, a slightly smaller ship, similarly configured to Valkyrie, and also outfitted with a zero-point energy drive.[paragraph break][quotation mark]But, how is that possible?[quotation mark] asks Janet incredulously. [quotation mark]I thought we were months, maybe years ahead of Earth in developing the casimir drive.[quotation mark][paragraph break]David replies, [quotation mark]That was a guess. They lost a lot of the casimir team after the Independence War, but if anyone has resources to throw at a project, it would be Myomita.[quotation mark]"
 "earth"		"earth"						0	0	0	--		"Janet explains that Earth is experiencing overpopulation, and that its home System holdings were no longer providing adequate resources to sustain the Earth lifestyle. Myomita saw all of this coming a few centuries ago, and sent out probes to find likely colony worlds. Unfortunately, that project yielded only a few barely habitable rocks. Everything changed, though, when news came of Musashi-5. For Earth, it must have reawoken dreams of a stellar empire."		"Janet reviews the history of Earth, its economic need for colonies, the brief Independence War with Mars and Belt Colonies, and its program to find habitable planets in other stellar systems."		"You rattle on for several minutes about the biophysical characteristics of Earth before Janet redirects you in a more pertinent direction. You recount the Earth's history of economic exploitation of colony worlds, their need to find new raw materials, and how all of this culminated in the Mushashi probe project three centuries ago.[paragraph break]Apparently none of this is news to David and Janet, who yawn quietly while feigning polite interest."
 "war"			"war"							0	0	0	--		"blah"		"blah"		"blah"
 "dream"		"dreams that you had while unconscious"	0 	0	0		--		"blah"		"blah"		"blah"
