@@ -76,7 +76,7 @@ A bed is a kind of furniture. It is usually enterable.
 
 A refrigerator is a kind of container. A refrigerator is usually closed, openable, fixed in place, and scenery. Understand "fridge" as refrigerator. 
 
-A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "knob" and "drain" as a sink.  
+A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "drain" as a sink.  
 
 Wakefulness is a kind of value. The wakefulnesses are asleep, sleepwalking, groggy, and alert.
 
@@ -2006,19 +2006,28 @@ The toilet is furniture in the bathroom. Does the player mean doing something wi
 
 The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
 
-The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The toilet#interior is a privately-named fixed in place thing in the water tank. The flapper valve is a scenery which is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver handle is scenery which is part of the water tank.
+The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The toilet#interior is a privately-named fixed in place thing in the water tank. The flapper valve is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver knob handle is part of the water tank.
 
-The clueless-name of the water tank is the "water tank". The aware-name of the water tank is "plasma constrictor". The clueless-description of the water tank is "A porcelain reservoir containing several liters of water to flush the toilet. On the front of the tank there is a silver handle used to flush the toilet and on the top of the tank there is a lid[if the water tank is open] which has been flipped up[end if]." The aware-description of the water tank is "A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch [if the water tank is open]has been swung open[otherwise]is tightly sealed[end if]."  The water tank-proxy is an aware-proxy which is part of the water tank. Understand "plasma" and "constrictor" and "ring" as the water tank-proxy. 
+The clueless-name of the water tank is the "water tank". The aware-name of the water tank is "plasma constrictor". The clueless-description of the water tank is "A porcelain reservoir containing several liters of water to flush the toilet. On the front of the tank there is a silver knob used to flush the toilet and on the top of the tank there is a lid[if the water tank is open] which has been flipped up[end if]." The aware-description of the water tank is "A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch [if the water tank is open]has been swung open[otherwise]is tightly sealed[end if]."  The water tank-proxy is an aware-proxy which is part of the water tank. Understand "plasma" and "constrictor" and "ring" as the water tank-proxy. 
 
 The clueless-name of the tank top is the "tank lid". The aware-name of the tank top is "plasma constrictor hatch". The clueless-description of the tank top is "A lid made of the same porcelain material as the water tank itself.[if the tank top is open] The lid has been flipped up and you can see into the tank." The aware-description of the tank top is "A hatch providing access to the plasma constrictor ring. [if the tank top is open] The hatch is open allowing access to the inner workings of the plasma constrictor." Understand "lid" as the tank top. The tank top-proxy is an aware-proxy that is part of the tank top. Understand "hatch" as the tank top-proxy.
 
-The clueless-name of the flapper valve is the "flapper valve".  The aware-name of the flapper valve is "thrust aperture". The clueless-description of the flapper valve is "A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever." The aware-description of the flapper valve is "The most critical component of the retro assembly, and its only moving part, the thrust aperature controls the flow rate of the ship's breaking thrusters." The flapper valve-proxy is an aware-proxy that is part of the flapper valve. Understand "thrust" and "aperture" as the flapper valve-proxy.
+The clueless-name of the flapper valve is the "flapper valve".  The aware-name of the flapper valve is "thrust aperture". The clueless-description of the flapper valve is "A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever." The aware-description of the flapper valve is "The most critical component of the retro assembly, and its only moving part, the thrust aperature controls the flow rate of the ship's breaking thrusters." The flapper valve-proxy is an aware-proxy that is part of the flapper valve. Understand "thrust" and "aperture" as the flapper valve-proxy. The flapper valve can be raisable. The flapper valve is raisable. The flapper valve can be open. The flapper valve is not open.
 
-The clueless-name of the chain is the "flush chain". The aware-name of the chain is "thruster linkage servo". The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has broken, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the thruster actuation relay and the thrust aperture." The chain-proxy is an aware-proxy that is part of the chain. Understand "thruster" and "linkage" and "servo" and "link" as the chain-proxy. The chain can be broken or intact. The chain is intact.
+The clueless-name of the chain is the "flush chain". The aware-name of the chain is "thruster linkage servo". The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has rusted away, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the thruster actuation relay and the thrust aperture." The chain-proxy is an aware-proxy that is part of the chain. Understand "thruster" and "linkage" and "servo" and "link" as the chain-proxy. The chain can be broken or intact. The chain is intact.
 
-The clueless-name of the lever is the "flush lever". The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver handle on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unforunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
+The clueless-name of the lever is the "flush lever". The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver knob on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unforunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
 
-The clueless-name of the silver handle is the "silver handle". The aware-name of the silver handle is "trigger circuit". The clueless-description of the silver handle is "A silver-plated handle on upper part of the toilet's water tank." The aware-description of the silver handle is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver handle-proxy is an aware-proxy that is part of the silver handle. Understand "trigger" and "circuit" as the silver handle-proxy. 
+The clueless-name of the silver knob is the "silver knob". The aware-name of the silver knob is "trigger circuit". The clueless-description of the silver knob is "A silver-plated handle on upper part of the toilet's water tank." The aware-description of the silver knob is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver knob-proxy is an aware-proxy that is part of the silver knob. Understand "trigger" and "circuit" as the silver knob-proxy. 
+
+Instead of pushing the silver knob:
+	try flushing the toilet.
+	
+Instead of turning the silver knob:
+	try flushing the toilet.
+	
+Instead of pulling the silver knob:
+	say "It's not that kind of knob, it looks like you could push or turn it, though."
 
 The clueless-name of the toilet#interior is the "inside of the tank". The aware-name of the toilet#interior is "interior of the plasma constrictor ring." The clueless-description of the toilet#interior is "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve.[if the chain is broken] The situation here is slightly complication, however, as the chain is broken." The aware-description of the toilet#interior is "Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay [if the chain is broken]but here there is a discontinuity and the signal does not reach[otherwise]and the servo linkage to the[end if] thrust aperature. [if the chain is broken] It looks like the servo linkage has been damaged."
 
@@ -2109,27 +2118,33 @@ Instead of taking the toilet:
 Flushing is an action applying to one thing.  Understand "flush [something]" as flushing.
 
 Check flushing:
-	if the noun is the toilet or the noun is the silver handle:
-		if the Landing Sequence is happening:
-			if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
-				say "Not yet, you’re not done.";
-				the rule fails;
-			otherwise:			
-				continue the action;
-		otherwise if the Real Thing is happening and the player is self-aware:
-			if the location of the white egg is nowhere:
+	if the noun is the toilet or the noun is the silver knob:
+		if the Landing Sequence is happening or (the Real Thing is happening and the player is self-aware):
+			if the Landing Sequence is happening:
+				if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
+					say "Not yet, you’re not done.";
+					the rule fails;
+			otherwise if the Real Thing is happening: 
+				if the location of the white egg is not nowhere:
+				[i.e, when the egg from the Myomita ship is eaten, it is taken out of play, so this would only kick in the second time that an egg is eaten during the Real Thing scene -- once during landing, once during ascent.]
+					say "Full thruster burn to achieve escape velocity requires repletion of the heavy helium supply and ignition of the fusion engines.";
+					the rule fails;
+			if the chain is intact:
+				now the flapper valve is open;
+			if the flapper valve is open:
 				continue the action;
 			otherwise:
-				say "Full thruster burn to achieve escape velocity requires repletion of the heavy helium supply and ignition of the fusion engines.";
+				say "There is a tinny clanking from within the toilet, but nothing happens.";
 				the rule fails;
-		otherwise:
+		otherwise:[wrong timing]
 			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing.";
 			the rule fails; 
-	otherwise: 
+	otherwise:[tried to flush something other than the toilet or the silver knob] 
 		say "[if the player is clueless]That would be difficult to explain to the plumber[otherwise]Thruster discharge can only be actuated via the retro trigger circuit[end if].";
 		the rule fails.
 		
 Carry out flushing:
+	now the flapper valve is closed;
 	move the player to the bathroom, without printing a room description;
 	if the location of the white egg is nowhere:
 		now the landing_pid is 0;
@@ -2141,7 +2156,14 @@ Report flushing:
 		say "You actuate the retro trigger circuit and fire all thrusters in synchrony. The surface of the planet around the ship vanishes in a cloud of plasma, and the ship slams through the thin, dusty atmosphere towards space.[paragraph break]When you reach orbit, you plot a course towards Mars, extend the casimir drive, arm the proximity alert system and enter stand-by mode.[paragraph break]The futon is comfortable and you are tired.";
 		now the player is sleepwalking;
 	otherwise:
-		say "You reach behind you, flush the toilet and stand up. The cottage’s aging plumbing rumbles and vibrates as the toilet flushes."
+		say "The cottage’s aging plumbing rumbles and vibrates as the toilet flushes."
+		
+Before opening the flapper valve:
+	[as a before rule since the flapper valve isn't technically openable]
+	say "You [if the player is clueless]momentarily lift the black rubber valve at the bottom of the toilet[otherwise]bypass intermediate actuation circuitry and directly trigger the thrust aperature[end if].";
+	now the flapper valve is open;
+	try flushing the toilet;
+	the rule succeeds.
 	
 Instead of exiting when holder of the player is the toilet seat and the landing sequence is happening:
 	try flushing the toilet.
@@ -3289,7 +3311,7 @@ Definition: The living room is compromised if the picture is damaged and the fro
 
 Definition: The ship is sunk if the living room is compromised and the kitchen is compromised and the bathroom is compromised.
 
-Definition: The ship is boarded if the maintenance droid is in the Valkyrie Area or the technicians are in the Valkyrie Area.
+Definition: The ship is boarded if the maintenance droid is in the Valkyrie Area or the technician is in the Valkyrie Area.
 
 The assault ship distance is a number that varies. The assault ship distance is 10. [range from assault ship to valkyrie]
 

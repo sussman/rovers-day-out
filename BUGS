@@ -4,6 +4,9 @@ Movement system needs some revision: in from/out from for ship rooms, and direct
 
 Contained objects needs to be put in scope or otherwise worked around: need to allow eat food/drink water to work more smoothly with the objects that are in the dog bowls
 
+-suppress "to do list heavy handed...?" after second sim.
+
+
 Consider simplifying Rover's food/drink bowl in Valkyrie.
 
 * General concerns about 'remember':  how is a user going to know to
