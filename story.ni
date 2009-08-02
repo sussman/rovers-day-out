@@ -22,6 +22,26 @@ The describe what's on scenery supporters in room descriptions rule is not liste
 [Devices are responsible for giving their on/off status -- if desired -- as part of their description. There's only a few devices in the game, so not a biggie.]
 The examine described devices rule is not listed in any rulebook.
 
+[In this case, real adventurers might need to...]
+The block swearing obscenely rule is not listed in any rulebook.
+
+Instead of swearing obscenely:
+	let N be indexed text;
+	let N be the player's command;
+	if the N is "shit":
+		say "Well...everybody poops. Even wanna-be adventurers.";
+		try businessing;
+	otherwise:
+		say "Real adventurers don't use such language; nor, you remind yourself do [run paragraph on]";
+		if the player is clueless:
+			if the player is Rover:
+				say "dogs";
+			otherwise:
+				say "interactive fiction authors";
+		otherwise:
+			say "sentient computers";
+		say "."
+	
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
@@ -144,6 +164,8 @@ A water is a kind of thing. Waters are privately-named. The indefinite article o
 Conclusion is a kind of value. The conclusions are alive, pillowed, casimired, transferred, casimired, eeled, david-killed, both-killed and janet-shot.  
 
 Endgame is a conclusion that varies. The endgame is usually alive.
+
+Poopstate is a kind of value. The poopstates are prepoop, poopready, and postpoop.
 
 Section Chests and Lids
 
@@ -836,6 +858,33 @@ Section Awaiting Keystroke-release version
 To await keystroke:
 	if the wait-a-bit is true:
 		wait for any key.
+		
+Section Potty Language
+
+Businessing is an action applying to nothing. Understand "poop" or "defecate" or "do business" or "piss" or "pee" or "urinate" or "micturate" or "tinkle" or "whiz" or "void" as businessing.
+
+Check Businessing:
+	if the player is wearing the flight suit:
+		say "[if the player is clueless]You can do a lot of things in your one-piece flight suit. That ain't one of them[otherwise]The ACU quantum isolation interferes with the transfer of power to the retro system[end if].";
+		the rule fails;
+	otherwise if the player is not on the toilet seat:
+		say "[if the player is clueless]You're willing to hold it until you can sit down properly on a toilet seat, thank you very much[otherwise]Power transfer is only enabled when you make an adequate seal with the reactant chamber[end if].";
+		the rule fails;
+	otherwise if the player is not poopready:
+		if the player is prepoop:
+			if the white egg is raw:
+				say "[if the player is clueless]Maybe after you eat something[otherwise]Before shunting power to the retros, it must first be produced. To generate enough power to lift off, heavy helium fuel must be contained in a magnetic bottle and ignited in the fusion chamber[end if].";
+			otherwise:[egg cooked]
+				say "[if the player is clueless]Sometimes this sort of venture is more successful after eating[otherwise]Power cannot be shunted until the fused heavy helium residue is fed to the recycling system[end if].";
+		otherwise:[postpoop]
+			say "[if the player is clueless]You've already done your business. Keep trying and you might end up with hemorrhoids[otherwise]Retros are already fully charged[end if].";
+		the rule fails.
+	
+Carry out businessing:
+	now the ACU is postpoop.
+	
+Report businessing:
+	say "[if the player is clueless]You complete your business with great aplomb[otherwise]You successfully shunt power from the fusion engine to the retro assembly, which is now fully charged and ready to blast off[end if]."
 	
 Chapter General Insteads
 
@@ -979,17 +1028,20 @@ To Setup the World: [explictly set initial conditions]
 [persons]
 	now the player is the ACU;
 	now the ACU is dry;
+	now the ACU is prepoop;
 	now Rover is hungry;
 [ship orientation]
 	reset the yoke;
-[other obects with specific properties]
+[other objects with specific properties]
 	now the alarm clock is on the futon;
 	now the ACU wears the flight suit;
 	now the flight suit is not already-doffed;
 	now the soap button is not pressed;
 	now the shampoo button is not pressed;
 	now the futon is not obstructed;
-	now the futon is not folded.
+	now the futon is not folded;
+	now the white egg is not cooked;
+	now the white egg is not broken.
 	
 Section Restore the World
 
@@ -1374,12 +1426,7 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated.
-
-To reset the ACU:
-	now the ACU is dry;
-	now the ACU is asleep.
-	[###ben sez;  and wearing the flight suit too?  I realize you've got this happening elsewhere, but I'm a bit confounded by the way things are divided up among our global 'save world', 'reset world', etc.]
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a blue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop.
 
 The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is not the ACU][the clueless-name of the ACU]'s left arm[otherwise if Arm Hurts is not happening]Your left arm. The one that you throw frisbees with[otherwise]That's odd. Your left arm is itching like the dickens, but it looks entirely normal[end if]." The aware-name of the left arm is "laser gyro". The aware-description of the left arm is "The multiaxial ring laser gyroscope is buried deep in the ship's inertial reference system." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "multiaxial" and "laser" and "ring" and "gyro" and "gyroscope" and "fiber" and "optic" and "optical" and "inertial" and "reference" and "system" as the left arm-proxy. 
 
@@ -1404,6 +1451,8 @@ The flight suit is a wearable prop. The ACU wears the flight suit. Understand "f
 Before wearing the flight suit when the player is wet:
 	say "[if the player is clueless]Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed)[otherwise]If the enamel is not activated by UV irradiation, it will not harden into a protective coating[end if].";
 	the rule succeeds.
+	
+[###TODO - a before taking off the flight suit rule to prevent disrobe while on a supporter or other weird locations]
 
 After taking off the flight suit:
 	say "You take off your blue flight suit and it ";
@@ -1655,6 +1704,7 @@ Before eating the white egg:
 				say "The fuel has not been ignited; it would be premature to recycle the containment unit.";
 			the rule succeeds;
 		otherwise:[cooked]
+			now the player is poopready;
 			say "[if the player is clueless]You gobble down what might well have been the best neoegg you've ever had[otherwise]You recycle the components of the heavy helium containment unit and reallocate them according to the ship's needs[end if].";
 			if the Second Sim is happening:
 				let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?[line break]Janet: Works for me, yeah.[line break]David: How about a plate and fork?[line break]Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";	
@@ -1665,9 +1715,7 @@ Before eating the white egg:
 				the rule succeeds;
 			[so, for second sim, or for the first time during real thing -- i.e, the approach to the planet]
 			now the ignite_pid is the turn count;
-			move the white egg to the cold box;
-			now the white egg is not cooked;
-			now the white egg is not broken;	
+			move the white egg to the cold box;	
 			the rule succeeds;
 			
 After taking the white egg for the first time during the First Sim:
@@ -2145,6 +2193,7 @@ Check flushing:
 		
 Carry out flushing:
 	now the flapper valve is closed;
+	now the ACU is prepoop;
 	move the player to the bathroom, without printing a room description;
 	if the location of the white egg is nowhere:
 		now the landing_pid is 0;
