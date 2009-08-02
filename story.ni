@@ -867,18 +867,22 @@ Check Businessing:
 	if the player is wearing the flight suit:
 		say "[if the player is clueless]You can do a lot of things in your one-piece flight suit. That ain't one of them[otherwise]The ACU quantum isolation interferes with the transfer of power to the retro system[end if].";
 		the rule fails;
-	otherwise if the player is not on the toilet seat:
+	if the player is not on the toilet seat:
 		say "[if the player is clueless]You're willing to hold it until you can sit down properly on a toilet seat, thank you very much[otherwise]Power transfer is only enabled when you make an adequate seal with the reactant chamber[end if].";
-		the rule fails;
-	otherwise if the player is not poopready:
+		the rule fails;				
+	if the player is not poopready:
 		if the player is prepoop:
 			if the white egg is raw:
-				say "[if the player is clueless]Maybe after you eat something[otherwise]Before shunting power to the retros, it must first be produced. To generate enough power to lift off, heavy helium fuel must be contained in a magnetic bottle and ignited in the fusion chamber[end if].";
+				say "[if the player is clueless][one of]Maybe after you eat something[or]You don't need to go right now[or]You usually go a bit later in the morning[or]You're a creature of habit. Maybe after breakfast[at random][otherwise]Before shunting power to the retros, it must first be produced. To generate enough power to lift off, heavy helium fuel must be contained in a magnetic bottle and ignited in the fusion chamber[end if].";
 			otherwise:[egg cooked]
-				say "[if the player is clueless]Sometimes this sort of venture is more successful after eating[otherwise]Power cannot be shunted until the fused heavy helium residue is fed to the recycling system[end if].";
+				say "[if the player is clueless][one of]Sometimes this sort of venture is more successful after eating[or]The appetizing smell of the fried egg wafts in from the kitchen, reminding you that you haven't had your breakfast yet[or]Nothing is forthcoming[stopping][otherwise]Power cannot be shunted until the fused heavy helium residue is fed to the recycling system[end if].";
 		otherwise:[postpoop]
 			say "[if the player is clueless]You've already done your business. Keep trying and you might end up with hemorrhoids[otherwise]Retros are already fully charged[end if].";
-		the rule fails.
+		the rule fails;
+	otherwise:
+		if the Real Thing is happening and the landing_pid is not 0 and the player is clueless:
+			say "That second egg may take a while to work its way through your system. Usually, you don't snarf down two eggs for breakfast.";
+			the rule fails.
 	
 Carry out businessing:
 	now the ACU is postpoop.
@@ -1388,7 +1392,7 @@ Instead of going towards when the player is the ACU:
 		say paragraph break; 
 		continue the action;
 	otherwise if the player is wet and (the noun is the Kitchen or the noun is the Living Room):
-		say "[if the player is clueless]You are still dripping wet! Before you drench the cottage [the noun in lower case] floor, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
+		say "[if the player is clueless]You are still dripping wet! Before you drench the floor of every room in the cottage, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
 	otherwise:
 		continue the action.
 
@@ -1715,7 +1719,9 @@ Before eating the white egg:
 				the rule succeeds;
 			[so, for second sim, or for the first time during real thing -- i.e, the approach to the planet]
 			now the ignite_pid is the turn count;
-			move the white egg to the cold box;	
+			move the white egg to the cold box;
+			now the white egg is intact; [so that Rover doesn't find a cooked egg!]
+			now the white egg is raw;	
 			the rule succeeds;
 			
 After taking the white egg for the first time during the First Sim:
@@ -2066,12 +2072,16 @@ The clueless-name of the chain is the "flush chain". The aware-name of the chain
 
 The clueless-name of the lever is the "flush lever". The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver knob on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unforunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
 
-The clueless-name of the silver knob is the "silver knob". The aware-name of the silver knob is "trigger circuit". The clueless-description of the silver knob is "A silver-plated handle on upper part of the toilet's water tank." The aware-description of the silver knob is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver knob-proxy is an aware-proxy that is part of the silver knob. Understand "trigger" and "circuit" as the silver knob-proxy. 
+The clueless-name of the silver knob is the "silver knob". The aware-name of the silver knob is "trigger circuit". The clueless-description of the silver knob is "A silver-plated knob on upper part of the toilet's water tank." The aware-description of the silver knob is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver knob-proxy is an aware-proxy that is part of the silver knob. Understand "trigger" and "circuit" as the silver knob-proxy. 
 
 Instead of pushing the silver knob:
+	if the chain is broken:
+		say "The knob pushes down with no resistance. [run paragraph on]";
 	try flushing the toilet.
 	
 Instead of turning the silver knob:
+	if the chain is broken:
+		say "The knob turns very easily. Indeed, too easily... [run paragraph on]";
 	try flushing the toilet.
 	
 Instead of pulling the silver knob:
@@ -2082,6 +2092,9 @@ The clueless-name of the toilet#interior is the "inside of the tank". The aware-
 The toilet bowl is an enterable scenery furniture in the bathroom. 
 
 The clueless-name of the toilet bowl is the "toilet bowl". The aware-name of the toilet bowl is the "reaction chamber".  The clueless-description of the toilet bowl is "The white porcelain bowl is the bottom part of the toilet. [throne status]." The aware-description of the toilet bowl is "The fusion output mixes with reactant in the glossy white chamber at the bottom of the retro assembly, just distal to the thrust aperature. [throne status]." The toilet bowl-proxy is an aware-proxy that is part of the toilet bowl. Understand "reaction" and "chamber" as the toilet bowl-proxy.
+
+Instead of searching the toilet bowl when the ACU is postpoop:
+	say "[if the player is clueless]There's something in it, but you don't want details[otherwise]Power has been transferred from fusion engines to the retro assembly, and the retros are primed for launch[end if]."
 
 The toilet seat is a flipchair which is in the bathroom. The clueless-name of the toilet seat is the "toilet seat". The aware-name of the toilet seat is "pressure seating". The clueless-description of the toilet seat is "A padded and heated seat, which is presently [if the toilet seat is open]raised[otherwise]in the down position[end if]." The aware-description of the toilet seat is "A black mevolar gasket that assures a perfect seal between the shield and the reactant chamber. The pressure seating is presently [if the toilet seat is open]not [end if]making a seal with the chamber."  The toilet seat-proxy is an aware-proxy which is part of the toilet seat. Understand "pressure" and "seating" and "mevolar" and "gasket" as the toilet seat-proxy.
 
@@ -2167,24 +2180,18 @@ Flushing is an action applying to one thing.  Understand "flush [something]" as 
 
 Check flushing:
 	if the noun is the toilet or the noun is the silver knob:
-		if the Landing Sequence is happening or (the Real Thing is happening and the player is self-aware):
+		if the ACU is postpoop:
 			if the Landing Sequence is happening:
 				if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
-					say "Not yet, you’re not done.";
-					the rule fails;
-			otherwise if the Real Thing is happening: 
-				if the location of the white egg is not nowhere:
-				[i.e, when the egg from the Myomita ship is eaten, it is taken out of play, so this would only kick in the second time that an egg is eaten during the Real Thing scene -- once during landing, once during ascent.]
-					say "Full thruster burn to achieve escape velocity requires repletion of the heavy helium supply and ignition of the fusion engines.";
+					say "[one of]You are distracted momentarily. Something just isn't right in the bathroom[or]Before you do so, the plunger catches your attention[or]Maybe you've been reading too much Lovecraft, but the plunger next to the toilet seems to be somehow misshapen and twisted. Its suddenly alien geometry suggests to you that some inchoate force of primordial corruption is reaching from across the stars, gibbering and gyrating contemptibly in the half-formed chaos between the toilet and the shower. Or maybe the plunger is just tilted a bit[or]There's something odd about the plunger. You forget what you're doing for a moment[or]Something about the plunger next to the toilet disturbs your sense of order[or]Obsess much? The bathroom plunger is not standing up correctly. It's maddening[stopping].";
 					the rule fails;
 			if the chain is intact:
 				now the flapper valve is open;
-			if the flapper valve is open:
-				continue the action;
-			otherwise:
+			if the flapper valve is closed:[could have been opened directly, by floss or chain at this point]
 				say "There is a tinny clanking from within the toilet, but nothing happens.";
 				the rule fails;
-		otherwise:[wrong timing]
+			[if the flapper valve is open, the check falls through to ...carry out flushing]
+		otherwise:[no need to flush if there's nothing in the bowl]
 			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing.";
 			the rule fails; 
 	otherwise:[tried to flush something other than the toilet or the silver knob] 
@@ -2214,8 +2221,13 @@ Before opening the flapper valve:
 	try flushing the toilet;
 	the rule succeeds.
 	
-Instead of exiting when holder of the player is the toilet seat and the landing sequence is happening:
-	try flushing the toilet.
+Instead of exiting when holder of the player is the toilet seat:
+	move the player to the bathroom, without printing a room description;
+	[otherwise, the location of the player remains the toilet seat]
+	if the player is clueless:
+		say "You stand up again[if the player is postpoop], although you are uncomfortably aware that you have left some, shall we say, [quotation mark]unresolved[quotation mark] business behind you[end if].";
+	otherwise:
+		say "You release the seal on the mevolar gasket."
 	
 Instead of entering a flipchair (called the flop):
 	move the player to the flop, without printing a room description;
@@ -2438,9 +2450,10 @@ Instead of pushing or touching the soap button:
 			now the soap button is pressed;
 			if the First Sim is happening:
 				let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
+				say "[metatext in metaspeak]";
 			otherwise if the Second Sim is happening:
 				let metatext be "David: That was my favorite part! Why did you rewrite it?[line break]Janet: I thought it might be too distracting for the ACU.";
-			say "[metatext in metaspeak]".
+				say "[metatext in metaspeak]".
 	
 Instead of pushing or touching the shampoo button:
 	if the black plate is in Limbo:
@@ -3267,8 +3280,6 @@ When Landing Sequence begins:
 	reset the yoke;
 	now the toilet cover is open;
 	now the toilet seat is closed;
-	move the player to the toilet seat, without printing a room description;
-	say "You walk into the bathroom, flip up the toilet cover and sit down. You notice that the plunger is a bit tilted.";
 	if the Second Sim is happening:
 		let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
 		say "[metatext in metaspeak]".
