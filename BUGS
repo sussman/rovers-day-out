@@ -5,6 +5,12 @@ Movement system needs some revision: in from/out from for ship rooms, and direct
 Contained objects needs to be put in scope or otherwise worked around: need to allow eat food/drink water to work more smoothly with the objects that are in the dog bowls
 
 -suppress "to do list heavy handed...?" after second sim.
+- examine self should mention if player is sitting/laying on bed, counter, toilet, etc.
+- brush teeth should implicitly get the brush
+- disambiguate box from box-proxy
+- suppress the room description or use a Rover's POV description of the living room when he first enters?
+
+
 
 
 Consider simplifying Rover's food/drink bowl in Valkyrie.
