@@ -1,8 +1,16 @@
   *** Things we should fix, mainly discovered via testing. ***
 
-Movement system needs some revision: in from/out from for ship rooms, and direct movement rather than direction movement -- will simplify a lot of issues. Also revise the checks on moving from room to room and make sure that all entry-triggered actions still work. Known issue: when janet takes the egg from livingroom to kitchen, it jumps to the fridge in Real Thing.
 
-Contained objects needs to be put in scope or otherwise worked around: need to allow eat food/drink water to work more smoothly with the objects that are in the dog bowls
+Movement system needs some revision: in from/out from for ship rooms,
+and direct movement rather than direction movement -- will simplify a
+lot of issues. Also revise the checks on moving from room to room and
+make sure that all entry-triggered actions still work. Known issue:
+when janet takes the egg from livingroom to kitchen, it jumps to the
+fridge in Real Thing.
+
+Contained objects needs to be put in scope or otherwise worked around:
+need to allow eat food/drink water to work more smoothly with the
+objects that are in the dog bowls
 
 -suppress "to do list heavy handed...?" after second sim.
 - examine self should mention if player is sitting/laying on bed, counter, toilet, etc.
@@ -32,7 +40,6 @@ Consider simplifying Rover's food/drink bowl in Valkyrie.
       - war
       - valkyrie
       - casimir
-
 
 
 
@@ -141,6 +148,39 @@ section. I don't want it to come across as puerile or overly graphic.
   Which do you mean, the plastic box, or the plastic box-proxy?
 
 
+* open drawer should kill David/Janet
+
+* "x fridge" should say something about state of door being open/closed.
+
+* plunger is "twisted  clockwise" (extra space).  happens in several
+  places in the dynamic description of plunger position.
+
+* uhoh, I've never even *heard* of a silver knob yet.
+
+  >twist handle counterclockwise
+  Which do you mean, the silver knob, or the shaft?
+
+* typo:  "tinyist" --> "tiniest" in plunger puzzle.
+
+* "businessing" isn't in technoverb table.
+
+* also:
+  
+  >rover, hello
+  (Note:  answering it that isn't in technoverb-table
+
+* statusline should be FALSE!!!!
+
+   >flush toilet
+   There is a tinny clanking from within the toilet, but nothing happens
+
+
+* oops:
+
+  >look inside tank
+  In the water tank is an inside of the tank
+
+
 --------------------------------------------------------------------
 "Fleshing Out" section.
 
@@ -163,4 +203,34 @@ obvious commands fail, players get annoyed.
 
     wash hands  (sink description is "enough room to wash your hands")
 
-- open drawer should kill David/Janet
+    sing, jump ("sometimes the ACU sings and jumps" -- we need
+    non-default responses.)
+
+    putting chow in dish -- see my transcript, very 'guess the verb'
+
+    "look inside tank" - lots of problems trying to see inside tank.
+
+----------------------------
+
+General Macro Issues re: plot, puzzles, etc.
+
+
+* initial dream sequence:  how hard is it to discover the snooze
+  button and be rewarded with more dreams?  unclear.
+
+
+* rover doesn't seem to follow me around, or request things like food,
+  etc.  it would be a much richer experience if he reacted to my
+  routine or even hinted ath things when players got stuck!
+
+
+* in general, status line technoverbs are always showing TRUE, not
+  catching failures when they should (i.e. when toilet doesn't flush).
+  read through text for examples.   (BEN TODO!)
+
+
+* general question: does inform7 allow us to decide what gets written
+  to transcript?  it would be nice to have status lines in transcript,
+  the way jack's original prototype transcript had it.  (BEN TODO :
+  ASK ON LIST)
+
