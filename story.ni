@@ -895,7 +895,7 @@ Instead of tying the dental floss to something:
 		say "[if the player is clueless]It's a short little piece of dental floss, and it would look very odd tied to [a second noun][otherwise]Diagnostics indicate that [the second noun] does not require linkage[end if].";
 	otherwise:
 		if the chain is intact:
-			say "Tangling up the dental floss in the flush chain is asking for trouble."; [no clueless case is required, as chain is broken during the Real Thing scene]
+			say "Tangling up the dental floss in the flush chain is asking for trouble."; [only clueless case is required, as chain is broken during the Real Thing scene]
 		otherwise:
 			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperature[end if].";
 			now the chain is repaired.
@@ -1816,7 +1816,7 @@ Check filling it with:
 					say "([if the player is clueless]taking the bag of dog chow[otherwise]accessing the conduit output valve[end if])";
 					try silently taking the dog chow bag;
 				otherwise:
-					say "You would need the [if the player is clueless]some dog food[otherwise]fuel conduit[end if]." instead; 
+					say "You would need [if the player is clueless]some dog food[otherwise]the fuel conduit[end if]." instead; 
 			if the dog food is not in the dog chow bag:
 				say "[if the player is clueless]There are no more kibbles in the bag[otherwise]The supply of thermoisotope has been depleted[end if]." instead.
 			
@@ -1844,7 +1844,7 @@ Check fillupping:
 			say "You can't fill that."
 	
 Instead of inserting something into a bowl in the kitchen:
-	[try to route anything going into the bowls through the filling it wth action]
+	[try to route anything going into the bowls through the filling it with action]
 	try filling the second noun with the noun.
 		
 Instead of doing something with the tap water:
@@ -1861,13 +1861,18 @@ Instead of doing something with the dog food:
 			say "[if the player is clueless]You're not very keen to reach into a bag of stinky dog food[otherwise]For optimal containment, the fuel isotopes should remain in the fuel conduit or reservoir[end if].";
 		otherwise:
 			say "You don't want to mess with Rover's [dog food]."
+			
+Pouring it into is an action applying to two things. Understand "pour [something] in/into [something]" or "transfer [something] into/in [something]" or "put something in/into [something]" or "move [something] in/into/to [something]" as pouring it into.
+
+Carry out pouring it into:
+	do nothing.
+	
+Instead of pouring something into something:
+	try filling the second noun with the noun.
 	
 The counter is an enterable furniture in the kitchen. The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber." The counter-proxy is an aware-proxy that is part of the counter. Understand "bulkhead" as the counter-proxy. The counter can be discussed. The counter is not discussed.
 
 The kitchen sink is a sink in the kitchen. The clueless-name of the sink is "sink". The aware-name of the sink is "coolant output terminus". The clueless-description of the sink is "A small, utilitarian kitchen sink. Below the sink, there is a small cabinet." The aware-description of the kitchen sink is "The coolant output nozzle leads towards the Rover transfer system." The kitchen sink-proxy is an aware-proxy that is part of the kitchen sink. Understand "coolant" and "output" and "nozzle" and "terminus" as the kitchen sink-proxy. Understand "water" as the kitchen sink.
-
-Does the player mean doing something with the tap water:
-	it is likely.
 
 The tap water is a water. It is in Limbo. The clueless-name of the tap water is "water". The aware-name of the tap water is "coolant". The clueless-description of the tap water is "Clear, cool water." The aware-description of the tap water is "Clear, thermoconductive liquid."
 
