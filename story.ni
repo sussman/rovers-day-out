@@ -696,6 +696,20 @@ Instead of going towards when the player is in the living room and the futon is 
 		otherwise if the Second Sim is happening:
 			let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
 			say "[metatext in metaspeak]".
+			
+Section Leaving
+
+Does the player mean entering the shower walls:
+	it is very unlikely.
+
+Leaving is an action applying to one thing. Understand "leave [any room]" or "exit [any room]" as leaving.
+
+Check leaving:
+	if the noun is not the location:
+		say "You can't leave there, because you aren't there."
+		
+Carry out leaving:
+	try exiting. 
 
 Section Folding and Unfolding
 
@@ -2105,7 +2119,7 @@ The toilet is furniture in the bathroom. Does the player mean doing something wi
 
 The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
 
-The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The flapper valve, the lever, and the chain are fixed in place things in the water tank. The silver knob handle is part of the water tank. Tank-water is some scenery water in the water tank. 
+The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The flapper valve, the lever, and the chain are fixed in place things in the water tank. The silver knob is part of the water tank. Tank-water is some scenery water in the water tank. 
 
 Does the player mean doing something with the tank-water:
 	it is very likely.
@@ -2686,7 +2700,7 @@ Chapter Blazing Sunrise
 
 The Blazing Sunrise Area [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Blazing Sunrise Area.
 
-The description of the Sleeping Room is "[one of]You walk into the tumbledown cottage. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him.[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings] You ignore him[stopping]." The scent of the sleeping room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here"
+The description of the Sleeping Room is "[one of]You walk into the tumbledown cottage. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings] You ignore him[stopping]." The scent of the sleeping room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here"
 
 In The sleeping room is a man called the smelly man. Understand "angry" , "irate", "ranting", "flat" and "strange" as the smelly man. He is scenery. The description of the smelly man is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. He just stays up against one wall. Boy, does he seem mad, [rantings]!" The clueless-name of the smelly man is "smelly man". The aware-name of the smelly man is "Myomita AI". The scent of the smelly man is "unbearable at this close range. It is like something out of a nightmare: a combination of mouthwash, carpet cleaner and air fresheners. Entirely sickening."
 
