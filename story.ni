@@ -890,6 +890,44 @@ Carry out businessing:
 Report businessing:
 	say "[if the player is clueless]You complete your business with great aplomb[otherwise]You successfully shunt power from the fusion engine to the retro assembly, which is now fully charged and ready to blast off[end if]."
 	
+Section Stuff to do with Floss
+
+Instead of tying the dental floss to something:
+	if the second noun is not the chain:
+		say "[if the player is clueless]It's a short little piece of dental floss, and it would look very odd tied to [a second noun][otherwise]Diagnostics indicate that [the second noun] does not require linkage[end if].";
+	otherwise:
+		if the chain is intact:
+			say "Tangling up the dental floss in the flush chain is asking for trouble."; [no clueless case is required, as chain is broken during the Real Thing scene]
+		otherwise:
+			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperature[end if].";
+			now the chain is repaired.
+
+Repairing is an action applying to one thing. Understand "fix [something]" or "repair [something]" or "mend [something]" as repairing.
+
+Carry out repairing:
+	say "[if the player is clueless]You make a mental note to put it on the list of things that need repairing for the next time the cottage maintenance droid knocks on your door[otherwise]You log the repair request for dry dock maintenance[end if].";
+	
+Instead of repairing the chain:
+	if the chain is not broken:
+		say "[if the player is clueless]The chain seems fine[otherwise]You detect no errors within the servo linkage[end if].";
+	otherwise:
+		if the player holds the dental floss:
+			try tying the dental floss to the chain;
+		otherwise:
+			say "[if the player is clueless]Looks like you need something to unite the two ends of the rusted out chain[otherwise]The distal and proximal termini of the servo linkage have become disentangled. You need to relink across the relay to re-establish the control pathway[end if].";
+		
+Instead of repairing the toilet:
+	if the chain is not broken:
+		say "[if the player is clueless]The toilet seems to be working fine[otherwise]The retro assembly is performing within operational parameters[end if].";
+	otherwise:
+		if the tank top is open:
+			try repairing the chain;
+		otherwise:
+			say "[if the player is clueless]Sounds like the problem is in the water tank somewhere[otherwise]You detect a fault within the plasma constrictor, but diagnostics are limited as the plasma constrictor hatch is closed[end if]."
+			
+Instead of repairing Rover:
+	say "[if the player is clueless]Rover has already been fixed, and he didn't enjoy it[otherwise]While ROVER is missing two nuts on his underchassis, you consider him fixed[end if]."
+				
 Chapter General Insteads
 
 Instead of examining a room:
@@ -1045,7 +1083,8 @@ To Setup the World: [explictly set initial conditions]
 	now the futon is not obstructed;
 	now the futon is not folded;
 	now the white egg is not cooked;
-	now the white egg is not broken.
+	now the white egg is not broken;
+	now the flapper valve is closed.
 	
 Section Restore the World
 
@@ -1157,8 +1196,9 @@ Instead of Rover attacking when Rover is in the Valkyrie Area:
 		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threatening here.";
 	otherwise:
 		if David is exposed:
-			say "Rover throws his bone to the side, and the space probe crashes thunderously against the cargo bay bulkheads. [if David Venkatachalam is exposed]Rover had not approved of David's tone of speech towards Janet, and had been growling quietly in his corner. Given the command, he springs forward, paws planted on David's chest. David expires immediately, trapped under 45 tons of angry robotic Dalmation.[paragraph break][quotation mark]Good boy![quotation mark] exclaims Janet, a tear in her eye. And then, turning to the the ACU she admits, [quotation mark]I wish I had thought of that.[quotation mark]";
+			say "Rover throws his bone to the side, and the space probe crashes thunderously against the cargo bay bulkheads. [if David Venkatachalam is exposed]Rover had not approved of David's tone of speech towards Janet, and had been growling quietly in his corner. Given the command, he springs forward, paws planted on David's chest. David expires immediately, trapped under 45 tons of angry robotic Dalmation.[paragraph break][quotation mark]Good boy![quotation mark] exclaims Janet, a tear in her eye. And then, turning to the the ACU she admits, [quotation mark]I wish I had thought of that.[quotation mark][paragraph break]";
 			now endgame is david-killed;
+			end the game in victory;
 			the rule succeeds;
 		otherwise:
 			say "Rover looks around, but doesn't see anything threatening.";
@@ -1406,7 +1446,7 @@ To say living room status:
 	if the drapes are in the living room and the drapes are closed:
 		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room";
 	otherwise:
-		say "You are in the living room of a small cottage, actually more of a eating room apartment. Light pours in through the room's single window, illuminating a framed picture on the wall [if the drapes are in Limbo]-- strangely, your drapes are nowhere to be seen [end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed"
+		say "You are in the living room of a small cottage, actually more of a eating room apartment. Light pours in through the room's single window, illuminating a framed picture on the wall[if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed"
 
 The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. The manpage of the futon-proxy is "The zero-point energy drive creates a time-space gradient across which the ship travels. In conjunction with the ship's temporal transgressor, the ship is capable of faster-than-light travel without incurring substantial time debt. The drive must be extended for interstellar flight, but retracted to make planetfall. The drive cannot be used within stellar systems or near other gravitic distortions. The drive is delicate and should be protected from physical damage, particularly to the field plates."
 
@@ -1551,7 +1591,7 @@ Instead of opening the front door when the front door is closed:
 		
 Rover is a male animal in the Living Room. Rover has satiety. Rover is hungry.  Rover has insightfulness. Rover is clueless. The doggie bits are a privately-named part of Rover. 
 
-The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the delicious bone and Rover is awake] He is chewing a piece of the Musashi-5 space probe.[otherwise if rover has the delicious bone and Rover is not awake] Even in his sleep, he is hanging on tightly to what he thinks is a juicy bone.[end if][if rover is not awake and audio is switched off] If your audio sensors were on, you are sure you'd hear him snoring loudly.[otherwise if rover is not awake and audio is switched on] He snores loudly, his jowls fluttering with each breath.[end if][paragraph break]". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy. Rover can be awake. Rover is awake.
+The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the delicious bone and Rover is awake] He is chewing a piece of the Musashi-5 space probe.[otherwise if rover has the delicious bone and Rover is not awake] Even in his sleep, he is hanging on tightly to what he thinks is a juicy bone.[end if][if rover is not awake and audio is switched off] If your audio sensors were on, you are sure you'd hear him snoring loudly.[otherwise if rover is not awake and audio is switched on]He snores loudly, his jowls fluttering with each breath.[end if]". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy. Rover can be awake. Rover is awake.
 
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
@@ -1682,7 +1722,7 @@ Instead of putting the white egg on a supporter:
 	
 To fry the white egg:
 	now the white egg is cooked;
-	say "[if the player is clueless]Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades[otherwise]A spherical array of powerful lasers discharges instantly, their combined output focused on the heavy helium being injected into the magnetic bottle within the reactor chamber. The ship surges with power as the fusion rockets are energized[end if].";
+	say "[if the player is clueless]Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades[otherwise]A spherical array of powerful lasers discharges instantly, their combined output focused on the heavy helium being injected into the magnetic bottle within the reactor chamber. The ship surges with power[end if].";
 	if the Second Sim is happening:
 		let metatext be "Janet: If there were some heavy helium left after landing, could the ship take off again?[line break]David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we’ll have to fuse every gram of that heavy helium to make a soft landing.[line break]Janet: I just hate to leave the ship there. It could take years before our next Casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.[line break]David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.";
 		say "[metatext in metaspeak]".	
@@ -1950,8 +1990,11 @@ Instead of pushing the blue button:
 		say "[if the player is clueless]The plastic box beeps, indicating that it is waiting for you to use the dental floss that it has already dispensed. Never underestimate the intelligence of your average plastic box[otherwise]The object linker flags an error: a quantum entanglement key pair has already been generated[end if]."
 	
 Instead of eating the dental floss:
-	move dental floss to Limbo;
-	say "[if the player is clueless]Mmm. Quite tasty[otherwise]Key pair decohered and ready for regeneration[end if]."
+	if the chain is repaired:
+		say "[if the player is clueless]You're not so keen on eating anything that has been a functional part of a toilet[otherwise]The object linker is required to bridge the dysfunctional servo in order to actuate the thrust aperature and fire the retros. You defer recycling the object linker until is it no longer required[end if].";
+	otherwise:
+		move dental floss to Limbo;
+		say "[if the player is clueless]Mmm. Quite tasty[otherwise]Key pair decohered and ready for regeneration[end if]."
 	
 Flossing is an action applying to one thing. Understand "floss [something]" as flossing.
 
@@ -2072,14 +2115,20 @@ The clueless-name of the tank-water is "water". Understand "water" as the tank-w
 
 The clueless-name of the water tank is the "water tank". The aware-name of the water tank is "plasma constrictor". The clueless-description of the water tank is "A porcelain reservoir containing several liters of water to flush the toilet. On the front of the tank there is a silver knob used to flush the toilet and on the top of the tank there is a lid[if the water tank is open] which has been flipped up[end if]." The aware-description of the water tank is "A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch [if the water tank is open]has been swung open[otherwise]is tightly sealed[end if]."  The water tank-proxy is an aware-proxy which is part of the water tank. Understand "plasma" and "constrictor" and "ring" as the water tank-proxy. 
 
-Does the player mean opening the tank top:
+Does the player mean doing something with the tank top:
+	it is very likely.
+	
+Does the player mean doing something with the water tank's lid:
+	it is unlikely.
+	
+Does the player mean doing something with the tank top-proxy:
 	it is very likely.
 
-The clueless-name of the tank top is the "tank lid". The aware-name of the tank top is "plasma constrictor hatch". The clueless-description of the tank top is "A lid made of the same porcelain material as the water tank itself.[if the tank top is open] The lid has been flipped up and you can see into the tank." The aware-description of the tank top is "A hatch providing access to the plasma constrictor ring. [if the tank top is open] The hatch is open allowing access to the inner workings of the plasma constrictor." Understand "lid" as the tank top. The tank top-proxy is an aware-proxy that is part of the tank top. Understand "hatch" as the tank top-proxy.
+The clueless-name of the tank top is the "tank lid". The aware-name of the tank top is "plasma constrictor hatch". The clueless-description of the tank top is "A lid made of the same porcelain material as the water tank itself.[if the tank top is open] The lid has been flipped up and you can see into the tank." The aware-description of the tank top is "A hatch providing access to the plasma constrictor ring. [if the tank top is open] The hatch is open allowing access to the inner workings of the plasma constrictor." Understand "lid" as the tank top. The tank top-proxy is an aware-proxy that is part of the tank top. Understand "hatch" or "plasma" or "constrictor" as the tank top-proxy.
 
 The clueless-name of the flapper valve is the "flapper valve".  The aware-name of the flapper valve is "thrust aperture". The clueless-description of the flapper valve is "A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever." The aware-description of the flapper valve is "The most critical component of the retro assembly, and its only moving part, the thrust aperature controls the flow rate of the ship's breaking thrusters." The flapper valve-proxy is an aware-proxy that is part of the flapper valve. Understand "thrust" and "aperture" as the flapper valve-proxy. The flapper valve can be raisable. The flapper valve is raisable. The flapper valve can be open. The flapper valve is not open.
 
-The clueless-name of the chain is the "flush chain". The aware-name of the chain is "thruster linkage servo". The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has rusted away, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the thruster actuation relay and the thrust aperture." The chain-proxy is an aware-proxy that is part of the chain. Understand "thruster" and "linkage" and "servo" and "link" as the chain-proxy. The chain can be broken or intact. The chain is intact.
+The clueless-name of the chain is the "flush chain". Understand "flush" as the chain. The aware-name of the chain is "thruster linkage servo". The clueless-description of the chain is "A metal chain that [if the chain is intact or the chain is repaired]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve[if the chain is broken]. The chain has rusted away[end if][if the chain is repaired], but has been repaired by a piece of dental floss[end if]." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact or the chain is repaired]nominal function[otherwise]a fault: there is loss of continuity between the thruster actuation relay and the thrust aperture[end if][if the chain is repaired]. An object linker is in place, bypassing the defective associative relay within the servo linkage[end if]." The chain-proxy is an aware-proxy that is part of the chain. Understand "thruster" and "linkage" and "servo" and "link" as the chain-proxy. The chain can be broken or intact. The chain is intact. The chain can be repaired. The chain is not repaired.
 
 Instead of pulling the chain:
 	now the flapper valve is open;
@@ -2088,19 +2137,31 @@ Instead of pulling the chain:
 	otherwise:
 		say "You direct an impulse to the [if the chain is broken]servo output, bypassing the defective servo, and directly actuating the thrust aperature[otherwise]servo linkage[end if].";
 	try flushing the toilet.
+	
+Instead of pulling the dental floss when the chain is repaired:
+	say "[if the player is clueless]It would be more convenient to use the knob[otherwise]The normal command pathway is directed through the trigger circuit[end if]."
 
-The clueless-name of the lever is the "flush lever". The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver knob on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unfortunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
+The clueless-name of the lever is the "metapropylene lever". Understand "metapropylene" as the lever. The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white metapropylene lever on the inside of the water tank pivots up and down when the silver knob on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unfortunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
 
 The clueless-name of the silver knob is the "silver knob". The aware-name of the silver knob is "trigger circuit". The clueless-description of the silver knob is "A silver-plated knob on upper part of the toilet's water tank." The aware-description of the silver knob is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver knob-proxy is an aware-proxy that is part of the silver knob. Understand "trigger" and "circuit" as the silver knob-proxy. 
 
+Instead of pushing the lever:
+	say "[if the player is clueless]The lever connects through to the silver knob on the outside of the tank. It would be more convenient to use the silver knob[otherwise]The normal command pathway is directed through the trigger circuit[end if]."
+
+Instead of turning the lever:
+	try pushing the lever.
+	
+Instead of pulling the lever:
+	try pushing the lever.
+
 Instead of pushing the silver knob:
-	if the chain is broken:
+	if the chain is broken and the chain is not repaired:
 		say "The knob pushes down with no resistance.";
 	otherwise:
 		try flushing the toilet.
 	
 Instead of turning the silver knob:
-	if the chain is broken:
+	if the chain is broken and the chain is not repaired:
 		say "The knob turns very easily. Indeed, too easily...";
 	otherwise:
 		try flushing the toilet.
@@ -2237,13 +2298,14 @@ Check flushing:
 			say "[one of]You are distracted momentarily. Something just isn't right in the bathroom[or]Before you do so, the plunger catches your attention[or]Maybe you've been reading too much Lovecraft, but the plunger next to the toilet seems to be somehow misshapen and twisted. Its suddenly alien geometry suggests to you that some inchoate force of primordial corruption is reaching from across the stars, gibbering and gyrating contemptibly in the half-formed chaos between the toilet and the shower. Or maybe the plunger is just tilted a bit[or]There's something odd about the plunger. You forget what you're doing for a moment[or]Something about the plunger next to the toilet disturbs your sense of order[or]Obsess much? The bathroom plunger is not standing up correctly. It's maddening[stopping].";
 			the rule fails;
 	[Does the mechanism result in the flapper valve lifting?]
-	if the chain is intact:
+	if the chain is intact or the chain is repaired:
 		now the flapper valve is open;
 	if the flapper valve is closed:[could have been opened directly, by floss or chain at this point]
-		say "There is a tinny clanking from within the toilet, but nothing happens.";
+		say "[if the player is clueless]There is a tinny clanking from within the toilet, but nothing happens[otherwise]You detect a fault in the servo linkage[end if].";
 		the rule fails;
 	[now, toilet will flush, if there's some business in it]	
-	if the ACU is not postpoop:			
+	if the ACU is not postpoop:
+		now the flapper valve is closed;			
 		say "[if the player is clueless]The cottage's EcoSensor inhibits the flush. Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy-nilly with unnecessary flushing[otherwise]The retros fail to fire as the system has not been energized[end if].";
 		the rule fails.
 		
@@ -2592,7 +2654,7 @@ Instead of entering a person (called the target):
 Instead of attacking the female dog:
 	say "[one of]Hurt her? The object of your desire? The dog of your dreams? She who holds your very heart in her tender paws? Better that you would go without dog chow for a week or be locked for all eternity in a kennel than to bear that thought. No, the way with women is to charm them. A careful word, a shrewd compliment, some clever banter -- that is the way to win her over[or]You don't know how you could even entertain the idea of harming such a sweet and vulnerable young lady. No, you have a responsibility to her to protect her and shield her from all harm that may come her way. You are no wolf, but a dog, a refined creature of manners and customs that distinguish and elevate you above the more base species. A few kinds words are all that you need to turn her affections in your direction, a far finer victory than could be achieved by paws and teeth[or]To throw yourself at her in that manner would be unthinkably gauche[or]You would rather swallow your own tail[or]You wouldn't dare[stopping]."
 	
-The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]."
+The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]." The probe-proxy is an aware-proxy that is part of the delicious bone. Understand "space" and "probe" and "musashi" and "myomita" as the probe-proxy.
 
 To say delicious bone status:
 	if the player is rover:
@@ -2601,7 +2663,7 @@ To say delicious bone status:
 		say "The bone the dog dragged in from the park. He's already gnawed on it a bit".
 		
 Instead of taking the delicious bone when the player is the acu:
-	say "Rover growls mildly reminding you that it is [italic type]his[if the player is self-aware]space probe[otherwise]bone[end if][roman type][if the player is self-aware]. In any event, the data have already been downloaded, so you might as well let him have fun with what's left of the antique hardware[end if]."
+	say "Rover growls mildly reminding you that it is [italic type]his [roman type][if the player is self-aware]space probe[otherwise]bone[end if][if the player is self-aware]. In any event, the data have already been downloaded, so you might as well let him have fun with what's left of the antique hardware[end if]."
 
 The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a dilapidated cottage, that has clearly been neglected. [inconsequential outside detail]". The scent of the Strange Porch is "metallic, like when you lick aluminium foil".
 
@@ -3003,6 +3065,8 @@ the asking it about action			"QUERY" [ask s.o. about s.t.]
 the querying action		"QUERY" [ask about s.t.]
 the telling it about action			"SPEECH OUTPUT" [tell s.o. about s.t.]
 the expounding action		"SPEECH OUTPUT" [tell about s.t.]
+the barking action			"EMIT PULSE"
+the businessing action	"POWER TRANSFER" [oop, pee, etc.]
 
 
 
@@ -3366,11 +3430,14 @@ Chapter Walkies
 Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and the Real Thing is happening. Walkies ends when Rover is in the Living Room.
 
 When Walkies begins:
+	if Rover carries the delicious bone:
+		now the delicious bone is in the living room;
 	say "You go bounding out the front door, full of energy.";
 	now the player is Rover;
 	try looking.
 	
 When Walkies ends:
+	now the front door is closed;
 	if Rover carries the white egg:
 		say "You lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.";
 		now the white egg is in the Living Room;
@@ -3381,7 +3448,6 @@ When Walkies ends:
 		now the player is the ACU;
 		try reorienting;
 		the rule succeeds;
-	now the front door is closed;
 	now the player is the ACU.
 
 Chapter Boarding Party
