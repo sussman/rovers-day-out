@@ -2060,9 +2060,20 @@ The toilet is furniture in the bathroom. Does the player mean doing something wi
 
 The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
 
-The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The toilet#interior is a privately-named fixed in place thing in the water tank. The flapper valve is part of the toilet#interior. The chain is part of the toilet#interior. The lever is scenery which is part of the toilet#interior. The silver knob handle is part of the water tank.
+The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The flapper valve, the lever, and the chain are fixed in place things in the water tank. The silver knob handle is part of the water tank. Tank-water is some scenery water in the water tank. 
+
+Does the player mean doing something with the tank-water:
+	it is very likely.
+	
+Instead of drinking or taking or touching or tasting the tank-water:
+	say "[if the player is clueless]That is hardly potable[otherwise]The magnetic field is fluxed in space[end if]."
+
+The clueless-name of the tank-water is "water". Understand "water" as the tank-water. The aware-name of tank-water is "fluctating magnetic field". The clueless-description of the tank-water is "Clear, but still not inviting, water." The aware-description of the tank-water is "Strong, oscillating magnetic fields of unusual complexity." The tank-water-proxy is an aware-proxy that is part of the tank-water. Understand "fluctuating" and "magnetic" and "field" and "oscillating" and "flux" and "force" as the tank-water-proxy.
 
 The clueless-name of the water tank is the "water tank". The aware-name of the water tank is "plasma constrictor". The clueless-description of the water tank is "A porcelain reservoir containing several liters of water to flush the toilet. On the front of the tank there is a silver knob used to flush the toilet and on the top of the tank there is a lid[if the water tank is open] which has been flipped up[end if]." The aware-description of the water tank is "A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch [if the water tank is open]has been swung open[otherwise]is tightly sealed[end if]."  The water tank-proxy is an aware-proxy which is part of the water tank. Understand "plasma" and "constrictor" and "ring" as the water tank-proxy. 
+
+Does the player mean opening the tank top:
+	it is very likely.
 
 The clueless-name of the tank top is the "tank lid". The aware-name of the tank top is "plasma constrictor hatch". The clueless-description of the tank top is "A lid made of the same porcelain material as the water tank itself.[if the tank top is open] The lid has been flipped up and you can see into the tank." The aware-description of the tank top is "A hatch providing access to the plasma constrictor ring. [if the tank top is open] The hatch is open allowing access to the inner workings of the plasma constrictor." Understand "lid" as the tank top. The tank top-proxy is an aware-proxy that is part of the tank top. Understand "hatch" as the tank top-proxy.
 
@@ -2070,35 +2081,72 @@ The clueless-name of the flapper valve is the "flapper valve".  The aware-name o
 
 The clueless-name of the chain is the "flush chain". The aware-name of the chain is "thruster linkage servo". The clueless-description of the chain is "A metal chain that [if the chain is intact]connects[otherwise]would normally connect[end if] the flush lever to the flapper valve.[if the chain is broken] The chain has rusted away, however, and there is no longer any connection between the flush lever and the flapper valve." The aware-description of the chain is "A servo linkage connects the thruster actuation relay to the thruster aperature. The servo linkage status board shows [if the chain is intact]nominal function[otherwise]a fault: there is loss of continuity between the thruster actuation relay and the thrust aperture." The chain-proxy is an aware-proxy that is part of the chain. Understand "thruster" and "linkage" and "servo" and "link" as the chain-proxy. The chain can be broken or intact. The chain is intact.
 
-The clueless-name of the lever is the "flush lever". The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver knob on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unforunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
+Instead of pulling the chain:
+	now the flapper valve is open;
+	if the player is clueless:
+		say "You pull on the [if the chain is broken]small bit of chain attached to the flapper valve[otherwise]chain[end if].";
+	otherwise:
+		say "You direct an impulse to the [if the chain is broken]servo output, bypassing the defective servo, and directly actuating the thrust aperature[otherwise]servo linkage[end if].";
+	try flushing the toilet.
+
+The clueless-name of the lever is the "flush lever". The aware-name of the lever is "thruster actuation relay". The clueless-description of the lever is "The small white plastic lever on the inside of the water tank pivots up and down when the silver knob on the outside of the tank is turned. The lever in turn pulls on the chain that runs down to the flapper valve.[if the chain is broken] Unfortunately, that chain has broken." The aware-description of the lever is "A high power relay attached to the thruster trigger circuit, this device controls the thruster aperature through a servo linkage.[if the chain is broken] Unfortunately, that linkage has been broken." The lever-proxy is an aware-proxy that is part of the lever. Understand "thruster" and "actuation" and "relay" as the lever-proxy.
 
 The clueless-name of the silver knob is the "silver knob". The aware-name of the silver knob is "trigger circuit". The clueless-description of the silver knob is "A silver-plated knob on upper part of the toilet's water tank." The aware-description of the silver knob is "A high-speed circuit connected directly to the flight control system, the  trigger circuit controls the precise timing required to fire the fusion retros during planetary landings." The silver knob-proxy is an aware-proxy that is part of the silver knob. Understand "trigger" and "circuit" as the silver knob-proxy. 
 
 Instead of pushing the silver knob:
 	if the chain is broken:
-		say "The knob pushes down with no resistance. [run paragraph on]";
-	try flushing the toilet.
+		say "The knob pushes down with no resistance.";
+	otherwise:
+		try flushing the toilet.
 	
 Instead of turning the silver knob:
 	if the chain is broken:
-		say "The knob turns very easily. Indeed, too easily... [run paragraph on]";
-	try flushing the toilet.
+		say "The knob turns very easily. Indeed, too easily...";
+	otherwise:
+		try flushing the toilet.
 	
 Instead of pulling the silver knob:
 	say "It's not that kind of knob, it looks like you could push or turn it, though."
+	
+Instead of inserting something into the water tank when the water tank is open:
+	say "[if the player is clueless]Yuck. You don't realy want to put [the noun] in the water tank. You'd have bad dreams about it for a month[otherwise]You realize that placing [a aware-name of the noun] in the plasma constrictor could damage both [the aware-name of the noun] and the finely tuned flow channels within the plasma constrictor itself[end if].";
+	the rule succeeds.
 
-The clueless-name of the toilet#interior is the "inside of the tank". The aware-name of the toilet#interior is "interior of the plasma constrictor ring." The clueless-description of the toilet#interior is "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve.[if the chain is broken] The situation here is slightly complication, however, as the chain is broken." The aware-description of the toilet#interior is "Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay [if the chain is broken]but here there is a discontinuity and the signal does not reach[otherwise]and the servo linkage to the[end if] thrust aperature. [if the chain is broken] It looks like the servo linkage has been damaged."
+Instead of searching the water tank when the water tank is open:
+	if the player is clueless:
+		say "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve[if the chain is broken] The situation here is slightly more complicated, however, as the chain has rusted through[end if].";
+	otherwise:
+		say "Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay [if the chain is broken]but here there is a discontinuity and the signal does not reach[otherwise]and the servo linkage to the[end if] thrust aperature. [if the chain is broken] It looks like the servo linkage has been damaged."
 
 The toilet bowl is an enterable scenery furniture in the bathroom. 
 
 The clueless-name of the toilet bowl is the "toilet bowl". The aware-name of the toilet bowl is the "reaction chamber".  The clueless-description of the toilet bowl is "The white porcelain bowl is the bottom part of the toilet. [throne status]." The aware-description of the toilet bowl is "The fusion output mixes with reactant in the glossy white chamber at the bottom of the retro assembly, just distal to the thrust aperature. [throne status]." The toilet bowl-proxy is an aware-proxy that is part of the toilet bowl. Understand "reaction" and "chamber" as the toilet bowl-proxy.
 
-Instead of searching the toilet bowl when the ACU is postpoop:
-	say "[if the player is clueless]There's something in it, but you don't want details[otherwise]Power has been transferred from fusion engines to the retro assembly, and the retros are primed for launch[end if]."
+Instead of searching the toilet bowl:
+	if the toilet cover is closed:
+		say "[if the player is clueless]You can't see into the bowl, because the toilet cover is down[otherwise]With the reactant shield secured, you do not have visual access to the reaction chamber[end if].";
+	otherwise if the player is postpoop:
+		say "[if the player is clueless]There's something in it, but you don't want details[otherwise]Power has been transferred from fusion engines to the retro assembly, and the retros are primed for launch[end if].";
+	otherwise:
+		say "[if the player is clueless]You see nothing interesting in the toilet bowl[one of]. You find that comforting, as there are few interesting things that you would want to find in your toilet[or][stopping].[otherwise]The plasma reaction chamber is clear of obstructions.[end if]"
+		
+Does the player mean inserting something into the toilet bowl:
+	it is very likely.
+		
+Before inserting something into the toilet bowl:
+	if the toilet cover is closed:
+		say "[if the player is clueless]The toilet cover is down, so you can't reach into the bowl[otherwise]The reactant shield is engaged, sealing off the reaction chamber[end if].";
+		the rule succeeds;
+	otherwise:
+		say "[if the player is clueless]You toy with the idea for a moment,[one of] and indeed when you were a university student, you might very well have considered putting your roommate's [noun] into the toilet, but that was then and this is now. Not that it did you roommate any good[or]but manage to stop yourself on the grounds of general hygiene[stopping][otherwise]You realize that [the aware-name of the noun] could foul the reaction chamber, so you stop[end if].";
+		the rule succeeds.
 
 The toilet seat is a flipchair which is in the bathroom. The clueless-name of the toilet seat is the "toilet seat". The aware-name of the toilet seat is "pressure seating". The clueless-description of the toilet seat is "A padded and heated seat, which is presently [if the toilet seat is open]raised[otherwise]in the down position[end if]." The aware-description of the toilet seat is "A black mevolar gasket that assures a perfect seal between the shield and the reactant chamber. The pressure seating is presently [if the toilet seat is open]not [end if]making a seal with the chamber."  The toilet seat-proxy is an aware-proxy which is part of the toilet seat. Understand "pressure" and "seating" and "mevolar" and "gasket" as the toilet seat-proxy.
 
-The toilet cover is a flipchair which is in the bathroom. The clueless-name of the toilet cover is the "toilet cover". The aware-name of the toilet cover is "reactant shield". The clueless-description of the toilet cover is "The cover is made of plastic, but has been laminated to give it the appearance of unstained wood. It toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured." Understand "lid" as the toilet cover. The toilet cover-proxy is an aware-proxy that is part of the toilet cover. Understand "reactant" and "shield" as the toilet cover-proxy.
+Instead of searching the toilet:
+	try searching the toilet bowl.
+
+The toilet cover is a flipchair which is in the bathroom. The clueless-name of the toilet cover is the "toilet cover". The aware-name of the toilet cover is "reactant shield". The clueless-description of the toilet cover is "The cover is made of plastic, but has been laminated to give it the appearance of unstained wood. The toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured." The toilet cover-proxy is an aware-proxy that is part of the toilet cover. Understand "reactant" and "shield" as the toilet cover-proxy.
 
 Does the player mean opening the toilet cover: it is likely.
 Does the player mean closing the toilet cover: it is likely.
@@ -2174,28 +2222,29 @@ Before entering a flipchair (called the flop):
 		now the toilet cover is open.
 		
 Instead of taking the toilet:
-	say "That's hardly potable."
+	say "That's hardly pottyable."
 	
 Flushing is an action applying to one thing.  Understand "flush [something]" as flushing.
 
 Check flushing:
-	if the noun is the toilet or the noun is the silver knob:
-		if the ACU is postpoop:
-			if the Landing Sequence is happening:
-				if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
-					say "[one of]You are distracted momentarily. Something just isn't right in the bathroom[or]Before you do so, the plunger catches your attention[or]Maybe you've been reading too much Lovecraft, but the plunger next to the toilet seems to be somehow misshapen and twisted. Its suddenly alien geometry suggests to you that some inchoate force of primordial corruption is reaching from across the stars, gibbering and gyrating contemptibly in the half-formed chaos between the toilet and the shower. Or maybe the plunger is just tilted a bit[or]There's something odd about the plunger. You forget what you're doing for a moment[or]Something about the plunger next to the toilet disturbs your sense of order[or]Obsess much? The bathroom plunger is not standing up correctly. It's maddening[stopping].";
-					the rule fails;
-			if the chain is intact:
-				now the flapper valve is open;
-			if the flapper valve is closed:[could have been opened directly, by floss or chain at this point]
-				say "There is a tinny clanking from within the toilet, but nothing happens.";
-				the rule fails;
-			[if the flapper valve is open, the check falls through to ...carry out flushing]
-		otherwise:[no need to flush if there's nothing in the bowl]
-			say "[if the player is clueless]Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy nilly with unnecessary flushing.";
-			the rule fails; 
-	otherwise:[tried to flush something other than the toilet or the silver knob] 
+	if the noun is not the the toilet and the noun is not the silver knob:
+		[did the player try to flush something other than the toilet?]
 		say "[if the player is clueless]That would be difficult to explain to the plumber[otherwise]Thruster discharge can only be actuated via the retro trigger circuit[end if].";
+		the rule fails;
+	if the Landing Sequence is happening:
+		[Is the yoke correctly centered?]
+		if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
+			say "[one of]You are distracted momentarily. Something just isn't right in the bathroom[or]Before you do so, the plunger catches your attention[or]Maybe you've been reading too much Lovecraft, but the plunger next to the toilet seems to be somehow misshapen and twisted. Its suddenly alien geometry suggests to you that some inchoate force of primordial corruption is reaching from across the stars, gibbering and gyrating contemptibly in the half-formed chaos between the toilet and the shower. Or maybe the plunger is just tilted a bit[or]There's something odd about the plunger. You forget what you're doing for a moment[or]Something about the plunger next to the toilet disturbs your sense of order[or]Obsess much? The bathroom plunger is not standing up correctly. It's maddening[stopping].";
+			the rule fails;
+	[Does the mechanism result in the flapper valve lifting?]
+	if the chain is intact:
+		now the flapper valve is open;
+	if the flapper valve is closed:[could have been opened directly, by floss or chain at this point]
+		say "There is a tinny clanking from within the toilet, but nothing happens.";
+		the rule fails;
+	[now, toilet will flush, if there's some business in it]	
+	if the ACU is not postpoop:			
+		say "[if the player is clueless]The cottage's EcoSensor inhibits the flush. Water isn't as expensive as it used to be in the international days, but there's no sense in wasting it willy-nilly with unnecessary flushing[otherwise]The retros fail to fire as the system has not been energized[end if].";
 		the rule fails.
 		
 Carry out flushing:
@@ -2639,7 +2688,7 @@ Before eating the canned food:
 
 The description of the water dish is "[if the water dish is not full]Even empty, the [otherwise]The [end if]other dog's plastic water dish looks much better than yours." The clueless-name of the water dish is "water dish". The aware-name of the water dish is "coolant reservoir". Understand "plastic" as the water dish.
 
-The crystal clear water is an edible thing in the water dish. The description of the water is "Clean, pure water. You are convinced that it must be much better than any water that has ever graced your own dog bowl." The scent of the crystal clear water is "like a mountain stream".
+The crystal clear water is an edible thing in the water dish. The description of the crystal clear water is "Clean, pure water. You are convinced that it must be much better than any water that has ever graced your own dog bowl." The scent of the crystal clear water is "like a mountain stream".
 
 Instead of taking the crystal clear water:
 	say "Having nothing else to carry the water in, you drink your fill.";
