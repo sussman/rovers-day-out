@@ -91,7 +91,8 @@ Consider simplifying Rover's food/drink bowl in Valkyrie.
       eating, it's all wrong again.  Let's either remember the
       plunger's state, or not allow me to move the plunger before eating.
 
-###TODO better implementation of taking care of business @@@ In
+###TODO better implementation of taking care of business 
+@@@ In
 writing the "taking care of business" section, I was trying to avoid
 giving the impression that the game was written by a 13-year old
 focused on potty humor. On the other hand, if one is presented with a
@@ -233,4 +234,6 @@ General Macro Issues re: plot, puzzles, etc.
   to transcript?  it would be nice to have status lines in transcript,
   the way jack's original prototype transcript had it.  (BEN TODO :
   ASK ON LIST)
+
+@@@ I would recommend that we have an "option" menu that allows toggling of status line display either at the top, or inline. That way, if someone has a very rudimentary terminal (e.g., Floyd on IFmud), they could still see the status line as it changes. In fact, the transcript would more or less resemble the original transcript. When placed inline, we could set it off typographically, e.g., [[[[STATUS LINE TEXT ]]].
 
