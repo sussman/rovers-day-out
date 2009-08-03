@@ -1,8 +1,16 @@
   *** Things we should fix, mainly discovered via testing. ***
 
-Movement system needs some revision: in from/out from for ship rooms, and direct movement rather than direction movement -- will simplify a lot of issues. Also revise the checks on moving from room to room and make sure that all entry-triggered actions still work. Known issue: when janet takes the egg from livingroom to kitchen, it jumps to the fridge in Real Thing.
 
-Contained objects needs to be put in scope or otherwise worked around: need to allow eat food/drink water to work more smoothly with the objects that are in the dog bowls
+Movement system needs some revision: in from/out from for ship rooms,
+and direct movement rather than direction movement -- will simplify a
+lot of issues. Also revise the checks on moving from room to room and
+make sure that all entry-triggered actions still work. Known issue:
+when janet takes the egg from livingroom to kitchen, it jumps to the
+fridge in Real Thing.
+
+Contained objects needs to be put in scope or otherwise worked around:
+need to allow eat food/drink water to work more smoothly with the
+objects that are in the dog bowls
 
 -suppress "to do list heavy handed...?" after second sim.
 - examine self should mention if player is sitting/laying on bed, counter, toilet, etc.
@@ -32,7 +40,6 @@ Consider simplifying Rover's food/drink bowl in Valkyrie.
       - war
       - valkyrie
       - casimir
-
 
 
 
@@ -141,6 +148,8 @@ section. I don't want it to come across as puerile or overly graphic.
   Which do you mean, the plastic box, or the plastic box-proxy?
 
 
+- open drawer should kill David/Janet
+
 --------------------------------------------------------------------
 "Fleshing Out" section.
 
@@ -163,4 +172,13 @@ obvious commands fail, players get annoyed.
 
     wash hands  (sink description is "enough room to wash your hands")
 
-- open drawer should kill David/Janet
+----------------------------
+
+General Macro Issues re: plot, puzzles, etc.
+
+
+* initial dream sequence:  how hard is it to discover the snooze
+  button and be rewarded with more dreams?  unclear.
+
+
+x
