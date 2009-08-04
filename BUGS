@@ -4,13 +4,6 @@ Contained objects needs to be put in scope or otherwise worked around:
 need to allow eat food/drink water to work more smoothly with the
 objects that are in the dog bowls
 
--suppress "to do list heavy handed...?" after second sim.
-- examine self should mention if player is sitting/laying on bed, counter, toilet, etc.
-- brush teeth should implicitly get the brush
-- suppress the room description or use a Rover's POV description of the living room when he first enters?
-
-- Janet should be dressed when Rover comes back from walkies, otherwise it seems odd for her glance to fall on her flight suit.
-
 * 'go room' shouldn't show 'ACU -> SELECT' but rather
   'room's-aware-name -> SELECT'
 
@@ -31,9 +24,9 @@ objects that are in the dog bowls
   the futon.  Experienced gamers will want to find it by looking
   behind/underneath the futon, and yet we move it to "Limbo"?  Why?
 
-@@@ General laziness on my part. I didn't want players to obsess about the clock, i.e., setting the time, trying to time travel. I was also concerned that we might get into issues of continuity with regard to timing, but I don't see how that would be an issue now. All things considered, it wouldn't take much more to implement the clock. As for it rolling under the bed, that does open a bit of a can of worms, although there is an extension that deals with stuff under beds. Is it worth the overhead of importing another extension? We'll see.
+@@@ General laziness on my part. I didn't want players to obsess about the clock, i.e., setting the time, trying to time travel. I was also concerned that we might get into issues of continuity with regard to timing, but I don't see how that would be an issue now. Finally, I was concerned that the player might try to go back to bed or hit snooze again, although there are plenty of ways around that.
 
-* "look out window" should work.  try 'look outside' instead?
+All things considered, it wouldn't take much more to implement the clock. As for it rolling under the bed, that does open a bit of a can of worms, although there is an extension that deals with stuff under beds. Is it worth the overhead of importing another extension? We'll see. 
 
 * open drawer should kill David/Janet
 
@@ -252,3 +245,34 @@ BUG: * also:
   (Note:  answering it that isn't in technoverb-table)
 
 @@@ Implemented.
+
+BUG:-suppress "to do list heavy handed...?" after second sim.
+
+@@@ Should only fire off during the first or second sim
+
+BUGLET: - brush teeth should implicitly get the brush
+
+@@@ Implemented.
+
+FEATURE - a before taking off the flight suit rule to prevent disrobe while on a supporter or other weird locations
+
+@@@ Implemented.
+
+BUG: - Janet should be dressed when Rover comes back from walkies, otherwise it seems odd for her glance to fall on her flight suit.
+
+@@@ Fixed.
+
+BUG: * "look out window" should work.  try 'look outside' instead?
+
+@@@ Look out / look out window / look outside / look through window - all work now.
+
+BUGLET: - examine self should mention if player is sitting/laying on bed, counter, toilet, etc.
+
+@@@ Added as an after examine rule
+
+CONCERN: - suppress the room description or use a Rover's POV description of the living room when he first enters?
+
+@@@ Implemented
+
+
+
