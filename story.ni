@@ -1414,30 +1414,21 @@ Test living_room with "stand up / open drapes / look / test picture".[add tests 
 
 The living room is outside from the kitchen, outside from bathroom, and inside from the front door.  The bathroom is outside from the shower. The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
 
-Instead of going towards when the player is the ACU:
-	if the player carries the food bowl or the player carries the water bowl or the player carries the white egg or the player carries the toothbrush or the player carries the plastic box:
-		if the player carries the food bowl or the player carries the water bowl:		
+Instead of going towards or exiting when the player is in the kitchen:
+	if the player carries the food bowl or the player carries the water bowl or the player carries the dog chow bag or the player carries the white egg:
+		if the player carries the food bowl or the player carries the water bowl:
 			say "Rover can be a messy eater.  By force of habit you never bring dog bowls out of the kitchen, so you set [if the player carries the food bowl and the player carries the water bowl]them[otherwise]it[end if] down.  [run paragraph on]";
 			move the water bowl to the kitchen;
 			move the food bowl to the kitchen;
-		if the player carries the dog food:
-			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a handful of dog food, you put it in his bowl as a good example[otherwise]Instead of contaminating the ship with thermoisotope, you put it into the fuel reservoir before switching out of engineering[end if]. [run paragraph on]";
+		if the player carries the dog chow bag:
+			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a bag of dog food, you put it back in the cabinet[otherwise]Instead of contaminating the ship with thermoisotope, you put the fuel conduit back in the vault before switching out of engineering[end if]. [run paragraph on]";
 			move the dog food to the food bowl;
 		if the player carries the white egg:	
 			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the fridge before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before switching out of engineering[end if].[run paragraph on]";
 			move the white egg to the old fridge;
-		if the player carries the toothbrush:
-			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
-			move the toothbrush to the marble counter;
-		if the player carries the plastic box:
-			say "[if the player is clueless]The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping out[otherwise]You disengage the object linker and reassign it to the flight console before transferring outs[end if]. [run paragraph on]";
-			move the plastic box to the marble counter;	
-		say paragraph break; 
-		continue the action;
-	otherwise if the player is wet and (the noun is the Kitchen or the noun is the Living Room):
-		say "[if the player is clueless]You are still dripping wet! Before you drench the floor of every room in the cottage, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if].";
-	otherwise:
-		continue the action.
+			now the old fridge is closed;
+		say paragraph break;
+	continue the action.
 
 The walls are a backdrop.  They are in the living room and kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy.
 
@@ -1972,6 +1963,26 @@ After going towards the bathroom:
 		now the bathroom is really-visited;
 		let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
 		say "[metatext in metaspeak]".
+		
+Instead of going towards or exiting when the player is in the bathroom:
+	if the player carries the toothbrush or the player carries the plastic box:
+		if the player carries the toothbrush:
+			say "[if the player is clueless]The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter[otherwise]The pit scrubber can only be activated from flight control, so you deaccess it[end if]. [run paragraph on]";
+			move the toothbrush to the marble counter;
+		if the player carries the plastic box:
+			say "[if the player is clueless]The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping out[otherwise]You disengage the object linker and reassign it to the flight console before transferring outs[end if]. [run paragraph on]";
+			move the plastic box to the marble counter;	
+		say paragraph break; 
+	continue the action.
+	
+Instead of going towards when the player is wet and (the noun is the Kitchen or the noun is the Living Room):
+	say "[dont drip]".
+	
+Instead of exiting when the player is wet and the player is in the bathroom:
+	say "[dont drip]".
+	
+To say dont drip:
+	say "[if the player is clueless]You are still dripping wet! Before you drench the floor of every room in the cottage, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if]."
 	
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a plastic box. The toothbrush and plastic box are props.
 
