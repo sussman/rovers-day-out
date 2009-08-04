@@ -22,10 +22,6 @@ objects that are in the dog bowls
 
 ### TODO cook egg
 
-* "pet rover"
-
-###TODO pet rover
-
 * need to understand 'chow' as 'bag of dog chow'
 
 * bug:  status-line noun shouldn't default to "ACU" all the time -- it
@@ -45,11 +41,6 @@ objects that are in the dog bowls
 
 * plunger is "twisted  clockwise" (extra space).  happens in several
   places in the dynamic description of plunger position.
-
-* also:
-  
-  >rover, hello
-  (Note:  answering it that isn't in technoverb-table
 
 * statusline should be FALSE!!!!
 
@@ -252,4 +243,12 @@ BUG * oops!  in the bathroom:
 
 @@@ Disambiguated. It's a box when the player is clueless, but it's a cylinder when the ACU is self-aware. 
 
+BUG: * "pet rover" 
 
+@@@ Implemented.
+
+BUG: * also:
+  >rover, hello
+  (Note:  answering it that isn't in technoverb-table)
+
+@@@ Implemented.
