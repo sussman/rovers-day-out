@@ -1422,7 +1422,7 @@ The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and T
 
 Test living_room with "stand up / open drapes / look / test picture".[add tests for other objects in living room.]
 
-The living room is west of the kitchen, south of the bathroom, and east of the front door.  The bathroom is south of the shower. The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
+The living room is outside from the kitchen, outside from bathroom, and inside from the front door.  The bathroom is outside from the shower. The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
 
 Instead of going towards when the player is the ACU:
 	if the player carries the food bowl or the player carries the water bowl or the player carries the white egg or the player carries the toothbrush or the player carries the plastic box:
@@ -2604,7 +2604,7 @@ The ground is a backdrop in the Planet Area.  The description of the ground is "
 To say inconsequential outside detail:
 	say " You can't see far because it is so dusty here. [one of][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[or]The ground shakes forcefully.[as decreasingly likely outcomes]"
 
-The Front Yard is west of the front door. The description of the front yard is "The scent of your house is strong here, and you are right next to its front door.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".  The scent of the Front Yard is "like the outdoors".
+The description of the front yard is "The scent of your house is strong here, and you are right next to its front door.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".  The scent of the Front Yard is "like the outdoors".
 
 Home is a backdrop in the front yard. Understand "house" and "home" as home. The description of home is "Home sweet home, where Janet lives, where you get fed, and where you sleep. Even out here, the smell of home is comforting." The scent of home is "like food, and love, and the best place to be when you're not running around outside"
 
@@ -2689,7 +2689,7 @@ Before entering the shabby cottage:
 	try entering the splintered door;
 	the rule succeeds.
 
-The Splintered Door is west of the Strange Porch and east of the sleeping room.  It is an open not openable scenery door. The description of the splintered door is "A heavy plastrex door hangs loosely in the door frame, tenuously attached by one frail hinge. The door swings wildly in the wind." The scent of the Splintered Door is "like burning plastic". 
+The Splintered Door is west of the Strange Porch and outside from the sleeping room.  It is an open not openable scenery door. The description of the splintered door is "A heavy plastrex door hangs loosely in the door frame, tenuously attached by one frail hinge. The door swings wildly in the wind." The scent of the Splintered Door is "like burning plastic". 
 
 The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above."
 
@@ -2738,7 +2738,7 @@ Instead of pulling the small label:
 		now the endgame is pillowed;
 		end the game in death.
 
-The eating room is north of the sleeping room.
+The eating room is inside from the sleeping room.
 
 The description of the eating room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the eating room is "more interesting than the sleeping room, with hints of kibbles and treats in the air".
 
