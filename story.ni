@@ -1988,9 +1988,9 @@ The marble counter is furniture in the bathroom.  On the marble counter are a to
 
 The clueless-name of the marble counter is "marble counter". Understand "pink" and "faux" as the marble counter. The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms.[if something is on the marble counter] On it [is-are a list of things on the marble counter]."  The aware-description of the marble counter is "A fully automated flight control console. [if something is on the marble counter]On it [is-are a list of things on the marble counter]." The marble counter-proxy is an aware-proxy that is part of the marble counter. Understand "flight" and "console" as the marble counter-proxy.
 
-The clueless-name of the plastic box is "plastic box". Understand "plastic" and "box" as the plastic box. The aware-name of the plastic box is "object linker". The clueless-description of the plastic box is "A small plastic box labeled [quotation mark]Tooth Floss,[quotation mark] with a blue button just below where the floss comes out." The aware-description of the plastic box is "A featureless and perfectly cube-shaped grey box." The plastic box-proxy is an aware-proxy that is part of the plastic box. Understand "box", "grey", "gray", "object" and "linker" as the plastic box-proxy.  
+The clueless-name of the plastic box is "plastic box". The aware-name of the plastic box is "object linker". The clueless-description of the plastic box is "A small plastic box labeled [quotation mark]Tooth Floss,[quotation mark] with a blue button just below where the floss comes out." The aware-description of the plastic box is "A smooth, glossy grey cylinder with a recessed linkage actuator." The plastic box-proxy is an aware-proxy that is part of the plastic box. Understand "cylinder", "grey", "gray", "object" and "linker" as the plastic box-proxy.  
 
-The blue button is part of the plastic box.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuation circuit". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed plastic box." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem." The blue button-proxy is an aware-proxy that is part of the blue button. Understand "linkage" and "actuation" and "circuit" as the blue button-proxy.
+The blue button is part of the plastic box.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuator". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed plastic box." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem." The blue button-proxy is an aware-proxy that is part of the blue button. Understand "linkage" and "actuator" and "circuit" and "transputer" as the blue button-proxy.
 
 The strand of dental floss is an edible prop. It is in Limbo. Understand "light" and "green" as the strand of dental floss. The clueless-name of the strand of dental floss is "strand of dental floss". The aware-name of the strand of dental floss is "entangled key pair". The clueless-description of the strand of dental floss is "A strand of pale green dental floss". The aware-description of the strand of dental floss is "A pair of quantum-entangled keys which can be linked transputer control nodes". The strand-proxy is an aware-proxy that is part of the strand of dental floss. Understand "key" and "pair" as the strand-proxy.
 
@@ -2463,7 +2463,7 @@ clockwise					3				1
 Table of Orientations
 Angle		Inclination
 0				"perfect"
-30				"just the tinyest little bit"
+30				"just the tiniest little bit"
 60				"a tad"
 90				""
 120				"strongly"
@@ -3393,7 +3393,6 @@ Chapter Landing Sequence
 Landing Sequence is a recurring scene. Landing Sequence begins when white egg is in the cold box and the landing_pid is zero and the location of the player is the Bathroom.
 
 When Landing Sequence begins:
-	reset the yoke;
 	now the toilet cover is open;
 	now the toilet seat is closed;
 	if the Second Sim is happening:
@@ -3502,8 +3501,6 @@ The underling is an object that varies. The underling is the maintenance droid.
 
 The damage counter is a number that varies. The damage counter is 1.
 	[each round that the assault ship has an underling on board, the counter goes up by one signifying more and more damage to Valkyrie, which beings the scene nearer to its closure]
-	
-[###TODO rules to handle suffocation of technician, changes in pressure, etc.]
 		
 Every turn when Boarding Party is happening:
 	if the ship is sunk:
@@ -3672,7 +3669,7 @@ After eating the maintenance droid:
 	now the maintenance droid is toxic.
 	
 Instead of inserting the maintenance droid into the old fridge:
-	[###TODO: check that it robot is held, and that fridge is open]
+	[No check is made to capture the robot, unlike trying to put him in the water tank. If the robot is still around at this stage, we want to make it easy for the player to dispose of him. It seems like better dramatic pacing this way.]
 	if the old fridge is damaged:
 		say "The wiley droid dives into the broken cryochamber to avoid your grasp, and then clambers out again.";
 	otherwise:
