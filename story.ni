@@ -929,6 +929,13 @@ Instead of repairing the toilet:
 			
 Instead of repairing Rover:
 	say "[if the player is clueless]Rover has already been fixed, and he didn't enjoy it[otherwise]While ROVER is missing two nuts on his underchassis, you consider him fixed[end if]."
+	
+Section Petting
+
+Petting is an action applying to one thing. Understand "pet [animal]" or "stroke [animal]" or "pat [animal]" or "scratch [animal]" or "massage [animal]" or "caress [animal]" or "rub [animal]" or "cuddle [animal]" as petting.
+
+Report Petting:
+	say "[one of]You scratch [Rover] behind the ears, and he makes a rumbling happy sound[or]You rub [Rover] under the chin, and he cranes back his neck and twists his head from side to side in enjoyment[or]You rub [Rover]'s chest and his back leg fiddles[or]You stroke [Rover]'s back and he nuzzles up against you[or]You scratch [Rover]'s back and he slowly inches forward, trying to get you to scratch more towards the base of his spine[or]You reach out to pet Rover and he flips over, feet peddling the air, in search of some belly rubs, which you give[or]You pat [Rover] briefly, but he lets you know that a brief pat is not satisfactory. You spend some time scratching [Rover], as he repositions himself constantly, trying to get you to scratch an ever-moving itch[or][Rover] waits expectantly for more petting[or][Rover] licks your hand[or][Rover] expresses his gratitiude with some lip smacking sounds[or]Now that you've rearranged his fur, [Rover] spends a moment scratching his ears and licking himself to get it all back to the way it was[or][Rover] seems comforted[or][Rover] seems lost in the moment[at random]."
 				
 Chapter General Insteads
 
@@ -1385,6 +1392,11 @@ Carry out buttdowning:
 Instead of an animal buttdowning:
 	say "Rover grazes the ground with his rear end, like a suborbital glider aborting a landing.";
 	the rule succeeds.
+	
+Section Answering Rover
+
+Instead of answering Rover that "hello":
+	say "[one of][Rover] shakes his head slowly, once again lamenting your ignorance of dog-speak and stubborn insistence on making noises that mean absolutely nothing.[or][Rover] pauses for a moment to compose his reply, [quotation mark]Errrr...Wruff.[quotation mark][or][Rover] hesistates. Did you just say [quotation mark]walkies[quotation mark]? Hello. Walkies. Hello. Walkies. Gawoof, they sound a lot alike. Why can't you just learn to bark properly?[or][Rover] looks around wondering if perhaps you are talking to someone else.[or][Rover] wags his tail.[stopping]"
 
 Chapter The Valkyrie
 
@@ -3072,6 +3084,8 @@ the barking action			"EMIT PULSE"
 the businessing action	"POWER TRANSFER" [oop, pee, etc.]
 the tying it to action	"BIND" [tie, attach]
 the repairing action		"REPAIR" [repair]
+the petting action			"SYNCH"
+the answering it that action		"BROADCAST"
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 	
