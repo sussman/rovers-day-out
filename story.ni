@@ -45,8 +45,6 @@ Current memory usage is a number that varies. Current memory usage is 508.
 Malloc is a number that varies. Malloc is 500.
 [Malloc takes a dive after the switch from Windex to Flosix.]
 
-Enroute is a truth state that varies. Enroute is false. [en route is a flag that the character is going towards a destination, and prevents the "going" routine from objecting to the use of a compass direction. The flag is reset when the attempt to go occurs. TOCONSIDER: should this be an action variable a la example 196?]
-
 Aware-references is a number that varies. Aware-references is 1.
 [Tracks the number of times, up to 3, that the ACU has referred to objects by their aware-names. Used to switch between David/Janet comments]
  
@@ -645,32 +643,22 @@ Check going towards:
 			say "How much more here do you want to be?" instead;
 		if the noun is in the location:
 			say "[The noun] is already here." instead;
-		otherwise:
-			if the player is the ACU:
-				say "You'd have to look for [the noun]." instead;
 	if the noun is the location, say "You're already here." instead;
 	if the player is the ACU and the noun is not in the Valkyrie Area, say "You're not ready to go out yet." instead.
 
 Carry out going towards:
 	if the player is the ACU and the noun is in the Valkyrie Area:
 		move the player to the location of the noun;
-		the rule succeeds;
 	otherwise:
 		let the way be the best route from the location to the location of the noun, using even locked doors;
 		if the way is not a direction, say "You can't figure out how to get there." instead;
 		let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
-		now enroute is true;
-	[when enroute is true, the game can give a compass direction without generating the "no compass directions on mars" or other messages, since in fact, locations are still (interally) represented as compass directions.]
-		try going the way;
-		if the player is not in the destination, rule fails.
+		move the player to the destination.
 	
 Rule for reaching inside a room when the current action is going towards: 
     allow access.[necessary to allow the going towards rule to work on a person that is out of local scope; otherwise would throw a "you can't reach inside the kitchen" sort of error.]
 
 Before going a built-in direction (called the way):
-	if enroute is true:
-		now enroute is false;
-		continue the action;
 	if the way is up or the way is down or the way is inside or the way is outside:
 		continue the action;
 	if the ACU is the player: 
@@ -710,6 +698,8 @@ Check leaving:
 		
 Carry out leaving:
 	try exiting. 
+	
+Understand "leave" as exiting.
 
 Section Folding and Unfolding
 
@@ -2503,20 +2493,6 @@ Every turn when the player is in the shower:
 Instead of taking off the flight suit when the player is in the shower:
 	say "Your flight suit would get soaked if you took it off in here."
 	
-Instead of exiting:
-	if the player is in the shower:
-		try going towards bathroom;
-	otherwise if the player is in the kitchen:
-		try going towards living room;
-	otherwise if the player is in the bathroom:
-		if the player is on the toilet seat and the Landing Sequence is happening:		
-			say "You haven’t finished your business here. The plunger handle is tilted to the XXXXXX and upsets your sense of order.";
-			[TOCONSIDER: is this ever hit?]
-		otherwise:
-			try going towards the living room;
-	otherwise:
-		continue the action.
-
 [###TODO: tweak this so it doesn't come into play after Real Thing.]	
 Instead of going towards when the player is in the shower:
 	if the player is wearing the flight suit:
