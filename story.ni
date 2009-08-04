@@ -706,7 +706,7 @@ Leaving is an action applying to one thing. Understand "leave [any room]" or "ex
 
 Check leaving:
 	if the noun is not the location:
-		say "You can't leave there, because you aren't there."
+		say "You can't leave there, because you aren't there." instead.
 		
 Carry out leaving:
 	try exiting. 
