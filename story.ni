@@ -271,6 +271,13 @@ To say it-they:
 To say (regular verb - some text) in correct agreement:
 	say "[regular verb][if the last mentioned thing is not plural-named]s".
 
+After examining the player:
+	if the player is enclosed by something:
+		if the player is enclosed by the futon and Bedtime is happening:
+			say "You are [if the player is clueless]lying on[otherwise]accessing[end if] [the futon].";
+		otherwise:
+			say "You are [if the player is clueless]sitting on[otherwise]accessing[end if] [the holder of the player]."
+
 Chapter Verbs
 	
 Section Computer Humor
@@ -1502,7 +1509,9 @@ Before wearing the flight suit when the player is wet:
 	say "[if the player is clueless]Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed)[otherwise]If the enamel is not activated by UV irradiation, it will not harden into a protective coating[end if].";
 	the rule succeeds.
 	
-[###TODO - a before taking off the flight suit rule to prevent disrobe while on a supporter or other weird locations]
+Before taking off the flight suit when the player is enclosed by a supporter:
+	say "[if the player is clueless]You need to get off [the holder of the player] first[otherwise]You cannot disengage the quantum isolator while accessing [the holder of the player][end if].";
+	the rule succeeds.
 
 After taking off the flight suit:
 	say "You take off your blue flight suit and it ";
@@ -1520,7 +1529,7 @@ After taking off the flight suit:
 		if the Second Sim is happening:
 			let metatext be "David: That mole should be on your left side.[line break]Janet: Good eye for detail -- I’ll flip the UV coordinates on the next run.";
 			say "[metatext in metaspeak]".
-		
+
 [###TODO add verbs/synonyms to enable "get dressed/dress/dress up", "get undressed/strip/disrobe/etc.", ]
 
 The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
@@ -2056,8 +2065,12 @@ Brushing is an action applying to one thing. Understand "brush [something]" as b
 
 Check brushing:
 	if the toothbrush is not held by the player:
-		say "[if the player is clueless]The first rule of brushing stuff is that you need to have a brush. No brush, no brushing. QED[otherwise]You need to access the pit scrubber first[end if].";
-		rule fails;
+		if the player can see the toothbrush:
+			say "(first grabbing the [toothbrush])[command clarification break]";
+			try silently taking the toothbrush;
+		otherwise:
+			say "[if the player is clueless]The first rule of brushing stuff is that you need to have a brush. No brush, no brushing. QED[otherwise]You need to access the pit scrubber first[end if].";
+			rule fails;
 	if the noun is not teeth:
 		say "[if the player is clueless][one of]Your fascination with dental hygiene has gotten out of hand[or]The toothbrush is best used on teeth (hence the name)[or]If you want to brush [the noun] use a [noun]-brush[or]Teeth, sure, [noun], no[at random][otherwise]Low level failsafes restrict nanobristle distribution to the hull. The pit scrubber cannot be applied to [the noun][end if].";
 		rule fails.
@@ -2808,6 +2821,12 @@ The technician is a man in Limbo. The clueless-name of the technician is "techni
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
 
 The window is a transparent scenery closed not openable container in Limbo. Understand "outside" or "outdoors" or "glass" or "pressure" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is damaged]shows only static. Diagnostics indicate that it is malfunctioning.[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer" and "viewport" as the window-proxy. The window can be damaged. The window is not damaged.
+
+Understand "out window" as the window.
+
+Before searching outside when the player is in the living room and the window is in the living room:
+	try searching the window;
+	the rule succeeds.
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" as the garden skylights.
 
@@ -3454,17 +3473,21 @@ When Walkies begins:
 	
 When Walkies ends:
 	now the front door is closed;
+	now Janet wears the flight suit;
 	if Rover carries the white egg:
-		say "You lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.";
+		say "You enter your home and lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.";
 		now the white egg is in the Living Room;
 	otherwise if Rover carries the delicious bone:
-		say "You jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]";
+		say "You run into the living room and jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]She stares at the bone and appears frozen.[paragraph break]";
 		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND LINE[paragraph break]";
 		say "Rover wags his tails and gnaws on his bone.[paragraph break]You rub his head, distantly, as strange thoughts sweep through your consciousness. You wonder what would happen if the Valkyrie mission failed because during landing the ship had been buffeted by particulate matter being torn away from the doomed planet by the immense gravity its star. In that case, critical systems might be damaged. Systems like the relatively fragile ansible antenna. There is no back-up ansible antenna. How would the ACU cope with a situation like that? The ACU was designed for a lot of contingencies, but not that one. What would you do? What would you do if you were the ACU?[paragraph break]Your glance falls on your flight suit, and suddenly the question is no longer rhetorical.";
 		now the player is the ACU;
 		try reorienting;
 		the rule succeeds;
 	now the player is the ACU.
+	
+Instead of looking when Rover is the player and Rover is in the living room:
+	do nothing.
 
 Chapter Boarding Party
 
