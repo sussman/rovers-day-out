@@ -943,7 +943,31 @@ Petting is an action applying to one thing. Understand "pet [animal]" or "stroke
 
 Report Petting:
 	say "[one of]You scratch [Rover] behind the ears, and he makes a rumbling happy sound[or]You rub [Rover] under the chin, and he cranes back his neck and twists his head from side to side in enjoyment[or]You rub [Rover]'s chest and his back leg fiddles[or]You stroke [Rover]'s back and he nuzzles up against you[or]You scratch [Rover]'s back and he slowly inches forward, trying to get you to scratch more towards the base of his spine[or]You reach out to pet Rover and he flips over, feet peddling the air, in search of some belly rubs, which you give[or]You pat [Rover] briefly, but he lets you know that a brief pat is not satisfactory. You spend some time scratching [Rover], as he repositions himself constantly, trying to get you to scratch an ever-moving itch[or][Rover] waits expectantly for more petting[or][Rover] licks your hand[or][Rover] expresses his gratitiude with some lip smacking sounds[or]Now that you've rearranged his fur, [Rover] spends a moment scratching his ears and licking himself to get it all back to the way it was[or][Rover] seems comforted[or][Rover] seems lost in the moment[at random]."
-				
+	
+Section Cooking
+
+Cooking is an action applying to one thing. Understand "cook [something]" or "fry [something]" as cooking.
+
+Check cooking:
+	if the noun is not the white egg:
+		say "[if the player is clueless]That doesn't sound very appetizing[otherwise]You don't think [the noun] would serve very well as fusion fuel[end if].";
+		the rule fails;
+	if the white egg is cooked:
+		say "You've already [if the player is clueless]cooked the egg[otherwise]fused the He-4[end if]! Now you can [if the player is clueless]eat it[otherwise]recycle the depleted sphere[end if].";
+		the rule fails;
+	if the player can not see the frying pan:
+		say "[if the player is clueless]You usually cook your eggs in a frying pan[otherwise]You will need a magnetic bottle to contain the heavy helium sphere during the fusion process[end if].";
+		the rule fails;
+	if the frying pan is not on the range:
+		say "[if the player is clueless]The frying pan isn't going to do much good if it's not on the stove[otherwise]The fusion reaction can't start unless the magnetic bottle correctly positioned on the fusion chamber[end if].";
+		the rule fails;
+	if the white egg is not in the frying pan:
+		say "[if the player is clueless]You wonder if the egg wouldn't cook better if you actually put it in the frying pan[otherwise]The sphere of fusion fuel isn't contained in the magnetic bottle[end if].";
+		the rule fails.
+		
+Carry out cooking:
+	try silently cracking the white egg into the frying pan.
+
 Chapter General Insteads
 
 Instead of examining a room:
@@ -1695,7 +1719,7 @@ After examining the old fridge for the first time:
 		let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 		say "[metatext in metaspeak]";
 
-The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
+The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
 
 Instead of attacking the white egg:
 	if the white egg is in the frying pan:
@@ -1706,14 +1730,15 @@ Instead of attacking the white egg:
 Cracking it into is an action applying to two things. Understand "crack [something] into/in/on/over [something]" as cracking it into. Understand "open [something] into/in/on/over [something]" as cracking it into. Understand "break [something] into/in/on/over [something]" as cracking it into.
 
 Check cracking it into:
-	if the enamel_pid is zero:
-		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster." instead;
 	if the noun is not the white egg:
-		say "Could you rephrase that?" instead;
-	otherwise:
-		if the second noun is not the frying pan:
-			say "[if the player is clueless]That's crazy talk[otherwise]It would be in advisable to vent the heavy helium into anything but a magnetic containment bottle[end if]." instead.
-
+		say "That didn't make much sense. Maybe you could rephrase it?" instead;
+	if the second noun is not the frying pan:
+		say "[if the player is clueless]That's crazy talk[otherwise]It would be in advisable to vent the heavy helium into anything but a magnetic containment bottle[end if]." instead;		
+	if the enamel_pid is zero:
+		now the frying pan is on the counter;
+		now the white egg is in the frying pan;
+		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster. You put the egg and the frying pan to the side for the moment." instead.
+		
 Carry out cracking it into:
 	move the white egg to the frying pan;
 	now the white egg is broken;
@@ -1799,7 +1824,7 @@ Before opening the range:
 	say "There is no obvious way to open the range.";
 	the rule succeeds. 
 	
-A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the the Th is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan [if the white egg is not in the frying pan][otherwise if the white egg is cooked]from which a single cooked egg stares up at you[otherwise if the egg is broken]containing a gooky, uncooked egg[otherwise]in which a big white neoegg rolls around[end if]." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
+A frying pan is in the drawer. It is an open not openable container.  The carrying capacity of the pan is 1. The clueless-name of the frying pan is "frying pan". The aware-name of the frying pan is "magnetic bottle". The clueless-description of the frying pan is "A small, non-stick frying pan [if the white egg is not in the frying pan][otherwise if the white egg is cooked]from which a single cooked egg stares up at you[otherwise if the egg is broken]containing a gooky, uncooked egg[otherwise]in which a big white neoegg rolls around[end if]." The aware-description of the frying pan is "A powerful magnetic field capable of confining the fusion reaction within a tight volume, at the heart of the Valkyrie's fusion lasers." The frying pan-proxy is an aware-proxy that is part of the frying pan. Understand "magnetic" and "bottle" and "containment" as the frying pan-proxy.
 
 The clueless-name of the drawer is "drawer". The aware-name of the drawer is "reactor core". The clueless-description of the drawer is "A deep [drawer] under [the range]. [The drawer] [if open]has been opened[otherwise]is shut[end if]." The aware-description of the drawer is "[if the drawer is open]The closed [drawer] shields the engineering section of the ship from residual radiation[otherwise]With [the drawer] open, hard radiation bathes the engineering section[end if]." The drawer-proxy is an aware-proxy that is part of the drawer. Understand "reactor" and "core" and "shielding" and "shield" as the drawer-proxy. 
 
@@ -3281,7 +3306,6 @@ Dreaming is an action applying to nothing.
 Carry out dreaming:
 	say description in row dream index of the Table of Dreams;
 	say paragraph break.
-	[wait for any key;  !!! commented out for testing]
 
 Beeping is an action applying to nothing.
 	

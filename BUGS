@@ -11,10 +11,6 @@ objects that are in the dog bowls
 
 ### TODO status line when going towards
 
-* "cook egg" 
-
-### TODO cook egg
-
 * need to understand 'chow' as 'bag of dog chow'
 
 * bug:  status-line noun shouldn't default to "ACU" all the time -- it
@@ -274,5 +270,7 @@ CONCERN: - suppress the room description or use a Rover's POV description of the
 
 @@@ Implemented
 
+FEATURE: * "cook egg" 
 
+@@@ Implemented
 
