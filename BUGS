@@ -1,13 +1,5 @@
   *** Things we should fix, mainly discovered via testing. ***
 
-
-Movement system needs some revision: in from/out from for ship rooms,
-and direct movement rather than direction movement -- will simplify a
-lot of issues. Also revise the checks on moving from room to room and
-make sure that all entry-triggered actions still work. Known issue:
-when janet takes the egg from livingroom to kitchen, it jumps to the
-fridge in Real Thing.
-
 Contained objects needs to be put in scope or otherwise worked around:
 need to allow eat food/drink water to work more smoothly with the
 objects that are in the dog bowls
@@ -15,36 +7,14 @@ objects that are in the dog bowls
 -suppress "to do list heavy handed...?" after second sim.
 - examine self should mention if player is sitting/laying on bed, counter, toilet, etc.
 - brush teeth should implicitly get the brush
-- disambiguate box from box-proxy
 - suppress the room description or use a Rover's POV description of the living room when he first enters?
 
 - Janet should be dressed when Rover comes back from walkies, otherwise it seems odd for her glance to fall on her flight suit.
 
-
-Consider simplifying Rover's food/drink bowl in Valkyrie.
-
-* General concerns about 'remember':  how is a user going to know to
-  remember something?  We need an event to set off a flood of
-  'remember' actions -- like a textbook, perhaps?
-
-   The player really *needs* the backstory of politics, the valkyrie's
-   mission, and the competition from earth.  Otherwise the whole Real
-   Thing section (and especially rover's solution to liftoff) won't
-   make any sense to the player.... nor will the solution be something
-   that occurs naturally to the player.
-
-   Specifically, these topics *must* be read before Real Thing:
-
-      - probe
-      - myomita
-      - war
-      - valkyrie
-      - casimir
-
-
-
 * 'go room' shouldn't show 'ACU -> SELECT' but rather
   'room's-aware-name -> SELECT'
+
+###TOCONSIDER: responses to "wait" while on toilet seat, or hints after some period of time sitting there ... in case pooping doesn't occur to people.
 
 ### TODO status line when going towards
 
@@ -52,102 +22,22 @@ Consider simplifying Rover's food/drink bowl in Valkyrie.
 
 ### TODO cook egg
 
-
-###TOCONSIDER: It would make more sense to model the rooms with inside
-   from/outside from relationships. This would more closely follow the
-   directory level paradigm suggested with the flosix commands. It
-   would also make going out of the shower, or out the front door make
-   more sense.
-
-
-* "exit shower" fails but just "exit" leaves the shower.
-
-###TODO exit shower
-
 * "pet rover"
 
 ###TODO pet rover
 
-
-* should 'wait' while sitting on toilet do something?
-
-   -> I think the bigger issue is that we should hint that 'something
-      seems odd' about the room once we're sitting on the toilet.  we
-      need to guide people to examine the toilet, so that they notice
-      the plunger at all.
-
-   -> bigger confusion:  *I* fell into the trap of thinking that I had
-      to make myself poop during the second sim.  I wasted 10 mins on
-      it!  If I don't have the urge to defecate, let's say so.
-      Granted, I had forgotten about the magpaper ordering.  But let's
-      hint that we only need to take care of business after eating.
-
-   -> I don't like our current system of "automatically" sitting on the
-      toilet after eating the egg.  Let the player do that, since they
-      feel an urge anyway, right?  Likewise, let the player know that
-      they're "done" with business after fixing the plunger.6
-
-   -> BUG:  I fixed the plunger perfectly before eating.  After
-      eating, it's all wrong again.  Let's either remember the
-      plunger's state, or not allow me to move the plunger before eating.
-
-###TODO better implementation of taking care of business 
-@@@ In
-writing the "taking care of business" section, I was trying to avoid
-giving the impression that the game was written by a 13-year old
-focused on potty humor. On the other hand, if one is presented with a
-toilet, it does seem natural... I'll need to come back to this
-section. I don't want it to come across as puerile or overly graphic.
-
-* "poop" is not recognized
-
-###TODO: poop/shit/defecate .... "Even real adventurers have to go sometime."
-
 * need to understand 'chow' as 'bag of dog chow'
-
-* grammar error?
-
-   >x cover 
-
-   The cover is made of plastic, but has been laminated to
-   give it the appearance of unstained wood. It toilet cover is
-   closed.
-
-
-* uhoh:  this seems to read like there are three sibling objects.  And
-  they're not siblings.
-
-  >x bowl
-  Which do you mean, the dog dish, the water bowl, or the food bowl
-
-###TODO: disambiguate dog bowl objects in kitchen
-
-
-* no status-line update when we stand up and toilet flushes??
-
-###TODO: update status after flush
-
-* in The Real Thing, I expected toilet to not flush and be broken.
-  Guess we haven't written that yet?
-
-###TODO: broken toilet puzzle in real thing
-
 
 * bug:  status-line noun shouldn't default to "ACU" all the time -- it
   should be aware of whether we're playing Janet or Rover.
-
 
 * At the beginning of the game, we stand up and knock the clock behind
   the futon.  Experienced gamers will want to find it by looking
   behind/underneath the futon, and yet we move it to "Limbo"?  Why?
 
+@@@ General laziness on my part. I didn't want players to obsess about the clock, i.e., setting the time, trying to time travel. I was also concerned that we might get into issues of continuity with regard to timing, but I don't see how that would be an issue now. All things considered, it wouldn't take much more to implement the clock. As for it rolling under the bed, that does open a bit of a can of worms, although there is an extension that deals with stuff under beds. Is it worth the overhead of importing another extension? We'll see.
+
 * "look out window" should work.  try 'look outside' instead?
-
-* oops!  in the bathroom:
-
-  >x box
-  Which do you mean, the plastic box, or the plastic box-proxy?
-
 
 * open drawer should kill David/Janet
 
@@ -155,15 +45,6 @@ section. I don't want it to come across as puerile or overly graphic.
 
 * plunger is "twisted  clockwise" (extra space).  happens in several
   places in the dynamic description of plunger position.
-
-* uhoh, I've never even *heard* of a silver knob yet.
-
-  >twist handle counterclockwise
-  Which do you mean, the silver knob, or the shaft?
-
-* typo:  "tinyist" --> "tiniest" in plunger puzzle.
-
-* "businessing" isn't in technoverb table.
 
 * also:
   
@@ -174,12 +55,6 @@ section. I don't want it to come across as puerile or overly graphic.
 
    >flush toilet
    There is a tinny clanking from within the toilet, but nothing happens
-
-
-* oops:
-
-  >look inside tank
-  In the water tank is an inside of the tank
 
 
 --------------------------------------------------------------------
@@ -208,8 +83,7 @@ obvious commands fail, players get annoyed.
     non-default responses.)
 
     putting chow in dish -- see my transcript, very 'guess the verb'
-
-    "look inside tank" - lots of problems trying to see inside tank.
+@@@ I've tried to rework this a bit; may need more testing to see if is comes across as improved.
 
 ----------------------------
 
@@ -219,11 +93,13 @@ General Macro Issues re: plot, puzzles, etc.
 * initial dream sequence:  how hard is it to discover the snooze
   button and be rewarded with more dreams?  unclear.
 
+@@@ I've tried to make it easy -- if you try to do anything with the clock besides looking at it, you fumble around in your half-dream state and accidentally hit snooze. Lying down or sleeping also will lead to more dreams.
 
 * rover doesn't seem to follow me around, or request things like food,
   etc.  it would be a much richer experience if he reacted to my
   routine or even hinted ath things when players got stuck!
 
+@@@ This will be my main focus as general mechanisms get nailed down (JACK TODO!)
 
 * in general, status line technoverbs are always showing TRUE, not
   catching failures when they should (i.e. when toilet doesn't flush).
@@ -236,4 +112,144 @@ General Macro Issues re: plot, puzzles, etc.
   ASK ON LIST)
 
 @@@ I would recommend that we have an "option" menu that allows toggling of status line display either at the top, or inline. That way, if someone has a very rudimentary terminal (e.g., Floyd on IFmud), they could still see the status line as it changes. In fact, the transcript would more or less resemble the original transcript. When placed inline, we could set it off typographically, e.g., [[[[STATUS LINE TEXT ]]].
+
+=====================================================================
+
+Stuff that is (hopefully) fixed/resolved gets moved here...
+
+BUG: Movement system needs some revision: in from/out from for ship rooms,
+and direct movement rather than direction movement -- will simplify a
+lot of issues. Also revise the checks on moving from room to room and
+make sure that all entry-triggered actions still work. Known issue:
+when janet takes the egg from livingroom to kitchen, it jumps to the
+fridge in Real Thing.
+
+@@@ revised and simplified the going to / exiting mechanism. Checked all entry-triggered events; they seem to be OK. The egg no longer jumps around magically.
+
+CONCERN: It would make more sense to model the rooms with inside
+   from/outside from relationships. This would more closely follow the
+   directory level paradigm suggested with the flosix commands. It
+   would also make going out of the shower, or out the front door make
+   more sense.
+
+@@@ As part of the movement system revision, the ship's layout has been made hierarchical, using "inside/outside" from relationships:
+
+operations/
+operations/flight control
+operations/flight control/extruder
+operations/engineering
+
+BUG: * "exit shower" fails but just "exit" leaves the shower.
+
+@@@ Exit [location] now works properly in a generalized sense.
+
+BUGLET: Consider simplifying Rover's food/drink bowl in Valkyrie.
+ 
+@@@ Instead of a conjoined monstrosity of an uberfeeding bowl, the food bowl and the water bowl are implemented as individual items. This should make life more pleasant.
+
+CONCERN: General concerns about 'remember':  how is a user going to know to
+  remember something?  We need an event to set off a flood of
+  'remember' actions -- like a textbook, perhaps?
+
+   The player really *needs* the backstory of politics, the valkyrie's
+   mission, and the competition from earth.  Otherwise the whole Real
+   Thing section (and especially rover's solution to liftoff) won't
+   make any sense to the player.... nor will the solution be something
+   that occurs naturally to the player.
+
+   Specifically, these topics *must* be read before Real Thing:
+
+      - probe
+      - myomita
+      - war
+      - valkyrie
+      - casimir
+
+@@@ These picture / nameplate in the living room now serve this purpose. The nameplate triggers a memory of the photo, which covers these five items and introduces the mechanism of remembering. The same information is provided in interstitial comments by David/Janet during first and second sim, and is incorporated into dialogue in Boarding Party and Back on Mars.
+
+CONCERN: I think the bigger issue is that we should hint that 'something
+      seems odd' about the room once we're sitting on the toilet.  we
+      need to guide people to examine the toilet, so that they notice
+      the plunger at all.
+
+@@@ Before flushing, the player is distracting by something not being right. If this isn't strong enough, we can add more.
+
+CONCERN: bigger confusion:  *I* fell into the trap of thinking that I had
+      to make myself poop during the second sim.  I wasted 10 mins on
+      it!  If I don't have the urge to defecate, let's say so.
+      Granted, I had forgotten about the magpaper ordering.  But let's
+      hint that we only need to take care of business after eating.
+
+@@@ You now need to do *something* while sitting there.  The "EcoSensor" on the toilet won't let you flush it unless there is a reason. A wide variety of action verbs is accomodated, including some that would ordinarily trigger the "block swearing obscenely" rule. 
+
+CONCERN -> I don't like our current system of "automatically" sitting on the
+      toilet after eating the egg.  Let the player do that, since they
+      feel an urge anyway, right?  Likewise, let the player know that
+      they're "done" with business after fixing the plunger.
+
+@@@ Agree; this felt like railroading, so the player is now free to sit/stand/poop/flush without being tossed about like a puppet.
+
+BUG:  I fixed the plunger perfectly before eating.  After
+      eating, it's all wrong again.  Let's either remember the
+      plunger's state, or not allow me to move the plunger before eating.
+
+@@@ This was intentional, but I've made it work the way you expected. My initial thought was that the attitude corrections should be made right before landing, so the yoke would randomize when the landing sequence begins (i.e., after eating). The yoke also randomizes at the beginning of each major segment (first sim, second, real thing), though. I finally decided that randomizing before each segment was sufficient. This is consistent with allowing players more freedom in the order of their operations. Somewhere in the game it mentions that the perception of time is not very relevant, as the ACU works so quickly.
+
+BUG  * no status-line update when we stand up and toilet flushes??
+
+@@@ Now gives RETROS -> THRUST: TRUE
+
+BUG: * grammar error?
+
+   >x cover 
+
+   The cover is made of plastic, but has been laminated to
+   give it t
+
+@@@ Fixed.
+
+BUG uhoh:  this seems to read like there are three sibling objects.  And
+  they're not siblings.
+
+  >x bowl
+  Which do you mean, the dog dish, the water bowl, or the food bowl
+
+@@@ In fixing the dog bowl design in the kitchen, the water and food bowls are separate, there is no more dog dish.  "x bowl" should prompt, "do you mean water or food bowl", though, as "bowl" itself is ambiguous.
+
+BUG: in The Real Thing, I expected toilet to not flush and be broken.
+  Guess we haven't written that yet?
+
+@@@ It's now written.
+
+BUG: * uhoh, I've never even *heard* of a silver knob yet.
+
+  >twist handle counterclockwise
+  Which do you mean, the silver knob, or the shaft?
+
+@@@ Now mentioned in the water tank description and some text related to fixing the broken chain.
+
+BUG: * oops:
+    
+  >look inside tank
+  In the water tank is an inside of the tank
+
+   "look inside tank" - lots of problems trying to see inside tank.
+
+@@@ I overhauled the interior of the toilet's water tank. The inner workings should now all be visible.
+
+* typo:  "tinyist" --> "tiniest" in plunger puzzle.
+
+@@@ Fixed
+
+* "businessing" isn't in technoverb table.
+
+@@@ It is now!
+
+BUG * oops!  in the bathroom:
+
+  >x box
+  Which do you mean, the plastic box, or the plastic box-proxy?
+
+@@@ Disambiguated. It's a box when the player is clueless, but it's a cylinder when the ACU is self-aware. 
+
 
