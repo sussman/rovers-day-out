@@ -24,8 +24,6 @@ All things considered, it wouldn't take much more to implement the clock. As for
 
 * open drawer should kill David/Janet
 
-* "x fridge" should say something about state of door being open/closed.
-
 * statusline should be FALSE!!!!
 
    >flush toilet
@@ -40,6 +38,9 @@ All things considered, it wouldn't take much more to implement the clock. As for
 * more nouns to define:
     
 * more verbs/actions to define (or respond to):
+
+-need an instead of kissing rule for first person kisses
+-a general instead of sleeping rule
 
 putting chow in dish -- see my transcript, very 'guess the verb'
 @@@ I've tried to rework this a bit; may need more testing to see if is comes across as improved.
@@ -274,6 +275,11 @@ CONCERN: Fleshing out
 BUGLET: * plunger is "twisted  clockwise" (extra space).  happens in several places in the dynamic description of plunger position.
 
 @@@ Superfluous space expurgated.
+
+BUGLET * "x fridge" should say something about state of door being open/closed.
+
+@@@ Done.
+
 
 
 

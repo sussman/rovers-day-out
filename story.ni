@@ -1372,7 +1372,7 @@ Section Giving Kisses
 Persuasion rule for asking Rover to try smooching:
 	persuasion succeeds.
 
-Smooching is an action applying to nothing. Understand "give kisses" or "give kiss" as smooching.
+Smooching is an action applying to nothing. Understand "give kisses" or "give kiss" or "kisses" as smooching.
 
 Carry out smooching:
 	if the player is clueless:
@@ -1674,7 +1674,7 @@ After going towards the kitchen:
 		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
 		say "[metatext in metaspeak]".
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged.
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door[if the old fridge is open]. The fridge door is open, chilling the kitchen and wasting power[end if]." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged.
 
 Instead of searching a refrigerator (called R):
 	if the player is clueless:
@@ -3090,96 +3090,89 @@ First after an actor doing something (this is the catch successful actions rule)
 
 Table of Technoverbs
 Verb				Technoverb
-the going action			"SELECT"  [go, or any compass direction]
-the taking off action		"DISENGAGE"  [take off, remove]
-the wearing action			"ENGAGE"  [put on, wear]
-the taking action			"SELECT"  [take, get]
-the dropping action		"DESELECT"  [drop]
-the inserting it into action	"TRANSFER"  [put]
-the searching action		"MANIFEST"  [look in]
-the looking action			"STATUS"  [look]
-the examining action		"DIAGNOSTIC" [examine, read]
-the entering action		"ACTIVATE"  [enter, sit on]
-the exiting action			"DEACTIVATE" [exit, stand up]
-the opening action			"ACCESS"  [open]
-the closing action			"DEACCESS" [close]
-the eating action			"RECYCLE"  [eat]
-the pushing action			"PRESSOR FIELD"  [press]
-the pulling action			"TRACTOR FIELD" [pull, pull off, tear, rip, etc.]
-the remembering action		"DATA_FETCH" [remember]
-the dreaming action		"RANDOMIZE ADDRESS SPACE" [dream]
-the rubbing action			"INTERRUPT" [rub, clean, scratch]
-the touching action		"UPDATE" [touch]
-the folding action			"RETRACT" [fold]
-the unfolding action		"EXTEND" [unfold]
-the reading action			"READLINE" [read]
-the putting it on action		"TRANSFER" [put on]
-the cracking it into action	"DISCHARGE" [crack, break, etc.]
-the taking inventory action		"MANIFEST" [inventory]
-the switching on action	"TRIGGER"		[turn on, switch on]
-the switching off action	"RESET"		[turn off]
-the yoking it more action	"VECTOR ADJUST" [push, pull, twist...plunger]
-the cataloguing action	"LIST DIRECTORY" [ls]
-the manpaging action		"MANUAL PAGE" [man]
-the whoing action			"WHO" [who]
-the uptiming action		"UPTIME" [uptime]
-the pwding action			"PRINT WORKING DIRECTORY" [pwd]
-the bashing action			"SHELL" [bash, ksh, sh]
-the cshing action			"SHELL" [csh, zsh, tcsh]
-the logoutting action 	"LOGOUT" [logout]
-the shellupping action 	"EXIT SHELL" [exit]
-the fingering action 		"FINGER" [finger]
-the catting action			"CAT" [cat]
-the elevating action 		"ELEVATE PRIVILEGE" [su, sudo]
-the clearing action 		"CLEAR" [clear]
-the locating action		"LOCATE" [find, locate]
-the shutdowning action	"SHUTDOWN" [shutdown, reboot, halt]
-the echoing action			"ECHO" [echo]
-the pinging action			"PING" [ping]
-the nopping action			"\DEV\NULL" [unix commands not available]
-the kittying action		"CONCATENATE" [cat, when aware]
-the waiting action			"TIMER" [wait]
-the flushing action		"THRUST" [flush]
-the smelling action		"CHEMOSENSOR" [smell]
-the sniffscanning action	"SPECTROMETRY" [sniff]
-the beeping action			"PROXIMITY ALERT" [beeping]
-the saying yes action		"AFFIRMATIVE" [yes]
-the saying no action		"NEGATIVE" [no]
-the coming action			"SEEK" [come or "rover, come"]
-the asking it about action			"QUERY" [ask s.o. about s.t.]
-the querying action		"QUERY" [ask about s.t.]
-the telling it about action			"SPEECH OUTPUT" [tell s.o. about s.t.]
-the expounding action		"SPEECH OUTPUT" [tell about s.t.]
-the barking action			"EMIT PULSE"
-the businessing action	"POWER TRANSFER" [oop, pee, etc.]
-the tying it to action	"BIND" [tie, attach]
-the repairing action		"REPAIR" [repair]
-the petting action			"SYNCH"
 the answering it that action		"BROADCAST"	[rover, hello]
-the jumping action			"BRANCH" [jump]
-the singing action			"DUMP" [sing]
-
-
-[some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
-	
-waiting
-flossing
-brushing
- 
-
-"fill"		"ADD"
-"scratch"		"NEUTRALIZE STATIC CHARGE"
-"wake"		"INITIALIZE"
-"sleep"		"SUSPEND"
-"give"		"DISPENSE"
-"roll over"	"LATERAL JETS"
-"lay down"	"DEFENSIVE MODE"
-"lie down"	"DEFENSIVE MODE"
-"attack"		"OFFENSIVE MODE"
-"kill"		"OFFENSIVE MODE"
-"sit"		"STANDBY"
-"kiss"		"SHIP INTERFACE"
-"dig"		"MINING SUBSYSTEM" ]
+the asking it about action		"QUERY" [ask s.o. about s.t.]
+the attacking action				"OFFENSE MODE" [atttack!]
+the barking action					"EMIT PULSE"
+the bashing action					"SHELL" [bash, ksh, sh]
+the brushing action				"SPAWN SCRUBBERS" [brush teeth]
+the beeping action					"PROXIMITY ALERT" [beeping]
+the businessing action			"POWER TRANSFER" [oop, pee, etc.]
+the buttdowning action			"PARK" [rover, sit]
+the cataloguing action			"LIST DIRECTORY" [ls]
+the catting action					"CAT" [cat]
+the clearing action 				"CLEAR" [clear]
+the closing action					"DEACCESS" [close]
+the coming action					"SEEK" [come or "rover, come"]
+the cracking it into action		"DISCHARGE" [crack, break, etc.]
+the cshing action					"SHELL" [csh, zsh, tcsh]
+the dancing action					"MANEUVER TEST" [dance]
+the digging action					"EXCAVATE" [dig]
+the dreaming action				"RANDOMIZE ADDRESS SPACE" [dream]
+the dropping action				"DESELECT"  [drop]
+the eating action					"RECYCLE"  [eat]
+the echoing action					"ECHO" [echo]
+the elevating action 				"ELEVATE PRIVILEGE" [su, sudo]
+the entering action				"ACTIVATE"  [enter, sit on]
+the examining action				"DIAGNOSTIC" [examine, read]
+the exiting action					"DEACTIVATE" [exit, stand up]
+the expounding action				"SPEECH OUTPUT" [tell about s.t.]
+the filling it with action		"TRANSFER" [fill water bowl with kibbles]
+the fillupping action				"TRANSFER" [fill water bowl]
+the fingering action 				"FINGER" [finger]
+the flossing action				"LINK NODES" [floss teeth]
+the flushing action				"THRUST" [flush]
+the folding action					"RETRACT" [fold]
+the giving it to action			"DISPENSE" [give]
+the going action					"SELECT"  [go, or any compass direction]
+the inserting it into action		"TRANSFER"  [put]
+the jumping action					"BRANCH" [jump]
+the kissing action					"INTERFACE" [kiss]
+the kittying action				"CONCATENATE" [cat, when aware]
+the locating action				"LOCATE" [find, locate]
+the logoutting action 			"LOGOUT" [logout]
+the looking action					"STATUS"  [look]
+the lying down action				"STANDBY"
+the manpaging action				"MANUAL PAGE" [man]
+the nopping action					"\DEV\NULL" [unix commands not available]
+the opening action					"ACCESS"  [open]
+the petting action					"SYNCH"
+the pinging action					"PING" [ping]
+the pulling action					"TRACTOR FIELD" [pull, pull off, tear, rip, etc.]
+the pushing action					"PRESSOR FIELD"  [press]
+the putting it on action			"TRANSFER" [put on]
+the pwding action					"PRINT WORKING DIRECTORY" [pwd]
+the querying action				"QUERY" [ask about s.t.]
+the reading action					"READLINE" [read]
+the remembering action			"DATA_FETCH" [remember]
+the repairing action				"REPAIR" [repair]
+the rollovering action			"LATERAL JETS" [rover, roll over]
+the rubbing action					"NEUTRALIZE CHARGE" [rub, clean, scratch]
+the saying no action				"NEGATE" [no]
+the saying yes action				"AFFIRM" [yes]
+the searching action				"MANIFEST"  [look in]
+the shellupping action 			"EXIT SHELL" [exit]
+the shutdowning action			"SHUTDOWN" [shutdown, reboot, halt]
+the singing action					"DUMP" [sing]
+the sleeping action				"SUSPEND" [sleep]
+the smelling action				"CHEMOSENSOR" [smell]
+the smooching action				"INTERFACE" [rover, give kisses]
+the sniffscanning action			"SPECTROMETRY" [sniff]
+the switching off action			"RESET"		[turn off]
+the switching on action			"TRIGGER"		[turn on, switch on]
+the taking action					"SELECT"  [take, get]
+the taking inventory action		"MANIFEST" [inventory]
+the taking off action				"DISENGAGE"  [take off, remove]
+the telling it about action		"SPEECH OUTPUT" [tell s.o. about s.t.]
+the touching action				"UPDATE" [touch]
+the tying it to action			"BIND" [tie, attach]
+the unfolding action				"EXTEND" [unfold]
+the uptiming action				"UPTIME" [uptime]
+the waiting action					"TIMER" [wait]
+the waking up action				"INITIALIZE" [wake, wake up]
+the wearing action					"ENGAGE"  [put on, wear]
+the whoing action					"WHO" [who]
+the yoking it more action		"VECTOR ADJUST" [push, pull, twist...plunger]
 
 Chapter Triggered Events
 
