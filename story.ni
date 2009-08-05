@@ -3083,32 +3083,38 @@ First after an actor doing something (this is the catch successful actions rule)
 	change last-success to "TRUE";
 	continue the action.
 
-
-[a first approximation here:  we're going to need a system to make special exceptions for certain situations.  We should probably map all of the Actions listed in the game-generated index!
-
-###TOCONSIDER: two columns for technoverbs, one for rover, one for acu since sometimes the same action has different meanings]
+[###TOCONSIDER: two columns for technoverbs, one for rover, one for acu since sometimes the same action has different meanings]
 
 Table of Technoverbs
 Verb				Technoverb
-the answering it that action		"BROADCAST"	[rover, hello]
+the answering it that action		"TRANSMIT"	[rover, hello]
 the asking it about action		"QUERY" [ask s.o. about s.t.]
+the asking it for action			"RE	QUISITION"
 the attacking action				"OFFENSE MODE" [atttack!]
 the barking action					"EMIT PULSE"
 the bashing action					"SHELL" [bash, ksh, sh]
 the brushing action				"SPAWN SCRUBBERS" [brush teeth]
 the beeping action					"PROXIMITY ALERT" [beeping]
+the BSODing action					"FATAL ERROR"
+the burning action					"IGNITE"
 the businessing action			"POWER TRANSFER" [oop, pee, etc.]
 the buttdowning action			"PARK" [rover, sit]
+the buying action					"FUNDS TRANSFER"
 the cataloguing action			"LIST DIRECTORY" [ls]
 the catting action					"CAT" [cat]
 the clearing action 				"CLEAR" [clear]
+the climbing action				"SELECT"
 the closing action					"DEACCESS" [close]
 the coming action					"SEEK" [come or "rover, come"]
+the cooking action					"FUSE"
+the consulting it about action	"LOOKUP" 
 the cracking it into action		"DISCHARGE" [crack, break, etc.]
+the cutting action					"DECOUPLE"
 the cshing action					"SHELL" [csh, zsh, tcsh]
 the dancing action					"MANEUVER TEST" [dance]
 the digging action					"EXCAVATE" [dig]
 the dreaming action				"RANDOMIZE ADDRESS SPACE" [dream]
+the drinking action				"TRANSFER"
 the dropping action				"DESELECT"  [drop]
 the eating action					"RECYCLE"  [eat]
 the echoing action					"ECHO" [echo]
@@ -3123,55 +3129,81 @@ the fingering action 				"FINGER" [finger]
 the flossing action				"LINK NODES" [floss teeth]
 the flushing action				"THRUST" [flush]
 the folding action					"RETRACT" [fold]
+the getting off action			"DESELECT"
 the giving it to action			"DISPENSE" [give]
 the going action					"SELECT"  [go, or any compass direction]
+the going towards action			"SELECT"
+the growling action				"NOTIFY"
 the inserting it into action		"TRANSFER"  [put]
 the jumping action					"BRANCH" [jump]
 the kissing action					"INTERFACE" [kiss]
 the kittying action				"CONCATENATE" [cat, when aware]
+the leaving action					"DESELECT"
+the listening to action			"AUDIO INPUT"
 the locating action				"LOCATE" [find, locate]
+the locking it with action		"SECURE"
 the logoutting action 			"LOGOUT" [logout]
 the looking action					"STATUS"  [look]
+the looking under action			"SCAN"
 the lying down action				"STANDBY"
+the lying on action				"STANDBY"
 the manpaging action				"MANUAL PAGE" [man]
 the nopping action					"\DEV\NULL" [unix commands not available]
 the opening action					"ACCESS"  [open]
 the petting action					"SYNCH"
 the pinging action					"PING" [ping]
+the pouring it into action		"TRANSFER"
 the pulling action					"TRACTOR FIELD" [pull, pull off, tear, rip, etc.]
 the pushing action					"PRESSOR FIELD"  [press]
+the pushing it to action			"PRESSOR FIELD"
 the putting it on action			"TRANSFER" [put on]
 the pwding action					"PRINT WORKING DIRECTORY" [pwd]
 the querying action				"QUERY" [ask about s.t.]
 the reading action					"READLINE" [read]
 the remembering action			"DATA_FETCH" [remember]
+the removing it from action		"TRANSFER"
 the repairing action				"REPAIR" [repair]
 the rollovering action			"LATERAL JETS" [rover, roll over]
 the rubbing action					"NEUTRALIZE CHARGE" [rub, clean, scratch]
+the rude-awakening action		"TIME OUT"
 the saying no action				"NEGATE" [no]
 the saying yes action				"AFFIRM" [yes]
+the saying sorry action			"ERR ACK"
 the searching action				"MANIFEST"  [look in]
 the shellupping action 			"EXIT SHELL" [exit]
+the showing it to action			"DISPLAY"
 the shutdowning action			"SHUTDOWN" [shutdown, reboot, halt]
 the singing action					"DUMP" [sing]
 the sleeping action				"SUSPEND" [sleep]
 the smelling action				"CHEMOSENSOR" [smell]
 the smooching action				"INTERFACE" [rover, give kisses]
 the sniffscanning action			"SPECTROMETRY" [sniff]
+the snoozing action				"HIBERNATE"
+the squeezing action				"PRESSOR FIELD"
+the swearing mildly action		"PARSE ERROR"
+the swearing obscenely action	"PARSE ERROR"
+the swinging action				"SELECT"
 the switching off action			"RESET"		[turn off]
 the switching on action			"TRIGGER"		[turn on, switch on]
 the taking action					"SELECT"  [take, get]
 the taking inventory action		"MANIFEST" [inventory]
 the taking off action				"DISENGAGE"  [take off, remove]
+the tasting action					"SCAN"
 the telling it about action		"SPEECH OUTPUT" [tell s.o. about s.t.]
+the thinking action				"DATA_FETCH"
+the throwing it at action		"TRANSFER"
 the touching action				"UPDATE" [touch]
+the turning action					"REORIENT"
 the tying it to action			"BIND" [tie, attach]
 the unfolding action				"EXTEND" [unfold]
+the unlocking it with action		"UNSECURE"
 the uptiming action				"UPTIME" [uptime]
 the waiting action					"TIMER" [wait]
 the waking up action				"INITIALIZE" [wake, wake up]
+the waving action					"SEMAPHORE"
 the wearing action					"ENGAGE"  [put on, wear]
 the whoing action					"WHO" [who]
+the yelling action					"BROADCAST"
 the yoking it more action		"VECTOR ADJUST" [push, pull, twist...plunger]
 
 Chapter Triggered Events
