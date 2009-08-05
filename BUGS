@@ -9,8 +9,6 @@ objects that are in the dog bowls
 
 ###TOCONSIDER: responses to "wait" while on toilet seat, or hints after some period of time sitting there ... in case pooping doesn't occur to people.
 
-### TODO status line when going towards
-
 * need to understand 'chow' as 'bag of dog chow'
 
 * bug:  status-line noun shouldn't default to "ACU" all the time -- it
@@ -28,41 +26,22 @@ All things considered, it wouldn't take much more to implement the clock. As for
 
 * "x fridge" should say something about state of door being open/closed.
 
-* plunger is "twisted  clockwise" (extra space).  happens in several
-  places in the dynamic description of plunger position.
-
 * statusline should be FALSE!!!!
 
    >flush toilet
    There is a tinny clanking from within the toilet, but nothing happens
 
+"g" or "again" results in NOOP on status line; should recall last action.
+
 
 --------------------------------------------------------------------
 "Fleshing Out" section.
 
-Nothing reeks of newbie-game-writer-ness than missing nouns and
-verbs.  If we describe things floridly, we need to be ready to respond
-to every verb and noun we conjure up in our descriptions.  When
-obvious commands fail, players get annoyed.
-
-
 * more nouns to define:
-
-    sunlight (mentioned in skylight description)
-
-    remember condensate (drive) (since we remember casimir)
-
-    remember earth
-
     
 * more verbs/actions to define (or respond to):
 
-    wash hands  (sink description is "enough room to wash your hands")
-
-    sing, jump ("sometimes the ACU sings and jumps" -- we need
-    non-default responses.)
-
-    putting chow in dish -- see my transcript, very 'guess the verb'
+putting chow in dish -- see my transcript, very 'guess the verb'
 @@@ I've tried to rework this a bit; may need more testing to see if is comes across as improved.
 
 ----------------------------
@@ -273,4 +252,32 @@ CONCERN: - suppress the room description or use a Rover's POV description of the
 FEATURE: * "cook egg" 
 
 @@@ Implemented
+
+CONCERN: Fleshing out
+* sunlight (mentioned in skylight description)
+* remember condensate (drive) (since we remember casimir)
+* remember earth
+
+@@@ Added. Plus a few more.
+
+CONCERN: Fleshing out
+* wash hands in sink
+
+@@@ Changed the description of the sink to not mention washing hands. If Washing is an action, it creates all kinds of issues with use of the shower. Although it would be reasonable for someone who is clueless to assume that you could wash hands in either the sink or the shower (or wash other things), the sink and shower serve different purposes in the aware-context. I couldn't make the parallelism work with a "washing" verb.
+
+CONCERN: Fleshing out
+    sing, jump ("sometimes the ACU sings and jumps" -- we need
+    non-default responses.)
+
+@@@ Doh. Jump, dance, and sing are now implemented.
+
+BUGLET: * plunger is "twisted  clockwise" (extra space).  happens in several places in the dynamic description of plunger position.
+
+@@@ Superfluous space expurgated.
+
+
+
+
+
+
 
