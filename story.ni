@@ -966,7 +966,7 @@ Check cooking:
 		the rule fails.
 		
 Carry out cooking:
-	try silently cracking the white egg into the frying pan.
+	try silently cracking the white egg into the frying pan		
 
 Chapter General Insteads
 
@@ -995,6 +995,21 @@ Instead of taking inventory when Rover is the player:
 		say "You haven’t picked up anything.";
 	otherwise:
 		say "In your mouth, you are carrying [a list of props held by Rover]."
+		
+Instead of jumping:[a before rule takes care of the aware context; this is just to suppress the default message if the player is clueless]
+	if the player is Rover:
+		say "You crouch down, pounce, and land squarely on all four paws.";
+	otherwise:
+		say "You're just a hair over one a half meters tall, but in the Martian gravity, you nearly bean yourself on the [location in lower case] ceiling."
+		
+Instead of singing:
+	if the player is clueless:
+		if the player is Rover:
+			say "You [one of]howl a familiar ditty about the dog who thought he was a cat[or]bark out a short rendition of [quotation mark]Oh, little juicy chicken[quotation mark][or]sing [quotation mark]Wag my tail[quotation mark], but don't remember anything beyond the first couple lines. So you sing them again. And again. Now you can't get the song out of your head[or]whip out a jazzy version of [quotation mark]I got your tidbits, baby[quotation mark][or]a short song[stopping].";
+		otherwise:
+			say "You [one of]quietly sing a short song that Tomasz had taught you. The song is about a lonely colony ship engineer who pines for his sweetheart back on Earth[or]sing a slow ballad,[quotation mark]The Orange Hills of Mars[quotation mark][or]crank out a bawdy drinking song, [quotation mark]Bartender, set me up a Barsoom[quotation mark][or]hum (because you can't remember the words) a short tune that children learn to remember the order of the planets in the Solar System. Obviously, the song missed its mark with you, although you still remember the catchy melody[or]bang out a respectable version of [quotation mark]A Common Hope[quotation mark], the anthem of the People's Government of Mars[or]sing a short tune[stopping].";	
+	otherwise:
+		say "You dump core, producing reams and reams of symbolic notation representing the instantaneous state of your quantum processor."
 
 Chapter Not Ready For Prime Time - Not for release
 
@@ -1483,7 +1498,9 @@ To say living room status:
 	if the drapes are in the living room and the drapes are closed:
 		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room";
 	otherwise:
-		say "You are in the living room of a small cottage, actually more of a eating room apartment. Light pours in through the room's single window, illuminating a framed picture on the wall[if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed"
+		say "You are in the living room of a small cottage, actually more of a eating room apartment. Piped-in sunlight pours in through the room's single window, illuminating a framed picture on the wall[if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
+		
+Sunlight is a privately-named scenery in the living room. Understand "light" and "sunlight" and "illumination" and "daylight" and "shaft" as sunlight when the player is clueless. The description of sunlight is "[if the drapes are in the living room and the drapes are closed]A single shaft of daylight slices like a laser through the living room. Although dramatic, it does not provide very effective illumination[otherwise]Bright daylight shines in through the window facing the park. The light is ever so slightly tinted red from surface reflection near the collectors[end if]." [sunlight isn't mentioned in any text that the player would see after becoming self-aware.]
 
 The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "purple futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" and "drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. The manpage of the futon-proxy is "The zero-point energy drive creates a time-space gradient across which the ship travels. In conjunction with the ship's temporal transgressor, the ship is capable of faster-than-light travel without incurring substantial time debt. The drive must be extended for interstellar flight, but retracted to make planetfall. The drive cannot be used within stellar systems or near other gravitic distortions. The drive is delicate and should be protected from physical damage, particularly to the field plates."
 
@@ -1519,7 +1536,7 @@ The clueless-name of the belly is "belly". Understand "stomach" and "chest" as b
 
 The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." The body-proxy is an aware-proxy that is part of the body. Understand "superstructure" as body-proxy.
 
-The clueless-name of the giblets is "parts". Understand "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the parts is "Software and hardware components serving multiple functions." Understand "subsystem" and "component" and "hardware" and "software" as the body-proxy.
+The clueless-name of the giblets is "parts". Understand "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the parts is "Software and hardware components serving multiple functions." Understand "subsystem" and "component" and "hardware" and "software" as the body-proxy.
 
 The clueless-name of teeth is "teeth". Understand "teeth" or "tooth" as teeth. Teeth are plural-named. The clueless-description of teeth is "Your pearly whites." The aware-name of teeth is "hull plating". The aware-description of the teeth is "The polyduramide surface of the hull plating". The teeth-proxy is an aware-proxy that is part of the teeth. Understand "polyduramide", "surface", "hull", and "plating" as the teeth-proxy.
 
@@ -1593,7 +1610,7 @@ Instead of closing the drapes:
 		say "They are as closed as they're going to get."
 		
 Instead of examining when the player is in the living room and the drapes are closed:
-	if the noun is the player or the noun is the futon, or the noun is the mattress, or the noun is the frame, or the noun is the drapes or the noun is the flight suit:
+	if the noun is the player or the noun is the futon, or the noun is the mattress, or the noun is the frame, or the noun is the drapes or the noun is the flight suit, or the noun is the sunlight:
 		continue the action;
 	otherwise:
 		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping].";
@@ -2164,7 +2181,7 @@ After switching on the black plate when the First Sim is not happening:
 	now the player is dry;
 	now the black plate is switched off.
 
-The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A sink with just enough room to wash your hands." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination" and "sterilization" and "biohazard" and "response" and "system" and "protocol" as the bathroom sink-proxy. The bathroom sink can be depleted. The bathroom sink is not depleted. 
+The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A tiny little sink that probably barely satisfies the building codes." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, but its effectors are scattered throughout the interior portions of the ship. In the event of biological contamination, the system sterilizes the interior of the ship with gamma radiation and chlorine gas -- both harmless to the ship itself, but likely to be effective against all biological agents." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination" and "sterilization" and "biohazard" and "response" and "system" and "protocol" as the bathroom sink-proxy. The bathroom sink can be depleted. The bathroom sink is not depleted. 
 
 The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
 
@@ -2444,7 +2461,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
+				say "twisted [magnitude of yaw][if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
 			say "."
 							
 To say magnitude of (degrees - a number):
@@ -2512,13 +2529,13 @@ clockwise					3				1
 
 Table of Orientations
 Angle		Inclination
-0				"perfect"
-30				"just the tiniest little bit"
-60				"a tad"
+0				"perfect "
+30				"just the tiniest little bit "
+60				"a tad "
 90				""
-120				"strongly"
-150				"almost completely"
-180				"completely"
+120				"strongly "
+150				"almost completely "
+180				"completely "
 
 Understand "push [something] [a custom direction]" as yoking it more.
 Understand "pull [something] [a custom direction]" as yoking it more.
@@ -2903,24 +2920,33 @@ Instead of remembering a topic listed in the Table of Remembered Stuff:
 Table of Remembered Stuff
 topic							description
 "trick" or "tricks"		"You recall that since Rover was a puppy, he[apostrophe]s been good at the basic tricks like sit, lie down, roll over, bark, and give kisses. During the war, he was also trained to rescue people trapped in cave-ins, and knows the command [quotation mark]dig[quotation mark]. Similarly, from the war, he knows the command [quotation mark]attack[quotation mark], but you doubt he would ever really attack anyone except to protect you. Rover is an obedient dog and always comes when you call him."
-"war"							"Five years ago, you were a graduate student in computational cognition when the situation with Earth deteriorated, and Earth ships attacked the colonial government. The fighting destroyed most of the surface installations in the first few days, but Earth backed down when Martian missiles struck Luna City, Beijing and São Paulo. Under terms of the treaty, the Martian government was granted autonomy, but Mars remains economically dominated by Earth, except for MARSpace."
-"marspace"					"MARSpace began as an extension of the Myomita corporation space program, but was absorbed by the Martian government after the War of Independence. Before the war, MARSpace serviced almost all Condensate Drive vessels engaged in commerce between the Solar System and Earth[apostrophe]s Interstellar Territories. Since the war, MARSpace has slowly rebuilt, and its first Casimir Drive ship, the Valkyrie, is nearly ready for launch."
+"war" or "independence" or "war of independence"							"Five years ago, you were a graduate student in computational cognition when the situation with Earth deteriorated, and Earth ships attacked the colonial government. The fighting destroyed most of the surface installations in the first few days, but Earth backed down when Martian missiles struck Luna City, Beijing and São Paulo. Under terms of the treaty, the Martian government was granted autonomy, but Mars remains economically dominated by Earth, except for MARSpace."
+"marspace"					"MARSpace began as an extension of the Myomita corporation space program, but was absorbed by the People's Government of Mars  after the War of Independence. Before the war, MARSpace serviced almost all Condensate Drive vessels engaged in commerce between the Solar System and Earth[apostrophe]s Interstellar Territories. Since the war, MARSpace has slowly rebuilt, and its first Casimir Drive ship, the Valkyrie, is nearly ready for launch."
 "me" or "self" or "myself" or "Janet"		"You are Janet Xiang, age 36, citizen of Mars, and employee of MARSpace. You grew up in the suburbs of Cydonia, and your mother taught Applied Cybernetics at U of C. Your father was an environmental technician who worked at the local reclamation center. Like many Martian women of your generation, you intended to wed early, and you were engaged to Tomasz Kowalski when the Independence War began. Tomasz was working in the power station located on Phobos when that moon was destroyed. The same day, you adopted your dog, Rover, whose owners were killed during an attack which destroyed part of the U of C. You have raised him from a puppy, and he is your most loyal friend."
 "cydonia"							"You don't have many memories of Cydonia itself despite having grown up just a few klicks from the city center -- and it is not like you had time to go their as a graduate student. You recall Cydonia[apostrophe]s overly complicated public transport systems, the food vendors who ply the walkways with their tempting carts of fried food, and the tube-people who beg for money."
 "mars"								"Mars has been home to your family for three generations, your grandparents having been life contractors for the Myomita corporation. Since its colonization by national and later corporate entities beginning more than two hundred years ago, Mars has been subservient to the interests of Earth. Since the Independence War, the situation has improved, and income from off-world commerce is slowly balancing the equation."
 "rover"							"Rover is your dog, a five year old dalmation. When his original owners were killed during the Independence War, you adopted him as a puppy. He is a clever dog, and you have taught him to perform a number of tricks on command. Rover is house trained, but loves to explore outside. He can be trusted to go out on his own, and always comes back."
 "david" or "venkatachalam"	"David Venkatachalam, age 42, citizen of Mars, and Project Leader for the Valkyrie program. David was raised in an undersea community just north of Sri Lanka, so he had less difficulty adapting to Mars and its life support requirements than most Earthers. He studied mathematics in New Delhi and Novosibirsk before working on theoretical aspects of the Casimir propulsion system at Myomita Corporation in Sapporo. He was cut off from Earth by the events preceding the Independence War, and after the war naturalized as a Martian Citizen, joining the Valkyrie program at MARSpace. David is single, attractive, and most importantly, he likes dogs."
-"ACU"									"Your project for the last two years has been design of the autonomous control unit, an artificially intelligent agent that controls all operations aboard the Valkyrie. Originally, the ACU would have been modeled on synaptic scans of experts from relevant fields of study, but given the short time frame, you have only had time to incorporate your own synaptic scans and you have jury-rigged the ACU-to-ship interface."
+"ACU" or "autonomous control unit"			"Your project for the last two years has been design of the autonomous control unit, an artificially intelligent agent that controls all operations aboard the Valkyrie. Originally, the ACU would have been modeled on synaptic scans of experts from relevant fields of study, but given the short time frame, you have only had time to incorporate your own synaptic scans and you have jury-rigged the ACU-to-ship interface."
 "valkyrie" or "ship"						"The potential for interstellar commerce has been constrained by time and distance. Although Condensate Drive has allowed vessels to reach nearby stars, it is expensive and slow, and holds little promise for commercial exploitation. The Valkyrie is the first ship to incorporate Casimir Drive, giving it unprecedented speed and range. It is rumored that since the Valkyrie project fell into MARSpace hands after the Independence War, Earth[apostrophe]s Myomita corporation has been working on a sister ship based on similar technology."
-"helium" or "heavy helium"							"Heavy helium is consumed as a fuel in fusion reactors, including the fusion rockets aboard the Valkyrie. Heavy helium is confined in a magnetic bottle, and the reaction is initiated by a flash of tightly concentrated laser energy. Subsequently, the reaction is self-sustaining. Mars has limited production capacity for heavy helium, and the isotope is scarce and understandably expensive."
+"helium" or "heavy helium" or "he-4"						"Heavy helium is consumed as a fuel in fusion reactors, including the fusion rockets aboard the Valkyrie. Heavy helium is confined in a magnetic bottle, and the reaction is initiated by a flash of tightly concentrated laser energy. Subsequently, the reaction is self-sustaining. Mars has limited production capacity for heavy helium, and the isotope is scarce and understandably expensive."
 "casimir" or "casimir drive"							"Casimir, or zero-point energy drive, was developed in the last ten years. By doing largely incomprehensible things to time/space, the Casimir Drive can translate a ship incredible distances in a fraction of the time and energy that would be required by a ship equipped with Condensate Drive. The one drawback to Casimir technology, at least in its current implementation, is that such trips are lethal to biological organisms, hence the need for the ACU."
 "myomita" or "myomita corporation"							"The Myomita Corporation is Earth's largest zaibatsu, with a strangle hold on Earth's computer and space exploration sectors. For all intents and purposes, Myomita [italic type]is[roman type] Earth[apostrophe]s government. The company is based in Kyoto, but has offices throughout the Solar System. The company is controlled by the Ishegawa family, who follow a profit-oriented reinterpretation of the bushido code. The company is ruthless and unforgiving, but unquestionably successful."
-"probe"							"In 2108, shortly after the invention of Condensate Drive, the Myomita Corporation launched a number of deep space probes from their Martian Headquarters at Cydonia. More than thirty probes were launched, programmed to jump from system to system in search of planets with evidence of life. Refueling from the stellar wind in each system, the probes were designed to return only if successful. Three months ago, the Mushashi-5 transponder signal was detected, originating at a planet 38 light years from Earth. According to the telemetry, the probe was returning to the Solar System when it crashed. Both Mars and Earth have claimed ownership of the probe and the data it contains, and have mounted a program to retrieve the probe from where it crashed almost four decades ago."
+"probe" or "musashi" or "musashi-5"							"In 2108, shortly after the invention of Condensate Drive, the Myomita Corporation launched a number of deep space probes from their Martian Headquarters at Cydonia. More than thirty probes were launched, programmed to jump from system to system in search of planets with evidence of life. Refueling from the stellar wind in each system, the probes were designed to return only if successful. Three months ago, the Mushashi-5 transponder signal was detected, originating at a planet 38 light years from Earth. According to the telemetry, the probe was returning to the Solar System when it crashed. Both Mars and Earth have claimed ownership of the probe and the data it contains, and have mounted a program to retrieve the probe from where it crashed almost four decades ago."
 "windex"						"A proprietary computer operating system owned by the Myomita Corporation."
 "inform"						"An interpreted computer language originally designed for interactive fiction. The Valkyrie's ACU controls the ship through an interface implemented entirely in Inform version 10.5.4."
 "interactive fiction"		"Any of a number of literary forms implemented as an immersive, interactive experience. Interactive fiction (IF) arguably began with primitive text-based [quotation mark]adventure[quotation mark] programs in the 20th century, and has matured in parallel to technology. Today, IF dominates the entertainment industry, and IF programmers are among the most highly valued members of society."
 "flosix"						"A modern operating system supported by a community of users throughout known space."	
 "photo" or "photograph" or "picture"		"Your late fiancé gave you the photo when you began working on the Valkyrie Project as a graduate student -- a happier time before the Independence War with Earth, and the attacks on Mars by Earth's Myomita Corporation. Back then, Valkyrie's experimental casimir drive was an exciting technological adventure, rather than a military priority. Now the Valkyrie is Mars[apostrophe] only chance to recover data from a recently discovered space probe marrooned in deep space. For whatever reason, MARSpace feels that probe could hold information which could finally give Mars the upperhand in its competition with Earth."
+"condensate" or "condensate drive" or "vortex drive"		"The Bose-Einstein-Frey vortex drive, more commonly referred to as the [quotation mark]Condensate Drive[quotation mark] was conjectured as early as 2025, but was not made practical until the gravitic condensator was perfected in the late 22nd century. Until that time, interstellar travel had been limited to a handful of probes, but the vortex drive put local star systems within the reach of humanity, and led to the first extra-Solar colonies.[paragraph break]The vortex drive allows travel between massive objects, typically stars, along gravitic contour lines. It is a remarkably efficient engine, and its hallmark is slow but steady acceleration. Consequently, ships can remain under condensate drive almost the entire voyage, although the drive would have no role in planetary landings or in maneuvers requiring high impulse. Since the gravitic condensator of condensate drives can be recharged in the stellar wind of their destination star, they are particularly economical, and ships employing condensate drives have effectively limitless range, hopping from star to star."
+"earth" or "terra"		"Earth began colonizing Mars in the international days, back when Earth was more or less dividied up regionally into non-corporate governments. In principle, governments still exist on Earth as limited not-for-profit corporations, but zaibatsu like Myomita control the purse strings and therefore are effectively in charge.[paragraph break]Although it is hard to separate Arean agitprop from hard news, it sounds like life on Earth is none to pleasant these days: population 60 billion, most people living under water, high taxes, restrictive laws, excessive fines, and a surfeit of lawyers. You can certainly understand why so many opt for the colonies, as inclement as they tend to be."
+"colony" or "colonies"	"Human colonies are extensive within the Solar System, and several have been established around other stars. The first and most lucrative colony being Luna, with other major colonies on Mars, Ceres, Europa and Titan. The anarchical Belt Colonies are a hodge-podge of commercial mining ventures, survivalists, loners, and explorers; really, a colony in name only. A number of artificial platforms exist in Earth orbit and Trojan points, but none are very large. The largest extrasolar colonies are Waterfall, an ironically named desert world 14 lightyears from Sol, and Henry, a marginally viable planetoid 18 light years from Sol."
+"Henry" or "Cornelius" or "Emmanuel" or "Toco General"		"A small world 18 light years from Sol, and the most Earth-like body discovered to date. Henry was named by the former CEO of Toco General, Henry Cornelius Emmanuel in honor of himself. When Myomita acquired Toco General in a merger, they kept the name. Henry has no indigenous life, but efforts to import Earth species are slowly moving forward."
+"Luna"			"Earth's only natural satellite is, not surprisingly, the most sought after real estate in the Solar System. The home office of every zaibatsu except Myomita is located on the earthward side of the moon, and even Myomita has a large industrial base and distribution hub on the outward-facing side."
+"Waterfall" or "Novo-Kaminsky Holdings"		"Waterfall is a sandy, dry world administered by Novo-Kaminsky Holdings, a subsidiary of the Myomita Corporation."
+"Belt" or "belt colonies" 		"A score of large and small settlements scattered in and around the asteroid belt, the Belt Colonies have little commerce with Earth since their minor involvement in the War of Independence."
+"Phobos"		"Formerly, the smaller and lower, more rapidly orbiting of Mars' two moons. Phobos was destroyed by Earth forces during the Independence War. Phobos had served primarily as a power production facility for Mars."
+"Deimos"		"Since the destruction of Phobos, Mars' only moon. Deimos is leased by MARSpace and is considered a military asset."
 
 Chapter Dreams
 
@@ -3129,7 +3155,10 @@ the businessing action	"POWER TRANSFER" [oop, pee, etc.]
 the tying it to action	"BIND" [tie, attach]
 the repairing action		"REPAIR" [repair]
 the petting action			"SYNCH"
-the answering it that action		"BROADCAST"
+the answering it that action		"BROADCAST"	[rover, hello]
+the jumping action			"BRANCH" [jump]
+the singing action			"DUMP" [sing]
+
 
 [some other verbs to deal with later, probably.  Their proper gerundives need to be discovered or defined:
 	
