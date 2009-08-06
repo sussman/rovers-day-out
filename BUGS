@@ -282,7 +282,187 @@ BUGLET * "x fridge" should say something about state of door being open/closed.
 
 
 
+---------------------------------------
 
+* Whoops:
+
+  > x nameplate
+  A brass nameplate with engraved black lettering...
+
+  > read lettering
+  There are only three letters:  "ACU".
+
+
+* change "strangle hold" to "stranglehold"
+
+* TODO(sussman):  windex crash should have blue background.
+
+* in 'help' menu, one of the options should suggest 'remember' as a
+  way to get more backstory.
+
+
+* Whoops:
+
+  > david, hello
+  You can't talk to David-proxy.
+
+
+* add period to end of sentence: "...embroidered in white on a red
+  background".
+
+
+* TODO: create logo for game.  Either red embroidered "ACU", or
+  MARSpace insignia.
+
+
+* things to fill out with non-generic responses:
+
+   "taste nuggets"
+   "taste treat"
+
+
+* still extra spacing problems on plunger: "the handle of the plunger
+  is tilted completely  backwards"; "leaning strongly  to the right"
+
+
+* TODO(sussman): fix indentation of metaspeak, so that words wrap
+  *beyond* Janet and David's names.  easier to read.
+
+
+* In 2nd simulation, rover goes out the door without my ever filling
+  his bowls.  Is this intended?
+
+* in the Real Thing, the frying pan is still sitting on the cooking
+  range.  Is this intended?  Was it supposed to be reset?
+
+
+* In the Real Thing, rover basically did nothing for me.  Didn't
+  follow me around, didn't notice my filling his bowls, didn't want my
+  treats.  We need to make him into an interesting, colorful NPC!
+
+
+* "toilet" shouldn't be in this list:
+
+  > open toilet
+  Which do you mean, the toilet, the toilet bowl, the toilet seat, or
+  the toilet cover?
+
+
+
+* is there more than one solution to fix the broken toilet, other than
+  the floss?  If not, we must make sure there is.
+
+
+* TODO(sussman): as rover, "x house" has weird status line: "->
+  DIAGNOSTIC : TRUE".  This happens quite a bit as rover.  We clearly
+  need to have a noun other than "ACU" up there!  
+
+  ('smell' shows "ACU -> CHEMOSENSOR : TRUE".  Are we really still the
+  ACU?)
+
+
+* 'remember foo' seems weird that it would work properly when being
+  rover, especially since many of the memories are about "you, janet".
+
+
+* typo: extra period in "it is the biggest, juiciest bone you've ever
+  seen".
+
+* typo:  'sleeping room' needs capitalization?
+
+* "eat food" fails in the cottage, but "eat canned food" works...?
+
+* unable to guess the verb for drinking the other dog's water.  fail.
+
+* screaming man needs more variation in his blah blah complaints.
+
+* rover mission repeated failure:
+
+   - figured out how to get the bone.
+   - got the pillow.
+   - got the extra egg.
+   - ate some kibble in cottage
+   - couldn't figure how to drink cottage water
+   - returned to janet, gave her the egg.
+   - NO MENTION of pillow or bone?!?
+   - went back outside, pillow is now in inventory.
+   - WTF happened to the bone?  It's not back in the cottage either.
+   - restored to a save-point back into cottage
+   - returned home again, no opportunity to 'drop bone' or give it to janet?
+
+  FINALLY after multiple restore attempts, figured out I had to drop
+  bone and pillow OUTSIDE the front door.  Go in, give her egg
+  automatically, go out, take bone again, go in again.  Eesh.  We need
+  to smooth this out to be easier.  Why can't rover return all the
+  inventory to Janet at once?
+
+
+
+* typo: missing "of" in  "immense gravity its star".
+
+* awkward run-on grammar: rewrite the whole sentence "You wonder what
+  would happen if the Valkyrie mission failed because..."
+
+* while self-aware:  "x doors" fails, but "x door" works.
+
+* typo:  the massive titanium cargo bay door(S) are heremetically
+  sealed..."  needs S.
+
+
+* instead of 'x nameplate', try reading nameplate instead.
+
+* bug: seeing lots of "#REF ->" in the status line while self-aware.
+
+* typo:  "thing to seriously" should be "too seriously"
+
+* "read RFID tag" should work.
+
+* typo:  "signal 'yes' is that is your intention" should be "if"
+
+* bug:  during the boarding sequence:  'enter shower' shows metaspeak
+  from janet and david ("I should probably check on...")
+
+* general spelling issue:  the phrase "casimir drive" is
+  inconsistently capitalized or un-capitalized throughout the whole
+  source code.  Choose one, and stick to it.
+
+
+* meta-puzzle question: love the slow loss of control while the droid
+  dismembers me, but is there any point to this scene?  anything I can
+  do?  scratching left arm did nothing at any point, as in the
+  original transcript.  On the one hand, it's a fun fiction sequence.
+  On the other hand, players hate feeling helpless and shoved through
+  a linear series of uncontrollable events -- it makes the game
+  passive rather than active.
+
+
+* back on Cydonia: "janet, hello" should should FAIL in status line,
+  not TRUE.  Also "tell janet about x" shows "JANET -> SPEECH OUTPUT :
+  NIL"
+
+
+* "ACU prohibited from direct interaction with humans aside from
+  scanning and communications".  This implies that "scan janet" should
+  allow me to eavesdrop.  Also if I can see their lips moving, then
+  "read lips" should work as well.  As it stands, I eventually played
+  "guess the verb" and typed "listen", and things progressed.  Gotta
+  make this more flexible.
+
+
+* typo:  "great, replies janet" is missing initial double quote.
+
+* love the 'random filler actions' to-do.  :-)
+
+* again, the same meta-question about the debriefing at the end.  It's
+  fun to watch janet and david talk, see the denoument unfold, but
+  also fairly unsatisfing to just repeatedly type "tell janet about
+  x".  the player has no control, it's all too linear.
+
+* typo: need quotation to start "dammit, janet". need closing quote
+  too.
+
+* need to polish the epilogue.  put a colon before the final word
+  'rover' instead of comma.
 
 
 
