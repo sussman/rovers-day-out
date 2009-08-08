@@ -1349,11 +1349,15 @@ Section Coming
 Persuasion rule for asking Rover to try coming:
 	persuasion succeeds.
 
-Coming is an action applying to nothing. Understand "come" or "come here" or "here boy" or "food" as coming.
+Coming is an action applying to nothing. Understand "rover" or "come" or "come here" or "here boy" or "food" or "dinner" or "chow" or "come and get it" as coming.
 
 check coming:
 	if the player is Rover:
 		say "You are already here." instead;
+	if the player is in the shower:
+		say "[if the player is clueless][one of]Rover has had a few experiences with the shower and none were pleasant from his perspective, so he just pokes his head in and then darts back out[or]Rover pokes his nose into te shower, and then beats a hasty retreat[or]Rover sniifs the shower distrustfull and then backs out[or]Rover peeks into the shower and then withdraws[at random][otherwise]ROVER rolls into the extruder area, but will not fit within it, so he idles outside it[end if].";
+		move Rover to the bathroom;
+		the rule fails.
 	
 carry out coming:
 	if Rover is in the location:
@@ -1474,10 +1478,6 @@ The living room is outside from the kitchen, outside from bathroom, and inside f
 
 Instead of going towards or exiting when the player is in the kitchen:
 	if the player carries the food bowl or the player carries the water bowl or the player carries the dog chow bag or the player carries the white egg:
-		if the player carries the food bowl or the player carries the water bowl:
-			say "Rover can be a messy eater.  By force of habit you never bring dog bowls out of the kitchen, so you set [if the player carries the food bowl and the player carries the water bowl]them[otherwise]it[end if] down.  [run paragraph on]";
-			move the water bowl to the kitchen;
-			move the food bowl to the kitchen;
 		if the player carries the dog chow bag:
 			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a bag of dog food, you put it back in the cabinet[otherwise]Instead of contaminating the ship with thermoisotope, you put the fuel conduit back in the vault before switching out of engineering[end if]. [run paragraph on]";
 			move the dog food to the food bowl;
@@ -1485,6 +1485,20 @@ Instead of going towards or exiting when the player is in the kitchen:
 			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the fridge before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before switching out of engineering[end if].[run paragraph on]";
 			move the white egg to the old fridge;
 			now the old fridge is closed;
+		if the player carries the food bowl or the player carries the water bowl:
+			say "[if the player is clueless]Rover can be a messy eater.  By force of habit you never bring dog bowls out of the kitchen, so you set[otherwise]Transfer of fuel and coolant require ACU supervision, so before deselecting engineering you disengage[end if] [run paragraph on]";
+			if the player carries the food bowl and the player carries the water bowl:
+				say "[if the player is clueless]them[otherwise]both the [food bowl] and the [water bowl][end if]";
+			otherwise:
+				if the player carries the food bowl:
+					say "[the food bowl]";
+				otherwise:
+					say "[the water bowl]";
+			say "[if the player is clueless] down before continuing on your way[end if].";
+			move the water bowl to the kitchen;
+			[dropping the food bowl trigger's rover's actions regarding both bowls]
+			move the food bowl to the player;
+			try silently dropping the food bowl;
 		say paragraph break;
 	continue the action.
 
@@ -1851,9 +1865,40 @@ The food bowl is a bowl in the kitchen. Understand "dog" as the food bowl. The c
 
 To say emptyness of (vessel - a bowl):
 	say "[The vessel] is [if the vessel is not full]empty[otherwise]full".
-		
+	
 After dropping a bowl (called the vessel):
-	say "[if the player is clueless]You carefully place [the vessel] on the floor[otherwise]You deaccess [the vessel][end if]."
+	if Rover is not in the location:
+		if Rover is hungry or Rover is thirsty:
+			if the player is clueless:
+				say "[one of][Rover] runs into the kitchen, his rear end making a wide, sliding turn on the living room's hardwood floor as he rounds the corner[or][Rover] clambers around the corner from the living room, and stops in front of the bowls[or]Hearing the clank of [the vessel] as you put it down, [Rover] appears in the kitchen, licking his lips[or][Rover] trots into the kitchen when he hears the metal bowl clink as you set it down[or][Rover] strolls into the kitchen to investigate the promising sound of clinking dog bowls[or][Rover] arrives in the kitchen, panting from exertion[or]Putting the dog bowl down is tantamount to yelling [quotation mark]Here boy![quotation mark], as evidenced by the sudden appearance of [Rover] in the kitchen[at random]. [run paragraph on]";
+			otherwise:[aware]
+				say "[one of][Rover] enters the engineering section at full throttle, his tractors exceeding the cargo bay flooring's coefficient of dynamic friction as he rounds the corner[or][Rover] jets around the corner from the cargo bay and screeches to a halt near the transfer system[or]Receiving notification from [the vessel], [Rover] drives into the engineering section[or][Rover] trundles into the engineering section when he receives automatic notification that [the vessel] is ready for transfer[or][Rover]'s head swivels as he scans engineering, and stops when he locks on [the vessel][at random]. [run paragraph on]";		
+			now Rover is in the kitchen;	
+	if Rover is thirsty:
+		if the water bowl is full:
+			if the player carries the water bowl:
+				say "[if the player is clueless][Rover] stares longingly at the [water bowl][otherwise][Rover] is unable to access[the vessel] because you have not deselected it[end if]. [run paragraph on]";
+			otherwise: [presumes water bowl is on floor]
+				say "[Rover][if the player is clueless][one of]'s tongue is a blur as he laps up the water, draining the water bowl in seconds[or] slurps the water bowl dry[or] must have been thirsty. One moment the water bowl is full; the next, it's bone dry[or] drinks the water[at random][otherwise] approaches the coolant transfer device and makes a positive seal. Coolant flows quickly cross the connection, and then the device uncouples and retracts to its storage position[end if]. [run paragraph on]";	
+				move the 	tap water to Limbo;
+				now Rover is not thirsty;
+		otherwise:[water bowl not full]
+			say "[Rover] [if the player is clueless]eyes the empty [water bowl] thirstily[otherwise]hopefully scans [the water bowl], but immediately determines that it is empty[end if]. [run paragraph on]";		
+	otherwise:[not thirsty]
+		say "[Rover]'s glance falls first upon [the water bowl], but after a quick inspection he realizes that it is not worthy of his attention. [run paragraph on]";
+	if Rover is hungry:
+		if the food bowl is full:
+			if the player carries the food bowl:
+				say "[if the player is clueless]A famished-appearing [Rover] gazes at [the food bowl] just out of his reach[otherwise]You must deselect [the vessel] to release the lock and allow access by [Rover]";
+			otherwise:
+				say "[if the player is clueless][one of]His head disappears into the food bowl. It is hard to believe that the sounds generated are coming from a dog rather than some sort of industrial mining rig. When his head lifts, the bowl is not only empty, but has been buffed to a mirror finish[or]He makes short work of the food in his bowl[or]He gulps down the food, without pausing for niceties such as breathing[or]He (gulp) eats (gulp) the (gulp) food (gulp) as (gulp) quickly (gulp) as (gulp) is (gulp) caninely (gulp) possible (burp)[at random][otherwise]The remote operations vehicle backs up to the thermal isotope deliver system and takes on a full load of glowing, red hot polonium 210 nodules[end if][run paragraph on]";
+				move the dog food to Limbo;
+				now Rover is not hungry;
+		otherwise:[food bowl not full]
+			say "He then [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in the soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly when he sees the[at random] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[at random][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if]";
+	otherwise:[not hungry]
+		say "[if the player is clueless]He [one of]gives [the food bowl] but a cursory glance[or]barely takes note of [the food bowl][or]completely ignores [the food bowl][at random][otherwise]Replete for radioisotopes, he ignores [the food bowl][end if]";
+	say ".";
 	
 Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with. 
 
@@ -1928,13 +1973,44 @@ Carry out pouring it into:
 Instead of pouring something into something:
 	try filling the second noun with the noun.
 	
+Before filling a bowl (called vessel) with something:
+	if the player does not hold vessel:
+		say "(first taking [the vessel])[command clarification break]";
+		try silently taking the vessel.
+		
+After inserting something into the old fridge:
+	if the noun is the maintenance droid or the noun is the white egg:
+		continue the action;
+	otherwise:
+		say "[if the player is clueless]Only food in the fridge. It's axiomatic[otherwise]Depositing [the noun] in [the old fridge] would result in irreparable thermal damage, destroying [the noun], so you issue an interrupt signal[end if].";
+		now the player carries the noun.
+		
+After putting a bowl (called the vessel) on the counter:
+	say "[if the player is clueless]No way. You eat off the kitchen counter. You don't want to put [the vessel] on it[otherwise]You inhibit relocation of [the vessel] to maintain minimal safe clearance between [the vessel] and [the counter][end if].";
+	now the player carries the vessel.  
+	
+After inserting a bowl (called the vessel) into the cabinet:
+	if Rover is not in the location:
+		now Rover is in the location;
+		say "[if the player is clueless][Rover] zips into the kitchen[otherwise]This triggers a [ROVER] transfer system-related error. [Rover] rolls headlong into the engineering section[end if] and he[run paragraph on]";
+	otherwise:
+		say "[if the player is clueless]This is one of Rover's favorite games! He[otherwise][Rover][end if]"; 
+	say "[if the player is clueless] pulls [the vessel] back out of[otherwise] removes [the vessel] from[end if] [the cabinet].";
+	now the player carries the vessel;
+	try silently dropping the vessel.
+	
+Before putting something (called the item) on the kitchen floor:
+	try dropping the item;
+	the rule succeeds.
+	
 The counter is an enterable furniture in the kitchen. The clueless-name of the counter is "kitchen counter". The aware-name of the counter is "bulkhead". The clueless-description of the counter is "A scratch-resistant white counter into which a cooking range has been set." The aware-description of the counter is "Thick bulkheads provide radiation shielding around the fusion chamber." The counter-proxy is an aware-proxy that is part of the counter. Understand "bulkhead" as the counter-proxy. The counter can be discussed. The counter is not discussed.
 
-The kitchen sink is a sink in the kitchen. The clueless-name of the sink is "sink". The aware-name of the sink is "coolant output terminus". The clueless-description of the sink is "A small, utilitarian kitchen sink. Below the sink, there is a small cabinet." The aware-description of the kitchen sink is "The coolant output nozzle leads towards the Rover transfer system." The kitchen sink-proxy is an aware-proxy that is part of the kitchen sink. Understand "coolant" and "output" and "nozzle" and "terminus" as the kitchen sink-proxy. Understand "water" as the kitchen sink.
+The kitchen sink is a sink in the kitchen. The clueless-name of the sink is "sink". The aware-name of the sink is "coolant output terminus". The clueless-description of the sink is "A small, utilitarian kitchen sink. Below the sink, there is a small cabinet." The aware-description of the kitchen sink is "The coolant output nozzle leads towards the Rover transfer system." The kitchen sink-proxy is an aware-proxy that is part of the kitchen sink. Understand "coolant" and "output" and "nozzle" and "terminus" and "tap" and "faucet" as the kitchen sink-proxy. Understand "water" as the kitchen sink.
+
+Does the player mean drinking the tap water:
+	it is very likely.
 
 The tap water is a water. It is in Limbo. The clueless-name of the tap water is "water". The aware-name of the tap water is "coolant". The clueless-description of the tap water is "Clear, cool water." The aware-description of the tap water is "Clear, thermoconductive liquid."
-
-[Does the player mean filling a bowl with the tap water: it is very likely. Does the player mean doing something with a bowl: it is likely. Does the player mean filling a bowl with the dog food: it is very likely. Does the player mean inserting tap water into something: it is very likely. Does the player mean inserting dog food into something: it is very likely.]
 
 Instead of opening or switching on a sink:
 	if the player is clueless:
@@ -1991,16 +2067,25 @@ Instead of closing or switching off a sink:
 			say "The biohazard containment system automatically shuts off when the infestion is neutralized.";
 		otherwise:
 			say "Coolant output flow is already zero.".
+			
+Instead of inserting something into the kitchen sink:
+	say "[if the player is clueless]You're tired of stuff piling up in the sink, so you stick to your New Year's resolution and decide to hang on to [the noun][otherwise]You cannot insert [a noun] into the coolant output terminus[end if]."
 
-The cabinet is part of the kitchen sink.  The cabinet is an openable closed scenery container.  The dog chow bag and the reward nuggets box are in the cabinet.  
+The cabinet is an openable closed scenery container in the kitchen.  The dog chow bag and the reward nuggets box are in the cabinet.  
 
 The clueless-name of the cabinet is "cabinet". The aware-name of the cabinet is "fuel storage vault". The clueless-description of the cabinet is "The small wooden cabinet under the sink is [if the cabinet is open]open[otherwise]closed[end if]." The aware-description of the cabinet is "A lead-lined vault in which radioisotope fuel is stored for the ROVER. The vault is presently [if the cabinet is open]sealed[otherwise]unsealed[end if]." The cabinet-proxy is an aware-proxy that is part of the cabinet. Understand "fuel" and "storage" and "vault" as the cabinet-proxy.
 
 The dog chow bag is an open openable container.  The carrying capacity of the dog chow bag is 1.  The dog chow bag contains some dog food.
 
-The clueless-name of the dog chow bag is "20 kilo bag of dog chow". Understand "20" and "kilo" and "food" and "chow" as the dog chow bag. The aware-name of the dog chow bag is "fuel conduit". The clueless-description of the dog chow bag is "The bag features a picture of a grotesquely (in your opinion) fat white husky seated at a fancy dinner table. In front of him, steak, turkey, and ham are piled high on silver dishes. He stares rapaciously at the feast, clenching a fork and knife in his paws. The bag is labeled [quotation mark]Fill your best friend's bowl with Happy Dogz Mix![quotation mark]". The aware-description of the dog chow bag is "A fully automated delivery system designed to safely pump radionuclide fuels from the storage unit to the ROVER transfer device." The dog chow bag-proxy is an aware-proxy that is part of the dog chow bag. Understand "fuel" and "conduit" as the dog chow bag-proxy.
+Does the player mean taking the dog chow bag: 
+	it is very likely.
 
-The clueless-name of the dog food is "doggie kibbles". Understand "kibble" and "kibbles" and "doggie" as dog food. The aware-name of the dog food is "polonium 210 pellets". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210". The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
+The clueless-name of the dog chow bag is "20 kilo bag of dog chow". Understand "20" and "kilo" and "food" and "chow" as the dog chow bag. The aware-name of the dog chow bag is "fuel conduit". The clueless-description of the dog chow bag is "The [if the dog chow bag is open]open[otherwise]closed[end if] bag features a picture of a grotesquely (in your opinion) fat white husky seated at a fancy dinner table. In front of him, steak, turkey, and ham are piled high on silver dishes. He stares rapaciously at the feast, clenching a fork and knife in his paws. The bag is labeled [quotation mark]Fill your best friend's bowl with Happy Dogz Mix![quotation mark]". The aware-description of the dog chow bag is "A fully automated delivery system designed to safely pump radionuclide fuels from the storage unit to the ROVER transfer device." The dog chow bag-proxy is an aware-proxy that is part of the dog chow bag. Understand "fuel" and "conduit" as the dog chow bag-proxy.
+
+Does the player mean eating the dog food:
+	it is very likely.
+
+The clueless-name of the dog food is "doggie kibbles". Understand "kibble" and "kibbles" and "doggie" and "chow" and "dog" as dog food. The aware-name of the dog food is "polonium 210 pellets". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210". The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
 
 Before eating dog food:
 	say "[if the player is clueless]Eww. Yech. So not[otherwise]Po-210 is not a suitable fuel source for the Valkyrie. The limited quantity, and its slow rate of heat production would not significantly contribute to the ship's power budget[end if].";
@@ -2015,7 +2100,7 @@ The dog treat is edible. The clueless-name of the dog treat is "dog treat". Unde
 Instead of eating the dog treat:
 	say "[if the player is clueless]The thought of eating anything liver-flavored puts you off[otherwise]The checksum on Rover's reward tokens is not valid within your neural net[end if]."
 
-The kitchen floor is a privately-named scenery supporter in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder" and "girders" and "strut" and "struts" and "mesh" and "metal" and "hull" and "inner" as the kitchen floor-proxy.
+The kitchen floor is a scenery in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder" and "girders" and "strut" and "struts" and "mesh" and "metal" and "hull" and "inner" as the kitchen floor-proxy.
 
 Section Bathroom
 
