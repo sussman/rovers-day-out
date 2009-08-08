@@ -1,0 +1,244 @@
+  *** Things we should fix, mainly discovered via testing. ***
+
+Contained objects needs to be put in scope or otherwise worked around:
+need to allow eat food/drink water to work more smoothly with the
+objects that are in the dog bowls
+
+* 'go room' shouldn't show 'ACU -> SELECT' but rather
+  'room's-aware-name -> SELECT'
+
+###TOCONSIDER: responses to "wait" while on toilet seat, or hints after some period of time sitting there ... in case pooping doesn't occur to people.
+
+* need to understand 'chow' as 'bag of dog chow'
+
+* bug:  status-line noun shouldn't default to "ACU" all the time -- it
+  should be aware of whether we're playing Janet or Rover.
+
+* At the beginning of the game, we stand up and knock the clock behind
+  the futon.  Experienced gamers will want to find it by looking
+  behind/underneath the futon, and yet we move it to "Limbo"?  Why?
+
+@@@ General laziness on my part. I didn't want players to obsess about the clock, i.e., setting the time, trying to time travel. I was also concerned that we might get into issues of continuity with regard to timing, but I don't see how that would be an issue now. Finally, I was concerned that the player might try to go back to bed or hit snooze again, although there are plenty of ways around that.
+
+All things considered, it wouldn't take much more to implement the clock. As for it rolling under the bed, that does open a bit of a can of worms, although there is an extension that deals with stuff under beds. Is it worth the overhead of importing another extension? We'll see. 
+
+* open drawer should kill David/Janet
+
+* statusline should be FALSE!!!!
+
+   >flush toilet
+   There is a tinny clanking from within the toilet, but nothing happens
+
+"g" or "again" results in NOOP on status line; should recall last action.
+
+
+--------------------------------------------------------------------
+"Fleshing Out" section.
+
+* more nouns to define:
+    
+* more verbs/actions to define (or respond to):
+
+  -need an instead of kissing rule for first person kisses
+
+  -a general instead of sleeping rule
+
+----------------------------
+
+General Macro Issues re: plot, puzzles, etc.
+
+
+* rover doesn't seem to follow me around, or request things like food,
+  etc.  it would be a much richer experience if he reacted to my
+  routine or even hinted ath things when players got stuck!
+
+@@@ This will be my main focus as general mechanisms get nailed down (JACK TODO!)
+
+* in general, status line technoverbs are always showing TRUE, not
+  catching failures when they should (i.e. when toilet doesn't flush).
+  read through text for examples.   (BEN TODO!)
+
+
+* general question: does inform7 allow us to decide what gets written
+  to transcript?  it would be nice to have status lines in transcript,
+  the way jack's original prototype transcript had it.  (BEN TODO :
+  ASK ON LIST)
+
+@@@ I would recommend that we have an "option" menu that allows toggling of status line display either at the top, or inline. That way, if someone has a very rudimentary terminal (e.g., Floyd on IFmud), they could still see the status line as it changes. In fact, the transcript would more or less resemble the original transcript. When placed inline, we could set it off typographically, e.g., [[[[STATUS LINE TEXT ]]].
+
+=====================================================================
+
+Stuff that is (hopefully) fixed/resolved gets moved here...
+
+
+CONCERN: It would make more sense to model the rooms with inside
+   from/outside from relationships. This would more closely follow the
+   directory level paradigm suggested with the flosix commands. It
+   would also make going out of the shower, or out the front door make
+   more sense.
+
+@@@ As part of the movement system revision, the ship's layout has been made hierarchical, using "inside/outside" from relationships:
+
+operations/
+operations/flight control
+operations/flight control/extruder
+operations/engineering
+
+
+
+---------------------------------------
+
+Notes from Ben's first *complete* run-through of game:
+
+
+
+* Whoops:
+
+  > x nameplate
+  A brass nameplate with engraved black lettering...
+
+  > read lettering
+  There are only three letters:  "ACU".
+
+
+* change "strangle hold" to "stranglehold"
+
+* TODO(sussman):  windex crash should have blue background.
+
+* in 'help' menu, one of the options should suggest 'remember' as a
+  way to get more backstory.
+
+
+* Whoops:
+
+  > david, hello
+  You can't talk to David-proxy.
+
+
+* TODO: create logo for game.  Either red embroidered "ACU", or
+  MARSpace insignia.
+
+
+* things to fill out with non-generic responses:
+
+   "taste nuggets"
+   "taste treat"
+
+
+* still extra spacing problems on plunger: "the handle of the plunger
+  is tilted completely  backwards"; "leaning strongly  to the right"
+
+
+* TODO(sussman): fix indentation of metaspeak, so that words wrap
+  *beyond* Janet and David's names.  easier to read.
+
+
+* In 2nd simulation, rover goes out the door without my ever filling
+  his bowls.  Is this intended?
+
+* in the Real Thing, the frying pan is still sitting on the cooking
+  range.  Is this intended?  Was it supposed to be reset?
+
+
+* In the Real Thing, rover basically did nothing for me.  Didn't
+  follow me around, didn't notice my filling his bowls, didn't want my
+  treats.  We need to make him into an interesting, colorful NPC!
+
+
+* "toilet" shouldn't be in this list:
+
+  > open toilet
+  Which do you mean, the toilet, the toilet bowl, the toilet seat, or
+  the toilet cover?
+
+
+
+* is there more than one solution to fix the broken toilet, other than
+  the floss?  If not, we must make sure there is.
+
+
+* TODO(sussman): as rover, "x house" has weird status line: "->
+  DIAGNOSTIC : TRUE".  This happens quite a bit as rover.  We clearly
+  need to have a noun other than "ACU" up there!  
+
+  ('smell' shows "ACU -> CHEMOSENSOR : TRUE".  Are we really still the
+  ACU?)
+
+
+* 'remember foo' seems weird that it would work properly when being
+  rover, especially since many of the memories are about "you, janet".
+
+* "eat food" fails in the cottage, but "eat canned food" works...?
+
+* unable to guess the verb for drinking the other dog's water.  fail.
+
+* smelly man needs more variation in his blah blah complaints.
+
+* rover mission repeated failure:
+
+   - figured out how to get the bone.
+   - got the pillow.
+   - got the extra egg.
+   - ate some kibble in cottage
+   - couldn't figure how to drink cottage water
+   - returned to janet, gave her the egg.
+   - NO MENTION of pillow or bone?!?
+   - went back outside, pillow is now in inventory.
+   - WTF happened to the bone?  It's not back in the cottage either.
+   - restored to a save-point back into cottage
+   - returned home again, no opportunity to 'drop bone' or give it to janet?
+
+  FINALLY after multiple restore attempts, figured out I had to drop
+  bone and pillow OUTSIDE the front door.  Go in, give her egg
+  automatically, go out, take bone again, go in again.  Eesh.  We need
+  to smooth this out to be easier.  Why can't rover return all the
+  inventory to Janet at once?
+
+
+
+* instead of 'x nameplate', try reading nameplate instead.
+
+* bug: seeing lots of "#REF ->" in the status line while self-aware.
+
+
+* "read RFID tag" should work.
+
+* bug:  during the boarding sequence:  'enter shower' shows metaspeak
+  from janet and david ("I should probably check on...")
+
+* meta-puzzle question: love the slow loss of control while the droid
+  dismembers me, but is there any point to this scene?  anything I can
+  do?  scratching left arm did nothing at any point, as in the
+  original transcript.  On the one hand, it's a fun fiction sequence.
+  On the other hand, players hate feeling helpless and shoved through
+  a linear series of uncontrollable events -- it makes the game
+  passive rather than active.
+
+
+* back on Cydonia: "janet, hello" should should FAIL in status line,
+  not TRUE.  Also "tell janet about x" shows "JANET -> SPEECH OUTPUT :
+  NIL"
+
+
+* "ACU prohibited from direct interaction with humans aside from
+  scanning and communications".  This implies that "scan janet" should
+  allow me to eavesdrop.  Also if I can see their lips moving, then
+  "read lips" should work as well.  As it stands, I eventually played
+  "guess the verb" and typed "listen", and things progressed.  Gotta
+  make this more flexible.
+
+
+* love the 'random filler actions' to-do.  :-)
+
+* again, the same meta-question about the debriefing at the end.  It's
+  fun to watch janet and david talk, see the denoument unfold, but
+  also fairly unsatisfing to just repeatedly type "tell janet about
+  x".  the player has no control, it's all too linear.
+
+
+* need to polish the epilogue.  put a colon before the final word
+  'rover' instead of comma.
+
+
+
+
