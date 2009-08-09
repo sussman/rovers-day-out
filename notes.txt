@@ -488,8 +488,12 @@ Some thinking out loud about the "Boarding Party" scene
 Some thoughts about Rover's behavior as an agent.
 
 * Before the ACU is self-aware, Rover should have some low frequency stage business. 
-* Rover should not blindly follow the ACU around as this seems too pat and also undermines the utility of the "come" command (note to self: add Rover as a synonym of come)
-* Rover won't go in the shower. He knows better.
+	- sniffing
+	- sleeping
+	- scratching
+	- looking out the window (if the blinds are open)
+* Rover should not blindly follow the ACU around as this seems too pat and also undermines the utility of the "come" command
+[ok] Rover won't go in the shower. He knows better.
 
 Rover and feeding:
 * When food/water is transferred to a bowl, Rover should come to the kitchen if he's thirsty or hungry.
@@ -506,11 +510,15 @@ Rover and walkies:
 * When the player attempts to open the front door, Rover will get excited and jump around. 
 
 Rover and other objects:
+[ok] when food/water bowl placed on floor, Rover comes in
+* When the drapes are closed, there's a small chance of stumbling over Rover
 * Aside from the bowls, when the player and Rover are in the same room, Rover will infrequently sniff any prop that is not on a supporter -- i.e., stuff on the floor.
 * If the dental floss is on the floor, Rover will eat it.
+* occasionally will jump on the futon (should respond to the command "down/off/get down/get off [the futon]" in the living room
+* [if the alarm clock is put back on the bed, rover should keep knocking it down to the floor?]
 
 Rover and the female dog:
-* Rover's interactions with the female dog all occur when he's the actor, and it's mostly scripted. Her behavior is such that she never comes into the Valkyrie. When Rover returns after meeting her, his behavior should reflect his infatuation with her.
+* Rover's interactions with the female dog all occur when he's the actor, and it's mostly scripted. Her behavior is such that she never comes into the Valkyrie. When Rover returns after meeting her, his behavior should reflect his infatuation with her. She's a dumb bulldozer, so she never really reacts to him, but he will see it differently.
 
 Rover and the Boarding Party
 * Rover should bark and be defensive when he's around strangers (the barking can be heard "off camera", as appropriate). Rover should follow the strangers around.
@@ -521,3 +529,7 @@ Rover and Back on Mars
 * Rover should display some confusion between real Janet and ACU Janet
 
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
+
+=====
+other:
+disable get all.
