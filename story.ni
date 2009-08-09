@@ -9,6 +9,7 @@ Include Glulx Text Effects by Emily Short.
 Include Basic Screen Effects by Emily Short.
 Include Menus by Emily Short.
 Include Case Management by Emily Short.
+Include Flexible Windows by Jon Ingold.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.
 
@@ -205,8 +206,9 @@ glulx color value	assigned number
 g-pure-blue	255
 
 Table of User Styles (continued)
-style name	justification	obliquity		indentation	first-line indentation		boldness		fixed width	relative size 	glulx color
-special-style-1	left-justified	no-obliquity	0		0			light-weight	fixed-width-font	0		g-pure-blue
+style name	justification	obliquity	indentation	first-line indentation	boldness	fixed width	relative size 	glulx color
+special-style-1	left-justified	no-obliquity	3	0	light-weight	fixed-width-font	-1	g-pure-blue
+special-style-2	left-justified	no-obliquity	2	0	regular-weight	fixed-width-font	1	g-white
 
 
 [Let's do a random walk, shall we?  :-) ]
@@ -246,15 +248,20 @@ To say (dialogue - some text) in metaspeak:
 	say variable letter spacing;
 	say paragraph break;
 	
+[BSOD routines - uses Flexible Windows extension.]
+The BSOD-window is a g-window.   The type of the g-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
+
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
-	await keystroke;
-	[###TODO:  how do we make the background blue in glulx?  my guess is to open a new blue window on "top" of existing window, of exactly the same size, and then kill the window to resume]
-	clear the screen;
-	say "[bold type]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue.[roman type]";
-	await keystroke;
-	clear the screen.
+	wait for any key;
+	open up BSOD-window;
+	move focus to BSOD-window, clearing the window;
+	say "[second custom style]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue."; 
+	wait for any key;
+	shut down BSOD-window;
+	return to main screen;
+	clear the screen.	
 	
 [borrowed from example I7 documentation, example 424 Odins:]
 After printing the name of something (called the target): 
@@ -400,10 +407,12 @@ Carry out shutdowning:
 	shutdown;
 	say line break.
 	
-To shutdown:	
-	(- I6dots(); -)
+To shutdown:
+	[TODO(jack):  reimplement this timing effect using Emily Short's entry-point extension;  the glk timer calls below conflict with the extension, and the Flexible Windows extension *needs* the entry-point extension.]
+	say "Root authentication failed;  command aborted."	
+	[(- I6dots(); -)]
 		
-Include (-
+[Include (-
 
 Global rpts;
 
@@ -443,7 +452,7 @@ Global rpts;
 	rtrue;
 ];
 
--) before "Glulx.i6t".
+-) before "Glulx.i6t".]
 	
 Locating is an action applying to nothing.  
 
@@ -3030,7 +3039,7 @@ Table of Acknowledgements
 title	subtable	description	toggle
 "Beta Testers"	--	"Who are the fearless, dedicated individuals who put their very lives on the line to test this game?[paragraph break]* John Doe, Sleepy Hollow[line break]* Jimmy Tester, Utopia Planetia[line break]* Betty TestSweet, Lake Eridania[line break]* Joe Keypounder, Deimos Colony[paragraph break]Note: Any omissions, errors, or outright offensive bits of the game that made it through beta-testing are not the fault of the beta-testers, nor, we should point out of the authors, who would take be entirely ready to take the blame were it their fault. The truth is that any fault whatsoever lies with Richard Millhouse Nixon, the 37th (depending on the method of counting) President of the United States of America. We will be held accountable for his poor spelling, loose grammar, and penchant for elaborate data structures named after the suprising numerous flavors of goat cheeses."	--
 "The Ultra-Prestigious Bug Finder List"	--	"So far, no one aside from beta testers has reported a bug... you could be the first..."	--
-"Giant Shoulders"	--	"This game was written in a few months thanks to the excellent tools available to the interactive fiction community. It was written in the Inform 7 language which has a proud heritage traceable back to the first games of this genre, but which is overwhelming attributable to its creator, Graham Nelson.[paragraph break]We gleefully employed a number of modules written by Emily Short, also a major contributor to the Inform 7 language itself. Specifically, this project incorporates her Glulx Text Effects, Basic Screen Effects, Menus, and Case Management Modules. Doubtless, we also extensively picked some tasty bits out of the Inform 7 documentation and examples, written by both Graham and Emily.[paragraph break]This game is written for the Glulx interpreter because, frankly, it wouldn't fit in anything else. While we appreciate efficient coding and conciseness where possible, having Glulx available was very liberating. We owe Andrew Plotkin thanks for developing the Glulx virtual machine, as well as the Glk library which makes the game playable on so many platforms."		--
+"Giant Shoulders"	--	"This game was written in a few months thanks to the excellent tools available to the interactive fiction community. It was written in the Inform 7 language which has a proud heritage traceable back to the first games of this genre, but which is overwhelming attributable to its creator, Graham Nelson.[paragraph break]We gleefully employed a number of modules written by Emily Short, also a major contributor to the Inform 7 language itself. Specifically, this project incorporates her Glulx Text Effects, Basic Screen Effects, Menus, and Case Management Modules. Doubtless, we also extensively picked some tasty bits out of the Inform 7 documentation and examples, written by both Graham and Emily.  Big thanks to Jon Ingold for his Flexible Windows extensions as well.[paragraph break]This game is written for the Glulx interpreter because, frankly, it wouldn't fit in anything else. While we appreciate efficient coding and conciseness where possible, having Glulx available was very liberating. We owe Andrew Plotkin thanks for developing the Glulx virtual machine, as well as the Glk library which makes the game playable on so many platforms."		--
 "Consultants"	--		"During writing, on several occassions we asked the community for help and advice, either when we were stumped, or when we wanted to get some ideas before starting down a potentially blind alley.[paragraph break]In particular, we would like to thank Andrew Plotkin and Rob Newcomb for their assistance in getting the status line display to work correctly."	--
 "Animals"		--		"No animals, not even cybernetic ones, were harmed in the creation of this work."	--
 
@@ -4085,7 +4094,8 @@ Instead of querying a topic listed in the Table of Conversation during Back on M
 	increase the asked entry by one.
 	
 To say stop being so repetitive:
-	say "[one of]David[or]Janet[purely at random] [one of][or]sighs and[or]coughs and then[or]takes a deep breath and[or]makes a throat-clearing sound and[or]pauses and[or]thinks for a moment and[or]gives it a second and[or]takes a moment to think and[or]moans and[or]groans and[or]exhales slowly and[as decreasingly likely outcomes] [one of]says[or]replies[or]answers[or]responds[at random], [quotation mark][one of]You sure are repetitive for a computer. Are you sure there isn't a little man inside typing on a keyboard? We've already talked about that topic[or]I think we've been over that already[or]We've beaten that topic to death[or]We already talked about that. Let it go.[or]Again? We've already covered that[or]Been there. Talked about that[or]Could we change to subject to something that we haven't already gone over? Surely, there are other things to discuss[or]I'd rather cover some new ground, we've already discussed that[stopping][quotation mark]."
+	say "[one of]David[or]Janet[purely at random] [one of][or]sighs and[or]coughs and then[or]takes a deep breath and[or]makes a throat-clearing sound and[or]pauses and[or]thinks for a moment and[or]gives it a second and[or]takes a moment to think and[or]moans and[or]groans and[or]exhales slowly and[as decreasingly likely outcomes] [one of]says[or]replies[or]answers[or]responds[at random],";
+	say "[quotation mark][one of]You sure are repetitive for a computer. Are you sure there isn't a little man inside typing on a keyboard? We've already talked about that topic[or]I think we've been over that already[or]We've beaten that topic to death[or]We already talked about that. Let it go.[or]Again? We've already covered that[or]Been there. Talked about that[or]Could we change to subject to something that we haven't already gone over? Surely, there are other things to discuss[or]I'd rather cover some new ground, we've already discussed that[stopping][quotation mark]."
 
 Instead of telling someone about something during Back on Mars:
 	try expounding instead. [divert "tell janet about..." to the expounding action]
