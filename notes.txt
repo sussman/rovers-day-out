@@ -529,3 +529,7 @@ Rover and Back on Mars
 * Rover should display some confusion between real Janet and ACU Janet
 
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
+
+=====
+other:
+disable get all.
