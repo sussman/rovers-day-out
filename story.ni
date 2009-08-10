@@ -407,52 +407,36 @@ Carry out shutdowning:
 	shutdown;
 	say line break.
 	
+Reps is a number that varies.
+	
 To shutdown:
-	[TODO(jack):  reimplement this timing effect using Emily Short's entry-point extension;  the glk timer calls below conflict with the extension, and the Flexible Windows extension *needs* the entry-point extension.]
-	say "Root authentication failed;  command aborted."	
-	[(- I6dots(); -)]
-		
-[Include (-
+	[glulx timed events-related code builds on the Glulx Entry Points Extension]
+	change reps to 50; 
+	if glulx timekeeping is supported: 
+		start timer;
+	otherwise:
+		say "Preparing to shutdown.....[line break]Preparing to unmount all volumes.....[line break]Preparing to disengage sensors.....[line break]Preparing to disengage effectors.....[line break]Preparing to ACU shutdown.....[paragraph break]Root authentication failed.[line break]Command aborted."
+	
+To start timer:
+	(- glk_request_timer_events(300); -)
+	[starts time with 300 millisecond delay between events]
+	
+To stop timer:
+	(-  glk_request_timer_events(0); -)
 
-Global rpts;
-
-[ I6dots; 
-	if (glk_gestalt(gestalt_Timer, 0)){
-		!to confirm that terp supports real time events
-		rpts=50;
-		!rpts is a global that sets the number of repeats; 
-		glk_request_timer_events(300);
-		!300 millisecond delay seems ok
-		rtrue;
-	}  
-	else {!if real time event handling not available
-		print "Preparing to shutdown.....^Preparing to unmount all volumes.....^Preparing to disengage sensors.....^Preparing to disengage effectors.....^Preparing to ACU shutdown.....^^Root authentication failed.^ Command aborted.^";
-	}
-];
-
-[ HandleGlkEvent ev context;
-	switch (ev-->0) {
-		evtype_Timer:
-			if (rpts < 1) {
-				glk_request_timer_events(0);
-			}
-			else {
-				switch (rpts) {
-					50: print "^Preparing to shutdown";
-					40: print "^Preparing to unmount all volumes";
-					30: print "^Preparing to disengage sensors";
-					20: print "^Preparing to disengage effectors";
-					10: print "^Preparing ACU executive shutdown";
-					 1: print "^Root authentication failed.^^Command aborted.^"; 
-					default: print ".";
-				}
-				rpts--;
-			}
-	}
-	rtrue;
-];
-
--) before "Glulx.i6t".]
+A glulx timed activity rule (this is the countdown rule):
+	[The inexorable march towards an aborted shutdown]
+	if reps is:
+		-- 50: say "Preparing to shutdown[run paragraph on]";
+		-- 40: say "[line break]Preparing to unmount all volumes[run paragraph on]";
+		--	30: say "[line break]Preparing to disengage sensors[run paragraph on]";
+		--	20: say "[line break]Preparing to disengage effectors[run paragraph on]";
+		--	10: say "[line break]Preparing ACU executive shutdown[run paragraph on]";
+		--	 1: say "[line break]Root authentication failed.[paragraph break]Command aborted.[line break]"; 
+		--	 0: stop timer;
+		-- otherwise: say ".[run paragraph on]";
+	decrease reps by one;
+	the rule succeeds.
 	
 Locating is an action applying to nothing.  
 
