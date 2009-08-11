@@ -492,12 +492,12 @@ Some thoughts about Rover's behavior as an agent.
 	- sleeping
 	- scratching
 	- looking out the window (if the blinds are open)
-* Rover should not blindly follow the ACU around as this seems too pat and also undermines the utility of the "come" command
+[ok] Rover should not blindly follow the ACU around as this seems too pat and also undermines the utility of the "come" command
 [ok] Rover won't go in the shower. He knows better.
 
 Rover and feeding:
-* When food/water is transferred to a bowl, Rover should come to the kitchen if he's thirsty or hungry.
-* When the fridge is opened, Rover should come into the kitchen to see what is going on, even if he's not hungry. After all, good stuff comes out of the fridge, and even if he's full, human food might be interesting.
+[ok] When food/water is transferred to a bowl, Rover should come to the kitchen if he's thirsty or hungry.
+[ok] When the fridge is opened, Rover should come into the kitchen to see what is going on, even if he's not hungry. After all, good stuff comes out of the fridge, and even if he's full, human food might be interesting.
 * When the box of treats is picked up, it should rattle a bit, and Rover should come to see what's going on. As long as the player is carrying the treats, Rover will follow the player around, hoping to get one. The box of treats is bottomless.
 * If Rover doesn't get a treat after following the ACU around for a while, he'll do a trick to try to earn one.
 * Rover is somewhere between ecstatic and euphoric after receiving a treat. Luckily, E is the most popular letter in English, which affords us considerable latitude within that range.
@@ -532,4 +532,11 @@ Rover and Back on Mars
 
 =====
 other:
-disable get all.
+- disable get all.
+- make sure player will not walk into shower with the flight suit on
+- hints about being naked/cold if the suit is off.
+- rule to handle encounter with naive maintenance droid if naked at time of encounter.
+- revise the gimbal lock puzzle 
+- would make sense to 
+- disable inventory description of the treat box
+- if left alone with the treat box, Rover should do what comes naturally.
