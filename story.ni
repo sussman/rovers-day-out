@@ -685,6 +685,29 @@ Instead of going towards when the player is in the living room and the futon is 
 			let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
 			say "[metatext in metaspeak]".
 			
+After going towards when the player is the ACU:
+	if the player carries the reward nuggets box:
+		if Rover is in the location:
+			say "[Rover] [if the player is clueless][one of]begs for some treats[or]dances around, trying to suggest that he'd be glad to do one of his tricks for a reward nugget[or]sniffs at [the reward nuggets box][or]keeps an eye on [the reward nuggets box][or]stares dreamily at the doggie treats[or]watches you intently, concentrating on [reward nuggets box][or]scrutinizes [reward nuggets box][or]contemplates [the reward nuggets box][or]dreams about the doggie treats in that [reward nuggets box][or]lays down, rolls over, and barks, hoping to persuade you to toss him a treat[or]sits and gives kisses, hoping to earn a reward nugget[at random][otherwise]maintains a fix on [the reward nuggets box][end if].";
+		otherwise:
+			if the location is the shower:
+				now Rover is in the bathroom;
+				say "[Rover] [if the player is clueless]pads along behind you until you get to the shower, but decides he's not willing to risk a bath for the box of reward nuggets that you're carrying around[otherwise]follows your focus as you select the extruder, but he stops just outside it in the flight control area[end if].";
+			otherwise:
+				now Rover is in the location;
+				say "[Rover] trundles along behind you, his attention riveted to [the reward nuggets box].";
+	if the location is:
+		-- kitchen:
+			if the counter is not discussed and the Second Sim is happening:
+				now the counter is discussed;
+				let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
+				say "[metatext in metaspeak]";
+		-- bathroom:
+			if the bathroom is not really-visited and the Second Sim is happening:
+				now the bathroom is really-visited;
+				let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
+				say "[metatext in metaspeak]".
+
 Section Leaving
 
 Does the player mean entering the shower walls:
@@ -1580,7 +1603,7 @@ Instead of opening the drapes:
 	say "You push aside the drapes.";
 	now the drapes are open;
 	now the window is in the living room;
-	say "[line break][the description of the living room][line break]".
+	try looking.
 
 Instead of closing the drapes:
 	if the drapes are open:
@@ -1679,12 +1702,6 @@ Instead of going towards or exiting when the player is in the kitchen:
 		say paragraph break;
 	continue the action.
 
-After going towards the kitchen:
-	if the counter is not discussed and the Second Sim is happening:
-		now the counter is discussed;
-		let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
-		say "[metatext in metaspeak]".
-
 The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door[if the old fridge is open]. The fridge door is open, chilling the kitchen and wasting power[end if]." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" and "unit" and "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged.
 
 Instead of searching a refrigerator (called R):
@@ -1746,6 +1763,18 @@ After examining the old fridge for the first time:
 	if the first sim is happening or the second sim is happening:
 		let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 		say "[metatext in metaspeak]";
+		
+After opening the old fridge:
+	if Rover is in the location:
+		say "[Rover] looks up when he hears [the old fridge] open. [run paragraph on]";
+	otherwise:
+		say "[if the player is clueless]As the fridge creaks open on its ancient hinges, Rover slips into the kitchen[otherwise]Rover pops into the engineering section to investigate the thermal shift[end if]. [run paragraph on]";
+		now Rover is in the kitchen;
+	if Rover is hungry:
+		say "[if the player is clueless]He pokes his nose in the fridge and sniffs around, although he knows full well that stuff in the fridge is for people only and that he'd be in a heap of trouble if he got too curious in there[otherwise]This behavior may indicate that Rover's fuel reserve is low[end if].";
+	otherwise:
+		say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]After a brief chemosensor scan, he rolls back towards the operations area[end if].";
+		now Rover is in the living room.
 
 The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
 
@@ -1911,12 +1940,10 @@ Check filling it with:
 		if the second noun is not the dog chow bag and the second noun is not dog food:
 			say "[if the player is clueless]Only dog food in the dog bowl. Vet's orders[otherwise]The fuel reservoir was designed only to handle ROVER's radioisotopic fuel[end if]." instead;
 		otherwise:
-			if the dog chow bag is not held by the player:
-				if the player is able to see the dog chow bag:
-					say "([if the player is clueless]taking the bag of dog chow[otherwise]accessing the conduit output valve[end if])";
-					try silently taking the dog chow bag;
-				otherwise:
-					say "You would need [if the player is clueless]some dog food[otherwise]the fuel conduit[end if]." instead; 
+			if the dog chow bag is not carried by the player:
+				[at this point, the bag must be at least visible to the player as filling it with requires an object of the preposition, and fillupping it would fail if the bag were not visible.]
+				say "([if the player is clueless]first taking the bag of dog chow[otherwise]first accessing the conduit output valve[end if])";
+				try silently taking the dog chow bag;
 			if the dog food is not in the dog chow bag:
 				say "[if the player is clueless]There are no more kibbles in the bag[otherwise]The supply of thermoisotope has been depleted[end if]." instead.
 			
@@ -1926,6 +1953,25 @@ Carry out filling it with:
 			move the tap water to the water bowl;
 		-- the food bowl:
 			move the dog food to the food bowl.
+			
+After filling the water bowl with the kitchen sink:
+	say "You [if the player is clueless]run the sink briefly to make sure the water is cold, and then fill Rover's bowl about half way up[otherwise]transfer coolant from the terminus to the reservoir[end if].[paragraph break]";
+	if Rover is in the location:
+		say "[Rover] looks towards [the kitchen sink] as you fill his [water bowl].";
+	otherwise:
+		if Rover is thirsty:
+			say "[Rover] [if the player is clueless]wanders into the kitchen when he hears water splashing into his bowl[otherwise]detects the transfer of coolant to the reservoir[end if].";
+			now Rover is in the kitchen.
+			
+After filling the food bowl with the dog chow bag:
+	say "You [if the player is clueless] empty the bag of dog chow into Rover's bowl, giving him a generous portion that should more than carry him through a day's worth of Rover antics[otherwise]restock the fuel reservoir with Polonium 210 from the fuel conduit[end if].[paragraph break]";
+	if Rover is in the location:
+		say "[Rover] watches[if Rover is hungry] with interest[end if] as you fill his [food bowl].";
+	otherwise:
+		if Rover is hungry:
+			say "[Rover] [if the player is clueless]trots in from the living room when he hears kibbles trinkling into his bowl[otherwise]detects the transfer of radioisotope fuel to the reservoir[end if].";
+			now Rover is in the kitchen.
+			
 	
 Report filling it with:
 	say "You fill the [noun] with some [if the noun is the water bowl][tap water] from the [kitchen sink][otherwise][dog food][end if]."
@@ -1939,6 +1985,8 @@ Check fillupping:
 		if the noun is the water bowl:
 			try filling the water bowl with the kitchen sink;
 		otherwise if the noun is the food bowl:
+			if the player is not able to see the dog chow bag:
+				say "You would need [if the player is clueless]some dog food[otherwise]the fuel conduit[end if]." instead; 
 			try filling the food bowl with the dog chow bag;
 		otherwise:
 			say "You can't fill that."
@@ -2090,24 +2138,35 @@ Before eating dog food:
 
 The reward nuggets box is an open not openable container. The carrying capacity of the reward nuggets box is 1. The reward nuggets box contains a dog treat. 
 
+After taking the reward nuggets box:
+	say "[if the player is clueless]The box rattles as you pick it up[otherwise]The token dispenser hums as you access it[end if]. [run paragraph on]";
+	if Rover is not in the location:
+		say "[Rover ] [if the player is clueless]is suddenly standing next to you, eyes wide open, and fixed on the box of treats[otherwise]arrives immediately and enthusiastically awaits neural conditioning[end if].";
+		now Rover is in the location;
+	otherwise:
+		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if]."
+
 The clueless-name of the reward nuggets box is "small box of liver-flavored reward nuggets". Understand "small" and "box" and "liver" and "flavor" and "reward" and "nugget" and "nuggets" as the reward nuggets box. The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "token" and "dispenser" as the reward nuggets box-proxy.
 
 The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" and "nuggets" and "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them.". The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural" and "net" and "reinforcement" and "token" and "positive" and "feedback" as the dog treat-proxy.
 
-Instead of eating the dog treat:
-	say "[if the player is clueless]The thought of eating anything liver-flavored puts you off[otherwise]The checksum on Rover's reward tokens is not valid within your neural net[end if]."
+Before taking the dog treat:
+	if the dog treat is not in the reward nuggets box:
+		say "[if the player is clueless]You haven't given Rover the last dog treat you took out of the box[one of], and you don't want to find them all over the cottage a few months from now when your neurotically fastidious mother shows up on short notice[or][stopping][otherwise]A neural token has already been checked out[end if].";
+		the rule succeeds;
+	if the player does not carry the reward nuggets box: 
+		if player is not able to see the reward nuggets box:
+			say "You'll have to find the [if the player is clueless]box of dog treats[otherwise]token dispenser[end if] first.";
+			the rule succeeds;
+		otherwise:
+			say "(first [if the player is clueless]snatching[otherwise]accesing[end if] [the reward nuggets box])[command clarification break]".
+
 
 The kitchen floor is a scenery in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder" and "girders" and "strut" and "struts" and "mesh" and "metal" and "hull" and "inner" as the kitchen floor-proxy.
 
 Section Bathroom
 
 The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter and above it you[apostrophe]ve mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
-
-After going towards the bathroom:
-	if the bathroom is not really-visited and the Second Sim is happening:
-		now the bathroom is really-visited;
-		let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
-		say "[metatext in metaspeak]".
 		
 Instead of going towards or exiting when the player is in the bathroom:
 	if the player carries the toothbrush or the player carries the plastic box:
