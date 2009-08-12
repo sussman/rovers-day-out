@@ -506,7 +506,7 @@ Rover and walkies:
 [ok] Rover won't go walkies until he's fed (i.e., until he's not hungry and not thirsty)
 * As soon as the landing sequence is over (i.e., toilet flushed), Rover bark/make a fuss over the front door until the player opens it. At that point, Rover may only go out if food/water is replete.
 [ok, if the ship has landed and rover hasn't had water/food, he'll tap on his bowl when the player enters the kitchen] if Rover hasn't eaten by this point, he becomes very directive about being fed/watered.
-	[? will Rover drink from the toilet? that doesn't really work in terms of analogy]
+[? will Rover drink from the toilet? that doesn't really work in terms of analogy -- no]
 [ok, fiddling with the front door get's Rover's attention, but he'll wander back to the kitchen if he still wants food/water] When the player attempts to open the front door, Rover will get excited and jump around. 
 
 Rover and other objects:
@@ -545,3 +545,7 @@ other:
 - standing when already out of bed is interpreted as exiting (and standing in bathroom exits it, etc.)
 - is flushing toilet still standing the player up?
 - before rule to allow pulling flapper valve to redirect to raise flapper valve, or whatever.
+- divert turn on soap/shampoo to press it.
+- explanatory text for turn on/off shower.
+- when egg is cooked, change its clueless name to cooked
+- inhibit fussing around the door during real thing if we've already got the egg and the probe.
