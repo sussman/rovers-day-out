@@ -498,16 +498,16 @@ Some thoughts about Rover's behavior as an agent.
 Rover and feeding:
 [ok] When food/water is transferred to a bowl, Rover should come to the kitchen if he's thirsty or hungry.
 [ok] When the fridge is opened, Rover should come into the kitchen to see what is going on, even if he's not hungry. After all, good stuff comes out of the fridge, and even if he's full, human food might be interesting.
-* When the box of treats is picked up, it should rattle a bit, and Rover should come to see what's going on. As long as the player is carrying the treats, Rover will follow the player around, hoping to get one. The box of treats is bottomless.
-* If Rover doesn't get a treat after following the ACU around for a while, he'll do a trick to try to earn one.
-* Rover is somewhere between ecstatic and euphoric after receiving a treat. Luckily, E is the most popular letter in English, which affords us considerable latitude within that range.
+[ok] When the box of treats is picked up, it should rattle a bit, and Rover should come to see what's going on. As long as the player is carrying the treats, Rover will follow the player around, hoping to get one. The box of treats is bottomless.
+[ok, made a random action of Rover when he's looking at the carried treat box] If Rover doesn't get a treat after following the ACU around for a while, he'll do a trick to try to earn one.
+[ok] Rover is somewhere between ecstatic and euphoric after receiving a treat. Luckily, E is the most popular letter in English, which affords us considerable latitude within that range.
 
 Rover and walkies:
-* Rover won't go walkies until he's fed (i.e., until he's not hungry and not thirsty)
-* As soon as the landing sequence is over (i.e., toilet flushed), Rover should escalate urgency about going out.
-	* if Rover hasn't eaten by this point, he becomes very directive about being fed/watered.
+[ok] Rover won't go walkies until he's fed (i.e., until he's not hungry and not thirsty)
+* As soon as the landing sequence is over (i.e., toilet flushed), Rover bark/make a fuss over the front door until the player opens it. At that point, Rover may only go out if food/water is replete.
+[ok, if the ship has landed and rover hasn't had water/food, he'll tap on his bowl when the player enters the kitchen] if Rover hasn't eaten by this point, he becomes very directive about being fed/watered.
 	[? will Rover drink from the toilet? that doesn't really work in terms of analogy]
-* When the player attempts to open the front door, Rover will get excited and jump around. 
+[ok, fiddling with the front door get's Rover's attention, but he'll wander back to the kitchen if he still wants food/water] When the player attempts to open the front door, Rover will get excited and jump around. 
 
 Rover and other objects:
 [ok] when food/water bowl placed on floor, Rover comes in
@@ -530,13 +530,18 @@ Rover and Back on Mars
 
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
 
+* Rover general description self/other
+
 =====
 other:
 - disable get all.
-- make sure player will not walk into shower with the flight suit on
+- make sure player will not walk into shower carrying stuff.
 - hints about being naked/cold if the suit is off.
 - rule to handle encounter with naive maintenance droid if naked at time of encounter.
 - revise the gimbal lock puzzle 
-- would make sense to 
-- disable inventory description of the treat box
+- would make sense to disable inventory description of the treat box
 - if left alone with the treat box, Rover should do what comes naturally.
+- instead of eating the dog treat....
+- standing when already out of bed is interpreted as exiting (and standing in bathroom exits it, etc.)
+- is flushing toilet still standing the player up?
+- before rule to allow pulling flapper valve to redirect to raise flapper valve, or whatever.
