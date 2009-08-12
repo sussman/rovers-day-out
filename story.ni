@@ -254,11 +254,11 @@ The BSOD-window is a g-window.   The type of the g-window is g-text-buffer. The 
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
-	wait for any key;
+	await keystroke;
 	open up BSOD-window;
 	move focus to BSOD-window, clearing the window;
 	say "[second custom style]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue."; 
-	wait for any key;
+	await keystroke;
 	shut down BSOD-window;
 	return to main screen;
 	clear the screen.	
@@ -702,7 +702,7 @@ After going towards when the player is the ACU:
 				now the counter is discussed;
 				let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
 				say "[metatext in metaspeak]";
-			if the landing_pid is not zero and (Rover is hungry or Rover is thirsty):
+			if the landing_pid is not zero and (Rover is hungry or Rover is thirsty) and Rover is in the kitchen:
 				if Rover is hungry:
 					if the holder of the food bowl is the location:
 						say "[Rover] taps conspiratorily on his [food bowl].";
@@ -1041,7 +1041,8 @@ Section Reorienting-test version
 Understand "reorient" as reorienting.
 		
 Report reorienting:
-	say "The player is now [if player is self-aware]self-aware[otherwise]clueless[end if].";
+	let metatext be "(The player is now [if player is self-aware]self-aware[otherwise]clueless[end if])";
+	say "[metatext in metaspeak]".
 	
 Instead of attacking the chain: [consider leaving something like this in the game]
 	if the chain is intact:
@@ -1167,7 +1168,8 @@ To Setup the World: [explictly set initial conditions]
 	now the dog chow bag is in the cabinet;
 	now the dog food is in the dog chow bag;
 	now the reward nuggets box is in the cabinet;
-	now the dog treat is in the reward nuggets box.
+	now the dog treat is in the reward nuggets box;
+	now the living room is not visited-during-havoc.
 	
 Section Restore the World
 
@@ -1706,7 +1708,7 @@ Instead of going towards or exiting when the player is in the kitchen:
 	if the player carries the food bowl or the player carries the water bowl or the player carries the dog chow bag or the player carries the white egg:
 		if the player carries the dog chow bag:
 			say "[if the player is clueless]It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a bag of dog food, you put it back in the cabinet[otherwise]Instead of contaminating the ship with thermoisotope, you put the fuel conduit back in the vault before switching out of engineering[end if]. [run paragraph on]";
-			move the dog food to the food bowl;
+			move the dog chow bag to the cabinet;
 		if the player carries the white egg:	
 			say "[if the player is clueless]Carrying a fragile egg around the cottage is surely asking for disaster. You lay it back in the fridge before walking out of the kitchen[otherwise]You place the He-4 back into the cryochamber before switching out of engineering[end if].[run paragraph on]";
 			move the white egg to the old fridge;
@@ -2156,7 +2158,7 @@ The clueless-name of the dog chow bag is "20 kilo bag of dog chow". Understand "
 Does the player mean eating the dog food:
 	it is very likely.
 
-The clueless-name of the dog food is "doggie kibbles". Understand "kibble" and "kibbles" and "doggie" and "chow" and "dog" as dog food. The aware-name of the dog food is "polonium 210 pellets". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210". The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
+The clueless-name of the dog food is "doggie kibbles". Understand "kibble" and "kibbles" and "doggie" and "chow" and "dog" as dog food. The aware-name of the dog food is "polonium 210 pellets". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210." The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" and "210" and "radionuclide" and "isotope" and "pellet" and "pellets" as the dog food-proxy.
 
 Before eating dog food:
 	say "[if the player is clueless]Eww. Yech. So not[otherwise]Po-210 is not a suitable fuel source for the Valkyrie. The limited quantity, and its slow rate of heat production would not significantly contribute to the ship's power budget[end if].";
@@ -3401,8 +3403,8 @@ Every turn:
 		update prompt;
 	[avoid penalizing time for non-actions, a nuance]
 	if the current action is taking inventory or the current action is looking:
-		change the time of day to 1 minute before the time of day.
-
+		change the time of day to 1 minute before the time of day;
+			
 To update prompt:
 	if the player is self-aware:
 		now depth is the number of entries of shells;
@@ -3453,6 +3455,11 @@ When Bedtime ends:
 		now bedtime-dream-sequence-complaint is true;
 	if First Sim is happening:
 		now arm-numb is 1.
+		
+Before going towards during Bedtime:
+	say "You're not quite oriented enough to set of in any particular direction, but at least you can summon the energy to get up.";
+	try exiting;
+	the rule succeeds.
 		
 Instead of doing something with something (called the item) during Bedtime:
 	if the futon encloses the item or the item is the futon:
@@ -3667,9 +3674,17 @@ When Second Sim begins:
 Every turn when the Second Sim is happening and the landing_pid is not 0:
 	if the player is in the living room and the living room is not visited-during-havoc:
 		now the living room is visited-during-havoc;
-		[TODO: programmed in either here, or within Rover object: his behavior -- either bouncing around near the door if he is full, or indicating that he needs to be fed before going out]
 		let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
-		say "[metatext in metaspeak]".
+		say "[metatext in metaspeak]";
+	fuss around door.
+		
+To fuss around door:
+	if Rover is in the living room and the living room is visited-during-havoc:
+		if a random chance of one in two succeeds:
+			if the player is in the living room:
+				say "[Rover] [one of] sniffs[or] paws at[at random] [the front door].";
+			otherwise:
+				say "From the [if the player is clueless]living room[otherwise]cargo bay[end if], you hear [Rover] [one of]sniffing around[or]scratching at[at random] [the front door]."
 
 When Second Sim ends:
 	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
@@ -3695,7 +3710,12 @@ Landing Sequence ends when the landing_pid is not zero.
 When the Landing Sequence ends:
 	if the Second Sim is happening:
 		let metatext be "David: That’s it. One long burn down to the planet’s surface.[line break]Janet: And then, the ACU just needs to deploy the Rover.";
-		say "[metatext in metaspeak]".
+		say "[metatext in metaspeak]";
+	if Rover is in the location:
+		say "Rover runs out of the bathroom, and you hear him jumping around hear the front door.";
+	otherwise:
+		say "From the living room, Rover gives a short bark and scratches at the front door.";
+	now Rover is in the living room.
 	
 Chapter Real Thing
 	
@@ -3718,6 +3738,11 @@ When Real Thing begins:
 	now the alarm clock is in Limbo;
 	move the player to the living room, without printing a room description.
 	
+Every turn when the Real Thing is happening and the landing_pid is not 0:
+	if the player is in the living room and the living room is not visited-during-havoc:
+		now the living room is visited-during-havoc;
+	fuss around door.
+	
 Chapter Walkies
 
 Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and the Real Thing is happening. Walkies ends when Rover is in the Living Room.
@@ -3725,7 +3750,7 @@ Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and
 When Walkies begins:
 	if Rover carries the delicious bone:
 		now the delicious bone is in the living room;
-	say "You go bounding out the front door, full of energy.";
+	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, full of energy.";
 	now the player is Rover;
 	try looking.
 	
@@ -3733,18 +3758,30 @@ When Walkies ends:
 	now the front door is closed;
 	now Janet wears the flight suit;
 	if Rover carries the white egg:
-		say "You enter your home and lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.";
+		say "You enter your home and lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.[paragraph break]";
 		now the white egg is in the Living Room;
+		shift to Janet's perspective;
 	otherwise if Rover carries the delicious bone:
 		say "You run into the living room and jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]She stares at the bone and appears frozen.[paragraph break]";
 		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND LINE[paragraph break]";
 		say "Rover wags his tails and gnaws on his bone.[paragraph break]You rub his head, distantly, as strange thoughts sweep through your consciousness. You wonder what would happen if the Valkyrie mission failed. What if, during the landing sequence, the ship were buffeted by the planet's particulate matter being torn away by the immense gravity of its star? In that case, critical systems might be damaged. Systems like the relatively fragile ansible antenna. There is no back-up ansible antenna. How would the ACU cope with a situation like that? The ACU was designed for a lot of contingencies, but not that one. What would you do? What would you do if you were the ACU?[paragraph break]Your glance falls on your flight suit, and suddenly the question is no longer rhetorical.";
-		now the player is the ACU;
-		try reorienting;
-		the rule succeeds;
-	now the player is the ACU.
+	otherwise if Rover carries the pillow:
+		say "You walk in the front door, hop up on the futon and drop the pink pillow. You had thought about playing with the pillow more, but on the way home, it got soaked with drool and tasted bad, so you decide to make a present of it to Janet.[paragraph break]You jump down from the futon before a surprised Janet can yell at you. Standing back and admiring your work, you marvel that somehow the pink of the pillow and purple of the futon don't clash.[paragraph break]";
+		now the pillow is on the futon;
+		shift to Janet's perspective;
+	otherwise:
+		say "You duck back into the living room and Janet closes the front door behind you.[paragraph break]";
+		shift to Janet's perspective;
+	now the player is the ACU;
+	try reorienting;
+	now the player is the ACU;
+	try looking.
+
+To shift to Janet's perspective:
+	say "Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again."
 	
 Instead of looking when Rover is the player and Rover is in the living room:
+	[suppress the look that normally occurs on entering the living room; it happens later, but from the ACU's perspective]
 	do nothing.
 
 Chapter Boarding Party
