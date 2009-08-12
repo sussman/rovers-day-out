@@ -696,6 +696,7 @@ After going towards when the player is the ACU:
 			otherwise:
 				now Rover is in the location;
 				say "[Rover] trundles along behind you, his attention riveted to [the reward nuggets box].";
+		now Rover is busy;
 	if the location is:
 		-- kitchen:
 			if the counter is not discussed and the Second Sim is happening:
@@ -706,9 +707,11 @@ After going towards when the player is the ACU:
 				if Rover is hungry:
 					if the holder of the food bowl is the location:
 						say "[Rover] taps conspiratorily on his [food bowl].";
+						now Rover is busy;
 				otherwise:
 					if the holder of the water bowl is the location:
 						say "[Rover] gently nudges the [water bowl] with his [if the player is clueless]nose[otherwise]forward sensor array[end if].";
+						now Rover is busy;
 		-- bathroom:
 			if the bathroom is not really-visited and the Second Sim is happening:
 				now the bathroom is really-visited;
@@ -1680,7 +1683,7 @@ Instead of opening the front door when the front door is closed:
 	if the Real Thing is happening:
 		move Rover to the Front Yard. [signaling the beginning of walkies scene]
 	
-Rover is a male animal. He is in the living room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. 
+Rover is a male animal. He is in the living room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. Rover can be busy. Rover is not busy.
 
 The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]Y ou're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the delicious bone and Rover is awake] He is chewing a piece of the Musashi-5 space probe.[otherwise if rover has the delicious bone and Rover is not awake] Even in his sleep, he is hanging on tightly to what he thinks is a juicy bone.[end if][if rover is not awake and audio is switched off] If your audio sensors were on, you are sure you'd hear him snoring loudly.[otherwise if rover is not awake and audio is switched on]He snores loudly, his jowls fluttering with each breath.[end if]". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
 
@@ -1793,6 +1796,7 @@ After examining the old fridge for the first time:
 		say "[metatext in metaspeak]";
 		
 After opening the old fridge:
+	[now Rover is busy; - sounds more natural to not inhibit other same round actions]
 	if Rover is in the location:
 		say "[Rover] looks up when he hears [the old fridge] open. [run paragraph on]";
 	otherwise:
@@ -1922,37 +1926,12 @@ To say emptyness of (vessel - a bowl):
 	
 After dropping a bowl (called the vessel):
 	if Rover is not in the location:
-		if Rover is hungry or Rover is thirsty:
-			if the player is clueless:
-				say "[one of][Rover] runs into the kitchen, his rear end making a wide, sliding turn on the living room's hardwood floor as he rounds the corner[or][Rover] clambers around the corner from the living room, and stops in front of the bowls[or]Hearing the clank of [the vessel] as you put it down, [Rover] appears in the kitchen, licking his lips[or][Rover] trots into the kitchen when he hears the metal bowl clink as you set it down[or][Rover] strolls into the kitchen to investigate the promising sound of clinking dog bowls[or][Rover] arrives in the kitchen, panting from exertion[or]Putting the dog bowl down is tantamount to yelling [quotation mark]Here boy![quotation mark], as evidenced by the sudden appearance of [Rover] in the kitchen[at random]. [run paragraph on]";
-			otherwise:[aware]
-				say "[one of][Rover] enters the engineering section at full throttle, his tractors exceeding the cargo bay flooring's coefficient of dynamic friction as he rounds the corner[or][Rover] jets around the corner from the cargo bay and screeches to a halt near the transfer system[or]Receiving notification from [the vessel], [Rover] drives into the engineering section[or][Rover] trundles into the engineering section when he receives automatic notification that [the vessel] is ready for transfer[or][Rover]'s head swivels as he scans engineering, and stops when he locks on [the vessel][at random]. [run paragraph on]";		
-			now Rover is in the kitchen;	
-	if Rover is thirsty:
-		if the water bowl is full:
-			if the player carries the water bowl:
-				say "[if the player is clueless][Rover] stares longingly at the [water bowl][otherwise][Rover] is unable to access[the vessel] because you have not deselected it[end if]. [run paragraph on]";
-			otherwise: [presumes water bowl is on floor]
-				say "[Rover][if the player is clueless][one of]'s tongue is a blur as he laps up the water, draining the water bowl in seconds[or] slurps the water bowl dry[or] must have been thirsty. One moment the water bowl is full; the next, it's bone dry[or] drinks the water[at random][otherwise] approaches the coolant transfer device and makes a positive seal. Coolant flows quickly cross the connection, and then the device uncouples and retracts to its storage position[end if]. [run paragraph on]";	
-				move the 	tap water to Limbo;
-				now Rover is not thirsty;
-		otherwise:[water bowl not full]
-			say "[Rover] [if the player is clueless]eyes the empty [water bowl] thirstily[otherwise]hopefully scans [the water bowl], but immediately determines that it is empty[end if]. [run paragraph on]";		
-	otherwise:[not thirsty]
-		say "[Rover]'s glance falls first upon [the water bowl], but after a quick inspection he realizes that it is not worthy of his attention. [run paragraph on]";
-	if Rover is hungry:
-		if the food bowl is full:
-			if the player carries the food bowl:
-				say "[if the player is clueless]A famished-appearing [Rover] gazes at [the food bowl] just out of his reach[otherwise]You must deselect [the vessel] to release the lock and allow access by [Rover]";
-			otherwise:
-				say "[if the player is clueless][one of]His head disappears into the food bowl. It is hard to believe that the sounds generated are coming from a dog rather than some sort of industrial mining rig. When his head lifts, the bowl is not only empty, but has been buffed to a mirror finish[or]He makes short work of the food in his bowl[or]He gulps down the food, without pausing for niceties such as breathing[or]He (gulp) eats (gulp) the (gulp) food (gulp) as (gulp) quickly (gulp) as (gulp) is (gulp) caninely (gulp) possible (burp)[at random][otherwise]The remote operations vehicle backs up to the thermal isotope deliver system and takes on a full load of glowing, red hot polonium 210 nodules[end if][run paragraph on]";
-				move the dog food to Limbo;
-				now Rover is not hungry;
-		otherwise:[food bowl not full]
-			say "He then [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in the soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly when he sees the[at random] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[at random][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if]";
-	otherwise:[not hungry]
-		say "[if the player is clueless]He [one of]gives [the food bowl] but a cursory glance[or]barely takes note of [the food bowl][or]completely ignores [the food bowl][at random][otherwise]Replete for radioisotopes, he ignores [the food bowl][end if]";
-	say ".";
+		if the player is clueless:
+			say "[one of][Rover] runs into the kitchen, his rear end making a wide, sliding turn on the living room's hardwood floor as he rounds the corner[or][Rover] clambers around the corner from the living room, and stops in front of the bowls[or]Hearing the clank of [the vessel] as you put it down, [Rover] appears in the kitchen, licking his lips[or][Rover] trots into the kitchen when he hears the metal bowl clink as you set it down[or][Rover] strolls into the kitchen to investigate the promising sound of clinking dog bowls[or][Rover] arrives in the kitchen, panting from exertion[or]Putting the dog bowl down is tantamount to yelling [quotation mark]Here boy![quotation mark], as evidenced by the sudden appearance of [Rover] in the kitchen[at random].";
+		otherwise:[aware]
+			say "[one of][Rover] enters the engineering section at full throttle, his tractors exceeding the cargo bay flooring's coefficient of dynamic friction as he rounds the corner[or][Rover] jets around the corner from the cargo bay and screeches to a halt near the transfer system[or]Receiving notification from [the vessel] alert system, [Rover] drives into the engineering section[or][Rover] trundles into the engineering section when he hears you deselect one of his transfer systems[or][Rover]'s head swivels as he scans engineering, and stops when he locks on [the vessel][at random].";		
+		now Rover is in the kitchen;	
+		now Rover is busy.
 	
 Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with. 
 
@@ -2172,11 +2151,13 @@ After taking the reward nuggets box:
 		say "[Rover ] [if the player is clueless]is suddenly standing next to you, eyes wide open, and fixed on the box of treats[otherwise]arrives immediately and enthusiastically awaits neural conditioning[end if].";
 		now Rover is in the location;
 	otherwise:
-		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if]."
+		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if].";
+	now Rover is busy.
 		
 Instead of giving a dog treat to Rover:
 	now the dog treat is in the reward nuggets box;
-	say "[Rover ] [if the player is clueless][one of]nearly takes your hand off in rush to swallow the treat[or]approaches the treat silently, with his head bent and eyes half closed, like a supplicant before the altar. With a look of deep reverence he takes the treat in his mouth and backs away[or]snaps his tongue out like a frog and whips the treat out of your hand from two meters away. It's just something he does[or]does a slow motion dive and twist in mid-air, gracefully arcing above you and swabbing your hand liberally with his broad, moist tongue. The treat has disappeared down his gullet by the time he lands[or]gobbles down the treat and then pretends indignantly that he hasn't received anything at all[or]carefully lifts the treat out of your hand using a toothy sidewise grip[or]gobbles down the treat[or]wolfs down the dog biscuit[or]polishes off his dog treat[or]swallows the treat without bothering to chew it at all[stopping]. A series of emotions wash over Rover's face, but finally it settles into an expression of [one of]ecstasy[or]exhiliration[or]exultation[or]elation[or]enchantment[or]extreme satisfaction[or]enjoyment[or]euphoria[at random][otherwise]internalizes [the dog treat][end if]."
+	say "[Rover ] [if the player is clueless][one of]nearly takes your hand off in rush to swallow the treat[or]approaches the treat silently, with his head bent and eyes half closed, like a supplicant before the altar. With a look of deep reverence he takes the treat in his mouth and backs away[or]snaps his tongue out like a frog and whips the treat out of your hand from two meters away. It's just something he does[or]does a slow motion dive and twist in mid-air, gracefully arcing above you and swabbing your hand liberally with his broad, moist tongue. The treat has disappeared down his gullet by the time he lands[or]gobbles down the treat and then pretends indignantly that he hasn't received anything at all[or]carefully lifts the treat out of your hand using a toothy sidewise grip[or]gobbles down the treat[or]wolfs down the dog biscuit[or]polishes off his dog treat[or]swallows the treat without bothering to chew it at all[stopping]. A series of emotions wash over Rover's face, but finally it settles into an expression of [one of]ecstasy[or]exhiliration[or]exultation[or]elation[or]enchantment[or]extreme satisfaction[or]enjoyment[or]euphoria[at random][otherwise]internalizes [the dog treat][end if].";
+	now Rover is busy.
 	
 The clueless-name of the reward nuggets box is "small box of reward nuggets". Understand "small" and "box" and "liver" and "flavor" and "reward" and "nugget" and "nuggets" as the reward nuggets box. The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "token" and "dispenser" as the reward nuggets box-proxy.
 
@@ -3421,6 +3402,39 @@ Every turn:
 	[avoid penalizing time for non-actions, a nuance]
 	if the current action is taking inventory or the current action is looking:
 		change the time of day to 1 minute before the time of day;
+	[Purposeful and conditionally triggered Rover actions]
+	if the holder of Rover is the holder of the strand of dental floss:
+		move the dental floss to Limbo;
+		if Rover is in the location:
+			say "[Rover] [if the player is clueless]finds the strand of dental floss that was lying on the floor and makes a snack of it[otherwise]decoheres the linkage keypair that was unbonded[end if].";
+			now Rover is busy;
+	if the holder of Rover is the holder of the food bowl and Rover is hungry:
+		if the food bowl is full:
+			now Rover is not hungry;
+			move the dog food to Limbo;
+			if Rover is in the location:
+				say "[if the player is clueless]Rover[one of]'s head disappears into the food bowl. It is hard to believe that the sounds generated are coming from a dog rather than some sort of industrial mining rig. When his head lifts, the bowl is not only empty, but has been buffed to a mirror finish[or] makes short work of the food in his bowl[or] gulps down the food, without pausing for niceties such as breathing[or] (gulp) eats (gulp) the (gulp) food (gulp) as (gulp) quickly (gulp) as (gulp) is (gulp) caninely (gulp) possible (burp)[at random][otherwise]The remote operations vehicle backs up to the thermal isotope deliver system and takes on a full load of glowing, red hot polonium 210 nodules[end if].[paragraph break]";
+				now Rover is busy;
+		otherwise:[bowl wasn't full]
+			if Rover is in the location and a random chance of 1 in 3 succeeds:
+				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in his soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly and frowns at his[at random] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[at random][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if].[paragraph break]";
+				now Rover is busy;		
+	if the holder of Rover is the holder of the water bowl and Rover is thirsty:
+		if the water bowl is full:
+			now Rover is slaked;
+			move the tap water to Limbo;
+			if Rover is in the location:
+				say "[Rover][if the player is clueless][one of]'s tongue is a blur as he laps up the water, draining the water bowl in seconds[or] slurps the water bowl dry[or] must have been thirsty. One moment the water bowl is full; the next, it's bone dry[or] drinks the water[at random][otherwise] approaches the coolant transfer device and makes a positive seal. Coolant flows quickly cross the connection, and then the device uncouples and retracts to its storage position[end if].[paragraph break]";
+				now Rover is busy;
+		otherwise:[bowl wasn't full]
+			if Rover is in the location and a random chance of 1 in 3 succeeds:
+				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless]eyes the empty [water bowl] thirstily[otherwise]hopefully scans [the water bowl], but immediately determines that it is empty[end if].[paragraph break]";
+				now Rover is busy;
+	[Rover stage business - through these conditions, it does not occur during bedtime, or after the ACU becomes aware; this is intended to be the last line printed in a turn. The Rover Busy flag is meant to block his random actions, and can be set when he is doing anything more interesting. Otherwise, who knows if his specific action and his random action would be incongruent. Rover Busy is reset at the end of every turn.]
+	if the player is the ACU and the ACU is clueless and Rover is in the location and the noun is not Rover and the drapes are open and Rover is not busy:
+		if a random chance of 1 in 4 succeeds:
+			say "Random Rover Item.";
+	now Rover is not busy.		
 			
 To update prompt:
 	if the player is self-aware:
