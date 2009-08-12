@@ -702,6 +702,13 @@ After going towards when the player is the ACU:
 				now the counter is discussed;
 				let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
 				say "[metatext in metaspeak]";
+			if the landing_pid is not zero and (Rover is hungry or Rover is thirsty):
+				if Rover is hungry:
+					if the holder of the food bowl is the location:
+						say "[Rover] taps conspiratorily on his [food bowl].";
+				otherwise:
+					if the holder of the water bowl is the location:
+						say "[Rover] gently nudges the [water bowl] with his [if the player is clueless]nose[otherwise]forward sensor array[end if].";
 		-- bathroom:
 			if the bathroom is not really-visited and the Second Sim is happening:
 				now the bathroom is really-visited;
@@ -1143,6 +1150,7 @@ To Setup the World: [explictly set initial conditions]
 	now the ACU is dry;
 	now the ACU is prepoop;
 	now Rover is hungry;
+	now Rover is thirsty;
 [ship orientation]
 	reset the yoke;
 [other objects with specific properties]
@@ -1155,10 +1163,13 @@ To Setup the World: [explictly set initial conditions]
 	now the futon is not folded;
 	now the white egg is not cooked;
 	now the white egg is not broken;
-	now the flapper valve is closed.
+	now the flapper valve is closed;
+	now the dog chow bag is in the cabinet;
+	now the dog food is in the dog chow bag;
+	now the reward nuggets box is in the cabinet;
+	now the dog treat is in the reward nuggets box.
 	
 Section Restore the World
-
 
 To Restore The World: [programmatically reset by class]
 [reset all rooms visited]
@@ -1641,17 +1652,32 @@ To say front door status:
 			say "Outside, it looks like a nice day".  
 			
 Instead of opening the front door when the front door is closed:
-	if the landing_pid is not zero:
-		if the player is clueless:
-			say "[one of]You open the front door, confident that Rover will walk about the park and then return. Rover hears the door open and is out in a flash[or]Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[at random].";
-		otherwise: [aware]
-			say "[one of]The ROVER deploys to the planet surface through the cargo bay doors[or]ROVER spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship[or]ROVER oscillates his aft sensor array at high frequency and rolls down the cargo ramp, disappearing into the sand storm[at random].";
-		if the Real Thing is happening:
-			move Rover to the Front Yard;
-		now the front door is open;
+	if the landing_pid is zero:[i.e., ship not down yet]
+		say "[if the player is clueless]If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first[otherwise]ROVER release is not the current task[end if].";
+		the rule succeeds;
+	[Ship has landed, attempt to let Rover out for walkies]
+	if Rover is not in the living room:
+		say "[if the player is clueless]Hearing the door jiggle, Rover [one of]bounds[or]wanders[or]strolls[or]meanders[or]tromps[or]traipses[at random] into the living room to see what is going on[otherwise]Alerted by the change in cargo bay door status, ROVER rolls into cargo bay[end if]. [run paragraph on]";
+		now Rover is in the living room;
 	otherwise:
-		say "[if the player is clueless]If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first[otherwise]ROVER release is not the current task[end if]."
-		
+		say "[Rover] [if the player is clueless]looks up when he hears the door begin to open[otherwise]scans the cargo bay door begins to open[end if]. [run paragraph on]";
+	if Rover is thirsty or Rover is hungry:
+		say "Instead of ";
+		if the player is clueless:
+			say "running out to play in the park, though, he [one of]rolls his eyes[or]gives a quick [quotation mark]Woof.[quotation mark][or]shakes his head[or]gives you a knowing nod[or]looks at you like you forgot something important[stopping] and walks to the kitchen. You close the front door to prevent dust from blowing in.";
+		otherwise:
+			say "deploying through the cargo bay doors to the planet's surface, he spins on his tractors and drives into the engineering section. His telemetry reads [if Rover is hungry]critically low[otherwise]nominal[end if] fuel reserves and a [if Rover is thirsty]critically low[otherwise]nominal[end if] coolant level. Acknowledging this, you resecure the cargo bay doors.";
+		now Rover is in the kitchen;
+		the rule succeeds;
+	[Ship is on the ground, ROVER is prepped to go out]
+	if the player is clueless:
+		say "[one of]You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash[or]Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[at random].";
+	otherwise: [aware]
+		say "[Rover] [one of]deploys to the planet surface through the cargo bay doors[or]spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship[or]oscillates his aft sensor array at high frequency and rolls down the cargo ramp, disappearing into the sand storm[at random].";
+	now the front door is open; [signaling the end of second sim scene]
+	if the Real Thing is happening:
+		move Rover to the Front Yard. [signaling the beginning of walkies scene]
+	
 Rover is a male animal. He is in the living room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. 
 
 The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the delicious bone and Rover is awake] He is chewing a piece of the Musashi-5 space probe.[otherwise if rover has the delicious bone and Rover is not awake] Even in his sleep, he is hanging on tightly to what he thinks is a juicy bone.[end if][if rover is not awake and audio is switched off] If your audio sensors were on, you are sure you'd hear him snoring loudly.[otherwise if rover is not awake and audio is switched on]He snores loudly, his jowls fluttering with each breath.[end if]". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
@@ -2145,8 +2171,15 @@ After taking the reward nuggets box:
 		now Rover is in the location;
 	otherwise:
 		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if]."
+		
+Instead of giving a dog treat to Rover:
+	now the dog treat is in the reward nuggets box;
+	say "[Rover ] [if the player is clueless][one of]nearly takes your hand off in rush to swallow the treat[or]approaches the treat silently, with his head bent and eyes half closed, like a supplicant before the altar. With a look of deep reverence he takes the treat in his mouth and backs away[or]snaps his tongue out like a frog and whips the treat out of your hand from two meters away. It's just something he does[or]does a slow motion dive and twist in mid-air, gracefully arcing above you and swabbing your hand liberally with his broad, moist tongue. The treat has disappeared down his gullet by the time he lands[or]gobbles down the treat and then pretends indignantly that he hasn't received anything at all[or]carefully lifts the treat out of your hand using a toothy sidewise grip[or]gobbles down the treat[or]wolfs down the dog biscuit[or]polishes off his dog treat[or]swallows the treat without bothering to chew it at all[stopping]. A series of emotions wash over Rover's face, but finally it settles into an expression of [one of]ecstasy[or]exhiliration[or]exultation[or]elation[or]enchantment[or]extreme satisfaction[or]enjoyment[or]euphoria[at random][otherwise]internalizes [the dog treat][end if]."
+	
+The clueless-name of the reward nuggets box is "small box of reward nuggets". Understand "small" and "box" and "liver" and "flavor" and "reward" and "nugget" and "nuggets" as the reward nuggets box. The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "token" and "dispenser" as the reward nuggets box-proxy.
 
-The clueless-name of the reward nuggets box is "small box of liver-flavored reward nuggets". Understand "small" and "box" and "liver" and "flavor" and "reward" and "nugget" and "nuggets" as the reward nuggets box. The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "token" and "dispenser" as the reward nuggets box-proxy.
+Does the player mean taking reward nuggets box:
+	it is likely.
 
 The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" and "nuggets" and "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them.". The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural" and "net" and "reinforcement" and "token" and "positive" and "feedback" as the dog treat-proxy.
 
@@ -3098,7 +3131,7 @@ index		description		comment
 3	"A pudgy puppy hastily rounds a corner, sliding awkwardly on the polished dormitory floor. Behind it, there are flashes of light, and a rolling cloud, a mixture of smoke and Martian atmosphere. As the above-ground structures are ripped apart and lose pressure, the shivering ball of white fur leaps into your arms, burying its snout in the fold of your elbow. The Earth missiles continue to pound the university, but cannot penetrate to this depth. Huddled under a sturdy desk, you pet the frightened dog and hug it tight."		"David: Do you always hit the snooze button so many times?[line break]Janet: Yeah. The clock has been broken for years -- I can't reset the alarm time. It always goes off at 05:30, but I don't have to be at the spaceport until 08:30. Luckily, this serves a useful purpose in the simulation. Minimal resources are expended on each wake cycle, but if there were a problem during the approach, the ACU would elevate to full op status rapidly."
 4	"Rover sniffs the air and tears away from the picnic blanket. You and Tomasz watch with surprise as he runs, for once, away from the food. Rover bounds over the hedges, howling wildly, and spooks a xihuahua which had been playing with a tiny red ball. The so-called [quotation mark]shaved rat[quotation mark] gulps an oversized portion of air, extends its membranous ears and flys across the park into the arms of a douty grey-haired woman with a cane. Rover picks up the ball triumphantly, ignoring the piercing wavetrain of yips and indignant scolding coming, respectively, from the xihuahua and its owner. Shaking her cane limply towards Rover, she admonishes in an a strong Earth accent [quotation mark]That mongrel should be on a leash![quotation mark] Her own, unleashed, uncollared neodog stares accusingly from the safety of her arms, its distensible ribs alternately inflating and deflating like bellows. [quotation mark]Your kind is ruining Mars, ignoring every law, dissing your elders! You never lived on the surface, you never don't know what you've got![quotation mark]. You try to give the ball back to her, but she pushes it away in disgust, [quotation mark]Kids. Meh.[quotation mark]"		"David: Hey, different dream sequence. Is it glitching?[line break]Janet: No, the ACU's dreams are heavily influenced by power-up state of the processor and internal noise.[line break]David: Good, I'd hate to think that we wasted two weeks of programming.[line break]Janet: I wouldn't say wasted.[line break]David: Huh? I didn't mean us.[line break]Janet: Cross you fingers and hope the whole thing doesn't crash again on the heat lamp."
 5	"The image of Tomasz blinks momentarily as the relay is handed off from ground station to ground station, trying to keep line of sight to Phobos. Behind him, you can see the tubular structure of the power station jutting over the edge of Stickley Crater. He is taking the news rather well, all things considered. Tomasz guesses your thoughts as you glance at your diamond engagement ring. [quotation mark]Don’t sweat it,[quotation mark]he says. [quotation mark]This whole rock is carbon, so plenty more where that came from.[quotation mark] There is blinding flash of light and the screen goes black."			"David: Is the ACU referring to me?[line break]Janet: As much as I’d like to say [quotation mark]yes[quotation mark], I don’t see how. The synaptic scans were frozen before we started seeing each other.[line break]David: Maybe you[apostrophe]ve had your eye on me for longer than you think.[line break]Janet: I wonder how many relationships have been ruined by armchair psychoanalysis?"
-6	"A dwarf emerges from under the kitchen sink, spilling dog chow all over the floor. He throws you a menacing look, pries the fridge open with a black rod, and snatches an egg off the shelf. Sand pours out of the fridge. [quotation mark]Hey,[quotation mark] you yell from the futon, [quotation mark]put that back[quotation mark]. You stop short, realizing that this sort of distraction is exactly why you haven’t completed your dissertation. You feel around under the futon, where you think you will have put the dissertation so you could find it in the past, and grab the stubby snout of a pig. The fleet-footed porcine slaps a fish into its ear, jumps into a dumbwaiter and disappears."			"David: That was surreal.[line break]Janet: And sometimes a cigar is just a cigar.[line break]David: Indeed."
+6	"An angry dwarf emerges from under the kitchen sink, spilling dog chow all over the floor. He throws you a menacing look, pries the fridge open with a black rod, and snatches an egg off the shelf. Sand pours out of the fridge. [quotation mark]Hey,[quotation mark] you yell from the futon, [quotation mark]put that back[quotation mark]. You stop short, realizing that this sort of distraction is exactly why you haven’t completed your dissertation. You feel around under the futon, where you think you will have put the dissertation so you could find it in the past, and grab the stubby snout of a pig. The fleet-footed porcine slaps a fish into its ear, jumps into a dumbwaiter and disappears."			"David: That was surreal.[line break]Janet: And sometimes a cigar is just a cigar.[line break]David: Indeed."
 7	"Even mildly drugged and reclining on an overstuffed couch in the MARSpace human resources office, it's hard to relax in the presence of the MARSpace political officer conducting the final interview. You didn't catch her name, probably because she never mentioned it. After three such interviews and six months of background check, what more could they want?  [paragraph break][quotation mark]Ms. Xiang, thank you for your cooperation. Your tests show no hint of disloyalty to the Republic or MARSpace. We hope you understand the need for these measures, particularly for personnel with access to the Valkyrie's command and control functions. Now that you are cleared, I can inform you that credible sources have warned that the project may have been infiltrated by[quotation mark]"	""
 
 Chapter Menus
@@ -3376,13 +3409,6 @@ To update prompt:
 		change the command prompt to "READY[if depth is greater than zero]([depth])[entry depth of shells][otherwise]>";
 	otherwise:
 		change the command prompt to ">".
-
-[	say "action: [current action][line break]"; 
-	say "action-name: [action-name part of the current action][line break]"; 
-	if the noun is something: 
-		say "noun: [noun][line break]"; 
-	if the second noun is something: 
-		say "second noun: [second noun][line break]"; ]
 		
 Book 2  Scenes
 
@@ -3578,12 +3604,18 @@ Every turn during Arm Hurts:
 
 Instead of doing something during Arm Hurts:
 	if arm-numb is greater than 36:
+		if the player is in the living room and the drapes are closed:
+			[otherwise, player couldn't get a good look at his arm and might miss the hint given by examining the arm]
+			if a random chance of one in three succeeds:
+				say "The strange sensation shoots like lightning up and down your left arm, which flails spastically becoming entangled briefly in the drapes and yanking them open.";
+				now the drapes are open;
+				the rule succeeds;
 		if the noun is left arm and the current action is examining, rubbing, or touching:
 			continue the action;
 		otherwise if the current action is memory-updating or waving hands:
 			continue the action;
 		otherwise:
-			say "[one of]You can't! Your arm hurts too much[or]Arrgghhh. Your left arm is driving you crazy[or]What is up with that left arm? Man, that's annoying[or]It's hard to think of anything besides your left arm which is really bugging you[or]What a weird feeling. That tingling sensation in your left arm is driving you to distraction[or]You try to ignore your left arm, but the strange feeling won't go away[or]Nothing you do gets your mind off your left arm[or]How are you supposed to get anything accomplished when you left arm feels so funky?[or]If your left arm would stop feeling so strange, you might be able to get something else done[at random].";
+			say "[one of]You can't! Your arm hurts too much[or]Arrgghhh. Your left arm is driving you crazy[or]What is up with that left arm? Man, that's annoying[or]It's hard to think of anything besides your left arm which is really bugging you[or]What a weird feeling. That tingling sensation in your left arm is driving you to distraction[or]You try to ignore your left arm, but the strange feeling won't go away[or]Nothing you do gets your mind off your left arm[or]You wonder how you are supposed to get anything accomplished when you left arm feels so funky[or]If your left arm would stop feeling so strange, you might be able to get something else done[at random].";
 			  [TOCONSIDER: Could always add more of these...]
 	otherwise:
 		continue the action.
@@ -3624,6 +3656,7 @@ Second Sim is a scene. Second Sim begins when the First Sim ends. Second Sim end
 When Second Sim begins:
 	Restore the World;
 	Setup the World;
+	now the drapes are closed;
 	now the ACU is asleep;
 	clear the screen;
 	now arm-numb is zero;
