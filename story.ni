@@ -3433,25 +3433,28 @@ Every turn:
 				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless]eyes the empty [water bowl] thirstily[otherwise]hopefully scans [the water bowl], but immediately determines that it is empty[end if].[paragraph break]";
 				now Rover is busy;
 	[Rover stage business - through these conditions, it does not occur during bedtime, or after the ACU becomes aware; this is intended to be the last line printed in a turn. The Rover Busy flag is meant to block his random actions, and can be set when he is doing anything more interesting. Otherwise, who knows if his specific action and his random action would be incongruent. Rover Busy is reset at the end of every turn.]
-	if the player is the ACU and the ACU is clueless and Rover is in the location and the noun is not Rover and the drapes are open and Rover is not busy:
-		if a random chance of 1 in 4 succeeds:
-			let stage business be a random number from 1 to 5;
-			if stage business is:
-				-- 1:	
-					say "[Rover] [if the player is clueless][one of]scratches his ears[or]rubs his nose[or]wags his tail as if amused by some random thought[or]nips at his own tail[or]looks around the room[or]is watching you[or]rolls and squirms back and forth on the floor trying to scratch an itch[or]turns suddenly, as if he might have seen a skwerrel[or]'s ears perk up, as if he hears something[or]'s tail bats back and forth[at random][otherwise][one of]recalibrates his spectrometer[or]clears his chemosensor intake filter[or]scans the room for thermal emissions[or]does a radiation scan[or]increases the gain of his external microphones[or]polishes the ball bearings on his interface hub[at random][end if].";
-				-- 2:
-					say "[Rover] [if the player is clueless][one of]looks guilty about something[or]seems happy about something[or]appears lost in thought[at random][otherwise]seems to be burning CPU cycles thinking about something, perhaps skwerrels[end if].";
-				-- 3:
-					let O be a random dog-relevant thing in the location;
-					if O is the player or O is Rover:
-						do nothing;
-					otherwise:
-						say "[Rover] [if the player is clueless][one of]looks at[or]sniffs[or]walks towards[at random][otherwise][one of]scans[or]rolls by[or]drives up to[at random][end if] [the O].";
-				-- 4:
-					say "test";
-				-- 5:
-					say "test";
-	now Rover is not busy.		
+	if the player is the ACU and the ACU is clueless and the noun is not Rover and the drapes are open and Rover is not busy:
+		if Rover is in the location:
+			if a random chance of 1 in 4 succeeds:
+				let stage business be a random number from 1 to 4;
+				if stage business is:
+					-- 1:[random fluff, part 1]	
+						say "[Rover] [one of]walks around the room, occasionally sniffing various spots on the floor[or]licks his front paws[or]dashes back and forth like a possessed dog for no apparent reason[or]prances past you at a convenient back-scratching distance[or] appears lost in thought[or]seems relaxed[or]exhales with contentment and rolls over, feet outstretched[in random order].";
+					-- 2:[random fluff, part 2]
+						say "[Rover] [one of]scratches his ears[or]rubs his nose[or]wags his tail as if amused by some random thought[or]nips at his own tail[or]smells his own butt[or]looks around the room[or]is watching you[or]yawns ferociously[or]rolls and squirms back and forth on the floor trying to scratch an itch[or]turns suddenly, as if he might have seen a skwerrel[or]'s ears perk up, as if he hears something[or]'s tail bats back and forth[or]stretches all the way forwards, and then all the way backwards[or]circles an area on the floor[or]stares at his own paws, entirely entranced[or]tucks his nose under his front paws[or]lies down with his front paws crossed[or]lies on his side[or]paces the room[or]struts around importantly[or]looks for a comfy spot to rest[in random order].";
+					-- 3:[non-specific interactions with environment]
+						let O be a random dog-relevant thing in the location;
+						if O is the player or O is Rover:
+							do nothing;
+						otherwise:
+							say "[Rover] [one of]looks at[or]sniffs[or]walks towards[or]paces back and forth, looking at[or]circles[or]lies down next to[or]cocks his head and ogles[in random order] [the O].";
+					-- 4:[specific low frequency actions]
+						if a random chance of 1 in 5 succeeds:
+							if Rover is in the living room:
+								say "[one of]Rover bounds up onto the futon and begins to get comfortable, rolling his muzzle back and forth on the mattress. Abruptly, his head pokes up and he realizes that you are watching him. Recognizing the awkwardness of being caught on the forbidden futon, Rover slinks down behind it and slowly emerges. He looks over his own shoulder at the futon as is to say [quotation mark]I wonder who that dog was on the futon[quotation mark][or]Rover crouches in preparation for a hop onto the futon when he catches your eye and cleverly transitions into a stretching posture. He walks away from the futon, glad to have not been caught again on the furniture[or]Rover glances furtively at the futon, but you are still watching him, so he hunkers down on the living room floor[stopping].";
+		otherwise: [add sounds of Rover being busy off camera]
+			say "From the direction of [the location of Rover in lower case], you hear [Rover] [one of]scratching himself[or]walking about[or]running in circles[or]jumping around[or]barking at something[or]growling at something[or]sniffing something[or]chewing something[or]dragging something around[or]doing whatever it is he does when he's not out for walkies[or]snoring loudly[or]snoring softly[or]scratching something[or]playing[or]entertaining himself[or]walking in your direction[or]rolling around on the floor[or]breathing quietly[in random order].";
+		now Rover is not busy.	
 			
 To update prompt:
 	if the player is self-aware:
