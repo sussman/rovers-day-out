@@ -164,7 +164,6 @@ Poopstate is a kind of value. The poopstates are prepoop, poopready, and postpoo
 Definition: Something (called the item) is dog-relevant if the item is a supporter or the item is a container or the item is a door or the item is a prop which is held by the location.
 [note that this definition can't be simplified as "something is dog-relevant if it is a supporter or a container or a door" as the "it" doesn't repeat, nor does it work if you say "something is dog-relevant if it is a supporter or a container...etc. Various combinations with parenthesis don't seem to help either.]
 
-
 Section Chests and Lids
 
 [borrowed more or less whole cloth from example 49 in the I7 documentation. Instead of keeping track of whether the lid is up or down, keep track of the open/close status of the chest.]
@@ -212,8 +211,7 @@ g-pure-blue	255
 Table of User Styles (continued)
 style name	justification	obliquity	indentation	first-line indentation	boldness	fixed width	relative size 	glulx color
 special-style-1	left-justified	no-obliquity	3	0	light-weight	fixed-width-font	-1	g-pure-blue
-special-style-2	left-justified	no-obliquity	2	0	regular-weight	fixed-width-font	1	g-white
-
+special-style-2	center-justified	no-obliquity	0	0	regular-weight	fixed-width-font	1	g-white
 
 [Let's do a random walk, shall we?  :-) ]
 Memory-updating is an action applying to nothing.
@@ -261,7 +259,7 @@ Carry out BSODing:
 	await keystroke;
 	open up BSOD-window;
 	move focus to BSOD-window, clearing the window;
-	say "[second custom style]WINDEX[paragraph break]A fatal exception F1 has occurred at 0013AF3411BC:5D00193D39B4 in DLL 35A32492 in kernel ring beta. The current application will be terminated.[paragraph break]* Press any key to terminate the current application.[line break]* Press CTRL+ALT+DEL again to restart the ACU. You will lose all state information.  Sorry.[paragraph break]Press a key to continue."; 
+	say "[second custom style]                 WINDEX                 [paragraph break]A fatal exception F1 has occurred at    [line break]0013AF3411BC:5D00193D39B4 in DLL 35A3249[line break]in kernel ring beta. The current appli- [line break]cation will be terminated.              [paragraph break]* Press any key to terminate the current[line break]  application.                          [line break]* Press META+ALT+DEL again to restart   [line break]  the ACU. You will lose all state      [line break]  information.  Sorry.                  [paragraph break][paragraph break]       Press a key to continue          "; 
 	await keystroke;
 	shut down BSOD-window;
 	return to main screen;
