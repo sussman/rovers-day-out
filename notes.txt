@@ -513,7 +513,7 @@ Rover and other objects:
 [ok] when food/water bowl placed on floor, Rover comes in
 [ok] When the drapes are closed, there's a small chance of stumbling over Rover
 * Aside from the bowls, when the player and Rover are in the same room, Rover will infrequently sniff any prop that is not on a supporter -- i.e., stuff on the floor.
-* If the dental floss is on the floor, Rover will eat it.
+[ok] If the dental floss is on the floor, Rover will eat it.
 * occasionally will jump on the futon (should respond to the command "down/off/get down/get off [the futon]" in the living room
 * [if the alarm clock is put back on the bed, rover should keep knocking it down to the floor?]
 
@@ -548,3 +548,4 @@ other:
 - explanatory text for turn on/off shower.
 - when egg is cooked, change its clueless name to cooked
 - inhibit fussing around the door during real thing if we've already got the egg and the probe.
+-ground as synonym for floor
