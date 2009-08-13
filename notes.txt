@@ -487,7 +487,7 @@ Some thinking out loud about the "Boarding Party" scene
 =============
 Some thoughts about Rover's behavior as an agent.
 
-* Before the ACU is self-aware, Rover should have some low frequency stage business. 
+[ok] Before the ACU is self-aware, Rover should have some low frequency stage business. 
 	- sniffing
 	- sleeping
 	- scratching
@@ -512,10 +512,10 @@ Rover and walkies:
 Rover and other objects:
 [ok] when food/water bowl placed on floor, Rover comes in
 [ok] When the drapes are closed, there's a small chance of stumbling over Rover
-* Aside from the bowls, when the player and Rover are in the same room, Rover will infrequently sniff any prop that is not on a supporter -- i.e., stuff on the floor.
+[ok, part of Rover general actions to interact with supporters, containers, or props] Aside from the bowls, when the player nd Rover are in the same room, Rover will infrequently sniff any prop that is not on a supporter -- i.e., stuff on the floor.
 [ok] If the dental floss is on the floor, Rover will eat it.
-* occasionally will jump on the futon (should respond to the command "down/off/get down/get off [the futon]" in the living room
-* [if the alarm clock is put back on the bed, rover should keep knocking it down to the floor?]
+[ok, but to avoid conflicts with subsequent actions/continuity issues, Rover has to get off the futon on the same turn, so his position is always effectively the living room, and there's no need to yell at him] occasionally will jump on the futon (should respond to the command "down/off/get down/get off [the futon]" in the living room
+[not relevant, as Rover only jumps up once] [if the alarm clock is put back on the bed, rover should keep knocking it down to the floor?]
 
 Rover and the female dog:
 * Rover's interactions with the female dog all occur when he's the actor, and it's mostly scripted. Her behavior is such that she never comes into the Valkyrie. When Rover returns after meeting her, his behavior should reflect his infatuation with her. She's a dumb bulldozer, so she never really reacts to him, but he will see it differently.
@@ -549,3 +549,4 @@ other:
 - when egg is cooked, change its clueless name to cooked
 - inhibit fussing around the door during real thing if we've already got the egg and the probe.
 -ground as synonym for floor
+-some behavior for the female dog -- i.e., picks bone up after a turn
