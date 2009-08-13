@@ -161,6 +161,10 @@ Endgame is a conclusion that varies. The endgame is usually alive.
 
 Poopstate is a kind of value. The poopstates are prepoop, poopready, and postpoop.
 
+Definition: Something (called the item) is dog-relevant if the item is a supporter or the item is a container or the item is a door or the item is a prop which is held by the location.
+[note that this definition can't be simplified as "something is dog-relevant if it is a supporter or a container or a door" as the "it" doesn't repeat, nor does it work if you say "something is dog-relevant if it is a supporter or a container...etc. Various combinations with parenthesis don't seem to help either.]
+
+
 Section Chests and Lids
 
 [borrowed more or less whole cloth from example 49 in the I7 documentation. Instead of keeping track of whether the lid is up or down, keep track of the open/close status of the chest.]
@@ -3433,7 +3437,22 @@ Every turn:
 	[Rover stage business - through these conditions, it does not occur during bedtime, or after the ACU becomes aware; this is intended to be the last line printed in a turn. The Rover Busy flag is meant to block his random actions, and can be set when he is doing anything more interesting. Otherwise, who knows if his specific action and his random action would be incongruent. Rover Busy is reset at the end of every turn.]
 	if the player is the ACU and the ACU is clueless and Rover is in the location and the noun is not Rover and the drapes are open and Rover is not busy:
 		if a random chance of 1 in 4 succeeds:
-			say "Random Rover Item.";
+			let stage business be a random number from 1 to 5;
+			if stage business is:
+				-- 1:	
+					say "[Rover] [if the player is clueless][one of]scratches his ears[or]rubs his nose[or]wags his tail as if amused by some random thought[or]nips at his own tail[or]looks around the room[or]is watching you[or]rolls and squirms back and forth on the floor trying to scratch an itch[or]turns suddenly, as if he might have seen a skwerrel[or]'s ears perk up, as if he hears something[or]'s tail bats back and forth[at random][otherwise][one of]recalibrates his spectrometer[or]clears his chemosensor intake filter[or]scans the room for thermal emissions[or]does a radiation scan[or]increases the gain of his external microphones[or]polishes the ball bearings on his interface hub[at random][end if].";
+				-- 2:
+					say "[Rover] [if the player is clueless][one of]looks guilty about something[or]seems happy about something[or]appears lost in thought[at random][otherwise]seems to be burning CPU cycles thinking about something, perhaps skwerrels[end if].";
+				-- 3:
+					let O be a random dog-relevant thing in the location;
+					if O is the player or O is Rover:
+						do nothing;
+					otherwise:
+						say "[Rover] [if the player is clueless][one of]looks at[or]sniffs[or]walks towards[at random][otherwise][one of]scans[or]rolls by[or]drives up to[at random][end if] [the O].";
+				-- 4:
+					say "test";
+				-- 5:
+					say "test";
 	now Rover is not busy.		
 			
 To update prompt:
