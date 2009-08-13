@@ -1687,7 +1687,29 @@ Instead of opening the front door when the front door is closed:
 	
 Rover is a male animal. He is in the living room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. Rover can be busy. Rover is not busy.
 
-The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]Y ou're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.[if rover has the delicious bone and Rover is awake] He is chewing a piece of the Musashi-5 space probe.[otherwise if rover has the delicious bone and Rover is not awake] Even in his sleep, he is hanging on tightly to what he thinks is a juicy bone.[end if][if rover is not awake and audio is switched off] If your audio sensors were on, you are sure you'd hear him snoring loudly.[otherwise if rover is not awake and audio is switched on]He snores loudly, his jowls fluttering with each breath.[end if]". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
+The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "A robotic mining rig". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" and "tractor" and "mining" and "rig" as the rover-proxy.
+
+Instead of examining Rover when the drapes are open:
+	if the player is clueless:
+		if the player is the ACU:
+			say "He's [one of]a big, happy dalmation[or]a medium-to-largish dog, mostly white with some black dots[or]not genineered or cyberized; he's just a regular old dalamation, like the ones originally bred on Earth[or]got to mass at least 30 kilos, although he is athletic and trim[or]not what you'd typically call a lap dog, although he'd beg (literally) to differ[or]the sort of dog that if you had one hundred more, you could make a Disney film[or]young as dogs go, about 5 years old, so not a puppy either, although he's almost as playful at times[or]almost entirely dalmation, although there must have been some other breed somewhere in his lineage, as he has a brown spot just over his left eye, while all the other spots are black[or]a classic dalmation with black rather than green or orange spots, which are more in vogue among today's Martian dog fanciers[or]a strong dog, with powerful back legs and a supple back[or]a noble-appearing dog, who stands squarely with straight shoulders, and firmly planted back legs[or]a short-haired dog, white with black spots. Despite the shortness of his hair, it tends to get on everything from furniture to clothes[or]the kind of dog often depicted as a [quotation mark]fire dog[quotation mark] in old Earth films[or]a monochromatic dog in a polychromatic world[or]got floppy ears, a straight tail, and a look of mischief in his eyes[or]smiling at you, raising one side of his mouth so you can see his teeth. Other people find it alarming, but you know he's just trying to be congenial[or]a gentle, obedient dalmation[in random order].[paragraph break]";
+			if a random chance of 2 in 3 succeeds:
+				watch Rover;
+				now Rover is busy;
+		otherwise:[Rover's POV]
+			say "You're [one of]a big dog with white fur and dark spots[or]a suave and sophisticated dog, with a streak of nobility[or]debonair, cosmopolitan dog, well-bred and cut from the best cloth[or]a fun-loving, easy going dog, who's fun to be around[or]a classic black and white dalmation, with a beauty mark above your left eye. Some say it is a mark of Royalty going back to 16th Century Croatia. You're not sure about that, but it's what you tell the ladies[or]a gallant, upright dog, with a strict moral code and a clear sense of right and wrong[or]a loyal dog, with the best master in the world, Janet[or]not like the other dalmation one sees vamping about the park sporting white coats with outrageous green and orange dots. No, you are the real thing: black dots on a white coat. All of your genes are real, not grown in a lab somewhere[or]a fully biological dog, with no synthetic parts. You like it that way. You think your parts are already nice enough[or]a well-groomed, healthy dalmation. Presumably, irresistable to the ladies[in random order]. You smell [one of]clean[or]virtuous[or]like you're ready for anything[or]masculine[or]slightly musky[or]nothing at all like wet dog, and you have every intention of making sure that remains the case[or](in your opinion) foxy[or]like Janet's house[or]a little like those kibbles you've been eating for the last week[or]your butt. Yup, it's squeaky clean and ready to meet the world[or]virile[or]rugged and sturdy[or]like a red-blooded, male dog in his prime[or]fearless[or]bold and daring[in random order].";
+	otherwise:[aware]
+		say "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions.";
+		if rover has the delicious bone:
+			if Rover is awake:
+				say "He is chewing a piece of the Musashi-5 space probe.";
+			otherwise:
+				say "Even in his sleep, he is hanging on tightly to what he thinks is a juicy bone.";
+		if rover is not awake:
+			if audio is switched off: 
+				say "If your audio sensors were on, you are sure you'd hear him snoring loudly.";
+			otherwise: 
+				say "He snores loudly, his jowls fluttering with each breath."
 
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
@@ -3436,25 +3458,28 @@ Every turn:
 	if the player is the ACU and the ACU is clueless and the noun is not Rover and the drapes are open and Rover is not busy:
 		if Rover is in the location:
 			if a random chance of 1 in 4 succeeds:
-				let stage business be a random number from 1 to 4;
-				if stage business is:
-					-- 1:[random fluff, part 1]	
-						say "[Rover] [one of]walks around the room, occasionally sniffing various spots on the floor[or]licks his front paws[or]dashes back and forth like a possessed dog for no apparent reason[or]prances past you at a convenient back-scratching distance[or] appears lost in thought[or]seems relaxed[or]exhales with contentment and rolls over, feet outstretched[in random order].";
-					-- 2:[random fluff, part 2]
-						say "[Rover] [one of]scratches his ears[or]rubs his nose[or]wags his tail as if amused by some random thought[or]nips at his own tail[or]smells his own butt[or]looks around the room[or]is watching you[or]yawns ferociously[or]rolls and squirms back and forth on the floor trying to scratch an itch[or]turns suddenly, as if he might have seen a skwerrel[or]'s ears perk up, as if he hears something[or]'s tail bats back and forth[or]stretches all the way forwards, and then all the way backwards[or]circles an area on the floor[or]stares at his own paws, entirely entranced[or]tucks his nose under his front paws[or]lies down with his front paws crossed[or]lies on his side[or]paces the room[or]struts around importantly[or]looks for a comfy spot to rest[in random order].";
-					-- 3:[non-specific interactions with environment]
-						let O be a random dog-relevant thing in the location;
-						if O is the player or O is Rover:
-							do nothing;
-						otherwise:
-							say "[Rover] [one of]looks at[or]sniffs[or]walks towards[or]paces back and forth, looking at[or]circles[or]lies down next to[or]cocks his head and ogles[in random order] [the O].";
-					-- 4:[specific low frequency actions]
-						if a random chance of 1 in 5 succeeds:
-							if Rover is in the living room:
-								say "[one of]Rover bounds up onto the futon and begins to get comfortable, rolling his muzzle back and forth on the mattress. Abruptly, his head pokes up and he realizes that you are watching him. Recognizing the awkwardness of being caught on the forbidden futon, Rover slinks down behind it and slowly emerges. He looks over his own shoulder at the futon as is to say [quotation mark]I wonder who that dog was on the futon[quotation mark][or]Rover crouches in preparation for a hop onto the futon when he catches your eye and cleverly transitions into a stretching posture. He walks away from the futon, glad to have not been caught again on the furniture[or]Rover glances furtively at the futon, but you are still watching him, so he hunkers down on the living room floor[stopping].";
+				watch rover;					
 		otherwise: [add sounds of Rover being busy off camera]
 			say "From the direction of [the location of Rover in lower case], you hear [Rover] [one of]scratching himself[or]walking about[or]running in circles[or]jumping around[or]barking at something[or]growling at something[or]sniffing something[or]chewing something[or]dragging something around[or]doing whatever it is he does when he's not out for walkies[or]snoring loudly[or]snoring softly[or]scratching something[or]playing[or]entertaining himself[or]walking in your direction[or]rolling around on the floor[or]breathing quietly[in random order].";
-		now Rover is not busy.	
+		now Rover is not busy.
+
+To watch Rover:
+	let stage business be a random number from 1 to 4;
+	if stage business is:
+		-- 1:[random fluff, part 1]	
+			say "[Rover] [one of]walks around the room, occasionally sniffing various spots on the floor[or]licks his front paws[or]dashes back and forth like a possessed dog for no apparent reason[or]prances past you at a convenient back-scratching distance[or] appears lost in thought[or]seems relaxed[or]exhales with contentment and rolls over, feet outstretched[in random order].";
+		-- 2:[random fluff, part 2]
+			say "[Rover] [one of]scratches his ears[or]rubs his nose[or]wags his tail as if amused by some random thought[or]nips at his own tail[or]smells his own butt[or]looks around the room[or]is watching you[or]yawns ferociously[or]rolls and squirms back and forth on the floor trying to scratch an itch[or]turns suddenly, as if he might have seen a skwerrel[or]'s ears perk up, as if he hears something[or]'s tail bats back and forth[or]stretches all the way forwards, and then all the way backwards[or]circles an area on the floor[or]stares at his own paws, entirely entranced[or]tucks his nose under his front paws[or]lies down with his front paws crossed[or]lies on his side[or]paces the room[or]struts around importantly[or]looks for a comfy spot to rest[in random order].";
+		-- 3:[non-specific interactions with environment]
+			let O be a random dog-relevant thing in the location;
+			if O is the player or O is Rover:
+				do nothing;
+			otherwise:
+				say "[Rover] [one of]looks at[or]sniffs[or]walks towards[or]paces back and forth, looking at[or]circles[or]lies down next to[or]cocks his head and ogles[in random order] [the O].";
+		-- 4:[specific low frequency actions]
+			if a random chance of 1 in 3 succeeds:
+				if Rover is in the living room:
+					say "[one of]Rover bounds up onto the futon and begins to get comfortable, rolling his muzzle back and forth on the mattress. Abruptly, his head pokes up and he realizes that you are watching him. Recognizing the awkwardness of being caught on the forbidden futon, Rover slinks down behind it and slowly emerges. He looks over his own shoulder at the futon as if to say [quotation mark]I wonder who that dog was on the futon[quotation mark][or]Rover rests his front paws on the window and stares out at the Park[or]Rover crouches in preparation for a hop onto the futon when he catches your eye and cleverly transitions into a stretching posture. He walks away from the futon, glad to have not been caught again on the furniture[or]Rover hears something from outside and peers out the window, searching[or]Rover glances furtively at the futon, but you are still watching him, so he hunkers down on the living room floor[or]Rover looks through the window at the park[stopping]."	
 			
 To update prompt:
 	if the player is self-aware:
