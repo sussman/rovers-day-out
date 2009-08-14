@@ -3310,6 +3310,8 @@ First before an actor doing something (this is the catch failed actions rule):
 			change the status-line-action to technoverb entry;
 	if test-action is the going towards action and the noun is a room:
 		change last-noun to "[aware-name of the noun]";
+	otherwise if test-action is the looking action:
+		change last-noun to "[aware-name of the location of the player]";
 	otherwise:
 		if the noun is something then change last-noun to "[aware-name of the noun]".
 
