@@ -351,7 +351,7 @@ Carry out manpaging:
 
 Understand "cd [any room]" as going towards when the player is self-aware. [###TODO: since flosix commands work on the real (i.e, proxy) names of things, it would be more proper for cd to work on "operations" rather than living room.  The "going towards" action includes a check to limit the ACU to rooms in the Valkyrie area, so no need to restrict it more here.]
 
-Whoing is an action applying to nothing. Understand "who" as whoing.
+Whoing is an action applying to nothing. Understand "who" as whoing when the player is the ACU.
 
 Carry out whoing:
 	if the player is clueless:
@@ -359,7 +359,7 @@ Carry out whoing:
 	otherwise if the player is the ACU and the ACU is self-aware:
 		say "ACU        vconsole        [right justify turn count minus epoch_pid][paragraph break]".	
 		
-Uptiming is an action applying to nothing. Understand "uptime" as uptiming.
+Uptiming is an action applying to nothing. Understand "uptime" as uptiming when the player is self-aware.
 
 Carry out uptiming:
 	if the player is clueless:
@@ -738,7 +738,7 @@ Understand "leave" as exiting.
 
 Section Folding and Unfolding
 
-Folding is an action applying to one thing. Understand "fold [something]" as folding. Understand "fold up [something]" as folding. Understand "collapse [something]" as folding.  
+Folding is an action applying to one thing. Understand "fold [something]" as folding. Understand "fold up [something]" as folding. Understand "collapse [something]" as folding when the player is the acu.  
 
 Check folding:
 	say "You can't fold [the noun]."
@@ -752,7 +752,7 @@ Instead of folding the futon:
 		now the futon is folded;
 		say "With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage."
 	
-Unfolding is an action applying to one thing. Understand "unfold [something]" as unfolding.  
+Unfolding is an action applying to one thing. Understand "unfold [something]" as unfolding when the player is the acu.  
 
 Check unfolding:
 	say "[The noun] is not something you can just go around unfolding."
@@ -901,6 +901,9 @@ Section Potty Language
 Businessing is an action applying to nothing. Understand "poop" or "defecate" or "do business" or "piss" or "pee" or "urinate" or "micturate" or "tinkle" or "whiz" or "void" as businessing.
 
 Check Businessing:
+	if the player is Rover:
+		say "This is one of those rare occassions on which you don't have anything to do.";
+		the rule fails;
 	if the player is wearing the flight suit:
 		say "[if the player is clueless]You can do a lot of things in your one-piece flight suit. That ain't one of them[otherwise]The ACU quantum isolation interferes with the transfer of power to the retro system[end if].";
 		the rule fails;
@@ -939,7 +942,7 @@ Instead of tying the dental floss to something:
 			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperature[end if].";
 			now the chain is repaired.
 
-Repairing is an action applying to one thing. Understand "fix [something]" or "repair [something]" or "mend [something]" as repairing.
+Repairing is an action applying to one thing. Understand "fix [something]" or "repair [something]" or "mend [something]" as repairing when the player is the acu.
 
 Carry out repairing:
 	say "[if the player is clueless]You make a mental note to put it on the list of things that need repairing for the next time the cottage maintenance droid knocks on your door[otherwise]You log the repair request for dry dock maintenance[end if].";
@@ -974,7 +977,7 @@ Report Petting:
 	
 Section Cooking
 
-Cooking is an action applying to one thing. Understand "cook [something]" or "fry [something]" as cooking.
+Cooking is an action applying to one thing. Understand "cook [something]" or "fry [something]" as cooking when the player is the acu.
 
 Check cooking:
 	if the noun is not the white egg:
@@ -1976,7 +1979,7 @@ After dropping a bowl (called the vessel):
 		now Rover is in the kitchen;	
 		now Rover is busy.
 	
-Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with. 
+Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with when the player is the acu. 
 
 Check filling it with:
 	if the noun is not a bowl:
@@ -2026,7 +2029,7 @@ After filling the food bowl with the dog chow bag:
 Report filling it with:
 	say "You fill the [noun] with some [if the noun is the water bowl][tap water] from the [kitchen sink][otherwise][dog food][end if]."
 	
-Fillupping is an action applying to one thing. Understand "fill [something]" as Fillupping.
+Fillupping is an action applying to one thing. Understand "fill [something]" as Fillupping when the player is the acu.
 
 Check fillupping:
 	if the player is Rover:
@@ -2060,7 +2063,7 @@ Instead of doing something with the dog food:
 		otherwise:
 			say "You don't want to mess with Rover's [dog food]."
 			
-Pouring it into is an action applying to two things. Understand "pour [something] in/into [something]" or "transfer [something] into/in [something]" or "put something in/into [something]" or "move [something] in/into/to [something]" as pouring it into.
+Pouring it into is an action applying to two things. Understand "pour [something] in/into [something]" or "transfer [something] into/in [something]" or "put something in/into [something]" or "move [something] in/into/to [something]" as pouring it into when the player is the acu.
 
 Carry out pouring it into:
 	do nothing.
@@ -2276,7 +2279,7 @@ Instead of eating the dental floss:
 		move dental floss to Limbo;
 		say "[if the player is clueless]Mmm. Quite tasty[otherwise]Key pair decohered and ready for regeneration[end if]."
 	
-Flossing is an action applying to one thing. Understand "floss [something]" as flossing.
+Flossing is an action applying to one thing. Understand "floss [something]" as flossing when the player is the acu.
 
 Check flossing:
 	if the strand of dental floss is not held by the player:
@@ -2303,7 +2306,7 @@ The clueless-name of the toothbrush is "toothbrush".  Understand "brush" and "gr
 Instead of listening to the toothbrush:
 	say "[if the player is clueless]It must be off, because it's silent at the moment[otherwise]The pit scrubber is silent when not activated[end if]."
 	
-Brushing is an action applying to one thing. Understand "brush [something]" as brushing.
+Brushing is an action applying to one thing. Understand "brush [something]" as brushing when the player is the acu.
 
 Check brushing:
 	if the toothbrush is not held by the player:
@@ -2559,9 +2562,9 @@ After opening a flipchair (called the flop):
 After closing a flipchair (called the flop):
 	say "You [if the player is clueless]lower[otherwise]raise[end if] [the flop]."
 	
-Understand "raise [something raisable]" as opening. Understand "lift [something raisable]" as opening.
+Understand "raise [something raisable]" as opening. Understand "lift [something raisable]" as opening when the player is the acu.
 
-Understand "lower [something raisable]" as closing.
+Understand "lower [something raisable]" as closing when the player is the acu.
 
 Before entering a flipchair (called the flop):
 	if the flop is open:
@@ -2576,7 +2579,7 @@ Before entering a flipchair (called the flop):
 Instead of taking the toilet:
 	say "That's hardly pottyable."
 	
-Flushing is an action applying to one thing.  Understand "flush [something]" as flushing.
+Flushing is an action applying to one thing.  Understand "flush [something]" as flushing when the player is the acu.
 
 Check flushing:
 	if the noun is not the the toilet and the noun is not the silver knob:
@@ -2752,12 +2755,12 @@ Angle		Inclination
 150				"almost completely "
 180				"completely "
 
-Understand "push [something] [a custom direction]" as yoking it more.
-Understand "pull [something] [a custom direction]" as yoking it more.
-Understand "twist [something] [a custom direction]" as yoking it more.
-Understand "turn [something] [a custom direction]" as yoking it more.
-Understand "spin [something] [a custom direction]" as yoking it more.
-Understand "yank [something] [a custom direction]" as yoking it more.
+Understand "push [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "pull [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "twist [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "turn [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "spin [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "yank [something] [a custom direction]" as yoking it more when the player is the acu.
 
 After going to the shower for the first time:
 	say "You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.";
@@ -3678,7 +3681,7 @@ Carry out beeping:
 	
 Snoozing is an action applying to nothing.
 
-Understand "snooze" as snoozing.
+Understand "snooze" as snoozing when the player is the ACU.
 
 Understand "sleep" as snoozing when bedtime is happening.
 
