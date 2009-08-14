@@ -4,8 +4,6 @@ Contained objects needs to be put in scope or otherwise worked around:
 need to allow eat food/drink water to work more smoothly with the
 objects that are in the dog bowls
 
-* 'go room' shouldn't show 'ACU -> SELECT' but rather
-  'room's-aware-name -> SELECT'
 
 ###TOCONSIDER: responses to "wait" while on toilet seat, or hints after some period of time sitting there ... in case pooping doesn't occur to people.
 
@@ -66,6 +64,8 @@ General Macro Issues re: plot, puzzles, etc.
 
 @@@ I would recommend that we have an "option" menu that allows toggling of status line display either at the top, or inline. That way, if someone has a very rudimentary terminal (e.g., Floyd on IFmud), they could still see the status line as it changes. In fact, the transcript would more or less resemble the original transcript. When placed inline, we could set it off typographically, e.g., [[[[STATUS LINE TEXT ]]].
 
+--> Ben sez:  actually, I don't think the user should control this, I think the game should ask glulx whether a status-line is available or not, and then output the technoverbs to an appropriate place.  (BEN TODO)
+
 =====================================================================
 
 Stuff that is (hopefully) fixed/resolved gets moved here...
@@ -102,8 +102,6 @@ Notes from Ben's first *complete* run-through of game:
 
 
 * change "strangle hold" to "stranglehold"
-
-* TODO(sussman):  windex crash should have blue background.
 
 * in 'help' menu, one of the options should suggest 'remember' as a
   way to get more backstory.

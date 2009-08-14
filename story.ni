@@ -3295,10 +3295,13 @@ Test-action is an action-name which varies.
 Got-action is a truth state that varies.  Got-action is usually false.
 
 After reading a command (this is the re-initialize rule):
-        change last-noun to "ACU"; 
-        change last-success to "NIL";
-        change the status-line-action to "NOOP";
-        change got-action to false.
+	if the player is Rover:
+		change last-noun to "ROVER";
+	otherwise:
+		change last-noun to "ACU";
+	change last-success to "NIL";
+	change the status-line-action to "NOOP";
+	change got-action to false.
 
 First before an actor doing something (this is the catch failed actions rule):
 	if got-action is true:
@@ -3512,7 +3515,7 @@ Every turn:
 		if Rover is in the location:
 			if a random chance of 1 in 4 succeeds:
 				watch rover;					
-		otherwise: [add sounds of Rover being busy off camera]
+		otherwise if a random chance of 1 in 3 succeeds: [add sounds of Rover being busy off camera]
 			say "From the direction of [the location of Rover in lower case], you hear [Rover] [one of]scratching himself[or]walking about[or]running in circles[or]jumping around[or]barking at something[or]growling at something[or]sniffing something[or]chewing something[or]dragging something around[or]doing whatever it is he does when he's not out for walkies[or]snoring loudly[or]snoring softly[or]scratching something[or]playing[or]entertaining himself[or]walking in your direction[or]rolling around on the floor[or]breathing quietly[in random order].";
 		now Rover is not busy.
 
