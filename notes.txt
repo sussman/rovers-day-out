@@ -530,7 +530,7 @@ Rover and Back on Mars
 
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
 
-* Rover general description self/other
+[ok] Rover general description self/other
 
 =====
 other:
@@ -549,4 +549,8 @@ other:
 - when egg is cooked, change its clueless name to cooked
 - inhibit fussing around the door during real thing if we've already got the egg and the probe.
 -ground as synonym for floor
--some behavior for the female dog -- i.e., picks bone up after a turn
+- Rover needs his own remembers....like the Yorkie from across the park
+- get bone (held by female)
+- react to word "bitch" in context
+- need to restrict the understanding of verbs that are not relevant to Rover. No need to have him floss the female dog.
+- allow growling [at] s.t./s.o.
