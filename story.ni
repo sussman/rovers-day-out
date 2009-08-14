@@ -3304,10 +3304,14 @@ First before an actor doing something (this is the catch failed actions rule):
 	if got-action is true:
 		do nothing;
 	otherwise:
-		if the action-name part of the current action is a verb listed in the Table of Technoverbs:
+		change test-action to the action-name part of the current action;
+		if test-action is a verb listed in the Table of Technoverbs:
 			change got-action to true;
 			change the status-line-action to technoverb entry;
-	if the noun is something then change last-noun to "[aware-name of the noun]".
+	if test-action is the going towards action:
+		if the noun is a room then change last-noun to "[aware-name of the noun]";
+	otherwise:
+		if the noun is something then change last-noun to "[aware-name of the noun]".
 
 First after an actor doing something (this is the catch successful actions rule):
 	if got-action is true:
