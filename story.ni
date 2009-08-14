@@ -1854,7 +1854,7 @@ After opening the old fridge:
 		say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]After a brief chemosensor scan, he rolls back towards the operations area[end if].";
 		now Rover is in the living room.
 
-The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
+The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried[end if] white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." 
 
 Instead of attacking the white egg:
 	if the white egg is in the frying pan:
@@ -2819,13 +2819,25 @@ The clueless-name of the shampoo dispenser is "shampoo dispenser". The aware-nam
 
 The clueless-name of the shower walls is "shower walls". The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull." The shower walls-proxy is an aware-proxy that is part of the shower walls. Understand "fluidics", "network" , "tubes", "valves" and "pumps" as the shower walls-proxy.
 
-Before switching on the shower walls:
+Before switching on or switching off the shower walls:
 	say "[if the player is clueless]The shower is fully automated and adjusts temperature, pressure and direction of the water stream as needed[otherwise]The fluidics network is slaved to the ships autonomic network and activates automatically, as needed[end if].";
 	the rule succeeds.
 	
 The clueless-name of the shampoo button is "shampoo button". Understand "yellow" as the shampoo button. The aware-name of the shampoo button is "accelerant release". The clueless-description of the shampoo button is "A small yellow button on the wall of the shower. It is marked [quotation mark]Shampoo[quotation mark]." The aware-description of the shampoo button is "A monostable vibrator operating the accelerant solenoid." The shampoo button-proxy is an aware-proxy that is part of the shampoo button. Understand "monostable" and "vibrator" as the button-proxy. The shampoo button can be pressed or unpressed. The shampoo button is unpressed.
 
 The clueless-name of the soap button is "soap button". Understand "green" as the soap button. The aware-name of the soap button is "enamel release". The clueless-description of the soap button is "A small green button on the wall of the shower. It is marked [quotation mark]Soap[quotation mark]." The aware-description of the soap button is "The enamel release enable signal." The soap button-proxy is an aware-proxy which is part of the soap button. Understand "enamel" and "release" and "signal" as the soap button-proxy. The soap button can be unpressed or pressed. The soap button is unpressed.
+
+Before switching on the soap dispenser:
+	try pushing the soap button instead.
+	
+Before switching on the shampoo dispenser:
+	try pushing the shampoo button instead.
+	
+Before switching off the soap dispenser:
+	say "You recall that after dispensing soap, the dispenser turns off automatically." instead.
+	
+Before switching off the shampoo dispenser:
+	say "You recall that after dispensing shampoo, the dispenser turns off automatically." instead.
 
 Instead of pushing or touching the soap dispenser:
 	try pushing the soap button.
@@ -3493,18 +3505,18 @@ Every turn:
 			now Rover is not hungry;
 			move the dog food to Limbo;
 			if Rover is in the location:
-				say "[if the player is clueless]Rover[one of]'s head disappears into the food bowl. It is hard to believe that the sounds generated are coming from a dog rather than some sort of industrial mining rig. When his head lifts, the bowl is not only empty, but has been buffed to a mirror finish[or] makes short work of the food in his bowl[or] gulps down the food, without pausing for niceties such as breathing[or] (gulp) eats (gulp) the (gulp) food (gulp) as (gulp) quickly (gulp) as (gulp) is (gulp) caninely (gulp) possible (burp)[at random][otherwise]The remote operations vehicle backs up to the thermal isotope deliver system and takes on a full load of glowing, red hot polonium 210 nodules[end if].[paragraph break]";
+				say "[if the player is clueless]Rover[one of]'s head disappears into the food bowl. It is hard to believe that the sounds generated are coming from a dog rather than some sort of industrial mining rig. When his head lifts, the bowl is not only empty, but has been buffed to a mirror finish[or] makes short work of the food in his bowl[or] gulps down the food, without pausing for niceties such as breathing[or] (gulp) eats (gulp) the (gulp) food (gulp) as (gulp) quickly (gulp) as (gulp) is (gulp) caninely (gulp) possible (burp)[in random order][otherwise]The remote operations vehicle backs up to the thermal isotope deliver system and takes on a full load of glowing, red hot polonium 210 nodules[end if].[paragraph break]";
 				now Rover is busy;
 		otherwise:[bowl wasn't full]
 			if Rover is in the location and a random chance of 1 in 3 succeeds:
-				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in his soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly and frowns at his[at random] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[at random][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if].[paragraph break]";
+				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in his soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly and frowns at his[at random] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[in random order][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if].[paragraph break]";
 				now Rover is busy;		
 	if the holder of Rover is the holder of the water bowl and Rover is thirsty:
 		if the water bowl is full:
 			now Rover is slaked;
 			move the tap water to Limbo;
 			if Rover is in the location:
-				say "[Rover][if the player is clueless][one of]'s tongue is a blur as he laps up the water, draining the water bowl in seconds[or] slurps the water bowl dry[or] must have been thirsty. One moment the water bowl is full; the next, it's bone dry[or] drinks the water[at random][otherwise] approaches the coolant transfer device and makes a positive seal. Coolant flows quickly cross the connection, and then the device uncouples and retracts to its storage position[end if].[paragraph break]";
+				say "[Rover][if the player is clueless][one of]'s tongue is a blur as he laps up the water, draining the water bowl in seconds[or] slurps the water bowl dry[or] must have been thirsty. One moment the water bowl is full; the next, it's bone dry[or] drinks the water[in random order][otherwise] approaches the coolant transfer device and makes a positive seal. Coolant flows quickly cross the connection, and then the device uncouples and retracts to its storage position[end if].[paragraph break]";
 				now Rover is busy;
 		otherwise:[bowl wasn't full]
 			if Rover is in the location and a random chance of 1 in 3 succeeds:
@@ -3517,7 +3529,7 @@ Every turn:
 				watch rover;					
 		otherwise: [add sounds of Rover being busy off camera]
 			say "From the direction of [the location of Rover in lower case], you hear [Rover] [one of]scratching himself[or]walking about[or]running in circles[or]jumping around[or]barking at something[or]growling at something[or]sniffing something[or]chewing something[or]dragging something around[or]doing whatever it is he does when he's not out for walkies[or]snoring loudly[or]snoring softly[or]scratching something[or]playing[or]entertaining himself[or]walking in your direction[or]rolling around on the floor[or]breathing quietly[in random order].";
-		now Rover is not busy.
+	now Rover is not busy.
 
 To watch Rover:
 	let stage business be a random number from 1 to 4;
@@ -3870,7 +3882,8 @@ When Real Thing begins:
 	now the alarm clock is in Limbo;
 	move the player to the living room, without printing a room description.
 	
-Every turn when the Real Thing is happening and the landing_pid is not 0:
+Every turn when the Real Thing is happening and the landing_pid is not 0 and (the delicious bone is not in the Valkyrie Area or the white egg is not in the Valkyrie Area):
+	[i.e., after landing, but not after the probe and the egg have been recovered]
 	if the player is in the living room and the living room is not visited-during-havoc:
 		now the living room is visited-during-havoc;
 	fuss around door.
