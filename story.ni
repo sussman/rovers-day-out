@@ -1126,8 +1126,8 @@ After printing the banner text:
 	await keystroke;
 	clear the screen;
 	[display setup]
-	change the left hand status line to "[last-noun in upper case] -> [status-line-action] : [last-success]";
-	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9]PB";
+	change the left hand status line to "[if the player is self-aware]MANUAL MODE[otherwise][last-noun in upper case] -> [status-line-action] : [last-success][end if]";
+	change the right hand status line to "[if the player is self-aware]Flosix/OS 210LTS[otherwise]Memory: [current memory usage].[a random number from 0 to 9]PB[end if]";
 	say "[ACU Boot Banner]";
 	try dreaming;
 	try beeping.
@@ -3477,7 +3477,7 @@ the yoking it more action		"VECTOR ADJUST" [push, pull, twist...plunger]
 Chapter Triggered Events
 
 At the time when the player is self-aware:
-	change the command prompt to "READY>";
+	change the command prompt to "	READY>";
 	
 After reading a command:
 	let N be indexed text;
@@ -3490,7 +3490,8 @@ Chapter Every Turn
 Every turn:
 	[update memory usage]
 	try memory-updating;
-	change the right hand status line to "Memory: [current memory usage].[a random number from 0 to 9] PB";
+	if the player is self-aware:
+		say "[last-noun in upper case] -> [status-line-action] : [last-success][paragraph break]";
 	if the elevate flag is false:
 		update prompt;
 	[avoid penalizing time for non-actions, a nuance]

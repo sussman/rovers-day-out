@@ -247,6 +247,21 @@ need aware-name for things rover sees outside, like paw marks
 is thorium rock intended as an alternate solution to some other puzzle?  has no use right now.
 
 
+* Oops, see last bit:
+
+READY>open fridge
+Rover pops into the engineering section to investigate the thermal shift. This behavior may indicate that Rover's fuel reserve is low.
+
+CRYOCHAMBER -> ACCESS : TRUE
+
+ROVER He moves rapidly past the fuel reservoir which has no radioisotope payload
+
+
+---------
+
+Possible quotes to start game...?
+
+
 
 "There ought not to be anything in the whole universe that man can't
 poke his nose into—that's the way we're built and I assume that
@@ -260,4 +275,6 @@ And to know the place for the first time."  - T.S. Eliot
 "... man is not made to go about safe and comfortable and well fed and
 amused. ... against his interest, against his happiness, he is
 constantly being driven to do unreasonable things."  - H.G. Wells
+
+
 
