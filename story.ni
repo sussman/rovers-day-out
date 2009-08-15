@@ -2212,7 +2212,7 @@ Does the player mean taking reward nuggets box:
 
 The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" and "nuggets" and "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them.". The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural" and "net" and "reinforcement" and "token" and "positive" and "feedback" as the dog treat-proxy.
 
-Before taking the dog treat:
+Before taking the dog treat: 
 	if the dog treat is not in the reward nuggets box:
 		say "[if the player is clueless]You haven't given Rover the last dog treat you took out of the box[one of], and you don't want to find them all over the cottage a few months from now when your neurotically fastidious mother shows up on short notice[or][stopping][otherwise]A neural token has already been checked out[end if].";
 		the rule succeeds;
@@ -2388,7 +2388,7 @@ The bathroom sink is a privately-named sink in the bathroom.  The clueless-name 
 
 The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
 
-The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
+The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retro assembly".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
 
 The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The flapper valve, the lever, and the chain are fixed in place things in the water tank. The silver knob is part of the water tank. Tank-water is some scenery water in the water tank. 
 
@@ -2762,10 +2762,6 @@ Understand "turn [something] [a custom direction]" as yoking it more when the pl
 Understand "spin [something] [a custom direction]" as yoking it more when the player is the acu.
 Understand "yank [something] [a custom direction]" as yoking it more when the player is the acu.
 
-After going to the shower for the first time:
-	say "You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.";
-	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
-	say "[metatext in metaspeak]";
 	
 The clueless-name of the shower is "shower". The aware-name of the shower is "extruder". The shower can be a new experience. The shower is a new experience. The aware-description of the shower is "The extruder delivers activated enamel solution to the surface of the ship through a fluidics network where it hardens into an ablative coating." The clueless-description of the shower is "[if the player is not wearing the flight suit]You are in your shower and water of just the right temperature is raining down on you. [end if]Two buttons are molded into the wall of the shower stall. One is labeled [quotation mark]soap[quotation mark], and the other, [quotation mark]shampoo[quotation mark]. [if the player is wearing the flight suit]The shower has not activated because you are still wearing clothes." The shower can be sprayed. The shower is not sprayed.
 
@@ -4029,15 +4025,12 @@ Every turn when Boarding Party is happening:
 					move the toilet seat to Limbo;
 					move the toilet cover to Limbo;
 				if the player is not in the place entry:
-					say "[The destroyed item entry] is offline";
+					say "You sense that [the destroyed item entry] is offline.[paragraph break]";
 			if there is a vandalized item entry:
 				now the vandalized item entry is damaged;			
 				if the player is not in the place entry:
-					say "Diagnostic error: [vandalized item entry]";
+					say "You experience a diagnostic error from [the vandalized item entry].[paragraph break]";
 			increase the damage counter by one;
-		if Rover is in the location and the underling is in the location:
-			if a random chance of 1 in 2 succeeds:
-				say "Rover [one of]growls at [the underling][or]gives [the underling] the evil eye[or]snarls at [the underling][or]bears his teeth towards [the underling][or]paces nervously, glancing towards [the underling][or]makes it clear that he is not amused by [the underling]'s antics[or]remains coiled on the floor, watching [the underling] intently[or]looks at you, and then at the [underling], and seems ready to pounce[or]barks a warning at the [underling][or]gnashes his teeth and makes sure that the [underling] sees how very sharp they are[or]bays at the [underling][at random].";
 	if the assault ship approach is 1:[first attempt to clamp on]
 		if the assault ship distance is greater than zero:
 			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
@@ -4091,7 +4084,19 @@ Every turn when Boarding Party is happening:
 		now the FiO2 is 2121 divided by the pressure;
 		[to try to maintain partial pressure of O2 over a range of a atm pressures -- the Valkyrie was originally designed for human passengers]
 		if the FiO2 is greater than 60:
-			now the FiO2 is 60.[limited to 60% because of risk of fire/explosion]
+			now the FiO2 is 60;[limited to 60% because of risk of fire/explosion]
+	if the holder of Rover is the holder of the underling:
+		if Rover is in the location:
+			say "[Rover]";
+			if a random chance of 1 in 2 succeeds:[split into two sections because of complexity]
+				say "[one of] growls menancingly at [the underling][or] stalks behind [the underling], keeping a watchful eye on him[or]crouchs and snarls, and [the underling] shrinks back. He continues his work slowly, keeping a wary eye on Rover[or] doesn't know what [the underling] is doing, but he knows he doesn't like it[or] sniffs [the underling] suspiciously[or] skulks around [the location in lower case], vigilantly keeping track of [the underling][or]'s fur stands on edge as he studies [the underling][or] howls at [the underling], who spins quickly, stumbling into the bulkhead[or] hovers just behind [the underling], sharpening his mining claws[or] grinds his tractors against the deck plating, momentarily distracting [the underling][in random order].";
+			otherwise:
+				say "[one of]stands in just the right spot to block [the underling]'s light[or]'s lateral jets pulse red hot with suppressed anger as he watches [the underling][or] keeps tabs on [the underling] from across the room[or] finds the scent of [the underling] repulsive and rolls to the far side of the room[or] grins at [the underling], letting him know that he'd be happy to attack, if only given the order[or]'s posture suggests that he would like to rip [the underling] from limb to limb[or] grimaces as he watches [the underling] damage the ship[or]Rover snaps his mining mandible open and shut, just behind [the underling]'s head. The nervous [underling] casts a worried glance towards the sharp jaws, and picks up the pace of his work[or] vents some noxious fumes near [the underling] who takes the hint and moves further away from Rover[in random order].";
+		otherwise:[Rover is with the underling, but not in the same room as the player, so Rover is heard off camera]
+			say "[one of]From [the location of Rover in lower case] you hear [Rover] growling with irritation[or][Rover]'s tractors whine and spin on a bulkhead out of view. From that direction, you hear metallic tools hitting the floor and cursing from the surprised [the underling][or]From [location of Rover in lower case], you hear [Rover] bark menacingly[or][Rover] howls eerily from another section of Valkyrie, and his caterwauling reverberates through the ship[or]You hear some commotion coming from [location of Rover in lower case], a mixture of snarls and snapping jaws[or][longish encounter][or][Rover] bays ceaselessly at [the underling], who he considers an undesirable visitor[or][Rover]'s telemetry indicates that he is stressed, and in a state of extreme excitement and agitation[or]Judging by the racket [Rover] is making in [the location of Rover in lower case], he is upset about the presence of [the underling][in random order].";
+	now Rover is busy.
+	
+To say longish encounter:[split out because it makes the above substitution too complex]	say "From [the location of Rover in lower case] you hear [the underling] shout, [quotation mark][assault ship designation], this is [underling]. Some kind of colossal excavation droid is watching me. It's the size of a Badger-class cutter, and huge, sharp digging apparatus. I don't like the way it's just looking at me. It's creepy.[quotation mark][paragraph break][quotation mark]Roger, [underling], situation acknowledged. We recommend that you complete operations quickly and return to [assault ship designation].[quotation mark][paragraph break][quotation mark]Affirmative, [assault ship designation], that's just what I'm doing. Um, thanks for the advice.[quotation mark][paragraph break][quotation mark]That's why we're here, [underling]. This is [assault ship designation], out.[quotation mark]".
 		
 				
 Does the player mean rubbing back:
