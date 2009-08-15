@@ -351,7 +351,7 @@ Carry out manpaging:
 
 Understand "cd [any room]" as going towards when the player is self-aware. [###TODO: since flosix commands work on the real (i.e, proxy) names of things, it would be more proper for cd to work on "operations" rather than living room.  The "going towards" action includes a check to limit the ACU to rooms in the Valkyrie area, so no need to restrict it more here.]
 
-Whoing is an action applying to nothing. Understand "who" as whoing.
+Whoing is an action applying to nothing. Understand "who" as whoing when the player is the ACU.
 
 Carry out whoing:
 	if the player is clueless:
@@ -359,7 +359,7 @@ Carry out whoing:
 	otherwise if the player is the ACU and the ACU is self-aware:
 		say "ACU        vconsole        [right justify turn count minus epoch_pid][paragraph break]".	
 		
-Uptiming is an action applying to nothing. Understand "uptime" as uptiming.
+Uptiming is an action applying to nothing. Understand "uptime" as uptiming when the player is self-aware.
 
 Carry out uptiming:
 	if the player is clueless:
@@ -738,7 +738,7 @@ Understand "leave" as exiting.
 
 Section Folding and Unfolding
 
-Folding is an action applying to one thing. Understand "fold [something]" as folding. Understand "fold up [something]" as folding. Understand "collapse [something]" as folding.  
+Folding is an action applying to one thing. Understand "fold [something]" as folding. Understand "fold up [something]" as folding. Understand "collapse [something]" as folding when the player is the acu.  
 
 Check folding:
 	say "You can't fold [the noun]."
@@ -752,7 +752,7 @@ Instead of folding the futon:
 		now the futon is folded;
 		say "With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage."
 	
-Unfolding is an action applying to one thing. Understand "unfold [something]" as unfolding.  
+Unfolding is an action applying to one thing. Understand "unfold [something]" as unfolding when the player is the acu.  
 
 Check unfolding:
 	say "[The noun] is not something you can just go around unfolding."
@@ -901,6 +901,9 @@ Section Potty Language
 Businessing is an action applying to nothing. Understand "poop" or "defecate" or "do business" or "piss" or "pee" or "urinate" or "micturate" or "tinkle" or "whiz" or "void" as businessing.
 
 Check Businessing:
+	if the player is Rover:
+		say "This is one of those rare occassions on which you don't have anything to do.";
+		the rule fails;
 	if the player is wearing the flight suit:
 		say "[if the player is clueless]You can do a lot of things in your one-piece flight suit. That ain't one of them[otherwise]The ACU quantum isolation interferes with the transfer of power to the retro system[end if].";
 		the rule fails;
@@ -939,7 +942,7 @@ Instead of tying the dental floss to something:
 			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperature[end if].";
 			now the chain is repaired.
 
-Repairing is an action applying to one thing. Understand "fix [something]" or "repair [something]" or "mend [something]" as repairing.
+Repairing is an action applying to one thing. Understand "fix [something]" or "repair [something]" or "mend [something]" as repairing when the player is the acu.
 
 Carry out repairing:
 	say "[if the player is clueless]You make a mental note to put it on the list of things that need repairing for the next time the cottage maintenance droid knocks on your door[otherwise]You log the repair request for dry dock maintenance[end if].";
@@ -974,7 +977,7 @@ Report Petting:
 	
 Section Cooking
 
-Cooking is an action applying to one thing. Understand "cook [something]" or "fry [something]" as cooking.
+Cooking is an action applying to one thing. Understand "cook [something]" or "fry [something]" as cooking when the player is the acu.
 
 Check cooking:
 	if the noun is not the white egg:
@@ -1851,7 +1854,7 @@ After opening the old fridge:
 		say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]After a brief chemosensor scan, he rolls back towards the operations area[end if].";
 		now Rover is in the living room.
 
-The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]."
+The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried[end if] white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." 
 
 Instead of attacking the white egg:
 	if the white egg is in the frying pan:
@@ -1976,7 +1979,7 @@ After dropping a bowl (called the vessel):
 		now Rover is in the kitchen;	
 		now Rover is busy.
 	
-Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with. 
+Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with when the player is the acu. 
 
 Check filling it with:
 	if the noun is not a bowl:
@@ -2026,7 +2029,7 @@ After filling the food bowl with the dog chow bag:
 Report filling it with:
 	say "You fill the [noun] with some [if the noun is the water bowl][tap water] from the [kitchen sink][otherwise][dog food][end if]."
 	
-Fillupping is an action applying to one thing. Understand "fill [something]" as Fillupping.
+Fillupping is an action applying to one thing. Understand "fill [something]" as Fillupping when the player is the acu.
 
 Check fillupping:
 	if the player is Rover:
@@ -2060,7 +2063,7 @@ Instead of doing something with the dog food:
 		otherwise:
 			say "You don't want to mess with Rover's [dog food]."
 			
-Pouring it into is an action applying to two things. Understand "pour [something] in/into [something]" or "transfer [something] into/in [something]" or "put something in/into [something]" or "move [something] in/into/to [something]" as pouring it into.
+Pouring it into is an action applying to two things. Understand "pour [something] in/into [something]" or "transfer [something] into/in [something]" or "put something in/into [something]" or "move [something] in/into/to [something]" as pouring it into when the player is the acu.
 
 Carry out pouring it into:
 	do nothing.
@@ -2209,7 +2212,7 @@ Does the player mean taking reward nuggets box:
 
 The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" and "nuggets" and "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them.". The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural" and "net" and "reinforcement" and "token" and "positive" and "feedback" as the dog treat-proxy.
 
-Before taking the dog treat:
+Before taking the dog treat: 
 	if the dog treat is not in the reward nuggets box:
 		say "[if the player is clueless]You haven't given Rover the last dog treat you took out of the box[one of], and you don't want to find them all over the cottage a few months from now when your neurotically fastidious mother shows up on short notice[or][stopping][otherwise]A neural token has already been checked out[end if].";
 		the rule succeeds;
@@ -2276,7 +2279,7 @@ Instead of eating the dental floss:
 		move dental floss to Limbo;
 		say "[if the player is clueless]Mmm. Quite tasty[otherwise]Key pair decohered and ready for regeneration[end if]."
 	
-Flossing is an action applying to one thing. Understand "floss [something]" as flossing.
+Flossing is an action applying to one thing. Understand "floss [something]" as flossing when the player is the acu.
 
 Check flossing:
 	if the strand of dental floss is not held by the player:
@@ -2303,7 +2306,7 @@ The clueless-name of the toothbrush is "toothbrush".  Understand "brush" and "gr
 Instead of listening to the toothbrush:
 	say "[if the player is clueless]It must be off, because it's silent at the moment[otherwise]The pit scrubber is silent when not activated[end if]."
 	
-Brushing is an action applying to one thing. Understand "brush [something]" as brushing.
+Brushing is an action applying to one thing. Understand "brush [something]" as brushing when the player is the acu.
 
 Check brushing:
 	if the toothbrush is not held by the player:
@@ -2385,7 +2388,7 @@ The bathroom sink is a privately-named sink in the bathroom.  The clueless-name 
 
 The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
 
-The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retros".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
+The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retro assembly".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro" and "retros" and "rocket" and "assembly" as the toilet-proxy. 
 
 The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The flapper valve, the lever, and the chain are fixed in place things in the water tank. The silver knob is part of the water tank. Tank-water is some scenery water in the water tank. 
 
@@ -2559,9 +2562,9 @@ After opening a flipchair (called the flop):
 After closing a flipchair (called the flop):
 	say "You [if the player is clueless]lower[otherwise]raise[end if] [the flop]."
 	
-Understand "raise [something raisable]" as opening. Understand "lift [something raisable]" as opening.
+Understand "raise [something raisable]" as opening. Understand "lift [something raisable]" as opening when the player is the acu.
 
-Understand "lower [something raisable]" as closing.
+Understand "lower [something raisable]" as closing when the player is the acu.
 
 Before entering a flipchair (called the flop):
 	if the flop is open:
@@ -2576,7 +2579,7 @@ Before entering a flipchair (called the flop):
 Instead of taking the toilet:
 	say "That's hardly pottyable."
 	
-Flushing is an action applying to one thing.  Understand "flush [something]" as flushing.
+Flushing is an action applying to one thing.  Understand "flush [something]" as flushing when the player is the acu.
 
 Check flushing:
 	if the noun is not the the toilet and the noun is not the silver knob:
@@ -2752,17 +2755,13 @@ Angle		Inclination
 150				"almost completely "
 180				"completely "
 
-Understand "push [something] [a custom direction]" as yoking it more.
-Understand "pull [something] [a custom direction]" as yoking it more.
-Understand "twist [something] [a custom direction]" as yoking it more.
-Understand "turn [something] [a custom direction]" as yoking it more.
-Understand "spin [something] [a custom direction]" as yoking it more.
-Understand "yank [something] [a custom direction]" as yoking it more.
+Understand "push [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "pull [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "twist [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "turn [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "spin [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "yank [something] [a custom direction]" as yoking it more when the player is the acu.
 
-After going to the shower for the first time:
-	say "You miss having a bath, but when you were selecting a place to live only the high-rises had true baths. The garden cottages on the edge of the park all had these no-frills shower stalls.";
-	let metatext be "David: Actually, I live just in a cottage on the other side of the park, and I have a regular bathtub.[line break]Janet: You want me to come over and take my baths there?[line break]David: Well, no, I mean, it would be okay, I guess, but that wasn't my point.[line break]Janet: Your point was...?[line break]David: Just that some of the cottages do have baths.[line break]Janet: I see.";
-	say "[metatext in metaspeak]";
 	
 The clueless-name of the shower is "shower". The aware-name of the shower is "extruder". The shower can be a new experience. The shower is a new experience. The aware-description of the shower is "The extruder delivers activated enamel solution to the surface of the ship through a fluidics network where it hardens into an ablative coating." The clueless-description of the shower is "[if the player is not wearing the flight suit]You are in your shower and water of just the right temperature is raining down on you. [end if]Two buttons are molded into the wall of the shower stall. One is labeled [quotation mark]soap[quotation mark], and the other, [quotation mark]shampoo[quotation mark]. [if the player is wearing the flight suit]The shower has not activated because you are still wearing clothes." The shower can be sprayed. The shower is not sprayed.
 
@@ -2816,13 +2815,25 @@ The clueless-name of the shampoo dispenser is "shampoo dispenser". The aware-nam
 
 The clueless-name of the shower walls is "shower walls". The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull." The shower walls-proxy is an aware-proxy that is part of the shower walls. Understand "fluidics", "network" , "tubes", "valves" and "pumps" as the shower walls-proxy.
 
-Before switching on the shower walls:
+Before switching on or switching off the shower walls:
 	say "[if the player is clueless]The shower is fully automated and adjusts temperature, pressure and direction of the water stream as needed[otherwise]The fluidics network is slaved to the ships autonomic network and activates automatically, as needed[end if].";
 	the rule succeeds.
 	
 The clueless-name of the shampoo button is "shampoo button". Understand "yellow" as the shampoo button. The aware-name of the shampoo button is "accelerant release". The clueless-description of the shampoo button is "A small yellow button on the wall of the shower. It is marked [quotation mark]Shampoo[quotation mark]." The aware-description of the shampoo button is "A monostable vibrator operating the accelerant solenoid." The shampoo button-proxy is an aware-proxy that is part of the shampoo button. Understand "monostable" and "vibrator" as the button-proxy. The shampoo button can be pressed or unpressed. The shampoo button is unpressed.
 
 The clueless-name of the soap button is "soap button". Understand "green" as the soap button. The aware-name of the soap button is "enamel release". The clueless-description of the soap button is "A small green button on the wall of the shower. It is marked [quotation mark]Soap[quotation mark]." The aware-description of the soap button is "The enamel release enable signal." The soap button-proxy is an aware-proxy which is part of the soap button. Understand "enamel" and "release" and "signal" as the soap button-proxy. The soap button can be unpressed or pressed. The soap button is unpressed.
+
+Before switching on the soap dispenser:
+	try pushing the soap button instead.
+	
+Before switching on the shampoo dispenser:
+	try pushing the shampoo button instead.
+	
+Before switching off the soap dispenser:
+	say "You recall that after dispensing soap, the dispenser turns off automatically." instead.
+	
+Before switching off the shampoo dispenser:
+	say "You recall that after dispensing shampoo, the dispenser turns off automatically." instead.
 
 Instead of pushing or touching the soap dispenser:
 	try pushing the soap button.
@@ -3493,18 +3504,18 @@ Every turn:
 			now Rover is not hungry;
 			move the dog food to Limbo;
 			if Rover is in the location:
-				say "[if the player is clueless]Rover[one of]'s head disappears into the food bowl. It is hard to believe that the sounds generated are coming from a dog rather than some sort of industrial mining rig. When his head lifts, the bowl is not only empty, but has been buffed to a mirror finish[or] makes short work of the food in his bowl[or] gulps down the food, without pausing for niceties such as breathing[or] (gulp) eats (gulp) the (gulp) food (gulp) as (gulp) quickly (gulp) as (gulp) is (gulp) caninely (gulp) possible (burp)[at random][otherwise]The remote operations vehicle backs up to the thermal isotope deliver system and takes on a full load of glowing, red hot polonium 210 nodules[end if].[paragraph break]";
+				say "[if the player is clueless]Rover[one of]'s head disappears into the food bowl. It is hard to believe that the sounds generated are coming from a dog rather than some sort of industrial mining rig. When his head lifts, the bowl is not only empty, but has been buffed to a mirror finish[or] makes short work of the food in his bowl[or] gulps down the food, without pausing for niceties such as breathing[or] (gulp) eats (gulp) the (gulp) food (gulp) as (gulp) quickly (gulp) as (gulp) is (gulp) caninely (gulp) possible (burp)[in random order][otherwise]The remote operations vehicle backs up to the thermal isotope deliver system and takes on a full load of glowing, red hot polonium 210 nodules[end if].[paragraph break]";
 				now Rover is busy;
 		otherwise:[bowl wasn't full]
 			if Rover is in the location and a random chance of 1 in 3 succeeds:
-				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in his soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly and frowns at his[at random] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[at random][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if].[paragraph break]";
+				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in his soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly and frowns at his[at random] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[in random order][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if].[paragraph break]";
 				now Rover is busy;		
 	if the holder of Rover is the holder of the water bowl and Rover is thirsty:
 		if the water bowl is full:
 			now Rover is slaked;
 			move the tap water to Limbo;
 			if Rover is in the location:
-				say "[Rover][if the player is clueless][one of]'s tongue is a blur as he laps up the water, draining the water bowl in seconds[or] slurps the water bowl dry[or] must have been thirsty. One moment the water bowl is full; the next, it's bone dry[or] drinks the water[at random][otherwise] approaches the coolant transfer device and makes a positive seal. Coolant flows quickly cross the connection, and then the device uncouples and retracts to its storage position[end if].[paragraph break]";
+				say "[Rover][if the player is clueless][one of]'s tongue is a blur as he laps up the water, draining the water bowl in seconds[or] slurps the water bowl dry[or] must have been thirsty. One moment the water bowl is full; the next, it's bone dry[or] drinks the water[in random order][otherwise] approaches the coolant transfer device and makes a positive seal. Coolant flows quickly cross the connection, and then the device uncouples and retracts to its storage position[end if].[paragraph break]";
 				now Rover is busy;
 		otherwise:[bowl wasn't full]
 			if Rover is in the location and a random chance of 1 in 3 succeeds:
@@ -3517,7 +3528,7 @@ Every turn:
 				watch rover;					
 		otherwise if a random chance of 1 in 3 succeeds: [add sounds of Rover being busy off camera]
 			say "From the direction of [the location of Rover in lower case], you hear [Rover] [one of]scratching himself[or]walking about[or]running in circles[or]jumping around[or]barking at something[or]growling at something[or]sniffing something[or]chewing something[or]dragging something around[or]doing whatever it is he does when he's not out for walkies[or]snoring loudly[or]snoring softly[or]scratching something[or]playing[or]entertaining himself[or]walking in your direction[or]rolling around on the floor[or]breathing quietly[in random order].";
-		now Rover is not busy.
+	now Rover is not busy.
 
 To watch Rover:
 	let stage business be a random number from 1 to 4;
@@ -3681,7 +3692,7 @@ Carry out beeping:
 	
 Snoozing is an action applying to nothing.
 
-Understand "snooze" as snoozing.
+Understand "snooze" as snoozing when the player is the ACU.
 
 Understand "sleep" as snoozing when bedtime is happening.
 
@@ -3870,7 +3881,8 @@ When Real Thing begins:
 	now the alarm clock is in Limbo;
 	move the player to the living room, without printing a room description.
 	
-Every turn when the Real Thing is happening and the landing_pid is not 0:
+Every turn when the Real Thing is happening and the landing_pid is not 0 and (the delicious bone is not in the Valkyrie Area or the white egg is not in the Valkyrie Area):
+	[i.e., after landing, but not after the probe and the egg have been recovered]
 	if the player is in the living room and the living room is not visited-during-havoc:
 		now the living room is visited-during-havoc;
 	fuss around door.
@@ -4016,15 +4028,12 @@ Every turn when Boarding Party is happening:
 					move the toilet seat to Limbo;
 					move the toilet cover to Limbo;
 				if the player is not in the place entry:
-					say "[The destroyed item entry] is offline";
+					say "You sense that [the destroyed item entry] is offline.[paragraph break]";
 			if there is a vandalized item entry:
 				now the vandalized item entry is damaged;			
 				if the player is not in the place entry:
-					say "Diagnostic error: [vandalized item entry]";
+					say "You experience a diagnostic error from [the vandalized item entry].[paragraph break]";
 			increase the damage counter by one;
-		if Rover is in the location and the underling is in the location:
-			if a random chance of 1 in 2 succeeds:
-				say "Rover [one of]growls at [the underling][or]gives [the underling] the evil eye[or]snarls at [the underling][or]bears his teeth towards [the underling][or]paces nervously, glancing towards [the underling][or]makes it clear that he is not amused by [the underling]'s antics[or]remains coiled on the floor, watching [the underling] intently[or]looks at you, and then at the [underling], and seems ready to pounce[or]barks a warning at the [underling][or]gnashes his teeth and makes sure that the [underling] sees how very sharp they are[or]bays at the [underling][at random].";
 	if the assault ship approach is 1:[first attempt to clamp on]
 		if the assault ship distance is greater than zero:
 			say "[quotation mark][if the ACU is silent][the reply to silence corresponding to the range of the assault ship distance in Table of Approach Chatter][otherwise if the ACU is surrendered][the reply to surrender corresponding to the range of the assault ship distance in the Table of Approach Chatter][otherwise][the reply to refusal corresponding to the range of the assault ship distance in the Table of Approach Chatter]";
@@ -4078,7 +4087,19 @@ Every turn when Boarding Party is happening:
 		now the FiO2 is 2121 divided by the pressure;
 		[to try to maintain partial pressure of O2 over a range of a atm pressures -- the Valkyrie was originally designed for human passengers]
 		if the FiO2 is greater than 60:
-			now the FiO2 is 60.[limited to 60% because of risk of fire/explosion]
+			now the FiO2 is 60;[limited to 60% because of risk of fire/explosion]
+	if the holder of Rover is the holder of the underling:
+		if Rover is in the location:
+			say "[Rover]";
+			if a random chance of 1 in 2 succeeds:[split into two sections because of complexity]
+				say "[one of] growls menancingly at [the underling][or] stalks behind [the underling], keeping a watchful eye on him[or]crouchs and snarls, and [the underling] shrinks back. He continues his work slowly, keeping a wary eye on Rover[or] doesn't know what [the underling] is doing, but he knows he doesn't like it[or] sniffs [the underling] suspiciously[or] skulks around [the location in lower case], vigilantly keeping track of [the underling][or]'s fur stands on edge as he studies [the underling][or] howls at [the underling], who spins quickly, stumbling into the bulkhead[or] hovers just behind [the underling], sharpening his mining claws[or] grinds his tractors against the deck plating, momentarily distracting [the underling][in random order].";
+			otherwise:
+				say "[one of]stands in just the right spot to block [the underling]'s light[or]'s lateral jets pulse red hot with suppressed anger as he watches [the underling][or] keeps tabs on [the underling] from across the room[or] finds the scent of [the underling] repulsive and rolls to the far side of the room[or] grins at [the underling], letting him know that he'd be happy to attack, if only given the order[or]'s posture suggests that he would like to rip [the underling] from limb to limb[or] grimaces as he watches [the underling] damage the ship[or]Rover snaps his mining mandible open and shut, just behind [the underling]'s head. The nervous [underling] casts a worried glance towards the sharp jaws, and picks up the pace of his work[or] vents some noxious fumes near [the underling] who takes the hint and moves further away from Rover[in random order].";
+		otherwise:[Rover is with the underling, but not in the same room as the player, so Rover is heard off camera]
+			say "[one of]From [the location of Rover in lower case] you hear [Rover] growling with irritation[or][Rover]'s tractors whine and spin on a bulkhead out of view. From that direction, you hear metallic tools hitting the floor and cursing from the surprised [the underling][or]From [location of Rover in lower case], you hear [Rover] bark menacingly[or][Rover] howls eerily from another section of Valkyrie, and his caterwauling reverberates through the ship[or]You hear some commotion coming from [location of Rover in lower case], a mixture of snarls and snapping jaws[or][longish encounter][or][Rover] bays ceaselessly at [the underling], who he considers an undesirable visitor[or][Rover]'s telemetry indicates that he is stressed, and in a state of extreme excitement and agitation[or]Judging by the racket [Rover] is making in [the location of Rover in lower case], he is upset about the presence of [the underling][in random order].";
+	now Rover is busy.
+	
+To say longish encounter:[split out because it makes the above substitution too complex]	say "From [the location of Rover in lower case] you hear [the underling] shout, [quotation mark][assault ship designation], this is [underling]. Some kind of colossal excavation droid is watching me. It's the size of a Badger-class cutter, and huge, sharp digging apparatus. I don't like the way it's just looking at me. It's creepy.[quotation mark][paragraph break][quotation mark]Roger, [underling], situation acknowledged. We recommend that you complete operations quickly and return to [assault ship designation].[quotation mark][paragraph break][quotation mark]Affirmative, [assault ship designation], that's just what I'm doing. Um, thanks for the advice.[quotation mark][paragraph break][quotation mark]That's why we're here, [underling]. This is [assault ship designation], out.[quotation mark]".
 		
 				
 Does the player mean rubbing back:
