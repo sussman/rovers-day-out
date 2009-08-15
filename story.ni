@@ -1109,6 +1109,9 @@ Test all with "test living_room". [and many, many more...Note test names are sin
 Chapter Initialize
 
 When play begins:
+	say "[quotation mark][fixed letter spacing]There ought not to be anything in the whole universe that man can't poke his nose into — that's the way we're built and I assume that there's some reason for that.[quotation mark] [paragraph break]     — Robert Heinlein[variable letter spacing]";
+	await keystroke;
+	clear the screen;
 	[recurrent setup]	
 	Save the World;
 	Setup the World;
