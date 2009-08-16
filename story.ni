@@ -1275,6 +1275,7 @@ Check barking:
 		
 Carry out barking:
 	say "[doggerel]";
+	Drop Rover's Payload;
 	if the female dog is in the location and the female dog carries the delicious bone:
 		say "[one of]No doubt in awe of your rhetorical skills, the lovely damsel drops the bone. Her gift to you, you suppose[or]Stunned by your eloquence, the beautiful young hound again drops her bone, in tribute to your virile superiority[or]Somewhat predictably now, she drops the bone[stopping].";
 		the female dog recovers in two turns from now;
@@ -1748,7 +1749,21 @@ Instead of examining Rover when the drapes are open:
 			otherwise: 
 				say "He snores loudly, his jowls fluttering with each breath. [run paragraph on]";
 		say paragraph break.
-
+		
+Before taking something (called the item) when the player is Rover:
+	if Rover carries the item:
+		say "The [item] is already in your mouth." instead;
+	otherwise:
+		Drop Rover's Payload.
+		
+After taking something (called the item) when the player is Rover:
+	say "You [one of]pick up [the item] in your jaws[or]take [the item] in your mouth[or]gently pick up [the item] using your front teeth[or]grab [the item] with your mouth, being careful not to crush it[or]carefully take hold of [the item] with your teeth[in random order]."
+	
+To Drop Rover's Payload:
+	if Rover carries something (called the item):
+		say "The [item] falls out of your mouth[one of] with a thud[or] and rolls slightly[or] and lands near your feet[or], startling you[in random order].";
+		now the item is in the holder of Rover.
+	
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
 
 The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "deep", "memory", "unit", "data", and "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. 
@@ -1870,7 +1885,7 @@ After opening the old fridge:
 		say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]After a brief chemosensor scan, he rolls back towards the operations area[end if].";
 		now Rover is in the living room.
 
-The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried[end if] white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." 
+The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried [end if]white egg". The aware-name of the white egg is "[if the white egg is cooked]depleted [end if]heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled metallic Helium-4." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" and "heavy" and "sphere"as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." 
 
 Instead of attacking the white egg:
 	if the white egg is in the frying pan:
