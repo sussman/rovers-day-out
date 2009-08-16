@@ -518,15 +518,14 @@ Rover and other objects:
 [not relevant, as Rover only jumps up once] [if the alarm clock is put back on the bed, rover should keep knocking it down to the floor?]
 
 Rover and the female dog:
-* Rover's interactions with the female dog all occur when he's the actor, and it's mostly scripted. Her behavior is such that she never comes into the Valkyrie. When Rover returns after meeting her, his behavior should reflect his infatuation with her. She's a dumb bulldozer, so she never really reacts to him, but he will see it differently.
+[ok] Rover's interactions with the female dog all occur when he's the actor, and it's mostly scripted. Her behavior is such that she never comes into the Valkyrie. When Rover returns after meeting her, his behavior should reflect his infatuation with her. She's a dumb bulldozer, so she never really reacts to him, but he will see it differently.
 
 Rover and the Boarding Party
-* Rover should bark and be defensive when he's around strangers (the barking can be heard "off camera", as appropriate). Rover should follow the strangers around.
+[ok] Rover should bark and be defensive when he's around strangers (the barking can be heard "off camera", as appropriate). Rover should follow the strangers around.
 
 Rover and Back on Mars
 * Rover should stay put in the living room.
-* Rover should react to Janet
-* Rover should display some confusion between real Janet and ACU Janet
+[ok, when Rover wakes, he looks back and forth in confusion] Rover should display some confusion between real Janet and ACU Janet
 
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
 
@@ -534,7 +533,7 @@ Rover and Back on Mars
 
 =====
 other:
-- disable get all.
+[ok] disable get all.
 - make sure player will not walk into shower carrying stuff.
 - hints about being naked/cold if the suit is off.
 - rule to handle encounter with naive maintenance droid if naked at time of encounter.
@@ -545,11 +544,11 @@ other:
 - standing when already out of bed is interpreted as exiting (and standing in bathroom exits it, etc.)
 - is flushing toilet still standing the player up?
 - inhibit fussing around the door during real thing if we've already got the egg and the probe.
--ground as synonym for floor
+- ground as synonym for floor
 - Rover needs his own remembers....like the Yorkie from across the park
-- get bone (held by female)
 - react to word "bitch" in context
 - allow growling [at] s.t./s.o.
+- broaden read verb so that it doesn't "not see" items that are not inscriptions
 
 =======
 after rover has brought back the egg and the probe, he no longer fusses at the door to go out, but he will go out if the door is open. TOCONSIDER: after getting the two items we need, he may lose all interest in going out even if the door is open.
