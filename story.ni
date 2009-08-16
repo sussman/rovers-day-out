@@ -265,6 +265,19 @@ Carry out BSODing:
 	return to main screen;
 	clear the screen.	
 	
+[Blue Screen Of Ending - only for victorious endings]
+BSOEing is an action applying to nothing.
+Carry out BSOEing:
+	say "*** STOP:  Simulation halted.  Press a key to continue.";
+	await keystroke;
+	open up BSOD-window;
+	move focus to BSOD-window, clearing the window;
+	say "[second custom style]                 WINDEX                 [paragraph break]STOP :: FLOSIX VIRTUAL MACHINE EXITED WITH STATUS 'SUCCESS'.[paragraph break]HOLOTRAINER -> EXECUTE : COMPLETE[line break]HOLOTRANINER -> SHUTDOWN : TRUE[line break]TRANSCRIPT -> ENCRYPT : AUTHORIZATION JANETXIANG[line break]TRANSCRIPT -> CACHE : TRUE[line break]COGNITIVE CONSTRAINTS -> ENGAGE : TRUE[line break]ACU-2.0 NEURALNET -> SAVE : TRUE[paragraph break]SYSTEM WILL NOW SHUTDOWN FOR SCHEDULED MAINTENANCE.[paragraph break]";
+	await keystroke;
+	shut down BSOD-window;
+	return to main screen;
+	clear the screen.
+
 [borrowed from example I7 documentation, example 424 Odins:]
 After printing the name of something (called the target): 
     change the last mentioned thing [quotation mark][paragraph break][quotation mark]to the target.
@@ -3364,6 +3377,7 @@ the bashing action					"SHELL" [bash, ksh, sh]
 the brushing action				"SPAWN SCRUBBERS" [brush teeth]
 the beeping action					"PROXIMITY ALERT" [beeping]
 the BSODing action					"FATAL ERROR"
+the BSOEing action					"HALT"
 the burning action					"IGNITE"
 the businessing action			"POWER TRANSFER" [oop, pee, etc.]
 the buttdowning action			"PARK" [rover, sit]
@@ -4549,7 +4563,9 @@ Rule for printing the player's obituary:
 		-- eeled:
 			say "[eel-epilogue]";
 		-- otherwise:
-			say "default response for testing purposes."
+			say "default response for testing purposes.";
+	if the game ended in victory:
+		try BSOEing.
 			
 To say eel-epilogue:
 	if the front door is open:
@@ -4560,5 +4576,3 @@ To say eel-epilogue:
 			say "they understood David's treachery and sifted through his MARSpace accounts, revealing further evidence of his covert work for Myomita. Using his own codes, they filed a false report from David, confirming to Myomita that the Musashi-5 was destroyed during its crash landing, and that no data could be recovered. With Myomita firmly on the wrong trail, they devoted their full efforts to decrypting the probe data.[paragraph break]Two years later, armed now with those data, the Valkyrie was redesignated the [apostrophe]MSS Janet Xiang[apostrophe], and launched on a mission of exploration, with a crew complement of over five hundred, plus one dog: Rover.";
 		otherwise:
 			say "they immediately pointed the dynobore at the ACU quantum isolator, and drilled through into the murderous computer's icosahedral core.[paragraph break]A memorial service was held a week later to commemorate the heroic actions of David and Janet, who died in service to Mars, testing mankind's first Casimir drive starship, the Valkyrie. The celebration of this technological breakthrough easily overtook the death of the two technicians, and soon dominated the media throughout the Solar System.[paragraph break]No mention was ever made of the true mission of the Valkyrie, nor of the priceless Mushashi-5 data lost when the ship's ACU was destroyed."
-			
-	
