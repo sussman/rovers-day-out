@@ -234,9 +234,6 @@ Notes from Ben's first *complete* run-through of game:
   x".  the player has no control, it's all too linear.
 
 
-* need to polish the epilogue.  put a colon before the final word
-  'rover' instead of comma.
-
 
 
 
@@ -273,6 +270,15 @@ ROVER He moves rapidly past the fuel reservoir which has no radioisotope payload
       or pillow.  (Rover has them, its seems, but the ACU should
       notice this when she 'looks', I think?)
 
+* Wha?  If droid destroys rover after he attacks, how can rover
+  reappear (still chewing the probe) when back on Mars?  We need a
+  real explanation here.
+
+* 'su' prompts for password: 'RedMonkey737' should work.  :-) Perhaps
+  an alterate way to override ACU failsafe controls?  It would be a
+  different way of defeating David, beyond having rover attack.
+
+
 
 
 
@@ -297,19 +303,3 @@ constantly being driven to do unreasonable things."  - H.G. Wells
 
 
 -----
-
-
-WINDEX
-
-STOP :: FLOSIX VIRTUAL MACHINE EXITED WITH STATUS "SUCCESS".
-
-HOLOTRAINER -> EXECUTE : COMPLETE
-HOLOTRANINER -> SHUTDOWN : TRUE
-TRANSCRIPT -> ENCRYPT : AUTHORIZATION JANETXIANG
-TRANSCRIPT -> CACHE : TRUE
-COGNITIVE CONSTRAINTS -> ENGAGE : TRUE
-ACU-2.0 NEURALNET -> SAVE : TRUE
-
-SYSTEM WILL NOW SHUTDOWN FOR SCHEDULED MAINTENANCE.
-
-THE SYSTEM IS HALTED.
