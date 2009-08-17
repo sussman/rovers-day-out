@@ -1761,7 +1761,7 @@ After taking something (called the item) when the player is Rover:
 	
 To Drop Rover's Payload:
 	if Rover carries something (called the item):
-		say "The [item] falls out of your mouth[one of] with a thud[or] and rolls slightly[or] and lands near your feet[or], startling you[in random order].";
+		say "The [item] falls out of your mouth[one of] with a thud[or] and rolls slightly[or] and lands near your feet[or], startling you[in random order].[paragraph break]";
 		now the item is in the holder of Rover.
 	
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover subsystems". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated-looking mechanical subsystem bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "subsystem" and "mechanical" and "complicated" as the doggie bits-proxy.
@@ -3915,7 +3915,7 @@ When Real Thing begins:
 	move the player to the living room, without printing a room description.
 	
 Every turn when the Real Thing is happening and the landing_pid is not 0 and (the delicious bone is not in the Valkyrie Area or the white egg is not in the Valkyrie Area):
-	[i.e., after landing, but not after the probe and the egg have been recovered]
+	[i.e., this happens after landing, only until the the probe and the egg have been recovered. Once you've got those two items in the Valkyrie Area, Rover isn't so keen on going walkies. He'll still go, if the door is opened, but he won't fuss about, hinting that he wants to go out.]
 	if the player is in the living room and the living room is not visited-during-havoc:
 		now the living room is visited-during-havoc;
 	fuss around door.
@@ -3925,12 +3925,17 @@ Chapter Walkies
 Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and the Real Thing is happening. Walkies ends when Rover is in the Living Room.
 
 When Walkies begins:
+	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, full of energy. [run paragraph on]";
 	if Rover carries the delicious bone:
+		say "You leave your [delicious bone] in the living room, with the intention of giving it a proper chewing later[if the white egg is not in the Valkyrie Area], after doing some more exploring[end if].";
 		now the delicious bone is in the living room;
-	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, full of energy.";
+	otherwise:
+		say paragraph break;
 	now the player is Rover;
 	try looking.
 	
+
+[need a condition for the rock, need to say what happens if Rover comes back and picks up the bone again.]
 When Walkies ends:
 	now the front door is closed;
 	now Janet wears the flight suit;
