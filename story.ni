@@ -1716,9 +1716,9 @@ Instead of opening the front door when the front door is closed:
 		the rule succeeds;
 	[Ship is on the ground, ROVER is prepped to go out]
 	if the player is clueless:
-		say "[one of]You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash[or]Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[at random].";
+		say "[one of]You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash[or]Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[at random].[paragraph break]";
 	otherwise: [aware]
-		say "[Rover] [one of]deploys to the planet surface through the cargo bay doors[or]spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship[or]oscillates his aft sensor array at high frequency and rolls down the cargo ramp, disappearing into the sand storm[at random].";
+		say "[Rover] [one of]deploys to the planet surface through the cargo bay doors[or]spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship[or]oscillates his aft sensor array at high frequency and rolls down the cargo ramp, disappearing into the sand storm[at random].[paragraph break]";
 	now the front door is open; [signaling the end of second sim scene]
 	if the Real Thing is happening:
 		move Rover to the Front Yard. [signaling the beginning of walkies scene]
@@ -1731,14 +1731,17 @@ Instead of examining Rover when the drapes are open:
 	if the player is clueless:
 		if the player is the ACU:
 			say "He's [one of]a big, happy dalmation[or]a medium-to-largish dog, mostly white with some black dots[or]not genineered or cyberized; he's just a regular old dalamation, like the ones originally bred on Earth[or]got to mass at least 30 kilos, although he is athletic and trim[or]not what you'd typically call a lap dog, although he'd beg (literally) to differ[or]the sort of dog that if you had one hundred more, you could make a Disney film[or]young as dogs go, about 5 years old, so not a puppy either, although he's almost as playful at times[or]almost entirely dalmation, although there must have been some other breed somewhere in his lineage, as he has a brown spot just over his left eye, while all the other spots are black[or]a classic dalmation with black rather than green or orange spots, which are more in vogue among today's Martian dog fanciers[or]a strong dog, with powerful back legs and a supple back[or]a noble-appearing dog, who stands squarely with straight shoulders, and firmly planted back legs[or]a short-haired dog, white with black spots. Despite the shortness of his hair, it tends to get on everything from furniture to clothes[or]the kind of dog often depicted as a [quotation mark]fire dog[quotation mark] in old Earth films[or]a monochromatic dog in a polychromatic world[or]got floppy ears, a straight tail, and a look of mischief in his eyes[or]smiling at you, raising one side of his mouth so you can see his teeth. Other people find it alarming, but you know he's just trying to be congenial[or]a gentle, obedient dalmation[in random order].[paragraph break]";
-			if a random chance of 2 in 3 succeeds:
-				watch Rover;
-				now Rover is busy;
+			if Rover carries the delicious bone:
+				say "Rover is chewing on a big bone that he picked up earlier in the Park.";
+			otherwise:
+				if a random chance of 2 in 3 succeeds:
+					watch Rover;
+			now Rover is busy;
 		otherwise:[Rover's POV]
 			say "You're [one of]a big dog with white fur and dark spots[or]a suave and sophisticated dog, with a streak of nobility[or]debonair, cosmopolitan dog, well-bred and cut from the best cloth[or]a fun-loving, easy going dog, who's fun to be around[or]a classic black and white dalmation, with a beauty mark above your left eye. Some say it is a mark of Royalty going back to 16th Century Croatia. You're not sure about that, but it's what you tell the ladies[or]a gallant, upright dog, with a strict moral code and a clear sense of right and wrong[or]a loyal dog, with the best master in the world, Janet[or]not like the other dalmation one sees vamping about the park sporting white coats with outrageous green and orange dots. No, you are the real thing: black dots on a white coat. All of your genes are real, not grown in a lab somewhere[or]a fully biological dog, with no synthetic parts. You like it that way. You think your parts are already nice enough[or]a well-groomed, healthy dalmation. Presumably, irresistable to the ladies[in random order]. You smell [one of]clean[or]virtuous[or]like you're ready for anything[or]masculine[or]slightly musky[or]nothing at all like wet dog, and you have every intention of making sure that remains the case[or](in your opinion) foxy[or]like Janet's house[or]a little like those kibbles you've been eating for the last week[or]your butt. Yup, it's squeaky clean and ready to meet the world[or]virile[or]rugged and sturdy[or]like a red-blooded, male dog in his prime[or]fearless[or]bold and daring[or]fresh[or]dogly[in random order].";
 	otherwise:[aware]
 		say "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions. [run paragraph on]";
-		if rover has the delicious bone:
+		if rover carries the delicious bone:
 			if Rover is awake:
 				say "He is chewing a piece of the Musashi-5 space probe. [run paragraph on]";
 			otherwise:
@@ -2915,14 +2918,15 @@ The Planet Area is a region. The Front Yard, The Barren Plain, The Dug-Up Field,
 The ground is a backdrop in the Planet Area.  The description of the ground is "Light-colored soil, with many small rocks and pebbles." The scent of the ground is "chalky and dry, not moist and grassy like usual". Understand "soil" or "rocks" or "pebbles" as the ground.
 
 To say inconsequential outside detail:
-	say " You can't see far because it is so dusty here. [one of][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[or]The ground shakes forcefully.[as decreasingly likely outcomes]"
+	say " You can't see far because it is so dusty here.[run paragraph on][one of][paragraph break][or]The wind picks up, making it even more difficult to see.[or]A gust of wind lifts a sheet of dust and rains it down on you.[or]Dust spins in the air.[or]Ominous clouds of dust loom on the ever-darkening horizon.[or]The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.[or]The ground shakes forcefully.[as decreasingly likely outcomes]"
 
 The description of the front yard is "The scent of your house is strong here, and you are right next to its front door.[inconsequential outside detail]". The printed name of the Front Yard is "Front Yard".  The scent of the Front Yard is "like the outdoors".
 
-Home is a backdrop in the front yard. Understand "house" and "home" as home. The description of home is "Home sweet home, where Janet lives, where you get fed, and where you sleep. Even out here, the smell of home is comforting." The scent of home is "like food, and love, and the best place to be when you're not running around outside"
+Home is a backdrop in the front yard. Understand "house" and "home" as home. The description of home is "Home sweet home, where Janet lives, where you get fed, and where you sleep. Even out here, the smell of home is comforting." The scent of home is "like food, and love, and the best place to be when you're not running around outside."
 
 Before entering home:
 	try going towards the Living Room;
+	change the last-noun to "OPERATIONS";
 	the rule succeeds.
 [as both the backdrop and living room are understood as "home", and otherwise the backdrop would interfere with going home from the front yard.]
 
@@ -3567,7 +3571,7 @@ To watch Rover:
 	let stage business be a random number from 1 to 4;
 	if stage business is:
 		-- 1:[random fluff, part 1]	
-			say "[Rover] [one of]walks around the room, occasionally sniffing various spots on the floor[or]licks his front paws[or]dashes back and forth like a possessed dog for no apparent reason[or]prances past you at a convenient back-scratching distance[or] appears lost in thought[or]seems relaxed[or]exhales with contentment and rolls over, feet outstretched[in random order].";
+			say "[Rover] [one of]walks around the room, occasionally sniffing various spots on the floor[or]licks his front paws[or]dashes back and forth like a possessed dog for no apparent reason[or]prances past you at a convenient back-scratching distance[or]appears lost in thought[or]seems relaxed[or]exhales with contentment and rolls over, feet outstretched[in random order].";
 		-- 2:[random fluff, part 2]
 			say "[Rover] [one of]scratches his ears[or]rubs his nose[or]wags his tail as if amused by some random thought[or]nips at his own tail[or]smells his own butt[or]looks around the room[or]is watching you[or]yawns ferociously[or]rolls and squirms back and forth on the floor trying to scratch an itch[or]turns suddenly, as if he might have seen a skwerrel[or]'s ears perk up, as if he hears something[or]'s tail bats back and forth[or]stretches all the way forwards, and then all the way backwards[or]circles an area on the floor[or]stares at his own paws, entirely entranced[or]tucks his nose under his front paws[or]lies down with his front paws crossed[or]lies on his side[or]paces the room[or]struts around importantly[or]looks for a comfy spot to rest[in random order].";
 		-- 3:[non-specific interactions with environment]
@@ -3858,9 +3862,10 @@ To fuss around door:
 	if Rover is in the living room and the living room is visited-during-havoc:
 		if a random chance of one in two succeeds:
 			if the player is in the living room:
-				say "[Rover] [one of] sniffs[or] paws at[at random] [the front door].";
+				say "[Rover] [one of]sniffs[or]paws at[at random] [the front door].";
 			otherwise:
-				say "From the [if the player is clueless]living room[otherwise]cargo bay[end if], you hear [Rover] [one of]sniffing around[or]scratching at[at random] [the front door]."
+				say "From the [if the player is clueless]living room[otherwise]cargo bay[end if], you hear [Rover] [one of]sniffing around[or]scratching at[at random] [the front door].";
+			now Rover is busy.
 
 When Second Sim ends:
 	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
@@ -3914,7 +3919,7 @@ When Real Thing begins:
 	now the alarm clock is in Limbo;
 	move the player to the living room, without printing a room description.
 	
-Every turn when the Real Thing is happening and the landing_pid is not 0 and (the delicious bone is not in the Valkyrie Area or the white egg is not in the Valkyrie Area):
+Every turn when the Real Thing is happening and the landing_pid is not 0 and Rover is not busy and (the delicious bone is not in the Valkyrie Area or the white egg is not in the Valkyrie Area):
 	[i.e., this happens after landing, only until the the probe and the egg have been recovered. Once you've got those two items in the Valkyrie Area, Rover isn't so keen on going walkies. He'll still go, if the door is opened, but he won't fuss about, hinting that he wants to go out.]
 	if the player is in the living room and the living room is not visited-during-havoc:
 		now the living room is visited-during-havoc;
@@ -3934,29 +3939,31 @@ When Walkies begins:
 	now the player is Rover;
 	try looking.
 	
-
-[need a condition for the rock, need to say what happens if Rover comes back and picks up the bone again.]
 When Walkies ends:
 	now the front door is closed;
 	now Janet wears the flight suit;
-	if Rover carries the white egg:
-		say "You enter your home and lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.[paragraph break]";
-		now the white egg is in the Living Room;
-		shift to Janet's perspective;
-	otherwise if Rover carries the delicious bone:
+	now the player is the ACU;
+	if Rover carries the delicious bone:
 		say "You run into the living room and jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]She stares at the bone and appears frozen.[paragraph break]";
 		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND LINE[paragraph break]";
 		say "Rover wags his tails and gnaws on his bone.[paragraph break]You rub his head, distantly, as strange thoughts sweep through your consciousness. You wonder what would happen if the Valkyrie mission failed. What if, during the landing sequence, the ship were buffeted by the planet's particulate matter being torn away by the immense gravity of its star? In that case, critical systems might be damaged. Systems like the relatively fragile ansible antenna. There is no back-up ansible antenna. How would the ACU cope with a situation like that? The ACU was designed for a lot of contingencies, but not that one. What would you do? What would you do if you were the ACU?[paragraph break]Your glance falls on your flight suit, and suddenly the question is no longer rhetorical.";
-	otherwise if Rover carries the pillow:
-		say "You walk in the front door, hop up on the futon and drop the pink pillow. You had thought about playing with the pillow more, but on the way home, it got soaked with drool and tasted bad, so you decide to make a present of it to Janet.[paragraph break]You jump down from the futon before a surprised Janet can yell at you. Standing back and admiring your work, you marvel that somehow the pink of the pillow and purple of the futon don't clash.[paragraph break]";
-		now the pillow is on the futon;
-		shift to Janet's perspective;
+		try reorienting;
 	otherwise:
-		say "You duck back into the living room and Janet closes the front door behind you.[paragraph break]";
+		if Rover carries the white egg:
+			say "You enter your home and lay the egg at Janet’s feet. She looks so surprised! [quotation mark]Good boy,[quotation mark] she exclaims and you give her a big kiss to let her know you understand.[paragraph break]";
+			now the white egg is in the Living Room;
+		otherwise if Rover carries the pillow:
+			say "You walk in the front door, hop up on the futon and drop the pink pillow. You had thought about playing with the pillow more, but on the way home, it got soaked with drool and tasted bad, so you decide to make a present of it to Janet.[paragraph break]You jump down from the futon before a surprised Janet can yell at you. Standing back and admiring your work, you marvel that somehow the pink of the pillow and purple of the futon don't clash.[paragraph break]";
+			now the pillow is on the futon;
+		otherwise if Rover carries the rock:
+			say "You return to the living room with the funny-tasting rock in your mouth. Janet takes a look at the rock and says [quotation mark]You've started a rock collection? Well, Okay,[quotation mark] and closes the door behind you.[paragraph break]";
+			now the rock is in the living room;
+		otherwise:
+			say "You duck back into the living room and Janet closes the front door behind you.[paragraph break]";
+		if the delicious bone is in the living room:
+			say "You once again see your [delicious bone] sitting alone and [one of]unloved[or]forlorn[or]ignored[or]abandoned[or]forsaken[or]neglected[in random order] on the living room floor. You walk over to it and start chewing it again.[paragraph break]";	
+			now Rover carries the delicious bone;
 		shift to Janet's perspective;
-	now the player is the ACU;
-	try reorienting;
-	now the player is the ACU;
 	try looking.
 
 To shift to Janet's perspective:
