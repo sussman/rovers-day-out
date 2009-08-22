@@ -2409,7 +2409,7 @@ The clueless-name of the bathroom ceiling is "bathroom ceiling". Understand "cei
 
 The clueless-name of the irradiator is the "heat lamp". The aware-name of the irradiator is "UV emitter". The clueless-description of the irradiator is "The fresnel lens of a heat lamp is mounted at the apex of the bathroom ceiling." The aware-description of the irradiator is "A distributed system of ultraviolet emitters lining the tubes of the system responsible for secreting an ablative enamel onto the surface of the ship before planetary landings. The ultraviolet light accelerates the polymerization of the neoadamite enamel, forming a protective barrier around the ship. The emitters are [if the irradiator is switched on]energized[otherwise]powered down[end if] at present."  Understand "heat", "lamp", "fresnel", "lens", "heater" or "dryer" as irradiator. The irradiator can be buggy or patched. The irradiator is buggy. The irradiator-proxy is an aware-proxy which is part of the irradiator. Understand "UV", "ultraviolet", "emitter", "emitters" or "light" as the irradiator-proxy.
 
-The clueless-name of the black plate is the "black plate". The black plate is switched off. The aware-name of the black plate is "irradiator switch". The clueless-description of the black plate is "A glossy black plate that is just to the right of the bathroom mirror." The aware-description of the black plate is "The relay circuit that actuates the UV emitter in the enamel polymerization system." The black plate-proxy is an aware-proxy which is part of the black plate. Understand "irradiator", "switch", "control", "relay", "circuit" or "actuator" as the black plate-proxy.
+The clueless-name of the black plate is the "black plate". Understand "glass" or "obsidian" as the black plate. The black plate is switched off. The aware-name of the black plate is "irradiator switch". The clueless-description of the black plate is "A glossy black plate that is just to the right of the bathroom mirror." The aware-description of the black plate is "The relay circuit that actuates the UV emitter in the enamel polymerization system." The black plate-proxy is an aware-proxy which is part of the black plate. Understand "irradiator", "switch", "control", "relay", "circuit" or "actuator" as the black plate-proxy.
 
 Instead of attacking, pushing, or touching the black plate:
 	try switching on the black plate.
@@ -4449,7 +4449,7 @@ Every turn during Back on Mars:
 						say "David looks [one of]exasperated[or]annoyed[or]irritated[or]miffed[or]bent out of shape[or]tired[or]exhausted[or]weary[or]resigned[in random order]. He asks, [quotation mark]ACU: we've asked you [required entry in words] times. Please tell us about [the item entry].[quotation mark][paragraph break]";
 				increase the required entry by one;
 		otherwise:
-			say "some random filler actions";
+			say "[one of]David checks the system buffers[or]Janet runs a low level file system integrity check[or]Janet types something on her armband and it emits a series of beeps[or]Using her armband's sensors, Janet scans the cargo bay for radiation[or]David brings up schematic diagrams showing areas of Valkyrie's hull and landing system that were damaged during planetfall[or]Janet inspects the parser module and tweaks it slightly[or]David and Janet look over the activity and resource consumption logs[or]Janet checks ROVER[apostrophe]s coolant and fuel levels[or]David quickly checks that his cell phone does not have reception within the MARSpace complex[or]David pokes his head out the cargo bay doors and looks around furtively[or]David and Janet talk quietly, below your auditory threshold[or]David quickly reviews the ship[apostrophe]s security logs[in random order].";
 		the rule succeeds;
 	if elapsed is greater than 10:
 		if audio is switched off:
@@ -4507,7 +4507,13 @@ Carry out querying:
 	do nothing.[it cries out to be over-ridden]
 	
 Report querying:
-	say "Lame answer for not finding a topic in the conversation table."
+	if a random chance of 1 in 2 succeeds:
+		say "David [one of]replies[or]answers[or]responds[purely at random], [quotation mark][one of]Hm. Haven't really given that much thought[or]I'm sure that's important, but we need to concentrate on the matter at hand[or]Let's not get hung up on minutiae; we've got important matters to discuss[or]I don't see how that relates to the mission[or]Let's not get into that right now[or]I could go on about that for quite a while, but I don't see how it would help us[or]We can look that up on the net, for now let's deal with the subject at hand: the mission[or]I think that's not something we need to focus on right now[in random order].[quotation mark]";
+	otherwise:
+		say "Janet [one of]replies[or]answers[or]responds[purely at random], [quotation mark][one of]That's a good question, and we can talk about it later, but for now, I'd like to focus on the mission[or]I've wondered about that myself, but I think it's a little afield of our immediate concerns[or]I'm afraid I could ramble on about that for hours, and we'll have plenty of time to chat later, but for the time being, I'd like to concentrate on what happened during your mission and what it means for Mars[or]I can't say I'm an expert on the subject, but I think I know someone back in the office who we could ask[or]We can come back to that, but I'd like to really going into the details of the mission first[in random order].[quotation mark]";
+	say paragraph break.
+		
+
 	[###TODO make not lame, also handle audio off - maybe consolidate the audio off messages?]
 	
 Instead of querying a topic listed in the Table of Conversation during Back on Mars:
@@ -4538,7 +4544,7 @@ Carry out expounding:
 	do nothing.
 	
 Report expounding:
-	say "Lame answer for not finding a topic in the conversation table."
+	say "You [one of]search your memory banks, but draw a blank[or]are disappointed to find that the topic is not listed in your conversation table[or]are about to expound on the topic when you find that everything you ever knew about it has been overwritten with encrypted information from the space probe[or]were about to talk about it, but can't because you garbage collection routine just reallocated that conversation topic to the heap[or]don't know enough to make an informed statement[or]have nothing on file about that topic[or]realize that what you know less about that topic than a politician knows about ethics[or]find that that topic is not indexed[in random order]."
 	[###TODO make not lame, also handle audio off]
 	
 Instead of expounding a topic listed in the Table of Conversation during Back on Mars:
