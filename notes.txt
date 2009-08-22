@@ -57,21 +57,13 @@ after rover has brought back the egg and the probe, he no longer fusses at the d
 
 - better Rover description "besides Rover is here" -- chewing or not.
 - distinguish winning-ish and losing-ish endings
-- alias water maker = sink for rover
-- rover interaction with sink?
 - water dish, food dish smells
 - go park
 - redirect yes/no more generally; put a cap on it
-? view out the window on the planet.
 - room delegates
-========
 
+Amusing things:
+* sleeping and dreaming
+* remembering verb
+* boarding scene solutions
 
->lift flapper valve
-You momentarily lift the black rubber valve at the bottom of the toilet.
-
-Before you do so, the plunger catches your attention.
-
-From the direction of the kitchen, you hear Rover chewing something.
-
-- description of goatee and arm band display
