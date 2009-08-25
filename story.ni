@@ -701,16 +701,16 @@ Instead of going towards when the player is in the living room and the futon is 
 			say "[metatext in metaspeak]".
 			
 After going towards when the player is the ACU:
-	if the player carries the reward nuggets box:
+	if the player carries the reward nuggets replicator:
 		if Rover is in the location:
-			say "[Rover] [if the player is clueless][one of]begs for some treats[or]dances around, trying to suggest that he'd be glad to do one of his tricks for a reward nugget[or]sniffs at [the reward nuggets box][or]keeps an eye on [the reward nuggets box][or]stares dreamily at the doggie treats[or]watches you intently, concentrating on [reward nuggets box][or]scrutinizes [reward nuggets box][or]contemplates [the reward nuggets box][or]dreams about the doggie treats in that [reward nuggets box][or]lays down, rolls over, and barks, hoping to persuade you to toss him a treat[or]sits and gives kisses, hoping to earn a reward nugget[in random order][otherwise]maintains a fix on [the reward nuggets box][end if].";
+			say "[Rover] [if the player is clueless][one of]begs for some treats[or]dances around, trying to suggest that he'd be glad to do one of his tricks for a reward nugget[or]sniffs at [the reward nuggets replicator][or]keeps an eye on [the reward nuggets replicator][or]stares dreamily at the doggie treats[or]watches you intently, concentrating on [reward nuggets replicator][or]scrutinizes [reward nuggets replicator][or]contemplates [the reward nuggets replicator][or]dreams about the doggie treats in that [reward nuggets replicator][or]lays down, rolls over, and barks, hoping to persuade you to toss him a treat[or]sits and gives kisses, hoping to earn a reward nugget[in random order][otherwise]maintains a fix on [the reward nuggets replicator][end if].";
 		otherwise:
 			if the location is the shower:
 				now Rover is in the bathroom;
-				say "[Rover] [if the player is clueless]pads along behind you until you get to the shower, but decides he's not willing to risk a bath for the box of reward nuggets that you're carrying around[otherwise]follows your focus as you select the extruder, but he stops just outside it in the flight control area[end if].";
+				say "[Rover] [if the player is clueless]pads along behind you until you get to the shower, but decides he's not willing to risk a bath for some reward nuggets[otherwise]follows your focus as you select the extruder, but he stops just outside it in the flight control area[end if].";
 			otherwise:
 				now Rover is in the location;
-				say "[Rover] trundles along behind you, his attention riveted to [the reward nuggets box].";
+				say "[Rover] trundles along behind you, his attention riveted to [the reward nuggets replicator].";
 		now Rover is busy;
 	if the location is:
 		-- kitchen:
@@ -1196,8 +1196,8 @@ To Setup the World: [explictly set initial conditions]
 	now the flapper valve is closed;
 	now the dog chow bag is in the cabinet;
 	now the dog food is in the dog chow bag;
-	now the reward nuggets box is in the cabinet;
-	now the dog treat is in the reward nuggets box;
+	now the reward nuggets replicator is in the cabinet;
+	now the dog treat is in the reward nuggets replicator;
 	now the frying pan is in the drawer;
 	now the living room is not visited-during-havoc.
 	
@@ -2215,7 +2215,7 @@ Instead of closing or switching off a sink:
 Instead of inserting something into the kitchen sink:
 	say "[if the player is clueless]You're tired of stuff piling up in the sink, so you stick to your New Year's resolution and decide to hang on to [the noun][otherwise]You cannot insert [a noun] into the coolant output terminus[end if]."
 
-The cabinet is an openable closed scenery container in the kitchen.  The dog chow bag and the reward nuggets box are in the cabinet.  
+The cabinet is an openable closed scenery container in the kitchen.  The dog chow bag and the reward nuggets replicator are in the cabinet.  
 
 The clueless-name of the cabinet is "cabinet". The aware-name of the cabinet is "fuel storage vault". The clueless-description of the cabinet is "The small wooden cabinet under the sink is [if the cabinet is open]open[otherwise]closed[end if]." Understand "wooden" as the cabinet. The aware-description of the cabinet is "A lead-lined vault in which radioisotope fuel is stored for the ROVER. The vault is presently [if the cabinet is open]sealed[otherwise]unsealed[end if]." The cabinet-proxy is an aware-proxy that is part of the cabinet. Understand "fuel" or "storage" or "vault" as the cabinet-proxy. The manpage of the cabinet-proxy is "The radioisotope fuel for ROVER is contained in a shielded vault on the engineeering deck. Access to the vault is under the control of the ACU."
 
@@ -2234,41 +2234,32 @@ The clueless-name of the dog food is "doggie kibbles". Understand "kibble" or "k
 Before eating dog food:
 	say "[if the player is clueless]Eww. Yech. So not[otherwise]Po-210 is not a suitable fuel source for the Valkyrie. The limited quantity, and its slow rate of heat production would not significantly contribute to the ship's power budget[end if].";
 	the rule succeeds.
+	
+The reward nuggets replicator is an open not openable container. The carrying capacity of the reward nuggets replicator is 1. The reward nuggets replicator contains a dog treat.
 
-The reward nuggets box is an open not openable container. The carrying capacity of the reward nuggets box is 1. The reward nuggets box contains a dog treat. 
+Before inserting something into the reward nuggets replicator:
+	say "[if the player is clueless]The way the reward replicator is built, there is no way to put anything into it[otherwise]The token generator is a read-only device[end if]." instead. 
+	
+Instead of eating the dog treat:
+	say "[if the player is clueless]Gut-wrenching flavor aside, it would be a bureaucratic nightmare to describe to the Ministry of Waste Management how replicated matter ended up in the human waste stream (effectively short-circuiting their carefully balanced ecology). Reminded of where replicated matter comes from, you decide not to eat the treat[otherwise]Without ROVER's private key, the token is meaningless[end if]."
 
-After taking the reward nuggets box:
-	say "[if the player is clueless]The box rattles as you pick it up[otherwise]The token dispenser hums as you access it[end if]. [run paragraph on]";
+After taking the reward nuggets replicator:
+	say "[if the player is clueless and the dog treat is in the reward nuggets replicator]A dog treat rattles around in the replicator as you pick it up[otherwise]The token dispenser hums as you access it[end if]. [run paragraph on]";
 	if Rover is not in the location:
-		say "[Rover ] [if the player is clueless]is suddenly standing next to you, eyes wide open, and fixed on the box of treats[otherwise]arrives immediately and enthusiastically awaits neural conditioning[end if].";
+		say "[Rover ] [if the player is clueless]is suddenly standing next to you, eyes wide open, and fixed on the reward nugget replicator[otherwise]arrives immediately and enthusiastically awaits neural conditioning[end if].";
 		now Rover is in the location;
 	otherwise:
 		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if].";
 	now Rover is busy.
 		
 Instead of giving a dog treat to Rover:
-	now the dog treat is in the reward nuggets box;
+	now the dog treat is in the reward nuggets replicator;
 	say "[Rover ] [if the player is clueless][one of]nearly takes your hand off in rush to swallow the treat[or]approaches the treat silently, with his head bent and eyes half closed, like a supplicant before the altar. With a look of deep reverence he takes the treat in his mouth and backs away[or]snaps his tongue out like a frog and whips the treat out of your hand from two meters away. It's just something he does[or]does a slow motion dive and twist in mid-air, gracefully arcing above you and swabbing your hand liberally with his broad, moist tongue. The treat has disappeared down his gullet by the time he lands[or]gobbles down the treat and then pretends indignantly that he hasn't received anything at all[or]carefully lifts the treat out of your hand using a toothy sidewise grip[or]gobbles down the treat[or]wolfs down the dog biscuit[or]polishes off his dog treat[or]swallows the treat without bothering to chew it at all[stopping]. A series of emotions wash over Rover's face, but finally it settles into an expression of [one of]ecstasy[or]exhiliration[or]exultation[or]elation[or]enchantment[or]extreme satisfaction[or]enjoyment[or]euphoria[in random order][otherwise]internalizes [the dog treat][end if].";
 	now Rover is busy.
 	
-The clueless-name of the reward nuggets box is "small box of reward nuggets". Understand "small", "box", "liver", "flavor", "reward", or "nugget" as the reward nuggets box. The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets box is "The bright red box is labeled [quotation mark]Reward Nuggets[quotation mark] and has a picture of a dog with angel wings and a halo above its head."  The aware-description of the reward nuggets box is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets box-proxy is an aware-proxy that is part of the reward nuggets box. Understand "token" or "dispenser" as the reward nuggets box-proxy. The manpage of the reward nuggets box-proxy is "The token generator hashes reward tokens which authenticate within ROVER's neural net and reinforce associated pathways. The generator is closely linked to the ACU and under its control."
+The clueless-name of the reward nuggets replicator is "reward nugget replicator". Understand "reward", "replicator", "liver", "flavor", "reward", or "nugget" as the reward nuggets replicator. The aware-name of the reward nuggets  box is "token dispenser". The clueless-description of the reward nuggets replicator is "A small, bright red device labeled [quotation mark]Reward Nugget Replicator[quotation mark]. It sports a picture of a dog with angel wings and a halo above its head. In compliance with the Ministry of Waste Management's ordinances, the device will only produce a dog treat when Rover has consumed the previous one. It's a feature."  The aware-description of the reward nuggets replicator is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets replicator-proxy is an aware-proxy that is part of the reward nuggets replicator. Understand "token" or "dispenser" as the reward nuggets replicator-proxy. The manpage of the reward nuggets replicator-proxy is "The token generator hashes reward tokens which authenticate within ROVER's neural net and reinforce associated pathways. The generator is closely linked to the ACU and under its control."
 
-Does the player mean taking reward nuggets box:
-	it is likely.
-
-The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" or "nuggets" or "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them.". The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural", "net", "reinforcement", "token", "positive", or "feedback" as the dog treat-proxy. The manpage of the dog treat-proxy is "By allocating reinforcement tokens after observation of desirable behavior by ROVER, new behaviors can be taught, and established programming can be reinforced."
-
-Before taking the dog treat: 
-	if the dog treat is not in the reward nuggets box:
-		say "[if the player is clueless]You haven't given Rover the last dog treat you took out of the box[one of], and you don't want to find them all over the cottage a few months from now when your neurotically fastidious mother shows up on short notice[or][stopping][otherwise]A neural token has already been checked out[end if].";
-		the rule succeeds;
-	if the player does not carry the reward nuggets box: 
-		if player is not able to see the reward nuggets box:
-			say "You'll have to find the [if the player is clueless]box of dog treats[otherwise]token dispenser[end if] first.";
-			the rule succeeds;
-		otherwise:
-			say "(first [if the player is clueless]snatching[otherwise]accesing[end if] [the reward nuggets box])[command clarification break]".
-
+The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" or "nuggets" or "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them." The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural", "net", "reinforcement", "token", "positive", or "feedback" as the dog treat-proxy. The manpage of the dog treat-proxy is "By allocating reinforcement tokens after observation of desirable behavior by ROVER, new behaviors can be taught, and established programming can be reinforced."
 
 The kitchen floor is a scenery in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder", "girders", "strut", "struts", "mesh", "metal", "hull" or "inner" as the kitchen floor-proxy. The manpage of the kitchen floor-proxy is "The engineering section is covered in a mesh intended to equilibrate casimir distortion across its surface."
 
@@ -3603,7 +3594,12 @@ Every turn:
 	if the holder of Rover is the holder of the strand of dental floss:
 		move the dental floss to Limbo;
 		if Rover is in the location:
-			say "[Rover] [if the player is clueless]finds the strand of dental floss that was lying on the floor and makes a snack of it[otherwise]decoheres the linkage keypair that was unbonded[end if].";
+			say "[Rover] [if the player is clueless]finds the strand of dental floss that was lying on the floor and makes a snack of it[otherwise]decoheres the linkage keypair that was unbonded[end if].[paragraph break]";
+			now Rover is busy;
+	if the holder of Rover is the holder of the dog treat:
+		now the dog treat is in the reward nuggets replicator;
+		if Rover is in the location:
+			say "[Rover] [if the player is clueless]looks down and devours the dog treat[otherwise]downloads the reward token[end if].[paragraph break]";
 			now Rover is busy;
 	if the holder of Rover is the holder of the food bowl and Rover is hungry:
 		if the food bowl is full:
