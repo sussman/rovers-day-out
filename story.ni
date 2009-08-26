@@ -360,7 +360,64 @@ Carry out manpaging:
 Instead of manpaging a topic listed in the Table of Manual Pages:
 	say "[description entry][paragraph break]".
 
-Understand "cd [any room]" as going towards when the player is self-aware. [###TODO: since flosix commands work on the real (i.e, proxy) names of things, it would be more proper for cd to work on "operations" rather than living room.  The "going towards" action includes a check to limit the ACU to rooms in the Valkyrie area, so no need to restrict it more here.]
+CDing is an action applying to nothing.
+
+Carry out CDing:
+	[exceedingly ugly, but it seems to work (and quickly enough) thanks to limited problem domain. Any more programmatic way of doing this would be appreciated.]
+	let destination be Limbo;
+	let T be indexed text;
+	let T be the player's command;
+	replace the regular expression "^cd\s*" in T with "";
+	replace the regular expression "^valkyrie\/" in T with "";
+	if T matches the regular expression "^\/$":
+		try going towards the living room;
+		the rule succeeds;
+	replace the regular expression "\/$" in T with "";
+	if T matches the regular expression "^$" or T matches the regular expression "^\.$":
+		try going towards the location;
+		the rule succeeds;
+	if T matches the regular expression "^\.\.$":
+		if the player is in the living room:
+			try going towards the living room;
+		otherwise:
+			try exiting;
+		the rule succeeds;
+	if the player is in the living room:
+		if T matches the regular expression "^(\.\/)?engineering$":
+			change destination to the kitchen;
+		if T matches the regular expression "^(\.\/)?flight control$":
+			change the destination to the bathroom;
+		if T matches the regular expression "^(\.\/)?flight control\/extruder$":
+			change the destination to the shower;
+	otherwise if the player is in the kitchen or the player is in the bathroom:
+		if T matches the regular expression "^\.\.\/flight control$":
+			change the destination to the bathroom;
+		if T matches the regular expression "^\.\.\/flight control\/extruder$":
+			change the destination to the shower;
+		if T matches the regular expression "^\.\.\/engineering$":
+			change the destination to the kitchen;
+		if the player is in the bathroom and T matches the regular expression "^(\.\/)?extruder$":
+			change the destination to the shower;
+	otherwise if the player is in the shower:
+		if T matches the regular expression "^\.\.\/\.\.$":
+			change the destination to living room;
+		if T matches the regular expression "^\.\.\/\.\.\/flight control$":
+			change the destination to bathroom;
+		if T matches the regular expression "^\.\.\/\.\.\/engineering$":
+			change the destination to kitchen;
+	if destination is Limbo:
+		if T matches the regular expression "^\/operations$":
+			change the destination to the living room;
+		otherwise if T matches the regular expression "^\/operations/flight control$":
+			change the destination to the bathroom;
+		otherwise if T matches the regular expression "^\/operations/flight control/extruder$":
+			change the destination to the shower;
+		otherwise if T matches the regular expression "^\/operations/engineering$":
+			change the destination to the kitchen;
+	if the destination is Limbo:
+		say "[T]: Not a directory[paragraph break]";
+	otherwise:
+		try going towards the destination.
 
 Whoing is an action applying to nothing. Understand "who" as whoing when the player is the ACU.
 
@@ -399,6 +456,8 @@ After reading a command when the player is self-aware (this is the bypass parser
 		change S to "echo";
 	otherwise if T matches the regular expression "^ping":
 		change S to "ping";
+	otherwise if T matches the regular expression "^cd":
+		change S to "cd";
 	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|mount|net|svn)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
 		change S to "nop";
 	if S is not "":
@@ -409,6 +468,7 @@ After reading a command when the player is self-aware (this is the bypass parser
 			-- "concatenate": try kittying;
 			-- "echo": try echoing;
 			-- "ping": try pinging;
+			-- "cd": try cding;
 			-- "nop": try nopping;
 		the rule succeeds.
 		
@@ -524,15 +584,15 @@ To say the path of (item - an object):
 	while the holder of item is not a room:
 		add the aware-name of the holder of the item to S;
 		now item is the holder of item;
-	say "valkyrie\\";
+	say "valkyrie//";
 	if the holder of item is not Living Room:
-		say "[the aware-name of the living room]\";
+		say "[the aware-name of the living room]/";
 	if the holder of the item is the Shower:
-		say "[the aware-name of the bathroom]\";
-	say "[aware-name of the holder of the item]\";
+		say "[the aware-name of the bathroom]/";
+	say "[aware-name of the holder of the item]/";
 	reverse S;
 	repeat with D running through S:
-		say "[D]\".
+		say "[D]/".
 		
 Pwding is an action applying to nothing. Understand "pwd" as pwding when the player is self-aware.
 
@@ -2281,7 +2341,7 @@ To say dont drip:
 	
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a plastic box. The toothbrush and plastic box are props.
 
-The clueless-name of the marble counter is "marble counter". Understand "pink" and "faux" as the marble counter. The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms.[if something is on the marble counter] On it [is-are a list of things on the marble counter]."  The aware-description of the marble counter is "A fully automated flight control console. [if something is on the marble counter]On it [is-are a list of things on the marble counter]." The marble counter-proxy is an aware-proxy that is part of the marble counter. Understand "flight", "control", or "console" as the marble counter-proxy. 
+The clueless-name of the marble counter is "marble counter". Understand "pink" and "faux" as the marble counter. The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms.[if something is on the marble counter] On it [is-are a list of things on the marble counter]."  The aware-description of the marble counter is "A fully automated flight control console. [if something is on the marble counter]On it [is-are a list of things on the marble counter]." The marble counter-proxy is an aware-proxy that is part of the marble counter. Understand "flight console" or "console" as the marble counter-proxy. 
 
 The clueless-name of the plastic box is "plastic box". The aware-name of the plastic box is "object linker". The clueless-description of the plastic box is "A small plastic box labeled [quotation mark]Tooth Floss,[quotation mark] with a blue button just below where the floss comes out." The aware-description of the plastic box is "A smooth, glossy grey cylinder with a recessed linkage actuator." The plastic box-proxy is an aware-proxy that is part of the plastic box. Understand "cylinder", "glossy", "grey", "gray", "object", "cylinder" or "linker" as the plastic box-proxy. 
 
@@ -3520,6 +3580,7 @@ the buttdowning action			"PARK" [rover, sit]
 the buying action					"FUNDS TRANSFER"
 the cataloguing action			"LIST DIRECTORY" [ls]
 the catting action					"CAT" [cat]
+the CDing action					"CHANGE DIRECTORY" [cd]
 the clearing action 				"CLEAR" [clear]
 the climbing action				"SELECT"
 the closing action					"DEACCESS" [close]
