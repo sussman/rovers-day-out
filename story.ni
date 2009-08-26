@@ -1578,6 +1578,24 @@ Section Answering Rover
 
 Instead of answering Rover that "hello":
 	say "[one of][Rover] shakes his head slowly, once again lamenting your ignorance of dog-speak and stubborn insistence on making noises that mean absolutely nothing.[or][Rover] pauses for a moment to compose his reply, [quotation mark]Errrr...Wruff.[quotation mark][or][Rover] hesistates. Did you just say [quotation mark]walkies[quotation mark]? Hello. Walkies. Hello. Walkies. Gawoof, they sound a lot alike. Why can't you just learn to bark properly?[or][Rover] looks around wondering if perhaps you are talking to someone else.[or][Rover] wags his tail.[stopping]"
+	
+Section Burying
+
+Burying is an action applying to one thing. Understand "bury [something]" as burying when the player is Rover.
+
+Check burying:
+	if the noun is: 
+		-- Rover: 
+			say "If you buried yourself, who would dig you out? In a flash of brilliant insight, you decide not to inter yourself for all eternity in The Park." instead;
+		-- delicious bone: 
+			say "And risk losing the world record yummiest ever bone? No way." instead.
+
+Report burying:
+	if Rover is in the Planet Area:
+		say "You don't want to bury [the noun]. It's not the sort of thing one buries in a Park.";
+	otherwise:
+		say "You'd get into trouble digging indoors."
+		
 
 Chapter The Valkyrie
 
