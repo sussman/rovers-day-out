@@ -2468,7 +2468,13 @@ Before switching on the black plate:
 		the rule succeeds.
 		
 After switching on the black plate when the First Sim is not happening:
-	say "[if the player is clueless]The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day[otherwise]The UV light diffuses over the entire surface of the ship and causes the chemical mixture on the hull to polymerize into an durable, clear ablative coating[end if].";
+	if the player is clueless:
+		say "The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day.";
+	otherwise:
+		if the assault ship distance is 0:
+			say "Docking detected. UV irradiator discharge inhibited.";
+		otherwise:
+			say "The UV light diffuses over the entire surface of the ship and causes the chemical mixture on the hull to polymerize into an durable, clear ablative coating.";
 	if the enamel_pid is 0 and the Second Sim is happening:
 		let metatext be "Janet: I was holding my breath there. Looks like our patch worked.[line break]David: I had my fingers crossed too.";
 		say "[metatext in metaspeak]";
@@ -2936,7 +2942,7 @@ Instead of pushing or touching the soap button:
 	if the black plate is in Limbo:
 		say "The ablative enamel system is not functioning. UV irradiator node 100% failure.";
 	if the player is wearing the flight suit:
-		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The quantum isolator is interfering with emission of the accelerant[end if].";
+		say "[if the player is clueless]You can't lather up while wearing your flight suit[otherwise]The quantum isolator is interfering with emission of the monomer[end if].";
 		the rule succeeds;
 	otherwise:
 		if the player is clueless:
@@ -2944,8 +2950,11 @@ Instead of pushing or touching the soap button:
 				say "A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off.";
 			otherwise:
 				say "A soapy paste is dispensed from the button, and you lather up.";
-		otherwise:	
-			say "The accelerant for the ablative enamel spreads quickly over the ship's hull.";
+		otherwise:
+			if the assault ship distance is greater than 0:
+				say "The ablative enamel monomer solution spreads quickly over the ship's hull.";
+			otherwise:
+				say "Docking detected. Secretion of enamel monomer suppressed.";
 		if the soap button is unpressed:
 			now the soap button is pressed;
 			if the First Sim is happening:
@@ -2959,9 +2968,15 @@ Instead of pushing or touching the shampoo button:
 	if the black plate is in Limbo:
 		say "The ablative enamel system is not functioning. UV irradiator node 100% failure.";
 	if the player is wearing the flight suit:
-		say "[if the player is clueless]You don't want to get shampoo all over the flight suit[otherwise]The monomer ejection system is dampened by the quantum isolator[end if].";
+		say "[if the player is clueless]You don't want to get shampoo all over the flight suit[otherwise]The acclerant ejection system is dampened by the quantum isolator[end if].";
 	otherwise:
-		say "[if the player is clueless]You wash your hair. It no longer feels like a straw-encrusted swarm of [one of]yellow[or]red[purely at random]-headed tommygoffs[otherwise]Monomer solution is spread uniformly over the ship's hull[end if].";
+		if the player is clueless:
+			say "You wash your hair. It no longer feels like a straw-encrusted swarm of [one of]yellow[or]red[purely at random]-headed tommygoffs.";
+		otherwise:
+			if the assault ship distance is greater than 0:
+				say "Catalyst solution is spread uniformly over the ship's hull.";
+			otherwise:
+				say "Docking detected. Secretion of enamel acclerant suppressed.";
 		if the shampoo button is unpressed:
 			now the shampoo button is pressed;
 			if the Second Sim is happening:
@@ -3195,9 +3210,9 @@ Limbo is a room.[and a dance]
 
 David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed. He can be exposed. He is not exposed.
 
-David Venkatachalam wears a black business robe and a burgundy bowler hat. Understand "fashionable" and "expensive" as the black business robe. The description of the black business robe is "A shiny, black business robe, with a wide sash of gold terry cloth and high slit in the rear. Surely, the custom-tailored robe is every bit as expensive as it looks. The robe comes down almost to the floor in the front, although David's fancy boots can be seen as he walks."  The gold terry cloth sash is part of the black business robe. The description of the gold terry cloth sash is "At least twice as long as David is tall, the width of the sash is meant to impress business associates with David's social standing as director of the Valkyrie project."  Understand "long" and "wide" as the gold terry cloth sash. David Venkatachalam wears fancy boots. The fancy boots are plural-named. The indefinite article of the fancy boots is "a pair of". The description of the fancy boots is "Exotic boots, apparently made of snake skin, possibly imported from Earth. They stand in stark contrast to the more functional boots worn by most executives on Mars." Understand "exotic" and "snake" and "skin" as the fancy boots. The description of the burgundy bowler hat is "A bulbous, helmet-like version of the classic hat, with a relatively narrow brim. The burgundy-colored hat looks like an antique with no piercings." Understand "bulbous" and "antique" as the burgundy bowler hat. The aware-name of the black business robe is "clothing". The aware-name of the burgundy bowler hat is "clothing". The aware-name of the gold terry cloth sash is "clothing". The aware-name of the fancy boots is "clothing". The goatee is a part of David Venkatachalam. The description of the goatee is "A waxed, black goatee of medium length, which comes to a crisp point below David's chin."
+David Venkatachalam wears a black business robe and a burgundy bowler hat. Understand "fashionable" and "expensive" as the black business robe. The description of the black business robe is "A shiny, black business robe, with a wide sash of gold terry cloth and high slit in the rear. Surely, the custom-tailored robe is every bit as expensive as it looks. The robe comes down almost to the floor in the front, although David's fancy boots can be seen as he walks."  The gold terry cloth sash is part of the black business robe. The description of the gold terry cloth sash is "At least twice as long as David is tall, the width of the sash is meant to impress business associates with David's social standing as director of the Valkyrie project."  Understand "long" and "wide" as the gold terry cloth sash. David Venkatachalam wears fancy boots. The fancy boots are plural-named. The indefinite article of the fancy boots is "a pair of". The description of the fancy boots is "Exotic boots, apparently made of snake skin, possibly imported from Earth. They stand in stark contrast to the more functional boots worn by most executives on Mars." Understand "exotic" and "snake" and "skin" as the fancy boots. The description of the burgundy bowler hat is "A bulbous, helmet-like version of the classic hat, with a relatively narrow brim. The burgundy-colored hat looks like an antique with no piercings." Understand "bulbous" and "antique" as the burgundy bowler hat. The aware-name of the black business robe is "clothing". The aware-name of the burgundy bowler hat is "clothing". The aware-name of the gold terry cloth sash is "clothing". The aware-name of the fancy boots is "clothing". The goatee is a part of David Venkatachalam. The description of the goatee is "A waxed, black goatee of medium length, which comes to a crisp point below David's chin." The aware-name of the goatee is "david".
 
-Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "Janet". Janet Xiang is failsafed.
+Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "Janet". Janet Xiang is failsafed. The lips are part of Janet. Understand "lip" as lips. 
 
 Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green arm band." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band. The aware-name of the lavender summer dress is "clothing". The aware-name of the white leggngs is "clothing". The aware-name of the sandals is "clothing". The aware-name of the green arm band is "console". The display is part of the arm band. The description of the display is "You can't see what is on the display because of a privacy filter."
 
@@ -3250,7 +3265,7 @@ To debate trees:
 		let metatext be "David: Look, you can almost see my cottage over there, behind the Spruce trees.[line break]Janet: The Douglas Firs?[line break]David: No, I mean the Norway Spruce, over there.[line break]Janet: I know which one you mean, and believe me, they are Douglas Firs.[line break]David: I concede. Can we make up now?";
 		say "[metatext in metaspeak]".
 		
-The pistol is a prop in Limbo. The clueless-name of the pistol is "revolver". The aware-name of the pistol is "ray gun". The clueless-description of the pistol is "A matte-black 38 special." The aware-description of the pistol is "A field-destabilization pistol. More than powerful enough to blast through the plastalloy Valkyrie's hull." Understand "gun", "blaster", "weapon", "ray", or "laser" as the pistol.
+The pistol is a prop in Limbo. The clueless-name of the pistol is "revolver". The aware-name of the pistol is "ray gun". The clueless-description of the pistol is "A matte-black 38 special." The aware-description of the pistol is "A field-destabilization pistol. More than powerful enough to blast through the neoadamite in Valkyrie's hull." Understand "gun", "blaster", "weapon", "ray", or "laser" as the pistol.
 
 Chapter Memories
 
@@ -4115,6 +4130,8 @@ Every turn when the Real Thing is happening and the landing_pid is not 0 and Rov
 		now the living room is visited-during-havoc;
 	fuss around door.
 	
+Understand "scan [something]" as examining when the player is self-aware.
+	
 Chapter Walkies
 
 Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and the Real Thing is happening. Walkies ends when Rover is in the Living Room.
@@ -4177,7 +4194,7 @@ Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding
 When Boarding Party begins:
 	await keystroke;
 	clear the screen;
-	say "The casimir drive cuts out and space folds back around you. Whatever sleep-drenched dreams you might have been having evaporate instantly as two gunships flash past at relativistic velocities, slicing through your propulsion systems with uncanny accuracy. The markings on the ships are those of the Myomita Corporation.[paragraph break]To have been in position, they must have been expecting you to emerge precisely where and when you did. Another Earth ship, an assault craft, is on an intercept course and is braking hard to slow its approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
+	say "The casimir drive cuts out and space folds back around you. Whatever sleep-drenched dreams you might have been having evaporate instantly as two gunships flash past at relativistic velocities, slicing through your propulsion systems with uncanny accuracy. The markings on the ships are those of the Myomita Corporation.[paragraph break]To have been in position, they must have been expecting you to emerge precisely where and when you did. As far as you know, that's impossible, but perhaps Earth technology managed to get ahead in that regard. Another Earth ship, an assault craft, is on an intercept course and is braking hard to slow its approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
 	Restore the World;
 	Setup the World;
 	move the player to the Living Room, without printing a room description;
@@ -4329,7 +4346,7 @@ Every turn when Boarding Party is happening:
 			if a random chance of 1 in 2 succeeds:[split into two sections because of complexity]
 				say "[one of] growls menancingly at [the underling][or] stalks behind [the underling], keeping a watchful eye on him[or]crouchs and snarls, and [the underling] shrinks back. He continues his work slowly, keeping a wary eye on Rover[or] doesn't know what [the underling] is doing, but he knows he doesn't like it[or] sniffs [the underling] suspiciously[or] skulks around [the location in lower case], vigilantly keeping track of [the underling][or]'s fur stands on edge as he studies [the underling][or] howls at [the underling], who spins quickly, stumbling into the bulkhead[or] hovers just behind [the underling], sharpening his mining claws[or] grinds his tractors against the deck plating, momentarily distracting [the underling][in random order].";
 			otherwise:
-				say "[one of]stands in just the right spot to block [the underling]'s light[or]'s lateral jets pulse red hot with suppressed anger as he watches [the underling][or] keeps tabs on [the underling] from across the room[or] finds the scent of [the underling] repulsive and rolls to the far side of the room[or] grins at [the underling], letting him know that he'd be happy to attack, if only given the order[or]'s posture suggests that he would like to rip [the underling] from limb to limb[or] grimaces as he watches [the underling] damage the ship[or]Rover snaps his mining mandible open and shut, just behind [the underling]'s head. The nervous [underling] casts a worried glance towards the sharp jaws, and picks up the pace of his work[or] vents some noxious fumes near [the underling] who takes the hint and moves further away from Rover[in random order].";
+				say "[one of] stands in just the right spot to block [the underling]'s light[or]'s lateral jets pulse red hot with suppressed anger as he watches [the underling][or] keeps tabs on [the underling] from across the room[or] finds the scent of [the underling] repulsive and rolls to the far side of the room[or] grins at [the underling], letting him know that he'd be happy to attack, if only given the order[or]'s posture suggests that he would like to rip [the underling] from limb to limb[or] grimaces as he watches [the underling] damage the ship[or]Rover snaps his mining mandible open and shut, just behind [the underling]'s head. The nervous [underling] casts a worried glance towards the sharp jaws, and picks up the pace of his work[or] vents some noxious fumes near [the underling] who takes the hint and moves further away from Rover[in random order].";
 		otherwise:[Rover is with the underling, but not in the same room as the player, so Rover is heard off camera]
 			say "[one of][longish encounter][or]From [the location of Rover in lower case] you hear [Rover] growling with irritation[or][Rover]'s tractors whine and spin on a bulkhead out of view. From that direction, you hear metallic tools hitting the floor and cursing from the surprised [the underling][or]From [location of Rover in lower case], you hear [Rover] bark menacingly[or][Rover] howls eerily from another section of Valkyrie, and his caterwauling reverberates through the ship[or]You hear some commotion coming from [location of Rover in lower case], a mixture of snarls and snapping jaws[or][Rover] bays ceaselessly at [the underling], who he considers an undesirable visitor[or][Rover]'s telemetry indicates that he is stressed, and in a state of extreme excitement and agitation[or]Judging by the racket [Rover] is making in [the location of Rover in lower case], he is upset about the presence of [the underling][stopping].";
 	now Rover is busy.
