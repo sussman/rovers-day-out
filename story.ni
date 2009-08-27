@@ -2437,6 +2437,9 @@ Instead of pushing the blue button:
 		say "[if the player is clueless]You grab a strand of light green dental floss as it reels out of the dispenser[otherwise]You push the entanglement key pair onto the stack for rapid retrieval[end if].";
 	otherwise:
 		say "[if the player is clueless]The plastic box beeps, indicating that it is waiting for you to use the dental floss that it has already dispensed. Never underestimate the intelligence of your average plastic box[otherwise]The object linker flags an error: a quantum entanglement key pair has already been generated[end if]."
+		
+Instead of touching the blue button:
+	try pushing the blue button.
 	
 Instead of eating the dental floss:
 	if the chain is repaired:
@@ -2954,11 +2957,16 @@ Every turn when the player is in the shower:
 		otherwise:
 			now the player is wet;
 			now the mirror is steamed;
+			if the player carries the dental floss:
+				say "[if the player is clueless]The dental floss melts instantly in the warm shower[otherwise]The entangled key pair decoheres in the extruder[end if].[paragraph break]";
+				move the dental floss to Limbo;
+			if the player carries the dog treat and the player is clueless:
+				say "Rover's dog treat remains suprisingly crisp despite the shower.[paragraph break]";
 			if the shower is not sprayed:[sprayed triggers following metatext]
 				now the shower is sprayed;
 				let metatext be "David: Janet, I...[line break]Janet: David, if it were anyone but you, I would have a problem. Just let it go.[line break]David: Anyone else? Like who?[line break]Janet: Can we get back to the program?[line break]David: Okay, I'm paying attention.[line break]Janet: Obviously.";
-				say "[metatext in metaspeak]".	
-				
+				say "[metatext in metaspeak]".
+		
 Instead of taking off the flight suit when the player is clueless and the player is in the shower:
 	say "Your flight suit would get soaked if you took it off in here."
 		
@@ -3810,7 +3818,7 @@ Every turn:
 	if the current action is taking inventory or the current action is looking:
 		change the time of day to 1 minute before the time of day;
 	[Reminders about being naked]
-	if the player is clueless and the player is not wearing the flight suit and the player is not in the bathroom:
+	if the player is clueless and the player is not wearing the flight suit and the player is not in the bathroom and the player is not in the shower:
 		if a random chance of 1 in 10 succeeds:
 			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [the location of the flight suit in lower case][or]For a moment you feel a little self-conscious walking around without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
 	[Purposeful and conditionally triggered Rover actions]
