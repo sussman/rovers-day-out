@@ -15,6 +15,49 @@ Use full-length room descriptions, no scoring, american dialect and the serial c
 
 Book 1 Mechanics
 
+Chapter No More Get All
+
+Rule for deciding whether all includes something:
+	it does not.
+
+[The following is a very stripped down and somewhat modified version of David Fisher's Default Messages Extension, because we only need it for one purpose: to annihilate the infamous "get all" command.]
+
+To init library messages:
+(- InitLibraryMessages(); -)
+
+Include (-
+  Constant LibraryMessages = (+I7_LibraryMessages+);
+
+[ InitLibraryMessages n;
+  if ((+I7_LibraryMessages+).&before)
+  {
+      ! get rid of any other "before" routines
+      for (n = 0 : n < (+I7_LibraryMessages+).#before / WORDSIZE : n++)
+      {
+          if ((+I7_LibraryMessages+).&before --> n ~= LibraryMessagesBefore)
+              (+I7_LibraryMessages+).&before --> n = nothing;
+      }
+  }
+];
+-) after "Definitions.i6t"
+
+I7_LibraryMessages is a thing.
+
+Include (-
+  with before LibraryMessagesBefore,
+-) when defining I7_LibraryMessages.
+
+Include (-
+[ LibraryMessagesBefore;
+	Miscellany:
+    	if (lm_n == 44) { !was: "There are none at all available!"
+			print "You need to be more specific.^";
+			rtrue; !suppress the normal message
+		}
+	rfalse;!don't suppress all the other library messages, though.
+];
+-) 
+
 Chapter Rules Modifications
 
 [Devices are responsible for giving their on/off status -- if desired -- as part of their description. There's only a few devices in the game, so not a biggie.]
@@ -1195,6 +1238,8 @@ When play begins:
 	[recurrent setup]	
 	Save the World;
 	Setup the World;
+   init library messages.
+
 	
 After printing the banner text:
 	say "Type [quotation mark]help[quotation mark] for instructions, credits and license or just blaze on impetuously.";
