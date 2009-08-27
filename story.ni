@@ -3809,6 +3809,10 @@ Every turn:
 	[avoid penalizing time for non-actions, a nuance]
 	if the current action is taking inventory or the current action is looking:
 		change the time of day to 1 minute before the time of day;
+	[Reminders about being naked]
+	if the player is clueless and the player is not wearing the flight suit and the player is not in the bathroom:
+		if a random chance of 1 in 10 succeeds:
+			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [the location of the flight suit in lower case][or]For a moment you feel a little self-conscious walking around without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
 	[Purposeful and conditionally triggered Rover actions]
 	if the holder of Rover is the holder of the strand of dental floss:
 		move the dental floss to Limbo;

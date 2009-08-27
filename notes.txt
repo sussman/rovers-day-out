@@ -39,7 +39,6 @@ Rover and Back on Mars
 other:
 - make sure player will not walk into shower carrying stuff.
 - hints about being naked/cold if the suit is off.
-- rule to handle encounter with naive maintenance droid if naked at time of encounter.
 - would make sense to disable inventory description of the treat box
 - if left alone with the treat box, Rover should do what comes naturally.
 - instead of eating the dog treat....
@@ -48,7 +47,6 @@ other:
 - inhibit fussing around the door during real thing if we've already got the egg and the probe.
 - ground as synonym for floor
 - Rover needs his own remembers....like the Yorkie from across the park
-- allow growling [at] s.t./s.o.
 - broaden read verb so that it doesn't "not see" items that are not inscriptions
 - lick female dog should work
 
@@ -57,5 +55,4 @@ after rover has brought back the egg and the probe, he no longer fusses at the d
 
 - water dish, food dish smells
 - go park
-- redirect yes/no more generally; put a cap on it
 - room delegates
