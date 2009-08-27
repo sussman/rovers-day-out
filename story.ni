@@ -23,6 +23,16 @@ The examine described devices rule is not listed in any rulebook.
 [In this case, real adventurers might need to...]
 The block swearing obscenely rule is not listed in any rulebook.
 
+Rule for writing a paragraph about Rover when the player is self-aware and Boarding Party is not happening:
+	if Rover is not awake:
+		say "ROVER cradles the space probe delicately [one of]in his sleep[or]while in power conservation mode[purely at random].";
+	otherwise:
+		if Rover carries the delicious bone:
+			say "ROVER chews contently on [one of]his bone[or]the space probe[purely at random].";
+		otherwise:
+			say "ROVER remains on hot standby.";
+	now Rover is busy.
+
 Instead of swearing obscenely:
 	let N be indexed text;
 	let N be the player's command;
@@ -4861,7 +4871,7 @@ Rule for amusing a victorious player:
 			say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
 		otherwise:
 			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
-	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, say change and list directories, or perform other, more interesting functions?[paragraph break]";
+	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, say change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
 	say "* Did Rover succeed in his amorous advances towards his significant other in the park?"
 	
