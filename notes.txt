@@ -59,4 +59,3 @@ after rover has brought back the egg and the probe, he no longer fusses at the d
 - go park
 - redirect yes/no more generally; put a cap on it
 - room delegates
-- get all
