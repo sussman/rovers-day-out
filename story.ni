@@ -1732,8 +1732,8 @@ Audio is a device which is part of the ACU. The aware-name of Audio is "Internal
 
 The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting [if the drapes are open]blue [end if]flight suit with a MARSpace insignia. Some letters are also sewn above the insignia." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" or "isolator" or "housing" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed.
 
-Before wearing the flight suit when the player is wet:
-	say "[if the player is clueless]Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed)[otherwise]If the enamel is not activated by UV irradiation, it will not harden into a protective coating[end if].";
+Before wearing the flight suit when the player is wet and the player is clueless:
+	say "Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed).";
 	the rule succeeds.
 	
 Before taking off the flight suit when the player is enclosed by a supporter:
@@ -1748,6 +1748,8 @@ After taking off the flight suit:
 		say "falls to [the location in lower case] floor";
 	now the flight suit is in the holder of the player;
 	say ". You are naked.";
+	if the player can see the maintenance droid:
+		scandalize the poor little robot;
 	if the flight suit is not already-doffed:
 		now the flight suit is already-doffed;
 		if the First Sim is happening:
@@ -1756,6 +1758,17 @@ After taking off the flight suit:
 		if the Second Sim is happening:
 			let metatext be "David: That mole should be on your left side.[line break]Janet: Good eye for detail -- I’ll flip the UV coordinates on the next run.";
 			say "[metatext in metaspeak]".
+			
+To scandalize the poor little robot:
+	if the maintenance droid is innocent:
+		say "The maintenance droid glances away from his work for a moment, and then does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core frothed with quantum foam, and ringed by a halo of dark matter.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you modestly pull up the quantum isolation shield.[paragraph break]";
+		increase the henchmen defeated by one;
+		now the maintenance droid is jaded;
+		now the ACU wears the flight suit;
+		move the maintenance droid to Limbo;
+	otherwise if seen-better-said is false: 
+		change seen-better-said to true;
+		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
 
 [###TODO add verbs/synonyms to enable "get dressed/dress/dress up", "get undressed/strip/disrobe/etc.", ]
 
@@ -2394,10 +2407,10 @@ Instead of going towards or exiting when the player is in the bathroom:
 		say paragraph break; 
 	continue the action.
 	
-Instead of going towards when the player is wet and (the noun is the Kitchen or the noun is the Living Room):
+Instead of going towards when the player is wet and (the noun is the Kitchen or the noun is the Living Room) and the player is clueless:
 	say "[dont drip]".
 	
-Instead of exiting when the player is wet and the player is in the bathroom:
+Instead of exiting when the player is wet and the player is in the bathroom and the player is clueless:
 	say "[dont drip]".
 	
 To say dont drip:
@@ -2946,7 +2959,7 @@ Every turn when the player is in the shower:
 				let metatext be "David: Janet, I...[line break]Janet: David, if it were anyone but you, I would have a problem. Just let it go.[line break]David: Anyone else? Like who?[line break]Janet: Can we get back to the program?[line break]David: Okay, I'm paying attention.[line break]Janet: Obviously.";
 				say "[metatext in metaspeak]".	
 				
-Instead of taking off the flight suit when the player is in the shower:
+Instead of taking off the flight suit when the player is clueless and the player is in the shower:
 	say "Your flight suit would get soaked if you took it off in here."
 		
 Instead of going towards when the player is in the shower and the player is clueless:
@@ -4300,6 +4313,9 @@ The assault ship distance is a number that varies. The assault ship distance is 
 
 Assault ship approach is a number that varies. Assault ship approach is 1. 	[how many times the assault ship has approached valkyrie]
 
+Seen-better-said is a truth state that varies. Seen-better-said is false.
+[tracks where the maintenance droid says that he's "seen better"]
+
 Henchmen defeated is a number that varies. Henchmen defeated is 0.
   	[the number of times droids/technicians defeated by the player. After three robots are defeated, the assault ship will start sending human crew members.]
 
@@ -4327,6 +4343,9 @@ Every turn when Boarding Party is happening:
 				now the technician is radsuited;
 				move the technician to Limbo;
 				increase the henchmen defeated by one;
+		otherwise:
+			if maintenance droid is in the location and the ACU is not wearing the flight suit:
+				scandalize the poor little robot;
 	if the ship is boarded: [i.e., if agents are active onboard the Valkyrie, regardless of whether the assault ship is on the hull]
 		choose a row with a round of the damage counter in the Table of Underling Tasks; 
 		if the underling is the maintenance droid and the maintenance droid is carried by the player:
@@ -4497,7 +4516,6 @@ Instead of inserting the maintenance droid into the old fridge:
 [###TODO: make sure there is a reasonable response for attempting to put the robot in the toilet or sink]
 	
 Instead of inserting the maintenance droid into the water tank:
-	[###TODO: check that tank is open]
 	if the maintenance droid is not carried by the player:
 		say "(first attempting to grapple the droid) [command clarification break]";
 		try silently taking the maintenance droid;
@@ -4513,17 +4531,6 @@ Instead of inserting the maintenance droid into the water tank:
 				increase the henchmen defeated by one;
 				now the maintenance droid is shielded;
 				move the maintenance droid to Limbo.
-				
-After taking off the flight suit in the presence of the maintenance droid:
-	if the maintenance droid is innocent:
-		say "The maintenance droid glances away from his work for a moment, and then does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core frothed with quantum foam, and ringed by a halo of dark matter.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you modestly pull up the quantum isolation shield.";
-		increase the henchmen defeated by one;
-		now the maintenance droid is jaded;
-		now the ACU wears the flight suit;
-		move the maintenance droid to Limbo;
-	otherwise: [if the droid is already jaded:]
-		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
-[###need to also check on encounters any time the ACU is running around butt-naked and might scandalise any naive droids]
 
 Instead of Rover attacking when Rover is in the Valkyrie Area during Boarding Party:
 	if the noun is the technician or the noun is the maintenance droid:
