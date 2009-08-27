@@ -1427,6 +1427,11 @@ Instead of an animal barking:
 	
 To say doggerel:
 	say "[quotation mark][one of]Woof! Woof[or]Arf! Arf[or]Bow! Wow[or]Gaa....Ruffff[or]Gurrah[or]Rrrrrrrrrrrrrrrr[or]Yap! Yap[or]Buhwahwahwahwahwah[in random order]![quotation mark][paragraph break]".
+	
+Directed-barking is an action applying to one thing. Understand "bark at [a thing]" as directed-barking when the Player is Rover.
+
+Carry out Directed-Barking:
+	try barking.
 
 Section Attacking
 
@@ -1584,6 +1589,11 @@ Growling is an action applying to nothing. Understand "growl" as growling when t
 
 Report Growling:
 	say "Grrrrrrrrrrrrrr!"
+	
+Directed-Growling is an action applying to one thing. Understand "growl at [a thing]" as directed-growling when the Player is Rover.
+
+Carry out Directed-Growling:
+	try growling.
 
 Section Dance
 
@@ -4791,7 +4801,6 @@ Report querying:
 		say "Janet [one of]replies[or]answers[or]responds[purely at random], [quotation mark][one of]That's a good question, and we can talk about it later, but for now, I'd like to focus on the mission[or]I've wondered about that myself, but I think it's a little afield of our immediate concerns[or]I'm afraid I could ramble on about that for hours, and we'll have plenty of time to chat later, but for the time being, I'd like to concentrate on what happened during your mission and what it means for Mars[or]I can't say I'm an expert on the subject, but I think I know someone back in the office who we could ask[or]We can come back to that, but I'd like to really going into the details of the mission first[in random order].[quotation mark]";
 	say paragraph break.
 		
-
 	[###TODO make not lame, also handle audio off - maybe consolidate the audio off messages?]
 	
 Instead of querying a topic listed in the Table of Conversation during Back on Mars:
