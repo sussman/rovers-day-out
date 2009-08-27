@@ -173,6 +173,8 @@ Rule for printing the name of the a thing (called the item):
 			
 An aware-proxy is a kind of thing. The aware-name of an aware-proxy is usually "COGNITIVE BLOCK".  Aware-proxies are always privately-named.
 
+A room can be secluded. A room is usually not secluded.[For the purpose of hiding backdrops in "all secluded rooms" later.]
+
 A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location". A simroom has some text called clueless-name. The clueless-name is usually "".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
 An outside room is a kind of room. The description of an outside room is usually "You are outside[inconsequential outside detail]." The printed name of an outside room is usually "The Park".
@@ -1655,23 +1657,22 @@ Report burying:
 
 Chapter The Valkyrie
 
-[ben said:  why no janet proxy as well?  because presumably you'd be examining yourself?  we need something for 'x janet'. Jack said: the purpose of the David-proxy is to catch any mention of David by the ACU. During the first and second sim, David makes metaremarks the first few times his name is mentioned. The David-proxy is everywhere just to be sure that his name is in scope. When the ACU is clueless, "Janet" is understood as referring to the ACU itself, the word should always be in scope when appropriate. Later in the game, when the real Janet is present in the final scene, the ACU will be aware, and Janet will refer to the person.]
+[David-proxy is to catch any mention of David by the ACU before David shows up in the flesh in the final scene.]
 
 David-proxy is a backdrop. David-proxy is everywhere. The description of David-proxy is "x". David-proxy is privately-named. Understand "David" and "Venkatachalam" and "boss" and "director" as David-proxy. The aware-name of David-proxy is "Authority".
 
 David-mentioned is a number that varies. David-mentioned is zero.
 
 Instead of doing something when the noun is David-proxy:
-	[ok as a general rule since david-proxy is hidden away after the simulations]
 	now David-mentioned is David-mentioned plus one;
 	say "Your boss isn't here.";
-	if David-mentioned is one:
-		let metatext be "David: Why would it expect to see me in your cottage?[line break]Janet: Probably a random association.[line break]David: Do you think the ACU can hear us talking?[line break]Janet: That’s a philosophical issue. It has sound sensors, and they might be on, but it’s all bits. Bits in, bits out. I don’t think you could say that it really hears us in any meaningful way.";
-		say "[metatext in metaspeak]";
-	otherwise if David-mentioned is two:
-		let metatext be "David: Again, about me![line break]Janet: Whoa Nelly, let[apostrophe]s reign in that ego, cowboy. ";
-		say "[metatext in metaspeak]";
-	do nothing.
+	if the First Sim is happening or the Second Sim is happening:
+		if David-mentioned is one:
+			let metatext be "David: Why would it expect to see me in your cottage?[line break]Janet: Probably a random association.[line break]David: Do you think the ACU can hear us talking?[line break]Janet: That’s a philosophical issue. It has sound sensors, and they might be on, but it’s all bits. Bits in, bits out. I don’t think you could say that it really hears us in any meaningful way.";
+			say "[metatext in metaspeak]";
+		otherwise if David-mentioned is two:
+			let metatext be "David: Again, about me![line break]Janet: Whoa Nelly, let[apostrophe]s reign in that ego, cowboy. ";
+			say "[metatext in metaspeak]".
 		
 Section Living Room
  
@@ -3280,7 +3281,7 @@ Before drinking the crystal clear water:
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
 
-Limbo is a room.[and a dance] 
+Limbo is a room. Limbo is secluded.[and a dance] 
 
 David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed. He can be exposed. He is not exposed.
 
@@ -4562,41 +4563,51 @@ Instead of opening the front door when the front door is closed during Boarding 
 		now the pressure is 0;
 	the rule succeeds.
 	
+Understand "signal yes" or "send yes" as saying yes.
+Understand "signal no" or "send no" as saying no.
+	
 Instead of saying yes during Boarding Party:
-	[###TODO - redirect possible yes/no responses similar to the Sybil 2 example]
 	if the assault ship approach is 1:
-		say "[quotation mark]";
-		if the comm status of the ACU is:
-			-- silent:
-				say "Good. For a moment I was wondering if anyone was home";
-			-- surrendered:
-				say "[one of]Roger, your surrendered status[or]Signal Lima Charlie, good copy. We acknowledge your surrender[or]Yes, yes, we've got you down as [apostrophe]surrendered[apostrophe] already[or]Right...we already agreed that you had surrendered[or]Message received. Good copy. You've surrendered. Please stop signaling now[or]I'm beginning to wonder if you signal beacon is stuck. We got the message. Please stop signaling[or]I'm ignoring your signal beacon now[or]You know, you're wasting power. Some little kid on Pluto is freezing his toosh off, and here you are playing Christmas tree with your half megawatt beacon. Give it a rest, please[or]For the love of the CEO, stop it with the signal beacon already[stopping]";
-			-- refused:
-				say "[one of]Well, that's more like it, then[or]Ah, glad you reconsidered[or]Well, let's hope you stick to that answer this time[or]OK, you can change your mind all you want, but I'm hitting submit...now. You have officially surrendered[stopping]";
-		say ".[quotation mark][paragraph break]";
-		now the ACU is surrendered;
-		the rule succeeds;
+		if the assault ship distance is greater than zero:
+			say "[quotation mark]";
+			if the comm status of the ACU is:
+				-- silent:
+					say "Good. For a moment I was wondering if anyone was home";
+				-- surrendered:
+					say "[one of]Roger, your surrendered status[or]Signal Lima Charlie, good copy. We acknowledge your surrender[or]Yes, yes, we've got you down as [apostrophe]surrendered[apostrophe] already[or]Right...we already agreed that you had surrendered[or]Message received. Good copy. You've surrendered. Please stop signaling now[or]I'm beginning to wonder if you signal beacon is stuck. We got the message. Please stop signaling[or]I'm ignoring your signal beacon now[or]You know, you're wasting power. Some little kid on Pluto is freezing his toosh off, and here you are playing Christmas tree with your half megawatt beacon. Give it a rest, please[or]For the love of the CEO, stop it with the signal beacon already[stopping]";
+				-- refused:
+					say "[one of]Well, that's more like it, then[or]Ah, glad you reconsidered[or]Well, let's hope you stick to that answer this time[or]OK, you can change your mind all you want, but I'm hitting submit...now. You have officially surrendered[stopping]";
+			say ".[quotation mark][paragraph break]";
+			now the ACU is surrendered;
+			the rule succeeds;
+		otherwise:
+			say "[too late]";
 	otherwise:
-		say "too late";
+		say "There is no response.";
 		continue the action.
-		[###TODO as needed, add additional code to handle yes/no responses at appropriate points later in the scene; for now, the default response is enabled.]
+		
+To say too late:
+	say "[quotation mark]Too late, Valkyrie. We've already filed our report.[quotation mark][paragraph break]".
 		
 Instead of saying no during Boarding Party:
 	if the assault ship approach is 1:
-		say "[quotation mark]";
-		if the comm status of the ACU is:
-			-- silent:
-				say "Hmmm. An unfortunate choice";
-			-- surrendered:
-				say "[one of]What? I've already completed the entire form in pen. You'll regret this[or]I thought you were so gung-ho to surrender a minute ago? Alright, I can scratch that out[or]Are you messing with me? Fine, don't surrender[or]If I had all day, I'd wait until the next time you surrender and then land, but I'm on a tight schedule today[or]Fine[stopping]";
-			-- refused:
-				say "[one of]Got it. No surrender[or]Roger that, negative on surrender. Surrender is a no-go[or]Acknowledge, Valkyrie. You are not surrendering[or]Right, we copied that. All received loud and clear -- you are not, repeat not surrendering. You can stop signaling now[or]Your signal beacon is still sending 'no' -- you can turn it off now[or]Yes, yes, we get it. You don't want to surrender[or]Captain, or whoever is on the signal beacon: please turn it off. We've registered you as not surrendering[or]This is getting old now. Stop signalling[or]I'm looking the other way now and can't see your signal[or]If you keep using that signal beacon, it's going to fall off[stopping]";
-		say ".[quotation mark][paragraph break]";
-		now the ACU is refused;
-		the rule succeeds;
+		if the assault ship distance is greater than zero:
+			say "[quotation mark]";
+			if the comm status of the ACU is:
+				-- silent:
+					say "Hmmm. An unfortunate choice";
+				-- surrendered:
+					say "[one of]What? I've already completed the entire form in pen. You'll regret this[or]I thought you were so gung-ho to surrender a minute ago? Alright, I can scratch that out[or]Are you messing with me? Fine, don't surrender[or]If I had all day, I'd wait until the next time you surrender and then land, but I'm on a tight schedule today[or]Fine[stopping]";
+				-- refused:
+					say "[one of]Got it. No surrender[or]Roger that, negative on surrender. Surrender is a no-go[or]Acknowledge, Valkyrie. You are not surrendering[or]Right, we copied that. All received loud and clear -- you are not, repeat not surrendering. You can stop signaling now[or]Your signal beacon is still sending 'no' -- you can turn it off now[or]Yes, yes, we get it. You don't want to surrender[or]Captain, or whoever is on the signal beacon: please turn it off. We've registered you as not surrendering[or]This is getting old now. Stop signalling[or]I'm looking the other way now and can't see your signal[or]If you keep using that signal beacon, it's going to fall off[stopping]";
+			say ".[quotation mark][paragraph break]";
+			now the ACU is refused;
+			the rule succeeds;
+		otherwise:
+			say "[too late]";
 	otherwise:
 		[###TODO fix this to limit more to the approach period, i.e, not after docked]
-		say "too late";
+		say "There is no response";
 		continue the action.
 		
 Table of Underling Tasks
@@ -4659,6 +4670,7 @@ Data transferred is a number that varies. Data transferred is 0.
 When Back on Mars begins:
 	Restore the World;
 	Setup the World;	
+	move the David-proxy backdrop to all secluded rooms;
 	move the futon to the living room;
 	move the player to the living room, without printing a room description;
 	move the gunships to Limbo;
@@ -4767,7 +4779,7 @@ Instead of listening during Back on Mars:
 Instead of asking someone about something during Back On Mars:
 	try querying.[divert "ask janet about..." to the query action]
 
-Querying is an action applying to one topic. Understand "ask about [text]" as querying.
+Querying is an action applying to one topic. Understand "ask about [text]" as querying when Back on Mars is happening.
 
 Carry out querying:
 	do nothing.[it cries out to be over-ridden]
@@ -4804,7 +4816,7 @@ To say stop being so repetitive:
 Instead of telling someone about something during Back on Mars:
 	try expounding instead. [divert "tell janet about..." to the expounding action]
 	
-Expounding is an action applying to one topic. Understand "tell about [text]" as expounding.
+Expounding is an action applying to one topic. Understand "tell about [text]" as expounding when Back on Mars is happening.
 
 Carry out expounding:
 	do nothing.
