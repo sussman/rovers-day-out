@@ -2370,7 +2370,14 @@ Before inserting something into the reward nuggets replicator:
 	say "[if the player is clueless]The way the reward replicator is built, there is no way to put anything into it[otherwise]The token generator is a read-only device[end if]." instead. 
 	
 Instead of eating the dog treat:
-	say "[if the player is clueless]Gut-wrenching flavor aside, it would be a bureaucratic nightmare to describe to the Ministry of Waste Management how replicated matter ended up in the human waste stream (effectively short-circuiting their carefully balanced ecology). Reminded of where replicated matter comes from, you decide not to eat the treat[otherwise]Without ROVER's private key, the token is meaningless[end if]."
+	if the player is clueless:
+		say "Gut-wrenching flavor aside, it would be a bureaucratic nightmare to describe to the Ministry of Waste Management how replicated matter ended up in the human waste stream (effectively short-circuiting their carefully balanced ecology). Reminded of where replicated matter comes from, you decide not to eat the treat[run paragraph on]";
+		if Rover is in the location:
+			say ".[paragraph break]Rover looks up at you reminding gently reminding you that he'd be willing to eat it";
+			now Rover is busy;
+		say ".";
+	otherwise:
+		say "Without ROVER's private key, the token is meaningless."
 
 After taking the reward nuggets replicator:
 	say "[if the player is clueless and the dog treat is in the reward nuggets replicator]A dog treat rattles around in the replicator as you pick it up[otherwise]The token dispenser hums as you access it[end if]. [run paragraph on]";
@@ -3822,6 +3829,9 @@ Every turn:
 		if a random chance of 1 in 10 succeeds:
 			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [the location of the flight suit in lower case][or]For a moment you feel a little self-conscious walking around without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
 	[Purposeful and conditionally triggered Rover actions]
+	if the holder of Rover is the holder of the reward nuggets replicator:
+		if Rover is in the location and a random chance of 1 in 2 succeeds:
+			say "[Rover] [if the player is clueless][one of]tilts his head sideays and tries in vain to get a grip on the slippery[or]tries to pick up[or]paws desperately at[or]claws the[or]barks at the[or]stares hopefully at the[or]licks the[or]briefly chews the[or]bats around the[in random order] [reward nuggets replicator][otherwise]tries unsuccessfully to get [the reward nuggets replicator] to issue a fresh [dog treat][end if].[paragraph break]";
 	if the holder of Rover is the holder of the strand of dental floss:
 		move the dental floss to Limbo;
 		if Rover is in the location:
