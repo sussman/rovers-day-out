@@ -50,19 +50,13 @@ other:
 - Rover needs his own remembers....like the Yorkie from across the park
 - allow growling [at] s.t./s.o.
 - broaden read verb so that it doesn't "not see" items that are not inscriptions
-- amusing
 - lick female dog should work
 
 =======
 after rover has brought back the egg and the probe, he no longer fusses at the door to go out, but he will go out if the door is open. TOCONSIDER: after getting the two items we need, he may lose all interest in going out even if the door is open.
 
-- better Rover description "besides Rover is here" -- chewing or not.
 - water dish, food dish smells
 - go park
 - redirect yes/no more generally; put a cap on it
 - room delegates
-
-Amusing things:
-* sleeping and dreaming
-* remembering verb
-* boarding scene solutions
+- get all
