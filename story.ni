@@ -16,48 +16,27 @@ Use full-length room descriptions, no scoring, american dialect and the serial c
 Book 1 Mechanics
 
 Chapter No More Get All
+[In the standard rules, Take is defined with the grammar token "things" rather than "thing", take must be redefined as something new, with full grammar here. This is based on a helpful usenet post by Khelood, dated 21 December 2006.]
 
-Rule for deciding whether all includes something:
-	it does not.
+Understand the commands "take","carry" and "hold" as something new.
 
-[The following is a very stripped down and somewhat modified version of David Fisher's Default Messages Extension, because we only need it for one purpose: to annihilate the infamous "get all" command.]
+Understand "take [thing]" as taking.
+Understand "take off [thing]" as taking off.
+Understand "take [thing] from [thing]" as removing it from.
+Understand "take [thing] off [thing]" as removing it from.
+Understand "take inventory" as taking inventory.
+Understand the commands "carry" and "hold" as "take".
 
-To init library messages:
-(- InitLibraryMessages(); -)
+Understand the command "get" as something new.
+Understand "get out/off/up" as exiting.
+Understand "get [thing]" as taking.
+Understand "get in/into/on/onto [thing]" as entering.
+Understand "get off [thing]" as getting off.
+Understand "get [thing] from [thing]" as removing it from.
 
-Include (-
-  Constant LibraryMessages = (+I7_LibraryMessages+);
-
-[ InitLibraryMessages n;
-  if ((+I7_LibraryMessages+).&before)
-  {
-      ! get rid of any other "before" routines
-      for (n = 0 : n < (+I7_LibraryMessages+).#before / WORDSIZE : n++)
-      {
-          if ((+I7_LibraryMessages+).&before --> n ~= LibraryMessagesBefore)
-              (+I7_LibraryMessages+).&before --> n = nothing;
-      }
-  }
-];
--) after "Definitions.i6t"
-
-I7_LibraryMessages is a thing.
-
-Include (-
-  with before LibraryMessagesBefore,
--) when defining I7_LibraryMessages.
-
-Include (-
-[ LibraryMessagesBefore;
-	Miscellany:
-    	if (lm_n == 44) { !was: "There are none at all available!"
-			print "You need to be more specific.^";
-			rtrue; !suppress the normal message
-		}
-	rfalse;!don't suppress all the other library messages, though.
-];
--) 
-
+Understand the command "pick" as something new.
+Understand "pick up [thing]" or "pick [thing] up" as taking. 
+	
 Chapter Rules Modifications
 
 [Devices are responsible for giving their on/off status -- if desired -- as part of their description. There's only a few devices in the game, so not a biggie.]
@@ -1239,10 +1218,8 @@ When play begins:
 	clear the screen;
 	[recurrent setup]	
 	Save the World;
-	Setup the World;
-   init library messages.
+	Setup the World.
 
-	
 After printing the banner text:
 	say "Type [quotation mark]help[quotation mark] for instructions, credits and license or just blaze on impetuously.";
 	say paragraph break;
@@ -1434,6 +1411,8 @@ Carry out Directed-Barking:
 	try barking.
 
 Section Attacking
+
+Understand "bite [a thing]" as attacking when the player is Rover.
 
 Persuasion rule for asking Rover to try attacking:
 	persuasion succeeds.
