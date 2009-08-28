@@ -45,6 +45,10 @@ The examine described devices rule is not listed in any rulebook.
 [In this case, real adventurers might need to...]
 The block swearing obscenely rule is not listed in any rulebook.
 
+[To allow Rover to kiss the bulldozer and other stuff]
+The block kissing rule is not listed in any rulebook.
+The kissing yourself rule is not listed in any rulebook.
+
 Rule for writing a paragraph about Rover when the player is self-aware and Boarding Party is not happening:
 	if Rover is not awake:
 		say "ROVER cradles the space probe delicately [one of]in his sleep[or]while in power conservation mode[purely at random].";
@@ -1125,7 +1129,25 @@ Report standing:
 		say "You [if the player is clueless]get off[otherwise]deactive your connection to[end if] [the perch stood from].";
 	otherwise:
 		say "You are [if the player is clueless]standing in[otherwise]currently accessing[end if] [the location in lower case]."
+		
+Section Kissing
+		
+Understand the command "kiss" as something new.
 
+Understand "kiss [a thing]" as kissing.
+
+Report kissing:
+	if the player is Rover:
+		say "You [if the noun is Rover]can't quite get your tongue to reach around to lick yourself[otherwise]give [the noun] a slobbery licking[end if].";
+	otherwise:
+		if the noun is:
+			--	the ACU:
+				say "[if the player is clueless]Loving oneself is good; kissing oneself is a bit over the edge[otherwise]Such recursion would crash the stack in no time[end if].";
+			-- Rover:
+				say "[if the player is clueless]You give Rover a nice kiss[otherwise]You confirm that handshaking is synchronized between you and Rover[end if].";
+			-- otherwise:
+				say "You [if the player is clueless]kiss [the noun] lightly[otherwise]You attempt to negotiate a direct synch with [the noun] and fail[end if].";
+			 
 Chapter General Insteads
 
 Instead of examining a room:
@@ -1846,7 +1868,7 @@ Instead of examining or reading when the drapes are closed:
 Instead of going towards when the player is in the living room and the drapes are closed:
 	say "It's too dark to move around much. [one of]Grues and all that, you know. [or][stopping][paragraph break][if a random chance of one in three succeeds][one of]You shin yourself on the futon frame[or]You step on something stringy but resilient. Rover yaps in pain and scrambles to the otherside of the futon[or]The floor creeks ominiously[or]Something wet and warm is licking the back of your knees. You really hope it is Rover[or]Something brushes past you in the dark, panting[or]You stumble over Rover and land on your knees. You are rewarded with a hot puff of first-thing-in-the-morning dog breath. You will need no coffee today[or]As you are feeling your way around the futon, the beam of light coming in through the drapes catches you right in the eye and you are momentarily blinded[in random order].[end if]".
 
-The living room floor is privately-named scenery in the living room. Understand "floor" and "hardwood" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-adhesion floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" or "bay" or "floor" as the cargo bay floor-proxy. 
+The living room floor is privately-named scenery in the living room. Understand "floor" or "hardwood" or "ground" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-adhesion floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" or "bay" or "floor" as the cargo bay floor-proxy. 
 
 The front door is a door and scenery. The front door is east of the front yard. The front door is outside from the living room. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" or "bay" or "door" or "doors" as the front door-proxy. The front door can be damaged. The front door is not damaged. 
 
@@ -2422,7 +2444,7 @@ The clueless-name of the reward nuggets replicator is "reward nugget replicator"
 
 The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" or "nuggets" or "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them." The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural", "net", "reinforcement", "token", "positive", or "feedback" as the dog treat-proxy. 
 
-The kitchen floor is a scenery in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder", "girders", "strut", "struts", "mesh", "metal", "hull" or "inner" as the kitchen floor-proxy.
+The kitchen floor is a scenery in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". Understand "ground" as floor. The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder", "girders", "strut", "struts", "mesh", "metal", "hull" or "inner" as the kitchen floor-proxy.
 
 Section Bathroom
 
@@ -2527,7 +2549,7 @@ Carry out brushing:
 Report brushing:
 	say "[if the player is clueless]The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved[otherwise]Nanobristles wake from dormancy and begin reproducing through the ship, sending waves of their progeny across the surface of the ship. The uncountable hordes of microscopic scrubbers oxidize and buff the ship to a brilliant, gleaming silver[end if]."
 		
-The bathroom floor is privately-named scenery in the bathroom.  Understand "floor", "glass", or "micropore" as the bathroom floor. The clueless-name of the bathroom floor is "bathroom floor". The aware-name of the bathroom floor is "decking". The clueless-description of the bathroom floor is "The black bathroom floor sparkles thanks to microscopic bits of volcanic glass which assure that the floor is never slippery, even when wet. The micropores in the floor also assure that water does not collect for long on the bathroom floor." The aware-description of the bathroom floor is "The deck plating in the flight deck is painted bright yellow." The bathroom floor-proxy is an aware-proxy that is part of the bathroom floor. Understand "yellow", "deck", "plating", or "decking" as the bathroom floor-proxy. 
+The bathroom floor is privately-named scenery in the bathroom.  Understand "floor", "glass", "ground" or "micropore" as the bathroom floor. The clueless-name of the bathroom floor is "bathroom floor". The aware-name of the bathroom floor is "decking". The clueless-description of the bathroom floor is "The black bathroom floor sparkles thanks to microscopic bits of volcanic glass which assure that the floor is never slippery, even when wet. The micropores in the floor also assure that water does not collect for long on the bathroom floor." The aware-description of the bathroom floor is "The deck plating in the flight deck is painted bright yellow." The bathroom floor-proxy is an aware-proxy that is part of the bathroom floor. Understand "yellow", "deck", "plating", or "decking" as the bathroom floor-proxy. 
 
 The bathroom walls are privately-named scenery in the bathroom.  Understand "walls" or "wall" as the bathroom walls. The mirror is part of the bathroom walls.  The black plate is a device which is part of the bathroom walls. Understand "wall" as bathroom walls. 
 
@@ -3205,6 +3227,8 @@ Instead of answering the female dog that:
 	
 Instead of kissing the female dog:
 	say "[one of]The very thought makes your canine heart scramble like a greased xihuahua in free fall[or]You pause. What did you have for lunch? Kibbles. Liver-flavored kibbles, that left an after taste. Is your breath fresh? You try to exhale and then inhale very quickly. Hmm. Not bad. You try to work up to the kiss, but hang back at the last second[or]You move in slowly. She doesn't react. Probably a good sign. You select your target. The nape of the neck? Below the ears? Under the chin? No, all too complicated. Something simple, a little lick on the muzzle. No biting. Not yet anyway.[paragraph break]She remains steady as a rock, and suddenly your legs feel rubbery. You don't go through with it[or]This is it, you're really going to kiss her now. One little peck on the muzzle, no big deal. You can always laugh it off if it doesn't go well. Now or never. You take a deep breath...[paragraph break]and decide to wait a minute to see how she reacts[or]What's there to be afraid of, come on, Rover old boy, you think to yourself.[paragraph break]You lean in towards her and the wind suddenly shifts.[paragraph break]A bad omen.[paragraph break]Your half-extended tongue is coated with grit. You adroitly transition the bungled kiss into an attempt to dislodge a straggling bit of kibble from your muzzle.[paragraph break]Good, she doesn't seem to have noticed[or]You close your eyes and plant a firm kiss on her warm, moist...[paragraph break]Oh no. With your eyes open, you see that you've kissed her squarely on her nose. She must have moved slightly. You blink with embarrassment, but she holds steady, staring into the distance. You are overcome with a feeling of relief. She not only tolerated your plodding, inexperienced overture, but seems to have enjoyed the nervous energy of the moment[or]You kiss her, this time with less fumbling. Her muzzle brushes against yours and your vision blurs with happiness. Overcome with emotion, you stand together, you and she, watching the dust blow across the field. It is beautiful[or]She stares straight ahead, a clear call for you to continue your expressions of affection[or]Each kiss is more intimate, more sensual. No longer is she a stranger, but more and more you consider her your friend, your confident. Dare you think it? Perhaps a mate[or]You give her a peck on the muzzle, with the easy familiarity that has grown between you[or]You kiss her again, each time as exciting as the first[stopping]."
+	
+Understand "lick [a thing]" as kissing when the player is Rover.
 
 The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]". The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]." The probe-proxy is an aware-proxy that is part of the delicious bone. Understand "space", "probe", "musashi", "myomita", "5", or "musashi-5" as the probe-proxy. 
 

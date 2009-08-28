@@ -1,13 +1,7 @@
 
 failed phrases that ought to work!  THE LIST.
-
 ---------------
-
-
-Q. aware-proxies need more 'understand foo as' options, which combine words.
-A. Agreed: TODO.
-
-BOARDING SCENE
+.BOARDING SCENE
 - to interfere with boarding, the player can:
 	1) prolong the conversation with the Earth ships
 	2) perform an operation that affects the hull of the ship
@@ -26,7 +20,6 @@ BOARDING SCENE
 	- open drawer
 	- dermatovore eels
 	- pink pillow
-
 =============
 
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
@@ -34,10 +27,7 @@ BOARDING SCENE
 =====
 other:
 - ground as synonym for floor
-- broaden read verb so that it doesn't "not see" items that are not inscriptions
 - lick female dog should work
 
 =======
-after rover has brought back the egg and the probe, he no longer fusses at the door to go out, but he will go out if the door is open. TOCONSIDER: after getting the two items we need, he may lose all interest in going out even if the door is open.
-
 - room delegates
