@@ -130,6 +130,10 @@ A refrigerator is a kind of container. A refrigerator is usually closed, openabl
 
 A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "drain" as a sink.  
 
+A here-delegate is a kind of thing. It is usually privately-named and scenery.
+
+A there-delegate is a kind of thing. It is usually privately-named and scenery. There-delegates have a room called destination.
+
 Wakefulness is a kind of value. The wakefulnesses are asleep, sleepwalking, groggy, and alert.
 
 Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
@@ -834,9 +838,6 @@ After going towards when the player is the ACU:
 				say "[metatext in metaspeak]".
 
 Section Leaving
-
-Does the player mean entering the shower walls:
-	it is very unlikely.
 
 Leaving is an action applying to one thing. Understand "leave [any room]" or "exit [any room]" as leaving.
 
@@ -1707,6 +1708,44 @@ Instead of doing something when the noun is David-proxy:
 		otherwise if David-mentioned is two:
 			let metatext be "David: Again, about me![line break]Janet: Whoa Nelly, let[apostrophe]s reign in that ego, cowboy. ";
 			say "[metatext in metaspeak]".
+		
+
+Section Room Delegates
+
+LR is a here-delegate. It is in the living room. Understand "living room " as LR. The aware-name of LR is "operations".
+
+LR-TB is a there-delegate. It is in the living room. The destination of LR-TB is the Bathroom. Understand "bathroom" as LR-TB. The description of LR-TB is "A little bathroom." The aware-name of LR-TB is "flight control".
+
+LR-TK is a there-delegate. It is in the living room. The destination of LR-TK is the Kitchen. Understand "kitchen" as the LR-TK. The description of LR-TK is "A little kitchen." The aware-name of LR-TK is "engineering".
+
+TB is a here-delegate. It is in the bathroom. Understand "bathroom" as TB. The aware-name of TB is "flight control".
+
+TB-LR is a there-delegate. It is in the bathroom. The destination of TB-LR is the Living Room. Understand "living room" as TB-LR. The description of TB-LR is "A little living room." The aware-name of TB-LR is "operations".
+
+TB-TS is a there-delegate. It is in the bathroom. The destination of TB-TS is the Shower. Understand "shower" as TB-TS. The description of TB-TS is "A small shower." The aware-name of TB-TS is "extruder".
+
+TS is a here-delegate. It is in the shower. Understand "shower" as TS. The aware-name of TS is "extruder".
+
+TS-TB is a there-delegate. It is in the shower. The destination of TS-TB is the bathroom. Understand "bathroom" as TS-TB. The description of TS-TB is "A small bathroom." The aware-name of TS-TB is "flight control".
+
+TK is a here-delegate. It is in the kitchen. Understand "kitchen" as TK. The aware-name of TK is "engineering".
+
+TK-LR is a there-delegate. It is in the kitchen. The destination of TK-LR is the Living Room. Understand "living room" as TK-LR. The description of TK-LR is "A little living room." The aware-name of TK-LR is "operations".
+
+SR is a here-delegate. It is in the sleeping room. Understand "sleeping room" or "sleep room" or "sleeping" as SR. The aware-name of SR is "Command Module".
+
+SR-ER is a there-delegate. It is in the sleeping room. The destination of SR-ER is the eating room. Understand "eating room" or "eating" as SR-ER. The description of SR-ER is "A little eating room." The aware-name of SR-ER is "Engineering Module".
+
+ER is a here-delegate. It is in the eating room. Understand "eating room" or "eating" as ER. The aware-name of ER is "Engineering Module".
+
+ER-SR is a there-delegate. It is in the eating room. The destination of ER-SR is the sleeping room. Understand "sleeping room" as ER-SR. The description of ER-SR is "A small eating room." The aware-name of ER-SR is "Command Module".
+
+Instead of examining a here-delegate, try looking.
+
+Instead of entering a here-delegate, say "You're already here."
+
+Instead of entering a there-delegate:
+	try going towards the destination of the noun.
 		
 Section Living Room
  
@@ -3048,9 +3087,9 @@ Instead of taking the shampoo dispenser:
 
 The clueless-name of the shampoo dispenser is "shampoo dispenser". The aware-name of the shampoo dispenser is "accelerant pump". The clueless-description of the shampoo dispenser is "The button for the shampoo dispenser is right next to the one for the soap dispenser". The aware-description of the shampoo dispenser is "A solenoid pump which delivers a catalyst to the extruder system for mixing with monomer solution." The shampoo dispenser-proxy is an aware-proxy that is part of the shampoo dispenser. Understand "accelerant" ,"pump", "solenoid", or "catalyst" as the shampoo dispenser-proxy. The shampoo dispenser can be damaged. The shampoo dispenser is not damaged.
 
-The clueless-name of the shower walls is "shower walls". The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull." The shower walls-proxy is an aware-proxy that is part of the shower walls. Understand "fluidics", "network" , "tubes", "valves" or "pumps" as the shower walls-proxy.
+The clueless-name of the shower walls is "walls". The shower walls are privately-named. The aware-name of the shower walls is "fluidics network". The clueless-description of the shower walls is "The walls of the shower are made of slick white plastic. Two buttons are on the wall, one marked [quotation mark]soap[quotation mark] and the other, [quotation mark]shampoo[quotation mark]." The aware-description of the shower walls is "A distribution network of tubes, pumps and valves that runs throughout the ship, just under the outer hull." The shower walls-proxy is an aware-proxy that is part of the shower walls. Understand "wall", "walls", "fluidics", "network" , "tubes", "valves" or "pumps" as the shower walls-proxy.
 
-Before switching on or switching off the shower walls:
+Before switching on or switching off the TS:
 	say "[if the player is clueless]The shower is fully automated and adjusts temperature, pressure and direction of the water stream as needed[otherwise]The fluidics network is slaved to the ships autonomic network and activates automatically, as needed[end if].";
 	the rule succeeds.
 	
