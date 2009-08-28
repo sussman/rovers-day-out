@@ -37,7 +37,6 @@ Rover and Back on Mars
 
 =====
 other:
-- if left alone with the treat box, Rover should do what comes naturally.
 - standing when already out of bed is interpreted as exiting (and standing in bathroom exits it, etc.)
 - is flushing toilet still standing the player up?
 - inhibit fussing around the door during real thing if we've already got the egg and the probe.
