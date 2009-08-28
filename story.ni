@@ -931,7 +931,7 @@ Instead of smelling:
 				say "It smells [scent of the noun] here. [run paragraph on]";
 			try sniffscanning;
 			the rule succeeds;
-		otherwise	 if the noun is not in the location:
+		otherwise	 if the noun is not enclosed by the location:
 			say "[The noun] is not here, so you sniff the air.";
 			if the noun is:
 				-- the smelly man: say "[man-smell].";
@@ -3269,7 +3269,10 @@ The food dish and the water dish are fixed in place bowls in the eating room.
 
 The description of the food dish is "[if the food dish is not full]Even empty, the[otherwise]The [end if]other dog's metal food dish smells much better than yours." The clueless-name of the food dish is "food dish". The aware-name of the food dish is "fuel reservoir". Understand "metal" as the food dish.
 
-The canned food is an edible thing in the food dish. The indefinite article of the canned food is "some". Understand "dog", "meat", "cubes", "brown", and "gravy" as the canned food. The description of the canned food is "A large helping of smelly, brown cubes of meat smothered in gravy. The kind of food that comes from a can, not a bag. The good stuff." The scent of the canned dog food is "rich and meaty, with bacony overtones, and a slightly caramelized gravy. Delectable". The aware-name of the canned-food is "plutonium oxide".
+Does the player mean doing something with the canned food:
+	it is likely.
+
+The canned food is an edible thing in the food dish. The indefinite article of the canned food is "some". Understand "dog", "meat", "cubes", "brown", and "gravy" as the canned food. The description of the canned food is "A large helping of smelly, brown cubes of meat smothered in gravy. The kind of food that comes from a can, not a bag. The good stuff." The scent of the canned food is "rich and meaty, with bacony overtones, and a slightly caramelized gravy. Delectable". The aware-name of the canned food is "plutonium oxide".
 
 Instead of taking the canned food:
 	say "You consider taking the canned food, and maybe saving it for some special occassion. On second thought, you eat it. Delayed gratification has never been your strong suit. [run paragraph on]";
@@ -3282,7 +3285,10 @@ Before eating the canned food:
 
 The description of the water dish is "[if the water dish is not full]Even empty, the [otherwise]The [end if]other dog's plastic water dish looks much better than yours." The clueless-name of the water dish is "water dish". The aware-name of the water dish is "coolant reservoir". Understand "plastic" as the water dish.
 
-The crystal clear water is an edible thing in the water dish. The description of the crystal clear water is "Clean, pure water. You are convinced that it must be much better than any water that has ever graced your own dog bowl." The scent of the crystal clear water is "like a mountain stream". The aware-name of the crystal clear water is "coolant".
+Does the player mean doing something with the crystal clear water: 
+	it is likely.
+
+The crystal clear water is an edible thing in the water dish. The indefinite article of the crystal clear water is "some". The description of the crystal clear water is "Clean, pure water. You are convinced that it must be much better than any water that has ever graced your own dog bowl." The scent of the crystal clear water is "like a mountain stream". The aware-name of the crystal clear water is "coolant".
 
 Instead of taking the crystal clear water:
 	say "Having nothing else to carry the water in, you drink your fill.";
@@ -3825,7 +3831,7 @@ Every turn:
 	if the current action is taking inventory or the current action is looking:
 		change the time of day to 1 minute before the time of day;
 	[Reminders about being naked]
-	if the player is clueless and the player is not wearing the flight suit and the player is not in the bathroom and the player is not in the shower:
+	if the player is the ACU and player is clueless and the player is not wearing the flight suit and the player is not in the bathroom and the player is not in the shower:
 		if a random chance of 1 in 10 succeeds:
 			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [the location of the flight suit in lower case][or]For a moment you feel a little self-conscious walking around without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
 	[Purposeful and conditionally triggered Rover actions]
