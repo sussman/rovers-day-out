@@ -23,11 +23,3 @@ failed phrases that ought to work!  THE LIST.
 =============
 
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
-
-=====
-other:
-- ground as synonym for floor
-- lick female dog should work
-
-=======
-- room delegates
