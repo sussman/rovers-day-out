@@ -722,14 +722,17 @@ Carry out clearing:
 		
 Section Reading
 		
-Understand the command "read" as something new. Reading is an action applying to one thing. Understand "read [some message]" as reading.
+Understand the command "read" as something new. Reading is an action applying to one thing. Understand "read [a thing]" as reading.
 
 Check reading:
 	If the player is rover:
 		say "Dogs can't read." instead;
-	otherwise:
-		if the inscription of the noun is "":
-			say "Nothing is printed on [the noun]." instead.
+	If the noun is lips:
+		say "You never learned how to read lips[if the player is self-aware and audio is switched off]. You figure that it would be easier to try to listen to what they're saying[end if]." instead;
+	If the noun is not a message:
+		say "That's not something you can read." instead;
+	If the inscription of the noun is "":
+		say "Nothing is printed on [the noun]." instead.
 			
 Carry out reading:
 	say the inscription of the noun;
@@ -4283,7 +4286,7 @@ When Walkies begins:
 	
 When Walkies ends:
 	now the front door is closed;
-	now Janet wears the flight suit;
+	now the ACU wears the flight suit;
 	now the player is the ACU;
 	if Rover carries the delicious bone:
 		say "You run into the living room and jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]She stares at the bone and appears frozen.[paragraph break]";
