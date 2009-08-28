@@ -749,6 +749,8 @@ Check going towards:
 			say "How much more here do you want to be?" instead;
 		if the noun is in the location:
 			say "[The noun] is already here." instead;
+	if the player is Rover and the noun is the Smoking Pit and Rover is in the Planet Area and Rover is not in the Front Yard:
+		say "You're already in The Park." instead;
 	if the noun is the location, say "You're already here." instead;
 	if the player is the ACU and the noun is not in the Valkyrie Area, say "You're not ready to go out yet." instead.
 
@@ -3141,6 +3143,8 @@ The Featureless Desert is west of the Smoking Pit. The description of the featur
 
 The female dog is a female animal in the Featureless Desert. He is carrying the delicious bone. The delicious bone is a prop. Understand "female", "dog", "girl", "beautiful", "pretty", "hot", "babe", "chick", "lady", "graceful", "noble", "alluring", "seductive", "athletic" or "bitch" as the female dog. 
 [Some of these synonyms are, as they say in the computer biz, deprecated.]
+
+Understand "park" as The Smoking Pit when the player is Rover.
 
 The scent of the female dog is "[one of]sweeter than the marrow of the tastiest bone[or]heavenly, like the essence of dogly beauty distilled to a few drops and sprayed at nose-level on everything in sight[or]at once exquisite and unpretentious, unattainable and everyday, wild and yet somehow timid. She is a complex dog[or]fetching, in the way that a stick isn't[or]wonderful[stopping]".
 
