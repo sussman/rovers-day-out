@@ -29,19 +29,13 @@ BOARDING SCENE
 
 =============
 
-Rover and Back on Mars
-* Rover should stay put in the living room.
-[ok, when Rover wakes, he looks back and forth in confusion] Rover should display some confusion between real Janet and ACU Janet
-
 * Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
 
 =====
 other:
-- inhibit fussing around the door during real thing if we've already got the egg and the probe.
 - ground as synonym for floor
 - broaden read verb so that it doesn't "not see" items that are not inscriptions
 - lick female dog should work
-- add some hinges to the old fridge
 
 =======
 after rover has brought back the egg and the probe, he no longer fusses at the door to go out, but he will go out if the door is open. TOCONSIDER: after getting the two items we need, he may lose all interest in going out even if the door is open.
