@@ -28,7 +28,7 @@ Understand "take inventory" as taking inventory.
 Understand the commands "carry" and "hold" as "take".
 
 Understand the command "get" as something new.
-Understand "get out/off/up" as exiting.
+Understand "get out/off/up" as standing.
 Understand "get [thing]" as taking.
 Understand "get in/into/on/onto [thing]" as entering.
 Understand "get off [thing]" as getting off.
@@ -1104,6 +1104,24 @@ Check cooking:
 		
 Carry out cooking:
 	try silently cracking the white egg into the frying pan		
+	
+Section Standing
+
+Understand the command "stand" as something new.
+
+Standing is an action applying to nothing. Understand "stand" or "stand up" as standing. The standing action has an object called perch stood from.
+
+Setting action variables for standing:
+	if the holder of the actor is not a room, now the perch stood from is the holder of the actor. 
+
+Carry out standing:
+	move the player to the location, without printing a room description.
+	
+Report standing:  
+	if the perch stood from is not nothing:
+		say "You [if the player is clueless]get off[otherwise]deactive your connection to[end if] [the perch stood from].";
+	otherwise:
+		say "You are [if the player is clueless]standing in[otherwise]currently accessing[end if] [the location in lower case]."
 
 Chapter General Insteads
 
@@ -1749,7 +1767,7 @@ After taking off the flight suit:
 	otherwise:
 		say "falls to [the location in lower case] floor";
 	now the flight suit is in the holder of the player;
-	say ". You are naked.";
+	say ". You are naked.[paragraph break]";
 	if the player can see the maintenance droid:
 		scandalize the poor little robot;
 	if the flight suit is not already-doffed:
@@ -1913,7 +1931,7 @@ To Drop Rover's Payload:
 	
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover modules". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated mechanical module bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "complicated" or "module" or "modules" or "mechanical" as the doggie bits-proxy.
 
-The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." Understand "photo" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. 
+The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. 
 
 Test picture with "x picture / get picture / eat picture / read nameplate / read memory unit".
 
@@ -2793,7 +2811,6 @@ Check flushing:
 Carry out flushing:
 	now the flapper valve is closed;
 	now the ACU is prepoop;
-	move the player to the bathroom, without printing a room description;
 	if the location of the white egg is nowhere:
 		now the landing_pid is 0;
 	otherwise:
@@ -2813,7 +2830,7 @@ Before opening the flapper valve:
 	try flushing the toilet;
 	the rule succeeds.
 	
-Instead of exiting when holder of the player is the toilet seat:
+Instead of exiting or standing when holder of the player is the toilet seat:
 	move the player to the bathroom, without printing a room description;
 	[otherwise, the location of the player remains the toilet seat]
 	if the player is clueless:
@@ -3127,7 +3144,7 @@ Before going down when the location is the dug-up field:
 	say "The holes scattered around this area were dug very quickly, but shallowly. You wouldn't fit into an of them.";
 	the rule fails.
 
-The Smoking Pit is west of the Dug-Up Field. The description of the Smoking Pit is "A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole." The scent of the smoking pit is "like burnt marshmellows".
+The Smoking Pit is west of the Dug-Up Field. The description of the Smoking Pit is "A long, dark furrow scars the ground in this part of the park." The scent of the smoking pit is "like burnt marshmellows".
 
 A long furrow is an enterable hole in the Smoking Pit. Understand "trench" or "hole" as the long furrow. The description of the long furrow is "On your muzzle, you can feel heat radiating from the furrow walls, which are shiny and black. On the walls and floor of the trench, you can see some scratches that look like they could have been made by dog paws." The carrying capacity of the furrow is 2. The scent of the furrow is "like freshly poured tar". The aware-name of the long furrow is "trench".
 
@@ -3184,11 +3201,11 @@ Instead of answering the female dog that:
 Instead of kissing the female dog:
 	say "[one of]The very thought makes your canine heart scramble like a greased xihuahua in free fall[or]You pause. What did you have for lunch? Kibbles. Liver-flavored kibbles, that left an after taste. Is your breath fresh? You try to exhale and then inhale very quickly. Hmm. Not bad. You try to work up to the kiss, but hang back at the last second[or]You move in slowly. She doesn't react. Probably a good sign. You select your target. The nape of the neck? Below the ears? Under the chin? No, all too complicated. Something simple, a little lick on the muzzle. No biting. Not yet anyway.[paragraph break]She remains steady as a rock, and suddenly your legs feel rubbery. You don't go through with it[or]This is it, you're really going to kiss her now. One little peck on the muzzle, no big deal. You can always laugh it off if it doesn't go well. Now or never. You take a deep breath...[paragraph break]and decide to wait a minute to see how she reacts[or]What's there to be afraid of, come on, Rover old boy, you think to yourself.[paragraph break]You lean in towards her and the wind suddenly shifts.[paragraph break]A bad omen.[paragraph break]Your half-extended tongue is coated with grit. You adroitly transition the bungled kiss into an attempt to dislodge a straggling bit of kibble from your muzzle.[paragraph break]Good, she doesn't seem to have noticed[or]You close your eyes and plant a firm kiss on her warm, moist...[paragraph break]Oh no. With your eyes open, you see that you've kissed her squarely on her nose. She must have moved slightly. You blink with embarrassment, but she holds steady, staring into the distance. You are overcome with a feeling of relief. She not only tolerated your plodding, inexperienced overture, but seems to have enjoyed the nervous energy of the moment[or]You kiss her, this time with less fumbling. Her muzzle brushes against yours and your vision blurs with happiness. Overcome with emotion, you stand together, you and she, watching the dust blow across the field. It is beautiful[or]She stares straight ahead, a clear call for you to continue your expressions of affection[or]Each kiss is more intimate, more sensual. No longer is she a stranger, but more and more you consider her your friend, your confident. Dare you think it? Perhaps a mate[or]You give her a peck on the muzzle, with the easy familiarity that has grown between you[or]You kiss her again, each time as exciting as the first[stopping]."
 
-The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]." The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]." The probe-proxy is an aware-proxy that is part of the delicious bone. Understand "space", "probe", "musashi", "myomita", "5", or "musashi-5" as the probe-proxy. 
+The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]". The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]." The probe-proxy is an aware-proxy that is part of the delicious bone. Understand "space", "probe", "musashi", "myomita", "5", or "musashi-5" as the probe-proxy. 
 
 To say delicious bone status:
 	if the player is rover:
-		say "It is the biggest, juiciest bone you’ve ever seen.  [if the delicious bone is carried by the female dog][one of]You envy the bone, which is clamped between the bewitchingly white teeth of the female dog.[or]The voluptuous female is all but motionless, but somehow conveys a come hither look, as she holds the bone in her luscious mouth.[or]The female dog holds the bone in her jaws, like a dowry.[or]The female dog maintains a tight grip on the bone with her impeccably straight, but alarmingly sharp teeth.[stopping][end if]";
+		say "It is the biggest, juiciest bone you’ve ever seen. [if the delicious bone is carried by the female dog][one of]You envy the bone, which is clamped between the bewitchingly white teeth of the female dog[or]The voluptuous female is all but motionless, but somehow conveys a come hither look, as she holds the bone in her luscious mouth[or]The female dog holds the bone in her jaws, like a dowry[or]The female dog maintains a tight grip on the bone with her impeccably straight, but alarmingly sharp teeth[stopping].[end if][run paragraph on]";
 	otherwise:
 		say "The bone the dog dragged in from the park. He's already gnawed on it a bit".
 		
@@ -3782,6 +3799,7 @@ the smooching action				"INTERFACE" [rover, give kisses]
 the sniffscanning action			"SPECTROMETRY" [sniff]
 the snoozing action				"REPRESENTATIONAL STATE TRANSFER" [snooze]
 the squeezing action				"PRESSOR FIELD"
+the standing action				"DEACTIVATE" [stand]
 the swearing mildly action		"PARSE ERROR"
 the swearing obscenely action	"PARSE ERROR"
 the swinging action				"SELECT"

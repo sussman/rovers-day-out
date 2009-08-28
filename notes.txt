@@ -37,17 +37,13 @@ Rover and Back on Mars
 
 =====
 other:
-- standing when already out of bed is interpreted as exiting (and standing in bathroom exits it, etc.)
-- is flushing toilet still standing the player up?
 - inhibit fussing around the door during real thing if we've already got the egg and the probe.
 - ground as synonym for floor
-- Rover needs his own remembers....like the Yorkie from across the park
 - broaden read verb so that it doesn't "not see" items that are not inscriptions
 - lick female dog should work
+- add some hinges to the old fridge
 
 =======
 after rover has brought back the egg and the probe, he no longer fusses at the door to go out, but he will go out if the door is open. TOCONSIDER: after getting the two items we need, he may lose all interest in going out even if the door is open.
 
-- water dish, food dish smells
-- go park
 - room delegates
