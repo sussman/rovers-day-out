@@ -118,6 +118,8 @@ A person can be failsafed. Persons are usually not failsafed.
 Wait-a-bit is a truth state that varies. The wait-a-bit is usually true.
 [allows conditional compilation of the 'wait for any key' phrase depending on whether this is a testing version or a for-release version]
 
+On-the-pot is a number that varies. On-the-pot is 0.
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -1012,7 +1014,7 @@ To await keystroke:
 		
 Section Potty Language
 
-Businessing is an action applying to nothing. Understand "poop" or "defecate" or "do business" or "piss" or "pee" or "urinate" or "micturate" or "tinkle" or "whiz" or "void" as businessing.
+Businessing is an action applying to nothing. Understand "crap" or "poop" or "defecate" or "do business" or "piss" or "pee" or "urinate" or "micturate" or "tinkle" or "whiz" or "void" as businessing.
 
 Check Businessing:
 	if the player is Rover:
@@ -3399,7 +3401,7 @@ David Venkatachalam is a man in Limbo. The description of David Venkatachalam is
 
 David Venkatachalam wears a black business robe and a burgundy bowler hat. Understand "fashionable" and "expensive" as the black business robe. The description of the black business robe is "A shiny, black business robe, with a wide sash of gold terry cloth and high slit in the rear. Surely, the custom-tailored robe is every bit as expensive as it looks. The robe comes down almost to the floor in the front, although David's fancy boots can be seen as he walks."  The gold terry cloth sash is part of the black business robe. The description of the gold terry cloth sash is "At least twice as long as David is tall, the width of the sash is meant to impress business associates with David's social standing as director of the Valkyrie project."  Understand "long" and "wide" as the gold terry cloth sash. David Venkatachalam wears fancy boots. The fancy boots are plural-named. The indefinite article of the fancy boots is "a pair of". The description of the fancy boots is "Exotic boots, apparently made of snake skin, possibly imported from Earth. They stand in stark contrast to the more functional boots worn by most executives on Mars." Understand "exotic" and "snake" and "skin" as the fancy boots. The description of the burgundy bowler hat is "A bulbous, helmet-like version of the classic hat, with a relatively narrow brim. The burgundy-colored hat looks like an antique with no piercings." Understand "bulbous" and "antique" as the burgundy bowler hat. The aware-name of the black business robe is "clothing". The aware-name of the burgundy bowler hat is "clothing". The aware-name of the gold terry cloth sash is "clothing". The aware-name of the fancy boots is "clothing". The goatee is a part of David Venkatachalam. The description of the goatee is "A waxed, black goatee of medium length, which comes to a crisp point below David's chin." The aware-name of the goatee is "david".
 
-Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "Janet". Janet Xiang is failsafed. The lips are part of Janet. Understand "lip" as lips. 
+Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "Janet". Janet Xiang is failsafed. The lips are part of Janet. Lips are plural-named. Understand "lip" as lips. The aware-name of lips is "lips".
 
 Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green arm band." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band. The aware-name of the lavender summer dress is "clothing". The aware-name of the white leggngs is "clothing". The aware-name of the sandals is "clothing". The aware-name of the green arm band is "console". The display is part of the arm band. The description of the display is "You can't see what is on the display because of a privacy filter."
 
@@ -3924,7 +3926,7 @@ Every turn:
 	[Reminders about being naked]
 	if the player is the ACU and player is clueless and the player is not wearing the flight suit and the player is not in the bathroom and the player is not in the shower:
 		if a random chance of 1 in 10 succeeds:
-			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [the location of the flight suit in lower case][or]For a moment you feel a little self-conscious walking around without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
+			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [the location of the flight suit in lower case][or]For a moment you feel a little self-conscious hanging out in your cottage without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
 	[Purposeful and conditionally triggered Rover actions]
 	if the holder of Rover is the holder of the reward nuggets replicator:
 		if Rover is in the location and a random chance of 1 in 2 succeeds:
@@ -3948,7 +3950,7 @@ Every turn:
 				now Rover is busy;
 		otherwise:[bowl wasn't full]
 			if Rover is in the location and a random chance of 1 in 3 succeeds:
-				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in his soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly and frowns at his[in random order] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[in random order][otherwise]He moves rapidly past [the food bowl] which has no radioisotope payload[end if].[paragraph break]";
+				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless][one of]contemplates the profound emptiness of the[or]notices the lack of food in his soi-disant[or]narrows his eyes critically, noting the lack of food in his[or]sighs audibly and frowns at his[in random order] [food bowl]. [one of]He looks at you with imploring puppy dog eyes and then back again at his empty [food bowl][or]His stomach rumbles with hunger[or]He looks at the [food bowl]. He looks at you. He looks at the [food bowl]. He looks at you[or]He paws pathetically at the [food bowl], and the hollow, tin ring of the pitiful bowl echoes through the kitchen[in random order][otherwise]moves rapidly past [the food bowl] which has no radioisotope payload[end if].[paragraph break]";
 				now Rover is busy;		
 	if the holder of Rover is the holder of the water bowl and Rover is thirsty:
 		if the water bowl is full:
@@ -4256,12 +4258,22 @@ When Second Sim begins:
 	now the dream index is 4;
 	try dreaming.
 	
-Every turn when the Second Sim is happening and the landing_pid is not 0:
-	if the player is in the living room and the living room is not visited-during-havoc:
-		now the living room is visited-during-havoc;
-		let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
-		say "[metatext in metaspeak]";
-	fuss around door.
+Every turn when the Second Sim is happening:
+	if the landing_pid is 0:
+		if the holder of the player is the toilet seat and the player is poopready:
+			increase on-the-pot by one;
+			if on-the-pot is greater than 7 and a random chance of 1 in 4 succeeds:
+				if Rover is not in the location:
+					now Rover is in the bathroom;
+					say "Rover steps cautiously into the bathroom. ";
+				say "[one of]Rover looks at you with a puzzled expression, trying to figure out what you're doing[or]Rover sighs with pity, apparently you are having another bout of constipation[or]Rover shakes his head, wondering why it's okay for you to poop in the house, but he gets into trouble[or]Rover stares at you impatiently, wishing that you'd do your business more quickly, so he could go out in the park and do his[or]Rover assumes [quotation mark]the position[quotation mark], trying to give you a hint about what you should be doing into that toilet[or]Rover sniffs the air, trying to discern if you've gone or not[or]Rover's sardonic expression conveys to you a sense of [quotation mark]do something or get off the pot[quotation mark][in random order].";
+				now Rover is busy;
+	otherwise:
+		if the player is in the living room and the living room is not visited-during-havoc:
+			now the living room is visited-during-havoc;
+			let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
+			say "[metatext in metaspeak]";
+		fuss around door.
 		
 To fuss around door:
 	if Rover is in the living room and the living room is visited-during-havoc:

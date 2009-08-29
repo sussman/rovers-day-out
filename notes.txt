@@ -20,6 +20,4 @@ failed phrases that ought to work!  THE LIST.
 	- open drawer
 	- dermatovore eels
 	- pink pillow
-=============
-
-* Rover as a clue bat: We have an opportunity to convey hints via Rover if the player isn't making good time through various sections and/or appears to be stuck.
+==========
