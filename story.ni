@@ -413,19 +413,19 @@ Carry out CDing:
 	replace the regular expression "^cd\s*" in T with "";
 	replace the regular expression "^valkyrie\/" in T with "";
 	if T matches the regular expression "^\/$":
-		try going towards the living room;
+		try going towards the Living Room;
 		the rule succeeds;
 	replace the regular expression "\/$" in T with "";
 	if T matches the regular expression "^$" or T matches the regular expression "^\.$":
 		try going towards the location;
 		the rule succeeds;
 	if T matches the regular expression "^\.\.$":
-		if the player is in the living room:
-			try going towards the living room;
+		if the player is in the Living Room:
+			try going towards the Living Room;
 		otherwise:
 			try exiting;
 		the rule succeeds;
-	if the player is in the living room:
+	if the player is in the Living Room:
 		if T matches the regular expression "^(\.\/)?engineering$":
 			change destination to the kitchen;
 		if T matches the regular expression "^(\.\/)?flight control$":
@@ -443,14 +443,14 @@ Carry out CDing:
 			change the destination to the shower;
 	otherwise if the player is in the shower:
 		if T matches the regular expression "^\.\.\/\.\.$":
-			change the destination to living room;
+			change the destination to Living Room;
 		if T matches the regular expression "^\.\.\/\.\.\/flight control$":
 			change the destination to bathroom;
 		if T matches the regular expression "^\.\.\/\.\.\/engineering$":
 			change the destination to kitchen;
 	if destination is Limbo:
 		if T matches the regular expression "^\/operations$":
-			change the destination to the living room;
+			change the destination to the Living Room;
 		otherwise if T matches the regular expression "^\/operations/flight control$":
 			change the destination to the bathroom;
 		otherwise if T matches the regular expression "^\/operations/flight control/extruder$":
@@ -609,7 +609,7 @@ Carry out pinging:
 				let routetime be a random number from 1 to 9;
 				say "ping 127.0.0.1 with 56 bytes: [5 + routetime] attoseconds[line break]";
 			say "100% packets received[paragraph break]";
-			the rule succeeds;[TOCONSIDER: disable pinging when the ansible is down]
+			the rule succeeds;
 		otherwise:
 			say "Host not available on network[paragraph break]";
 			the rule fails;
@@ -629,7 +629,7 @@ To say the path of (item - an object):
 		now item is the holder of item;
 	say "valkyrie//";
 	if the holder of item is not Living Room:
-		say "[the aware-name of the living room]/";
+		say "[the aware-name of the Living Room]/";
 	if the holder of the item is the Shower:
 		say "[the aware-name of the bathroom]/";
 	say "[aware-name of the holder of the item]/";
@@ -795,7 +795,7 @@ Before going a custom direction:
 	say "If you want to go somewhere, just say so (like, [quotation mark]go towards the living room[quotation mark]).";
 	the rule succeeds.
 
-Instead of going towards when the player is in the living room and the futon is not folded:
+Instead of going towards when the player is in the Living Room and the futon is not folded:
 	say "You can't really move around much because of the futon. It takes up a lot of room.";
 	if the futon is not obstructed and (the First Sim is happening or the Second Sim is happening):
 		now the futon is obstructed;
@@ -1338,7 +1338,7 @@ To Setup the World: [explictly set initial conditions]
 	now the reward nuggets replicator is in the cabinet;
 	now the dog treat is in the reward nuggets replicator;
 	now the frying pan is in the drawer;
-	now the living room is not visited-during-havoc.
+	now the Living Room is not visited-during-havoc.
 	
 Section Restore the World
 
@@ -1714,11 +1714,11 @@ Instead of doing something when the noun is David-proxy:
 
 Section Room Delegates
 
-LR is a here-delegate. It is in the living room. Understand "living room " as LR. The aware-name of LR is "operations".
+LR is a here-delegate. It is in the Living Room. Understand "Living Room " as LR. The aware-name of LR is "operations".
 
-LR-TB is a there-delegate. It is in the living room. The destination of LR-TB is the Bathroom. The clueless-name of the LR-TB is "bathroom". Understand "bathroom" or "corner" as LR-TB. The clueless-description of LR-TB is "From here, you can see just a corner of the bathroom: a bit of the marble counter, and the corner of the sink." The aware-name of LR-TB is "flight control". The aware-description of LR-TB is "From here, you can see a little ways into the flight control area. You can make out the edge of the flight console and a corner of the biohazard response system." Understand "marble counter" and "sink" as the LR-TB. Understand "flight console" and "biohazard response system" as LR-TB when the player is self-aware.
+LR-TB is a there-delegate. It is in the Living Room. The destination of LR-TB is the Bathroom. The clueless-name of the LR-TB is "bathroom". Understand "bathroom" or "corner" as LR-TB. The clueless-description of LR-TB is "From here, you can see just a corner of the bathroom: a bit of the marble counter, and the corner of the sink." The aware-name of LR-TB is "flight control". The aware-description of LR-TB is "From here, you can see a little ways into the flight control area. You can make out the edge of the flight console and a corner of the biohazard response system." Understand "marble counter" and "sink" as the LR-TB. Understand "flight console" and "biohazard response system" as LR-TB when the player is self-aware.
 
-LR-TK is a there-delegate. It is in the living room. The destination of LR-TK is the Kitchen. The clueless-name of LR-TK is "kitchen". Understand "kitchen" as the LR-TK. The clueless-description of LR-TK is "You can see the corner of the kitchen cabinet, which is [if the cabinet is open]open[otherwise]closed[end if]. You can also see one of Rover's bowls from here, but at this distance, you can't tell which one." The aware-name of LR-TK is "engineering". The aware-description of LR-TK is "You can see the corner of the fuel storage vault, which is [if the cabinet is open]open[otherwise]closed. You can also see the coolant output terminus from here." Understand "cabinet" or "bowl" as LR-TK. Understand "fuel storage vault" or "vault" or "cabinet" or "coolant output terminus" or "coolant terminus" or "terminus" as LR-TK when the player is self-aware.
+LR-TK is a there-delegate. It is in the Living Room. The destination of LR-TK is the Kitchen. The clueless-name of LR-TK is "kitchen". Understand "kitchen" as the LR-TK. The clueless-description of LR-TK is "You can see the corner of the kitchen cabinet, which is [if the cabinet is open]open[otherwise]closed[end if]. You can also see one of Rover's bowls from here, but at this distance, you can't tell which one." The aware-name of LR-TK is "engineering". The aware-description of LR-TK is "You can see the corner of the fuel storage vault, which is [if the cabinet is open]open[otherwise]closed. You can also see the coolant output terminus from here." Understand "cabinet" or "bowl" as LR-TK. Understand "fuel storage vault" or "vault" or "cabinet" or "coolant output terminus" or "coolant terminus" or "terminus" as LR-TK when the player is self-aware.
 
 TB is a here-delegate. It is in the bathroom. Understand "bathroom" as TB. The aware-name of TB is "flight control". 
 
@@ -1755,26 +1755,26 @@ The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and T
 
 Test living_room with "stand up / open drapes / look / test picture".[add tests for other objects in living room.]
 
-The living room is outside from the kitchen and outside from bathroom.  The bathroom is outside from the shower. The living room contains the player. Understand "home" as the living room. The living room can be visited-during-havoc. The living room is not visited-during-havoc.
+The Living Room is outside from the Kitchen and outside from Bathroom.  The Bathroom is outside from the Shower. The Living Room contains the player. Understand "home" as the Living Room. The Living Room can be visited-during-havoc. The Living Room is not visited-during-havoc.
 
-The walls are a backdrop.  They are in the living room and kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. 
+The walls are a backdrop.  They are in the Living Room and Kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. 
 
-The ceiling is a backdrop. It is in the living room and kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." The aware-name of the ceiling is "ceiling". 
+The ceiling is a backdrop. It is in the Living Room and Kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." The aware-name of the ceiling is "ceiling". 
 
-The clueless-name of the living room is "living room". The clueless-description of the living room is "[living room status]." The aware-name of the living room is "operations". The aware-description of the living room is "The Valkyrie's cargo bay is like a great, metal cave. [if Boarding Party is not happening]On one wall, the casimir drive intrudes slightly into the cargo area[otherwise]Nothing remains of the casimir drive, which was neatly sliced off the ship by impossibly precise Myomita energy weapons[end if]. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are [if the front door is open]open[otherwise]closed[end if]." 
+The clueless-name of the Living Room is "living room". The clueless-description of the Living Room is "[living room status]." The aware-name of the Living Room is "operations". The aware-description of the Living Room is "The Valkyrie's cargo bay is like a great, metal cave. [if Boarding Party is not happening]On one wall, the casimir drive intrudes slightly into the cargo area[otherwise]Nothing remains of the casimir drive, which was neatly sliced off the ship by impossibly precise Myomita energy weapons[end if]. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are [if the front door is open]open[otherwise]closed[end if]." 
 
 To say living room status:
-	if the drapes are in the living room and the drapes are closed:
+	if the drapes are in the Living Room and the drapes are closed:
 		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light";
 	otherwise:
 		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window[if the nameplate is not already-read], illuminating a framed picture on the wall[end if][if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
 		
-Sunlight is a privately-named scenery in the living room. Understand "light" and "sunlight" and "illumination" and "daylight" and "shaft" as sunlight when the player is clueless. The description of sunlight is "[if the drapes are in the living room and the drapes are closed]A single shaft of daylight slices like a laser through the living room. Although dramatic, it does not provide very effective illumination[otherwise]Bright daylight shines in through the window facing the park. The light is ever so slightly tinted red from surface reflection near the collectors[end if]." The aware-name of sunlight is "photon sensor".
+Sunlight is a privately-named scenery in the Living Room. Understand "light" and "sunlight" and "illumination" and "daylight" and "shaft" as sunlight when the player is clueless. The description of sunlight is "[if the drapes are in the living room and the drapes are closed]A single shaft of daylight slices like a laser through the living room. Although dramatic, it does not provide very effective illumination[otherwise]Bright daylight shines in through the window facing the park. The light is ever so slightly tinted red from surface reflection near the collectors[end if]." The aware-name of sunlight is "photon sensor".
 
 Instead of taking the sunlight:
 	say "Poetic, perhaps, but not practical."
 
-The futon is a bed in the living room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "[if the drapes are open]purple [end if]futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" or "drive" or "casimir drive system" or "zero-point energy" or "zero point energy" or "zero point energy drive" or "vortex drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. 
+The futon is a bed in the Living Room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "[if the drapes are open]purple [end if]futon".  The aware-name of the futon is "casimir drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The casimir drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" or "drive" or "casimir drive system" or "zero-point energy" or "zero point energy" or "zero point energy drive" or "vortex drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. 
 
 After examining the futon:
 	if the futon is not discussed and the Second Sim is happening:
@@ -1867,21 +1867,35 @@ After reading the lettering for the first time:
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A pulp novel rocket ship points away from the globe of Mars and towards space. The picture evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia".
 
-The alarm clock is furniture on the futon.  Understand "LED" and "LEDs" and "green" as the alarm clock when the player is clueless. The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with fading green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" or "transgressor" as the alarm clock-proxy. 
+The alarm clock is a prop on the futon.  Understand "LED" and "LEDs" and "green" as the alarm clock when the player is clueless. The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with fading green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The casimir drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" or "transgressor" as the alarm clock-proxy. 
+
+Instead of taking the alarm clock when the alarm clock is on the futon and bedtime is not happening:
+	say "[if the player is clueless]You'd rather leave it on the futon so it's there when you need it[otherwise]The transgressor is already in optimal proximity to the casimir drive[end if]."
+	
+Instead of taking the alarm clock when the holder of the alarm clock is the Living Room:
+	now the alarm clock is on the futon;
+	say "You [if the player is clueless]pick up your beat up old alarm clock and put it back on the futon, so you can enjoy its lovely beeping tomorrow, and tomorrow, and tomorrow[otherwise]reapproximate the temporal transgressor to the casimir drive[end if]."
+	
+Instead of pushing the large button when bedtime is not happening:
+	if the player is clueless:
+		say "The alarm clock says [quotation mark][one of]You are awake enough[or]No more snoozing[or]Brain activity nominal, snooze function inhibited[or]Surely, you have better things to do than to poke me[or]If you keep poking that button, you'll wear it out[or]Ow. quit it[or]Stop poking me[stopping][quotation mark].";
+	otherwise:
+		say "Proximity alert reset inhibited."	
 
 The clueless-name of the large button is "large button". Understand "snoo" or "snooze" as the large button. The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the dimly illuminated word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magnofluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" or "magnofluctuator" or "toggle" as the large button-proxy. 
 
 After examining the alarm clock for the second time:
-	let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
-	say "[metatext in metaspeak]";
+	if the First Sim is happening or the Second Sim is happening:
+		let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
+		say "[metatext in metaspeak]";
 
-Some drapes are furniture in the living room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
+Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
 
 Instead of opening the drapes:
 	if the drapes are closed:
 		say "You push aside the drapes.";
 		now the drapes are open;
-		now the window is in the living room;
+		now the window is in the Living Room;
 		try looking;
 	otherwise:
 		say "They're already open."
@@ -1906,12 +1920,12 @@ Instead of examining or reading when the drapes are closed:
 	otherwise:
 		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping]."
 	
-Instead of going towards when the player is in the living room and the drapes are closed:
+Instead of going towards when the player is in the Living Room and the drapes are closed:
 	say "It's too dark to move around much. [one of]Grues and all that, you know. [or][stopping][paragraph break][if a random chance of one in three succeeds][one of]You shin yourself on the futon frame[or]You step on something stringy but resilient. Rover yaps in pain and scrambles to the otherside of the futon[or]The floor creeks ominiously[or]Something wet and warm is licking the back of your knees. You really hope it is Rover[or]Something brushes past you in the dark, panting[or]You stumble over Rover and land on your knees. You are rewarded with a hot puff of first-thing-in-the-morning dog breath. You will need no coffee today[or]As you are feeling your way around the futon, the beam of light coming in through the drapes catches you right in the eye and you are momentarily blinded[in random order].[end if]".
 
-The living room floor is privately-named scenery in the living room. Understand "floor" or "hardwood" or "ground" as the living room floor. The clueless-name of the living room floor is "living room floor". The aware-name of the living room floor is "cargo bay floor". The clueless-description of the living room floor is "A hardwood floor." The aware-description of the living room floor is "The cargo bay's high-adhesion floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the living room floor. Understand "cargo" or "bay" or "floor" as the cargo bay floor-proxy. 
+The LR floor is a privately-named scenery in the Living Room. Understand "floor" or "hardwood" or "ground" as the LR floor. The clueless-name of the LR floor is "living room floor". The aware-name of the LR floor is "cargo bay floor". The clueless-description of the LR floor is "A hardwood floor." The aware-description of the LR floor is "The cargo bay's high-adhesion floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the LR floor. Understand "cargo" or "bay" or "floor" as the cargo bay floor-proxy. 
 
-The front door is a door and scenery. The front door is east of the front yard. The front door is outside from the living room. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" or "bay" or "door" or "doors" as the front door-proxy. The front door can be damaged. The front door is not damaged. 
+The front door is a door and scenery. The front door is east of the front yard. The front door is outside from the Living Room. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" or "bay" or "door" or "doors" as the front door-proxy. The front door can be damaged. The front door is not damaged. 
 
 To say front door status:
 	say "The front door of the cottage is ";
@@ -1929,9 +1943,9 @@ Instead of opening the front door when the front door is closed:
 		say "[if the player is clueless]If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first[otherwise]ROVER release is not the current task[end if].";
 		the rule succeeds;
 	[Ship has landed, attempt to let Rover out for walkies]
-	if Rover is not in the living room:
+	if Rover is not in the Living Room:
 		say "[if the player is clueless]Hearing the door jiggle, Rover [one of]bounds[or]wanders[or]strolls[or]meanders[or]tromps[or]traipses[in random order] into the living room to see what is going on[otherwise]Alerted by the change in cargo bay door status, ROVER rolls into cargo bay[end if]. [run paragraph on]";
-		now Rover is in the living room;
+		now Rover is in the Living Room;
 	otherwise:
 		say "[Rover] [if the player is clueless]looks up when he hears the door begin to open[otherwise]scans the cargo bay door begins to open[end if]. [run paragraph on]";
 	if Rover is thirsty or Rover is hungry:
@@ -1951,7 +1965,7 @@ Instead of opening the front door when the front door is closed:
 	if the Real Thing is happening:
 		move Rover to the Front Yard. [signaling the beginning of walkies scene]
 	
-Rover is a male animal. He is in the living room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. Rover can be busy. Rover is not busy.
+Rover is a male animal. He is in the Living Room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. Rover can be busy. Rover is not busy.
 
 The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "A robotic mining rig". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" or "mobile" or "robotic" or "tractor" or "mining" or "rig" or "ROVER" as the rover-proxy. 
 
@@ -1997,7 +2011,7 @@ To Drop Rover's Payload:
 	
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover modules". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated mechanical module bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "complicated" or "module" or "modules" or "mechanical" as the doggie bits-proxy.
 
-The picture is a fixed in place scenery in the living room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. 
+The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. 
 
 Test picture with "x picture / get picture / eat picture / read nameplate / read memory unit".
 
@@ -2116,7 +2130,7 @@ After opening the old fridge:
 		say "[if the player is clueless]He pokes his nose in the fridge and sniffs around, although he knows full well that stuff in the fridge is for people only and that he'd be in a heap of trouble if he got too curious in there[otherwise]This behavior may indicate that Rover's fuel reserve is low[end if].";
 	otherwise:
 		say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]After a brief chemosensor scan, he rolls back towards the operations area[end if].";
-		now Rover is in the living room.
+		now Rover is in the Living Room.
 
 The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried [end if]white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled Helium-8." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" or "heavy" or "sphere" as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." 
 
@@ -3389,8 +3403,6 @@ Before drinking the crystal clear water:
 	say "You gulp down the crystal clear water, all the time bearing in mind that it properly belongs to the enticing young female dog. It tastes all the better for that knowledge.";
 	remove the crystal clear water from play;
 	the rule succeeds.
-	
-[###TODO: fix "smell" 1) so you can smell things in a container that is open and in the same location; 2) so that the description of a location's smell doesn't have to end with "here" -- that turns out to be too limiting.]
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
@@ -3424,7 +3436,7 @@ The window is a transparent scenery closed not openable container in Limbo. Unde
 
 Understand "out window" or "out the window" as the window.
 
-Before searching outside when the player is in the living room and the window is in the living room:
+Before searching outside when the player is in the Living Room and the window is in the Living Room:
 	try searching the window;
 	the rule succeeds.
 	
@@ -3768,8 +3780,6 @@ First after an actor doing something (this is the catch successful actions rule)
 	change last-success to "TRUE";
 	continue the action.
 
-[###TOCONSIDER: two columns for technoverbs, one for rover, one for acu since sometimes the same action has different meanings]
-
 Table of Technoverbs
 Verb				Technoverb
 the answering it that action		"TRANSMIT"	[rover, hello]
@@ -3987,7 +3997,7 @@ To watch Rover:
 				say "[Rover] [one of]looks at[or]sniffs[or]walks towards[or]paces back and forth, looking at[or]circles[or]lies down next to[or]cocks his head and ogles[in random order] [the O].";
 		-- 4:[specific low frequency actions]
 			if a random chance of 1 in 3 succeeds:
-				if Rover is in the living room:
+				if Rover is in the Living Room:
 					say "[one of]Rover bounds up onto the futon and begins to get comfortable, rolling his muzzle back and forth on the mattress. Abruptly, his head pokes up and he realizes that you are watching him. Recognizing the awkwardness of being caught on the forbidden futon, Rover slinks down behind it and slowly emerges. He looks over his own shoulder at the futon as if to say [quotation mark]I wonder who that dog was on the futon[quotation mark][or]Rover rests his front paws on the window and stares out at the Park[or]Rover crouches in preparation for a hop onto the futon when he catches your eye and cleverly transitions into a stretching posture. He walks away from the futon, glad to have not been caught again on the furniture[or]Rover hears something from outside and peers out the window, searching[or]Rover glances furtively at the futon, but you are still watching him, so he hunkers down on the living room floor[or]Rover looks through the window at the park[stopping]."	
 			
 To update prompt:
@@ -4111,8 +4121,8 @@ Instead of pushing the large button during bedtime:
 	
 Instead of waking up during bedtime:
 	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral off the edge of the futon. Oh well, you can find it later. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
-	move the alarm clock to Limbo;
-	move the player to the living room.
+	move the alarm clock to the Living Room;
+	move the player to the Living Room.
 	
 Instead of getting off during bedtime:[context is everything]
 	try waking up instead.
@@ -4155,9 +4165,9 @@ Instead of snoozing when bedtime is not happening:
 Rude-awakening is an action applying to nothing.
 
 Carry out rude-awakening:
-	say "As you reach for the alarm clock, your excited dog deftly bats it off the cushion with his tail. The clock tumbles off the side of futon and thuds smartly as it hits the floor, ending the beeping. Rover looks puzzled that the noise has stopped.[paragraph break]Realizing that without the alarm clock you would probably sleep through the entire day, you reluctantly get out of bed.";
-	move the alarm clock to Limbo;
-	move the player to the living room.
+	say "Just as your fingers make contact with the alarm clock, your excited dog deftly bats it off the cushion with his tail. The clock tumbles off the side of futon and thuds smartly as it hits the floor, ending the beeping. Rover looks puzzled that the noise has stopped.[paragraph break]Realizing that without the alarm clock you would probably sleep through the entire day, you reluctantly get out of bed.";
+	move the alarm clock to the Living Room;
+	move the player to the Living Room.
 	
 Instead of listening during bedtime:
 	say "You hear a little something like...".
@@ -4198,7 +4208,7 @@ Every turn during Arm Hurts:
 
 Instead of doing something during Arm Hurts:
 	if arm-numb is greater than 36:
-		if the player is in the living room and the drapes are closed:
+		if the player is in the Living Room and the drapes are closed:
 			[otherwise, player couldn't get a good look at his arm and might miss the hint given by examining the arm]
 			if a random chance of one in three succeeds:
 				say "The strange sensation shoots like lightning up and down your left arm, which flails spastically becoming entangled briefly in the drapes and yanking them open.";
@@ -4269,16 +4279,16 @@ Every turn when the Second Sim is happening:
 				say "[one of]Rover looks at you with a puzzled expression, trying to figure out what you're doing[or]Rover sighs with pity, apparently you are having another bout of constipation[or]Rover shakes his head, wondering why it's okay for you to poop in the house, but he gets into trouble[or]Rover stares at you impatiently, wishing that you'd do your business more quickly, so he could go out in the park and do his[or]Rover assumes [quotation mark]the position[quotation mark], trying to give you a hint about what you should be doing into that toilet[or]Rover sniffs the air, trying to discern if you've gone or not[or]Rover's sardonic expression conveys to you a sense of [quotation mark]do something or get off the pot[quotation mark][in random order].";
 				now Rover is busy;
 	otherwise:
-		if the player is in the living room and the living room is not visited-during-havoc:
-			now the living room is visited-during-havoc;
+		if the player is in the Living Room and the Living Room is not visited-during-havoc:
+			now the Living Room is visited-during-havoc;
 			let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
 			say "[metatext in metaspeak]";
 		fuss around door.
 		
 To fuss around door:
-	if Rover is in the living room and the living room is visited-during-havoc:
+	if Rover is in the Living Room and the Living Room is visited-during-havoc:
 		if a random chance of one in two succeeds:
-			if the player is in the living room:
+			if the player is in the Living Room:
 				say "[Rover] [one of]sniffs[or]paws at[in random order] [the front door].";
 			otherwise:
 				say "From the [if the player is clueless]living room[otherwise]cargo bay[end if], you hear [Rover] [one of]sniffing around[or]scratching at[in random order] [the front door].";
@@ -4314,7 +4324,7 @@ When the Landing Sequence ends:
 	otherwise:
 		say "From the living room, Rover gives a short bark and scratches at the front door.";
 	now Rover is busy; [to suppress other Rover actions in the every turn rule]
-	now Rover is in the living room.
+	now Rover is in the Living Room.
 	
 Chapter Real Thing
 	
@@ -4334,13 +4344,13 @@ When Real Thing begins:
 	now the cabinet is open;
 	now the chain is broken;
 	now the player is alert;
-	now the alarm clock is in Limbo;
-	move the player to the living room, without printing a room description.
+	now the alarm clock is in the Living Room;
+	move the player to the Living Room, without printing a room description.
 	
 Every turn when the Real Thing is happening and the landing_pid is not 0 and Rover is not busy and (the delicious bone is not in the Valkyrie Area or the white egg is not in the Valkyrie Area):
 	[i.e., this happens after landing, only until the the probe and the egg have been recovered. Once you've got those two items in the Valkyrie Area, Rover isn't so keen on going walkies. He'll still go, if the door is opened, but he won't fuss about, hinting that he wants to go out.]
-	if the player is in the living room and the living room is not visited-during-havoc:
-		now the living room is visited-during-havoc;
+	if the player is in the Living Room and the Living Room is not visited-during-havoc:
+		now the Living Room is visited-during-havoc;
 	fuss around door.
 	
 Understand "scan [something]" as examining when the player is self-aware.
@@ -4353,7 +4363,7 @@ When Walkies begins:
 	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, full of energy. [run paragraph on]";
 	if Rover carries the delicious bone:
 		say "You leave your [delicious bone] in the living room, with the intention of giving it a proper chewing later[if the white egg is not in the Valkyrie Area], after doing some more exploring[end if].";
-		now the delicious bone is in the living room;
+		now the delicious bone is in the Living Room;
 	otherwise:
 		say paragraph break;
 	now the player is Rover;
@@ -4377,10 +4387,10 @@ When Walkies ends:
 			now the pillow is on the futon;
 		otherwise if Rover carries the rock:
 			say "You return to the living room with the funny-tasting rock in your mouth. Janet takes a look at the rock and says [quotation mark]You've started a rock collection? Well, Okay,[quotation mark] and closes the door behind you.[paragraph break]";
-			now the rock is in the living room;
+			now the rock is in the Living Room;
 		otherwise:
 			say "You duck back into the living room and Janet closes the front door behind you.[paragraph break]";
-		if the delicious bone is in the living room:
+		if the delicious bone is in the Living Room:
 			say "You notice your bone sitting alone and [one of]unloved[or]forlorn[or]ignored[or]abandoned[or]forsaken[or]neglected[in random order] on the living room floor. You walk over to it and start chewing it again.[paragraph break]";	
 			now Rover carries the delicious bone;
 		shift to Janet's perspective;
@@ -4389,7 +4399,7 @@ When Walkies ends:
 To shift to Janet's perspective:
 	say "Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again."
 	
-Instead of looking when Rover is the player and Rover is in the living room:
+Instead of looking when Rover is the player and Rover is in the Living Room:
 	[suppress the look that normally occurs on entering the living room; it happens later, but from the ACU's perspective]
 	do nothing.
 
@@ -4412,12 +4422,13 @@ When Boarding Party begins:
 	Setup the World;
 	move the player to the Living Room, without printing a room description;
 	move the futon to Limbo;
+	move the alarm clock to Limbo; [it would have been on the futon]
 	now the futon is folded;[to satisfy the "instead of going anywhere while the player is in the living room and the futon isn't folded rule]
 	move the garden skylights to Limbo;[set up the viewer]
 	move the park to Limbo;
 	move the grass to Limbo;
 	move the trees to Limbo;
-	move the pillow to the Living Room;
+	move the pillow to the Living Room; [todo conditonal]
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 
@@ -4434,9 +4445,9 @@ Definition: The bathroom is compromised if the soap dispenser is damaged and the
 
 Definition: The kitchen is compromised if the old fridge is in Limbo and the range is in Limbo and the drawer is in Limbo and the frying pan is in Limbo.[4 items]
 
-Definition: The living room is compromised if the picture is damaged and the front door is damaged. [2 items]
+Definition: The Living Room is compromised if the picture is damaged and the front door is damaged. [2 items]
 
-Definition: The ship is sunk if the living room is compromised and the kitchen is compromised and the bathroom is compromised.
+Definition: The ship is sunk if the Living Room is compromised and the kitchen is compromised and the bathroom is compromised.
 
 Definition: The ship is boarded if the maintenance droid is in the Valkyrie Area or the technician is in the Valkyrie Area.
 
@@ -4678,7 +4689,7 @@ Instead of opening the front door when the front door is closed during Boarding 
 		say "You reach for the front door and pass right through it, ghost-like. The door remains shut.";
 	otherwise:
 		now the front door is open;
-		if the underling is in the living room:
+		if the underling is in the Living Room:
 			if the pressure is greater than 50:
 				say "You manage to open the cargo bay door only a couple centimeters when [the underling] exits through it -- it is not a pretty sight. As the pressure equalizes, the windstorm gently subsides, and the living room is silent.";
 				increase the henchmen defeated by one;
@@ -4733,7 +4744,6 @@ Instead of saying no during Boarding Party:
 		otherwise:
 			say "[too late]";
 	otherwise:
-		[###TODO fix this to limit more to the approach period, i.e, not after docked]
 		say "There is no response";
 		continue the action.
 		
@@ -4798,15 +4808,15 @@ When Back on Mars begins:
 	Restore the World;
 	Setup the World;	
 	move the David-proxy backdrop to all secluded rooms;
-	move the futon to the living room;
-	move the player to the living room, without printing a room description;
+	move the futon to the Living Room;
+	move the player to the Living Room, without printing a room description;
 	move the gunships to Limbo;
 	move the assault ship to Limbo;
 	move the garden skylights to the window;
 	move the park to the window;
 	move the trees to the window;
-	move the pillow to the Living Room;
-	move the alarm clock to Limbo;
+	move the pillow to the Living Room;[TODO - conditional]
+	move the alarm clock to the Living Room;
 	now the futon is folded;
 	now the front door is open;
 	now Janet Xiang is in the Living Room;
@@ -5054,7 +5064,7 @@ Rule for amusing a victorious player:
 			say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
 		otherwise:
 			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
-	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, say change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
+	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, for instance to change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
 	say "* Did Rover succeed in his amorous advances towards his significant other in the park?"
 	
