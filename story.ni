@@ -727,9 +727,7 @@ Clearing is an action applying to nothing. Understand "clear" or "cls" as cleari
 
 Carry out clearing:
 	clear the screen.	
-	
-[###TODO: implement a variable for date, and use it in the banner, and consistent throughout rest of story, including implementing a display-only flosix date command]
-		
+			
 Section Reading
 		
 Understand the command "read" as something new. Reading is an action applying to one thing. Understand "read [a thing]" as reading.
@@ -1872,8 +1870,25 @@ To scandalize the poor little robot:
 		change seen-better-said to true;
 		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
 
-[###TODO add verbs/synonyms to enable "get dressed/dress/dress up", "get undressed/strip/disrobe/etc.", ]
+Disrobing is an action applying to nothing.  Understand "disrobe" or "undress" or "strip" or "peel down" as disrobing.
 
+Check disrobing:
+	if the player is not wearing the flight suit:
+		say "You're not wearing any[if the player is clueless]thing you weren't born with[otherwise] peripherals[end if]." instead.
+
+Carry out disrobing:
+	try taking off the flight suit.
+	
+Dressing is an action applying to nothing. Understand "dress" or "dress up" or "suit up" or "get dressed" as dressing.
+
+Check dressing:
+	if the player is not the ACU:
+		say "Ever since you saw a xihuahua in a little red sweater, you've found clothes repulsive." instead;
+	if the flight suit is not enclosed by the location:
+		say "You don't see [if the player is clueless]anything to wear[otherwise]your quantum isolator[end if]." instead;
+	otherwise:
+		try wearing the flight suit.
+		
 The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background.". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
 
 After reading the lettering for the first time:
@@ -3837,7 +3852,9 @@ the cshing action					"SHELL" [csh, zsh, tcsh]
 the dating action					"TEMPORAL FIX" [date, time]
 the dancing action					"MANEUVER TEST" [dance]
 the digging action					"EXCAVATE" [dig]
+the disrobing action				"DISENGAGE" [undress, strip, peel down]
 the dreaming action				"RANDOMIZE ADDRESS SPACE" [dream]
+the dressing action				"ENGAGE" [dress, suit up, etc.]
 the drinking action				"TRANSFER"
 the dropping action				"DESELECT"  [drop]
 the eating action					"RECYCLE"  [eat]
