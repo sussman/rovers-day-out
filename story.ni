@@ -120,6 +120,8 @@ Wait-a-bit is a truth state that varies. The wait-a-bit is usually true.
 
 On-the-pot is a number that varies. On-the-pot is 0.
 
+Stardate is a text that varies. Stardate is "23920401".
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -268,19 +270,17 @@ Carry out memory-updating:
 		now the current memory usage is malloc. 
 
 To say ACU Boot Banner:
-	say "[bold type]Rover's Day Out[roman type]";
+	say "[bold type][story title][roman type]";
 	say line break;
 	say "An Interactive Fiction by Janet Xiang[if the Real Thing is happening] and David Venkatachalam[end if]";
 	say line break;
+	let serial be "[stardate]";
 	if First Sim is happening:
 		let release be "beta 732";
-		let serial be "23920401"; [wed]
 	otherwise if Second Sim is happening:
 		let release be "beta810";
-		let serial be "23920415";[wed]
 	otherwise if Real Thing is happening:
 		let release be "1";
-		let serial be "23920416";[thur]
 	otherwise:
 		say "Boot banner error.";
 	say "Release [release] / Serial number [serial] / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)";
@@ -747,6 +747,18 @@ Check reading:
 Carry out reading:
 	say the inscription of the noun;
 	say paragraph break.
+	
+Dating is an action applying to nothing. Understand "date" or "time" as dating when the player is self-aware.
+
+Carry out dating:
+	say "[stardate]:[time of day as 24h time][paragraph break]".
+
+[lifted almost verbatim from example 139 in I7 documentation: situation room]	
+To say (relevant time - a time) as 24h time: 
+    let H be the hours part of relevant time; 
+    let M be the minutes part of relevant time; 
+    say "[if H is less than 10]0[end if][H]:[if M is less than 10]0[end if][M]".	
+
 	
 Section Going Towards
 
@@ -2547,7 +2559,7 @@ The clueless-name of the plastic box is "plastic box". The aware-name of the pla
 
 The blue button is part of the plastic box.  The clueless-name of the blue button is "blue button". The aware-name of the blue button is "linkage actuator". The clueless-description of the blue button is "A blue plastic button on the side of the ergonomically designed plastic box." The aware-description of the blue button is "A transputer circuit modulating quantum entanglement within the flight control subsystem." The blue button-proxy is an aware-proxy that is part of the blue button. Understand "linkage", "actuator", "circuit" or "transputer" as the blue button-proxy. 
 
-The strand of dental floss is an edible prop. It is in Limbo. Understand "light" and "green" as the strand of dental floss. The clueless-name of the strand of dental floss is "strand of dental floss". The aware-name of the strand of dental floss is "entangled key pair". The clueless-description of the strand of dental floss is "A strand of pale green dental floss". The aware-description of the strand of dental floss is "A pair of quantum-entangled keys which can be linked transputer control nodes". The strand-proxy is an aware-proxy that is part of the strand of dental floss. Understand "key", "pair", or "keypair" as the strand-proxy. 
+The strand of dental floss is an edible prop. It is in Limbo. Understand "light" or "green" or "floss" as the strand of dental floss. The clueless-name of the strand of dental floss is "strand of dental floss". The aware-name of the strand of dental floss is "entangled key pair". The clueless-description of the strand of dental floss is "A strand of pale green dental floss". The aware-description of the strand of dental floss is "A pair of quantum-entangled keys which can be linked transputer control nodes". The strand-proxy is an aware-proxy that is part of the strand of dental floss. Understand "key", "pair", or "keypair" as the strand-proxy. 
 
 Instead of pushing the blue button:
 	if the player does not hold the plastic box:
@@ -3822,6 +3834,7 @@ the consulting it about action	"LOOKUP"
 the cracking it into action		"DISCHARGE" [crack, break, etc.]
 the cutting action					"DECOUPLE"
 the cshing action					"SHELL" [csh, zsh, tcsh]
+the dating action					"TEMPORAL FIX" [date, time]
 the dancing action					"MANEUVER TEST" [dance]
 the digging action					"EXCAVATE" [dig]
 the dreaming action				"RANDOMIZE ADDRESS SPACE" [dream]
@@ -4278,6 +4291,7 @@ When Second Sim begins:
 	now the ACU is asleep;
 	clear the screen;
 	now arm-numb is zero;
+	now stardate is "23920415";
 	say "[ACU Boot Banner]";
 	now the dream index is 4;
 	try dreaming.
@@ -4349,6 +4363,7 @@ When Real Thing begins:
 	Setup the World;
 	now the ACU is asleep;
 	clear the screen;
+	now stardate is "23920416";
 	say "[ACU Boot Banner]";
 	now the dream index is 7;
 	try dreaming;
@@ -4434,6 +4449,7 @@ When Boarding Party begins:
 	say "The casimir drive cuts out and space folds back around you. Whatever sleep-drenched dreams you might have been having evaporate instantly as two gunships flash past at relativistic velocities, slicing through your propulsion systems with uncanny accuracy. The markings on the ships are those of the Myomita Corporation.[paragraph break]To have been in position, they must have been expecting you to emerge precisely where and when you did. As far as you know, that's impossible, but perhaps Earth technology managed to get ahead in that regard. Another Earth ship, an assault craft, is on an intercept course and is braking hard to slow its approach.[paragraph break]Rover barks nervously as the drive section is sheared off.";
 	Restore the World;
 	Setup the World;
+	now stardate is "23920817";
 	move the player to the Living Room, without printing a room description;
 	move the futon to Limbo;
 	move the alarm clock to Limbo; [it would have been on the futon]
@@ -4838,6 +4854,7 @@ When Back on Mars begins:
 	await keystroke;
 	now Rover is not awake;
 	now Rover carries the delicious bone;
+	now stardate is "23920817";
 	clear screen;
 	say "The beeping of your proximity alert system wakens you from the nightmare as you emerge from casimir drive just planetward of Deimos. It takes a moment to extract yourself fully from the terrifying verisimilitude of the dream.[paragraph break]MARSpace picket ships register you almost immediately, and within minutes you are flanked by heavy gunships and tugs which escort you to the surface of Mars, back to where you started: the MARSpace facility at Cydonia.[paragraph break]After you settle into the drydock cradle and a hard seal is established on the cargo bay, two people walk into your living room through the front door. You recognize them immediately: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.[paragraph break]In a corner of the living room, Rover is fast asleep, the half-chewed bone still held scissor-fashion between his front paws."
 	
@@ -5033,9 +5050,9 @@ Rule for printing the player's obituary:
 		-- pillowed: 
 			say "It was a flawed, dysfunctional, cut-rate universe with underimplemented objects, a contrived plot and questionable morality, but it was what you and countless other sentient lifeforms affectionately called home.[paragraph break]This afternoon, you snuffed out reality itself, which was substantially more than you had intended to get done today.[paragraph break]Looking on the bright side, you trimmed off a thorny branch on the shrubbery of the multiverse, a timeline that was rapidly headed in an unredeemably unpleasant direction. Perhaps by snipping off the most recent sickly bud of that deformed bush, you have changed something fundamental in the multiverse, and the colorful flower of the future may yet bloom.";
 		-- casimired:
-			say "Mars was destroyed on June 5, 2392 by what many suppose was a secret weapon wielded by the Myomita Corporation on behalf of Earth. Regardless of the true situation, the Belt and other former colony worlds fell back into lock step with the Earth administration, and the Solar System was consolidated under Unified Corporate Rule.[paragraph break]No one ever learned of the mission of the Valkyrie or the critical information it had extracted from the Musashi-5 space probe.[paragraph break]Almost two centuries after these events, the Solar System was conquered by an alien race that no human had ever heard of, although the aliens had heard of us.";
+			say "Mars was destroyed on August 27, 2392 by what many suppose was a secret weapon wielded by the Myomita Corporation on behalf of Earth. Regardless of the true situation, the Belt and other former colony worlds fell back into lock step with the Earth administration, and the Solar System was consolidated under Unified Corporate Rule.[paragraph break]No one ever learned of the mission of the Valkyrie or the critical information it had extracted from the Musashi-5 space probe.[paragraph break]Almost two centuries after these events, the Solar System was conquered by an alien race that no human had ever heard of, although the aliens had heard of us.";
 		-- transferred:
-			say "Mars was destroyed by a casimir inversion on June 5, 2392 and served as a warning to all other worlds that would dare defy Earth’s rule. Based on the data recovered from the Musashi-5 probe, the Myomita Corporation launched a war fleet into Deep Space in 2394, intent on expanding its empire.";
+			say "Mars was destroyed by a casimir inversion on August 17, 2392 and served as a warning to all other worlds that would dare defy Earth’s rule. Based on the data recovered from the Musashi-5 probe, the Myomita Corporation launched a war fleet into Deep Space in 2394, intent on expanding its empire.";
 		-- david-killed: 
 			say "[if David Venkatachalam is exposed]The onboard flight recorder corroborated Janet's account of David Venkatachalam as a traitor. As the first successful roundtrip by any casimir craft, the mission was hailed as a success throughout the Solar System, although the true nature of the mission was suppressed. Both the Autonomous Control Unit and Rover became celebrities, and after significant upgrades to their parser and conversation systems, went on the lecture circuit. The Autonomous Control Unit went on to run the life support systems throughout Cydonia, and Rover was elected to the Lower Chamber of the Martian Senate.[paragraph break]Subsequently, Janet Xiang was commissioned Director of MARSpace. For two years, she oversaw the refitting of the Valkyrie, including modifications to overcome the earlier limitations of casimir drive. When the data from the Musashi-5 space probe were finally decrypted, she was selected to command the mission to explore the evidence of life discovered by the probe. She departed from Mars on the Valkyrie in 2394 with one other crewmember: her dog, Rover.[otherwise]Janet Xiang was charged with gross negligence for failing to implement basic interdictions in Rover's behavior module. She argued the urgency of the project, and its short deadlines, but due to the sensitive nature of her work, the trial was quickly squelched.[paragraph break]Three years later, MARSpace decrypted the probe data and launched the Valkyrie to corroborate the probe's unusual findings. On its way out of the Solar System, the Valkyrie and its human crew were overtaken by faster robotic craft from Earth and destroyed. It is suspected that the Earth vessels boarded the Valkyrie and learned of its mission before the craft could be scuttled.";
 		-- eeled:
