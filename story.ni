@@ -1694,13 +1694,16 @@ Report burying:
 
 Chapter The Valkyrie
 
+Section David-Proxy
+
 [David-proxy is to catch any mention of David by the ACU before David shows up in the flesh in the final scene.]
 
-David-proxy is a backdrop. David-proxy is everywhere. The description of David-proxy is "x". David-proxy is privately-named. Understand "David" and "Venkatachalam" and "boss" and "director" as David-proxy. The aware-name of David-proxy is "Authority".
+After deciding the scope of the player when the first sim is happening or second sim is happening:
+	place David Venkatachalam in scope.
 
 David-mentioned is a number that varies. David-mentioned is zero.
 
-Instead of doing something when the noun is David-proxy:
+Before doing something when (the noun is David Venkatachalam or second noun is David Venkatachalam) and Back On Mars is not happening:
 	now David-mentioned is David-mentioned plus one;
 	say "Your boss isn't here.";
 	if the First Sim is happening or the Second Sim is happening:
@@ -1709,7 +1712,8 @@ Instead of doing something when the noun is David-proxy:
 			say "[metatext in metaspeak]";
 		otherwise if David-mentioned is two:
 			let metatext be "David: Again, about me![line break]Janet: Whoa Nelly, let[apostrophe]s reign in that ego, cowboy. ";
-			say "[metatext in metaspeak]".
+			say "[metatext in metaspeak]";
+	the rule succeeds.
 		
 
 Section Room Delegates
@@ -3409,7 +3413,7 @@ Chapter Offstage
 
 Limbo is a room. Limbo is secluded.[and a dance] 
 
-David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed. He can be exposed. He is not exposed.
+David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed. He can be exposed. He is not exposed. Understand "boss" or "director" as David Venkatachalam.
 
 David Venkatachalam wears a black business robe and a burgundy bowler hat. Understand "fashionable" and "expensive" as the black business robe. The description of the black business robe is "A shiny, black business robe, with a wide sash of gold terry cloth and high slit in the rear. Surely, the custom-tailored robe is every bit as expensive as it looks. The robe comes down almost to the floor in the front, although David's fancy boots can be seen as he walks."  The gold terry cloth sash is part of the black business robe. The description of the gold terry cloth sash is "At least twice as long as David is tall, the width of the sash is meant to impress business associates with David's social standing as director of the Valkyrie project."  Understand "long" and "wide" as the gold terry cloth sash. David Venkatachalam wears fancy boots. The fancy boots are plural-named. The indefinite article of the fancy boots is "a pair of". The description of the fancy boots is "Exotic boots, apparently made of snake skin, possibly imported from Earth. They stand in stark contrast to the more functional boots worn by most executives on Mars." Understand "exotic" and "snake" and "skin" as the fancy boots. The description of the burgundy bowler hat is "A bulbous, helmet-like version of the classic hat, with a relatively narrow brim. The burgundy-colored hat looks like an antique with no piercings." Understand "bulbous" and "antique" as the burgundy bowler hat. The aware-name of the black business robe is "clothing". The aware-name of the burgundy bowler hat is "clothing". The aware-name of the gold terry cloth sash is "clothing". The aware-name of the fancy boots is "clothing". The goatee is a part of David Venkatachalam. The description of the goatee is "A waxed, black goatee of medium length, which comes to a crisp point below David's chin." The aware-name of the goatee is "david".
 
@@ -4432,7 +4436,7 @@ When Boarding Party begins:
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 
-Before doing anything to a failsafed person:
+Before doing anything to a failsafed person when the second sim has happened:
 	if the actor is Rover:
 		continue the action;
 	if the current action is examining, querying, asking or telling:
@@ -4807,7 +4811,6 @@ Data transferred is a number that varies. Data transferred is 0.
 When Back on Mars begins:
 	Restore the World;
 	Setup the World;	
-	move the David-proxy backdrop to all secluded rooms;
 	move the futon to the Living Room;
 	move the player to the Living Room, without printing a room description;
 	move the gunships to Limbo;
@@ -5064,7 +5067,7 @@ Rule for amusing a victorious player:
 			say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
 		otherwise:
 			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
-	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, for instance to change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
+	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
 	say "* Did Rover succeed in his amorous advances towards his significant other in the park?"
 	
