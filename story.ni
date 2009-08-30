@@ -1696,7 +1696,7 @@ Chapter The Valkyrie
 
 Section David-Proxy
 
-[David-proxy is to catch any mention of David by the ACU before David shows up in the flesh in the final scene.]
+[This is to catch any mention of David by the ACU before David shows up in the flesh in the final scene.]
 
 After deciding the scope of the player when the first sim is happening or second sim is happening:
 	place David Venkatachalam in scope.
@@ -2474,6 +2474,16 @@ The reward nuggets replicator is an open not openable container. The carrying ca
 
 Before inserting something into the reward nuggets replicator:
 	say "[if the player is clueless]The way the reward replicator is built, there is no way to put anything into it[otherwise]The token generator is a read-only device[end if]." instead. 
+	
+Does the player mean tasting the dog treat:
+	it is likely.
+	
+Instead of tasting the dog treat:
+		say "[if the player is clueless]Knowing where these dog treats come from, you're not very keen to put one in your mouth[otherwise]The token is valid[end if].";
+		[The case of Rover eating treat is not provided, as the treat can't go outside, and Rover is only the player when he's out for walkies.]
+		
+Does the player mean eating the dog treat:
+	it is likely.
 	
 Instead of eating the dog treat:
 	if the player is clueless:
@@ -4437,6 +4447,7 @@ When Boarding Party begins:
 	move the gunships to the window.
 
 Before doing anything to a failsafed person when the second sim has happened:
+	[specify after the second sim, because the player may make some reference to david during the simulations, and if so, we cant to trigger the metatext where David wonders why the ACU is talking about him.]
 	if the actor is Rover:
 		continue the action;
 	if the current action is examining, querying, asking or telling:
