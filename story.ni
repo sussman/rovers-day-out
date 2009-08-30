@@ -121,6 +121,20 @@ Wait-a-bit is a truth state that varies. The wait-a-bit is usually true.
 On-the-pot is a number that varies. On-the-pot is 0.
 
 Stardate is a text that varies. Stardate is "23920401".
+[Used in banners as serial number, also used in the time/date command
+Here's a brief history of time for the game:
+	April 1, 2392: 	Janet and David run the first simulaton.
+						Patching happens. They date.
+	April 15, 2392:	J&D run the second simulation up to "Walkies".
+						Overnight, David patches the ansible routine.
+	April 16, 2392: 	Valkyrie launched.
+	before 6/6/92:		Blazing Sunrise lands.
+	June 6, 2392:		Valkyrie lands.
+	August 17, 2393:	Valkyrie returns to Mars.
+	2394:				Under certain conditions, the follow-up flight departs.
+]
+
+Pillow-locale is a room that varies. Pillow-locale is the Sleeping Room.
 
 Chapter Class Definitions
 
@@ -1870,24 +1884,32 @@ To scandalize the poor little robot:
 		change seen-better-said to true;
 		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
 
-Disrobing is an action applying to nothing.  Understand "disrobe" or "undress" or "strip" or "peel down" as disrobing.
+Disrobing is an action applying to nothing.  Understand "disrobe" or "undress" or "strip" or "strip down" or "peel down" as disrobing.
 
 Check disrobing:
+	change last-noun to "QUANTUM ISOLATOR";
 	if the player is not wearing the flight suit:
-		say "You're not wearing any[if the player is clueless]thing you weren't born with[otherwise] peripherals[end if]." instead.
+		say "You're not wearing any[if the player is clueless]thing you weren't born with[otherwise] peripherals[end if].";
+		the rule fails.
 
 Carry out disrobing:
-	try taking off the flight suit.
+	try taking off the flight suit;
+	change last-noun to "QUANTUM ISOLATOR".
 	
 Dressing is an action applying to nothing. Understand "dress" or "dress up" or "suit up" or "get dressed" as dressing.
 
 Check dressing:
+	change last-noun to "QUANTUM ISOLATOR";
 	if the player is not the ACU:
-		say "Ever since you saw a xihuahua in a little red sweater, you've found clothes repulsive." instead;
+		say "Ever since you saw a xihuahua in a little red sweater, you've found clothes repulsive.";
+		the rule fails; 
 	if the flight suit is not enclosed by the location:
-		say "You don't see [if the player is clueless]anything to wear[otherwise]your quantum isolator[end if]." instead;
-	otherwise:
-		try wearing the flight suit.
+		say "You don't see [if the player is clueless]anything to wear[otherwise]your quantum isolator[end if].";
+		the rule fails.
+		
+Carry out dressing:
+	try wearing the flight suit;
+	change last-noun to "QUANTUM ISOLATOR".
 		
 The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background.". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
 
@@ -3378,8 +3400,6 @@ Instead of climbing the pullout sofa:
 
 The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pink pillow". The aware-name of the pillow is "NPT". Understand "pink" or "puffy" as the pillow. The clueless-description of the pillow is "[if the player is Rover]A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays[otherwise]A fluffy pink pillow bearing the Myomita corporate logo, and a small label[end if]." The aware-description of the pillow is "A nanotronic paratemporospatial transgressor, of a design that was rejected some time ago by MARSpace. Ths transgressor's supraverbation matrix has evidently crystallized, rendering it non-functional. The NPT bears the corporate logo of the Myomita corporation, a modernized version of the Imperial Japanese flag, centered on a the disc of the Milky Way galaxy rather than the rising sun. An RFID tag is embedded in the logo." The scent of the pillow is "slightly feminine, perhaps even perfumed".  The pillow-proxy is an aware-proxy that is part of the pillow. Understand "transgressor", "supraverberation", "matrix", "nanotronic", "npt" or "paratemporospatial" as the pillow-proxy. 
 
-[###TODO fix "smell pillow" while on the sofa; add description handling for items placed on the sofa. ]
-
 The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID tag". The clueless-description of the small label is a "a small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Sunrise[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL." The small label-proxy is an aware-proxy that is part of the small label. Understand "RFID" or "embedded" as the small label-proxy. 
 
 Understand "pull off [something]" or "tear [something]" or "tear off [something]" or "rip [something]" or "rip off [something]" as pulling.
@@ -4399,6 +4419,9 @@ Every turn when the Real Thing is happening and the landing_pid is not 0 and Rov
 		now the Living Room is visited-during-havoc;
 	fuss around door.
 	
+When Real Thing Ends:
+	now the pillow-locale is the location of the pillow.
+
 Understand "scan [something]" as examining when the player is self-aware.
 	
 Chapter Walkies
@@ -4475,7 +4498,7 @@ When Boarding Party begins:
 	move the park to Limbo;
 	move the grass to Limbo;
 	move the trees to Limbo;
-	move the pillow to the Living Room; [todo conditonal]
+	move the pillow to the pillow-locale;
 	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
 	move the gunships to the window.
 
@@ -4862,7 +4885,7 @@ When Back on Mars begins:
 	move the garden skylights to the window;
 	move the park to the window;
 	move the trees to the window;
-	move the pillow to the Living Room;[TODO - conditional]
+	move the pillow to the pillow-locale;
 	move the alarm clock to the Living Room;
 	now the futon is folded;
 	now the front door is open;
