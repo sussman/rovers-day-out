@@ -1859,10 +1859,21 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a MARSpace standard issue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop. 
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a MARSpace standard issue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop.
 
-The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[if the player is not the ACU][the clueless-name of the ACU]'s left arm[otherwise if Arm Hurts is not happening]Your left arm. The one that you throw frisbees with[otherwise]That's odd. Your left arm is itching like the dickens, but it looks entirely normal[end if]." The aware-name of the left arm is "port hull". The aware-description of the left arm is "The port hull." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "port" or "hull" as the left arm-proxy. 
+The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[dumb arm]. ". The aware-name of the left arm is "port hull". The aware-description of the left arm is "The port hull." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "port" or "hull" as the left arm-proxy. 
 
+To say dumb arm:
+	If Arm Hurts is not happening:
+		say "Your left arm -- the one you throw frisbees with.";
+	otherwise:
+		if arm-numb is greater than 24:
+			say "[one of]That's odd, your arm itches like the dickens (yes, even in the throws of perturbing progressive pruritis, the word that comes to mind is [quotation mark]dickens[quotation mark]. You don't know why. It doesn't really matter. What matters is that your arm is itchy.  Really itchy. Dickens, indeed. Anyhow, even though your arm itches like the dickens, it looks quite normal[or]You'd imagine your arm would be swollen and red, and all sausage-like, but it looks normal despite the itching[or]How can such a normal-looking arm itch so much? It makes no sense[or]Despite the worsening itch, your left arm looks quite normal[stopping]";
+		otherwise if arm-numb is greater than 12:
+			say "[one of]Your arm is pretty itchy, but it looks okay[or]Nothing remarkable about your arm; it just feels itchy[or]It looks just like the right arm. The difference is that your right arm isn't so itchy. Aye, there's there's the rub[stopping]";
+		otherwise:
+			say "[one of]It's a good match for the one on the right[or]Looks normal enough[or]Nothing out of the ordinary, really[in random order]"
+		
 The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "starboard hull". The aware-description of the right arm is "The starboard hull." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "starboard" or "hull" as the right arm-proxy.
 
 The clueless-name of the back is "back". The clueless-description of the back is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]back." The aware-name of the back is "dorsal hull". The aware-description of the back is "The dorsal hull." The back-proxy is an aware-proxy that is part of the back. Understand "dorsal" or "hull" as back-proxy.
@@ -1871,7 +1882,7 @@ The clueless-name of the belly is "belly". Understand "stomach" and "chest" as b
 
 The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." 
 
-The clueless-name of the giblets is "parts". Understand "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." 
+The clueless-name of the giblets is "parts". Understand "finger", "fingers", "elbow", "elbows", "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." 
 
 The clueless-name of teeth is "teeth". Understand "teeth" or "tooth" as teeth. Teeth are plural-named. The clueless-description of teeth is "Your pearly whites." The aware-name of teeth is "hull plating". The aware-description of the teeth is "The polyduramide surface of the ship". The teeth-proxy is an aware-proxy that is part of the teeth. Understand "polyduramide" or "surface" or "compressed" as the teeth-proxy. 
 
@@ -4072,6 +4083,10 @@ Every turn:
 			if Rover is in the location and a random chance of 1 in 3 succeeds:
 				say "[if Rover is busy]He[otherwise][Rover][end if] [if the player is clueless]eyes the empty [water bowl] thirstily[otherwise]hopefully scans [the water bowl], but immediately determines that it is empty[end if].[paragraph break]";
 				now Rover is busy;
+	if Arm Hurts is happening and Arm-numb is greater than 30 and Rover is in the location:
+		if a random chance of 1 in 3 succeeds:
+			say "Rover looks at you [one of]and rubs his back against the wall, giving you a satisfied grin[or]jumps up on his back legs, pawing at your arm. You narrowly avoid being scratched[or]scratches his left paw with the right one and then makes an [quotation mark]ahem[quotation mark] sound[or]and makes a scratching gesture. Towards his left paw. Scratching. Left. Hmm[stopping].";
+			now Rover is busy;
 	[Rover stage business - through these conditions, it does not occur during bedtime, or after the ACU becomes aware; this is intended to be the last line printed in a turn. The Rover Busy flag is meant to block his random actions, and can be set when he is doing anything more interesting. Otherwise, who knows if his specific action and his random action would be incongruent. Rover Busy is reset at the end of every turn.]
 	if the player is the ACU and the ACU is clueless and the noun is not Rover and the drapes are open and Rover is not busy:
 		if Rover is in the location:
@@ -4283,7 +4298,7 @@ Arm-numb is a number that varies. Arm-numb is zero.
 Arm Hurts ends when arm-numb is zero.
 
 When Arm Hurts begins:
-	say "As you get out of bed, you notice that your left arm is numb -- must have been the way you were sleeping."
+	say "As you get out of bed, you notice that your left arm tickles a bit -- must have been the way you were sleeping."
 	
 When Arm Hurts ends:
 	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the black plate before rubbing the left arm]
@@ -4297,20 +4312,20 @@ Every turn during Arm Hurts:
 		[just in case there is someone out there who would wait 32,768 times]
 	otherwise if Arm-numb is greater than 24:
 		if a random chance of 1 in 2 succeeds:
-			say "[one of]Your left arm is somewhat painful, like pin pricks[or]You are unconfortable; your left arm hurts[or]Something is not at all right with your left arm, it feels alternately numb and painful[in random order].";
+			say "[one of]What did you ever do to your left arm to make it itch so much? It's quite unpleasant[or]Feels like you've got a mosquito bite on your left arm[or]That left arm of yours is really itching a lot[in random order].";
 	otherwise if Arm-numb is greater than 12:
 		if a random chance of 1 in 3 succeeds:
-			say "[one of]Your left arm is bothering you[or]It feels like a swarm of spiders is running up and down your left arm, tickling you[or]Your left arm feels fat and numb[in random order].";
+			say "[one of]The itching is getting worse, your left arm is beginnng to bother you[or]It feels like you might have a bug bite on your left arm[or]You left arm is rather itchy[in random order].";
 	otherwise if Arm-numb is greater than 2:
 		if a random chance of 1 in 4 succeeds:
-			say "[one of]Your left arm is all pins and needles[or]Your left arm feels weird[or]There is a strange, electrical sensation running up and down your left arm[or]You left arm feels strange. Maybe a little bit numb[in random order].";
+			say "[one of]You feel wispy, tingling itch beginning on your left arm[or]Your left arm feels weird[or]It feels like something is tickling your left arm[or]Your left arm is just a little bit itchy[in random order].";
 
 Instead of doing something during Arm Hurts:
 	if arm-numb is greater than 36:
 		if the player is in the Living Room and the drapes are closed:
 			[otherwise, player couldn't get a good look at his arm and might miss the hint given by examining the arm]
 			if a random chance of one in three succeeds:
-				say "The strange sensation shoots like lightning up and down your left arm, which flails spastically becoming entangled briefly in the drapes and yanking them open.";
+				say "The strange itching sensation shoots like lightning up and down your left arm, which flails spastically becoming entangled briefly in the drapes and yanking them open.";
 				now the drapes are open;
 				the rule succeeds;
 		if the noun is left arm and the current action is examining, rubbing, or touching:
@@ -4318,13 +4333,14 @@ Instead of doing something during Arm Hurts:
 		otherwise if the current action is memory-updating or waving hands:
 			continue the action;
 		otherwise:
-			say "[one of]You can't! Your arm hurts too much[or]Arrgghhh. Your left arm is driving you crazy[or]What is up with that left arm? Man, that's annoying[or]It's hard to think of anything besides your left arm which is really bugging you[or]What a weird feeling. That tingling sensation in your left arm is driving you to distraction[or]You try to ignore your left arm, but the strange feeling won't go away[or]Nothing you do gets your mind off your left arm[or]You wonder how you are supposed to get anything accomplished when you left arm feels so funky[or]If your left arm would stop feeling so strange, you might be able to get something else done[in random order].";
-			  [TOCONSIDER: Could always add more of these...]
+			say "[one of]You can't! Your arm is too itchy[or]Arrgghhh. Your left arm is driving you crazy[or]What is up with that left arm? Man, that itching is annoying[or]It's hard to think of anything besides your left arm which is really itchy[or]What a weird feeling. That itching sensation in your left arm is driving you to distraction[or]You try to ignore your left arm, but the strange itchiness won't go away[or]Nothing you do gets your mind off your itchy left arm[or]You wonder how you are supposed to get anything accomplished when all you can think about is the itch. The itch. The itch[or]If your left arm would stop itching so much, you might be able to get something else done[in random order].";
 	otherwise:
 		continue the action.
 		
 Instead of waving the left arm during Arm Hurts:
 	try waving hands.
+	
+Understand "wiggle" as waving.
 		
 Instead of waving hands during Arm Hurts:
 	say "You flail your left arm back and forth, slowly restoring feeling. [if arm-numb is greater than 30]It's a great relief![otherwise if arm-numb is greater than 20]That's much, much better[otherwise if arm-numb is greater than 10]Ah, the tingling has gone away.[otherwise]That did the trick. Your left arm is back to its old, frisbee-throwing self[end if]."; 
