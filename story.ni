@@ -4085,7 +4085,7 @@ Every turn:
 				now Rover is busy;
 	if Arm Hurts is happening and Arm-numb is greater than 30 and Rover is in the location:
 		if a random chance of 1 in 3 succeeds:
-			say "Rover looks at you [one of]and rubs his back against the wall, giving you a satisfied grin[or]jumps up on his back legs, pawing at your arm. You narrowly avoid being scratched[or]scratches his left paw with the right one and then makes an [quotation mark]ahem[quotation mark] sound[or]and makes a scratching gesture. Towards his left paw. Scratching. Left. Hmm[stopping].";
+			say "Rover looks at you and [one of]rubs his back against the wall, giving you a satisfied grin[or]jumps up on his back legs, pawing at your arm. You narrowly avoid being scratched[or]scratches his left paw with the right one while making an [quotation mark]ahem[quotation mark] sound[or]makes a scratching gesture. Towards his left paw. Scratching. Left. Hmm[stopping].";
 			now Rover is busy;
 	[Rover stage business - through these conditions, it does not occur during bedtime, or after the ACU becomes aware; this is intended to be the last line printed in a turn. The Rover Busy flag is meant to block his random actions, and can be set when he is doing anything more interesting. Otherwise, who knows if his specific action and his random action would be incongruent. Rover Busy is reset at the end of every turn.]
 	if the player is the ACU and the ACU is clueless and the noun is not Rover and the drapes are open and Rover is not busy:
@@ -4339,20 +4339,17 @@ Instead of doing something during Arm Hurts:
 		
 Instead of waving the left arm during Arm Hurts:
 	try waving hands.
-	
-Understand "wiggle" as waving.
 		
 Instead of waving hands during Arm Hurts:
-	say "You flail your left arm back and forth, slowly restoring feeling. [if arm-numb is greater than 30]It's a great relief![otherwise if arm-numb is greater than 20]That's much, much better[otherwise if arm-numb is greater than 10]Ah, the tingling has gone away.[otherwise]That did the trick. Your left arm is back to its old, frisbee-throwing self[end if]."; 
+	say "You flail your left arm back and forth, and slowly the itching abates. [if arm-numb is greater than 30]It's a great relief![otherwise if arm-numb is greater than 20]That's much, much better[otherwise if arm-numb is greater than 10]Ah, the itchiness has gone away.[otherwise]That did the trick. Your left arm is back to its old, frisbee-throwing self[end if]."; 
 	now arm-numb is zero;
 	the rule succeeds.
-
 
 Understand "scratch [something]" as rubbing.
 
 Instead of rubbing the left arm during Arm Hurts :
 	now arm-numb is zero;
-	say "Ooooo. Ahhhh...slowly, the sensation returns in your left arm. That feels [italic type]so[roman type] good.".
+	say "Ooooo. Ahhhh...slowly, the itchiness subsides. That feels [italic type]so[roman type] good.".
 				
 Chapter First Sim
 
