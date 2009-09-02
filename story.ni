@@ -1058,7 +1058,7 @@ Check Businessing:
 			otherwise:[egg cooked]
 				say "[if the player is clueless][one of]Sometimes this sort of venture is more successful after eating[or]The appetizing smell of the fried egg wafts in from the kitchen, reminding you that you haven't had your breakfast yet[or]Nothing is forthcoming[stopping][otherwise]Power cannot be shunted until the fused heavy helium residue is fed to the recycling system[end if].";
 		otherwise:[postpoop]
-			say "[if the player is clueless]You've already done your business. Keep trying and you might end up with hemorrhoids[otherwise]Retros are already fully charged[end if].";
+			say "[if the player is clueless]You've already done your business. Keep trying and you might strain yourself[otherwise]Retros are already fully charged[end if].";
 		the rule fails;
 	otherwise:
 		if the Real Thing is happening and the landing_pid is not 0 and the player is clueless:
