@@ -2,7 +2,7 @@
 
 
 The story headline is "An Interactive Fiction".
-The release number is 0.
+The release number is 2.
 The story genre is "Science Fiction".
 
 Include Glulx Text Effects by Emily Short.
