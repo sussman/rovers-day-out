@@ -46,11 +46,7 @@ All things considered, it wouldn't take much more to implement the clock. As for
 General Macro Issues re: plot, puzzles, etc.
 
 
-* rover doesn't seem to follow me around, or request things like food,
-  etc.  it would be a much richer experience if he reacted to my
-  routine or even hinted ath things when players got stuck!
-
-@@@ This will be my main focus as general mechanisms get nailed down (JACK TODO!)
+diff -u  <(curl -sL http://0.gfe.l2.codesite.yr.borg.google.com/varz?var=argv|sed -e's/ /\n/g') <(curl -sL http://0.packrat.gfe.codesite.yr.borg.google.com/varz?var=argv|sed -e's/ /\n/g')
 
 * in general, status line technoverbs are always showing TRUE, not
   catching failures when they should (i.e. when toilet doesn't flush).
@@ -91,48 +87,6 @@ operations/engineering
 Notes from Ben's first *complete* run-through of game:
 
 
-
-* Whoops:
-
-  > x nameplate
-  A brass nameplate with engraved black lettering...
-
-  > read lettering
-  There are only three letters:  "ACU".
-
-
-* change "strangle hold" to "stranglehold"
-
-* in 'help' menu, one of the options should suggest 'remember' as a
-  way to get more backstory.
-
-
-* Whoops:
-
-  > david, hello
-  You can't talk to David-proxy.
-
-
-* TODO: create logo for game.  Either red embroidered "ACU", or
-  MARSpace insignia.
-
-
-* things to fill out with non-generic responses:
-
-   "taste nuggets"
-   "taste treat"
-
-
-* still extra spacing problems on plunger: "the handle of the plunger
-  is tilted completely  backwards"; "leaning strongly  to the right"
-
-
-* TODO(sussman): fix indentation of metaspeak, so that words wrap
-  *beyond* Janet and David's names.  easier to read.
-
-
-* In 2nd simulation, rover goes out the door without my ever filling
-  his bowls.  Is this intended?
 
 * in the Real Thing, the frying pan is still sitting on the cooking
   range.  Is this intended?  Was it supposed to be reset?
