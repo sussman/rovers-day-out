@@ -997,7 +997,7 @@ Report Sniffscanning:
 	
 To say man-smell:
 	let manrange be a number;
-	change manrange to the number of moves from the location to the sleeping room, using doors;
+	change manrange to the number of moves from the location to the Sleeping Room, using doors;
 	say "From [the manscent corresponding to the range of manrange in the Table of Nasal Rangefinding] you smell the [one of]disagreeable scent[or]odor[or]stale funk[or]stench[in random order] of a[if a random chance of 1 in 10 succeeds] (not very hygienic)[end if] man"
 	
 To say dog-smell:
@@ -1763,13 +1763,13 @@ TK is a here-delegate. It is in the kitchen. Understand "kitchen" as TK. The awa
 
 TK-LR is a there-delegate. It is in the kitchen. The destination of TK-LR is the Living Room. Understand "living room" as TK-LR. The clueless-description of TK-LR is "From here, it's hard to see much of the living room at all." The aware-name of TK-LR is "operations". The aware-description is "Because of the angle between operations and engineering, it is difficult to see into the operations area from here."
 
-SR is a here-delegate. It is in the sleeping room. Understand "sleeping room" or "sleep room" or "sleeping" as SR. The aware-name of SR is "Command Module".
+SR is a here-delegate. It is in the Sleeping Room. Understand "sleeping room" or "sleep room" or "sleeping" as SR. The aware-name of SR is "Command Module".
 
-SR-ER is a there-delegate. It is in the sleeping room. The destination of SR-ER is the eating room. Understand "eating room" or "eating" or "fridge" as SR-ER. The clueless-description of SR-ER is "Like the sleeping room, the eating room also looks run down and dingy. You can see a fridge from here." The aware-name of SR-ER is "Engineering Module".
+SR-ER is a there-delegate. It is in the Sleeping Room. The destination of SR-ER is the Eating Room. Understand "eating room" or "eating" or "fridge" as SR-ER. The clueless-description of SR-ER is "Like the sleeping room, the eating room also looks run down and dingy. You can see a fridge from here." The aware-name of SR-ER is "Engineering Module".
 
-ER is a here-delegate. It is in the eating room. Understand "eating room" or "eating" as ER. The aware-name of ER is "Engineering Module".
+ER is a here-delegate. It is in the Eating Room. Understand "eating room" or "eating" as ER. The aware-name of ER is "Engineering Module".
 
-ER-SR is a there-delegate. It is in the eating room. The destination of ER-SR is the sleeping room. Understand "sleeping room" as ER-SR. The clueless-description of ER-SR is "From the eating room, you can see into the Sleeping Room, but you can't see the stinky man from here." The aware-name of ER-SR is "Command Module".
+ER-SR is a there-delegate. It is in the Eating Room. The destination of ER-SR is the Sleeping Room. Understand "sleeping room" as ER-SR. The clueless-description of ER-SR is "From the eating room, you can see into the Sleeping Room, but you can't see the stinky man from here." The aware-name of ER-SR is "Command Module".
 
 Instead of examining a here-delegate, try looking.
 
@@ -3379,7 +3379,7 @@ Before entering the shabby shack:
 	try entering the splintered door;
 	the rule succeeds.
 
-The Splintered Door is west of the Strange Porch and outside from the sleeping room.  It is an open not openable scenery door. The description of the splintered door is "A heavy plastrex door hangs loosely in the door frame, tenuously attached by one frail hinge. The door swings wildly in the wind." Understand "heavy", "plastrex", "hinge", or "hinges" as the Splintered Door. The scent of the Splintered Door is "like burning plastic". The aware-name of the splintered door is "damaged airlock".
+The Splintered Door is west of the Strange Porch and outside from the Sleeping Room.  It is an open not openable scenery door. The description of the splintered door is "A heavy plastrex door hangs loosely in the door frame, tenuously attached by one frail hinge. The door swings wildly in the wind." Understand "heavy", "plastrex", "hinge", or "hinges" as the Splintered Door. The scent of the Splintered Door is "like burning plastic". The aware-name of the splintered door is "damaged airlock".
 
 The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above." The aware-name of sky is "sky". Understand "sky", "dust", "clouds", "cloud", "atmosphere", "air", or "heavens" as sky.
 
@@ -3390,7 +3390,7 @@ Chapter Blazing Sunrise
 
 The Blazing Sunrise Area [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Blazing Sunrise Area.
 
-The description of the Sleeping Room is "[one of]You walk into the tumbledown shack. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings][paragraph break]You ignore him[stopping]." The scent of the sleeping room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here".  The printed name of the sleeping room is "Sleeping Room".
+The description of the Sleeping Room is "[one of]You walk into the tumbledown shack. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings][paragraph break]You ignore him[stopping]." The scent of the Sleeping Room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here".  The printed name of the Sleeping Room is "Sleeping Room".
 
 In the Sleeping Room is a man called the smelly man. Understand "angry" , "irate", "ranting", "flat" or "strange" as the smelly man. He is scenery. The description of the smelly man is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. He just stays up against one wall. Boy, does he seem mad, [rantings]!" The clueless-name of the smelly man is "smelly man". The aware-name of the smelly man is "Myomita AI". The scent of the smelly man is "unbearable at this close range. It is like something out of a nightmare: a combination of mouthwash, carpet cleaner and air fresheners. Entirely sickening"
 
@@ -3429,21 +3429,21 @@ Instead of pulling the small label:
 		now the endgame is pillowed;
 		end the game in death.
 
-The eating room is inside from the Sleeping Room.
+The Eating Room is inside from the Sleeping Room.
 
-The description of the eating room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the eating room is "more interesting than the sleeping room, with hints of kibbles and treats in the air".
+The description of the Eating Room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the Eating Room is "more interesting than the sleeping room, with hints of kibbles and treats in the air".
 
-A cold box is a refrigerator in the eating room.  The description of the cold box is "A bright orange box, similar in shape to the one that Janet keeps food in at home." The aware-name of the cold box is "cryochamber". The clueless-name of the cold box is "cold box". The scent of the cold box is "like a mixture of refried beans, Peking duck and peppermint patties, ground up with some coffee beans, fried in sesame oil and left to ferment for several months in a moldy basement". Understand "bright", "orange", "fridge", or "refrigerator" as the cold box.
+A cold box is a refrigerator in the Eating Room.  The description of the cold box is "A bright orange box, similar in shape to the one that Janet keeps food in at home." The aware-name of the cold box is "cryochamber". The clueless-name of the cold box is "cold box". The scent of the cold box is "like a mixture of refried beans, Peking duck and peppermint patties, ground up with some coffee beans, fried in sesame oil and left to ferment for several months in a moldy basement". Understand "bright", "orange", "fridge", or "refrigerator" as the cold box.
 [there is no egg in the Blazing Sunrise's fridge because it's the same egg as in the Valkyrie. A byte saved is a byte earned.]
 
-The water maker is a sink in the eating room. The description of the water maker is "A thing that people have in their homes.  They can get water out of it to put in your bowl." The clueless-name of the water maker is "kitchen sink". The aware-name of the water maker is "coolant output". The scent of the water maker is "like rust". Understand "water" or "maker" as the water maker.
+The water maker is a sink in the Eating Room. The description of the water maker is "A thing that people have in their homes.  They can get water out of it to put in your bowl." The clueless-name of the water maker is "kitchen sink". The aware-name of the water maker is "coolant output". The scent of the water maker is "like rust". Understand "water" or "maker" as the water maker.
 
 Instead of opening or switching on the water maker:
 	say "You balance precariously on your back paws, wobbling from side to side. You've seen Janet do this all the time, and always looks so simple. You paw at the faucet, but no water comes out.";
 
-The table is an enterable furniture in the eating room. The description of the table is "A big wooden table. Probably used for cooking stuff.[if nothing is on the table] Unfortunately, there is nothing, food or otherwise, on the table at the moment." The aware-name of the table is "reactor core". The clueless-name of the table is "table". The scent of the table is "like someone made a tuna sandwich here a couple weeks ago. Also, a hint of something like horseradish which makes you sneeze".
+The table is an enterable furniture in the Eating Room. The description of the table is "A big wooden table. Probably used for cooking stuff.[if nothing is on the table] Unfortunately, there is nothing, food or otherwise, on the table at the moment." The aware-name of the table is "reactor core". The clueless-name of the table is "table". The scent of the table is "like someone made a tuna sandwich here a couple weeks ago. Also, a hint of something like horseradish which makes you sneeze".
 
-The food dish and the water dish are fixed in place bowls in the eating room.
+The food dish and the water dish are fixed in place bowls in the Eating Room.
 
 The description of the food dish is "[if the food dish is not full]Even empty, the[otherwise]The [end if]other dog's metal food dish smells much better than yours." The clueless-name of the food dish is "food dish". The aware-name of the food dish is "fuel reservoir". Understand "metal" as the food dish.
 
