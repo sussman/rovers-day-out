@@ -3272,7 +3272,7 @@ Before entering home:
 
 The Barren Plain is west of the Front Yard. A rock is a prop in the Barren Plain. The scent of the barren plain is "dry and stale".
 
-The clueless-name of the rock is "rock". The aware-name of the rock is "thorium ore". The clueless-description of the rock is "[if the player is rover]You taste the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of low grade thorium ore." The rock-proxy is an aware-proxy that is part of the rock. Understand "black", "ore", "thorium", or "lump" as the rock. The scent of the rock is "strangely chemical. Your nose tickles as it sniffs the rock". The indefinite article of the rock is "a lump of". 
+The clueless-name of the rock is "rock". The aware-name of the rock is "lead ore". The clueless-description of the rock is "[if the player is rover]You taste the rock. Not edible. Not a bone. Not interesting.[otherwise]A fist-sized rock that Rover brought in."  The aware-description of the rock is "A black 800 kilogram chunk of poor quality lead ore." The rock-proxy is an aware-proxy that is part of the rock. Understand "black", "ore", "lead", or "lump" as the rock. The scent of the rock is "slightly sweet". The indefinite article of the rock is "a lump of". 
 
 Dug-Up Field is west of the Barren Plain. The description of the dug-up field is "A dug-up field pock marked by small holes and accompanying mounds of dirt." The scent of the dug-up field is "of freshly turned soil".  
 
