@@ -303,45 +303,11 @@ To say ACU Boot Banner:
 [General routine for displaying dialogue between Janet and David.]
 
 To say (dialogue - some text) in metaspeak:
-	let T be indexed text;
-	let T be dialogue;
-	let currentpos be 0;
-	let linelen be 0;
-	let ltr be true;
-	replace the text "David: " in T with "#";
-	replace the text "Janet: " in T with "&";
-	replace the text "[line break]" in T with "%";
-	[say "original: [T].";]
-	while currentpos is less than the number of characters in T:
-		if currentpos plus one is not greater than the number of characters in T and character number currentpos plus one in T matches the regular expression "<^#&>":
-			replace character number currentpos in T with "[character number currentpos in T]       ";
-			now linelen is 8;
-		otherwise:
-			now linelen is 0;
-		while ltr is true and currentpos is less than the number of characters in T:
-			increase currentpos by one;
-			if character number currentpos in T matches the regular expression "<#&>":
-				now linelen is linelen plus 7;
-			otherwise if character number currentpos in T matches the text "%":
-				now ltr is false;
-			otherwise:
-				increase linelen by one;
-				if linelen is greater than 60:
-					now ltr is false;
-		while ltr is false:
-			if character number currentpos in T matches the regular expression "<% >":
-				now ltr is true;
-			otherwise:
-				decrease the currentpos by one;
-			if ltr is true:
-				replace character number currentpos in T with "%";
-	replace the text "%" in T with "[line break]";
-	replace the text "&" in T with "Janet: ";
-	replace the text "#" in T with "David: ";
-	say "[line break][first custom style][T]";
-	say roman type;
-	say variable letter spacing;
-	say paragraph break.
+	say line break;
+ 	say "[first custom style][dialogue]";
+ 	say roman type;
+ 	say variable letter spacing;
+ 	say paragraph break.
 	
 [BSOD routines - uses Flexible Windows extension.]
 The BSOD-window is a g-window.   The type of the g-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
