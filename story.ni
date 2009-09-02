@@ -270,7 +270,7 @@ g-pure-blue	255
 
 Table of User Styles (continued)
 style name	justification	obliquity	indentation	first-line indentation	boldness	fixed width	relative size 	glulx color
-special-style-1	left-justified	no-obliquity	3	0	light-weight	fixed-width-font	-1	g-pure-blue
+special-style-1	left-justified	no-obliquity		0		15	light-weight	fixed-width-font	-1	g-pure-blue
 special-style-2	center-justified	no-obliquity	0	0	regular-weight	fixed-width-font	1	g-white
 
 [Let's do a random walk, shall we?  :-) ]
@@ -733,9 +733,14 @@ Carry out elevating:
 	change the command prompt to "Password: ".
 	
 After reading a command when elevate flag is true:
+	let T be indexed text;
+	let T be the player's command;
 	now elevate flag is false;
 	update prompt;
-	say "Access violation logged.";
+	if T matches the text "EarthRuleNow999":
+		say "Root login from vconsole interdicted.";
+	otherwise:
+		say "Login error. Access violation logged.";
 	reject the player's command.
 	
 Clearing is an action applying to nothing. Understand "clear" or "cls" as clearing when the player is self-aware.
@@ -5090,7 +5095,7 @@ Each topic is meant to come up once, although it can be brought up by either the
 
 Table of Final Countdown
 completion		narrative
-0					"[quotation mark]Dammit, Janet,[quotation mark] cries David, [quotation mark]What a disappointment! Yes, the message was directed to Earth. The Valkyrie was our back-up plan in case our own ship ran into difficulty. I’m afraid that after the data transfer is complete, I’ll have to kill you. A pity, I was really enjoying being with you. I had even picked out a china pattern.[paragraph break]David enunciates his words very precisely now,[quotation mark]ACU, this is a root command, authorization RedMonkey737: start data transfer![quotation mark]"
+0					"[quotation mark]Dammit, Janet,[quotation mark] cries David, [quotation mark]What a disappointment! Yes, the message was directed to Earth. The Valkyrie was our back-up plan in case our own ship ran into difficulty. I’m afraid that after the data transfer is complete, I’ll have to kill you. A pity, I was really enjoying being with you. I had even picked out a china pattern.[paragraph break]David enunciates his words very precisely now,[quotation mark]ACU, this is a root command, authorization EarthRuleNow999: start data transfer![quotation mark]"
 25					"Janet's voice quavers, [quotation mark]David, I can’t believe this. After the last few months...[quotation mark][paragraph break][if the player is in the living room]Without blinking, David walks towards the space probe, all the time maintaining a bead on Janet. [end if]David replies in an unnerving monotone, [quotation mark]After we didn’t hear back from either ship, I’ll admit that I was getting used to the idea of settling down with you. It would have been a good way to maintain cover within MARSpace, and eventually, we would have sent another mission to retrieve the probe.[quotation mark]" 
 50					"[if the player is in the living room]Janet glances furtively towards the cargo bay doors, [end if][quotation mark]Someone will hear the gun; you won’t be able to walk out of here.[quotation mark][paragraph break][if the player is in the living room]David gives the door an off-handed glance, and replies with assurance, [end if][quotation mark]My dear, the whole facility is secured by order of the mission director, that is to say, me. The probe data are such a sensitive subject that I had no difficulty getting authorization to lock down the entire facility. There’s nobody here except us love birds.[quotation mark][if the player is in the living room][paragraph break]David leers like a predator at Janet, who recoils in disgust.[end if][paragraph break]" 
 75					"Janet takes a deep breath and says with resolve, [quotation mark]David, I’m sorry to do this, but ACU: I instruct you to stop David using any means necessary.[quotation mark][paragraph break]This elicits [if the player is in the living room]a wry smile and [end if]mocking laugh from David, who replies, [quotation mark]That’s funny, Janet. Really. What’s it going to do, [apostrophe]examine[apostrophe] me to death? You know as well as I do that the ACU is entirely locked down by failsafe interdictions. Nice try.[quotation mark]"
