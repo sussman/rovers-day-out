@@ -6,7 +6,7 @@
 # Make sure Inform is *not* running when you run this script!
 
 echo "Pulling..."
-hg pull
+hg pull https://rovers-day-out.googlecode.com/hg
 echo "Updating..."
 hg update
 echo "Copying into rover.inform/ ..."
