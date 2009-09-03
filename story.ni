@@ -75,7 +75,7 @@ Instead of swearing obscenely:
 		otherwise:
 			say "sentient computers";
 		say "."
-	
+			
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
@@ -254,6 +254,7 @@ Before putting something on a chest when a lid (called the item) is part of the 
 	try putting the noun on the item instead.
 	
 Instead of examining a closed chest when something is on a lid (called the top) which is part of the noun: 
+	change outcome-override to force-failure;
 	say "[The noun] is closed, and there [is-are a list of things on the top] on top."
 	
 [closely related is the flipchair:]
@@ -1985,9 +1986,11 @@ After taking something (called the item) when the drapes are closed:
 	say "You feel around in the near total darkness until you find [the item]."
 
 Instead of examining or reading when the drapes are closed:
-	if the noun is the picture or noun is the nameplate or the noun is sunlight or the noun is the drapes or the noun is the acu or the noun is the flight suit or the noun is the alarm clock or the noun is the large button or the noun is the futon:
+	let O be {picture, nameplate, sunlight, drapes, acu, flight suit, alarm clock, large button, futon};
+	if the noun is listed in O:
 		continue the action;
 	otherwise:
+		change outcome-override to force-failure;
 		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping]."
 	
 Instead of going towards when the player is in the Living Room and the drapes are closed:
@@ -2050,7 +2053,7 @@ Instead of examining Rover when the drapes are open:
 					watch Rover;
 			now Rover is busy;
 		otherwise:[Rover's POV]
-			say "You're [one of]a big dog with white fur and dark spots[or]a suave and sophisticated dog, with a streak of nobility[or]debonair, cosmopolitan dog, well-bred and cut from the best cloth[or]a fun-loving, easy going dog, who's fun to be around[or]a classic black and white dalmation, with a beauty mark above your left eye. Some say it is a mark of Royalty going back to 16th Century Croatia. You're not sure about that, but it's what you tell the ladies[or]a gallant, upright dog, with a strict moral code and a clear sense of right and wrong[or]a loyal dog, with the best master in the world, Janet[or]not like the other dalmation one sees vamping about the park sporting white coats with outrageous green and orange dots. No, you are the real thing: black dots on a white coat. All of your genes are real, not grown in a lab somewhere[or]a fully biological dog, with no synthetic parts. You like it that way. You think your parts are already nice enough[or]a well-groomed, healthy dalmation. Presumably, irresistable to the ladies[in random order]. You smell [one of]clean[or]virtuous[or]like you're ready for anything[or]masculine[or]slightly musky[or]nothing at all like wet dog, and you have every intention of making sure that remains the case[or](in your opinion) foxy[or]like Janet's house[or]a little like those kibbles you've been eating for the last week[or]your butt. Yup, it's squeaky clean and ready to meet the world[or]virile[or]rugged and sturdy[or]like a red-blooded, male dog in his prime[or]fearless[or]bold and daring[or]fresh[or]dogly[in random order].";
+			say "[how Rover looks]. [how Rover smells].";
 	otherwise:[aware]
 		say "Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions. [run paragraph on]";
 		if rover carries the delicious bone:
@@ -2064,6 +2067,12 @@ Instead of examining Rover when the drapes are open:
 			otherwise: 
 				say "He snores loudly, his jowls fluttering with each breath. [run paragraph on]";
 		say paragraph break.
+		
+To say how Rover looks:
+	say "You're [one of]a big dog with white fur and dark spots[or]a suave and sophisticated dog, with a streak of nobility[or]debonair, cosmopolitan dog, well-bred and cut from the best cloth[or]a fun-loving, easy going dog, who's fun to be around[or]a classic black and white dalmation, with a beauty mark above your left eye. Some say it is a mark of Royalty going back to 16th Century Croatia. You're not sure about that, but it's what you tell the ladies[or]a gallant, upright dog, with a strict moral code and a clear sense of right and wrong[or]a loyal dog, with the best master in the world, Janet[or]not like the other dalmation one sees vamping about the park sporting white coats with outrageous green and orange dots. No, you are the real thing: black dots on a white coat. All of your genes are real, not grown in a lab somewhere[or]a fully biological dog, with no synthetic parts. You like it that way. You think your parts are already nice enough[or]a well-groomed, healthy dalmation. Presumably, irresistable to the ladies[in random order]".
+	
+To say how Rover smells:
+	say "You smell [one of]clean[or]virtuous[or]like you're ready for anything[or]masculine[or]slightly musky[or]nothing at all like wet dog, and you have every intention of making sure that remains the case[or](in your opinion) foxy[or]like Janet's house[or]a little like those kibbles you've been eating for the last week[or]your butt. Yup, it's squeaky clean and ready to meet the world[or]virile[or]rugged and sturdy[or]like a red-blooded, male dog in his prime[or]fearless[or]bold and daring[or]fresh[or]dogly[in random order]".
 		
 Before taking something (called the item) when the player is Rover:
 	if Rover carries the item:
@@ -2255,8 +2264,10 @@ Instead of doing something to the white egg when the white egg is broken:
 		continue the action;
 	otherwise:
 		if the player is clueless:
+			change outcome-override to force-failure;
 			say "[one of]Are you going to eat it, or what?[or]Cooked eggs are good for one thing (well, two if you count modern art).[or]You can eat the egg, or not eat the egg. It doesn't seem to care.[or]To eat the egg or not. That is the question.[in random order]";
 		otherwise:
+			change outcome-override to force-failure;
 			say "The He-8 carboy is empty and can be recycled."
 			
 Before eating the white egg:
@@ -2399,12 +2410,14 @@ Instead of doing something with the tap water:
 	if the current action is examining:
 		continue the action;
 	otherwise:
+		change outcome-override to force-failure;
 		say "You don't want to mess with Rover's [tap water]."
 			
 Instead of doing something with the dog food:
 	if the current action is examining:
 		continue the action;
 	otherwise:
+		change outcome-override to force-failure;
 		if the dog chow bag encloses the dog food:
 			say "[if the player is clueless]You're not very keen to reach into a bag of stinky dog food[otherwise]For optimal containment, the fuel isotopes should remain in the fuel conduit or reservoir[end if].";
 		otherwise:
@@ -3493,7 +3506,7 @@ David Venkatachalam wears a black business robe and a burgundy bowler hat. Under
 
 Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. [if audio is switched off]She is talking to David; you can see their lips moving." The clueless-name of Janet Xiang is "Janet Xiang". The aware-name of Janet Xiang is "Janet". Janet Xiang is failsafed. The lips are part of Janet. Lips are plural-named. Understand "lip" as lips. The aware-name of lips is "lips".
 
-Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green arm band." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band. The aware-name of the lavender summer dress is "clothing". The aware-name of the white leggngs is "clothing". The aware-name of the sandals is "clothing". The aware-name of the green arm band is "console". The display is part of the arm band. The description of the display is "You can't see what is on the display because of a privacy filter."
+Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green arm band." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band. The aware-name of the lavender summer dress is "clothing". The aware-name of the white leggings is "clothing". The aware-name of the sandals is "clothing". The aware-name of the green arm band is "console". The display is part of the arm band. The description of the display is "You can't see what is on the display because of a privacy filter."
 
 There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.  The assault ship can be using harpoons. The assault ship is not using harpoons. The assault ship can be graceful wind. The assault ship is graceful wind. The aware-name of hte assault ship is "assault ship".
 
@@ -3519,6 +3532,7 @@ Before searching outside when the player is in the Living Room and the window is
 	the rule succeeds.
 	
 Instead of searching or examining the window when the player is self-aware during Real Thing:
+	change outcome-override to force-failure;
 	say "Through the viewer you can see nothing but swirling dust."
 	
 Instead of searching or examining the window during Back on Mars:
@@ -3814,6 +3828,12 @@ Last-noun is usually "ACU".  Last-success is usually "NIL".   Status-line-action
 Test-action is an action-name which varies.
 Got-action is a truth state that varies.  Got-action is usually false.
 
+Forced-outcome is a kind of value. The forced-outcomes are force-success, force-failure, and force-neutral. The outcome-override is a forced-outcome that varies. The outcome-override is usually force-neutral.
+
+[All in-game actions have a default success, defined in the table of technoverbs. This reflects the fact that many actions usually succeed/fail, and we can make our lives simpler by only dealing with the exceptions. For us, success means: did the action do what it was meant to do in the game world? 
+
+As each turn begins, forced-outcome is reset to neutral. After each command is parsed, outcome is set to fail (nil). At any time, it can be forced in either direction (t/nil). During the did-it-work stage, actions that default to true are set to true. However, force-outcome trumps all. Finally, the status line is updated in every turn.]
+
 After reading a command (this is the re-initialize rule):
 	if the player is Rover:
 		change last-noun to "ROVER";
@@ -3821,7 +3841,8 @@ After reading a command (this is the re-initialize rule):
 		change last-noun to "ACU";
 	change last-success to "NIL";
 	change the status-line-action to "NOOP";
-	change got-action to false.
+	change got-action to false;
+	change outcome-override to force-neutral.
 
 First before an actor doing something (this is the catch failed actions rule):
 	if got-action is true:
@@ -3838,7 +3859,8 @@ First before an actor doing something (this is the catch failed actions rule):
 		otherwise:
 			if the noun is something then change last-noun to "[aware-name of the noun]".
 
-First after an actor doing something (this is the catch successful actions rule):
+[This rule can be moved to not for release]
+First after an actor doing something (this is the find non-technoverb actions rule):
 	if got-action is true:
 		do nothing;
 	otherwise:[meaning, it wasn't found in the technoverb table]
@@ -3848,137 +3870,165 @@ First after an actor doing something (this is the catch successful actions rule)
 			-- otherwise:
 				say "(Note:  [test-action] isn't in technoverb-table)" in metaspeak;
 				continue the action;
-	if the noun is something:
-		change last-noun to "[aware-name of the noun]";
-	change last-success to "TRUE";
+	[if the noun is something:
+		change last-noun to "[aware-name of the noun]";]
 	continue the action.
+	
+The outcome stage rule is listed after the report stage rule in the specific action-processing rules.
+
+This is the outcome stage rule:
+   follow the did-it-work rules.
+
+The did-it-work rules is a rulebook.
+
+First did-it-work rule (this is the explicitly set action outcome rule):
+	if outcome-override is not force-neutral:
+		if outcome-override is force-success:
+			change last-success to "TRUE";
+		otherwise:
+			change last-success to "NIL";
+		the rule succeeds.[i.e., no further did-it-works need be examined.]	
+		
+A did-it-work rule when the test-action is a Verb listed in the Table of Technoverbs (this is the some actions default to True rule):
+	if the Successful entry is true:
+		change last-success to "TRUE".
+		
+A did-it-work rule when the test-action is the opening action:
+	if the noun is openable and the noun is open:
+		change last-success to "TRUE".
+		
+A did-it-work rule when the test-action is the closing action:
+	if the noun is openable and the noun is closed:
+		change last-success to "TRUE".
+
+[The successful column lists the default success/failure of the action]
 
 Table of Technoverbs
-Verb				Technoverb
-the answering it that action		"TRANSMIT"	[rover, hello]
-the asking it about action		"QUERY" [ask s.o. about s.t.]
-the asking it for action			"RE	QUISITION"
-the attacking action				"OFFENSE MODE" [atttack!]
-the barking action					"EMIT PULSE"
-the bashing action					"SHELL" [bash, ksh, sh]
-the brushing action				"SPAWN SCRUBBERS" [brush teeth]
-the beeping action					"PROXIMITY ALERT" [beeping]
-the BSODing action					"FATAL ERROR"
-the BSOEing action					"HALT"
-the burning action					"IGNITE"
-the businessing action			"POWER TRANSFER" [oop, pee, etc.]
-the buttdowning action			"PARK" [rover, sit]
-the buying action					"FUNDS TRANSFER"
-the cataloguing action			"LIST DIRECTORY" [ls]
-the catting action					"CAT" [cat]
-the CDing action					"CHANGE DIRECTORY" [cd]
-the clearing action 				"CLEAR" [clear]
-the climbing action				"SELECT"
-the closing action					"DEACCESS" [close]
-the coming action					"SEEK" [come or "rover, come"]
-the cooking action					"FUSE"
-the consulting it about action	"LOOKUP" 
-the cracking it into action		"DISCHARGE" [crack, break, etc.]
-the cutting action					"DECOUPLE"
-the cshing action					"SHELL" [csh, zsh, tcsh]
-the dating action					"TEMPORAL FIX" [date, time]
-the dancing action					"MANEUVER TEST" [dance]
-the digging action					"EXCAVATE" [dig]
-the disrobing action				"DISENGAGE" [undress, strip, peel down]
-the dreaming action				"RANDOMIZE ADDRESS SPACE" [dream]
-the dressing action				"ENGAGE" [dress, suit up, etc.]
-the drinking action				"TRANSFER"
-the dropping action				"DESELECT"  [drop]
-the eating action					"RECYCLE"  [eat]
-the echoing action					"ECHO" [echo]
-the elevating action 				"ELEVATE PRIVILEGE" [su, sudo]
-the entering action				"ACTIVATE"  [enter, sit on]
-the examining action				"DIAGNOSTIC" [examine, read]
-the exiting action					"DEACTIVATE" [exit, stand up]
-the expounding action				"SPEECH OUTPUT" [tell about s.t.]
-the filling it with action		"TRANSFER" [fill water bowl with kibbles]
-the fillupping action				"TRANSFER" [fill water bowl]
-the fingering action 				"FINGER" [finger]
-the flossing action				"LINK NODES" [floss teeth]
-the flushing action				"THRUST" [flush]
-the folding action					"RETRACT" [fold]
-the getting off action			"DESELECT"
-the giving it to action			"DISPENSE" [give]
-the going action					"SELECT"  [go, or any compass direction]
-the going towards action			"SELECT"
-the growling action				"NOTIFY"
-the inserting it into action		"TRANSFER"  [put]
-the jumping action					"BRANCH" [jump]
-the kissing action					"INTERFACE" [kiss]
-the kittying action				"CONCATENATE" [cat, when aware]
-the leaving action					"DESELECT"
-the listening to action			"AUDIO INPUT"
-the locating action				"LOCATE" [find, locate]
-the locking it with action		"SECURE"
-the logoutting action 			"LOGOUT" [logout]
-the looking action					"STATUS"  [look]
-the looking under action			"SCAN"
-the lying down action				"STANDBY"
-the lying on action				"STANDBY"
-the manpaging action				"MANUAL PAGE" [man]
-the nopping action					"\DEV\NULL" [unix commands not available]
-the opening action					"ACCESS"  [open]
-the petting action					"SYNCH"
-the pinging action					"PING" [ping]
-the pouring it into action		"TRANSFER"
-the pulling action					"TRACTOR FIELD" [pull, pull off, tear, rip, etc.]
-the pushing action					"PRESSOR FIELD"  [press]
-the pushing it to action			"PRESSOR FIELD"
-the putting it on action			"TRANSFER" [put on]
-the pwding action					"PRINT WORKING DIRECTORY" [pwd]
-the querying action				"QUERY" [ask about s.t.]
-the reading action					"READLINE" [read]
-the remembering action			"DATA_FETCH" [remember]
-the removing it from action		"TRANSFER"
-the repairing action				"REPAIR" [repair]
-the rollovering action			"LATERAL JETS" [rover, roll over]
-the rubbing action					"NEUTRALIZE CHARGE" [rub, clean, scratch]
-the rude-awakening action		"TIME OUT"
-the saying no action				"NEGATE" [no]
-the saying yes action				"AFFIRM" [yes]
-the saying sorry action			"ERR ACK"
-the searching action				"MANIFEST"  [look in]
-the shellupping action 			"EXIT SHELL" [exit]
-the showing it to action			"DISPLAY"
-the shutdowning action			"SHUTDOWN" [shutdown, reboot, halt]
-the singing action					"DUMP" [sing]
-the sleeping action				"SUSPEND" [sleep]
-the smelling action				"CHEMOSENSOR" [smell]
-the smooching action				"INTERFACE" [rover, give kisses]
-the sniffscanning action			"SPECTROMETRY" [sniff]
-the snoozing action				"REPRESENTATIONAL STATE TRANSFER" [snooze]
-the squeezing action				"PRESSOR FIELD"
-the standing action				"DEACTIVATE" [stand]
-the swearing mildly action		"PARSE ERROR"
-the swearing obscenely action	"PARSE ERROR"
-the swinging action				"SELECT"
-the switching off action			"RESET"		[turn off]
-the switching on action			"TRIGGER"		[turn on, switch on]
-the taking action					"SELECT"  [take, get]
-the taking inventory action		"MANIFEST" [inventory]
-the taking off action				"DISENGAGE"  [take off, remove]
-the tasting action					"SCAN"
-the telling it about action		"SPEECH OUTPUT" [tell s.o. about s.t.]
-the thinking action				"DATA_FETCH"
-the throwing it at action		"TRANSFER"
-the touching action				"UPDATE" [touch]
-the turning action					"REORIENT"
-the tying it to action			"BIND" [tie, attach]
-the unfolding action				"EXTEND" [unfold]
-the unlocking it with action		"UNSECURE"
-the uptiming action				"UPTIME" [uptime]
-the waiting action					"TIMER" [wait]
-the waking up action				"INITIALIZE" [wake, wake up]
-the waving action					"SEMAPHORE"
-the wearing action					"ENGAGE"  [put on, wear]
-the whoing action					"WHO" [who]
-the yelling action					"BROADCAST"
-the yoking it more action		"VECTOR ADJUST" [push, pull, twist...plunger]
+Verb									Successful	Technoverb
+the answering it that action		false			"TRANSMIT"	[rover, hello]	
+the asking it about action		false			"QUERY" [ask s.o. about s.t.]
+the asking it for action			false			"RE	QUISITION"
+the attacking action				false			"OFFENSE MODE" [atttack!]
+the barking action					false			"EMIT PULSE"
+the bashing action					true			"SHELL" [bash, ksh, sh]
+the brushing action				false			"SPAWN SCRUBBERS" [brush teeth]
+the beeping action					TRUE			"PROXIMITY ALERT" [beeping]
+the BSODing action					FALSE			"FATAL ERROR"
+the BSOEing action					TRUE			"HALT"
+the burning action					false			"IGNITE"
+the businessing action			false			"POWER TRANSFER" [poop, pee, etc.]
+the buttdowning action			false			"PARK" [rover, sit]
+the buying action					FALSE			"FUNDS TRANSFER"
+the cataloguing action			TRUE			"LIST DIRECTORY" [ls]
+the catting action					false			"CAT" [cat]
+the CDing action					false			"CHANGE DIRECTORY" [cd]
+the clearing action 				TRUE			"CLEAR" [clear]
+the climbing action				false			"SELECT"
+the closing action					false			"DEACCESS" [close]
+the coming action					false			"SEEK" [come or "rover, come"]
+the cooking action					false			"FUSE"
+the consulting it about action	false			"LOOKUP" 
+the cracking it into action		false			"DISCHARGE" [crack, break, etc.]
+the cutting action					false			"DECOUPLE"
+the cshing action					TRUE			"SHELL" [csh, zsh, tcsh]
+the dating action					TRUE			"TEMPORAL FIX" [date, time]
+the dancing action					TRUE			"MANEUVER TEST" [dance]
+the digging action					FALSE			"EXCAVATE" [dig]
+the disrobing action				false			"DISENGAGE" [undress, strip, peel down]
+the dreaming action				TRUE				"RANDOMIZE ADDRESS SPACE" [dream]
+the dressing action				false				"ENGAGE" [dress, suit up, etc.]
+the drinking action				false				"TRANSFER"
+the dropping action				false				"DESELECT"  [drop]
+the eating action					false				"RECYCLE"  [eat]
+the echoing action					TRUE			"ECHO" [echo]
+the elevating action 				FALSE			"ELEVATE PRIVILEGE" [su, sudo]
+the entering action				false				"ACTIVATE"  [enter, sit on]
+the examining action				TRUE				"DIAGNOSTIC" [examine, read]
+the exiting action					false				"DEACTIVATE" [exit, stand up]
+the expounding action				false				"SPEECH OUTPUT" [tell about s.t.]
+the filling it with action		false		"TRANSFER" [fill water bowl with kibbles]
+the fillupping action				false			"TRANSFER" [fill water bowl]
+the fingering action 				TRUE			"FINGER" [finger]
+the flossing action				false			"LINK NODES" [floss teeth]
+the flushing action				false			"THRUST" [flush]
+the folding action					false			"RETRACT" [fold]
+the getting off action			false			"DESELECT"
+the giving it to action			false			"DISPENSE" [give]
+the going action					false			"SELECT"  [go, or any compass direction]
+the going towards action			false			"SELECT"
+the growling action				TRUE			"NOTIFY"
+the inserting it into action		false			"TRANSFER"  [put]
+the jumping action					TRUE			"BRANCH" [jump]
+the kissing action					false			"INTERFACE" [kiss]
+the kittying action				false			"CONCATENATE" [cat, when aware]
+the leaving action					false			"DESELECT"
+the listening to action			false			"AUDIO INPUT"
+the locating action				false			"LOCATE" [find, locate]
+the locking it with action		false			"SECURE"
+the logoutting action 			FALSE			"LOGOUT" [logout]
+the looking action					TRUE			"STATUS"  [look]
+the looking under action			false			"SCAN"
+the lying down action				false			"STANDBY"
+the lying on action				false			"STANDBY"
+the manpaging action				TRUE			"MANUAL PAGE" [man]
+the nopping action					FALSE		"\DEV\NULL" [unix commands not available]
+the opening action					false			"ACCESS"  [open]
+the petting action					false			"SYNCH"
+the pinging action					false			"PING" [ping]
+the pouring it into action		false			"TRANSFER"
+the pulling action					false			"TRACTOR FIELD" [pull, pull off, tear]
+the pushing action					false			"PRESSOR FIELD"  [press]
+the pushing it to action			false			"PRESSOR FIELD"
+the putting it on action			false			"TRANSFER" [put on]
+the pwding action					TRUE			"PRINT WORKING DIRECTORY" [pwd]
+the querying action				false			"QUERY" [ask about s.t.]
+the reading action					false			"READLINE" [read]
+the remembering action			false			"DATA_FETCH" [remember]
+the removing it from action		false			"TRANSFER"
+the repairing action				false			"REPAIR" [repair]
+the rollovering action			false		"LATERAL JETS" [rover, roll over]
+the rubbing action					false		"NEUTRALIZE CHARGE" [rub, clean, scratch]
+the rude-awakening action		TRUE		"TIME OUT"
+the saying no action				TRUE		"NEGATE" [no]
+the saying yes action				TRUE		"AFFIRM" [yes]
+the saying sorry action			TRUE		"ERR ACK"
+the searching action				false		"MANIFEST"  [look in]
+the shellupping action 			false		"EXIT SHELL" [exit]
+the showing it to action			false		"DISPLAY"
+the shutdowning action			false		"SHUTDOWN" [shutdown, reboot, halt]
+the singing action					TRUE		"DUMP" [sing]
+the sleeping action				false		"SUSPEND" [sleep]
+the smelling action				false		"CHEMOSENSOR" [smell]
+the smooching action				TRUE		"INTERFACE" [rover, give kisses]
+the sniffscanning action			TRUE		"SPECTROMETRY" [sniff]
+the snoozing action			false		"REPRESENTATIONAL STATE TRANSFER" [snooze]
+the squeezing action				false		"PRESSOR FIELD"
+the standing action				TRUE		"DEACTIVATE" [stand]
+the swearing mildly action		FALSE		"PARSE ERROR"
+the swearing obscenely action	FALSE		"PARSE ERROR"
+the swinging action				false		"SELECT"
+the switching off action			false		"RESET"		[turn off]
+the switching on action			false		"TRIGGER"		[turn on, switch on]
+the taking action					false		"SELECT"  [take, get]
+the taking inventory action		TRUE		"MANIFEST" [inventory]
+the taking off action				false		"DISENGAGE"  [take off, remove]
+the tasting action					false		"SCAN"
+the telling it about action		false		"SPEECH OUTPUT" [tell s.o. about s.t.]
+the thinking action				false		"DATA_FETCH"
+the throwing it at action		false		"TRANSFER"
+the touching action				false		"UPDATE" [touch]
+the turning action					false		"REORIENT"
+the tying it to action			false		"BIND" [tie, attach]
+the unfolding action				false		"EXTEND" [unfold]
+the unlocking it with action		false		"UNSECURE"
+the uptiming action				TRUE		"UPTIME" [uptime]
+the waiting action					TRUE		"TIMER" [wait]
+the waking up action				false		"INITIALIZE" [wake, wake up]
+the waving action					false		"SEMAPHORE"
+the wearing action					false		"ENGAGE"  [put on, wear]
+the whoing action					TRUE		"WHO" [who]
+the yelling action					false		"BROADCAST"
+the yoking it more action		false		"VECTOR ADJUST" [push, pull,twist plunger]
 
 Chapter Triggered Events
 
@@ -4144,9 +4194,11 @@ Instead of doing something with something (called the item) during Bedtime:
 		[player can attempt to examine/read, but will likely be limited by a general rule for low lighting that applies when the drapes are closed, or by other more specific rules.]
 		continue the action;
 	otherwise:
+		change outcome-override to force-failure;
 		say "[one of]First things first, you're still in bed[or]Six impossible things before breakfast is one thing, but you have to at least get out of bed[or]Not while you're in your futon, you won't[or]Maybe after you get up[in random order]."
 		
 Instead of examining the picture during Bedtime:
+	change outcome-override to force-failure;
 	say "[one of]It's too far from the bed, and you're not quite awake[or]You can't quite make out detail from here[or]Your eyes are still full of sleep and aren't focusing much further than your nose[or]Yep, it's over there on the wall. A long way from the bed. So sleepy[or]The picture is all the way over there on the wall. So far from your bed[or]You start to look at the picture, but a moment later you are staring at the inside of your eyelids. You blink again and the picture is still over there, far from your comfortable futon[or]If it were important, it should be nearer to your bed. You roll over again[or]So far from bed. Must sleep more[stopping].";
 
 Instead of examining the player when the Bedtime-did-examine-player is false during bedtime:
@@ -4299,6 +4351,7 @@ Instead of doing something during Arm Hurts:
 		otherwise if the current action is memory-updating or waving hands:
 			continue the action;
 		otherwise:
+			change outcome-override to force-failure;
 			say "[one of]You can't! Your arm is too itchy[or]Arrgghhh. Your left arm is driving you crazy[or]What is up with that left arm? Man, that itching is annoying[or]It's hard to think of anything besides your left arm which is really itchy[or]What a weird feeling. That itching sensation in your left arm is driving you to distraction[or]You try to ignore your left arm, but the strange itchiness won't go away[or]Nothing you do gets your mind off your itchy left arm[or]You wonder how you are supposed to get anything accomplished when all you can think about is the itch. The itch. The itch[or]If your left arm would stop itching so much, you might be able to get something else done[in random order].";
 	otherwise:
 		continue the action.
@@ -4523,6 +4576,7 @@ Before doing anything to a failsafed person when the second sim has happened:
 	if the current action is examining, querying, asking or telling:
 		continue the action;
 	otherwise:
+		change outcome-override to force-failure;
 		say "Action interdicted: As a failsafe measure, autonomous control units are prohibited from direct interaction with humans aside from scanning and communications.";
 		the rule succeeds.
 
@@ -4847,11 +4901,27 @@ round		place 		destroyed item		vandalized item		narrative
 11			kitchen		frying pan			--					"[The underling] unscrews the handle of the frying pan, but you know that it is actually the main power coupling to the magnetic bottle. Fighting through the layer of simulation and blurry dream logic, you see him slap the red purge valve on the bottle's coolant system. Next, he reaches into the now inert bottle and snaps out the network bulb, separating the bottle from your consciousness."
 12			kitchen		old fridge			--					"[if the old fridge is not damaged]Using the insulation struts as a ladder, [the underling] scales the rear of the cryo chamber looking for the coolant shutoff valve. Afterwards, he swings over the top of the unit and lands near the door. [end if][The underling] tentatively touches the cryounit door, and reassured that the unit is no longer super cold inside. Too quietly to trip the voice-activated trasmission switch in his radio, he grumbles to himself, [quotation mark]I wonder if that light is on all the time or only when the door is open.[quotation mark]. He swings open the heavy insulated door and after a brief survey of the interior of the cryounit, he removes the unit's main logic board, dropping the chamber off your network."
 13			kitchen		range					--					"[The underling] clambers over a bulkhead towards the cooking range. Before going any closer, he radios,[quotation mark]This is [underling] to [assault ship designation], over.[quotation mark][paragraph break][quotation mark][Assault ship designation]. Go, [underling].[quotation mark][paragraph break][quotation mark]I'm standing right next to the fusion chamber. I just want to be sure... this thing is definitely off, right? I mean, it looks powered down now, but I don't want to go in there, and ... you know.[quotation mark][paragraph break][quotation mark]Our scans show Valkyrie has no heavy helium. I repeat, the have no fusion fuel. You should be fine... if not, we're suiting up your backup. Over.[quotation mark][paragraph break][quotation mark]Right. Okay, thanks. I'm going in.[quotation mark] [The underling] runs into the fusion chamber, pulls the control unit out of the wall, the scene fades from your view. [The underling] re-emerges near the base of where the stove used to stand."
-14			kitchen		drawer					--					"Waving a geiger counter ahead like a crucifix against vampires, [the underling] approaches the reactor core. The geiger counter is whistling like a kettle on full boil.[paragraph break][if the underling is the technician]The nervous technician clears his throat and speaks into his radio microphone, [quotation mark]Come in, [assault ship designation], this is space tech Ktumbe reporting.[quotation mark][paragraph break][quotation mark]Roger, go ahead.[quotation mark][paragraph break][quotation mark]The level of ionizing radiation is off the scale in here. Are you sure this radsuit is rated for going near that reactor core?[quotation mark][paragraph break][quotation mark]Should be, yeah. Hey -- you're still alive, right? Must be working.[quotation mark][paragraph break][quotation mark]I guess so. Okay, I'm going to pull the plug on this thing.[otherwise][quotation mark]This is maintenance and repair robot designation zed-alpha-four. I am proceeding with deactivation of the reactor core. Radiation levels are high. I recommend full rad-decon when I return to the [assault ship designation][end if][quotation mark][paragraph break][quotation mark]Roger that. This is [assault ship designation] standing by.[quotation mark][paragraph break][The underling] pulls the telemetry bud on the reactor controller and from your perspective, the kitchen drawer winks out of existence."
+14			kitchen		drawer					--					"[Ktumbe's last transmission]" [another case of too complicated substitution]
 15			kitchen		--			--			"[The underling] moves quickly out of the kitchen, glad to be finished with the reactor core.[paragraph break]The situation has become so dire that you try to deny the reality of events you are witnessing, but there is no respite. You consider your options for slowing down the cascading failures that are robbing you of your remaining functionality -- you still have some options to fight against the Myomita ship and its minions, but your chances for a rescue are dwindling.[paragraph break]It occurs to you, that the secondary mission objective may need to become primary: prevent Earth from recovering the Musashi 5 probe data. At all costs."
-16			living room	--						--					"[if the underling is in the location][The underling] slides stealthily into the living room against one bulkhead. [end if]On the local band radio, you intercept, [quotation mark]This is [underling] to [assault ship designation].[quotation mark][paragraph break][quotation mark][Assault ship designation], [underling], copy.[quotation mark][paragraph break][quotation mark]Sir, I don't see any one here.[quotation mark][paragraph break][quotation mark]We told them to stay out of your way. They're probably hiding. Holded up in escape pods or something.[quotation mark][paragraph break][quotation mark]I don't think so sir. When I say nobody, I mean, I've been through just about the entire ship, nosecone to main thruster, and I see no one at all. And another thing -- there aren't any escape pods. Also, no galley, no barracks, nothing. This is a like a ghost ship. Creepy.[quotation mark][paragraph break][quotation mark]Get ahold of yourself, [underling]! Secure the cargo door and finish the memory dump, and we can all go home.[quotation mark][paragraph break][quotation mark]Aye sir. Almost done.[quotation mark]"
+16			living room	--						--					"[nobody home]"
 17			living room	--						front door		"[The underling] fiddles with the controls on the front door, and suddenly you realize that you can no longer feel the door. It is still there, but you can no longer open and close it.[paragraph break]This is [underling] reporting: Cargo bay door secured.[quotation mark][paragraph break]You experience a visceral wave of dread as [the underling] turns toward your deep memory unit, which stores the encrypted data from the Musashi 5 space probe.[paragraph break]You vainly wish that you had some control of the situation, that you were not paralyzed and immobile. You float disembodied  in a sea of anxiety."
 18			living room	--						picture			"[The underling] takes the picture of you, Rover and Tomasz off the wall and connects it to some device which flickers and beeps. When he puts it back on the wall, the picture is dark.[paragraph break][quotation mark]Moe's Gah! You wouldn't believe the data capacity of this thing -- and it's almost full![quotation mark] gushes [the underling].[paragraph break][quotation mark]Acknowledged, [underling], data stream is still being buffered over here. I think you've hit the mother load. You are authorized to return to [assault ship designation].[quotation mark][paragraph break][quotation mark]Roger, [assault ship designation], I'm on the way![quotation mark][paragraph break]You've had so many nightmares about losing the data, it is hard to believe that this time it is happening, and that everything you have done is for naught."
+
+To say Ktumbe's last transmission:
+	say "Waving a geiger counter ahead like a crucifix against vampires, [the underling] approaches the reactor core. The geiger counter is whistling like a kettle on full boil.[paragraph break]";
+	if the underling is the technician:
+		say "The nervous technician clears his throat and speaks into his radio microphone, [quotation mark]Come in, [assault ship designation], this is space tech Ktumbe reporting.[quotation mark][paragraph break][quotation mark]Roger, go ahead.[quotation mark][paragraph break][quotation mark]The level of ionizing radiation is off the scale in here. Are you sure this radsuit is rated for going near that reactor core?[quotation mark][paragraph break][quotation mark]Should be, yeah. Hey -- you're still alive, right? Must be working.[quotation mark][paragraph break][quotation mark]I guess so. Okay, I'm going to pull the plug on this thing. [run paragraph on]";
+	otherwise:
+		say "[quotation mark]This is maintenance and repair robot designation zed-alpha-four. I am proceeding with deactivation of the reactor core. Radiation levels are high. I recommend full rad-decon when I return to the [assault ship designation]. [run paragraph on]";
+	say "[quotation mark][paragraph break][quotation mark]Roger that. This is [assault ship designation] standing by.[quotation mark][paragraph break][The underling] pulls the telemetry bud on the reactor controller and from your perspective, the kitchen drawer winks out of existence."
+	
+To say nobody home:
+	if the underling is in the location:
+		say "[The underling] slides stealthily into the living room against one bulkhead. [run paragraph on]";
+		say "On the local band radio, you intercept, [quotation mark]This is [underling] to [assault ship designation].[quotation mark][paragraph break][quotation mark][Assault ship designation], [underling], copy.[quotation mark][paragraph break][quotation mark]Sir, I don't see any one here.[quotation mark][paragraph break]";
+		say "[quotation mark]We told them to stay out of your way. They're probably hiding. Holded up in escape pods or something.[quotation mark][paragraph break][quotation mark]I don't think so sir. When I say nobody, I mean, I've been through just about the entire ship, nosecone to main thruster, and I see no one at all. And another thing -- there aren't any escape pods. Also, no galley, no barracks, nothing. This is a like a ghost ship. Creepy.[quotation mark][paragraph break][quotation mark]Get ahold of yourself, [underling]! Secure the cargo door and finish the memory dump, and we can all go home.[quotation mark][paragraph break][quotation mark]Aye sir. Almost done.[quotation mark][paragraph break]"
+	
+
 
 Table of Approach Chatter
 range		reply to silence	reply to surrender		reply to refusal
