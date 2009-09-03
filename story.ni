@@ -1059,7 +1059,7 @@ Check Businessing:
 	if the player is not poopready:
 		if the player is prepoop:
 			if the white egg is raw:
-				say "[if the player is clueless][one of]Maybe after you eat something[or]You don't need to go right now[or]You usually go a bit later in the morning[or]You're a creature of habit. Maybe after breakfast[in random order][otherwise]Before shunting power to the retros, it must first be produced. To generate enough power to lift off, heavy helium fuel must be contained in a magnetic bottle and ignited in the fusion chamber[end if].";
+				say "[if the player is clueless][one of]Maybe after you eat something[or]You don't need to go right now;  check the list on the fridge[or]You usually go a bit later in the morning, as your list on the fridge often reminds you[or]You're a creature of habit. Maybe after breakfast? That's what your list on the fridge recommends, at least[in random order][otherwise]Before shunting power to the retros, it must first be produced. To generate enough power to lift off, heavy helium fuel must be contained in a magnetic bottle and ignited in the fusion chamber[end if].";
 			otherwise:[egg cooked]
 				say "[if the player is clueless][one of]Sometimes this sort of venture is more successful after eating[or]The appetizing smell of the fried egg wafts in from the kitchen, reminding you that you haven't had your breakfast yet[or]Nothing is forthcoming[stopping][otherwise]Power cannot be shunted until the fused heavy helium residue is fed to the recycling system[end if].";
 		otherwise:[postpoop]
@@ -2223,7 +2223,7 @@ Check cracking it into:
 	if the enamel_pid is zero:
 		now the frying pan is on the counter;
 		now the white egg is in the frying pan;
-		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster. You put the egg and the frying pan to the side for the moment." instead.
+		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster.  (This is why you have your list hanging on the fridge!)  You put the egg and the frying pan to the side for the moment.  ()" instead.
 		
 Carry out cracking it into:
 	move the white egg to the frying pan;
