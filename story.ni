@@ -271,7 +271,7 @@ g-pure-blue	255
 
 Table of User Styles (continued)
 style name	justification	obliquity	indentation	first-line indentation	boldness	fixed width	relative size 	glulx color
-special-style-1	left-justified	no-obliquity		0		15	light-weight	fixed-width-font	-1	g-pure-blue
+special-style-1	left-justified	no-obliquity		5		-5	light-weight	fixed-width-font	-1	g-pure-blue
 special-style-2	center-justified	no-obliquity	0	0	regular-weight	fixed-width-font	1	g-white
 
 [Let's do a random walk, shall we?  :-) ]
@@ -1072,6 +1072,7 @@ Check Businessing:
 			the rule fails.
 	
 Carry out businessing:
+	change outcome-override to force-success;
 	now the ACU is postpoop.
 	
 Report businessing:
@@ -1229,6 +1230,12 @@ Instead of singing:
 			say "You [one of]quietly sing a short song that Tomasz had taught you. The song is about a lonely colony ship engineer who pines for his sweetheart back on Earth[or]sing a slow ballad,[quotation mark]The Orange Hills of Mars[quotation mark][or]crank out a bawdy drinking song, [quotation mark]Bartender, set me up a Barsoom[quotation mark][or]hum (because you can't remember the words) a short tune that children learn to remember the order of the planets in the Solar System. Obviously, the song missed its mark with you, although you still remember the catchy melody[or]bang out a respectable version of [quotation mark]A Common Hope[quotation mark], the anthem of the People's Government of Mars[or]sing a short tune[stopping].";	
 	otherwise:
 		say "You dump core, producing reams and reams of symbolic notation representing the instantaneous state of your quantum processor."
+		
+Instead of burning:
+	if the player is the acu:
+		say "[if the player is clueless]Burning anything in your cottage would set off the environmental alarms[otherwise]Interdicted by the fire suppression system[end if].";
+	otherwise:
+		say "You can sit, rollover, bark, come, lay down, give kisses, dig, and attack. That's a lot of tricks for a dog. Pyrokinesis is next on your list, but you're not there yet."
 
 Chapter Not Ready For Prime Time - Not for release
 
@@ -1243,6 +1250,7 @@ Report reorienting:
 Instead of attacking the chain: [consider leaving something like this in the game]
 	if the chain is intact:
 		now the chain is broken;
+		change outcome-override to force-success;
 		say "No doubt for legitimate purposes of testing rather than out of frustration, you break the chain with your brutish strength."
 		
 Section Possessing
@@ -1433,6 +1441,7 @@ The general form of these is:
 Section Barking
 
 Persuasion rule for asking Rover to try barking:
+	change outcome-override to force-success;
 	persuasion succeeds.
 
 Barking is an action applying to nothing. Understand "bark" as barking.
@@ -1445,6 +1454,7 @@ Check barking:
 			say "Leave barking to the dogs." instead.
 		
 Carry out barking:
+	change outcome-override to force-success;
 	say "[doggerel]";
 	Drop Rover's Payload;
 	if the female dog is in the location and the female dog carries the delicious bone:
@@ -1466,6 +1476,7 @@ To say bulldozer gets the bone:
 	say "The beautiful female dog bows her [one of]graceful[or]swan like[or]lithe[or]delicate[or]finely shaped[or]sculpted[in random order] neck and takes the bone in her [one of]irresistable[or]voluptuous[or]inviting[or]enticing[or]tempting[or]stunning[or]striking[or]beguiling[or]enchanting[or]charming[or]alluring[or]tantalizing[or]comely[or]fair[in random order] lips."
 	
 Instead of an animal barking:
+	change outcome-override to force-success;
 	if Back on Mars is happening:
 		now the endgame is david-killed;
 		say "Forgetting his bone for a moment, Rover takes a big breath and lets out a mighty, [quotation mark]Woooooooof![quotation mark][paragraph break]The jagged, twisted space probe falls from his jaws, pinning David to the deck, and nearly slicing him in half. He expires instantly.[paragraph break]Rover takes a step back, the [quotation mark]Did I do something wrong?[quotation mark] expression playing across his face.[paragraph break]";
@@ -1494,6 +1505,7 @@ Section Attacking
 Understand "bite [a thing]" as attacking when the player is Rover.
 
 Persuasion rule for asking Rover to try attacking:
+	change outcome-override to force-success;
 	persuasion succeeds.
 	
 Instead of Rover attacking when Rover is in the Valkyrie Area:
@@ -1512,6 +1524,7 @@ Instead of Rover attacking when Rover is in the Valkyrie Area:
 Section Lying Down
 
 Persuasion rule for asking Rover to try lying down:
+	change outcome-override to force-success;
 	persuasion succeeds.
 
 Lying down is an action applying to nothing. Understand "lie" or "lie down" as lying down.
@@ -1534,6 +1547,7 @@ Instead of an animal lying down:
 	rule succeeds.
 	
 Persuasion rule for asking an animal to try lying on:
+	change outcome-override to force-success;
 	persuasion succeeds.
 	
 Lying on is an action applying to one thing. Understand "lie on [something]" or "lie down on [something]" or "lie in [something]" as Lying on.
@@ -1548,6 +1562,7 @@ Instead of an animal lying on:
 Section Rolling Over
 	
 Persuasion rule for asking Rover to try rollovering:
+	change outcome-override to force-success;
 	persuasion succeeds.
 	
 Rollovering is an action applying to nothing. Understand "roll over" and "roll" as rollovering.
@@ -1575,6 +1590,7 @@ Instead of an animal rollovering:
 Section Digging
 
 Persuasion rule for asking Rover to try digging:
+	change outcome-override to force-success;
 	persuasion succeeds.
 
 Digging is an action applying to nothing. Understand "dig" and "excavate" as digging.
@@ -1597,6 +1613,7 @@ Instead of an animal digging:
 Section Coming
 
 Persuasion rule for asking Rover to try coming:
+	change outcome-override to force-success;
 	persuasion succeeds.
 
 Coming is an action applying to nothing. Understand "come" or "come here" or "here boy" or "food" or "dinner" or "chow" or "come and get it" as coming.
@@ -1624,6 +1641,7 @@ Instead of Rover coming when Rover is not the player:
 Section Giving Kisses
 
 Persuasion rule for asking Rover to try smooching:
+	change outcome-override to force-success;
 	persuasion succeeds.
 
 Smooching is an action applying to nothing. Understand "give kisses" or "give kiss" or "kisses" as smooching.
@@ -1685,6 +1703,7 @@ Section Sit
 Buttdowning is an action applying to nothing. Understand "sit" as buttdowning.
 
 Persuasion rule for asking Rover to try buttdowning:
+	change outcome-override to force-success;
 	persuasion succeeds.
 	
 Carry out buttdowning:
@@ -1701,6 +1720,7 @@ Instead of an animal buttdowning:
 Section Answering Rover
 
 Instead of answering Rover that "hello":
+	change outcome-override to force-success;
 	say "[one of][Rover] shakes his head slowly, once again lamenting your ignorance of dog-speak and stubborn insistence on making noises that mean absolutely nothing.[or][Rover] pauses for a moment to compose his reply, [quotation mark]Errrr...Wruff.[quotation mark][or][Rover] hesistates. Did you just say [quotation mark]walkies[quotation mark]? Hello. Walkies. Hello. Walkies. Gawoof, they sound a lot alike. Why can't you just learn to bark properly?[or][Rover] looks around wondering if perhaps you are talking to someone else.[or][Rover] wags his tail.[stopping]"
 	
 Section Burying
@@ -2692,7 +2712,7 @@ Check brushing:
 		rule fails.
 		
 Carry out brushing:
-	do nothing.
+	change outcome-override to force-success.
 
 Report brushing:
 	say "[if the player is clueless]The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved[otherwise]Nanobristles wake from dormancy and begin reproducing through the ship, sending waves of their progeny across the surface of the ship. The uncountable hordes of microscopic scrubbers oxidize and buff the ship to a brilliant, gleaming silver[end if]."
@@ -2751,11 +2771,13 @@ Before switching on the black plate:
 		
 After switching on the black plate when the First Sim is not happening:
 	if the player is clueless:
+		change outcome-override to force-success;
 		say "The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day.";
 	otherwise:
 		if the assault ship distance is 0:
 			say "Docking detected. UV irradiator discharge inhibited.";
 		otherwise:
+			change outcome-override to force-success;
 			say "The UV light diffuses over the entire surface of the ship and causes the chemical mixture on the hull to polymerize into an durable, clear ablative coating.";
 	if the enamel_pid is 0 and the Second Sim is happening:
 		let metatext be "Janet: I was holding my breath there. Looks like our patch worked.[line break]David: I had my fingers crossed too.";
@@ -3366,10 +3388,12 @@ Instead of taking the delicious bone when female dog carries the delicious bone:
 	say "[one of]It is a nice bone...but how would she feel if you just took it? She might find that playful, but then again, she might take it the wrong way. She might like resent such a bold move, uninvited. On the other hand, she could be secretly wishing that you'd make the first move. It might be just the right thing. It could also be a dreadful mistake though. You might come across as greedy and pushy. Not the sort of impression you'd like to make... Um. What were you thinking about? You forget[or]You wonder: is she holding out the bone to taunt you? Is this some sort of a power game that she's playing with you? Or could the bone be symbolic in some way of the sort of sharing that she might expect from a mate? She could be offering the bone to you. Would it be a mistake to take it? What would that say about the dynamics and balance between partners in this relationship? Who is a giver and who is a taker? This sort of mind game confuses you and you decide that not taking the bone is marginally more in your interest than the more obvious option of taking the bone[or]You would rather hold out for her to offer you the bone, than to take it outright[or]You would rather win the bone by impressing her. You're a cur, yes, but not the sort of cur that takes bones from ladies[or]Nah, that would be rude[stopping]."
 	
 Instead of asking or telling the female dog about:
+	change outcome-override to force-success;
 	say "Your eloquent words flow like an intoxicating nectar from your muzzle to her ears.";
 	try barking.
 	
 Instead of answering the female dog that:
+	change outcome-override to force-success;
 	say "Your eloquent words flow like an intoxicating nectar from your muzzle to her ears.";
 	try barking.
 	
@@ -3934,6 +3958,7 @@ the cshing action					TRUE			"SHELL" [csh, zsh, tcsh]
 the dating action					TRUE			"TEMPORAL FIX" [date, time]
 the dancing action					TRUE			"MANEUVER TEST" [dance]
 the digging action					FALSE			"EXCAVATE" [dig]
+the directed-barking action		TRUE			"EMIT PULSE" [bark at s.o.]
 the disrobing action				false			"DISENGAGE" [undress, strip, peel down]
 the dreaming action				TRUE				"RANDOMIZE ADDRESS SPACE" [dream]
 the dressing action				false				"ENGAGE" [dress, suit up, etc.]
