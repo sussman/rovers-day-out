@@ -3831,28 +3831,23 @@ First before an actor doing something (this is the catch failed actions rule):
 		if test-action is a verb listed in the Table of Technoverbs:
 			change got-action to true;
 			change the status-line-action to technoverb entry;
-	if test-action is the going towards action and the noun is a room:
-		change last-noun to "[aware-name of the noun]";
-	otherwise if test-action is the looking action:
-		change last-noun to "[aware-name of the location of the player]";
-	otherwise:
-		if the noun is something then change last-noun to "[aware-name of the noun]".
+		if test-action is the going towards action and the noun is a room:
+			change last-noun to "[aware-name of the noun]";
+		otherwise if test-action is the looking action:
+			change last-noun to "[aware-name of the location of the player]";
+		otherwise:
+			if the noun is something then change last-noun to "[aware-name of the noun]".
 
 First after an actor doing something (this is the catch successful actions rule):
 	if got-action is true:
 		do nothing;
-	otherwise:
-		change got-action to true;
-		change test-action to the action-name part of the current action;
-		if test-action is a verb listed in the Table of Technoverbs:
-			change the status-line-action to technoverb entry;
-		otherwise:
-			if test-action is:  [ignore these actions, they shouldn't be reported]
-				-- the memory-updating action:
-					continue the action;
-				-- otherwise:
-					say "(Note:  [test-action] isn't in technoverb-table)" in metaspeak;
-					continue the action;
+	otherwise:[meaning, it wasn't found in the technoverb table]
+		if test-action is:  [ignore these actions, they shouldn't be reported]
+			-- the memory-updating action:
+				continue the action;
+			-- otherwise:
+				say "(Note:  [test-action] isn't in technoverb-table)" in metaspeak;
+				continue the action;
 	if the noun is something:
 		change last-noun to "[aware-name of the noun]";
 	change last-success to "TRUE";
