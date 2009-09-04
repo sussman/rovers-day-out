@@ -3724,7 +3724,7 @@ Chapter Manpages
 
 Table of Manual Pages
 topic		description
-"manual" or "manpage" or "man"		"The ship operations manual is provided to supplement ACU understanding of defined objects in the event that cognitive constraints are released. To request information about an object, the syntax is:[paragraph break] man [bracket]object[close bracket][paragraph break]The manual does not include entries for flosix command line syntax, although a subset of flosix commands are available to the ACU via the virtual console."
+"manual" or "manpage" or "man"		"The ship operations manual is provided to supplement ACU understanding of defined objects in the event that cognitive constraints are released. To request information about an object, the syntax is:[paragraph break] man [bracket]object[close bracket][paragraph break]The manual does not include entries for Flosix command line syntax, although a subset of Flosix commands are available to the ACU via the virtual console."
 "bulkhead" or "bulkheads"		"Valkyrie's bulkheads are constructed of interlocking carbon nanotubule and neoadamite matrices to provide excellent performance in terms of all stress modes."
 "casimir" or "casimir drive" or "extension strut" or "strut"		"The zero-point energy drive creates a time-space gradient across which the ship travels. In conjunction with the ship's temporal transgressor, the ship is capable of faster-than-light travel without incurring substantial time debt. The drive must be extended for interstellar flight, but retracted to make planetfall. The drive cannot be used within stellar systems or near other significant gravity wells. The drive is delicate and should be protected from physical damage, particularly to the field plates."
 "spatial manifold" or "manifold attenuator" or "spatial manifold attenuator" or "attenuator"		"The spatial manifold attenuator smooths irregularities in the Casimir gradient, assuring pseudolaminar flow in the pathway of the ship through time-space."
@@ -5283,7 +5283,7 @@ Rule for amusing a victorious player:
 			say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
 		otherwise:
 			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
-	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
+	say "* [if used-manual is true]Once cognitive constraints were released, you used the Flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any Flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
 	say "* Did Rover succeed in his amorous advances towards his significant other in the park?"
 	
