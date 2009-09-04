@@ -1847,7 +1847,7 @@ To say living room status:
 	if the drapes are in the Living Room and the drapes are closed:
 		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light";
 	otherwise:
-		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window[if the nameplate is not already-read], illuminating a framed picture on the wall[end if][if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
+		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window[if the nameplate is not already-read], illuminating a framed picture on the wall[end if][if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
 		
 Sunlight is a privately-named scenery in the Living Room. Understand "light" and "sunlight" and "illumination" and "daylight" and "shaft" as sunlight when the player is clueless. The description of sunlight is "[if the drapes are in the living room and the drapes are closed]A single shaft of daylight slices like a laser through the living room. Although dramatic, it does not provide very effective illumination[otherwise]Bright daylight shines in through the window facing the park. The light is ever so slightly tinted red from surface reflection near the collectors[end if]." The aware-name of sunlight is "photon sensor".
 
@@ -4383,7 +4383,7 @@ When Arm Hurts begins:
 	
 When Arm Hurts ends:
 	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the black plate before rubbing the left arm]
-		let metatext be "David: Is the static charge neutralization part the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
+		let metatext be "David: Is the static charge neutralization part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
 		say "[metatext in metaspeak]".
 
 Every turn during Arm Hurts:
@@ -4559,7 +4559,7 @@ Chapter Walkies
 Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and the Real Thing is happening. Walkies ends when Rover is in the Living Room.
 
 When Walkies begins:
-	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, full of energy. [run paragraph on]";
+	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, [one of]full of energy[or]ready to romp[or]ready to play[or]eager to explore strange new worlds[in random order]. [run paragraph on]";
 	if Rover carries the delicious bone:
 		say "You leave your [delicious bone] in the living room, with the intention of giving it a proper chewing later[if the white egg is not in the Valkyrie Area], after doing some more exploring[end if].";
 		now the delicious bone is in the Living Room;
