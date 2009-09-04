@@ -271,7 +271,7 @@ g-pure-blue	255
 
 Table of User Styles (continued)
 style name	justification	obliquity	indentation	first-line indentation	boldness	fixed width	relative size 	glulx color
-special-style-1	left-justified	no-obliquity		5		-5	light-weight	fixed-width-font	-1	g-pure-blue
+special-style-1	left-justified	no-obliquity		5		0	light-weight	fixed-width-font	-1	g-pure-blue
 special-style-2	center-justified	no-obliquity	0	0	regular-weight	fixed-width-font	1	g-white
 
 [Let's do a random walk, shall we?  :-) ]
@@ -805,6 +805,7 @@ Carry out going towards:
 		let the way be the best route from the location to the location of the noun, using even locked doors;
 		if the way is not a direction, say "You can't figure out how to get there." instead;
 		let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
+		change outcome-override to force-success;
 		move the player to the destination.
 	
 Rule for reaching inside a room when the current action is going towards: 
@@ -897,6 +898,7 @@ Instead of folding the futon:
 		say "That would be painful.";
 	otherwise:
 		now the futon is folded;
+		change outcome-override to force-success;
 		say "With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage."
 	
 Unfolding is an action applying to one thing. Understand "unfold [something]" as unfolding when the player is the acu.  
@@ -1145,7 +1147,8 @@ Check cooking:
 		the rule fails.
 		
 Carry out cooking:
-	try silently cracking the white egg into the frying pan		
+	change outcome-override to force-success;
+	try silently cracking the white egg into the frying pan.		
 	
 Section Standing
 
@@ -1236,6 +1239,19 @@ Instead of burning:
 		say "[if the player is clueless]Burning anything in your cottage would set off the environmental alarms[otherwise]Interdicted by the fire suppression system[end if].";
 	otherwise:
 		say "You can sit, rollover, bark, come, lay down, give kisses, dig, and attack. That's a lot of tricks for a dog. Pyrokinesis is next on your list, but you're not there yet."
+		
+Instead of buying:
+	if the player is the acu:
+		say "[if the player is clueless]Your think about how few Marx are in the bank and decide to hold off on any purchasing until after pay day[otherwise]You are not able to access the banking network[end if].";
+	otherwise:
+		say "First, you check your pockets for your wallet. Oh wait, you have no pockets. BECAUSE YOU'RE A DOG! It bears repeating from time to time."
+		
+Instead of dropping something which is not enclosed by the player:
+	change outcome-override to force-failure;
+	say "You [if the player is clueless]weren't holding[otherwise]hadn't selected[end if] [the noun] to begin with."
+
+
+[TOCONSIDER: a consult about, cutting generic response?]
 
 Chapter Not Ready For Prime Time - Not for release
 
@@ -1432,7 +1448,7 @@ Chapter Teaching An Old Dog
 
 The general form of these is:
 	
-- persuasion rule for rover: he'll do it.
+- persuasion rule for rover: he'll do it. Also, change last-noun to Rover, and make it a success.
 - definition of the action and its synonyms
 - check rules: something reasonable happens if the acu does the verb.
 - carry out rule: what happens when rover does the action of his own accord.
@@ -1441,6 +1457,7 @@ The general form of these is:
 Section Barking
 
 Persuasion rule for asking Rover to try barking:
+	change last-noun to "ROVER";
 	change outcome-override to force-success;
 	persuasion succeeds.
 
@@ -1505,7 +1522,7 @@ Section Attacking
 Understand "bite [a thing]" as attacking when the player is Rover.
 
 Persuasion rule for asking Rover to try attacking:
-	change outcome-override to force-success;
+	change last-noun to "ROVER";
 	persuasion succeeds.
 	
 Instead of Rover attacking when Rover is in the Valkyrie Area:
@@ -1514,6 +1531,7 @@ Instead of Rover attacking when Rover is in the Valkyrie Area:
 	otherwise:
 		if David is exposed:
 			say "Rover throws his bone to the side, and the space probe crashes thunderously against the cargo bay bulkheads. [if David Venkatachalam is exposed]Rover had not approved of David's tone of speech towards Janet, and had been growling quietly in his corner. Given the command, he springs forward, paws planted on David's chest. David expires immediately, trapped under 45 tons of angry robotic Dalmation.[paragraph break][quotation mark]Good boy![quotation mark] exclaims Janet, a tear in her eye. And then, turning to the the ACU she admits, [quotation mark]I wish I had thought of that.[quotation mark][paragraph break]";
+			change outcome-override to force-success;
 			now endgame is david-killed;
 			end the game in victory;
 			the rule succeeds;
@@ -1524,6 +1542,7 @@ Instead of Rover attacking when Rover is in the Valkyrie Area:
 Section Lying Down
 
 Persuasion rule for asking Rover to try lying down:
+	change last-noun to "ROVER";
 	change outcome-override to force-success;
 	persuasion succeeds.
 
@@ -1547,7 +1566,6 @@ Instead of an animal lying down:
 	rule succeeds.
 	
 Persuasion rule for asking an animal to try lying on:
-	change outcome-override to force-success;
 	persuasion succeeds.
 	
 Lying on is an action applying to one thing. Understand "lie on [something]" or "lie down on [something]" or "lie in [something]" as Lying on.
@@ -1556,6 +1574,8 @@ check lying on:
 	try lying down instead.
 	
 Instead of an animal lying on:
+	change last-noun to "ROVER";
+	change outcome-override to force-success;
 	say "[The actor] looks at [the noun] and wonders if this is some sort of trick. [if the noun is a bed]Dogs aren't allowed on people furniture, are they?[otherwise]That's not a good place for a dog to lie![end if]";
 	rule succeeds.
 
@@ -1563,6 +1583,7 @@ Section Rolling Over
 	
 Persuasion rule for asking Rover to try rollovering:
 	change outcome-override to force-success;
+	change last-noun to "ROVER";
 	persuasion succeeds.
 	
 Rollovering is an action applying to nothing. Understand "roll over" and "roll" as rollovering.
@@ -1590,7 +1611,7 @@ Instead of an animal rollovering:
 Section Digging
 
 Persuasion rule for asking Rover to try digging:
-	change outcome-override to force-success;
+	change last-noun to "ROVER";
 	persuasion succeeds.
 
 Digging is an action applying to nothing. Understand "dig" and "excavate" as digging.
@@ -1604,6 +1625,7 @@ check digging:
 		the rule fails;
 		
 Carry out digging:
+	change outcome-override to force-success;
 	say "You dig for a while with your front paws. Finding nothing, you kick the dirt back in again so you won't be blamed for digging up the yard."
 	
 Instead of an animal digging:
@@ -1613,7 +1635,6 @@ Instead of an animal digging:
 Section Coming
 
 Persuasion rule for asking Rover to try coming:
-	change outcome-override to force-success;
 	persuasion succeeds.
 
 Coming is an action applying to nothing. Understand "come" or "come here" or "here boy" or "food" or "dinner" or "chow" or "come and get it" as coming.
@@ -1627,10 +1648,12 @@ check coming:
 		the rule fails.
 	
 carry out coming:
+	change last-noun to "ROVER";
 	if Rover is in the location:
 		say "Rover cocks his head quizzically.";
 	otherwise:
 		now Rover is in the location;
+		change outcome-override to force-success;
 		say "Rover tears around the corner excitedly, arriving in [the location in lower case]."
 		
 Instead of Rover coming when Rover is not the player:
@@ -1641,7 +1664,8 @@ Instead of Rover coming when Rover is not the player:
 Section Giving Kisses
 
 Persuasion rule for asking Rover to try smooching:
-	change outcome-override to force-success;
+	change last-noun to "ROVER";
+	change outcome-override to force-success; [Rover will kiss almost anything ]
 	persuasion succeeds.
 
 Smooching is an action applying to nothing. Understand "give kisses" or "give kiss" or "kisses" as smooching.
@@ -1703,7 +1727,7 @@ Section Sit
 Buttdowning is an action applying to nothing. Understand "sit" as buttdowning.
 
 Persuasion rule for asking Rover to try buttdowning:
-	change outcome-override to force-success;
+	change last-noun to "ROVER";
 	persuasion succeeds.
 	
 Carry out buttdowning:
@@ -1715,6 +1739,7 @@ Carry out buttdowning:
 	
 Instead of an animal buttdowning:
 	say "Rover grazes the ground with his rear end, like a suborbital glider aborting a landing.";
+	change outcome-override to force-success;
 	the rule succeeds.
 	
 Section Answering Rover
@@ -1893,6 +1918,7 @@ Before taking off the flight suit when the player is enclosed by a supporter:
 	the rule succeeds.
 
 After taking off the flight suit:
+	change outcome-override to force-success;
 	say "You take off your [if the drapes are open]blue[end if] flight suit and it ";
 	if the player is on a supporter:
 		say "bunches up in a crumpled heap on the [holder of the player]";
@@ -1947,6 +1973,7 @@ Check dressing:
 		
 Carry out dressing:
 	try wearing the flight suit;
+	change outcome-override to force-success;
 	change last-noun to "QUANTUM ISOLATOR".
 		
 The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background.". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
@@ -2252,6 +2279,7 @@ Check cracking it into:
 		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster. You put the egg and the frying pan to the side for the moment." instead.
 		
 Carry out cracking it into:
+	change outcome-override to force-success;
 	move the white egg to the frying pan;
 	now the white egg is broken;
 	if the player is clueless:
@@ -2302,6 +2330,7 @@ Before eating the white egg:
 				say "The fuel has not been ignited; it would be premature to recycle the containment unit.";
 			the rule succeeds;
 		otherwise:[cooked]
+			change the outcome-override to force-success;
 			now the player is poopready;
 			say "[if the player is clueless]You gobble down what might well have been the best neoegg you've ever had[otherwise]You recycle the components of the heavy helium containment unit and reallocate them according to the ship's needs[end if].";
 			if the Second Sim is happening:
@@ -2668,6 +2697,7 @@ Instead of eating the dental floss:
 		say "[if the player is clueless]You're not so keen on eating anything that has been a functional part of a toilet[otherwise]The object linker is required to bridge the dysfunctional servo in order to actuate the thrust aperature and fire the retros. You defer recycling the object linker until is it no longer required[end if].";
 	otherwise:
 		move dental floss to Limbo;
+		change outcome-override to force-success;
 		say "[if the player is clueless]Mmm. Quite tasty[otherwise]Key pair decohered and ready for regeneration[end if]."
 	
 Flossing is an action applying to one thing. Understand "floss [something]" as flossing when the player is the acu.
@@ -2798,6 +2828,7 @@ Does the player mean doing something with the tank-water:
 	it is very likely.
 	
 Instead of drinking or taking or touching or tasting the tank-water:
+	change outcome-override to force-failure;
 	say "[if the player is clueless]That is hardly potable[otherwise]The magnetic field is fluxed in space[end if]."
 
 The clueless-name of the tank-water is "water". Understand "water" as the tank-water. The aware-name of tank-water is "fluctating magnetic field". The clueless-description of the tank-water is "Clear, but still not inviting, water." The aware-description of the tank-water is "Strong, oscillating magnetic fields of unusual complexity." The tank-water-proxy is an aware-proxy that is part of the tank-water. Understand "fluctuating", "magnetic", "field", "oscillating", "flux" or "force" as the tank-water-proxy. 
@@ -2952,6 +2983,7 @@ Before closing a flipchair (called the flop):
 		say "[The flop] is already [if the player is clueless]down[otherwise]in position[end if].";
 		the rule fails;
 	otherwise:
+		change outcome-override to force-success;
 		now the flop is closed;	
 		if the toilet cover is closed:
 			now the toilet seat is closed;
@@ -3499,6 +3531,8 @@ Instead of taking the canned food:
 	try eating the canned food.
 	
 Before eating the canned food:
+	change the status-line-action to the technoverb corresponding to the verb of the eating action in the Table of Technoverbs;
+	change outcome-override to force-success;
 	say "One second the canned food is right there in front of you, the next you are staring at the bottom of the bowl. A warm, satisfied feeling flows from your snout to your tail.";
 	remove the canned food from play;
 	the rule succeeds.
@@ -3511,10 +3545,13 @@ Does the player mean doing something with the crystal clear water:
 The crystal clear water is an edible thing in the water dish. The indefinite article of the crystal clear water is "some". The description of the crystal clear water is "Clean, pure water. You are convinced that it must be much better than any water that has ever graced your own dog bowl." The scent of the crystal clear water is "like a mountain stream". The aware-name of the crystal clear water is "coolant".
 
 Instead of taking the crystal clear water:
+	change outcome-override to force-success;
 	say "Having nothing else to carry the water in, you drink your fill.";
 	try drinking the crystal clear water.
 	
 Before drinking the crystal clear water:
+	change outcome-override to force-success;
+	change the status-line-action to the technoverb corresponding to the verb of the drinking action in the Table of Technoverbs;
 	say "You gulp down the crystal clear water, all the time bearing in mind that it properly belongs to the enticing young female dog. It tastes all the better for that knowledge.";
 	remove the crystal clear water from play;
 	the rule succeeds.
@@ -3916,7 +3953,7 @@ First did-it-work rule (this is the explicitly set action outcome rule):
 A did-it-work rule when the test-action is a Verb listed in the Table of Technoverbs (this is the some actions default to True rule):
 	if the Successful entry is true:
 		change last-success to "TRUE".
-		
+
 A did-it-work rule when the test-action is the opening action:
 	if the noun is openable and the noun is open:
 		change last-success to "TRUE".
@@ -3942,13 +3979,14 @@ the BSOEing action					TRUE			"HALT"
 the burning action					false			"IGNITE"
 the businessing action			false			"POWER TRANSFER" [poop, pee, etc.]
 the buttdowning action			false			"PARK" [rover, sit]
+the burying action					FALSE			"EXCAVATE" [bury]
 the buying action					FALSE			"FUNDS TRANSFER"
 the cataloguing action			TRUE			"LIST DIRECTORY" [ls]
-the catting action					false			"CAT" [cat]
+the catting action					FALSE			"CAT" [cat]
 the CDing action					false			"CHANGE DIRECTORY" [cd]
 the clearing action 				TRUE			"CLEAR" [clear]
 the climbing action				false			"SELECT"
-the closing action					false			"DEACCESS" [close]
+the closing action	 				false			"DEACCESS" [close]
 the coming action					false			"SEEK" [come or "rover, come"]
 the cooking action					false			"FUSE"
 the consulting it about action	false			"LOOKUP" 
@@ -3963,7 +4001,7 @@ the disrobing action				false			"DISENGAGE" [undress, strip, peel down]
 the dreaming action				TRUE				"RANDOMIZE ADDRESS SPACE" [dream]
 the dressing action				false				"ENGAGE" [dress, suit up, etc.]
 the drinking action				false				"TRANSFER"
-the dropping action				false				"DESELECT"  [drop]
+the dropping action				TRUE				"DESELECT"  [drop]
 the eating action					false				"RECYCLE"  [eat]
 the echoing action					TRUE			"ECHO" [echo]
 the elevating action 				FALSE			"ELEVATE PRIVILEGE" [su, sudo]
@@ -4806,6 +4844,7 @@ Instead of eating the maintenance droid:
 	
 After eating the maintenance droid:
 	say "The maintenance droid wiggles and squirms as he enters the reclamation chute deep within the Valkyrie. His constituent parts are analyzed exhaustively as he passes through a series of scanners, and selected components are quickly dissected from his carcass for incorporation into Valkyrie's systems.";
+	change outcome-override to force-success;
 	increase henchmen defeated by one;
 	now the maintenance droid is toxic.
 	
