@@ -304,11 +304,12 @@ To say ACU Boot Banner:
 [General routine for displaying dialogue between Janet and David.]
 
 To say (dialogue - some text) in metaspeak:
-	say line break;
- 	say "[first custom style][dialogue]";
- 	say roman type;
- 	say variable letter spacing;
- 	say paragraph break.
+	if (the First Sim is happening or the Second Sim is happening):
+		say line break;
+ 		say "[first custom style][dialogue]";
+ 		say roman type;
+ 		say variable letter spacing;
+ 		say paragraph break.
 	
 [BSOD routines - uses Flexible Windows extension.]
 The BSOD-window is a g-window.   The type of the g-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
