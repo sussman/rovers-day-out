@@ -1186,7 +1186,29 @@ Report kissing:
 			-- otherwise:
 				change outcome-override to force-success;
 				say "You [if the player is clueless]kiss [the noun] lightly[otherwise]You attempt to negotiate a direct synch with [the noun] and fail[end if].";
-			 
+				
+
+Section Using
+
+Understand the command "use" as something new.  Using is an action applying to one thing.
+
+Understand "use [a thing]" as using.
+
+Report using:
+	if the noun is:
+		-- the TB-TS: [shower]
+			change outcome-override to force-failure;
+			say "You'll have to [if the player is clueless]enter the shower[otherwise]select the extruder[end if] first.";  [### Jack, should this be more abstracted?]
+		-- the floss:
+			try flossing teeth instead;
+		-- the toilet:
+			try businessing instead;
+		-- otherwise:
+			change outcome-override to force-failure;
+			say "[one of]I'm afraid you'll need to be more specific.[or]Apologies, but that's a bit vague;  can you express differently?[or]I don't quite follow.[or]Sorry, can you rephrase that?[or]Can you be more precise, please?[in random order]";
+;
+
+
 Chapter General Insteads
 
 Instead of examining a room:
@@ -4124,6 +4146,7 @@ the tying it to action			false		"BIND" [tie, attach]
 the unfolding action				false		"EXTEND" [unfold]
 the unlocking it with action		false		"UNSECURE"
 the uptiming action				TRUE		"UPTIME" [uptime]
+the using action			false		"TOGGLE"  [use]
 the waiting action					TRUE		"TIMER" [wait]
 the waking up action				false		"INITIALIZE" [wake, wake up]
 the waving action					false		"SEMAPHORE"
