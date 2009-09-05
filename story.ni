@@ -287,7 +287,7 @@ Carry out memory-updating:
 To say ACU Boot Banner:
 	say "[bold type][story title][roman type]";
 	say line break;
-	say "An Interactive Fiction by Janet Xiang[if the Real Thing is happening] and David Venkatachalam[end if]";
+	say "An Interactive Simulation by Janet Xiang[if the Real Thing is happening] and David Venkatachalam[end if]";
 	say line break;
 	let serial be "[stardate]";
 	if First Sim is happening:
