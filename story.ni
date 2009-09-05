@@ -4152,6 +4152,9 @@ Every turn:
 		if Rover is in the location:
 			say "[Rover] [if the player is clueless]looks down and devours the dog treat[otherwise]downloads the reward token[end if].[paragraph break]";
 			now Rover is busy;
+	if the player has a bowl:
+		if Rover is in the location and (Rover is hungry or Rover is thirsty):
+			say "[Rover] [if the player is clueless][one of]stares longingly at the bowl in your hand[or]is obviously waiting for you to give him a bowl[or]tingles with anticipation as he stares at the bowl you're carrying[or]outright gapes at the bowl you carry, then gently sniffs it in hopes that you'll give it to him[in random order][otherwise]stands waiting for [the food bowl] to be available to him[end if].[paragraph break]";
 	if the holder of Rover is the holder of the food bowl and Rover is hungry:
 		if the food bowl is full:
 			now Rover is not hungry;
