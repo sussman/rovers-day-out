@@ -366,9 +366,8 @@ Section Computer Humor
 
 Before touching something (called the item):
 	if the player is self-aware:
-		say "[";
-		say "[if item is an aware-proxy][aware-name of the holder of the item][otherwise][aware-name of the item][end if]";
-		say "]: file timestamp updated.";
+		change the outcome-override to force-success;
+		say "[bracket][if item is an aware-proxy][aware-name of the holder of the item][otherwise][aware-name of the item][end if][close bracket]: file timestamp updated.";
 		the rule succeeds.
 		
 Instead of jumping when the player is self-aware:
@@ -416,6 +415,7 @@ Carry out manpaging:
 	
 Instead of manpaging a topic listed in the Table of Manual Pages:
 	change used-manual to true;
+	change outcome-override to force-success;
 	say "[description entry][paragraph break]".
 
 CDing is an action applying to nothing.
@@ -477,12 +477,12 @@ Carry out CDing:
 	otherwise:
 		try going towards the destination.
 
-Whoing is an action applying to nothing. Understand "who" as whoing when the player is the ACU.
+Whoing is an action applying to nothing. Understand "who" as whoing.
 
 Carry out whoing:
 	if the player is clueless:
 		say "You.";
-	otherwise if the player is the ACU and the ACU is self-aware:
+	otherwise if the player is self-aware:
 		say "ACU        vconsole        [right justify turn count minus epoch_pid][paragraph break]".	
 		
 Uptiming is an action applying to nothing. Understand "uptime" as uptiming when the player is self-aware.
@@ -580,6 +580,7 @@ Carry out locating:
 		let U be the aware-name of the holder of item;
 		if T matches the text U, case insensitively:
 			say "[the path of item][paragraph break]";
+			change the outcome-override to force-success;
 			the rule succeeds;
 	say "Not found.";
 	the rule fails.
@@ -624,6 +625,7 @@ Carry out pinging:
 				let routetime be a random number from 1 to 9;
 				say "ping 127.0.0.1 with 56 bytes: [5 + routetime] attoseconds[line break]";
 			say "100% packets received[paragraph break]";
+			change the outcome-override to force-success;
 			the rule succeeds;
 		otherwise:
 			say "Host not available on network[paragraph break]";
@@ -672,6 +674,7 @@ Carry out cshing:
 Logoutting is an action applying to nothing. Understand "logout" as logoutting when the player is self-aware.
 
 Carry out logoutting:
+	change outcome-override to force-failure;
 	now depth is the number of entries in shells;
 	if depth is zero:
 		say "ACU metavisor shell logout interdicted.";
@@ -763,6 +766,7 @@ Check reading:
 		say "Nothing is printed on [the noun]." instead.
 			
 Carry out reading:
+	change the outcome-override to force-success;
 	say the inscription of the noun;
 	say paragraph break.
 	
@@ -913,6 +917,7 @@ Instead of unfolding the futon:
 		if Back on Mars is happening:
 			say "In an act of desperation, you prepare to deploy the Casimir Drive while in dry dock. An internal warning flashes red in your virtual vision, blinking insistantly. You try to push it to the side, but it is modal:[paragraph break]WARNING: Deep gravity well. Deploying Casimir Drive will cause a Casimir inversion. Theoretically, this may result in destruction on a planetary or greater scale. Confirm that Casimir deployment is authorized (Y/N)[paragraph break]BINARY INPUT REQUIRED>";
 			if the player consents:
+				change outcome-override to force-success;
 				say "There is a flash of white. And then nothing.";
 				now the endgame is casimired;
 				end the game in death;
@@ -962,13 +967,16 @@ Instead of smelling:
 	if the player is the ACU:
 		if the player is clueless:
 			if the noun is dog food or the noun is the food bowl or the noun is the dog chow bag:
+				change outcome-override to force-success;
 				say "It smells disgusting to you, but you bet it's haute cuisine as far as Rover is concerned.";
 			otherwise:
 				say "You smell nothing [one of]unusual[or]exciting[or]special[or]exotic[or]unexpected[or]remarkable[or]to write home about[or]worth mentioning[or]of note[in random order].";
 		otherwise:
+			change outcome-override to force-success;
 			say "Internal atmospheric analysis: [99 minus FiO2]% diatomic nitrogen, [FiO2]% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure [Pressure] kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
 		the rule succeeds;
 	otherwise:
+		change outcome-override to force-success;[Rover always smells something]
 		if the noun is the location:
 			if the scent of the noun is "":
 				say "This place doesn't have any particular smell, so you point your snout up in the air and take a good sniff. [run paragraph on]";
@@ -1089,6 +1097,7 @@ Instead of tying the dental floss to something:
 		if the chain is intact:
 			say "Tangling up the dental floss in the flush chain is asking for trouble."; [only clueless case is required, as chain is broken during the Real Thing scene]
 		otherwise:
+			change outcome-override to force-success;
 			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperature[end if].";
 			now the chain is repaired.
 
@@ -1116,13 +1125,20 @@ Instead of repairing the toilet:
 			say "[if the player is clueless]Sounds like the problem is in the water tank somewhere[otherwise]You detect a fault within the plasma constrictor, but diagnostics are limited as the plasma constrictor hatch is closed[end if]."
 			
 Instead of repairing Rover:
-	say "[if the player is clueless]Rover has already been fixed, and he didn't enjoy it[otherwise]While ROVER is missing two nuts on his underchassis, you consider him fixed[end if]."
+	say "[if the player is clueless]Rover has already been fixed, and he didn't enjoy it[otherwise]Although ROVER is missing two nuts on his underchassis, you consider him fixed[end if]."
 	
 Section Petting
 
-Petting is an action applying to one thing. Understand "pet [animal]" or "stroke [animal]" or "pat [animal]" or "scratch [animal]" or "massage [animal]" or "caress [animal]" or "rub [animal]" or "cuddle [animal]" as petting.
+Petting is an action applying to one thing. Understand "pet [something]" or "stroke [something]" or "pat [something]" or "scratch [something]" or "massage [something]" or "caress [something]" or "cuddle [something]" as petting.
 
+Check Petting:
+	if the noun is the female dog:
+		say "[one of]Maybe you'd consider that after a few months of social pleasantries and a suitable period of getting to know each other[or]You admire her for her sense of humor and the way she seems to understand you on a profoundly personal level. You don't want to risk everything that the two of you have built together by rushing head long into a physical relationship[or]You are too nervous[stopping]." instead;
+	if the noun is not Rover:
+		say "You [if the player is clueless]stroke [the noun] fondly[otherwise]are not able to synch with [the noun][end if]." instead.
+		
 Report Petting:
+	change the outcome-override to force-success;
 	say "[one of]You scratch [Rover] behind the ears, and he makes a rumbling happy sound[or]You rub [Rover] under the chin, and he cranes back his neck and twists his head from side to side in enjoyment[or]You rub [Rover]'s chest and his back leg fiddles[or]You stroke [Rover]'s back and he nuzzles up against you[or]You scratch [Rover]'s back and he slowly inches forward, trying to get you to scratch more towards the base of his spine[or]You reach out to pet Rover and he flips over, feet peddling the air, in search of some belly rubs, which you give[or]You pat [Rover] briefly, but he lets you know that a brief pat is not satisfactory. You spend some time scratching [Rover], as he repositions himself constantly, trying to get you to scratch an ever-moving itch[or][Rover] waits expectantly for more petting[or][Rover] licks your hand[or][Rover] expresses his gratitiude with some lip smacking sounds[or]Now that you've rearranged his fur, [Rover] spends a moment scratching his ears and licking himself to get it all back to the way it was[or][Rover] seems comforted[or][Rover] seems lost in the moment[in random order]."
 	
 Section Cooking
@@ -1189,6 +1205,12 @@ Report kissing:
 			 
 Chapter General Insteads
 
+Instead of throwing something (called the projectile) at something:
+	if the player is the acu:
+		say "[if the player is clueless]On second thought, you decide not to throw [the projectile]. The cottage is hard enough to keep tidy without throwing things about[otherwise]You take exception to throwing [the projectile]. You throw an exception instead[end if].";
+	otherwise:
+		try dropping the projectile.
+
 Instead of examining a room:
 	try looking;
 	
@@ -1233,7 +1255,7 @@ Instead of singing:
 		otherwise:
 			say "You [one of]quietly sing a short song that Tomasz had taught you. The song is about a lonely colony ship engineer who pines for his sweetheart back on Earth[or]sing a slow ballad,[quotation mark]The Orange Hills of Mars[quotation mark][or]crank out a bawdy drinking song, [quotation mark]Bartender, set me up a Barsoom[quotation mark][or]hum (because you can't remember the words) a short tune that children learn to remember the order of the planets in the Solar System. Obviously, the song missed its mark with you, although you still remember the catchy melody[or]bang out a respectable version of [quotation mark]A Common Hope[quotation mark], the anthem of the People's Government of Mars[or]sing a short tune[stopping].";	
 	otherwise:
-		say "You dump core, producing reams and reams of symbolic notation representing the instantaneous state of your quantum processor."
+		say "You dump core, producing reams and reams of symbolic notation representing the instantaneous states of your quantum processor across local multiverses."
 		
 Instead of burning:
 	if the player is the acu:
@@ -1588,7 +1610,6 @@ Instead of an animal lying on:
 Section Rolling Over
 	
 Persuasion rule for asking Rover to try rollovering:
-	change outcome-override to force-success;
 	change last-noun to "ROVER";
 	persuasion succeeds.
 	
@@ -1605,6 +1626,7 @@ Check rollovering:
 			the rule succeeds;
 		otherwise:
 			say "You're not lying down.";
+			change outcome-override to force-failure;
 			the rule fails.
 			
 Carry out rollovering:
@@ -2019,6 +2041,7 @@ Instead of opening the drapes:
 	if the drapes are closed:
 		say "You push aside the drapes.";
 		now the drapes are open;
+		change the outcome-override to force-success;
 		now the window is in the Living Room;
 		try looking;
 	otherwise:
@@ -2083,6 +2106,7 @@ Instead of opening the front door when the front door is closed:
 		now Rover is in the kitchen;
 		the rule succeeds;
 	[Ship is on the ground, ROVER is prepped to go out]
+	change the outcome-override to force-success;
 	if the player is clueless:
 		say "[one of]You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash[or]Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[in random order].[paragraph break]";
 	otherwise: [aware]
@@ -2150,6 +2174,7 @@ Test picture with "x picture / get picture / eat picture / read nameplate / read
 The nameplate is a fixed in place message which is part of the picture. Understand "inscription" and "engraving" as the nameplate. Understand "name" or "plate" as the nameplate. The clueless-description of the nameplate is "A brass nameplate bearing a short inscription. The nameplate is attached to the bottom of the picture." The aware-description of the nameplate is "A small plastic sign with a short inscription. The sign is glued to the Deep Memory module." The clueless-name of the nameplate is "nameplate". The aware-name of the nameplate is "plastic sign". The nameplate-proxy is an aware-proxy that is part of the nameplate. Understand "plastic" or "sign" as the nameplate-proxy. The inscription of the nameplate is "". The nameplate can be already-read. The nameplate is not already-read. 
 
 Instead of reading the nameplate:
+	change outcome-override to force-success;
 	if the player is clueless:
 		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break](remembering the photo)[paragraph break]";
 		try remembering "photo";
@@ -2193,9 +2218,18 @@ The hinges are part of the old fridge. Understand "hinge" as the hinges. The clu
 
 Instead of searching a refrigerator (called R):
 	if the player is clueless:
-		say "You poke around in the fridge and find [a list of things in R][if nothing is in R] at all[end if].";
+		say "You poke around in the fridge and find [a list of things in R][run paragraph on]";
+		if nothing is in R:
+			say " at all[run paragraph on]";
+		otherwise:
+			change outcome-override to force-success;
 	otherwise:
-		say "The cryo unit contains [a list of things in R][if nothing is in R] but the super-chilled interior of the cryo unit itself[end if]."
+		say "The cryo unit contains [a list of things in R][run paragraph on]";
+		if nothing is in R:
+			say " but the super-chilled interior of the cryo unit itself[run paragraph on]";
+		otherwise:
+			change outcome-override to force-success;
+	say "."
 
 The magpaper is message which is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" or "jobs" or "list" or "queue" or "priority" or "task" or "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]."
 
@@ -2252,6 +2286,7 @@ After examining the old fridge for the first time:
 		say "[metatext in metaspeak]";
 		
 After opening the old fridge:
+	change the outcome-override to force-success;
 	[now Rover is busy; - sounds more natural to not inhibit other same round actions]
 	if Rover is in the location:
 		say "[Rover] looks up when he hears [the old fridge] open. [run paragraph on]";
@@ -2365,7 +2400,8 @@ Before switching on the range:
 	say "[if the player is clueless]Your stove is a Cupertino SmartRange[unicode 174] -- there are no controls, just a stylish glass surface with rounded corners[otherwise]The fusion chamber is designed to activate automatically when heavy helium is contained in a magnetic bottle at the focal point[end if].";
 	the rule succeeds.
 	
-After touching the range:
+Instead of touching the range:
+	change outcome-override to force-success;
 	say "The stove is cool to the touch."
 	
 Before opening the range:
@@ -2530,6 +2566,7 @@ The tap water is a water. It is in Limbo. The clueless-name of the tap water is 
 
 Instead of opening or switching on a sink:
 	if the player is clueless:
+		change the outcome-override to force-success;
 		say "You run the water momentarily, and then turn off the tap to conserve water.";
 	otherwise:[not clueless]
 		if the noun is the bathroom sink:
@@ -2544,6 +2581,7 @@ Instead of opening or switching on a sink:
 					say "David [if the player is in the living room]spins towards the bathroom, his face flushing red, and [end  if]exclaims, [quotation mark]What! No, no, you musn't do that. It's a violation of your basic interdictions. Er, isn't it?[quotation mark][paragraph break]Janet answers [if David Venkatachalam is exposed]spitefully, [quotation mark]No, it isn't. The direct object is not a human. Go for it ACU, I'd rather die than have these data fall into Earth's hands[otherwise]fearfully, [quotation mark]No, I'm afraid it isn't. ACU, I'd like you to carefully reconsider this action, as it would kill both David and me. I don't think you want to do that[end if].[quotation mark][paragraph break]BINARY INPUT REQUIRED>";
 				if the player consents:
 					if David Venkatachalam is in the Living Room:
+						change the outcome-override to force-success;
 						say "The voracious mutant eels are released throughout the ship. Neither David nor Janet make a sound, or at least none that you can hear above the ultrasonic chirping of the bloodthirsty eels.[paragraph break]You switch your video feed to the living room, but even in that interval, the eels have covered Janet and David in a glistening, writhing, slithering mass which almost immediately collapses to the floor and melts away[if the front door is open]. Before turning on each other, the eels at the edge of the frenzy detect the scent of more prey, and the mass of eels is out the front cargo bay door and down the boarding ramp before Janet's permalloy arm band clatters metallically to the cargo bay floor[end if].";
 						now the endgame is eeled;
 						end the game in death;
@@ -2553,11 +2591,13 @@ Instead of opening or switching on a sink:
 						the eels hatch in four turns from now;
 						say "[paragraph break]Gengineered dermatovore eels shoot from recessed holes in the bulkheads throughout the ship, intent on devouring anything they can digest. [run paragraph on]";
 						if the technician is biosuited:
+							change the outcome-override to force-failure;
 							if the technician is in the location:
 								say "The eels surround the technician, but cannot penetrate the bioprotective paste on the outside of his spacesuit. Finding nothing but each other, that's what they eat. The last one swallows its own tail and succumbs to the unusually active digestive juices of its species.";
 							otherwise:[not in the location]
 								say "Your short range radio link beeps, and then you hear, [quotation mark]We've got more of those eels here, but the biopaste is working -- they don't seem to like the taste of the suit. I'm moving pretty briskly now, it shouldn't be too long. Keep my dinner warm![quotation mark][paragraph break]";
 						otherwise:[no biosuit]
+							change the outcome-override to force-success;
 							if the technician is in the location:
 								say "The technician's flimsy space suit is merely an appetizer for the voracious eels, and they finish it -- and each other -- off in mere seconds.";
 							otherwise:[not in the location]
@@ -2695,6 +2735,7 @@ Instead of pushing the blue button:
 			the rule fails;
 	if the strand of dental floss is in limbo:
 		move the strand of dental floss to the player;
+		change the outcome-override to force-success;
 		say "[if the player is clueless]You grab a strand of light green dental floss as it reels out of the dispenser[otherwise]You push the entanglement key pair onto the stack for rapid retrieval[end if].";
 	otherwise:
 		say "[if the player is clueless]The plastic box beeps, indicating that it is waiting for you to use the dental floss that it has already dispensed. Never underestimate the intelligence of your average plastic box[otherwise]The object linker flags an error: a quantum entanglement key pair has already been generated[end if]."
@@ -2897,6 +2938,7 @@ Instead of pushing the silver knob:
 	
 Instead of turning the silver knob:
 	if the chain is broken and the chain is not repaired:
+		change outcome-override to force-success;
 		say "The knob turns very easily. Indeed, too easily...";
 	otherwise:
 		try flushing the toilet.
@@ -2913,6 +2955,7 @@ Instead of inserting something (called the item) into the water tank when the wa
 		the rule succeeds.
 
 Instead of searching the water tank when the water tank is open:
+	change outcome-override to force-success;
 	if the player is clueless:
 		say "The hardware that makes the toilet work can be seen within the tank. A plastic lever goes up and down according to the position of a silver knob on the outside of the tank, pulling on a chain that operates a flapper valve[if the chain is broken] The situation here is slightly more complicated, however, as the chain has rusted through[end if].";
 	otherwise:
@@ -2928,6 +2971,7 @@ Instead of searching the toilet bowl:
 	otherwise if the player is postpoop:
 		say "[if the player is clueless]There's something in it, but you don't want details[otherwise]Power has been transferred from fusion engines to the retro assembly, and the retros are primed for launch[end if].";
 	otherwise:
+		change outcome-override to force-success;
 		say "[if the player is clueless]You see nothing interesting in the toilet bowl[one of]. You find that comforting, as there are few interesting things that you would want to find in your toilet[or][stopping].[otherwise]The plasma reaction chamber is clear of obstructions.[end if]"
 		
 Does the player mean inserting something into the toilet bowl:
@@ -2980,7 +3024,8 @@ Before opening a flipchair (called the flop):
 	if the flop is open:
 		say "[The flop] is already [if the player is clueless]raised[otherwise]disengaged[end if].";
 		the rule fails;
-	otherwise:	
+	otherwise:
+		change the outcome-override to force-success;	
 		now the flop is open;
 		if the toilet seat is open:
 			now the toilet cover is open;
@@ -2995,7 +3040,6 @@ Before closing a flipchair (called the flop):
 		say "[The flop] is already [if the player is clueless]down[otherwise]in position[end if].";
 		the rule fails;
 	otherwise:
-		change outcome-override to force-success;
 		now the flop is closed;	
 		if the toilet cover is closed:
 			now the toilet seat is closed;
@@ -3003,9 +3047,11 @@ Before closing a flipchair (called the flop):
 		rule succeeds.
 
 After opening a flipchair (called the flop):
+	change the outcome-override to force-success;
 	say "You [if the player is clueless]raise[otherwise]access[end if] [the flop]."
 	
 After closing a flipchair (called the flop):
+	change the outcome-override to force-success;
 	say "You [if the player is clueless]lower[otherwise]raise[end if] [the flop]."
 	
 Understand "raise [something raisable]" as opening. Understand "lift [something raisable]" as opening when the player is the acu.
@@ -3152,14 +3198,15 @@ Carry out yoking it more:
 	if A is 1:
 		now pitch is pitch plus 30 times D;
 		now the pitch is the limited pitch range;
+		now last-noun is "PITCH VECTOR";
 	otherwise if A is 2:
 		now roll is roll plus 30 times D;
 		now the roll is the limited roll range;
+		now last-noun is "ROLL VECTOR";
 	otherwise if A is 3:
 		now yaw is yaw plus 30 times D;
 		now the yaw is the limited yaw range;
-	otherwise:
-		say "error in the yoking it more table look up :-(".
+		now last-noun is "YAW VECTOR".
 		
 Report yoking it more:
 	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
@@ -3174,6 +3221,7 @@ Report yoking it more:
 	if the angle is 180 times D:
 		say "It doesn't look like it will move any further in that direction.";
 	otherwise:
+		change outcome-override to force-success;
 		say yoke position.
 
 To decide what number is the limited (measured - a number) range:
@@ -3300,12 +3348,14 @@ Instead of pushing or touching the soap button:
 		the rule succeeds;
 	otherwise:
 		if the player is clueless:
+			change the outcome-override to force-success;
 			if the First Sim is happening:
 				say "A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off.";
 			otherwise:
 				say "A soapy paste is dispensed from the button, and you lather up.";
 		otherwise:
 			if the assault ship distance is greater than 0:
+				change the outcome-override to force-success;
 				say "The ablative enamel monomer solution spreads quickly over the ship's hull.";
 			otherwise:
 				say "Docking detected. Secretion of enamel monomer suppressed.";
@@ -3325,9 +3375,11 @@ Instead of pushing or touching the shampoo button:
 		say "[if the player is clueless]You don't want to get shampoo all over the flight suit[otherwise]The acclerant ejection system is dampened by the quantum isolator[end if].";
 	otherwise:
 		if the player is clueless:
+			change the outcome-override to force-success;
 			say "You wash your hair. It no longer feels like a straw-encrusted swarm of [one of]yellow[or]red[purely at random]-headed tommygoffs.";
 		otherwise:
 			if the assault ship distance is greater than 0:
+				change the outcome-override to force-success;
 				say "Catalyst solution is spread uniformly over the ship's hull.";
 			otherwise:
 				say "Docking detected. Secretion of enamel acclerant suppressed.";
@@ -3395,7 +3447,9 @@ The furrow walls are scenery. It is part of the furrow. The description of the f
 
 Instead of looking when Rover is in the furrow, say "[the description of the furrow walls][paragraph break]".
 
-Instead of touching the furrow walls, say "The walls and floor of the long, narrow trench are quite warm."
+Instead of touching the furrow walls:
+	change outcome-override to force-success;
+	say "The walls and floor of the long, narrow trench are quite warm."
 
 The grooves are a backdrop in the Smoking Pit. Understand "groove", "scratch" or "scratches" as the grooves. The description of the grooves is "Parallel scratches in the hardened soil, just the right shape and spacing to suggest a fellow canine digging for something here." The scent of the grooves is "strongly of charred earth, but there is also a certain lingering suggestion of the perfume that might be worn by a high-born lady". The aware-name of grooves is "grooves".
 
@@ -3431,6 +3485,7 @@ Instead of giving something (called the item) to the female dog:
 		say "The [item] does not impress her, and it falls to her feet. No doubt she has many suitors."
 		
 Instead of touching, petting, searching, or rubbing the female dog:
+	change outcome-override to force-success;
 	say "[one of]You're more at the sniffing and posturing stage[or]You're not even on your second date with her! Better keep your paws to yourself[or]You'd rather give her a chance to make the first move[or]You get the impression that she's not ready for that[or]You start to, but then you loose the nerve[or]You shift a little closer to her and nonchalantly drape your tail near her, but a gust of wind pushes it away[in random order]."
 	
 Instead of taking the delicious bone when female dog carries the delicious bone:
@@ -3510,9 +3565,11 @@ To say rantings:
  say "[quotation mark][one of]Blah, blah, blah, dog, blah, bad[or]Bad dog! Blah[or]Blah, blah, blah, blah, dog? Blah! Blah, blah[or]Blah, blah, blah, blah, blah, blah[or]Blah, blah, Myomita, blah, blah, blah, Earth, blah, blah, dog, blah, blah[or]Blah? Blah, blah, blah, blah, dog. Blah, blah, blah, blah, Mars? Blah! Blah, blah, blah, dog, blah[or]Blah, out, blah, blah, dog[in random order]![quotation mark]".
 
 Instead of touching the smelly man:
+	change outcome-override to force-success;
 	say "Your paw passes right through him. He must be like one of those videos that Janet watches. [one of]Just to be sure, you sniff your paw. Thankfully, none of his stench has rubbed off on you.[or][stopping]"
 	
 Instead of attacking the smelly man:
+	change outcome-override to force-success;
 	say "You're not really supposed to attack people unless they are a threat. This smelly old windbag is loud and malodorous, but so are suborbital shuttles, and you leave them alone. So, you let him rant on while you go about your business."
 
 The pullout sofa is a bed in The Sleeping Room. 
@@ -3534,6 +3591,7 @@ Before taking off the small label:
 	the rule succeeds.
 	
 Instead of pulling the small label:
+	change the outcome-override to force-success;
 	if Boarding Party is happening:
 		say "You rip off the warning label, and confirm physicists speculations about the scale of destruction that would result from a chronospatial rupture. The paradoxical pre-event is so powerful that you are catapulted several seconds into the future, from whence you observe the the devastation first hand. Eventually, the countercoup probabilities collide, and you wink out of existence, ending the nightmare.";
 		now the ACU is alert;
@@ -3628,6 +3686,7 @@ The window is a transparent scenery closed not openable container in Limbo. Unde
 Understand "out window" or "out the window" as the window.
 
 Before searching outside when the player is in the Living Room and the window is in the Living Room:
+	change outcome-override to force-success;
 	try searching the window;
 	the rule succeeds.
 	
@@ -3636,6 +3695,7 @@ Instead of searching or examining the window when the player is self-aware durin
 	say "Through the viewer you can see nothing but swirling dust."
 	
 Instead of searching or examining the window during Back on Mars:
+	change outcome-override to force-success;
 	say "The external view shows the hangar in which Valkyrie was originally constructed."
 		
 Some garden skylights are in the window. The indefinite article of the garden skylights is "an array of". The description of the garden skylights is "Early morning sunlight piped from the surface of the planet shines brightly on the well-manicured lawn of the park." The clueless-name of the garden skylights is "skylights". The aware-name of the skylights is "viewer". Understand "lights" or "array" as the garden skylights.
@@ -3668,6 +3728,7 @@ Carry out remembering:
 	say "That doesn't ring a bell."
 	
 Instead of remembering a topic listed in the Table of Remembered Stuff when the player is the ACU:
+	change outcome-override to force-success;
 	change remembered entry to 1;
 	if the player is self-aware:
 		say "You consult your memory banks: ";
@@ -3687,8 +3748,12 @@ Instead of remembering a topic listed in the Table of Remembered Stuff when the 
 	now remember-invoked is true.
 	
 Instead of remembering a topic listed in the Table of Doggie Memories when the player is Rover:
+	change outcome-override to force-success;
 	change remembered entry to 1;
 	say "[description entry][paragraph break]".
+	
+Instead of thinking:
+	say "You think and you think. It occurs to you that it would be more fruitful to think about something in particular rather than to think about thinking."
 	
 Table of Remembered Stuff
 topic		remembered		description
@@ -3747,7 +3812,7 @@ topic			remembered		description
 "poop room" or "pooping room"		0		"Ironically, this is the room where people get to poop in the house, but you do not."
 "food maker" or "stove" or "range"			0		"The part of Home that gets hot and makes people food smell different."
 "egg" or "eggs" or "eggses"			0			"Deceptively similar to balls which are fun to play with, eggs are in fact a people food. Eggs are always crunchy on the outside, but sometimes they are gooey on the inside, and othertimes they are gunky. It's hard to tell with eggs. Janet sure does like them though."
-"dog chow" or "dog food" or "kibbles"		0		"A gourmet meal of infinite variety, both liver *and* chicken!"
+"dog chow" or "dog food" or "kibbles"		0		"A gourmet meal of infinite variety, both liver [italic type]and[roman type] chicken!"
 "plunger"			0		"You don't know what it's for, but Janet sure is particular about the plunger standing just so in the pooping room. You try to leave it alone."
 "mirror"		0			"If you stand on your back legs in the pooping room, you can see another dog who looks somewhat like you. He's also in a pooping room, but he's not very nice. He does exactly what you do, and when you try to have a civil conversation with him, he mocks you."
 "shower"		0			"The shower is where Janet goes to get wet. She tried to get you in there once or twice, and you are relatively confident that she understands that you don't want to try it again."
@@ -4000,6 +4065,32 @@ A did-it-work rule when the test-action is the opening action:
 A did-it-work rule when the test-action is the closing action:
 	if the noun is openable and the noun is closed:
 		change last-success to "TRUE".
+		
+A did-it-work rule when the test-action is the putting it on action:
+	if the second noun is a supporter and the second noun is the holder of the noun:
+		change last-success to "TRUE".
+		
+A did-it-work rule when the test-action is the switching off action:
+	if the noun is a device and the noun is switched off:
+		change last-success to "TRUE".
+		
+A did-it-work rule when the test-action is the switching on action:
+	if the noun is a device and the noun is switched on:
+		change last-success to "TRUE".
+		
+A did-it-work rule when the test-action is the taking action:
+	if the holder of the noun is the player:
+		change last-success to "TRUE".
+		
+A did-it-work rule when the test-action is the taking off action:
+	if the player does not wear the noun:
+		change last-success to "TRUE".
+		
+After wearing the flight suit:
+	change last-success to "TRUE";
+	continue the action.
+[tried writing this one as a did-it-work but got a runtime error about the noun not having a parent. Somehow in the course of wearing something, the something is converted to nothing. Perhaps a side effect of something downstream of wearing. Not a problem, this works as an after.]
+	
 
 [The successful column lists the default success/failure of the action]
 
@@ -4062,17 +4153,17 @@ the growling action				TRUE			"NOTIFY"
 the inserting it into action		false			"TRANSFER"  [put]
 the jumping action					TRUE			"JNZ" [jump]
 the kissing action					false			"INTERFACE" [kiss]
-the kittying action				false			"CONCATENATE" [cat, when aware]
+the kittying action				FALSE			"CONCATENATE" [cat, when aware]
 the leaving action					false			"DESELECT"
-the listening to action			false			"AUDIO INPUT"
+the listening to action			TRUE			"AUDIO INPUT"
 the locating action				false			"LOCATE" [find, locate]
-the locking it with action		false			"SECURE"
+the locking it with action		FALSE			"SECURE"
 the logoutting action 			FALSE			"LOGOUT" [logout]
 the looking action					TRUE			"STATUS"  [look]
 the looking under action			false			"SCAN"
 the lying down action				false			"STANDBY"
 the lying on action				false			"STANDBY"
-the manpaging action				TRUE			"MANUAL PAGE" [man]
+the manpaging action				false			"MANUAL PAGE" [man]
 the nopping action					FALSE		"\DEV\NULL" [unix commands not available]
 the opening action					false			"ACCESS"  [open]
 the petting action					false			"SYNCH"
@@ -4081,23 +4172,23 @@ the pouring it into action		false			"TRANSFER"
 the pulling action					false			"TRACTOR FIELD" [pull, pull off, tear]
 the pushing action					false			"PRESSOR FIELD"  [press]
 the pushing it to action			false			"PRESSOR FIELD"
-the putting it on action			false			"TRANSFER" [put on]
+the putting it on action		false			"TRANSFER" [put on]
 the pwding action					TRUE			"PRINT WORKING DIRECTORY" [pwd]
 the querying action				false			"QUERY" [ask about s.t.]
 the reading action					false			"READLINE" [read]
 the remembering action			false			"DATA_FETCH" [remember]
 the removing it from action		false			"TRANSFER"
 the repairing action				false			"REPAIR" [repair]
-the rollovering action			false		"LATERAL JETS" [rover, roll over]
-the rubbing action					false		"NEUTRALIZE CHARGE" [rub, clean, scratch]
+the rollovering action			TRUE		"LATERAL JETS" [rover, roll over]
+the rubbing action					TRUE		"NEUTRALIZE CHARGE" [rub, clean, scratch]
 the rude-awakening action		TRUE		"TIME OUT"
 the saying no action				TRUE		"NEGATE" [no]
 the saying yes action				TRUE		"AFFIRM" [yes]
 the saying sorry action			TRUE		"ERR ACK"
 the searching action				false		"MANIFEST"  [look in]
-the shellupping action 			false		"EXIT SHELL" [exit]
+the shellupping action 			TRUE		"EXIT SHELL" [exit]
 the showing it to action			false		"DISPLAY"
-the shutdowning action			false		"SHUTDOWN" [shutdown, reboot, halt]
+the shutdowning action			FALSE		"SHUTDOWN" [shutdown, reboot, halt]
 the singing action					TRUE		"DUMP" [sing]
 the sleeping action				false		"SUSPEND" [sleep]
 the smelling action				false		"CHEMOSENSOR" [smell]
@@ -4106,7 +4197,7 @@ the sniffscanning action			TRUE		"SPECTROMETRY" [sniff]
 the snoozing action			false		"REPRESENTATIONAL STATE TRANSFER" [snooze]
 the squeezing action				false		"PRESSOR FIELD"
 the standing action				TRUE		"DEACTIVATE" [stand]
-the swearing mildly action		FALSE		"PARSE ERROR"
+the swearing mildly action		FALSE		"MILD PARSE ERROR"
 the swearing obscenely action	FALSE		"PARSE ERROR"
 the swinging action				false		"SELECT"
 the switching off action			false		"RESET"		[turn off]
@@ -4116,20 +4207,20 @@ the taking inventory action		TRUE		"MANIFEST" [inventory]
 the taking off action				false		"DISENGAGE"  [take off, remove]
 the tasting action					false		"SCAN"
 the telling it about action		false		"SPEECH OUTPUT" [tell s.o. about s.t.]
-the thinking action				false		"DATA_FETCH"
+the thinking action				false		"DATA_FETCH" [think]
 the throwing it at action		false		"TRANSFER"
 the touching action				false		"UPDATE" [touch]
 the turning action					false		"REORIENT"
 the tying it to action			false		"BIND" [tie, attach]
 the unfolding action				false		"EXTEND" [unfold]
-the unlocking it with action		false		"UNSECURE"
+the unlocking it with action		FALSE		"UNSECURE"
 the uptiming action				TRUE		"UPTIME" [uptime]
 the waiting action					TRUE		"TIMER" [wait]
 the waking up action				false		"INITIALIZE" [wake, wake up]
-the waving action					false		"SEMAPHORE"
+the waving action					false		"OSCILLATE"
 the wearing action					false		"ENGAGE"  [put on, wear]
 the whoing action					TRUE		"WHO" [who]
-the yelling action					false		"BROADCAST"
+the yelling action					TRUE		"BROADCAST"
 the yoking it more action		false		"VECTOR ADJUST" [push, pull,twist plunger]
 
 Chapter Triggered Events
@@ -4354,6 +4445,7 @@ Instead of pushing the large button during bedtime:
 	try snoozing.
 	
 Instead of waking up during bedtime:
+	change outcome-override to force-success;
 	say "Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral off the edge of the futon. Oh well, you can find it later. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.";
 	move the alarm clock to the Living Room;
 	move the player to the Living Room.
@@ -4390,6 +4482,7 @@ Check snoozing:
 		try rude-awakening instead. 
 
 Carry out snoozing:
+	change outcome-override to force-success;
 	now dream index is dream index + 1;
 	try dreaming.
 	
@@ -4459,16 +4552,24 @@ Instead of doing something during Arm Hurts:
 		continue the action.
 		
 Instead of waving the left arm during Arm Hurts:
-	try waving hands.
+	try waving.
 		
-Instead of waving hands during Arm Hurts:
+Instead of waving during Arm Hurts:
+	change outcome-override to force-success;
 	say "You flail your left arm back and forth, and slowly the itching abates. [if arm-numb is greater than 30]It's a great relief![otherwise if arm-numb is greater than 20]That's much, much better[otherwise if arm-numb is greater than 10]Ah, the itchiness has gone away.[otherwise]That did the trick. Your left arm is back to its old, frisbee-throwing self[end if]."; 
 	now arm-numb is zero;
 	the rule succeeds.
+	
+Instead of waving:
+	change outcome-override to force-success;
+	if the player is Rover:
+		say "You raise a paw and shake it about.[one of]You cross [quotation mark]wave paw for no apparent reason[quotation mark] off your list of things to get done today[or][stopping].";
+	otherwise:
+		say "You [if the player is clueless]wave[otherwise]oscillate harmonically[end if] at nothing in particular."
 
 Understand "scratch [something]" as rubbing.
 
-Instead of rubbing the left arm during Arm Hurts :
+Instead of rubbing the left arm during Arm Hurts:
 	now arm-numb is zero;
 	say "Ooooo. Ahhhh...slowly, the itchiness subsides. That feels [italic type]so[roman type] good.".
 				
@@ -5053,7 +5154,8 @@ To end the nightmare:
 	now the ACU is alert.
 
 Instead of waking up during Boarding Party:
-	say "The dreadful truth is...oh, wait a minute. That really was a nightmare.";
+	change outcome-override to force-success;
+	say "The dreadful truth is...oh, wait a minute. That really [italic type]was[roman type] a nightmare.";
 	now woke-from-nightmare is true;
 	now the ACU is alert.
  
@@ -5176,25 +5278,37 @@ Instead of listening during Back on Mars:
 Instead of asking someone about something during Back On Mars:
 	try querying.[divert "ask janet about..." to the query action]
 
-Querying is an action applying to one topic. Understand "ask about [text]" as querying when Back on Mars is happening.
+Querying is an action applying to one topic. Understand "ask about [text]" as querying.
+
+Check querying:
+	if Back on Mars is not happening:
+		if the player is Rover:
+			say "You begin to formulate the question when your attention is diverted by [one of]a sense of being watched[or]a sense of nihilism[or]a thought about the Yorkie from across the Park[or]a sudden remembrance of what you had for dinner two weeks ago[or]a tap on your back, which turns out to be your own tail[or]the sound of a dog walking. The sound stops just as you do[or]the more important question of what's for dinner[or]your pondering of your place in the world[or]doggy daydreams[or]musings about becoming a fire dog[or]your inability to formulate questions[in random order].";
+		otherwise:
+			if Rover is in the location:
+				say "You don't think that your [if the player is clueless]loyal dog[otherwise]robotic mining platform[end if] would likely have an answer to that question, so you reflect on it some more.";
+			otherwise:
+				say "You mumble the question to yourself and ponder it for some time before getting on with things.";
+		the rule succeeds;
+	otherwise:[Back on Mars is happening]
+		if audio is switched off:
+			say "You start to ask your question, but then you realize that the audio system is shut off and that no one can hear you.";
+		the rule succeeds.
 
 Carry out querying:
 	do nothing.[it cries out to be over-ridden]
 	
-Report querying:
+Report querying:[nonspecific responses to topics which are not implemented]
+	change the outcome-override to force-success;
 	if a random chance of 1 in 2 succeeds:
 		say "David [one of]replies[or]answers[or]responds[purely at random], [quotation mark][one of]Hm. Haven't really given that much thought[or]I'm sure that's important, but we need to concentrate on the matter at hand[or]Let's not get hung up on minutiae; we've got important matters to discuss[or]I don't see how that relates to the mission[or]Let's not get into that right now[or]I could go on about that for quite a while, but I don't see how it would help us[or]We can look that up on the net, for now let's deal with the subject at hand: the mission[or]I think that's not something we need to focus on right now[in random order].[quotation mark]";
 	otherwise:
 		say "Janet [one of]replies[or]answers[or]responds[purely at random], [quotation mark][one of]That's a good question, and we can talk about it later, but for now, I'd like to focus on the mission[or]I've wondered about that myself, but I think it's a little afield of our immediate concerns[or]I'm afraid I could ramble on about that for hours, and we'll have plenty of time to chat later, but for the time being, I'd like to concentrate on what happened during your mission and what it means for Mars[or]I can't say I'm an expert on the subject, but I think I know someone back in the office who we could ask[or]We can come back to that, but I'd like to really going into the details of the mission first[in random order].[quotation mark]";
 	say paragraph break.
-		
-	[###TODO make not lame, also handle audio off - maybe consolidate the audio off messages?]
 	
 Instead of querying a topic listed in the Table of Conversation during Back on Mars:
-	if audio is switched off:
-		say "You start to ask your question, but then you realize that the audio system is shut off and that no one can hear you.";
-		the rule succeeds;
 	if the asked entry is 0 and the told entry is 0:
+		change outcome-override to force-success;
 		say "[ask-text entry][paragraph break]";
 		change the required entry to 0;
 	otherwise:
