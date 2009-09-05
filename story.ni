@@ -2389,6 +2389,8 @@ After dropping a bowl (called the vessel):
 	
 Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with when the player is the acu. 
 
+Understand "water" as the kitchen sink.  [so that 'put water in water bowl' works correctly]
+
 Check filling it with:
 	if the noun is not a bowl:
 		say "You can't fill that." instead;
