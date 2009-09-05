@@ -371,10 +371,9 @@ Before touching something (called the item):
 		say "]: file timestamp updated.";
 		the rule succeeds.
 		
-Before jumping:
-	if the player is self-aware:
-		say "Branch instruction ignored. Instruction pointer unaffected.";
-		rule succeeds.
+Instead of jumping when the player is self-aware:
+	change outcome-override to force-failure;
+	say "Branch instruction ignored. Instruction pointer unaffected."
 		
 Cataloguing is an action applying to nothing. Understand "ls" as cataloguing when the player is self-aware.
 
@@ -801,6 +800,7 @@ Check going towards:
 Carry out going towards:
 	if the player is the ACU and the noun is in the Valkyrie Area:
 		move the player to the location of the noun;
+		change outcome-override to force-success;
 	otherwise:
 		let the way be the best route from the location to the location of the noun, using even locked doors;
 		if the way is not a direction, say "You can't figure out how to get there." instead;
@@ -882,7 +882,7 @@ Check leaving:
 Carry out leaving:
 	try exiting. 
 	
-Understand "leave" as exiting.
+Understand "leave" as exiting.	
 
 Section Folding and Unfolding
 
@@ -1184,6 +1184,7 @@ Report kissing:
 			-- Rover:
 				say "[if the player is clueless]You give Rover a nice kiss[otherwise]You confirm that handshaking is synchronized between you and Rover[end if].";
 			-- otherwise:
+				change outcome-override to force-success;
 				say "You [if the player is clueless]kiss [the noun] lightly[otherwise]You attempt to negotiate a direct synch with [the noun] and fail[end if].";
 			 
 Chapter General Insteads
@@ -1249,7 +1250,12 @@ Instead of buying:
 Instead of dropping something which is not enclosed by the player:
 	change outcome-override to force-failure;
 	say "You [if the player is clueless]weren't holding[otherwise]hadn't selected[end if] [the noun] to begin with."
-
+	
+After going outside:
+	change outcome-override to force-success.
+	
+After getting off something:
+	change outcome-override to force-success.
 
 [TOCONSIDER: a consult about, cutting generic response?]
 
@@ -2408,6 +2414,7 @@ Check filling it with:
 				say "[if the player is clueless]There are no more kibbles in the bag[otherwise]The supply of thermoisotope has been depleted[end if]." instead.
 			
 Carry out filling it with:
+	change outcome-override to force-success;
 	if the noun is:
 		-- the water bowl:
 			move the tap water to the water bowl;
@@ -2487,9 +2494,10 @@ Before filling a bowl (called vessel) with something:
 		
 After inserting something into the old fridge:
 	if the noun is the maintenance droid or the noun is the white egg:
+		change outcome-override to force-success;
 		continue the action;
 	otherwise:
-		say "[if the player is clueless]Only food in the fridge. It's axiomatic[otherwise]Depositing [the noun] in [the old fridge] would result in irreparable thermal damage, destroying [the noun], so you issue an interrupt signal[end if].";
+		say "[if the player is clueless]Only food in the fridge. It's nigh axiomatic[otherwise]Depositing [the noun] in [the old fridge] would result in irreparable thermal damage, destroying [the noun], so you issue an interrupt signal[end if].";
 		now the player carries the noun.
 		
 After putting a bowl (called the vessel) on the counter:
@@ -2497,6 +2505,7 @@ After putting a bowl (called the vessel) on the counter:
 	now the player carries the vessel.  
 	
 After inserting a bowl (called the vessel) into the cabinet:
+	change outcome-override to force-success;
 	if Rover is not in the location:
 		now Rover is in the location;
 		say "[if the player is clueless][Rover] zips into the kitchen[otherwise]This triggers a [ROVER] transfer system-related error. [Rover] rolls headlong into the engineering section[end if] and he[run paragraph on]";
@@ -2633,6 +2642,7 @@ After taking the reward nuggets replicator:
 	now Rover is busy.
 		
 Instead of giving a dog treat to Rover:
+	change outcome-override to force-success;
 	now the dog treat is in the reward nuggets replicator;
 	say "[Rover ] [if the player is clueless][one of]nearly takes your hand off in rush to swallow the treat[or]approaches the treat silently, with his head bent and eyes half closed, like a supplicant before the altar. With a look of deep reverence he takes the treat in his mouth and backs away[or]snaps his tongue out like a frog and whips the treat out of your hand from two meters away. It's just something he does[or]does a slow motion dive and twist in mid-air, gracefully arcing above you and swabbing your hand liberally with his broad, moist tongue. The treat has disappeared down his gullet by the time he lands[or]gobbles down the treat and then pretends indignantly that he hasn't received anything at all[or]carefully lifts the treat out of your hand using a toothy sidewise grip[or]gobbles down the treat[or]wolfs down the dog biscuit[or]polishes off his dog treat[or]swallows the treat without bothering to chew it at all[stopping]. A series of emotions wash over Rover's face, but finally it settles into an expression of [one of]ecstasy[or]exhiliration[or]exultation[or]elation[or]enchantment[or]extreme satisfaction[or]enjoyment[or]euphoria[in random order][otherwise]internalizes [the dog treat][end if].";
 	now Rover is busy.
@@ -2714,6 +2724,7 @@ Check flossing:
 		rule fails.
 		
 Carry out flossing:
+	change outcome-override to force-success;
 	move dental floss to Limbo;
 	say "[if the player is clueless]You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now[otherwise]The hull plating is now synchronously enmeshed[end if]."
 	
@@ -2895,6 +2906,7 @@ Instead of pulling the silver knob:
 	
 Instead of inserting something (called the item) into the water tank when the water tank is open:
 	if the item is a maintenance droid:
+		change outcome-override to force-success;
 		continue the action;
 	otherwise:
 		say "[if the player is clueless]Yuck. You don't realy want to put [the noun] in the water tank. You'd have bad dreams about it for a month[otherwise]You realize that placing [a aware-name of the noun] in the plasma constrictor could damage both [the aware-name of the noun] and the finely tuned flow channels within the plasma constrictor itself[end if].";
@@ -3038,6 +3050,7 @@ Check flushing:
 		the rule fails.
 		
 Carry out flushing:
+	change outcome-override to force-success;
 	now the flapper valve is closed;
 	now the ACU is prepoop;
 	if the location of the white egg is nowhere:
@@ -3068,6 +3081,7 @@ Instead of exiting or standing when holder of the player is the toilet seat:
 		say "You release the seal on the mevolar gasket."
 	
 Instead of entering a flipchair (called the flop):
+	change the outcome-override to force-success;
 	move the player to the flop, without printing a room description;
 	say "You sit on the [flop]."
 
@@ -3396,6 +3410,8 @@ The scent of the female dog is "[one of]sweeter than the marrow of the tastiest 
 
 The clueless-description of the female dog is "[one of]Your heart catches in your throat as you stand in her glorious presence. Graceful, athletic, and possessed of a noble bearing, she smites you with a glance down her long, fine muzzle[or]Your eyes are drawn to her perfectly rounded shoulders and haunches, her long arcing tail, and her soft, pendulous ears. You avert your gaze so as not to appear overly forward[or]You glance at her slyly while pretending to survey the ground near her feet. The fine columns of her legs rise magnificently from the ground, standing proudly atop her perfectly trimmed paws. The fur on her legs is bristly, and you wonder what it would be like to rub against it. Distractedly, your gaze drifts over her until a blowing clod of dust ricochets off your head, cutting short your revery[or]She remains silent and statuesque, but you sense that she quietly harbors the same feelings for you, but is afraid to admit it to herself. Perhaps she has had some past history, a bad master, an unrequited episode of pupply love, but none of that matters. You catch her eye for just a fraction of a second and teeter on the edge of a bottomless cavern as you are drawn deeper and deeper into the depths of her dark, beckoning eyes. You think you have shared something  special with her. Not wanting to push her too far, too fast, you gather your strength and turn your head virtously away[or]As you once again regard her grandeur, you catch her looking at you. Not directly at you, more at the horizon, but clearly, she was looking you over. Your heart races to know that your initial impression was right, her feelings for you run like an underground stream coursing through a mountain, just below the surface, where they wait to be tapped like a geyser. Her resolve and self-control are astounding[or]A beautiful female dog[stopping].[if the female dog carries the delicious bone] In her [one of]sweet[or]angelic[or]sultry[or]alluring[or]toothsome[or]luscious[or]tempting[or]amorous[or]sensual[in random order] mouth, she is [one of]daintily[or]elegantly[or]agilely[or]seductively[or]coquettishly[or]flirtaciously[or]provocatively[in random order] carrying a bone[one of] almost as big as she is[or][stopping]." The aware-description of the female dog is "A modified ten-ton bulldozer." The clueless-name of the female dog is "female dog". The aware-name of the female dog is "robotic bulldozer". The female dog can be seeking. The female dog is not seeking.
 
+Times-kissed is a number that varies. Times-kissed is 0.
+
 Instead of entering a person (called the target):
 	say "You are already close enough to [the target]."
 
@@ -3410,6 +3426,7 @@ Instead of giving something (called the item) to the female dog:
 		say "Her lips curve around the bone, and slowly your muzzles part. Her sultry breath curls your whiskers as you withdraw. For several minutes, you can think of nothing else. She is similarly silent, no doubt similarly transported by the intimacy of the moment.";
 		now the female dog is not seeking;
 		now the female dog carries the delicious bone;
+		change outcome-override to force-success;
 	otherwise:
 		say "The [item] does not impress her, and it falls to her feet. No doubt she has many suitors."
 		
@@ -3417,7 +3434,7 @@ Instead of touching, petting, searching, or rubbing the female dog:
 	say "[one of]You're more at the sniffing and posturing stage[or]You're not even on your second date with her! Better keep your paws to yourself[or]You'd rather give her a chance to make the first move[or]You get the impression that she's not ready for that[or]You start to, but then you loose the nerve[or]You shift a little closer to her and nonchalantly drape your tail near her, but a gust of wind pushes it away[in random order]."
 	
 Instead of taking the delicious bone when female dog carries the delicious bone:
-	say "[one of]It is a nice bone...but how would she feel if you just took it? She might find that playful, but then again, she might take it the wrong way. She might like resent such a bold move, uninvited. On the other hand, she could be secretly wishing that you'd make the first move. It might be just the right thing. It could also be a dreadful mistake though. You might come across as greedy and pushy. Not the sort of impression you'd like to make... Um. What were you thinking about? You forget[or]You wonder: is she holding out the bone to taunt you? Is this some sort of a power game that she's playing with you? Or could the bone be symbolic in some way of the sort of sharing that she might expect from a mate? She could be offering the bone to you. Would it be a mistake to take it? What would that say about the dynamics and balance between partners in this relationship? Who is a giver and who is a taker? This sort of mind game confuses you and you decide that not taking the bone is marginally more in your interest than the more obvious option of taking the bone[or]You would rather hold out for her to offer you the bone, than to take it outright[or]You would rather win the bone by impressing her. You're a cur, yes, but not the sort of cur that takes bones from ladies[or]Nah, that would be rude[stopping]."
+	say "[one of]It is a nice bone...but how would she feel if you just took it? She might find that playful, but then again, she might take it the wrong way. She might like resent such a bold move, uninvited. On the other hand, she could be secretly wishing that you'd make the first move. It might be just the right thing. It could also be a dreadful mistake though. You might come across as greedy and pushy. Not the sort of impression you'd like to make... Um. What were you thinking about? You forget[or]You wonder: is she holding out the bone to taunt you? Is this some sort of a power game that she's playing with you? Or could the bone be symbolic in some way of the sort of sharing that she might expect from a mate? She could be offering the bone to you. Would it be a mistake to take it? What would that say about the dynamics and balance between partners in this relationship? Who is a giver and who is a taker? This sort of mind game confuses you and you decide that not taking the bone is marginally more in your interest than the more obvious option of taking the bone[or]You would rather hold out for her to offer you the bone, than to take it outright[or]You would rather win the bone by impressing her. You're a cur, yes, but not the sort of cur that takes bones from ladies. Or are you.[or]Nah, that would be rude. You'd rather that she give it to you out of love[stopping]."
 	
 Instead of asking or telling the female dog about:
 	change outcome-override to force-success;
@@ -3430,7 +3447,27 @@ Instead of answering the female dog that:
 	try barking.
 	
 Instead of kissing the female dog:
-	say "[one of]The very thought makes your canine heart scramble like a greased xihuahua in free fall[or]You pause. What did you have for lunch? Kibbles. Liver-flavored kibbles, that left an after taste. Is your breath fresh? You try to exhale and then inhale very quickly. Hmm. Not bad. You try to work up to the kiss, but hang back at the last second[or]You move in slowly. She doesn't react. Probably a good sign. You select your target. The nape of the neck? Below the ears? Under the chin? No, all too complicated. Something simple, a little lick on the muzzle. No biting. Not yet anyway.[paragraph break]She remains steady as a rock, and suddenly your legs feel rubbery. You don't go through with it[or]This is it, you're really going to kiss her now. One little peck on the muzzle, no big deal. You can always laugh it off if it doesn't go well. Now or never. You take a deep breath...[paragraph break]and decide to wait a minute to see how she reacts[or]What's there to be afraid of, come on, Rover old boy, you think to yourself.[paragraph break]You lean in towards her and the wind suddenly shifts.[paragraph break]A bad omen.[paragraph break]Your half-extended tongue is coated with grit. You adroitly transition the bungled kiss into an attempt to dislodge a straggling bit of kibble from your muzzle.[paragraph break]Good, she doesn't seem to have noticed[or]You close your eyes and plant a firm kiss on her warm, moist...[paragraph break]Oh no. With your eyes open, you see that you've kissed her squarely on her nose. She must have moved slightly. You blink with embarrassment, but she holds steady, staring into the distance. You are overcome with a feeling of relief. She not only tolerated your plodding, inexperienced overture, but seems to have enjoyed the nervous energy of the moment[or]You kiss her, this time with less fumbling. Her muzzle brushes against yours and your vision blurs with happiness. Overcome with emotion, you stand together, you and she, watching the dust blow across the field. It is beautiful[or]She stares straight ahead, a clear call for you to continue your expressions of affection[or]Each kiss is more intimate, more sensual. No longer is she a stranger, but more and more you consider her your friend, your confident. Dare you think it? Perhaps a mate[or]You give her a peck on the muzzle, with the easy familiarity that has grown between you[or]You kiss her again, each time as exciting as the first[stopping]."
+	Increase Times-kissed by one;
+	if times-kissed is greater than 10:
+		say "You kiss her again, each time as exciting as the first.";
+	otherwise:
+		say "[Romantic Text corresponding to the Attempts of times-kissed in the Table of Puppy Love].";
+	if times-kissed is greater than 5:
+		change the outcome-override to force-success.
+
+Table of Puppy Love
+Attempts				Romantic Text
+1						"The very thought makes your canine heart scramble like a greased xihuahua in free fall"
+2						"You pause. What did you have for lunch? Kibbles. Liver-flavored kibbles, that left an after taste. Is your breath fresh? You try to exhale and then inhale very quickly. Hmm. Not bad. You try to work up to the kiss, but hang back at the last second"
+3						"You move in slowly. She doesn't react. Probably a good sign. You select your target. The nape of the neck? Below the ears? Under the chin? No, all too complicated. Something simple, a little lick on the muzzle. No biting. Not yet anyway.[paragraph break]She remains steady as a rock, and suddenly your legs feel rubbery. You don't go through with it"
+4						"This is it, you're really going to kiss her now. One little peck on the muzzle, no big deal. You can always laugh it off if it doesn't go well. Now or never. You take a deep breath...[paragraph break]and decide to wait a minute to see how she reacts"
+5						"What's there to be afraid of, come on, Rover old boy, you think to yourself.[paragraph break]You lean in towards her and the wind suddenly shifts.[paragraph break]A bad omen.[paragraph break]Your half-extended tongue is coated with grit. You adroitly transition the bungled kiss into an attempt to dislodge a straggling bit of kibble from your muzzle.[paragraph break]Good, she doesn't seem to have noticed"
+6						"You close your eyes and plant a firm kiss on her warm, moist...[paragraph break]Oh no. With your eyes open, you see that you've kissed her squarely on her nose. She must have moved slightly. You blink with embarrassment, but she holds steady, staring into the distance. You are overcome with a feeling of relief. She not only tolerated your plodding, inexperienced overture, but seems to have enjoyed the nervous energy of the moment"
+7						"You kiss her, this time with less fumbling. Her muzzle brushes against yours and your vision blurs with happiness. Overcome with emotion, you stand together, you and she, watching the dust blow across the field. It is beautiful"
+8						"She stares straight ahead, a clear call for you to continue your expressions of affection"
+9						"Each kiss is more intimate, more sensual. No longer is she a stranger, but more and more you consider her your friend, your confident. Dare you think it? Perhaps a mate"
+10						"You give her a peck on the muzzle, with the easy familiarity that has grown between you"
+
 	
 Understand "lick [a thing]" as kissing when the player is Rover.
 
@@ -3451,6 +3488,7 @@ The shabby shack is scenery in the strange porch.  The description of the shabby
 
 Before entering the shabby shack:
 	try entering the splintered door;
+	change the outcome-override to force-success;
 	the rule succeeds.
 
 The Splintered Door is west of the Strange Porch and outside from the Sleeping Room.  It is an open not openable scenery door. The description of the splintered door is "A heavy plastrex door hangs loosely in the door frame, tenuously attached by one frail hinge. The door swings wildly in the wind." Understand "heavy", "plastrex", "hinge", or "hinges" as the Splintered Door. The scent of the Splintered Door is "like burning plastic". The aware-name of the splintered door is "damaged airlock".
@@ -3482,6 +3520,7 @@ The pullout sofa is a bed in The Sleeping Room.
 The description of the pullout sofa is "The sofa looks wrong somehow, like maybe it[apostrophe]s broken. It is more or less unfolded and looks even bigger than Janet[apostrophe]s futon." The clueless-name of the pullout sofa is "pullout sofa". The aware-name of the sofa is "Casimir Drive". The scent of the sofa is "musty, like a wet dog. On the whole, not a bad smell at that".  Understand "bed" or "couch" as the pullout sofa.
 
 Instead of climbing the pullout sofa:
+	change the outcome-override to force-success;
 	try entering the pullout sofa.
 
 The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pink pillow". The aware-name of the pillow is "NPT". Understand "pink" or "puffy" as the pillow. The clueless-description of the pillow is "[if the player is Rover]A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays[otherwise]A fluffy pink pillow bearing the Myomita corporate logo, and a small label[end if]." The aware-description of the pillow is "A nanotronic paratemporospatial transgressor, of a design that was rejected some time ago by MARSpace. Ths transgressor's supraverbation matrix has evidently crystallized, rendering it non-functional. The NPT bears the corporate logo of the Myomita corporation, a modernized version of the Imperial Japanese flag, centered on a the disc of the Milky Way galaxy rather than the rising sun. An RFID tag is embedded in the logo." The scent of the pillow is "slightly feminine, perhaps even perfumed".  The pillow-proxy is an aware-proxy that is part of the pillow. Understand "transgressor", "supraverberation", "matrix", "nanotronic", "npt" or "paratemporospatial" as the pillow-proxy. 
@@ -4007,7 +4046,7 @@ the echoing action					TRUE			"ECHO" [echo]
 the elevating action 				FALSE			"ELEVATE PRIVILEGE" [su, sudo]
 the entering action				false				"ACTIVATE"  [enter, sit on]
 the examining action				TRUE				"DIAGNOSTIC" [examine, read]
-the exiting action					false				"DEACTIVATE" [exit, stand up]
+the exiting action					false				"DESELECT" [exit, stand up]
 the expounding action				false				"SPEECH OUTPUT" [tell about s.t.]
 the filling it with action		false		"TRANSFER" [fill water bowl with kibbles]
 the fillupping action				false			"TRANSFER" [fill water bowl]
@@ -4021,7 +4060,7 @@ the going action					false			"SELECT"  [go, or any compass direction]
 the going towards action			false			"SELECT"
 the growling action				TRUE			"NOTIFY"
 the inserting it into action		false			"TRANSFER"  [put]
-the jumping action					TRUE			"BRANCH" [jump]
+the jumping action					TRUE			"JNZ" [jump]
 the kissing action					false			"INTERFACE" [kiss]
 the kittying action				false			"CONCATENATE" [cat, when aware]
 the leaving action					false			"DESELECT"
@@ -4854,6 +4893,7 @@ Instead of inserting the maintenance droid into the old fridge:
 		say "The wiley droid dives into the broken cryochamber to avoid your grasp, and then clambers out again.";
 	otherwise:
 		say "You shove the frightened droid into the cryochamber, bang the door shut, and run the unit at maximum. You hear a brief whine from the droid's power unit, followed by a muffled explosion as his microreactor goes critical trying to maintain thermal equilibrium. Unfortunately, the explosion seems to have damaged the cryochamber, which warms rapidly towards the ambient temperature in the engineering section. You open the chamber and recycle what you can of the mess inside.";
+	change outcome-override to force-success;
 	increase henchmen defeated by one;
 	now the old fridge is damaged;
 	move the maintenance droid to Limbo.
@@ -4872,6 +4912,7 @@ Instead of inserting the maintenance droid into the water tank:
 				move the maintenance droid to the place corresponding to the round of the damage counter in the Table of Underling Tasks;
 			otherwise:
 				say "hapless robot into the center of the chamber, where he is ripped to shreds by the magnetic vortex and incinerated immediately in the plasma stream. You momentarily experience a bout of indigestion as the plasma stream purges the impurities, and then with great satisfaction, you slam shut the access hatch.";
+				change outcome-override to force-success;
 				now the water tank is closed;
 				increase the henchmen defeated by one;
 				now the maintenance droid is shielded;
@@ -5186,6 +5227,7 @@ Instead of expounding a topic listed in the Table of Conversation during Back on
 		the rule succeeds;
 	if the told entry is 0 and the asked entry is 0:
 		say "[tell-text entry][paragraph break]";
+		change outcome-override to force-success;
 		change the required entry to 0;
 	otherwise:
 		say "[stop being so repetitive]";
