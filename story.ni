@@ -2635,6 +2635,15 @@ After taking the reward nuggets replicator:
 		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if].";
 	now Rover is busy.
 		
+
+Instead of giving the water bowl to Rover:
+	try dropping the water bowl;
+	say "[if the water bowl is full]Rover shivers with excitement as you put the full water bowl on the ground.[otherwise]Rover moans sadly as you put the empty water bowl on the floor.".
+
+Instead of giving the food bowl to Rover:
+	try dropping the food bowl;
+	say "[if the food bowl is full]Rover smacks his lips as you lay the bowl down for him.[otherwise]Rover's stomach growls when you lay down the empty bowl.  He looks at you pathetically.".
+
 Instead of giving a dog treat to Rover:
 	now the dog treat is in the reward nuggets replicator;
 	say "[Rover ] [if the player is clueless][one of]nearly takes your hand off in rush to swallow the treat[or]approaches the treat silently, with his head bent and eyes half closed, like a supplicant before the altar. With a look of deep reverence he takes the treat in his mouth and backs away[or]snaps his tongue out like a frog and whips the treat out of your hand from two meters away. It's just something he does[or]does a slow motion dive and twist in mid-air, gracefully arcing above you and swabbing your hand liberally with his broad, moist tongue. The treat has disappeared down his gullet by the time he lands[or]gobbles down the treat and then pretends indignantly that he hasn't received anything at all[or]carefully lifts the treat out of your hand using a toothy sidewise grip[or]gobbles down the treat[or]wolfs down the dog biscuit[or]polishes off his dog treat[or]swallows the treat without bothering to chew it at all[stopping]. A series of emotions wash over Rover's face, but finally it settles into an expression of [one of]ecstasy[or]exhiliration[or]exultation[or]elation[or]enchantment[or]extreme satisfaction[or]enjoyment[or]euphoria[in random order][otherwise]internalizes [the dog treat][end if].";
