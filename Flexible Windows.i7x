@@ -1,4 +1,4 @@
-Version 6 of Flexible Windows (for Glulx only) by Jon Ingold begins here.
+Version 8 of Flexible Windows (for Glulx only) by Jon Ingold begins here.
 
 "An extension for constructing multiple-window games, which can be created and destroyed during play."
 
@@ -7,21 +7,34 @@ Include Glulx Entry Points by Emily Short.
 Before starting the virtual machine:
 	do nothing. [Hack that, for complicated reasons, prevents character streams going to the wrong place at game startup under some conditions.]
 
+[ Code to make compatible with status line extensions. -- Aaron Reed. ]
+
+Use no status line translates as (- Constant USE_NO_STATUS_LINE 1; -).
+Include (-
+#ifndef USE_NO_STATUS_LINE;
+Constant USE_NO_STATUS_LINE 0;
+#endif;
+-). 
+
 Chapter 1 - Initialisations, windows and values
 
 section - definitions of properties and values
 
 A g-window is a kind of thing.
-g-present property translates into I6 as "light".
 
 Include (-
 
-Constant g_present = light;
+Attribute g_present;
 Constant drawing_rule = initial;
 
--).
+-) after "Definitions.i6t". 
+
 
 A g-window can be g-present or g-unpresent. A g-window can be g-required or g-unrequired.
+
+The g-present property translates into I6 as "g_present".
+Drawing rule translates into I6 as "drawing_rule".
+
 
 A g-window is g-unpresent. A g-window is g-unrequired.
 
@@ -54,7 +67,6 @@ direct parent property translates into I6 as "direct_parent".
 A g-window has a rule called drawing rule.  
 The drawing rule of a g-window is usually the do-nothing rule.
 
-Drawing rule translates into I6 as "drawing_rule".
 
 This is the do-nothing rule: do nothing.
 
@@ -123,7 +135,7 @@ To decide which g-window is the direct-parent of (g - a g-window):
 
 section - test spawning relations - not for release
 
-Peeping is an action applying to one thing.
+Peeping is an action applying to one visible thing.
 
 Understand "peep through [any g-window]" as peeping.
 
@@ -136,13 +148,25 @@ Carry out peeping (this is the peep rule):
 	if noun is g-present, say "(present) "; otherwise say "(missing) ";
 	if noun is g-required, say "(required)."; otherwise say "(unneeded).";
 
-tracing it to is an action applying to two things.
+tracking it to is an action applying to two visible  things.
 
-Understand "spawn [any g-window] to [any g-window]" as tracing it to.
+Understand "track [any g-window] to [any g-window]" as tracking it to.
 
-Carry out tracing it to:
+Carry out tracking it to:
 	say "no. =>: [number of steps via the spawning relation from noun to second noun].";
 	say "no. <=: [number of steps via the spawning relation from second noun to noun].";
+
+Throwing open is an action applying to one visible  thing.
+Slamming shut is an action applying to one visible  thing.
+
+Understand "slam shut [any g-window]" as slamming shut.
+Understand "throw open [any g-window]" as throwing open.
+
+Carry out slamming shut:
+	shut down the noun;
+
+Carry out throwing open:
+	open up the noun;
 
 Chapter 2 - opening, closing and calibrating
 
@@ -274,12 +298,14 @@ To doll-up properties: (- CreatePropertyOffsets(); -)
 Definition: a g-window is on-call if the rock-value of it is the current glulx rock.
 
 A glulx resetting-windows rule (this is the default reobtaining references rule):
-	let g be a random on-call g-window;
+	let g be a random on-call g-window; [ get the particular window we're looking to build]
 	if g is a g-window and the current glulx rock is not zero begin;
 		now the ref-number of g is the current glulx rock-ref;
-		now g is g-present;
+		now g is g-present; [ the window is RIGHT HERE ]
 	end if;
-	
+
+	[ by the end of this, all the windows which are actually present are marked thus, and have ref numbers. All those which aren't present are also marked. We then match this up to requirements. ]
+
 The first glulx object-updating rule:
 	set main-window ref;
 	follow the delete-unrequired rule;
@@ -287,7 +313,7 @@ The first glulx object-updating rule:
 
 This is the delete-unrequired rule:
 	while the number of g-unrequired g-present g-windows is not zero
-	begin; 
+	begin;
 		shut down a random g-unrequired g-present g-window;
 	end while.
 
@@ -299,7 +325,7 @@ This is the create-required rule:
 
 Section - updating the contents of the windows
 
-A glulx arranging rule (this is the arranging all rule): 
+A glulx arranging rule (this is the arranging all rule):
 	follow the refresh windows rule.
 
 A glulx redrawing rule (this is the redrawing all rule):
@@ -327,10 +353,10 @@ To decide which number is the measure of (g - a g-window):
 	decide on the width of g.
 
 To decide which number is the width of (g - a g-window):
-(-  	WindowSize({g}, 0); 	-).
+(-  	WindowSize({g}, 0) 	-).
 
 To decide which number is the height of (g - a g-window):
-(-  	WindowSize({g}, 1); 	-).
+(-  	WindowSize({g}, 1) 	-).
 
 Include (-  
 
@@ -377,25 +403,50 @@ Chapter - Writing to different windows
 
 Section - shifting and knowing where we are
 
+[ Updated code by Erik Temple. ] 
+
 The current g-window is a g-window that varies. The current g-window is the main-window.
 
-To set/move/shift focus to (g - a g-window), clearing the window:
-	if g is g-present 
-	begin;
-		now the current g-window is g;
-		set cursor to ref-number of g;	
-		if clearing the window, clear the current g-window;
-	end if.
+To set/move/shift the/-- focus to (g - a g-window), clearing the window:
+    if g is g-present 
+    begin;
+        now the current g-window is g;
+        set cursor to ref-number of g;    
+        if clearing the window, clear the current g-window;
+    end if.
 
-To set cursor to (N - a number):
-(-   	glk_set_window({n}); 
--)
+To set cursor to the/-- (N - a number):
+(-       glk_set_window({n}); -)
 
-To clear the (g - a g-window):
-(-	if ({g} has g_present) glk_window_clear({g}.ref_number);
+To clear the/-- (win - a g-window):
+	if the type of win is g-graphics:
+		graphics-clear win;
+	otherwise:
+		text-clear win.
+        
+To text-clear the/-- (g - a g-window):
+(-    if ({g} has g_present) glk_window_clear({g}.ref_number); -).
+
+To graphics-clear the/-- (g - a g-window):
+(-    if ({g} has g_present) BlankWindowToColor({g}); -).
+
+
+Include (-
+
+[ BlankWindowToColor g result graph_width graph_height col;
+    col = ColVal(g.back_colour);
+    result = glk_window_get_size(g.ref_number, gg_arguments, gg_arguments+WORDSIZE);
+                 graph_width  = gg_arguments-->0;
+                 graph_height = gg_arguments-->1; 
+
+    glk_window_fill_rect(g.ref_number, col, 0, 0, graph_width, graph_height);
+];
+
+
 -).
 
 To return to main screen/window: set focus to main-window.
+
 
 Section - setting the cursor
 
@@ -519,13 +570,33 @@ Include
 
 					rfalse;
 				}
+			GG_STATUSWIN_ROCK: 
+				if (USE_NO_STATUS_LINE == 1) rtrue;		! - Aaron Reed
 		}
+		
 		rfalse;
 
 	];
 
 -) after "Definitions.i6t".   		
 
+Section - reverse-colouring windows
+
+To set-reverse: 	(-	SetReverse(1);	-);
+To unset-reverse: 	(-	SetReverse(0);	-);
+
+Include (-
+
+[ SetReverse flag i;
+   for (i = 0: i < style_NUMSTYLES : i++)
+       if (flag)	
+	glk_stylehint_set(wintype_textgrid, i, stylehint_ReverseColor, 0);
+      else
+	glk_stylehint_clear(wintype_textgrid, i, stylehint_ReverseColor);
+
+];
+
+-).
 
 section - bordered g-windows
 
@@ -608,9 +679,15 @@ Finally, if we are using proportional windows, we can optionally set a "minimum 
 
 	Section: Specifying Window Type
 
-As mentioned above there are three types of Glulx window, selected by specifying the type of the g-window. The choices are g-text-buffer, g-text-grid and g-graphics. Essentially, a text-buffer is akin to the main window, a graphics screen cannot accept text but can render images, and a text-grid allows for flexible positioning of text characters.
+As mentioned above there are three types of Glulx window, selected by specifying the type of the g-window. The choices are g-text-buffer, g-text-grid and g-graphics. A text-buffer is a teletype-style stream of text (akin to the main window), a graphics screen cannot accept text but can render images, and a text-grid allows for flexible positioning of text characters using cursor-movement functions. 
+
+For instance, the following statements are true (although they don't actually appear anywhere in the extension):
+
+	The type of the main-window is g-text-buffer.
+	The type of the status-window is g-text-grid.
 
 Window type can be changed during the game, however, it will only take effect when the window is opened.
+
 
 	Section: Defaults and Corrections
 
@@ -643,6 +720,10 @@ This extension provides little in the way of support for graphics windows or tex
 	open up banner-window
 
 The only point to note is that the "open up" command will, if necessary, also open any sub-windows required to reach the window you've asked for. So if the side-window is a spawn of the banner-window, and the banner-window is currently not open, the "open up side-window" command will open both. As mentioned above, spawning order is not editable once the game has started, so if you need flexibility on this, you'll need to make multiple, identical-acting windows (see Window Rules, below).
+
+We set the cursor using
+		
+	set the cursor to the main-window;
 
 When writing and drawing to windows we should be careful they exist, otherwise the game will crash strangely. You can check the existence of a window at any time by testing for the g-present property.
 
@@ -685,6 +766,8 @@ Side windows taking inventories and such-like might want to be able to tell the 
 	Rule for printing the name of the old book while taking inventory and the current g-window is side-window:
 		say "The Meteor, the Stone (etc.)" instead.
 
+	Section: Placing the cursor (text-grids only)
+
 We can position the cursor in text-grid windows using the following phrase
 
 	... position the cursor in side-window at row 2 column 1;
@@ -706,6 +789,18 @@ If we want to update all the sub-windows quickly, we can invoke the refresh wind
 	follow the refresh windows rule
 
 which does just that, carefully, and without bothering windows that aren't there.
+
+
+	Chapter: Debugging verbs
+
+This may or may not be helpful!
+
+	Throw open any window - force open the window
+	Slam shut any window - force close the window
+
+	Track window to window - counts the number of spawn steps from noun to second (and back again, so you don't need to get the order right)
+
+	Peep through window - Debug info on the window: what does it spawn, what spawns from it, and what Flexible Window attributes does it carry.
 
 	Chapter: Special features
 
@@ -733,6 +828,17 @@ The main-window can be supplied a background colour in the same way.
 A window can be defined as a "bordered g-window", and it will then be produced with a border of "border-measure" thickness and "border-colour" colour. (This is wastefully done; it actually places four thin windows around the window constructed, but harmlessly so). 
 
 The main-window can be bordered too, by declaring that "the main-window is a bordered g-window". 
+
+    Section: Status Line
+
+By default, Glulx games will incorporate a status line. To turn this off quickly, a use option is provided:
+
+	Use no status line.
+
+	Chapter: Changelog
+
+	26/6/09 	- Changed code for clearing graphics windows to make it faster under Zoom for Mac (thanks to Erik Temple for this.) Note this clears the window by repainting it in its background colour, so this will have to be set for this to work correctly.
+				- Added use option for no status line (thanks to Aaron Reed for this.)
 
 
 Example: * Inventory Window - A simple example showing how to place an side window displaying the player's inventory.
