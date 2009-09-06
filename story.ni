@@ -287,7 +287,7 @@ Carry out memory-updating:
 To say ACU Boot Banner:
 	say "[bold type][story title][roman type]";
 	say line break;
-	say "An Interactive Fiction by Janet Xiang[if the Real Thing is happening] and David Venkatachalam[end if]";
+	say "An Interactive Simulation by Janet Xiang[if the Real Thing is happening] and David Venkatachalam[end if]";
 	say line break;
 	let serial be "[stardate]";
 	if First Sim is happening:
@@ -304,11 +304,12 @@ To say ACU Boot Banner:
 [General routine for displaying dialogue between Janet and David.]
 
 To say (dialogue - some text) in metaspeak:
-	say line break;
- 	say "[first custom style][dialogue]";
- 	say roman type;
- 	say variable letter spacing;
- 	say paragraph break.
+	if (the First Sim is happening or the Second Sim is happening):
+		say line break;
+ 		say "[first custom style][dialogue]";
+ 		say roman type;
+ 		say variable letter spacing;
+ 		say paragraph break.
 	
 [BSOD routines - uses Flexible Windows extension.]
 The BSOD-window is a g-window.   The type of the g-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
@@ -1070,7 +1071,7 @@ Check Businessing:
 	if the player is not poopready:
 		if the player is prepoop:
 			if the white egg is raw:
-				say "[if the player is clueless][one of]Maybe after you eat something[or]You don't need to go right now[or]You usually go a bit later in the morning[or]You're a creature of habit. Maybe after breakfast[in random order][otherwise]Before shunting power to the retros, it must first be produced. To generate enough power to lift off, heavy helium fuel must be contained in a magnetic bottle and ignited in the fusion chamber[end if].";
+				say "[if the player is clueless][one of]Maybe after you eat something[or]You don't need to go right now;  check the list on the fridge[or]You usually go a bit later in the morning, as your list on the fridge often reminds you[or]You're a creature of habit. Maybe after breakfast? That's what your list on the fridge recommends, at least[in random order][otherwise]Before shunting power to the retros, it must first be produced. To generate enough power to lift off, heavy helium fuel must be contained in a magnetic bottle and ignited in the fusion chamber[end if].";
 			otherwise:[egg cooked]
 				say "[if the player is clueless][one of]Sometimes this sort of venture is more successful after eating[or]The appetizing smell of the fried egg wafts in from the kitchen, reminding you that you haven't had your breakfast yet[or]Nothing is forthcoming[stopping][otherwise]Power cannot be shunted until the fused heavy helium residue is fed to the recycling system[end if].";
 		otherwise:[postpoop]
@@ -1202,7 +1203,29 @@ Report kissing:
 			-- otherwise:
 				change outcome-override to force-success;
 				say "You [if the player is clueless]kiss [the noun] lightly[otherwise]You attempt to negotiate a direct synch with [the noun] and fail[end if].";
-			 
+				
+
+Section Using
+
+Understand the command "use" as something new.  Using is an action applying to one thing.
+
+Understand "use [a thing]" as using.
+
+Report using:
+	if the noun is:
+		-- the TB-TS: [shower]
+			change outcome-override to force-failure;
+			say "You'll have to [if the player is clueless]enter the shower[otherwise]select the extruder[end if] first.";  [### Jack, should this be more abstracted?]
+		-- the floss:
+			try flossing teeth instead;
+		-- the toilet:
+			try businessing instead;
+		-- otherwise:
+			change outcome-override to force-failure;
+			say "[one of]I'm afraid you'll need to be more specific.[or]Apologies, but that's a bit vague;  can you express differently?[or]I don't quite follow.[or]Sorry, can you rephrase that?[or]Can you be more precise, please?[in random order]";
+;
+
+
 Chapter General Insteads
 
 Instead of throwing something (called the projectile) at something:
@@ -1875,7 +1898,7 @@ To say living room status:
 	if the drapes are in the Living Room and the drapes are closed:
 		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light";
 	otherwise:
-		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window[if the nameplate is not already-read], illuminating a framed picture on the wall[end if][if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
+		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window[if the nameplate is not already-read], illuminating a framed picture on the wall[end if][if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
 		
 Sunlight is a privately-named scenery in the Living Room. Understand "light" and "sunlight" and "illumination" and "daylight" and "shaft" as sunlight when the player is clueless. The description of sunlight is "[if the drapes are in the living room and the drapes are closed]A single shaft of daylight slices like a laser through the living room. Although dramatic, it does not provide very effective illumination[otherwise]Bright daylight shines in through the window facing the park. The light is ever so slightly tinted red from surface reflection near the collectors[end if]." The aware-name of sunlight is "photon sensor".
 
@@ -2169,6 +2192,9 @@ Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "
 
 The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. 
 
+Instead of searching the picture:  
+	try examining the picture.
+
 Test picture with "x picture / get picture / eat picture / read nameplate / read memory unit".
 
 The nameplate is a fixed in place message which is part of the picture. Understand "inscription" and "engraving" as the nameplate. Understand "name" or "plate" as the nameplate. The clueless-description of the nameplate is "A brass nameplate bearing a short inscription. The nameplate is attached to the bottom of the picture." The aware-description of the nameplate is "A small plastic sign with a short inscription. The sign is glued to the Deep Memory module." The clueless-name of the nameplate is "nameplate". The aware-name of the nameplate is "plastic sign". The nameplate-proxy is an aware-proxy that is part of the nameplate. Understand "plastic" or "sign" as the nameplate-proxy. The inscription of the nameplate is "". The nameplate can be already-read. The nameplate is not already-read. 
@@ -2317,7 +2343,7 @@ Check cracking it into:
 	if the enamel_pid is zero:
 		now the frying pan is on the counter;
 		now the white egg is in the frying pan;
-		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster. You put the egg and the frying pan to the side for the moment." instead.
+		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster.  (This is why you have your list hanging on the fridge!)  You put the egg and the frying pan to the side for the moment.  ()" instead.
 		
 Carry out cracking it into:
 	change outcome-override to force-success;
@@ -2429,6 +2455,8 @@ After dropping a bowl (called the vessel):
 		now Rover is busy.
 	
 Filling it with is an action applying to two things. Understand "fill [something] with [something]" or "fill [something] from [something]" as filling it with when the player is the acu. 
+
+Understand "water" as the kitchen sink.  [so that 'put water in water bowl' works correctly]
 
 Check filling it with:
 	if the noun is not a bowl:
@@ -2681,6 +2709,15 @@ After taking the reward nuggets replicator:
 		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if].";
 	now Rover is busy.
 		
+
+Instead of giving the water bowl to Rover:
+	try dropping the water bowl;
+	say "[if the water bowl is full]Rover shivers with excitement as you put the full water bowl on the ground.[otherwise]Rover moans sadly as you put the empty water bowl on the floor.".
+
+Instead of giving the food bowl to Rover:
+	try dropping the food bowl;
+	say "[if the food bowl is full]Rover smacks his lips as you lay the bowl down for him.[otherwise]Rover's stomach growls when you lay down the empty bowl.  He looks at you pathetically.".
+
 Instead of giving a dog treat to Rover:
 	change outcome-override to force-success;
 	now the dog treat is in the reward nuggets replicator;
@@ -3828,7 +3865,7 @@ Chapter Manpages
 
 Table of Manual Pages
 topic		description
-"manual" or "manpage" or "man"		"The ship operations manual is provided to supplement ACU understanding of defined objects in the event that cognitive constraints are released. To request information about an object, the syntax is:[paragraph break] man [bracket]object[close bracket][paragraph break]The manual does not include entries for flosix command line syntax, although a subset of flosix commands are available to the ACU via the virtual console."
+"manual" or "manpage" or "man"		"The ship operations manual is provided to supplement ACU understanding of defined objects in the event that cognitive constraints are released. To request information about an object, the syntax is:[paragraph break] man [bracket]object[close bracket][paragraph break]The manual does not include entries for Flosix command line syntax, although a subset of Flosix commands are available to the ACU via the virtual console."
 "bulkhead" or "bulkheads"		"Valkyrie's bulkheads are constructed of interlocking carbon nanotubule and neoadamite matrices to provide excellent performance in terms of all stress modes."
 "casimir" or "casimir drive" or "extension strut" or "strut"		"The zero-point energy drive creates a time-space gradient across which the ship travels. In conjunction with the ship's temporal transgressor, the ship is capable of faster-than-light travel without incurring substantial time debt. The drive must be extended for interstellar flight, but retracted to make planetfall. The drive cannot be used within stellar systems or near other significant gravity wells. The drive is delicate and should be protected from physical damage, particularly to the field plates."
 "spatial manifold" or "manifold attenuator" or "spatial manifold attenuator" or "attenuator"		"The spatial manifold attenuator smooths irregularities in the Casimir gradient, assuring pseudolaminar flow in the pathway of the ship through time-space."
@@ -4215,6 +4252,7 @@ the tying it to action			false		"BIND" [tie, attach]
 the unfolding action				false		"EXTEND" [unfold]
 the unlocking it with action		FALSE		"UNSECURE"
 the uptiming action				TRUE		"UPTIME" [uptime]
+the using action			false		"TOGGLE"  [use]
 the waiting action					TRUE		"TIMER" [wait]
 the waking up action				false		"INITIALIZE" [wake, wake up]
 the waving action					false		"OSCILLATE"
@@ -4270,6 +4308,9 @@ Every turn:
 		if Rover is in the location:
 			say "[Rover] [if the player is clueless]looks down and devours the dog treat[otherwise]downloads the reward token[end if].[paragraph break]";
 			now Rover is busy;
+	if the player has a bowl:
+		if Rover is in the location and (Rover is hungry or Rover is thirsty):
+			say "[Rover] [if the player is clueless][one of]stares longingly at the bowl in your hand[or]is obviously waiting for you to give him a bowl[or]tingles with anticipation as he stares at the bowl you're carrying[or]outright gapes at the bowl you carry, then gently sniffs it in hopes that you'll give it to him[in random order][otherwise]stands waiting for [the food bowl] to be available to him[end if].[paragraph break]";
 	if the holder of Rover is the holder of the food bowl and Rover is hungry:
 		if the food bowl is full:
 			now Rover is not hungry;
@@ -4515,7 +4556,7 @@ When Arm Hurts begins:
 	
 When Arm Hurts ends:
 	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the black plate before rubbing the left arm]
-		let metatext be "David: Is the static charge neutralization part the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
+		let metatext be "David: Is the static charge neutralization part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
 		say "[metatext in metaspeak]".
 
 Every turn during Arm Hurts:
@@ -4699,7 +4740,7 @@ Chapter Walkies
 Walkies is a recurring scene. Walkies begins when Rover is in the Front Yard and the Real Thing is happening. Walkies ends when Rover is in the Living Room.
 
 When Walkies begins:
-	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, full of energy. [run paragraph on]";
+	say "There is a wrenching shift in perspective, but a moment later it seems perfectly natural.[paragraph break]You go bounding out the front door, [one of]full of energy[or]ready to romp[or]ready to play[or]eager to explore strange new worlds[in random order]. [run paragraph on]";
 	if Rover carries the delicious bone:
 		say "You leave your [delicious bone] in the living room, with the intention of giving it a proper chewing later[if the white egg is not in the Valkyrie Area], after doing some more exploring[end if].";
 		now the delicious bone is in the Living Room;
@@ -5439,7 +5480,7 @@ Rule for amusing a victorious player:
 			say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
 		otherwise:
 			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
-	say "* [if used-manual is true]Once cognitive constraints were released, you used the flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
+	say "* [if used-manual is true]Once cognitive constraints were released, you used the Flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any Flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
 	say "* Did Rover succeed in his amorous advances towards his significant other in the park?"
 	
