@@ -1214,16 +1214,13 @@ Understand "use [a thing]" as using.
 Report using:
 	if the noun is:
 		-- the TB-TS: [shower]
-			change outcome-override to force-failure;
-			say "You'll have to [if the player is clueless]enter the shower[otherwise]select the extruder[end if] first.";  [### Jack, should this be more abstracted?]
+			say "You'll have to [if the player is clueless]enter the shower[otherwise]select the extruder[end if] first.";
 		-- the floss:
 			try flossing teeth instead;
 		-- the toilet:
 			try businessing instead;
 		-- otherwise:
-			change outcome-override to force-failure;
-			say "[one of]I'm afraid you'll need to be more specific.[or]Apologies, but that's a bit vague;  can you express differently?[or]I don't quite follow.[or]Sorry, can you rephrase that?[or]Can you be more precise, please?[in random order]";
-;
+			say "[one of]I'm afraid you'll need to be more specific.[or]Apologies, but that's a bit vague; can you express differently?[or]I don't quite follow.[or]Sorry, can you rephrase that?[or]Can you be more precise, please?[in random order]";
 
 
 Chapter General Insteads
@@ -1297,10 +1294,12 @@ Instead of dropping something which is not enclosed by the player:
 	say "You [if the player is clueless]weren't holding[otherwise]hadn't selected[end if] [the noun] to begin with."
 	
 After going outside:
-	change outcome-override to force-success.
+	change outcome-override to force-success;
+	continue the action.
 	
 After getting off something:
-	change outcome-override to force-success.
+	change outcome-override to force-success;
+	continue the action.
 
 [TOCONSIDER: a consult about, cutting generic response?]
 
@@ -2343,7 +2342,7 @@ Check cracking it into:
 	if the enamel_pid is zero:
 		now the frying pan is on the counter;
 		now the white egg is in the frying pan;
-		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster.  (This is why you have your list hanging on the fridge!)  You put the egg and the frying pan to the side for the moment.  ()" instead.
+		say "You feel kind of grimy and not entirely awake. From past experience you know that cooking before your morning shower often ends in disaster.  (This is why you have your list hanging on the fridge!)  You put the egg and the frying pan to the side for the moment." instead.
 		
 Carry out cracking it into:
 	change outcome-override to force-success;
@@ -2709,14 +2708,13 @@ After taking the reward nuggets replicator:
 		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if].";
 	now Rover is busy.
 		
-
 Instead of giving the water bowl to Rover:
 	try dropping the water bowl;
 	say "[if the water bowl is full]Rover shivers with excitement as you put the full water bowl on the ground.[otherwise]Rover moans sadly as you put the empty water bowl on the floor.".
 
 Instead of giving the food bowl to Rover:
 	try dropping the food bowl;
-	say "[if the food bowl is full]Rover smacks his lips as you lay the bowl down for him.[otherwise]Rover's stomach growls when you lay down the empty bowl.  He looks at you pathetically.".
+	say "[if the food bowl is full]Rover smacks his lips as you lay the bowl down for him.[otherwise]Rover's stomach growls when you lay down the empty bowl. He looks at you pathetically.".
 
 Instead of giving a dog treat to Rover:
 	change outcome-override to force-success;
@@ -4311,6 +4309,7 @@ Every turn:
 	if the player has a bowl:
 		if Rover is in the location and (Rover is hungry or Rover is thirsty):
 			say "[Rover] [if the player is clueless][one of]stares longingly at the bowl in your hand[or]is obviously waiting for you to give him a bowl[or]tingles with anticipation as he stares at the bowl you're carrying[or]outright gapes at the bowl you carry, then gently sniffs it in hopes that you'll give it to him[in random order][otherwise]stands waiting for [the food bowl] to be available to him[end if].[paragraph break]";
+			now Rover is busy;
 	if the holder of Rover is the holder of the food bowl and Rover is hungry:
 		if the food bowl is full:
 			now Rover is not hungry;
