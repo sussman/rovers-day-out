@@ -2256,7 +2256,7 @@ Instead of searching a refrigerator (called R):
 			change outcome-override to force-success;
 	say "."
 
-The magpaper is message which is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" or "jobs" or "list" or "queue" or "priority" or "task" or "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]."
+The magpaper is message.  The magpaper is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" or "jobs" or "list" or "queue" or "priority" or "task" or "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]."
 
 To reset magpaper:
 	Now the IPL_pid is zero;
@@ -3109,10 +3109,11 @@ Instead of taking the toilet:
 Flushing is an action applying to one thing.  Understand "flush [something]" as flushing when the player is the acu.
 
 Check flushing:
-	if the noun is not the the toilet and the noun is not the silver knob:
+	if the noun is not the toilet:
+		if the noun is not the silver knob:
 		[did the player try to flush something other than the toilet?]
-		say "[if the player is clueless]That would be difficult to explain to the plumber[otherwise]Thruster discharge can only be actuated via the retro trigger circuit[end if].";
-		the rule fails;
+			say "[if the player is clueless]That would be difficult to explain to the plumber[otherwise]Thruster discharge can only be actuated via the retro trigger circuit[end if].";
+			the rule fails;
 	if the Landing Sequence is happening:
 		[Is the yoke correctly centered?]
 		if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
