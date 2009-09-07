@@ -71,7 +71,7 @@ Instead of swearing obscenely:
 			if the player is Rover:
 				say "dogs";
 			otherwise:
-				say "interactive fiction authors";
+				say "the authors of interactive simulations";
 		otherwise:
 			say "sentient computers";
 		say "."
@@ -148,7 +148,7 @@ A refrigerator is a kind of container. A refrigerator is usually closed, openabl
 
 A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "drain" as a sink.  
 
-A here-delegate is a kind of thing. It is usually privately-named and scenery. Understand "room" as here-delegate.
+A here-delegate is a kind of thing. It is usually privately-named and scenery. Understand "room" as here-delegate. The scent of a here-delegate is usually "[the scent of the location]". The printed name of a here-delegate is usually "[printed name of location]".
 
 A there-delegate is a kind of thing. It is usually privately-named and scenery. There-delegates have a room called destination.
 
@@ -966,46 +966,58 @@ A procedural rule while smelling:
 
 Instead of smelling:  
 	let the regverb be "smell";
-	if the player is the ACU:
-		if the player is clueless:
-			if the noun is dog food or the noun is the food bowl or the noun is the dog chow bag:
-				change outcome-override to force-success;
-				say "It smells disgusting to you, but you bet it's haute cuisine as far as Rover is concerned.";
-			otherwise:
-				say "You smell nothing [one of]unusual[or]exciting[or]special[or]exotic[or]unexpected[or]remarkable[or]to write home about[or]worth mentioning[or]of note[in random order].";
-		otherwise:
-			change outcome-override to force-success;
-			say "Internal atmospheric analysis: [99 minus FiO2]% diatomic nitrogen, [FiO2]% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure [Pressure] kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
-		the rule succeeds;
-	otherwise:
-		change outcome-override to force-success;[Rover always smells something]
-		if the noun is the location:
-			if the scent of the noun is "":
-				say "This place doesn't have any particular smell, so you point your snout up in the air and take a good sniff. [run paragraph on]";
-			otherwise:
-				say "It smells [scent of the noun] here. [run paragraph on]";
-			try sniffscanning;
+	if the player is clueless:
+		if the player is Rover:
+			change outcome-override to force-success;[Rover always smells something]
+			if the noun is the location or the noun is a here-delegate:
+				if the scent of the noun is "":
+					say "This place doesn't have any particular smell, so you point your snout up in the air and take a good sniff. [run paragraph on]";
+				otherwise:
+					say "It smells [scent of the noun] here. [run paragraph on]";
+				try sniffscanning;
+				the rule succeeds;
+			otherwise	 if the noun is not enclosed by the location:
+				say "[The noun] is not here, so you sniff the air.[paragraph break]";
+				if the noun is:
+					-- the smelly man: 
+						say "[man-smell].";
+					-- the female dog: 
+						say "[dog-smell].";
+					-- home: 
+						say "[home-smell].";
+					-- otherwise: 
+						say paragraph break;
+				the rule succeeds;
+		otherwise:[player is the ACU]
+			if the noun is not the location and the noun is not enclosed by the location:
+				say "You don't see [the noun] around here, nor is your nose very informative.";
+				the rule succeeds;
+			if the noun is the location or the noun is a here-delegate:
+				if the scent of the location is "":
+					say "You don't smell anything in particular.";
+				otherwise:
+					change the outcome-override to force-success;
+					say "It smells [scent of the location] here.";
+				the rule succeeds;
+		[player could be either a clueless ACU or Rover:]
+		if the scent of the noun is "":
+			change the outcome-override to force-failure;
+			say "The [noun] [the regverb in correct agreement] [one of]unremarkable[or]ordinary[or]not particularly interesting[in random order].";
 			the rule succeeds;
-		otherwise	 if the noun is not enclosed by the location:
-			say "[The noun] is not here, so you sniff the air.[paragraph break]";
-			if the noun is:
-				-- the smelly man: say "[man-smell].";
-				-- the female dog: say "[dog-smell].";
-				-- home: say "[home-smell].";
-				-- otherwise: say paragraph break;
-			the rule succeeds;
-		otherwise if the noun is the player:
-			say "You smell";
+		change the outcome-override to force-success;
+		if the noun is the player:
+			 say "You smell";
 		otherwise if the noun is the female dog:
 			say "She smells";
 		otherwise if the noun is part of the player:
 			say "Your [noun] [the regverb in correct agreement]";
 		otherwise:
 			say "[The noun] [the regverb in correct agreement]";
-		if the scent of the noun is "":
-			say " [one of]unremarkable[or]ordinary[or]not particularly interesting[in random order].";
-		otherwise:
-			say " [scent of the noun]."
+		say " [scent of the noun].";
+	otherwise:
+		change outcome-override to force-success;
+		say "Internal atmospheric analysis: [99 minus FiO2]% diatomic nitrogen, [FiO2]% diatomic oxygen, less than 1% carbon dioxide and trace gases, no particulate matter. Pressure [Pressure] kPa.";[This is flight configuration, and should change after the ship is on the planet or if the ship is vented as a countermeasure against the pirates.]
+		the rule succeeds.		
 				
 Sniffscanning is an action applying to nothing. 
 
@@ -1865,7 +1877,7 @@ Before doing something when (the noun is David Venkatachalam or second noun is D
 
 Section Room Delegates
 
-LR is a here-delegate. It is in the Living Room. Understand "Living Room " as LR. The aware-name of LR is "operations".
+LR is a here-delegate. It is in the Living Room. Understand "Living Room " as LR. The aware-name of LR is "operations". 
 
 LR-TB is a there-delegate. It is in the Living Room. The destination of LR-TB is the Bathroom. The clueless-name of the LR-TB is "bathroom". Understand "bathroom" or "corner" as LR-TB. The clueless-description of LR-TB is "From here, you can see just a corner of the bathroom: a bit of the marble counter, and the corner of the sink." The aware-name of LR-TB is "flight control". The aware-description of LR-TB is "From here, you can see a little ways into the flight control area. You can make out the edge of the flight console and a corner of the biohazard response system." Understand "marble counter" and "sink" as the LR-TB. Understand "flight console" and "biohazard response system" as LR-TB when the player is self-aware.
 
@@ -1906,9 +1918,9 @@ The Valkyrie Area is a region.  The Living Room, The Kitchen, The Bathroom and T
 
 Test living_room with "stand up / open drapes / look / test picture".[add tests for other objects in living room.]
 
-The Living Room is outside from the Kitchen and outside from Bathroom.  The Bathroom is outside from the Shower. The Living Room contains the player. Understand "home" as the Living Room. The Living Room can be visited-during-havoc. The Living Room is not visited-during-havoc.
+The Living Room is outside from the Kitchen and outside from Bathroom.  The Bathroom is outside from the Shower. The Living Room contains the player. Understand "home" as the Living Room. The Living Room can be visited-during-havoc. The Living Room is not visited-during-havoc. The scent of the living room is "a little musty".
 
-The walls are a backdrop.  They are in the Living Room and Kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. 
+The walls are a backdrop.  They are in the Living Room and Kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. The scent of the walls is "faintly of rust. Must be iron-oxide from the local quarry".
 
 The ceiling is a backdrop. It is in the Living Room and Kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." The aware-name of the ceiling is "ceiling". 
 
@@ -1936,7 +1948,7 @@ Sunlight is a privately-named scenery in the Living Room. Understand "light" and
 Instead of taking the sunlight:
 	say "Poetic, perhaps, but not practical."
 
-The futon is a bed in the Living Room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "[if the drapes are open]purple [end if]futon".  The aware-name of the futon is "Casimir Drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The Casimir Drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" or "drive" or "casimir drive system" or "zero-point energy" or "zero point energy" or "zero point energy drive" or "vortex drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. 
+The futon is a bed in the Living Room. The futon can be folded. The futon is not folded. The futon can be functional. The futon is functional. The clueless-name of the futon is "[if the drapes are open]purple [end if]futon".  The aware-name of the futon is "Casimir Drive". Understand "couch" or "bed" or "purple" as the futon. The aware-description of the futon is "The Casimir Drive system is [if the futon is folded]retracted[otherwise]extended[end if] and [if the futon is functional]intact[otherwise]damaged[end if].[if the alarm clock is on the futon] A temporal transgressor is nestled into its port." The clueless-description of the futon is "Your futon is huge, and oh so comfy. [if the Second Sim is happening]It is far too large to be practical in your minimalist living room, particularly when the futon is unfolded. [end if]The wooden frame supports a king-size mattress[if the futon is not folded] that is pulled out to form a bed[end if].[if the alarm clock is on the futon] An alarm clock is balanced precariously near the edge of the futon.".  The futon-proxy is an aware-proxy that is part of the futon. Understand "casimir" or "drive" or "casimir drive system" or "zero-point energy" or "zero point energy" or "zero point energy drive" or "vortex drive" as the futon-proxy. The futon can be discussed. The futon is not discussed. The futon can be obstructed. The futon is not obstructed. The scent of the futon is "a little like wet dog, suggesting that from time to time a not-so-obedient best friend of yours might spend his day on the futon while you're at work".
 
 After examining the futon:
 	if the futon is not discussed and the Second Sim is happening:
@@ -1944,7 +1956,7 @@ After examining the futon:
 		let metatext be "David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.[line break]Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.[line break]David: I can’t argue that logic.[line break]Janet: That’s why you are management and why I do the computer programming.";
 		say "[metatext in metaspeak]".
 
-The mattress and frame are parts of the futon. The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is [if the futon is folded]offline[otherwise]online[end if]." The mattress-proxy is an aware-proxy that is part of the mattress. Understand "spatial" or "manifold" or "attenuator" as the mattress-proxy. 
+The mattress and frame are parts of the futon. The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is [if the futon is folded]offline[otherwise]online[end if]." The mattress-proxy is an aware-proxy that is part of the mattress. Understand "spatial" or "manifold" or "attenuator" as the mattress-proxy. The scent of the mattress is "like it might be time to get a new mattress".
 
 Before opening the futon:
 	try unfolding the futon;
@@ -1954,11 +1966,11 @@ Before closing the futon:
 	try folding the futon;
 	rule succeeds.
 	
-The clueless-name of the frame is "bed frame". The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of engineering and geometry." The aware-description of the frame is "The Casimir Drive extension strut is [if the futon is folded]contracted[otherwise]extended[end if]." The aware-name of the frame is "extension strut".  The frame-proxy is an aware-proxy that is part of the frame. Understand "extension" or "strut" as the frame-proxy. 
+The clueless-name of the frame is "bed frame". The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of engineering and geometry." The aware-description of the frame is "The Casimir Drive extension strut is [if the futon is folded]contracted[otherwise]extended[end if]." The aware-name of the frame is "extension strut".  The frame-proxy is an aware-proxy that is part of the frame. Understand "extension" or "strut" as the frame-proxy. The scent of the frame is "like pine".
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "[acu-clueless-description]". The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "[acu-clueless-description]". The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop. The scent of the acu is "[if the enamel_pid is zero]like you could you use a shower[otherwise]fresh and clean[end if]".
 
 To say acu-clueless-description:
 	say "You seem just like you have every other day of your life. ";
@@ -1967,7 +1979,7 @@ To say acu-clueless-description:
 	otherwise if the location is the kitchen or the location is the living room:
 		say "[paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are[one of] completely naked[or]wearing only skin[or]bereft of attire[or]prancing about with not so much as a loincloth[or]in your birthday suit[or]underdressed for most activities[or]au naturel[in random order]".
 
-The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[dumb arm]. ". The aware-name of the left arm is "port hull". The aware-description of the left arm is "The port hull." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "port" or "hull" as the left arm-proxy. 
+The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[dumb arm]. ". The aware-name of the left arm is "port hull". The aware-description of the left arm is "The port hull." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "port" or "hull" as the left arm-proxy. The scent of the left arm is "[scent of the acu]".
 
 To say dumb arm:
 	If Arm Hurts is not happening:
@@ -1980,23 +1992,23 @@ To say dumb arm:
 		otherwise:
 			say "[one of]It's a good match for the one on the right[or]Looks normal enough[or]Nothing out of the ordinary, really[in random order]"
 		
-The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "starboard hull". The aware-description of the right arm is "The starboard hull." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "starboard" or "hull" as the right arm-proxy.
+The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "starboard hull". The aware-description of the right arm is "The starboard hull." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "starboard" or "hull" as the right arm-proxy. The scent of the right arm is  "[scent of the acu]".
 
-The clueless-name of the back is "back". The clueless-description of the back is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]back." The aware-name of the back is "dorsal hull". The aware-description of the back is "The dorsal hull." The back-proxy is an aware-proxy that is part of the back. Understand "dorsal" or "hull" as back-proxy.
+The clueless-name of the back is "back". The clueless-description of the back is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]back." The aware-name of the back is "dorsal hull". The aware-description of the back is "The dorsal hull." The back-proxy is an aware-proxy that is part of the back. Understand "dorsal" or "hull" as back-proxy. The scent of the back is "[scent of the acu]".
 
-The clueless-name of the belly is "belly". Understand "stomach" and "chest" as belly. The clueless-description of the belly is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]belly." The aware-name of the belly is "heat deflector". The aware-description of the belly is "The lower hull of the ship, which is thicker than the dorsal hull to better withstand the heat and pressure of an atmospheric landing." The belly-proxy is an aware-proxy that is part of the belly. Understand "ventral" or "hull" or "plating" or "deflector" as belly-proxy.
+The clueless-name of the belly is "belly". Understand "stomach" and "chest" as belly. The clueless-description of the belly is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]belly." The aware-name of the belly is "heat deflector". The aware-description of the belly is "The lower hull of the ship, which is thicker than the dorsal hull to better withstand the heat and pressure of an atmospheric landing." The belly-proxy is an aware-proxy that is part of the belly. Understand "ventral" or "hull" or "plating" or "deflector" as belly-proxy. The scent of the back is "[scent of the acu]".
 
-The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." 
+The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." The scent of the body is "[scent of the acu]". 
 
-The clueless-name of the giblets is "parts". Understand "cheeks", "cheekbones", "face", "finger", "fingers", "elbow", "elbows", "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." 
+The clueless-name of the giblets is "parts". Understand "cheeks", "cheekbones", "face", "finger", "fingers", "elbow", "elbows", "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." The scent of the giblets is "[scent of the acu]".
 
-The clueless-name of teeth is "teeth". Understand "teeth" or "tooth" as teeth. Teeth are plural-named. The clueless-description of teeth is "Your pearly whites." The aware-name of teeth is "hull plating". The aware-description of the teeth is "The polyduramide surface of the ship". The teeth-proxy is an aware-proxy that is part of the teeth. Understand "polyduramide" or "surface" or "compressed" as the teeth-proxy. 
+The clueless-name of teeth is "teeth". Understand "teeth" or "tooth" as teeth. Teeth are plural-named. The clueless-description of teeth is "Your pearly whites." The aware-name of teeth is "hull plating". The aware-description of the teeth is "The polyduramide surface of the ship". The teeth-proxy is an aware-proxy that is part of the teeth. The teeth can be polished. The teeth are not polished. Understand "polyduramide" or "surface" or "compressed" as the teeth-proxy. The scent of the teeth is "[if the teeth are polished]minty fresh[otherwise]like they might have been brushed at the beginning of the 23rd Century[end if]".
 
 [TOCONSIDER: implement hair]
 
 Audio is a device which is part of the ACU. The aware-name of Audio is "Internal Microphones". Audio is switched off. Understand "internal" or "microphone" or "microphones" as Audio.
 
-The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting [if the drapes are open]blue [end if]flight suit with a MARSpace insignia. Some letters are also sewn above the insignia." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" or "isolator" or "housing" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed.
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting [if the drapes are open]blue [end if]flight suit with a MARSpace insignia. Some letters are also sewn above the insignia." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" or "isolator" or "housing" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed. The scent of the flight suit is "of the insecticide which is routinely impregnated into the fabric itself".
 
 Before wearing the flight suit when the player is wet and the player is clueless:
 	say "Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed).";
@@ -2074,7 +2086,7 @@ After reading the lettering for the first time:
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A pulp novel rocket ship points away from the globe of Mars and towards space. The picture evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia".
 
-The alarm clock is a prop on the futon.  Understand "LED" and "LEDs" and "green" as the alarm clock when the player is clueless. The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with fading green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The Casimir Drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" or "transgressor" as the alarm clock-proxy. 
+The alarm clock is a prop on the futon.  Understand "LED" and "LEDs" and "green" as the alarm clock when the player is clueless. The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with fading green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The Casimir Drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" or "transgressor" as the alarm clock-proxy. The scent of the alarm clock is "like burnt bakelite and glowing thermionic valves".
 
 Instead of taking the alarm clock when the alarm clock is on the futon and bedtime is not happening:
 	say "[if the player is clueless]You'd rather leave it on the futon so it's there when you need it[otherwise]The transgressor is already in optimal proximity to the Casimir Drive[end if]."
@@ -2093,14 +2105,14 @@ Before switching on or switching off the alarm clock:
 	say "[if the player is clueless]The alarm clock is senses the electrical activity in your brain and turns itself on and off as needed[otherwise]The proximity alert system is always functional[end if].";
 	the rule succeeds.
 
-The clueless-name of the large button is "large button". Understand "snoo" or "snooze" as the large button. The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the dimly illuminated word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magnofluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" or "magnofluctuator" or "toggle" as the large button-proxy. 
+The clueless-name of the large button is "large button". Understand "snoo" or "snooze" as the large button. The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the dimly illuminated word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magnofluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" or "magnofluctuator" or "toggle" as the large button-proxy. The scent of the large button is "indistiguishible from the from the rest of the alarm clock".
 
 After examining the alarm clock for the second time:
 	if the First Sim is happening or the Second Sim is happening:
 		let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 		say "[metatext in metaspeak]";
 
-Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story]
+Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story] The scent of the drapes is "much as you imagine burlap would might, were it aged for centuries and then baked in the sunlight until crispy".
 
 Instead of opening the drapes:
 	if the drapes are closed:
@@ -2139,9 +2151,9 @@ Instead of examining or reading when the drapes are closed:
 Instead of going towards when the player is in the Living Room and the drapes are closed:
 	say "It's too dark to move around much. [one of]Grues and all that, you know. [or][stopping][paragraph break][if a random chance of one in three succeeds][one of]You shin yourself on the futon frame[or]You step on something stringy but resilient. Rover yaps in pain and scrambles to the otherside of the futon[or]The floor creeks ominiously[or]Something wet and warm is licking the back of your knees. You really hope it is Rover[or]Something brushes past you in the dark, panting[or]You stumble over Rover and land on your knees. You are rewarded with a hot puff of first-thing-in-the-morning dog breath. You will need no coffee today[or]As you are feeling your way around the futon, the beam of light coming in through the drapes catches you right in the eye and you are momentarily blinded[in random order].[end if]".
 
-The LR floor is a privately-named scenery in the Living Room. Understand "floor" or "hardwood" or "ground" as the LR floor. The clueless-name of the LR floor is "living room floor". The aware-name of the LR floor is "cargo bay floor". The clueless-description of the LR floor is "A hardwood floor." The aware-description of the LR floor is "The cargo bay's high-adhesion floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the LR floor. Understand "cargo" or "bay" or "floor" as the cargo bay floor-proxy. 
+The LR floor is a privately-named scenery in the Living Room. The printed name of the LR floor is "floor". Understand "floor" or "hardwood" or "ground" as the LR floor. The clueless-name of the LR floor is "living room floor". The aware-name of the LR floor is "cargo bay floor". The clueless-description of the LR floor is "A hardwood floor." The aware-description of the LR floor is "The cargo bay's high-adhesion floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the LR floor. Understand "cargo" or "bay" or "floor" as the cargo bay floor-proxy. The scent of the LR floor is "dusty".
 
-The front door is a door and scenery. The front door is east of the front yard. The front door is outside from the Living Room. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" or "bay" or "door" or "doors" as the front door-proxy. The front door can be damaged. The front door is not damaged. 
+The front door is a door and scenery. The front door is east of the front yard. The front door is outside from the Living Room. The clueless-name of the front door is "front door". The aware-name of the front door is "cargo bay door". The aware-description of the front door is "The massive titanium cargo bay doors are [if closed]hermetically sealed against the harsh external environment[otherwise]wide open, exposing the cargo bay to the hellish maelstrom outside the ship[end if]." The clueless-description of the front door is "[front door status].". The front door-proxy is an aware-proxy that is part of the front door. Understand "cargo" or "bay" or "door" or "doors" as the front door-proxy. The front door can be damaged. The front door is not damaged. The scent of the front door is "just faintly of the park outside".
 
 To say front door status:
 	say "The front door of the cottage is ";
@@ -2184,7 +2196,7 @@ Instead of opening the front door when the front door is closed:
 	
 Rover is a male animal. He is in the Living Room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. Rover can be busy. Rover is not busy.
 
-The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "A robotic mining rig". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" or "mobile" or "robotic" or "tractor" or "mining" or "rig" or "ROVER" as the rover-proxy. 
+The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "A robotic mining rig". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" or "mobile" or "robotic" or "tractor" or "mining" or "rig" or "ROVER" as the rover-proxy. The scent of the Rover is "[if the player is rover]like the dashing, young hound that you know you are[otherwise]like a dog who needs, but is unlikely to get, a bath[end if]".
 
 Instead of examining Rover when the drapes are open:
 	if the player is clueless:
@@ -2234,9 +2246,9 @@ To Drop Rover's Payload:
 		say "The [item] falls out of your mouth[one of] with a thud[or] and rolls slightly[or] and lands near your feet[or], startling you[in random order].[paragraph break]";
 		now the item is in the holder of Rover.
 	
-Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover modules". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated mechanical module bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "complicated" or "module" or "modules" or "mechanical" as the doggie bits-proxy.
+Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover modules". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated mechanical module bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "complicated" or "module" or "modules" or "mechanical" as the doggie bits-proxy. The scent of the doggie bits is "[the scent of Rover]".
 
-The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. 
+The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. The scent of the picture is "like Tomasz's old cologne. It brings back memories".
 
 Instead of searching the picture:  
 	try examining the picture.
@@ -2292,9 +2304,9 @@ Instead of going towards or exiting when the player is in the kitchen:
 		say paragraph break;
 	continue the action.
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" or "door" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door[if the old fridge is open]. The fridge door is open, chilling the kitchen and wasting power[end if]." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house stabilized heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]. Several annunciators monitor the status of the unit." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" or "unit" or "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged. 
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" or "door" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door[if the old fridge is open]. The fridge door is open, chilling the kitchen and wasting power[end if]." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house stabilized heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]. Several annunciators monitor the status of the unit." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" or "unit" or "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged. The scent of the old fridge is "of machine oil, mildew, and last week's toonfysh sandwich".
 
-The hinges are part of the old fridge. Understand "hinge" as the hinges. The clueless-name of the hinges is "hinges". Understand "rusty" as the hinges. The aware-name of the hinges is "annunciators". The clueless-description of the hinges is "Rusty hinges that have never worked smoothly." The aware-description of the hinges is "Simple Reed relay-actuated devices that report opening of the cryochamber." The hinges-proxy is an aware-proxy which is part of the hinges. Understand "annunciator" or "annunciators" as the hinges-proxy.
+The hinges are part of the old fridge. The hinges are plural-named. Understand "hinge" as the hinges. The clueless-name of the hinges is "hinges". Understand "rusty" as the hinges. The aware-name of the hinges is "annunciators". The clueless-description of the hinges is "Rusty hinges that have never worked smoothly." The aware-description of the hinges is "Simple Reed relay-actuated devices that report opening of the cryochamber." The hinges-proxy is an aware-proxy which is part of the hinges. Understand "annunciator" or "annunciators" as the hinges-proxy. The scent of the hinges is "of old grease".
 
 Instead of searching a refrigerator (called R):
 	if the player is clueless:
@@ -2379,7 +2391,16 @@ After opening the old fridge:
 		say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]performs a brief chemosensor scan and then rolls back towards the operations area[end if].";
 		now Rover is in the Living Room.
 
-The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried [end if]white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled Helium-8." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" or "heavy" or "sphere" as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." 
+The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried [end if]white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled Helium-8." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" or "heavy" or "sphere" as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." The scent of the white egg is "[egg-whiff]".
+
+To say egg-whiff:
+	if the egg is intact:
+		say "like a vat-grown neoegg";
+	otherwise:
+		if the egg is cooked:
+			say "tantalizingly good";
+		otherwise:
+			say "like a raw egg".
 
 Instead of attacking the white egg:
 	if the white egg is in the frying pan:
@@ -2903,7 +2924,8 @@ Check brushing:
 		rule fails.
 		
 Carry out brushing:
-	change outcome-override to force-success.
+	change outcome-override to force-success;
+	now the teeth are polished.
 
 Report brushing:
 	say "[if the player is clueless]The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved[otherwise]Nanobristles wake from dormancy and begin reproducing through the ship, sending waves of their progeny across the surface of the ship. The uncountable hordes of microscopic scrubbers oxidize and buff the ship to a brilliant, gleaming silver[end if]."
