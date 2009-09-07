@@ -4627,6 +4627,9 @@ Instead of waving:
 	otherwise:
 		say "You [if the player is clueless]wave[otherwise]oscillate harmonically[end if] at nothing in particular."
 
+Instead of touching the left arm during Arm Hurts:
+	say "You touch your arm, but that doesn't stop the itching.".
+
 Understand "scratch [something]" as rubbing.
 
 Instead of rubbing the left arm during Arm Hurts:
