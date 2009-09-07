@@ -3774,7 +3774,7 @@ Instead of remembering a topic listed in the Table of Remembered Stuff when the 
 		say "You consult your memory banks: ";
 	say "[description entry][paragraph break]";
 	if remember-invoked is false and (the First Sim is happening or the Second Sim is happening):
-		let metatext be "David: Why did we lose audio?[line break]Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.[line break]David: Fine, we'll skip the boring parts.";
+		let metatext be "David: Why did we lose audio?[line break]Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.[line break]David: That's fine.  How much can the ACU remember, though?[line break]Janet: It's based on my own synaptic scan, so it can willfully remember a wide variety of subjects -- almost any major component of my life, important events, and so on.  It adds depth to its decisions.[line break]David: If you say so.  I'd hate to know what it remembers about me.[line break]Janet: I wouldn't worry too much.";
 		say "[metatext in metaspeak]";
 	otherwise:
 		if the topic is "David Venkatachalam" and (the First Sim is happening or the Second Sim is happening):
