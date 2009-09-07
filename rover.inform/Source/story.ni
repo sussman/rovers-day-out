@@ -2066,6 +2066,8 @@ Instead of opening the drapes:
 		change the outcome-override to force-success;
 		now the window is in the Living Room;
 		try looking;
+		let metatext be "David:  I see it successfully accessed the solar shield.[line break]Janet:  Yes, the status line makes it clear what work is being performed.";
+		say "[metatext in metaspeak]";
 	otherwise:
 		say "They're already open."
 	
