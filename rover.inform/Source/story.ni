@@ -182,7 +182,7 @@ A room can be secluded. A room is usually not secluded.[For the purpose of hidin
 
 A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location". A simroom has some text called clueless-name. The clueless-name is usually "".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
 
-An outside room is a kind of room. The description of an outside room is usually "You are outside[inconsequential outside detail]." The printed name of an outside room is usually "The Park".
+An outside room is a kind of room. The description of an outside room is usually "You are outside[inconsequential outside detail]." The printed name of an outside room is usually "The Park". An outside room has some text called aware-name. The aware-name is usually "planet surface".
 
 A hole is a kind of container. A hole is always open, not openable and fixed in place.
 
@@ -987,11 +987,12 @@ Instead of smelling:
 			try sniffscanning;
 			the rule succeeds;
 		otherwise	 if the noun is not enclosed by the location:
-			say "[The noun] is not here, so you sniff the air.";
+			say "[The noun] is not here, so you sniff the air.[paragraph break]";
 			if the noun is:
 				-- the smelly man: say "[man-smell].";
 				-- the female dog: say "[dog-smell].";
 				-- home: say "[home-smell].";
+				-- otherwise: say paragraph break;
 			the rule succeeds;
 		otherwise if the noun is the player:
 			say "You smell";
@@ -1939,7 +1940,14 @@ The clueless-name of the frame is "bed frame". The clueless-description of the f
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. 
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "You seem just like you have every other day of your life. [if the ACU wears the flight suit]You are wearing a MARSpace standard issue flight suit[otherwise][paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are completely naked[end if]." The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop.
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "[acu-clueless-description]". The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop.
+
+To say acu-clueless-description:
+	say "You seem just like you have every other day of your life. ";
+	if the ACU wears the flight suit:
+		say " You are wearing a MARSpace standard issue flight suit.";
+	otherwise if the location is the kitchen or the location is the living room:
+		say "[paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are[one of] completely naked[or]wearing only skin[or]bereft of attire[or]prancing about with not so much as a loincloth[or]in your birthday suit[or]underdressed for most activities[or]au naturel[in random order]".
 
 The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[dumb arm]. ". The aware-name of the left arm is "port hull". The aware-description of the left arm is "The port hull." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "port" or "hull" as the left arm-proxy. 
 
@@ -1962,7 +1970,7 @@ The clueless-name of the belly is "belly". Understand "stomach" and "chest" as b
 
 The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." 
 
-The clueless-name of the giblets is "parts". Understand "finger", "fingers", "elbow", "elbows", "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." 
+The clueless-name of the giblets is "parts". Understand "cheeks", "cheekbones", "face", "finger", "fingers", "elbow", "elbows", "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." 
 
 The clueless-name of teeth is "teeth". Understand "teeth" or "tooth" as teeth. Teeth are plural-named. The clueless-description of teeth is "Your pearly whites." The aware-name of teeth is "hull plating". The aware-description of the teeth is "The polyduramide surface of the ship". The teeth-proxy is an aware-proxy that is part of the teeth. Understand "polyduramide" or "surface" or "compressed" as the teeth-proxy. 
 
@@ -2002,7 +2010,7 @@ After taking off the flight suit:
 			
 To scandalize the poor little robot:
 	if the maintenance droid is innocent:
-		say "The maintenance droid glances away from his work for a moment, and then does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core frothed with quantum foam, and ringed by a halo of dark matter.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you modestly pull up the quantum isolation shield.[paragraph break]";
+		say "The maintenance droid glances away from his work for a moment, and then does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core frothed with quantum foam, and ringed by a halo of dark matter.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you retrieve and modestly pull up the quantum isolation shield.[paragraph break]";
 		increase the henchmen defeated by one;
 		now the maintenance droid is jaded;
 		now the ACU wears the flight suit;
@@ -2192,9 +2200,11 @@ Before taking something (called the item) when the player is Rover:
 	if Rover carries the item:
 		say "The [item] is already in your mouth." instead;
 	otherwise:
-		Drop Rover's Payload.
+		Drop Rover's Payload;
+		continue the action.
 		
 After taking something (called the item) when the player is Rover:
+	change last-success to "TRUE";
 	say "You [one of]pick up [the item] in your jaws[or]take [the item] in your mouth[or]gently pick up [the item] using your front teeth[or]grab [the item] with your mouth, being careful not to crush it[or]carefully take hold of [the item] with your teeth[in random order]."
 	
 To Drop Rover's Payload:
@@ -2271,7 +2281,7 @@ Instead of searching a refrigerator (called R):
 			change outcome-override to force-success;
 	say "."
 
-The magpaper is message.  The magpaper is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" or "jobs" or "list" or "queue" or "priority" or "task" or "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]."
+The magpaper is message.  The magpaper is part of the the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" or "jobs" or "queue" or "priority" or "task" or "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]."
 
 To reset magpaper:
 	Now the IPL_pid is zero;
@@ -2497,6 +2507,7 @@ Carry out filling it with:
 		-- the water bowl:
 			move the tap water to the water bowl;
 		-- the food bowl:
+			now the dog chow bag is open;
 			move the dog food to the food bowl.
 			
 After filling the water bowl with the kitchen sink:
@@ -2740,6 +2751,9 @@ Instead of giving a dog treat to Rover:
 	
 The clueless-name of the reward nuggets replicator is "reward nugget replicator". Understand "reward", "replicator", "liver", "flavor", "reward", or "nugget" as the reward nuggets replicator. The aware-name of the reward nuggets replicator is "token dispenser". The clueless-description of the reward nuggets replicator is "A small, bright red device labeled [quotation mark]Reward Nugget Replicator[quotation mark]. It sports a picture of a dog with angel wings and a halo above its head. In compliance with the Ministry of Waste Management's ordinances, the device will only produce a dog treat when Rover has consumed the previous one. It's a feature."  The aware-description of the reward nuggets replicator is "A virtual device for reinforcing the weighting of positive behaviors in the ROVER neural net."  The reward nuggets replicator-proxy is an aware-proxy that is part of the reward nuggets replicator. Understand "token" or "dispenser" as the reward nuggets replicator-proxy.
 
+Instead of giving the reward nuggets replicator to Rover:
+	say "[if the player is clueless]Rover doesn't know how to work the replicator. He pushes reaches up and pushes it back to you[otherwise]As a safeguard against addictive autofeedback, ROVER can accept tokens but not generate them[end if]."
+	
 The dog treat is edible. The clueless-name of the dog treat is "dog treat". Understand "nugget" or "nuggets" or "reward" as the dog treat. The aware-name of the dog treat is "neural net reinforcement token". The clueless-description of the dog treat is "A bone-shaped dog treat. It doesn't seem very appetizing to you, but Rover likes them." The aware-description of the dog treat is "A positive feedback method within Rover's neural net.". The dog treat-proxy is an aware-proxy that is part of the dog treat. Understand "neural", "net", "reinforcement", "token", "positive", or "feedback" as the dog treat-proxy. 
 
 The kitchen floor is a privately-named scenery in the kitchen. The clueless-name of the kitchen floor is "kitchen floor". Understand "ground" or "floor" as floor. The aware-name of the kitchen floor is "engineering section floor". The clueless-description of the kitchen floor is "Mars-tone tiling." The aware-description of the kitchen floor is "A strong metal mesh overlying the girders and struts that brace the engines against ship's inner hull." The kitchen floor-proxy is an aware-proxy that is part of the kitchen floor. Understand "girder", "girders", "strut", "struts", "mesh", "metal", "hull" or "inner" as the kitchen floor-proxy.
@@ -2811,17 +2825,29 @@ Check flossing:
 		otherwise:[has neither the dispenser nor the floss]
 			say "[if the player is clueless]You don't have any floss[otherwise]Before linking anything, you will need to generate a pair of mutually entangled keys[end if].";
 		rule fails;
-	if the noun is not teeth:
+	if the noun is teeth or the noun is Rover:
+		continue the action;
+	otherwise:
 		say "[if the player is clueless]Floss [the noun]? Flossing is for teeth. You could tie the floss to [the noun] if that would float your boat, but that's hardly the same as flossing it[otherwise]The key pair is usually used to link transputational intellinodes within the hull plating. If you want to bind other nodal representations, you should tie the keys to those specific nodes[end if].";
 		rule fails.
 		
 Carry out flossing:
 	change outcome-override to force-success;
-	move dental floss to Limbo;
-	say "[if the player is clueless]You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now[otherwise]The hull plating is now synchronously enmeshed[end if]."
+	move dental floss to Limbo.
+	
+Report flossing:
+	if the noun is Rover:
+		say "[if the player is clueless]Rover holds obediently still for the flossing, which he seems to find unaccountably pleasurable. Afterwards, he gleefully chews the floss and swallows it[otherwise]Rover internalizes the keypair[end if].";
+	otherwise:
+		say "[if the player is clueless]You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now[otherwise]The hull plating is now synchronously enmeshed[end if]."
 	
 Instead of putting the strand of dental floss on teeth:
 	try flossing teeth.
+	
+Instead of giving the floss to Rover:
+	move the dental floss to Limbo;
+	change outcome-override to force-success;
+	say "[Rover] [if the player is clueless]wads up the floss and chews it loudly before swallowing it[otherwise]integrates the keypair into his neuromatrix[end if]." 
 	
 [TODO: tie ends of floss to stuff]
 
@@ -3297,7 +3323,7 @@ Angle		Inclination
 0				"perfect "
 30				"just the tiniest little bit "
 60				"a tad "
-90				""
+90				"somewhat"
 120				"strongly "
 150				"almost completely "
 180				"completely "
@@ -3600,7 +3626,7 @@ Before entering the shabby shack:
 
 The Splintered Door is west of the Strange Porch and outside from the Sleeping Room.  It is an open not openable scenery door. The description of the splintered door is "A heavy plastrex door hangs loosely in the door frame, tenuously attached by one frail hinge. The door swings wildly in the wind." Understand "heavy", "plastrex", "hinge", or "hinges" as the Splintered Door. The scent of the Splintered Door is "like burning plastic". The aware-name of the splintered door is "damaged airlock".
 
-The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above." The aware-name of sky is "sky". Understand "sky", "dust", "clouds", "cloud", "atmosphere", "air", or "heavens" as sky.
+The sky is a backdrop. It is in the Planet Area. The description of the sky is "Through the dust, you can see little more than dim light from above." The aware-name of sky is "sky". Understand "horizon", "sky", "dust", "clouds", "cloud", "atmosphere", "air", or "heavens" as sky.
 
 Instead of smelling the sky:
 	try sniffscanning.
@@ -3718,7 +3744,7 @@ Janet Xiang is a woman in Limbo. The description of Janet Xiang is "Janet is sho
 
 Janet Xiang is wearing the lavender summer dress, white leggings, a green arm band and sandals. The description of the lavender dress is "A short-sleeved frock with slightly billowing shoulders, and a blended neckline. The back is laced, and the waist narrows to a faux-utility band. Below the dress, Janet wears white leggings and sandals. On her right forearm, she is wearing a dark green arm band." The description of the white leggings is "The leggings are more than brilliantly white, they are emitting a soft glow of light with roughly the same spectrum as Sol. The leggings sport cleverly incorporated knee pads which make Janet's knee caps seem larger than they actually are." The sandals are plural-named. The indefinite article of the sandals is "a pair of". The description of the sandals is "A cheap pair of Sandal-Hut strap-backs." The description of the green arm band is "A disposible arm band, with flat tacdials and muted displays rendered in pastels." Understand "disposible", "tacdial", "tacdials" as the green arm band. The aware-name of the lavender summer dress is "clothing". The aware-name of the white leggings is "clothing". The aware-name of the sandals is "clothing". The aware-name of the green arm band is "console". The display is part of the arm band. The description of the display is "You can't see what is on the display because of a privacy filter."
 
-There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.  The assault ship can be using harpoons. The assault ship is not using harpoons. The assault ship can be graceful wind. The assault ship is graceful wind. The aware-name of hte assault ship is "assault ship".
+There is an assault ship in Limbo. The assault ship is scenery. The description of the assault ship is "The black hull of the Lamprey Class assault ship is barely visible against the background of space. [if the assault ship distance is greater than 1]The range to the assault ship is [calculated range][otherwise]The assault ship is making physical contact with the Valkyrie[end if]." The assault ship has a docking status. The assault ship is free.  The assault ship can be using harpoons. The assault ship is not using harpoons. The assault ship can be graceful wind. The assault ship is graceful wind. The aware-name of the assault ship is "assault ship".
 
 To say assault ship designation:
 	if the assault ship is graceful wind:
@@ -3759,7 +3785,7 @@ The park is in the window. The description of the park is "Lincoln Park is the l
 
 Some grass is in the window. The description of the grass is "A closely trimmed sea of luscious orange grass." The clueless-name of the grass is "grass". The aware-name of the grass is "viewer". Understand "orange" and "lawn" and "luscious" as the grass.
 
-Some trees are in the window. The clueless-description of the trees is "A line of tall, dark green [trees] stands at the far edge of the park." The clueless-name of the trees is "[if the trees are debated and the Real Thing is happening]Norway Spruce [end if]trees". Understand "tree", "douglas", "firs" and "fir" as the trees. Understand "norway" and "spruce" as the trees when the trees are debated and the Real Thing is happening. The aware-name of the trees is "viewer". The trees can be debated. The trees are not debated. 
+Some trees are in the window. The clueless-description of the trees is "A line of tall, dark green [trees] stands at the far edge of the park." The clueless-name of the trees is "[if the trees are debated and the Real Thing is happening]Norway Spruce [end if]trees". Understand "tree", "douglas", "firs" or "fir" as the trees. Understand "norway" or "norwegian" or "spruce" as the trees when the Real Thing is happening. The aware-name of the trees is "viewer". The trees can be debated. The trees are not debated. 
 
 After examining the window:
 	debate trees.
@@ -4146,7 +4172,6 @@ After wearing the flight suit:
 	continue the action.
 [tried writing this one as a did-it-work but got a runtime error about the noun not having a parent. Somehow in the course of wearing something, the something is converted to nothing. Perhaps a side effect of something downstream of wearing. Not a problem, this works as an after.]
 	
-
 [The successful column lists the default success/failure of the action]
 
 Table of Technoverbs
@@ -4201,7 +4226,7 @@ the flossing action				false			"LINK NODES" [floss teeth]
 the flushing action				false			"THRUST" [flush]
 the folding action					false			"RETRACT" [fold]
 the getting off action			false			"DESELECT"
-the giving it to action			false			"DISPENSE" [give]
+the giving it to action			false			"DELIVER" [give]
 the going action					false			"SELECT"  [go, or any compass direction]
 the going towards action			false			"SELECT"
 the growling action				TRUE			"NOTIFY"
