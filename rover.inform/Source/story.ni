@@ -5646,5 +5646,6 @@ Rule for amusing a victorious player:
 			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
 	say "* [if used-manual is true]Once cognitive constraints were released, you used the Flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any Flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
-	say "* Did Rover succeed in his amorous advances towards his significant other in the park?"
+	say "* Did Rover succeed in his amorous advances towards his significant other in the park?";
+	say "* Did you read the texts in the 'help' menu?".
 	
