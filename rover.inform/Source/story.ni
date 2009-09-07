@@ -77,6 +77,13 @@ Instead of swearing obscenely:
 		say "."
 		
 Rule for printing the name of an aware-proxy while asking which do you mean: say "[bracket]COGNITIVE BLOCK[close bracket]".
+
+[TOCONSIDER: For production, add the following rule to suppress the explanation of which thing the parser chose. I think it clutters the output.
+
+Rule for clarifying the parser's choice of something: 
+	do nothing.
+	
+]
 			
 Chapter Declare Global Variables
 
@@ -2000,13 +2007,6 @@ The clueless-name of the back is "back". The clueless-description of the back is
 
 The clueless-name of the belly is "belly". Understand "stomach" and "chest" as belly. The clueless-description of the belly is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]belly." The aware-name of the belly is "heat deflector". The aware-description of the belly is "The lower hull of the ship, which is thicker than the dorsal hull to better withstand the heat and pressure of an atmospheric landing." The belly-proxy is an aware-proxy that is part of the belly. Understand "ventral" or "hull" or "plating" or "deflector" as belly-proxy. The scent of the back is "[scent of the acu]".
 
-[
-Does the player mean doing something with the left arm proxy:
-	it is very likely.
-	
-[disambiguates amongst the 4 proxies which could be identified as "hull" by the player, e.g., >x hull.]
-]
-
 The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." The scent of the body is "[scent of the acu]". 
 
 The clueless-name of the giblets is "parts". Understand "cheeks", "cheekbones", "face", "finger", "fingers", "elbow", "elbows", "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." The scent of the giblets is "[scent of the acu]".
@@ -3021,14 +3021,29 @@ After switching on the black plate when the First Sim is not happening:
 
 The bathroom sink is a privately-named sink in the bathroom.  The clueless-name of the bathroom sink is "bathroom sink". The aware-name of the bathroom sink is "decontamination protocol". The clueless-description of the bathroom sink is "A tiny little sink that probably barely satisfies the building codes." The aware-description of the bathroom sink is "The biohazard response protocol is controlled from here, and it outputs to all areas of the ship." The bathroom sink-proxy is an aware-proxy that is part of the bathroom sink. Understand "decontamination", "sterilization", "biohazard", "response", "system", or "protocol" as the bathroom sink-proxy. The bathroom sink can be depleted. The bathroom sink is not depleted. The scent of the bathroom sink is "ever so slightly of fish. If you had to guess, eels, perhaps".
 
-The toilet is furniture in the bathroom. Does the player mean doing something with the toilet: it is likely.
+The toilet is furniture in the bathroom. 
 
 The clueless-name of the toilet is the "toilet". The aware-name of the toilet is "retro assembly".  The clueless-description of the toilet is "[if the holder of the player is the toilet seat or the holder of the player is the toilet cover]You are sitting on a[otherwise]A[end if] plain vanilla toilet, having a water tank and bowl. Nothing to write home about. [throne status].[paragraph break]A plunger stands next to the toilet, between it and the shower." The aware-description of the toilet is "The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. [throne status]." The toilet-proxy is an aware-proxy that is part of the toilet. Understand "retro", "retros", "rocket", "retrorocket" or "assembly" as the toilet-proxy. The scent of the toilet is "better than you would have guessed".
 
-The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The flapper valve, the lever, and the chain are fixed in place things in the water tank. The silver knob is part of the water tank. The Tank-water is some scenery water in the water tank. 
+The water tank is a scenery chest in the bathroom. The tank top is a lid which is part of the water tank. The flapper valve, the lever, and the chain are fixed in place things in the water tank. The silver knob is part of the water tank. The Tank-water is some scenery water in the water tank.
+
+Does the player mean opening the toilet cover: it is very likely.
+
+Does the player mean doing something with the toilet: it is likely. 
 
 Does the player mean doing something with the tank-water:
-	it is very likely.
+	it is likely.
+	
+Does the player mean opening the tank top:
+	it is likely.
+
+Does the player mean closing the toilet cover: it is very likely.
+	
+Does the player mean doing something with the tank top-proxy:
+	it is very unlikely.
+	
+Does the player mean doing something with the water tank's lid:
+	it is very unlikely.
 	
 Instead of drinking or taking or touching or tasting the tank-water:
 	change outcome-override to force-failure;
@@ -3038,16 +3053,7 @@ The clueless-name of the tank-water is "water". Understand "water" as the tank-w
 
 The clueless-name of the water tank is the "water tank". Understand "porcelain" or "reservoir" as the water tank. The aware-name of the water tank is "plasma constrictor". The clueless-description of the water tank is "A porcelain reservoir containing several liters of water to flush the toilet. On the front of the tank there is a silver knob used to flush the toilet and on the top of the tank there is a lid[if the water tank is open] which has been flipped up[end if]." The aware-description of the water tank is "A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch [if the water tank is open]has been swung open[otherwise]is tightly sealed[end if]."  The water tank-proxy is an aware-proxy which is part of the water tank. Understand "plasma", "constrictor", "ring", "toroid", "magnet", "electromagnet", "rare earth" or "supercooled" as the water tank-proxy. The scent of the water tank is "like stagnant, albeit clean, water".
 
-Does the player mean doing something with the tank top:
-	it is very likely.
-	
-Does the player mean doing something with the water tank's lid:
-	it is unlikely.
-	
-Does the player mean doing something with the tank top-proxy:
-	it is very likely.
-
-The clueless-name of the tank top is the "tank lid". The aware-name of the tank top is "plasma constrictor hatch". The clueless-description of the tank top is "A lid made of the same porcelain material as the water tank itself.[if the tank top is open] The lid has been flipped up and you can see into the tank." The aware-description of the tank top is "A hatch providing access to the plasma constrictor ring. [if the tank top is open] The hatch is open allowing access to the inner workings of the plasma constrictor." Understand "lid" as the tank top. The tank top-proxy is an aware-proxy that is part of the tank top. Understand "hatch", "plasma" or "constrictor" as the tank top-proxy. The scent of the tank top is "chalky".
+The clueless-name of the tank top is the "tank lid". Understand "tank" or "lid" or "toilet" as the tank top. The aware-name of the tank top is "plasma constrictor hatch". The clueless-description of the tank top is "A lid made of the same porcelain material as the water tank itself.[if the tank top is open] The lid has been flipped up and you can see into the tank." The aware-description of the tank top is "A hatch providing access to the plasma constrictor ring. [if the tank top is open] The hatch is open allowing access to the inner workings of the plasma constrictor." Understand "lid" as the tank top. The tank top-proxy is an aware-proxy that is part of the tank top. Understand "hatch", "plasma" or "constrictor" as the tank top-proxy. The scent of the tank top is "chalky".
 
 The clueless-name of the flapper valve is the "flapper valve".  The aware-name of the flapper valve is "thrust aperture". The clueless-description of the flapper valve is "A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever." Understand "black" or "rubber" as the flapper valve. The aware-description of the flapper valve is "The most critical component of the retro assembly, and its only moving part, the thrust aperature controls the flow rate of the ship's breaking thrusters." The flapper valve-proxy is an aware-proxy that is part of the flapper valve. Understand "thrust", "aperture", or "control" as the flapper valve-proxy. The flapper valve can be raisable. The flapper valve is raisable. The flapper valve can be open. The flapper valve is not open. The scent of the flapper valve is "like vulcanized rubber".
 
@@ -3143,8 +3149,7 @@ Instead of searching the toilet:
 
 The toilet cover is a flipchair which is in the bathroom. The clueless-name of the toilet cover is the "toilet cover". The aware-name of the toilet cover is "reactant shield". Understand "wooden", "wood" , "laminated" or "laminate" as the toilet cover. The clueless-description of the toilet cover is "The cover is made of plastic, but has been laminated to give it the appearance of unstained wood. The toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured." The toilet cover-proxy is an aware-proxy that is part of the toilet cover. Understand "reactant", "shield", or "neoadamite" as the toilet cover-proxy. The scent of the toilet cover is "like plastic masquerading as wood".
 
-Does the player mean opening the toilet cover: it is likely.
-Does the player mean closing the toilet cover: it is likely.
+
 
 [The toilet bowl, cover and seat are not part of the toilet because it would great all kinds of problems regardng entering (i.e., sitting) on the toilet -- deflecting the entering action aimed at the toilet to the seat would create a recursive situation, as enter the seat would require entering the parent object, the toilet. Also, entering a part of the toilet or bowl would result in darkness. The solution seems to be to put discrete items into the room, but to make them scenery]
 
