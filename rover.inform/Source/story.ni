@@ -180,7 +180,7 @@ An aware-proxy is a kind of thing. The aware-name of an aware-proxy is usually "
 
 A room can be secluded. A room is usually not secluded.[For the purpose of hiding backdrops in "all secluded rooms" later.]
 
-A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location". A simroom has some text called clueless-name. The clueless-name is usually "".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]".
+A simroom is a kind of room.  A simroom has some text called aware-name.  The aware-name is usually "location". A simroom has some text called clueless-name. The clueless-name is usually "".  A simroom has some text called aware-description.  A simroom has some text called clueless-description.  The aware-description of a simroom is usually "".  The clueless-description of a simroom is usually "".  The description of a simroom is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". A simroom has some text called sound. The sound of a simroom is usually "nothing out of the ordinary".
 
 An outside room is a kind of room. The description of an outside room is usually "You are outside[inconsequential outside detail]." The printed name of an outside room is usually "The Park". An outside room has some text called aware-name. The aware-name is usually "planet surface".
 
@@ -811,7 +811,7 @@ Carry out going towards:
 		if the way is not a direction, say "You can't figure out how to get there." instead;
 		let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
 		change outcome-override to force-success;
-		if the player is Rover, say "[one of]You trot off in that direction[or]You let your nose lead the way[or]You bound away towards your goal[or]Your legs carry you as fast as you can[or]You eagerly scamper that way[or]You scuttle forth[or]Trot, trot, trot..[in random order].[paragraph break]";
+		if the player is Rover, say "[one of]You trot off in that direction[or]You let your nose lead the way[or]You bound away towards your goal[or]Your legs carry you as fast as you can[or]You eagerly scamper that way[or]You scuttle forth[or]Trot, trot, trot[in random order].[paragraph break]";
 		move the player to the destination.
 	
 Rule for reaching inside a room when the current action is going towards: 
@@ -1318,6 +1318,9 @@ After going outside:
 After getting off something:
 	change outcome-override to force-success;
 	continue the action.
+	
+Instead of listening when the player is in The Planet Area:
+	say "You hear [one of]the howl of the wind[or]the raspy blowing of sand and pebbles across The Park[or]a storm brewing[or]the wind[or]yourself breathing[in random order]."
 
 [TOCONSIDER: a consult about, cutting generic response?]
 
@@ -1917,6 +1920,17 @@ To say living room status:
 	otherwise:
 		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window[if the nameplate is not already-read], illuminating a framed picture on the wall[end if][if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
 		
+The sound of the living room is "[LR-sound]".
+	
+To say LR-sound:
+	if the player is clueless:
+		say "very little. As usual, the house is quiet at this time of the morning. From the kitchen, you can make out the labored sound of your old fridge's compressor turning on and off. Closer by, despite the triple pane glass, you can sometimes catch a bit of bird song from outside the window";
+	otherwise:
+		if the old fridge is in the kitchen:
+			say "a faint hum from the cryochamber in the engineering section";
+		otherwise:
+			say "the normal chatter of ship maintenance sounds in the operations section"
+		
 Sunlight is a privately-named scenery in the Living Room. Understand "light" and "sunlight" and "illumination" and "daylight" and "shaft" as sunlight when the player is clueless. The description of sunlight is "[if the drapes are in the living room and the drapes are closed]A single shaft of daylight slices like a laser through the living room. Although dramatic, it does not provide very effective illumination[otherwise]Bright daylight shines in through the window facing the park. The light is ever so slightly tinted red from surface reflection near the collectors[end if]." The aware-name of sunlight is "photon sensor".
 
 Instead of taking the sunlight:
@@ -2071,9 +2085,13 @@ Instead of taking the alarm clock when the holder of the alarm clock is the Livi
 	
 Instead of pushing the large button when bedtime is not happening:
 	if the player is clueless:
-		say "The alarm clock says [quotation mark][one of]You are awake enough[or]No more snoozing[or]Brain activity nominal, snooze function inhibited[or]Surely, you have better things to do than to poke me[or]If you keep poking that button, you'll wear it out[or]Ow. quit it[or]Stop poking me[stopping][quotation mark].";
+		say "The alarm clock says [quotation mark][one of]You are awake enough[or]No more snoozing[or]Brain activity nominal, snooze function inhibited[or]Surely, you have better things to do than to poke me[or]If you keep poking that button, you'll wear it out[or]Ow. quit it[or]Stop poking me[stopping].[quotation mark][paragraph break]";
 	otherwise:
 		say "Proximity alert reset inhibited."	
+		
+Before switching on or switching off the alarm clock:
+	say "[if the player is clueless]The alarm clock is senses the electrical activity in your brain and turns itself on and off as needed[otherwise]The proximity alert system is always functional[end if].";
+	the rule succeeds.
 
 The clueless-name of the large button is "large button". Understand "snoo" or "snooze" as the large button. The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the dimly illuminated word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magnofluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" or "magnofluctuator" or "toggle" as the large button-proxy. 
 
@@ -2239,6 +2257,14 @@ Instead of reading the nameplate:
 Section Kitchen
 
 The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. [if the old fridge is open]The fridge door is not completely closed. [end if]There is a[if the drawer is open]n open[end if] drawer under the range. On the opposite wall there is a sink and under it, a[if the cabinet is open]n open[end if] storage cabinet."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads which line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault[if the cabinet is open], which is not properly secured[end if]. The [if the drawer is open]opened [end if]reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros[if the old fridge is open]. The cryochamber is open, chilling the engineering section[end if]."
+
+The sound of the kitchen is "[TK-sound]".
+
+To say TK-sound:
+	if the player is clueless:
+		say "the asthmatic wheeze of your antique refrigerator, huffing and puffing its way through another day (perhaps its last) of loyal service to your family";
+	otherwise:
+		say "[if the refrigerator is in the kitchen]the loud hum of the cryochamber, [end if]the high pitched whine of the reactor core, and the gurgle of liquids moving through conduits in the walls of the engineering section".
 
 Instead of going towards or exiting when the player is in the kitchen:
 	if the player carries the food bowl or the player carries the water bowl or the player carries the dog chow bag or the player carries the white egg:
@@ -2765,6 +2791,8 @@ The kitchen floor is a privately-named scenery in the kitchen. The clueless-name
 Section Bathroom
 
 The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter and above it you[apostrophe]ve mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
+
+The sound of the bathroom is "[if the player is clueless]the nearly imperceptible drone of the bathroom fan, which is supposed to run only when the bathroom surpasses a certain level of humidity or when the heat lamp is on, but which seems to run all the time. If you didn't spend all your time at MARSpace, it's the sort of thing that you'd like to fix around the house[otherwise]chirping and beeping emanating from the flight control console[end if]".
 		
 Instead of going towards or exiting when the player is in the bathroom:
 	if the player carries the toothbrush or the player carries the plastic box:
@@ -3348,10 +3376,19 @@ Understand "spin [something] [a custom direction]" as yoking it more when the pl
 Understand "yank [something] [a custom direction]" as yoking it more when the player is the acu.
 Understand "tilt [something] [a custom direction]" as yoking it more when the player is the acu.
 Understand "lean [something] [a custom direction]" as yoking it more when the player is the acu.
-
-
 	
 The clueless-name of the shower is "shower". The aware-name of the shower is "extruder". The shower can be a new experience. The shower is a new experience. The aware-description of the shower is "The extruder delivers activated enamel solution to the surface of the ship through a fluidics network where it hardens into an ablative coating." The clueless-description of the shower is "[if the player is not wearing the flight suit]You are in your shower and water of just the right temperature is raining down on you. [end if]Two buttons are molded into the wall of the shower stall. One is labeled [quotation mark]soap[quotation mark], and the other, [quotation mark]shampoo[quotation mark]. [if the player is wearing the flight suit]The shower has not activated because you are still wearing clothes." The shower can be sprayed. The shower is not sprayed.
+
+The sound of the shower is "[TS-sound]".
+
+To say TS-sound:
+	if the player is clueless:
+		if the player is wearing the flight suit:
+			say "an occasional drip, but little else";
+		otherwise:
+			say "the teeming beat of the water as it falls";
+	otherwise:
+		say "the faint beeping of systems over in the flight control section"
 
 Every turn when the player is in the shower:
 	if the player is self-aware and the player is not wearing the flight suit:
@@ -3648,9 +3685,11 @@ Instead of smelling the sky:
 
 Chapter Blazing Sunrise
 
-The Blazing Sunrise Area [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are rooms in the Blazing Sunrise Area.
+The Blazing Sunrise Area [i.e., the Earth ship] is a region.  The Sleeping Room and the Eating Room are simrooms in the Blazing Sunrise Area.
 
 The description of the Sleeping Room is "[one of]You walk into the tumbledown shack. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings][paragraph break]You ignore him[stopping]." The scent of the Sleeping Room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here".  The printed name of the Sleeping Room is "Sleeping Room".
+
+The sound of the sleeping room is "the ongoing rantings of the old, flat man on the wall. The more he blathers on, the more you tune him out".
 
 In the Sleeping Room is a man called the smelly man. Understand "angry" , "irate", "ranting", "flat" or "strange" as the smelly man. He is scenery. The description of the smelly man is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. He just stays up against one wall. Boy, does he seem mad, [rantings]!" The clueless-name of the smelly man is "smelly man". The aware-name of the smelly man is "Myomita AI". The scent of the smelly man is "unbearable at this close range. It is like something out of a nightmare: a combination of mouthwash, carpet cleaner and air fresheners. Entirely sickening"
 
@@ -3696,6 +3735,8 @@ Instead of pulling the small label:
 The Eating Room is inside from the Sleeping Room.
 
 The description of the Eating Room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the Eating Room is "more interesting than the sleeping room, with hints of kibbles and treats in the air".
+
+The sound of the eating room is "shouting and cursing from the next room over, which makes it hard to hear anything else. There is some sound coming from the cold box, kind of like a low growling sound"
 
 A cold box is a refrigerator in the Eating Room.  The description of the cold box is "A bright orange box, similar in shape to the one that Janet keeps food in at home." The aware-name of the cold box is "cryochamber". The clueless-name of the cold box is "cold box". The scent of the cold box is "like a mixture of refried beans, Peking duck and peppermint patties, ground up with some coffee beans, fried in sesame oil and left to ferment for several months in a moldy basement". Understand "bright", "orange", "fridge", or "refrigerator" as the cold box.
 [there is no egg in the Blazing Sunrise's fridge because it's the same egg as in the Valkyrie. A byte saved is a byte earned.]
@@ -4595,9 +4636,12 @@ Carry out rude-awakening:
 	say "Just as your fingers make contact with the alarm clock, your excited dog deftly bats it off the cushion with his tail. The clock tumbles off the side of futon and thuds smartly as it hits the floor, ending the beeping. Rover looks puzzled that the noise has stopped.[paragraph break]Realizing that without the alarm clock you would probably sleep through the entire day, you reluctantly get out of bed.";
 	move the alarm clock to the Living Room;
 	move the player to the Living Room.
-	
-Instead of listening during bedtime:
-	say "You hear a little something like...".
+		
+Instead of listening when the location is a simroom:
+	if bedtime is happening:
+		say "You hear a little something like...";
+	otherwise:
+		say "You hear [sound of the location]."
 	
 Instead of searching or looking under the futon:
 	say "It's too early to delve into the dust-bunny infested recesses of the futon. Certainly not before some strong coffee."
@@ -5146,7 +5190,10 @@ Instead of opening the front door when the front door is closed during Boarding 
 				say "As the door opens [the underling] struggles against the rapidly exhausting atmosphere, leaning into the wind, and maintaining a grip on the deck. As the atmosphere bleeds out and the pressure drops towards zero, [the underling] plants his gravitic boots back on the deck and resumes his activities.";
 			otherwise:
 				say "The cargo bay doors swing open to space, although from your perspective you still see a sunny day in the park outside.";
-		now the pressure is 0;
+		otherwise:
+			say "You open the cargo bay door, decompressing the ship.";
+	now the pressure is 0;
+	change the outcome-override to force-success; 
 	the rule succeeds.
 	
 Understand "signal yes" or "send yes" as saying yes.
@@ -5261,6 +5308,10 @@ Instead of waking up during Boarding Party:
 	say "The dreadful truth is...oh, wait a minute. That really [italic type]was[roman type] a nightmare.";
 	now woke-from-nightmare is true;
 	now the ACU is alert.
+	
+Before listening when Boarding Party is happening and the pressure is less than 10:
+	say "You can hear almost nothing through the thin air.";
+	the rule succeeds.
  
 Chapter Back On Mars
 
