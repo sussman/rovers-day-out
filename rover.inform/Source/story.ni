@@ -148,7 +148,7 @@ A refrigerator is a kind of container. A refrigerator is usually closed, openabl
 
 A sink is a kind of furniture. Sinks are privately-named. Understand "sink" and "faucet" and "drain" as a sink.  
 
-A here-delegate is a kind of thing. It is usually privately-named and scenery.
+A here-delegate is a kind of thing. It is usually privately-named and scenery. Understand "room" as here-delegate.
 
 A there-delegate is a kind of thing. It is usually privately-named and scenery. There-delegates have a room called destination.
 
@@ -1130,7 +1130,7 @@ Instead of repairing Rover:
 	
 Section Petting
 
-Petting is an action applying to one thing. Understand "pet [something]" or "stroke [something]" or "pat [something]" or "massage [something]" or "caress [something]" or "cuddle [something]" as petting.
+Petting is an action applying to one thing. Understand "pet [something]" or "stroke [something]" or "pat [something]" or "rub [an animal]" or "scratch [an animal]" or "massage [an animal]" or "caress [something]" or "cuddle [something]" as petting.
 
 Check Petting:
 	if the noun is the female dog:
@@ -2237,7 +2237,7 @@ Instead of going towards or exiting when the player is in the kitchen:
 		say paragraph break;
 	continue the action.
 
-The old fridge is a refrigerator in the kitchen. Understand "refrigerator" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door[if the old fridge is open]. The fridge door is open, chilling the kitchen and wasting power[end if]." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house stabilized heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]. Several annunciators monitor the status of the unit." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" or "unit" or "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged. 
+The old fridge is a refrigerator in the kitchen. Understand "refrigerator" or "door" as the old fridge.  The aware-name of the old fridge is "cryochamber".  The clueless-name of the old fridge is "old fridge". The clueless-description of the old fridge is "The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door[if the old fridge is open]. The fridge door is open, chilling the kitchen and wasting power[end if]." The aware-description of the old fridge is "A state-of-the-art cryochamber designed to house stabilized heavy helium. The unit is [if closed]closed[otherwise]open, chilling the air around it[end if]. Several annunciators monitor the status of the unit." The old fridge-proxy is an aware-proxy which is part of the old fridge. Understand "cryo" or "unit" or "cryochamber" as the old fridge-proxy. The old fridge can be damaged. The old fridge is not damaged. 
 
 The hinges are part of the old fridge. Understand "hinge" as the hinges. The clueless-name of the hinges is "hinges". Understand "rusty" as the hinges. The aware-name of the hinges is "annunciators". The clueless-description of the hinges is "Rusty hinges that have never worked smoothly." The aware-description of the hinges is "Simple Reed relay-actuated devices that report opening of the cryochamber." The hinges-proxy is an aware-proxy which is part of the hinges. Understand "annunciator" or "annunciators" as the hinges-proxy.
 
@@ -2714,7 +2714,8 @@ Instead of giving the water bowl to Rover:
 
 Instead of giving the food bowl to Rover:
 	try dropping the food bowl;
-	say "[if the food bowl is full]Rover smacks his lips as you lay the bowl down for him.[otherwise]Rover's stomach growls when you lay down the empty bowl. He looks at you pathetically.".
+	say "[if the food bowl is full]Rover smacks his lips as you lay the bowl down for him.[otherwise]Rover's stomach growls when you lay down the empty bowl. He looks at you pathetically.";
+	now rover is busy.
 
 Instead of giving a dog treat to Rover:
 	change outcome-override to force-success;
@@ -3717,7 +3718,10 @@ The maintenance droid is an edible prop in Limbo. The clueless-name of the maint
 The technician is a man in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be radsuited. The technician is not radsuited. The technician can be biosuited. The technician is not biosuited. The technician is failsafed.
 
 [the window, skylights, park, grass, etc., are hidden when the drapes are drawn]
-The window is a transparent scenery closed not openable container in Limbo. Understand "outside" or "outdoors" or "glass" or "pressure" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is damaged]shows only static. Diagnostics indicate that it is malfunctioning.[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer", "viewport", or "monitor" as the window-proxy. The window can be damaged. The window is not damaged. Understand "dust" as the window when the Real Thing is happening and the player is self-aware. Understand "hangar" or "dock" as the window when Back on Mars is happening. 
+The window is a transparent scenery closed not openable container in Limbo. Understand "outside" or "outdoors" or "glass" or "pressure" as the window. The clueless-name of the window is "window". The aware-name of the window is "viewer". The clueless-description of the windows is "[if the Real Thing is happening]The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park[otherwise]The window is triple-paned pressure glass, mounted flush with the wall.  Through the window you can see [a list of things in the window][end if]." The aware-description of the window is "The external viewport [if the window is damaged]shows only static. Diagnostics indicate that it is malfunctioning.[otherwise]shows [a list of things in the window][end if]." The window-proxy is an aware-proxy which is part of the window. Understand "viewer", "viewport", or "monitor" as the window-proxy. The window can be damaged. The window is not damaged. Understand "dust" as the window when the Real Thing is happening and the player is self-aware. Understand "hangar" or "dock" as the window when Back on Mars is happening.
+
+Instead of opening the window:
+	say "[if the player is clueless]The windows are triple-paned both as a matter of thermal efficiency and some insurance against catastrophic decompression of the dome, however unlikely that might be these days[otherwise]Unable to spawn new GUI[end if].";
 
 Understand "out window" or "out the window" as the window.
 
