@@ -1039,6 +1039,18 @@ range		manscent				dogscent				homescent
 6			"a long way off"	"delicately scenting the air"		"worringly faint from here"
 7			"far away"			"faintly, but definitely, tickling your nose from some remote, and no doubt exotic, location."		"all but undetectable from here"
 
+
+Section Tracking and Following
+
+[These are here just so players don't have to 'guess the verb' to make Rover go places]
+
+Tracking is an action applying to one thing.  Understand "track [thing]" as tracking.
+Instead of tracking a thing, say "Perhaps it's better if you just go toward the thing you want.".
+
+Following is an action applying to one thing.  Understand "follow [thing]" as following.
+Instead of following a thing, say "Just get up and go towards your goal!".
+
+
 Section Reorienting-release version
 
 Reorienting is an action applying to nothing. 
