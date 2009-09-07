@@ -811,7 +811,8 @@ Carry out going towards:
 		if the way is not a direction, say "You can't figure out how to get there." instead;
 		let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
 		change outcome-override to force-success;
-		move the player to the destination.
+		move the player to the destination;
+		if the player is Rover, say "[one of]You trot off in that direction[or]You let your nose lead the way[or]You bound away towards your goal[or]Your legs carry you as fast as you can[or]You eagerly scamper that way[or]You scuttle forth[or]Trot, trot, trot..[in random order].[paragraph break]".
 	
 Rule for reaching inside a room when the current action is going towards: 
     allow access.[necessary to allow the going towards rule to work on a person that is out of local scope; otherwise would throw a "you can't reach inside the kitchen" sort of error.]
