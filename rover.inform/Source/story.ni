@@ -1118,6 +1118,10 @@ Instead of tying the dental floss to something:
 
 Repairing is an action applying to one thing. Understand "fix [something]" or "repair [something]" or "mend [something]" as repairing when the player is the acu.
 
+Check repairing:
+	if the noun is the plunger:
+		say "[if the player is clueless]It's not so much broken as in the wrong position. Usually when this happens, you just do whatever you have to in order to make it stand upright[otherwise]You do not detect an error code from [the plunger], but you do need to use it to optimize the ship's orientation[end if]." instead.
+
 Carry out repairing:
 	say "[if the player is clueless]You make a mental note to put it on the list of things that need repairing for the next time the cottage maintenance droid knocks on your door[otherwise]You log the repair request for dry dock maintenance[end if].";
 	
@@ -2087,7 +2091,7 @@ Instead of opening the drapes:
 		change the outcome-override to force-success;
 		now the window is in the Living Room;
 		try looking;
-		let metatext be "David:  I see it successfully accessed the solar shield.[line break]Janet:  Yes, the status line makes it clear what work is being performed.";
+		let metatext be "David: I see it successfully accessed the solar shield.[line break]Janet: Yes, the status line makes it clear what work is being performed.";
 		say "[metatext in metaspeak]";
 	otherwise:
 		say "They're already open."
@@ -3213,6 +3217,14 @@ The plunger is furniture in the bathroom. The [john] shaft and the red rubber cu
 
 The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude", "control", or "RCS" as the plunger.  The plunger can be yanked. The plunger is not yanked.
 
+Notyoking is an action applying to one thing. Understand "right [something]" or "straighten [something]"  or "reposition [something]" or "adjust [something]" as notyoking.
+
+Check notyoking:
+	if the noun is the plunger:
+		say "[if the player is clueless]It occurs to you that it would be a simple matter of pushing the plunger left or right and perhaps twisting it this way or that[otherwise]Sequential input of discrete vector adjustments applying to orthogonal axes are required[end if]." instead;
+	otherwise:
+		say "[if the player is clueless]Please be more specific[otherwise]More specific input required[end if]." instead.
+
 Instead of taking the plunger:
 	if the player is clueless:
 		if the plunger is not yanked:
@@ -3334,6 +3346,9 @@ Understand "twist [something] [a custom direction]" as yoking it more when the p
 Understand "turn [something] [a custom direction]" as yoking it more when the player is the acu.
 Understand "spin [something] [a custom direction]" as yoking it more when the player is the acu.
 Understand "yank [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "tilt [something] [a custom direction]" as yoking it more when the player is the acu.
+Understand "lean [something] [a custom direction]" as yoking it more when the player is the acu.
+
 
 	
 The clueless-name of the shower is "shower". The aware-name of the shower is "extruder". The shower can be a new experience. The shower is a new experience. The aware-description of the shower is "The extruder delivers activated enamel solution to the surface of the ship through a fluidics network where it hardens into an ablative coating." The clueless-description of the shower is "[if the player is not wearing the flight suit]You are in your shower and water of just the right temperature is raining down on you. [end if]Two buttons are molded into the wall of the shower stall. One is labeled [quotation mark]soap[quotation mark], and the other, [quotation mark]shampoo[quotation mark]. [if the player is wearing the flight suit]The shower has not activated because you are still wearing clothes." The shower can be sprayed. The shower is not sprayed.
