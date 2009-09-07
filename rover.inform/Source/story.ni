@@ -75,6 +75,8 @@ Instead of swearing obscenely:
 		otherwise:
 			say "sentient computers";
 		say "."
+		
+Rule for printing the name of an aware-proxy while asking which do you mean: say "[bracket]COGNITIVE BLOCK[close bracket]".
 			
 Chapter Declare Global Variables
 
@@ -1998,6 +2000,13 @@ The clueless-name of the back is "back". The clueless-description of the back is
 
 The clueless-name of the belly is "belly". Understand "stomach" and "chest" as belly. The clueless-description of the belly is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if]belly." The aware-name of the belly is "heat deflector". The aware-description of the belly is "The lower hull of the ship, which is thicker than the dorsal hull to better withstand the heat and pressure of an atmospheric landing." The belly-proxy is an aware-proxy that is part of the belly. Understand "ventral" or "hull" or "plating" or "deflector" as belly-proxy. The scent of the back is "[scent of the acu]".
 
+[
+Does the player mean doing something with the left arm proxy:
+	it is very likely.
+	
+[disambiguates amongst the 4 proxies which could be identified as "hull" by the player, e.g., >x hull.]
+]
+
 The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." The scent of the body is "[scent of the acu]". 
 
 The clueless-name of the giblets is "parts". Understand "cheeks", "cheekbones", "face", "finger", "fingers", "elbow", "elbows", "hand", "hands", "eye", "eyes", "ear", "ears", "nose",  "neck", "hair", "shoulder", "shoulders", "groin", "buttocks", "leg", "legs", and "tongue" as giblets. The clueless-description of the giblets is "Yet another part of [if the player is the ACU]your[otherwise][the clueless-name of the ACU]'s[end if] anatomy." The aware-name of the giblets is "subsystems". The aware-description of the giblets is "Software and hardware components serving multiple functions." The scent of the giblets is "[scent of the acu]".
@@ -3753,7 +3762,7 @@ Instead of climbing the pullout sofa:
 
 The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pink pillow". The aware-name of the pillow is "NPT". Understand "pink" or "puffy" as the pillow. The clueless-description of the pillow is "[if the player is Rover]A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays[otherwise]A fluffy pink pillow bearing the Myomita corporate logo, and a small label[end if]." The aware-description of the pillow is "A nanotronic paratemporospatial transgressor, of a design that was rejected some time ago by MARSpace. Ths transgressor's supraverbation matrix has evidently crystallized, rendering it non-functional. The NPT bears the corporate logo of the Myomita corporation, a modernized version of the Imperial Japanese flag, centered on a the disc of the Milky Way galaxy rather than the rising sun. An RFID tag is embedded in the logo." The scent of the pillow is "[if the player is Rover]slightly feminine, perhaps even perfumed[otherwise]of hydraulic fluid[end if]".  The pillow-proxy is an aware-proxy that is part of the pillow. Understand "transgressor", "supraverberation", "matrix", "nanotronic", "npt" or "paratemporospatial" as the pillow-proxy. 
 
-The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID tag". The clueless-description of the small label is a "a small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Sunrise[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL." The small label-proxy is an aware-proxy that is part of the small label. Understand "RFID" or "embedded" as the small label-proxy. 
+The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID chip". The clueless-description of the small label is a "A small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Sunrise[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL." The small label-proxy is an aware-proxy that is part of the small label. Understand "RFID" or "embedded" or "chip" as the small label-proxy. 
 
 Understand "pull off [something]" or "tear [something]" or "tear off [something]" or "rip [something]" or "rip off [something]" as pulling.
 
