@@ -1130,7 +1130,7 @@ Instead of repairing Rover:
 	
 Section Petting
 
-Petting is an action applying to one thing. Understand "pet [something]" or "stroke [something]" or "pat [something]" or "scratch [something]" or "massage [something]" or "caress [something]" or "cuddle [something]" as petting.
+Petting is an action applying to one thing. Understand "pet [something]" or "stroke [something]" or "pat [something]" or "massage [something]" or "caress [something]" or "cuddle [something]" as petting.
 
 Check Petting:
 	if the noun is the female dog:
