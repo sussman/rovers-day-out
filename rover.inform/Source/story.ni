@@ -2,7 +2,7 @@
 
 
 The story headline is "An Interactive Fiction".
-The release number is 3.
+The release number is 5.
 The story genre is "Science Fiction".
 The story creation year is 2009.
 
@@ -316,7 +316,7 @@ To say ACU Boot Banner:
 [General routine for displaying dialogue between Janet and David.]
 
 To say (dialogue - some text) in metaspeak:
-	if (the First Sim is happening or the Second Sim is happening):
+	if the Real Thing is not happening:
 		say line break;
  		say "[first custom style][dialogue]";
  		say roman type;
@@ -4176,7 +4176,7 @@ title	subtable	description	toggle
 Table of Stuck
 title	subtable	description	toggle
 "General Pointers"		--		"Here are some practical pointers for this game:[paragraph break]* Try everything you can think of. If it doesn't work, try rephrasing.[line break]* Reread text to make sure you didn't miss anything.[line break]* Leave no stone unturned; conversely, don't obsess.[line break]* This game follows many, but not all, of the conventions of computer adventure games. If something makes sense to you, try it even though it [quotation mark]shouldn't work[quotation mark].[line break]* As far as we know, it is not possible to get trapped in an unwinnable situation. By winning, we mean you can complete the game. Achieving good outcomes is another matter.[line break]* If you are really stuck, put the game aside and let it percolate through your subconscious for a while. Come back fresh.[line break]* If you are really really stuck, con someone else into playing the game and watch them. You might get some ideas.[line break]* If you are really and truly stuck, you could search the Internet 
-  and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Failing all else, you can email us at: rover@templaro.com and tell us in detail how our game has defeated your best efforts. We may be able to give you a hint that wouldn't spoil the rest of the game for you."		--
+  and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Failing all else, you can email us at: rover@red-bean.com and tell us in detail how our game has defeated your best efforts. We may be able to give you a hint that wouldn't spoil the rest of the game for you."		--
 "Spelling"	--		"This game employs the standard Martian dialect and Roman characters rather than the ideographic characters more common on Earth."	--
 
 Table of Bugs
