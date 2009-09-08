@@ -1060,6 +1060,7 @@ range		manscent				dogscent				homescent
 5			"a considerable distance"	"coming from a reasonable distance away"		"getting fainter"
 6			"a long way off"	"delicately scenting the air"		"worringly faint from here"
 7			"far away"			"faintly, but definitely, tickling your nose from some remote, and no doubt exotic, location."		"all but undetectable from here"
+8			"far, far away"		"a distant, but enviable, location"		"only a wispy trace at this far extreme of your faithful nose's olfactory abilities"
 
 
 Section Tracking and Following
@@ -3735,6 +3736,9 @@ Instead of smelling the sky:
 Instead of smelling the sunlight:
 	say "You have not ingested any pharmacoactive substances. So, no. You can't smell the sunlight."
 	
+Instead of smelling a there-delegate:
+	say "You can only smell the air around your nose, although smells may carry some distance. You take a deep breath.";
+	try smelling.
 	
 Chapter Blazing Sunrise
 
@@ -3787,7 +3791,7 @@ Instead of pulling the small label:
 
 The Eating Room is inside from the Sleeping Room.
 
-The description of the Eating Room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the Eating Room is "more interesting than the sleeping room, with hints of kibbles and treats in the air".
+The description of the Eating Room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the Eating Room is "more interesting here than the sleeping room, with hints of kibbles and treats in the air".
 
 The sound of the eating room is "shouting and cursing from the next room over, which makes it hard to hear anything else. There is some sound coming from the cold box, kind of like a low growling sound"
 
@@ -3839,6 +3843,16 @@ Before drinking the crystal clear water:
 	say "You gulp down the crystal clear water, all the time bearing in mind that it properly belongs to the enticing young female dog. It tastes all the better for that knowledge.";
 	remove the crystal clear water from play;
 	the rule succeeds.
+
+Does the player mean taking the food dish: it is possible.
+
+Does the player mean taking the water dish: it is unlikely.
+
+Instead of taking the food dish:
+	say "Nope, the food dish is stuck to the ground[one of]. So much for going home with a [quotation mark]doggie bag[quotation mark][or][stopping]."
+	
+Instead of taking the water dish:
+	say "You can't. It seems to be part of the ground."
 
 Chapter Offstage
 [Items that are tangible, but initially out of play] 
