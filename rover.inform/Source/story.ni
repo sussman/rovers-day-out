@@ -1956,7 +1956,10 @@ To say LR-sound:
 		if the old fridge is in the kitchen:
 			say "a faint hum from the cryochamber in the engineering section";
 		otherwise:
-			say "the normal chatter of ship maintenance sounds in the operations section"
+			if Back on Mars is happening and the audio is switched on:
+				say "David and Janet chatting in the living room as well as the usual sounds of the ship in dry dock";
+			otherwise:
+				say "the normal chatter of ship maintenance sounds in the operations section"
 		
 Sunlight is a privately-named scenery in the Living Room. Understand "light" and "sunlight" and "illumination" and "daylight" and "shaft" as sunlight when the player is clueless. The description of sunlight is "[if the drapes are in the living room and the drapes are closed]A single shaft of daylight slices like a laser through the living room. Although dramatic, it does not provide very effective illumination[otherwise]Bright daylight shines in through the window facing the park. The light is ever so slightly tinted red from surface reflection near the collectors[end if]." The aware-name of sunlight is "photon sensor".
 
@@ -4712,6 +4715,9 @@ Carry out rude-awakening:
 Instead of listening when the location is a simroom:
 	if bedtime is happening:
 		say "You hear a little something like...";
+	if Back on Mars is happening and the audio is switched off:
+		try switching on audio;
+		try listening;
 	otherwise:
 		say "You hear [sound of the location]."
 	
@@ -5493,12 +5499,6 @@ Instead of switching off audio during Back on Mars:
 		say "Audio is already disabled.";
 	otherwise:
 		say "You try to switch off the audio stream, but nothing happens. An error messsage keeps flashing in red, superimposed on your view of [the location in lower case]:[paragraph break]Error: device not available (ALSA driver error 8442)."
-		
-Instead of listening during Back on Mars:
-	if audio is switched off:
-		try switching on audio;
-	otherwise:
-		say "You hear the normal background sounds of the ship, plus David and Janet who are in the living room."
 					
 Instead of asking someone about something during Back On Mars:
 	try querying.[divert "ask janet about..." to the query action]
@@ -5665,6 +5665,6 @@ Rule for amusing a victorious player:
 			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
 	say "* [if used-manual is true]Once cognitive constraints were released, you used the Flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any Flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
-	say "* Did Rover succeed in his amorous advances towards his significant other in the park?";
+	say "* Did Rover succeed in his amorous advances towards his significant other in the park?[paragraph break]";
 	say "* Did you read the texts in the 'help' menu?".
 	
