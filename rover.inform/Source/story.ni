@@ -2,8 +2,9 @@
 
 
 The story headline is "An Interactive Fiction".
-The release number is 2.
+The release number is 3.
 The story genre is "Science Fiction".
+The story creation year is 2009.
 
 Include Glulx Text Effects by Emily Short.
 Include Basic Screen Effects by Emily Short.
@@ -12,6 +13,8 @@ Include Case Management by Emily Short.
 Include Flexible Windows by Jon Ingold.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.
+
+Release along with cover art.
 
 Book 1 Mechanics
 
