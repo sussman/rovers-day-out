@@ -1803,7 +1803,12 @@ Report Dancing:
 
 Section Yell
 
+Understand the command "shout" as something new.
+
 Yelling is an action applying to nothing.  Understand "yell", "shout", "scream", "screach", "howl", "cry", and "holler" as yelling.
+
+Carry Out yelling:
+	do nothing.
 
 Report Yelling:
 	if the player is Rover:
