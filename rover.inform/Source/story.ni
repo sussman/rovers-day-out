@@ -83,7 +83,15 @@ Rule for printing the name of an aware-proxy while asking which do you mean: say
 
 Rule for clarifying the parser's choice of something: 
 	do nothing.
-			
+	
+To decide if player consents:
+	(- BinaryInput() -).
+	
+Include (-
+!Gleefully extracted from the YesOrNo() function
+[ BinaryInput i j;for (::) {KeyboardPrimitive(buffer, parse);j = parse-->0;if (j) { ! at least one word enteredi = parse-->1;if (i == YES1__WD or YES2__WD or YES3__WD or '1//' or 'one') rtrue;if (i == NO1__WD or NO2__WD or NO3__WD or '0//' or 'zero') rfalse;}L__M(##Quit, 1); print "> ";}];
+-).
+
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
