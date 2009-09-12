@@ -1,0 +1,23 @@
+
+failed phrases that ought to work!  THE LIST.
+---------------
+.BOARDING SCENE
+- to interfere with boarding, the player can:
+	1) prolong the conversation with the Earth ships
+	2) perform an operation that affects the hull of the ship
+		a) before the assault ship attaches
+			- coat the ship in ablative enamel
+			- neutralize static charge (scratch back)
+			- fire RCS thrusters
+			- pit scrubbers
+- actions against droids
+	- eat them
+	- put in water tank or fridge
+	- disrobe
+	- rover atttack
+- actions against people
+	- open door
+	- open drawer
+	- dermatovore eels
+	- pink pillow
+==========
