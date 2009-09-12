@@ -2956,6 +2956,9 @@ Report flossing:
 		say "[if the player is clueless]Rover holds obediently still for the flossing, which he seems to find unaccountably pleasurable. Afterwards, he gleefully chews the floss and swallows it[otherwise]Rover internalizes the keypair[end if].";
 	otherwise:
 		say "[if the player is clueless]You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now[otherwise]The hull plating is now synchronously enmeshed[end if]."
+		
+Does the player mean flossing teeth:
+	it is very likely.
 	
 Instead of putting the strand of dental floss on teeth:
 	try flossing teeth.
