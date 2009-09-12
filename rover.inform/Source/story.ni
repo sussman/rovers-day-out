@@ -4751,9 +4751,11 @@ Carry out rude-awakening:
 Instead of listening when the location is a simroom:
 	if bedtime is happening:
 		say "You hear a little something like...";
+		the rule succeeds;
 	if Back on Mars is happening and the audio is switched off:
 		try switching on audio;
 		try listening;
+		the rule succeeds;
 	otherwise:
 		say "You hear [sound of the location]."
 	
