@@ -1944,7 +1944,7 @@ To say living room status:
 	if the drapes are in the Living Room and the drapes are closed:
 		say "Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light";
 	otherwise:
-		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window[if the nameplate is not already-read], illuminating a framed picture on the wall[end if][if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
+		say "You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window, illuminating a framed picture on the opposite wall[if the drapes are in Limbo] -- strangely, your drapes are nowhere to be seen[end if]. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is [if the front door is open]open[otherwise]closed".
 		
 The sound of the living room is "[LR-sound]".
 	
