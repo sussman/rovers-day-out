@@ -2008,6 +2008,18 @@ To say dumb arm:
 			say "[one of]Your arm is pretty itchy, but it looks okay[or]Nothing remarkable about your arm; it just feels itchy[or]It looks just like the right arm. The difference is that your right arm isn't so itchy. Aye, there's there's the rub[stopping]";
 		otherwise:
 			say "[one of]It's a good match for the one on the right[or]Looks normal enough[or]Nothing out of the ordinary, really[in random order]"
+			
+The bug bite is a privately-named part of the left arm. Understand "bug bite" or "bite" as the bug bite when Arm Hurts is happening. The clueless-name of the bug bite is "bug bite". The aware-name of the bug bite is "static imbalance". The bug bite-proxy is an aware-proxy that is part of the bug bite. Understand "static" or "imbalance" or "malfunction" as the bug bite-proxy. The scent of the bug bite is "like the rest of your arm".
+
+Instead of doing something to the 	bug bite:
+	if the current action is examining:
+		say "[one of]You look very carefully for any evidence of a bug bite, or something along those lines, but your arm looks totally normal[or]That's just it -- you don't see a bug bite, it just itches like there is one. Your arm looks totally normal[or]Nope, no mark on your arm, just a lot of itching[or]Your arm looks normal[stopping].";
+	otherwise if the current action is rubbing:
+		try rubbing the left arm;
+	otherwise if the current action is touching:
+		try touching the left arm;
+	otherwise:
+		say "You look carefully, but don't see one."
 		
 The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "starboard hull". The aware-description of the right arm is "The starboard hull." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "starboard" or "hull" as the right arm-proxy. The scent of the right arm is  "[scent of the acu]".
 
@@ -4762,7 +4774,7 @@ Instead of doing something during Arm Hurts:
 				say "The strange itching sensation shoots like lightning up and down your left arm, which flails spastically becoming entangled briefly in the drapes and yanking them open.";
 				now the drapes are open;
 				the rule succeeds;
-		if the noun is left arm and the current action is examining, rubbing, or touching:
+		if (the noun is left arm or the noun is bug bite or the noun is bug bite-proxy) and the current action is examining, rubbing, or touching:
 			continue the action;
 		otherwise if the current action is memory-updating or waving hands:
 			continue the action;
@@ -4795,6 +4807,7 @@ Understand "scratch [something]" as rubbing.
 
 Instead of rubbing the left arm during Arm Hurts:
 	now arm-numb is zero;
+	remove the bug bite from play;
 	say "Ooooo. Ahhhh...slowly, the itchiness subsides. That feels [italic type]so[roman type] good.".
 				
 Chapter First Sim
