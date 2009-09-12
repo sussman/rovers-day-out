@@ -2805,6 +2805,12 @@ The clueless-name of the dog chow bag is "20 kilo bag of dog chow". Understand "
 
 Does the player mean eating the dog food:
 	it is very likely.
+	
+Instead of giving the dog chow bag to Rover:
+	if the player is clueless:
+		say "Rover[if the dog chow bag does not enclose the dog food] gives the empty bag a perfunctory sniff, as etiquette demands[otherwise]'s ears perk up and his tail propellers as he tries to cram his head into the bag. Failing that, he backs off and tries to look patient as he waits for you to feed him[end if].";
+	otherwise:
+		say "ROVER polls the fuel delivery system and determines [if the dog chow bag does not enclose the dog food]that there is no polonium in the conduit[otherwise]that the conduit is full of polonium. He waits patiently for you to begin the transfer process[end if]."
 
 The clueless-name of the dog food is "doggie kibbles". Understand "kibble" or "kibbles" or "doggie" or "dog" or "dog food" or "doggie kibbles" as dog food. The aware-name of the dog food is "polonium 210 pellets". The clueless-description of the dog food is "Tasty brown kibbles." The aware-description of the dog food is "Red hot pellets of Polonium 210." The dog food-proxy is an aware-proxy that is part of the dog food. Understand "polonium" or "210" or "radionuclide" or "isotope" or "pellet" or "pellets" as the dog food-proxy. The scent of the dog food is "like rotting sewage, but to Rover it's haute cuisine".
 
