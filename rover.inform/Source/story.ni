@@ -2898,6 +2898,9 @@ Instead of exiting when the player is wet and the player is in the bathroom and 
 To say dont drip:
 	say "[if the player is clueless]You are still dripping wet! Before you drench the floor of every room in the cottage, it would make sense to dry off[otherwise]The ablative coating is applied but not polymerized. It requires UV irradiation to cure fully[end if]."
 	
+Instead of taking TB-TS when the player is in the bathroom:
+	say "[if the player is clueless]You are standing just outside the shower[otherwise]The extruder system can be accessed from the adjacent control bay, but not from here in flight control[end if]."
+	
 The marble counter is furniture in the bathroom.  On the marble counter are a toothbrush and a plastic box. The toothbrush and plastic box are props.
 
 The clueless-name of the marble counter is "marble counter". Understand "pink" and "faux" as the marble counter. The aware-name of the marble counter is "flight console". The clueless-description of the marble counter is "A counter of that pink faux marble that is so common in Martian bathrooms.[if something is on the marble counter] On it [is-are a list of things on the marble counter]."  The aware-description of the marble counter is "A fully automated flight control console. [if something is on the marble counter]On it [is-are a list of things on the marble counter]." The marble counter-proxy is an aware-proxy that is part of the marble counter. Understand "flight console" or "console" as the marble counter-proxy. The scent of the marble counter is "like all bathroom counters do: a mixture of soap, perfume, and toothpaste".
