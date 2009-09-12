@@ -2068,13 +2068,16 @@ Before taking off the flight suit when the player is enclosed by a supporter:
 
 After taking off the flight suit:
 	change outcome-override to force-success;
-	say "You take off your [if the drapes are open]blue[end if] flight suit and it ";
-	if the player is on a supporter:
-		say "bunches up in a crumpled heap on the [holder of the player]";
+	if the player is clueless:
+		say "You take off your [if the drapes are open]blue[end if] flight suit and it ";
+		if the player is on a supporter:
+			say "bunches up in a crumpled heap on the [holder of the player]";
+		otherwise:
+			say "falls to [the location in lower case] floor";
+		say ". You are naked.[paragraph break]";
 	otherwise:
-		say "falls to [the location in lower case] floor";
+		say "You disengage your quantum isolator.";
 	now the flight suit is in the holder of the player;
-	say ". You are naked.[paragraph break]";
 	if the player can see the maintenance droid:
 		scandalize the poor little robot;
 	if the flight suit is not already-doffed:
