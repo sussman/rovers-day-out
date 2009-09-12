@@ -2286,7 +2286,7 @@ Instead of searching the picture:
 
 Test picture with "x picture / get picture / eat picture / read nameplate / read memory unit".
 
-The nameplate is a fixed in place message which is part of the picture. Understand "inscription" and "engraving" as the nameplate. Understand "name" or "plate" as the nameplate. The clueless-description of the nameplate is "A brass nameplate bearing a short inscription. The nameplate is attached to the bottom of the picture." The aware-description of the nameplate is "A small plastic sign with a short inscription. The sign is glued to the Deep Memory module." The clueless-name of the nameplate is "nameplate". The aware-name of the nameplate is "plastic sign". The nameplate-proxy is an aware-proxy that is part of the nameplate. Understand "plastic" or "sign" as the nameplate-proxy. The inscription of the nameplate is "". The nameplate can be already-read. The nameplate is not already-read. 
+The nameplate is a fixed in place message which is part of the picture. Understand "inscription" and "engraving" as the nameplate. Understand "name" or "plate" as the nameplate. The clueless-description of the nameplate is "A brass nameplate bearing a short inscription. The nameplate is attached to the bottom of the picture." The aware-description of the nameplate is "A small plastic sign with a short inscription. The sign is glued to the Deep Memory module." The clueless-name of the nameplate is "nameplate". The aware-name of the nameplate is "plastic sign". The nameplate-proxy is an aware-proxy that is part of the nameplate. Understand "plastic" or "sign" as the nameplate-proxy. The inscription of the nameplate is "".
 
 Instead of reading the nameplate:
 	change outcome-override to force-success;
@@ -2294,9 +2294,8 @@ Instead of reading the nameplate:
 		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break](remembering the photo)[paragraph break]";
 		try remembering "photo";
 	otherwise:
-		say "It says, [quotation mark]Deep Memory Unit[quotation mark].";
-	now the nameplate is already-read.
-
+		say "It says, [quotation mark]Deep Memory Unit[quotation mark]."
+		
 Section Kitchen
 
 The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. [if the old fridge is open]The fridge door is not completely closed. [end if]There is a[if the drawer is open]n open[end if] drawer under the range. On the opposite wall there is a sink and under it, a[if the cabinet is open]n open[end if] storage cabinet."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads which line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault[if the cabinet is open], which is not properly secured[end if]. The [if the drawer is open]opened [end if]reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros[if the old fridge is open]. The cryochamber is open, chilling the engineering section[end if]."
