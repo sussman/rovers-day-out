@@ -81,12 +81,8 @@ Instead of swearing obscenely:
 		
 Rule for printing the name of an aware-proxy while asking which do you mean: say "[bracket]COGNITIVE BLOCK[close bracket]".
 
-[TOCONSIDER: For production, add the following rule to suppress the explanation of which thing the parser chose. I think it clutters the output.
-
 Rule for clarifying the parser's choice of something: 
 	do nothing.
-	
-]
 			
 Chapter Declare Global Variables
 
