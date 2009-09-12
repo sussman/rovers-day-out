@@ -1137,11 +1137,16 @@ Instead of tying the dental floss to something:
 			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperature[end if].";
 			now the chain is repaired.
 
-Repairing is an action applying to one thing. Understand "fix [something]" or "repair [something]" or "mend [something]" as repairing when the player is the acu.
+Understand the commands "fix", "mend", and "repair" as something new. 
+
+Repairing is an action applying to one thing. Understand "repair [something]" as repairing when the player is the acu.
 
 Check repairing:
 	if the noun is the plunger:
-		say "[if the player is clueless]It's not so much broken as in the wrong position. Usually when this happens, you just do whatever you have to in order to make it stand upright[otherwise]You do not detect an error code from [the plunger], but you do need to use it to optimize the ship's orientation[end if]." instead.
+		if plunger is trimmed:
+			say "[if the player is clueless]The plunger doesn't look broken[otherwise]The vector input port is functioning within acceptable parameters[end if]." instead;
+		otherwise:
+			say "[if the player is clueless]It's not so much broken as in the wrong position. Usually when this happens, you just do whatever you have to in order to make it stand upright[otherwise]You do not detect an error code from [the plunger], but you do need to use it to optimize the ship's orientation[end if]." instead.
 
 Carry out repairing:
 	say "[if the player is clueless]You make a mental note to put it on the list of things that need repairing for the next time the cottage maintenance droid knocks on your door[otherwise]You log the repair request for dry dock maintenance[end if].";
@@ -1167,6 +1172,20 @@ Instead of repairing the toilet:
 Instead of repairing Rover:
 	say "[if the player is clueless]Rover has already been fixed, and he didn't enjoy it[otherwise]Although ROVER is missing two nuts on his underchassis, you consider him fixed[end if]."
 	
+Ducttaping it with is an action applying to two things. Understand "repair [something] with/using [something]" as ducttaping it with.
+
+Check ducttaping it with:
+	if the second noun is not dental floss:
+		say "You only know of two things in the world that are truly useful for repairs: [supertape] and [if the player is clueless]dental floss[otherwise]entangled keypairs[end if]. And don't think there's any [supertape] in the [if the player is clueless]cottage[otherwise]ship[end if]." instead.
+		
+Carry out ducttaping it with:
+	try repairing the noun.
+	
+Understand the commands "fix" and "mend" as "repair".
+
+To say supertape:
+	say "[if the player is clueless]duct tape[otherwise]primordial gluon amalgam[end if]".
+		
 Section Petting
 
 Petting is an action applying to one thing. Understand "pet [something]" or "stroke [something]" or "pat [something]" or "rub [an animal]" or "scratch [an animal]" or "massage [an animal]" or "caress [something]" or "cuddle [something]" as petting.
@@ -1526,7 +1545,7 @@ To reset the yoke:
 	now pitch is the new vector;
 	now roll is the new vector;
 	now yaw is the new vector;
-	while pitch is 0 and roll is 0 and yaw is 0:
+	while the plunger is trimmed:
 	[unlikely, but don't want the landing puzzle to be too easy]
 		reset the yoke.
 			
@@ -3258,7 +3277,7 @@ Check flushing:
 			the rule fails;
 	if the Landing Sequence is happening:
 		[Is the yoke correctly centered?]
-		if the pitch is not 0 or the roll is not 0 or the yaw is not 0:
+		if the plunger is not trimmed:
 			say "[one of]You are distracted momentarily. Something just isn't right in the bathroom[or]Before you do so, the plunger catches your attention[or]Maybe you've been reading too much Lovecraft, but the plunger next to the toilet seems to be somehow misshapen and twisted. Its suddenly alien geometry suggests to you that some inchoate force of primordial corruption is reaching from across the stars, gibbering and gyrating contemptibly in the half-formed chaos between the toilet and the shower. Or maybe the eldritch plunger is just tilted a bit[or]There's something odd about the plunger. You forget what you're doing for a moment[or]Something about the plunger next to the toilet disturbs your sense of order[or]Obsess much? The bathroom plunger is not standing up correctly. It's maddening[stopping].";
 			the rule fails;
 	[Does the mechanism result in the flapper valve lifting?]
@@ -3310,6 +3329,8 @@ Instead of entering a flipchair (called the flop):
 	say "You sit on the [flop]."
 
 The plunger is furniture in the bathroom. The [john] shaft and the red rubber cup are part of the plunger.
+
+Definition: The plunger is trimmed if the roll is zero and the pitch is zero and the yaw is zero.
 
 The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude", "control", or "RCS" as the plunger.  The plunger can be yanked. The plunger is not yanked. The scent of the plunger is "like it is brand new".
 
