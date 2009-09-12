@@ -2295,7 +2295,7 @@ Instead of reading the nameplate:
 		try remembering "photo";
 	otherwise:
 		say "It says, [quotation mark]Deep Memory Unit[quotation mark]."
-		
+
 Section Kitchen
 
 The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. [if the old fridge is open]The fridge door is not completely closed. [end if]There is a[if the drawer is open]n open[end if] drawer under the range. On the opposite wall there is a sink and under it, a[if the cabinet is open]n open[end if] storage cabinet."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads which line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault[if the cabinet is open], which is not properly secured[end if]. The [if the drawer is open]opened [end if]reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros[if the old fridge is open]. The cryochamber is open, chilling the engineering section[end if]."
@@ -3358,7 +3358,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw][if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
 			say "."
 							
 To say magnitude of (degrees - a number):
@@ -3428,13 +3428,13 @@ clockwise					3				1
 
 Table of Orientations
 Angle		Inclination
-0				"perfect "
-30				"just the tiniest little bit "
-60				"a tad "
+0				"perfect"
+30				"just the tiniest little bit"
+60				"a tad"
 90				"somewhat"
-120				"strongly "
-150				"almost completely "
-180				"completely "
+120				"strongly"
+150				"almost completely"
+180				"completely"
 
 Understand "push [something] [a custom direction]" as yoking it more when the player is the acu.
 Understand "pull [something] [a custom direction]" as yoking it more when the player is the acu.
