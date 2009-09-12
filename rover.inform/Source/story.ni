@@ -2141,7 +2141,7 @@ After examining the alarm clock for the second time:
 		let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
 		say "[metatext in metaspeak]";
 
-Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story] The scent of the drapes is "much as you imagine burlap would might, were it aged for centuries and then baked in the sunlight until crispy".
+Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story] The scent of the drapes is "much as you imagine burlap would might, were it aged for centuries and then baked in the sunlight until crispy". The drapes can be opened-before. The drapes are not opened-before.
 
 Instead of opening the drapes:
 	if the drapes are closed:
@@ -2150,8 +2150,10 @@ Instead of opening the drapes:
 		change the outcome-override to force-success;
 		now the window is in the Living Room;
 		try looking;
-		let metatext be "David: I see it successfully accessed the solar shield.[line break]Janet: Yes, the status line makes it clear what work is being performed.";
-		say "[metatext in metaspeak]";
+		if the drapes are not opened-before:
+			let metatext be "David: I see it successfully accessed the solar shield.[line break]Janet: Yes, the status line makes it clear what work is being performed.";
+			say "[metatext in metaspeak]";
+			now the drapes are opened-before;
 	otherwise:
 		say "They're already open."
 	
