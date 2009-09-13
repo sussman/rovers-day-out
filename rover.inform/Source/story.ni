@@ -5073,7 +5073,10 @@ When Boarding Party begins:
 	move the gunships to the window.
 	
 When Boarding Party ends:
-	say "A tight tachyon beam locks on the stub of your ansible antenna -- on the MARSpace telecommand frequency.[paragraph break][quotation mark]This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home.[quotation mark][paragraph break]***Other explanatory text*****[paragraph break]The Bogdanov puts itself between you and the remaining Myomita gunships, and its pressor beam gives a strong shove towards home. As the last gunship is vaporized by the powerful guns of the battleship, the cumulative damage takes it toll on you, and you lose your grip on consciousness. You know that repair subroutines are kicking in, and you don't fight it. You are vaguely of someone holding your hand, and leading you back to your cottage."
+	say "A tight tachyon beam locks on the stub of your ansible antenna -- on the MARSpace telecommand frequency.[paragraph break][quotation mark]This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home.[quotation mark][paragraph break]";
+	say "The Bogdanov puts itself between you and the remaining Myomita gunships, and its pressor beam gives a strong shove towards an expensive Mars transfer orbit.[paragraph break]";
+	say "The Bogdanov continues its transmission, [quotation mark]We were on our shakedown mission, maneuvering just outside the Solar System when MarsMIL reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. [if assault ship approach is greater than one]By fighting against the assault ships, you bought us the time to repair our temporal transgressor which was nearly fractured through and through after our first jump. [end if][if henchmen defeated is greater than zero]We can detect that you are heavily damaged, but your valiant fight against the boarding parties slowed them down enough that they were not able to compromise your mission. [end if]Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home.[paragraph break]"; 
+	say "As the last gunship is vaporized by the Bogdanov's powerful guns, the cumulative damage takes it toll on you, and you lose your grip on consciousness. You know that repair subroutines are kicking in, and you don't fight it. You are vaguely of someone holding your hand, and leading you back to your cottage."
 
 Before doing anything to a failsafed person when the second sim has happened:
 	[specify after the second sim, because the player may make some reference to david during the simulations, and if so, we cant to trigger the metatext where David wonders why the ACU is talking about him.]
@@ -5731,18 +5734,13 @@ Rule for amusing a victorious player:
 	repeat with N running from one to the number of rows in the Table of Doggie Memories:
 		if remembered in row N of Table of Doggie Memories is one, increase rover-memories by one;
 	say "Congratulations. Of the [turn count] things you did today, you must have gotten some of them right, because you didn't screw up the entire universe and you're still alive to read about it. Before you get too cocky, however, here are a few hints about stuff you might want to look for the next time you play [quotation mark][story title][quotation mark]:[paragraph break]";
-	say "* As the ACU, you experienced [dream-score in words] of the eight possible dream sequences (including the nightmare about the boarding party)[if dream-score is less than eight]. Getting up in the morning and getting things done is all well and fine, but a you can afford to dream a little[end if].[paragraph break]";
+	say "* As the ACU, you experienced [dream-score in words] of the seven possible dream sequences [if dream-score is less than seven]. Getting up in the morning and getting things done is all well and fine, but a you can afford to dream a little[end if].[paragraph break]";
 	say "* During personality imprinting, both the ACU and Rover incorporated memories from their real-life counterparts. You tapped into [janet-memories in words] out of the [number of rows in the Table of Remembered Stuff in words] engrams resident in the ACU memory banks, and [rover-memories in words] out of Rover's [number of rows in the Table of Doggie Memories in words] memories.[paragraph break]";
-	say "* While you were experiencing the nightmare, [run paragraph on]";
-	[if woke-from-nightmare is true:
-		say "you realized what was happening, and woke yourself up. If you had continued to enjoy the depressing downward spiral into dismalness, however, you would have had the opportunity to work against the docking assault ships and their minions. Maybe next time.[paragraph break]";
+	say "* When the Myomita merchant marine ships intercepted you on the way back to Mars, you managed to employ [henchmen defeated in words] out of the eight or so methods to eliminate them from the ship. [if henchmen defeated is zero]You should work on that. [end if][run paragraph on]";
+	if assault ship approach is greater than one:
+		say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
 	otherwise:
-		say "when the ship is boarded by salvage crews from Earth, you managed to employ [henchmen defeated in words] out of the eight or so methods to eliminate them from the ship. [if henchmen defeated is zero]You should work on that. [end if][run paragraph on]";
-		if assault ship approach is greater than one:
-			say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
-		otherwise:
-			say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
-	]
+		say "Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.[paragraph break]";
 	say "* [if used-manual is true]Once cognitive constraints were released, you used the Flosix manual to learn about ship objects. That's a good start. [end if]Were you able to use any Flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?[paragraph break]";
 	say "* Did Rover perform any of his tricks for you?[paragraph break]";
 	say "* Did Rover succeed in his amorous advances towards his significant other in the park?[paragraph break]";
