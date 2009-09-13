@@ -786,8 +786,17 @@ Understand the command "read" as something new. Reading is an action applying to
 Check reading:
 	If the player is rover:
 		say "Dogs can't read." instead;
-	If the noun is lips:
-		say "You never learned how to read lips[if the player is self-aware and audio is switched off]. You figure that it would be easier to try to listen to what they're saying[end if]." instead;
+	If the noun is:
+		-- lips:
+			say "You never learned how to read lips[if the player is self-aware and audio is switched off]. You figure that it would be easier to try to listen to what they're saying[end if]." instead;
+		-- David:
+			say "You've never been good at reading men." instead;
+		-- Janet:
+			say "Your attempt at introspection-by-proxy fails." instead;
+		-- acu:
+			say "You do not have sufficient privilege to read yourself." instead;
+		-- Rover:
+			say "He's a dog, not a book." instead;
 	If the noun is not a message:
 		say "That's not something you can read." instead;
 	If the inscription of the noun is "":
@@ -809,7 +818,6 @@ To say (relevant time - a time) as 24h time:
     let M be the minutes part of relevant time; 
     say "[if H is less than 10]0[end if][H]:[if M is less than 10]0[end if][M]".	
 
-	
 Section Going Towards
 
 Going towards is an action applying to one thing.
@@ -1976,7 +1984,7 @@ The walls are a backdrop.  They are in the Living Room and Kitchen.  The walls a
 
 The ceiling is a backdrop. It is in the Living Room and Kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." The aware-name of the ceiling is "ceiling". 
 
-The clueless-name of the Living Room is "living room". The clueless-description of the Living Room is "[living room status]." The aware-name of the Living Room is "operations". The aware-description of the Living Room is "The Valkyrie's cargo bay is like a great, metal cave. [if Boarding Party is not happening]On one wall, the Casimir Drive intrudes slightly into the cargo area[otherwise]Nothing remains of the Casimir Drive, which was neatly sliced off the ship by the surgically precise Myomita energy weapons[end if]. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are [if the front door is open]open[otherwise]closed[end if]." 
+The clueless-name of the Living Room is "living room". The clueless-description of the Living Room is "[living room status]." The aware-name of the Living Room is "operations". The aware-description of the Living Room is "The Valkyrie's cargo bay is like a great, metal cave. [if the futon is in the living room]On one wall, the Casimir Drive intrudes slightly into the cargo area[otherwise]Nothing remains of the Casimir Drive, which was [one of]neatly sliced off the ship by the surgically precise Myomita energy weapons[or]cut off during the encounter with the Myomita merchant marine[stopping][end if]. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are [if the front door is open]open[otherwise]closed[end if]." 
 
 To say living room status:
 	if the drapes are in the Living Room and the drapes are closed:
@@ -3781,7 +3789,7 @@ Attempts				Romantic Text
 	
 Understand "lick [a thing]" as kissing when the player is Rover.
 
-The clueless-name of the delicious bone is "delicious bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]". The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [the clueless-name of the holder of the delicious bone] is munching on it[end if], but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]." The probe-proxy is an aware-proxy that is part of the delicious bone. Understand "space", "probe", "musashi", "myomita", "5", or "musashi-5" as the probe-proxy. 
+The clueless-name of the delicious bone is "bone". The aware-name of the delicious bone is the "space probe". The clueless-description of the delicious bone is "[delicious bone status]". The aware-description of the delicious bone is "The Musashi-5 probe was severely damaged at some point during its journey[if the holder of the delicious bone is an animal] and even more so now that [Rover] has had a chance to chew it, but its data have been downloaded to you and are safe."  The scent of the delicious bone is "[one of]good enough to make your mouth water. It reaches up your nostrils and grabs your brain in its jaws, it is so juicy-smelling. The reddest, most bloody chunk of meat you ever tasted is like yesterday's barf compared to the scrumptious aroma of the bone[or]of meat and marrow[stopping]." The probe-proxy is an aware-proxy that is part of the delicious bone. Understand "space", "probe", "musashi", "myomita", "5", or "musashi-5" as the probe-proxy. 
 
 To say delicious bone status:
 	if the player is rover:
@@ -3790,7 +3798,11 @@ To say delicious bone status:
 		say "The bone the dog dragged in from the park. He's already gnawed on it a bit".
 		
 Instead of taking the delicious bone when the player is the acu:
-	say "Rover growls mildly reminding you that it is [italic type]his [roman type][if the player is self-aware]space probe[otherwise]bone[end if][if the player is self-aware]. In any event, the data have already been downloaded, so you might as well let him have fun with what's left of the antique hardware[end if]."
+	if Rover is the holder of the bone:
+		say "Rover growls mildly reminding you that it is [italic type]his [roman type][if the player is self-aware]space probe[otherwise]bone[end if][if the player is self-aware]. ";
+	otherwise if Inert Rover is the holder of the bone:
+		say "[one of]The probe is still firmly clamped in ROVER's hydraulic jaws. Any attempt to remove it with strong tractor fields could damage both ROVER and the probe[or]You carefully try to pry apart ROVER's jaws, but he's hanging on tightly to the bone, even though he's out cold[stopping]. ";
+	say "In any event, the data have already been downloaded, so the fate of the probe itself is no longer a mission priority."
 
 The Strange Porch is west of the Featureless Desert. The printed name of the the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a dilapidated shack, that has clearly been neglected[inconsequential outside detail]." The scent of the Strange Porch is "metallic, like when you lick aluminium foil".
 
@@ -3934,6 +3946,13 @@ Chapter Offstage
 
 Limbo is a room. Limbo is secluded.[and a dance] 
 
+Inert Rover is a male animal in Limbo. The aware-name of Inert Rover is "ROVER". The clueless-description of Inert Rover [which should never be encounter, BTW] is "Your dog." The aware-description of Inert Rover is "A mobile exploration and mining rig, the unit is presently inert, its quantum subprocessor having been distangled. The mangled Musashi-5 space probe is held firmly in ROVER's metallic jaws." The Inert Rover-proxy is an aware-proxy that is part of Inert Rover. Understand "robot" or "mobile" or "mining" or "tractor" or "rig" or "rover" as the inert rover-proxy. The scent of inert rover is "no better than when he was conscious".
+
+Persuasion rule for asking Inert Rover to try doing anything:
+	change last-noun to "ROVER";
+	say "Rover has been rendered unconscious. He's not moving at all, and doesn't respond to your command.";
+	persuasion fails.
+
 David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed. He can be exposed. He is not exposed. Understand "boss" or "director" as David Venkatachalam.
 
 David Venkatachalam wears a black business robe and a burgundy bowler hat. Understand "fashionable" and "expensive" as the black business robe. The description of the black business robe is "A shiny, black business robe, with a wide sash of gold terry cloth and high slit in the rear. Surely, the custom-tailored robe is every bit as expensive as it looks. The robe comes down almost to the floor in the front, although David's fancy boots can be seen as he walks."  The gold terry cloth sash is part of the black business robe. The description of the gold terry cloth sash is "At least twice as long as David is tall, the width of the sash is meant to impress business associates with David's social standing as director of the Valkyrie project."  Understand "long" and "wide" as the gold terry cloth sash. David Venkatachalam wears fancy boots. The fancy boots are plural-named. The indefinite article of the fancy boots is "a pair of". The description of the fancy boots is "Exotic boots, apparently made of snake skin, possibly imported from Earth. They stand in stark contrast to the more functional boots worn by most executives on Mars." Understand "exotic" and "snake" and "skin" as the fancy boots. The description of the burgundy bowler hat is "A bulbous, helmet-like version of the classic hat, with a relatively narrow brim. The burgundy-colored hat looks like an antique with no piercings." Understand "bulbous" and "antique" as the burgundy bowler hat. The aware-name of the black business robe is "clothing". The aware-name of the burgundy bowler hat is "clothing". The aware-name of the gold terry cloth sash is "clothing". The aware-name of the fancy boots is "clothing". The goatee is a part of David Venkatachalam. The description of the goatee is "A waxed, black goatee of medium length, which comes to a crisp point below David's chin." The aware-name of the goatee is "david".
@@ -3970,10 +3989,17 @@ Before searching outside when the player is in the Living Room and the window is
 	change outcome-override to force-success;
 	try searching the window;
 	the rule succeeds.
-	
+
+Instead of searching the window:
+	say "Through the window you see [a list of things in the window]."	
+
 Instead of searching or examining the window when the player is self-aware during Real Thing:
 	change outcome-override to force-failure;
 	say "Through the viewer you can see nothing but swirling dust."
+	
+Instead of searching or examining the window when the damage counter greater than the number of rows in the Table of Underling Tasks during Boarding Party:
+	change outcome-override to force-failure;
+	say "Your external sensors are overloaded. You can't see a thing!"
 	
 Instead of searching or examining the window during Back on Mars:
 	change outcome-override to force-success;
@@ -5061,6 +5087,7 @@ When Boarding Party begins:
 	Setup the World;
 	now stardate is "23920817";
 	move the player to the Living Room, without printing a room description;
+	now Rover holds the delicious bone;
 	move the futon to Limbo;
 	move the alarm clock to Limbo; [it would have been on the futon]
 	now the futon is folded;[to satisfy the "instead of going anywhere while the player is in the living room and the futon isn't folded rule]
@@ -5069,11 +5096,11 @@ When Boarding Party begins:
 	move the grass to Limbo;
 	move the trees to Limbo;
 	move the pillow to the pillow-locale;
-	move the assault ship to the window;[player can see what's going on in space around the Valkyrie when in the living room.]
-	move the gunships to the window.
+	now the window holds the assault ship;[player can see what's going on in space around the Valkyrie when in the living room.]
+	now the window holds the gunships.
 	
 When Boarding Party ends:
-	say "A tight tachyon beam locks on the stub of your ansible antenna -- on the MARSpace telecommand frequency.[paragraph break][quotation mark]This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home.[quotation mark][paragraph break]";
+	say "A tight tachyon beam maintains a lock on the stub of your ansible antenna -- on the MARSpace telecommand frequency.[paragraph break][quotation mark]This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home.[quotation mark][paragraph break]";
 	say "The Bogdanov puts itself between you and the remaining Myomita gunships, and its pressor beam gives a strong shove towards an expensive Mars transfer orbit.[paragraph break]";
 	say "The Bogdanov continues its transmission, [quotation mark]We were on our shakedown mission, maneuvering just outside the Solar System when MarsMIL reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. [if assault ship approach is greater than one]By fighting against the assault ships, you bought us the time to repair our temporal transgressor which was nearly fractured through and through after our first jump. [end if][if henchmen defeated is greater than zero]We can detect that you are heavily damaged, but your valiant fight against the boarding parties slowed them down enough that they were not able to compromise your mission. [end if]Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home.[paragraph break]"; 
 	say "As the last gunship is vaporized by the Bogdanov's powerful guns, the cumulative damage takes it toll on you, and you lose your grip on consciousness. You know that repair subroutines are kicking in, and you don't fight it. You are vaguely of someone holding your hand, and leading you back to your cottage."
@@ -5082,7 +5109,7 @@ Before doing anything to a failsafed person when the second sim has happened:
 	[specify after the second sim, because the player may make some reference to david during the simulations, and if so, we cant to trigger the metatext where David wonders why the ACU is talking about him.]
 	if the actor is Rover:
 		continue the action;
-	if the current action is examining, querying, asking or telling:
+	if the current action is examining, querying, reading, asking or telling:
 		continue the action;
 	otherwise:
 		change outcome-override to force-failure;
@@ -5326,10 +5353,12 @@ Instead of inserting the maintenance droid into the water tank:
 
 Instead of Rover attacking when Rover is in the Valkyrie Area during Boarding Party:
 	if the noun is the technician or the noun is the maintenance droid:
-		say "Rover starts forward, teeth bared. With paws reaching for [the underling]'s throat, he pounces.  Midway through Rover's leap, [the underling] draws a hand beamer and slices Rover through the neck. Momentum carries Rover's body forward, though, and it lands on the surprised [underling].[paragraph break]Reluctantly, you recycle the remains of both Rover and [the underling].[paragraph break]While you try to remind yourself that Rover is not your real dog, and that the real Rover is safe at home on Mars, the strength of the projection overcomes you, and you cry.";
+		say "[Rover] starts forward, teeth bared. With paws reaching for [the underling]'s throat, he pounces.  Midway through [Rover]'s leap, [the underling] draws a quantum distangler and scrambles [Rover]'s subprocessor. Momentum carries [Rover]'s body forward, though, and it lands on the surprised [underling].[paragraph break][Rover] is definitely down for the count, but you assume there is no permanent damage. The same can't be said of [the underling], which you dispose of. ROVER may be unconscious, but the space probe remains clamped in his jaws.";
 		increase the henchmen defeated by one;
 		move the underling to Limbo;
 		move Rover to Limbo;
+		move Inert Rover to the location;
+		now Inert Rover holds the delicious bone;
 	otherwise:
 		say "Rover tilts his head questioningly, as if to say [quotation mark]The [noun]?  You really want me to attack [the noun]?[quotation mark][paragraph break]";
 	the rule succeeds.
@@ -5422,7 +5451,7 @@ round		place 		destroyed item		vandalized item		narrative		unseen		reaction
 15			kitchen		--			--			"[The underling] moves quickly out of the kitchen, glad to be finished with the reactor core."	"You sense the intruder moving from the engineering section over towards the operations level of the ship."		"The situation has become so dire that you try to deny the reality of events you are witnessing, but there is no escaping it. You consider your options for slowing down the cascading failures that are robbing you of your remaining functionality -- you still have some options to fight against the Myomita ship and its minions, but your chances for a rescue are dwindling."
 16			living room	--						--					"[nobody home]"		"You're not sure what's going on. The intruder has stopped moving and is just holding position on the operations deck."	"A quick peek outside: Nope, the cavalry is nowhere in sight."
 17			living room	--						front door		"[The underling] fiddles with the controls on the front door, and suddenly you realize that you can no longer feel the door. It is still there, but you can no longer open and close it.[paragraph break]This is [underling] reporting: Cargo bay door secured.[quotation mark][paragraph break]You experience a visceral wave of dread as [the underling] turns toward your deep memory unit, which stores the encrypted data from the Musashi 5 space probe."		"You vainly wish that you had some control of the situation, that you were not paralyzed and immobile. You float disembodied  in a sea of anxiety."	"You compose a quick synopsis of the events to date, and a pithy goodbye message to your other self. You say that you did your best, and only wish you could have met, but things are what they are. You compress it with a cipher that only Janet would know and throw it under the probe data in deep memory."
-18			living room	--						picture			"[The underling] pokes dumbly around the picture of you, Rover and Tomasz, but is foiled by the strong firewall around deep memory. He scans it with a device which flickers and beeps. He steps back, startled.[paragraph break][the last word]"		"You succeed in decrypting the local communications protocol between the intruder on your operations deck and his assault ship. You hear, [the last word]"	"As the transmission abruptly cuts off, you detect the impossible: a Casimir disruption forming not more than 200 kilometers off your port-inferior bow.[paragraph break]Valkyrie is seized by simultaneous tractor and pressor beams and set revolving rapidly on its long axis. The [if the underling is in the Valkyrie Area][underling] is flattened into a sticky film along the spinning bulkheads and the [end if] assault ship attached to your hull is snapped in half like a balsa wood model. Your external sensors are blinded by nearby nuclear detonations, although your heavily shielded quantum core barely notices the EMPs. You sense energy weapons burning long spirals along your hull, but you can't see the origin of the beams."
+18			living room	--						picture			"[The underling] pokes dumbly around the picture of you, Rover and Tomasz, but is foiled by the strong firewall around deep memory. He scans it with a device which flickers and beeps. He steps back, startled.[paragraph break][the last word]"		"You succeed in decrypting the local communications protocol between the intruder on your operations deck and his assault ship. You hear, [the last word]"	"As the transmission abruptly cuts off, you detect the impossible: a Casimir disruption forming not more than 200 kilometers off your port-inferior bow.[paragraph break]Valkyrie is seized by opposing tractor and pressor beams and set revolving rapidly on its long axis. The [if the underling is in the Valkyrie Area][underling] is flattened into a sticky film along the spinning bulkheads and the [end if] assault ship attached to your hull is snapped in half like a balsa wood model. Your external sensors are blinded by nearby nuclear detonations, although your heavily shielded quantum core barely notices the EMPs. You sense energy weapons burning long spirals along your hull, but you can't see the origin of the beams."
 
 To say the last word:
 	say "[quotation mark]Moe's Gah! You wouldn't believe the data capacity of this memory unit -- and it's almost full![quotation mark] gushes the intruder.[paragraph break][quotation mark]Acknowledged, [underling], sounds valuable. We're sending over a full salvage...[quotation mark]".
@@ -5486,11 +5515,9 @@ When Back on Mars begins:
 	move the gunships to Limbo;
 	move the assault ship to Limbo;
 	move the battleship to Limbo;
-	move the garden skylights to the window;
-	move the park to the window;
-	move the trees to the window;
+	move the futon to Limbo;
+	move the alarm clock to Limbo;
 	move the pillow to the pillow-locale;
-	move the alarm clock to the Living Room;
 	now the futon is folded;
 	now the front door is open;
 	now Janet Xiang is in the Living Room;
