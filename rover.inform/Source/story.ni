@@ -2060,7 +2060,7 @@ To say dumb arm:
 		otherwise:
 			say "[one of]It's a good match for the one on the right[or]Looks normal enough[or]Nothing out of the ordinary, really[in random order]"
 			
-The bug bite is a privately-named part of the left arm. Understand "bug bite" or "bite" as the bug bite when Arm Hurts is happening. The clueless-name of the bug bite is "bug bite". The aware-name of the bug bite is "static imbalance". The bug bite-proxy is an aware-proxy that is part of the bug bite. Understand "static" or "imbalance" or "malfunction" as the bug bite-proxy. The scent of the bug bite is "like the rest of your arm".
+The bug bite is a privately-named part of the left arm. Understand "bug bite" or "bite" or "mosquito" as the bug bite when Arm Hurts is happening. The clueless-name of the bug bite is "bug bite". The aware-name of the bug bite is "static imbalance". The bug bite-proxy is an aware-proxy that is part of the bug bite. Understand "static" or "imbalance" or "malfunction" as the bug bite-proxy. The scent of the bug bite is "like the rest of your arm".
 
 Instead of doing something to the 	bug bite:
 	if the current action is examining:
@@ -4613,7 +4613,7 @@ Every turn:
 				now Rover is busy;
 	if Arm Hurts is happening and Arm-numb is greater than 30 and Rover is in the location:
 		if a random chance of 1 in 3 succeeds:
-			say "Rover looks at you and [one of]rubs his back against the wall, giving you a satisfied grin[or]jumps up on his back legs, pawing at your arm. You narrowly avoid being scratched[or]scratches his left paw with the right one while making an [quotation mark]ahem[quotation mark] sound[or]makes a scratching gesture. Towards his left paw. Scratching. Left. Hmm[stopping].";
+			say "Rover looks at you and [one of]rubs his back against the wall, giving you a satisfied grin[or]jumps up on his back legs, pawing at your arm. You narrowly avoid being scratched[or]scratches his left paw with the right one while making an [quotation mark]ahem[quotation mark] sound[or]makes a scratching gesture. Towards his left paw. Scratching. Left. Hmm[or]waits for you to scratch your itchy arm, and get on to important stuff -- like paying attention to him[stopping].";
 			now Rover is busy;
 	[Rover stage business - through these conditions, it does not occur during bedtime, or after the ACU becomes aware; this is intended to be the last line printed in a turn. The Rover Busy flag is meant to block his random actions, and can be set when he is doing anything more interesting. Otherwise, who knows if his specific action and his random action would be incongruent. Rover Busy is reset at the end of every turn.]
 	if the player is the ACU and the ACU is clueless and the noun is not Rover and the drapes are open and Rover is not busy:
