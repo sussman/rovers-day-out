@@ -162,6 +162,7 @@ Here's a brief history of time for the game:
 ]
 
 Pillow-locale is a room that varies. Pillow-locale is the Sleeping Room.
+Rock-locale is a room that varies. Rock-locale is the Barren Plain.
 
 Chapter Class Definitions
 
@@ -1533,7 +1534,9 @@ To Setup the World: [explictly set initial conditions]
 	now the reward nuggets replicator is in the cabinet;
 	now the dog treat is in the reward nuggets replicator;
 	now the frying pan is in the drawer;
-	now the Living Room is not visited-during-havoc.
+	now the Living Room is not visited-during-havoc;
+	move the pillow to the pillow-locale;
+	move the rock to the rock-locale.
 	
 Section Restore the World
 
@@ -2157,7 +2160,7 @@ Carry out dressing:
 	change outcome-override to force-success;
 	change last-noun to "QUANTUM ISOLATOR".
 		
-The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "tag" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background.". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
+The lettering is a message that is part of the flight suit. Understand "lettering" and "letters" and "identification" and "code" as the lettering. The clueless-name of the lettering is "lettering on the flight suit". The aware-name of the lettering is "127.0.0.1". The clueless-description of the lettering is "The letters on the flight suit are embroidered in white on a red background.". The aware-description of the lettering is "A machine-readable identification code." The inscription of the lettering is "[if the player is clueless]There are only three letters: [quotation mark]ACU[quotation mark][otherwise]The code designates you as the Valkyrie's autonomous control unit[end if]."
 
 After reading the lettering for the first time:
 	if the first sim is happening or the second sim is happening:
@@ -3867,7 +3870,7 @@ Instead of climbing the pullout sofa:
 
 The pillow is a prop on the pullout sofa. The clueless-name of the pillow is "pink pillow". The aware-name of the pillow is "NPT". Understand "pink" or "puffy" as the pillow. The clueless-description of the pillow is "[if the player is Rover]A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays[otherwise]A fluffy pink pillow bearing the Myomita corporate logo, and a small label[end if]." The aware-description of the pillow is "A nanotronic paratemporospatial transgressor, of a design that was rejected some time ago by MARSpace. Ths transgressor's supraverbation matrix has evidently crystallized, rendering it non-functional. The NPT bears the corporate logo of the Myomita corporation, a modernized version of the Imperial Japanese flag, centered on a the disc of the Milky Way galaxy rather than the rising sun. An RFID tag is embedded in the logo." The scent of the pillow is "[if the player is Rover]slightly feminine, perhaps even perfumed[otherwise]of hydraulic fluid[end if]".  The pillow-proxy is an aware-proxy that is part of the pillow. Understand "transgressor", "supraverberation", "matrix", "nanotronic", "npt" or "paratemporospatial" as the pillow-proxy. 
 
-The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID chip". The clueless-description of the small label is a "A small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Sunrise[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL." The small label-proxy is an aware-proxy that is part of the small label. Understand "RFID" or "embedded" or "chip" as the small label-proxy. 
+The small label is a message that is part of the pillow. Understand "cloth" as the small label. The clueless-name of the small label is "small label". The aware-name of the small label is "embedded RFID chip". The clueless-description of the small label is a "A small, cloth label attached to the pillow". The aware-description of the label is "A standard Myomita transputer-on-a-chip, encoded with machine-readable information." The inscription of the small label is "Property of Myomita Corporation. Experimental Starship [quotation mark]Blazing Sunrise[quotation mark], Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL." The small label-proxy is an aware-proxy that is part of the small label. Understand "RFID", "embedded", "chip" or "tag" as the small label-proxy. 
 
 Understand "pull off [something]" or "tear [something]" or "tear off [something]" or "rip [something]" or "rip off [something]" as pulling.
 
@@ -3877,11 +3880,7 @@ Before taking off the small label:
 	
 Instead of pulling the small label:
 	change the outcome-override to force-success;
-	if Boarding Party is happening:
-		say "You rip off the warning label, and confirm physicists speculations about the scale of destruction that would result from a chronospatial rupture. The paradoxical pre-event is so powerful that you are catapulted several seconds into the future, from whence you observe the the devastation first hand. Eventually, the countercoup probabilities collide, and you wink out of existence, ending the nightmare.";
-		now the ACU is alert;
-	otherwise:
-		say "You disrupt the fragile, crystalline lattice of the malfunctioning nanotronic paratemporospatial transgressor, releasing the strained pocket universe within it. Reality crumbles around you, observable only because your local time is similarly falling to pieces and diluting. Even so, you perceive the effect to be accelerating and expanding, or alternatively, that your universe is being drawn inward.";
+		say "[one of]You rip off the warning label, and confirm physicists speculations about the scale of destruction that would result from a chronospatial rupture. The paradoxical pre-event is so powerful that you are catapulted several seconds into the future, from whence you observe the the devastation first hand. Eventually, the countercoup probabilities collide, and you wink out of existence. Oops[or]You disrupt the fragile, crystalline lattice of the malfunctioning nanotronic paratemporospatial transgressor, releasing the strained pocket universe within it. Reality crumbles around you, observable only because your local time is similarly falling to pieces and diluting. Even so, you perceive the effect to be accelerating and expanding, or alternatively, that your universe is being drawn inward[purely at random].";
 		now the endgame is pillowed;
 		end the game in death.
 
@@ -5022,6 +5021,7 @@ Every turn when the Real Thing is happening and the landing_pid is not 0 and Rov
 	fuss around door.
 	
 When Real Thing Ends:
+	now the rock-locale is the location of the rock;
 	now the pillow-locale is the location of the pillow.
 
 Understand "scan [something]" as examining when the player is self-aware.
@@ -5104,12 +5104,13 @@ When Boarding Party begins:
 	move the garden skylights to Limbo;[set up the viewer]
 	move the park to Limbo;
 	move the grass to Limbo;
-	move the trees to Limbo;
-	move the pillow to the pillow-locale;
+	move the trees to Limbo;	
 	now the window holds the assault ship;[player can see what's going on in space around the Valkyrie when in the living room.]
 	now the window holds the gunships.
 	
 When Boarding Party ends:
+	now the rock-locale is the location of the rock;
+	now the pillow-locale is the location of the pillow;
 	say "A tight tachyon beam maintains a lock on the stub of your ansible antenna -- on the MARSpace telecommand frequency.[paragraph break][quotation mark]This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home.[quotation mark][paragraph break]";
 	say "The Bogdanov puts itself between you and the remaining Myomita gunships, and its pressor beam gives a strong shove towards an expensive Mars transfer orbit.[paragraph break]";
 	say "The Bogdanov continues its transmission, [quotation mark]We were on our shakedown mission, maneuvering just outside the Solar System when MarsMIL reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. [if assault ship approach is greater than one]By fighting against the assault ships, you bought us the time to repair our temporal transgressor which was nearly fractured through and through after our first jump. [end if][if henchmen defeated is greater than zero]We can detect that you are heavily damaged, but your valiant fight against the boarding parties slowed them down enough that they were not able to compromise your mission. [end if]Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home.[paragraph break]"; 
