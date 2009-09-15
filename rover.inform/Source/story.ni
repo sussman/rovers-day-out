@@ -2,7 +2,7 @@
 
 
 The story headline is "An Interactive Fiction".
-The release number is 5.
+The release number is 6.
 The story genre is "Science Fiction".
 The story creation year is 2009.
 
@@ -5113,7 +5113,7 @@ When Boarding Party ends:
 	now the pillow-locale is the location of the pillow;
 	say "A tight tachyon beam maintains a lock on the stub of your ansible antenna -- on the MARSpace telecommand frequency.[paragraph break][quotation mark]This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home.[quotation mark][paragraph break]";
 	say "The Bogdanov puts itself between you and the remaining Myomita gunships, and its pressor beam gives a strong shove towards an expensive Mars transfer orbit.[paragraph break]";
-	say "The transmission from the battleship continues, [quotation mark]We were on our shakedown mission, maneuvering just outside the Solar System when MarsMIL reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. [if assault ship approach is greater than one]By fighting against the assault ships, you bought us the time to repair our temporal transgressor which was nearly fractured after our first jump. [end if][if henchmen defeated is greater than zero]We can detect that you are heavily damaged, but your valiant fight against the boarding parties slowed them down enough that they were not able to compromise your mission. [end if]Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home.[paragraph break]"; 
+	say "The transmission from the battleship continues, [quotation mark]We were on our shakedown mission, maneuvering just outside the Solar System when MarsMIL reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. [if assault ship approach is greater than one]By fighting against the assault ships, you bought us the time to repair our temporal transgressor which was nearly fractured after our first jump. [end if][if henchmen defeated is greater than zero]We can detect that you are heavily damaged, but your valiant fight against the boarding parties slowed them down enough that they were not able to compromise your mission. [end if]Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home.[quotation mark][paragraph break]"; 
 	say "As the last gunship is vaporized by the Bogdanov's powerful guns, the cumulative damage takes it toll on you, and you lose your grip on consciousness. You know that repair subroutines are kicking in, and you don't fight it. You are vaguely of someone holding your hand, and leading you back to your cottage."
 
 Before doing anything to a failsafed person when the second sim has happened:
