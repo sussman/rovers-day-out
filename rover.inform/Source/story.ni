@@ -5113,7 +5113,7 @@ When Boarding Party ends:
 	now the pillow-locale is the location of the pillow;
 	say "A tight tachyon beam maintains a lock on the stub of your ansible antenna -- on the MARSpace telecommand frequency.[paragraph break][quotation mark]This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home.[quotation mark][paragraph break]";
 	say "The Bogdanov puts itself between you and the remaining Myomita gunships, and its pressor beam gives a strong shove towards an expensive Mars transfer orbit.[paragraph break]";
-	say "The Bogdanov continues its transmission, [quotation mark]We were on our shakedown mission, maneuvering just outside the Solar System when MarsMIL reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. [if assault ship approach is greater than one]By fighting against the assault ships, you bought us the time to repair our temporal transgressor which was nearly fractured through and through after our first jump. [end if][if henchmen defeated is greater than zero]We can detect that you are heavily damaged, but your valiant fight against the boarding parties slowed them down enough that they were not able to compromise your mission. [end if]Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home.[paragraph break]"; 
+	say "The transmission from the battleship continues, [quotation mark]We were on our shakedown mission, maneuvering just outside the Solar System when MarsMIL reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. [if assault ship approach is greater than one]By fighting against the assault ships, you bought us the time to repair our temporal transgressor which was nearly fractured after our first jump. [end if][if henchmen defeated is greater than zero]We can detect that you are heavily damaged, but your valiant fight against the boarding parties slowed them down enough that they were not able to compromise your mission. [end if]Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home.[paragraph break]"; 
 	say "As the last gunship is vaporized by the Bogdanov's powerful guns, the cumulative damage takes it toll on you, and you lose your grip on consciousness. You know that repair subroutines are kicking in, and you don't fight it. You are vaguely of someone holding your hand, and leading you back to your cottage."
 
 Before doing anything to a failsafed person when the second sim has happened:
@@ -5581,8 +5581,11 @@ Every turn during Back on Mars:
 						say "[one of]David[or]Janet[purely at random] [one of]asks[or]inquires[at random], [quotation mark][one of]Could we come back to the issue of [the item entry][or]We're still not clear on [the item entry]. What can you tell us[or]Could we get back to the topic of [the item entry]? Could you tell us about [the item entry][in random order]?[quotation mark][paragraph break]";
 					-- 3:[After three times, getting a bit miffed now]
 						say "[one of]David[or]Janet[at random] [one of]demands[or]implores[or]requests[or]insists[or]enjoins you[at random], [quotation mark][one of]For the third time, ACU, could you please enlighten us regarding [the item entry][or]ACU, please listen to me, this is important. Could you please tell us about [the item entry][or]Are you listening? We've asked you three times, ACU -- what can you tell us about [the item entry][or]We're not getting very far with this conversation. Could you please tell us about [the item entry][in random order]?[quotation mark][paragraph break]";
-					-- otherwise:[OK, just answer the damn question already!]
+					-- 4:[OK, just answer the damn question already!]
 						say "David sounds [one of]exasperated[or]annoyed[or]irritated[or]miffed[or]bent out of shape[or]tired[or]exhausted[or]weary[or]resigned[in random order]. He asks, [quotation mark]ACU: we've asked you [required entry in words] times. Please tell us about [the item entry].[quotation mark][paragraph break]";
+					-- otherwise:[david snaps]
+						now David Venkatachalam is exposed;
+						say "David begins, [quotation mark]ACU, we've asked you five times...[quotation mark] He closes his eyes and clenches his fists until they are white. Janet looks at him, startled to see him lose control. David sighs, and whispers, [quotation mark]You know what? I give up. I just give up. I don't care about the gablaggerd [item entry].[quotation mark]";
 				increase the required entry by one;
 		otherwise:
 			say "[one of]David checks the system buffers[or]Janet runs a low level file system integrity check[or]Janet types something on her arm band and it emits a series of beeps[or]Using her arm band's sensors, Janet scans the cargo bay for radiation[or]David brings up schematic diagrams showing areas of Valkyrie's hull and landing system that were damaged during planetfall[or]Janet inspects the parser module and tweaks it slightly[or]David and Janet look over the activity and resource consumption logs[or]Janet checks the ship's task manager[or]David quickly checks that his cell phone does not have reception within the MARSpace complex[or]David pokes his head out the cargo bay doors and looks around furtively[or]David and Janet talk quietly, below your auditory threshold[or]David quickly reviews the ship[apostrophe]s security logs[in random order].";
@@ -5661,6 +5664,9 @@ Report querying:[nonspecific responses to topics which are not implemented]
 	say paragraph break.
 	
 Instead of querying a topic listed in the Table of Conversation during Back on Mars:
+	if David Venkatachalam is exposed:
+		say "You start to ask your question, but David is clearly too upset to pay any attention.";
+		the rule succeeds;
 	if the asked entry is 0 and the told entry is 0:
 		change outcome-override to force-success;
 		say "[ask-text entry][paragraph break]";
@@ -5689,6 +5695,9 @@ Report expounding:
 	say "You [one of]search your memory banks, but draw a blank[or]are disappointed to find that the topic is not listed in your conversation table[or]are about to expound on the topic when you find that everything you ever knew about it has been overwritten with encrypted information from the space probe[or]were about to talk about it, but can't because you garbage collection routine just reallocated that conversation topic to the heap[or]don't know enough to make an informed statement[or]have nothing on file about that topic[or]realize that what you know less about that topic than a politician knows about ethics[or]find that that topic is not indexed[in random order]."
 	
 Instead of expounding a topic listed in the Table of Conversation during Back on Mars:
+	if David Venkatachalam is exposed:
+		say "You start your explanation, but David is clearly too upset to pay any attention.";
+		the rule succeeds;
 	if audio is switched off:
 		say "You try to talk, but you realize that the audio system is shut off, so no one can hear you.";
 		the rule succeeds;
@@ -5699,6 +5708,7 @@ Instead of expounding a topic listed in the Table of Conversation during Back on
 	otherwise:
 		say "[stop being so repetitive]";
 	increase the told entry by one.
+
 		
 Table of Conversation
 topic 			item					required	told	asked	query	ask-text	ask-reminder	tell-text
