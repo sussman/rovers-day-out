@@ -38,6 +38,7 @@ To build the game:
   [...launch Inform, create new project in this dir called 'rover'...]
 
   $ cp moo.inform/Source/story.ni rover.inform/Source/
+  $ cp moo.inform/uuid.txt rover.inform/
   $ rm -rf moo.inform/
 
 
