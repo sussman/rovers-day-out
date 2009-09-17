@@ -1309,8 +1309,17 @@ Report using:
 			try businessing instead;
 		-- otherwise:
 			say "[one of]I'm afraid you'll need to be more specific.[or]Apologies, but that's a bit vague; can you express differently?[or]I don't quite follow.[or]Sorry, can you rephrase that?[or]Can you be more precise, please?[in random order]";
+			
+Section Walkthroughing
 
+Walkthroughing is an action applying to nothing. Understand "walkthru" or "walk thru" or "walkthrough" or "walk through" as walkthroughing.
 
+Carry out walkthroughing:
+	do nothing;
+	
+Report walkthroughing:
+	say "Pursuant to MARSgov construction contract #IFCOMP2009, a proof-of-concept walkthrough document has been submitted along with design specifications and project blueprints. The walkthrough is distributed with your main program file and is titled [quotation mark]walkthrough.txt[quotation mark]."
+	
 Chapter General Insteads
 
 Instead of throwing something (called the projectile) at something:
@@ -1603,6 +1612,15 @@ Persuasion rule for asking Rover to try barking:
 	change last-noun to "ROVER";
 	change outcome-override to force-success;
 	persuasion succeeds.
+	
+Instead of telling the female dog about something:
+	try barking.
+	
+Instead of asking the female dog about something:
+	try barking.
+
+Instead of showing something (called the item) to the female dog:
+	say "She [one of]stands transfixed by [the item][or]stares at [the item][or]takes no notice of [the item] at all. She is so cosmopolitan[or]ignores your attempt to break the ice[or]looks beyond [the item] serenely[or]barely deigns to notice [the item][or]is not impressed[or]does not seem swayed by your demonstration[or]isn't sure what to make of you and your antics[in random order]."
 
 Barking is an action applying to nothing. Understand "bark" as barking.
 
@@ -3751,20 +3769,24 @@ Instead of taking, pushing or pulling the female dog:
 	say "[one of]At this stage of your relationship, that would seem too forward. No, it's better to bide your time and get to know her a little. Some chit-chat, maybe a little butt sniffing, nothing serious.[paragraph break]You tried rushing things too much last year with the Yorkie from across the Park, and that ended in disaster (granted, she was neurotic and was carrying a lot baggage from her last relationship, but still)[or]You don't know her well enough[stopping].";
 	
 Instead of giving something (called the item) to the female dog:
-	if the item is the delicious bone:
-		say "Her lips curve around the bone, and slowly your muzzles part. Her sultry breath curls your whiskers as you withdraw. For several minutes, you can think of nothing else. She is similarly silent, no doubt similarly transported by the intimacy of the moment.";
-		now the female dog is not seeking;
-		now the female dog carries the delicious bone;
-		change outcome-override to force-success;
+	if the player holds the item:
+		if the item is the delicious bone:
+			say "Her lips curve around the bone, and slowly your muzzles part. Her sultry breath curls your whiskers as you withdraw. For several minutes, you can think of nothing else. She is similarly silent, no doubt similarly transported by the intimacy of the moment.";
+			now the female dog is not seeking;
+			now the female dog carries the delicious bone;
+			change outcome-override to force-success;
+		otherwise:
+			say "The [item] does not impress her, and it falls to her feet. No doubt she has many suitors.";
+			move the item to the location;
 	otherwise:
-		say "The [item] does not impress her, and it falls to her feet. No doubt she has many suitors."
+		say "You can only give away something that you have. You don't have [the item]."
 		
 Instead of touching, petting, searching, or rubbing the female dog:
 	change outcome-override to force-success;
 	say "[one of]You're more at the sniffing and posturing stage[or]You're not even on your second date with her! Better keep your paws to yourself[or]You'd rather give her a chance to make the first move[or]You get the impression that she's not ready for that[or]You start to, but then you loose the nerve[or]You shift a little closer to her and nonchalantly drape your tail near her, but a gust of wind pushes it away[in random order]."
 	
 Instead of taking the delicious bone when female dog carries the delicious bone:
-	say "[one of]It is a nice bone...but how would she feel if you just took it? She might find that playful, but then again, she might take it the wrong way. She might like resent such a bold move, uninvited. On the other hand, she could be secretly wishing that you'd make the first move. It might be just the right thing. It could also be a dreadful mistake though. You might come across as greedy and pushy. Not the sort of impression you'd like to make... Um. What were you thinking about? You forget[or]You wonder: is she holding out the bone to taunt you? Is this some sort of a power game that she's playing with you? Or could the bone be symbolic in some way of the sort of sharing that she might expect from a mate? She could be offering the bone to you. Would it be a mistake to take it? What would that say about the dynamics and balance between partners in this relationship? Who is a giver and who is a taker? This sort of mind game confuses you and you decide that not taking the bone is marginally more in your interest than the more obvious option of taking the bone[or]You would rather hold out for her to offer you the bone, than to take it outright[or]You would rather win the bone by impressing her. You're a cur, yes, but not the sort of cur that takes bones from ladies. Or are you.[or]Nah, that would be rude. You'd rather that she give it to you out of love[stopping]."
+	say "[one of]It is a nice bone...but how would she feel if you just took it? She might find that playful, but then again, she might take it the wrong way. She might like resent such a bold move, uninvited. On the other hand, she could be secretly wishing that you'd make the first move. It might be just the right thing. It could also be a dreadful mistake though. You might come across as greedy and pushy. Not the sort of impression you'd like to make... Um. What were you thinking about? You forget[or]You wonder: is she holding out the bone to taunt you? Is this some sort of a power game that she's playing with you? Or could the bone be symbolic in some way of the sort of sharing that she might expect from a mate? She could be offering the bone to you. Would it be a mistake to take it? What would that say about the dynamics and balance between partners in this relationship? Who is a giver and who is a taker? This sort of mind game confuses you. You decide that having the bone would be in your interest, but that taking it outright would be uncouth. Maybe if you butter her up a little, you can schmooze it away from her[or]You would rather hold out for her to offer you the bone, than to rip it out of her mouth like a street pug. This is clearly one of the times that your fine wit and winning personality might serve you better than your physical gifts[or]You would rather win the bone by impressing her. You're a cur, yes, but not the sort of cur that takes bones from ladies. You are the kind of cur, though, that would try to sweet talk it away from her. Oh yes, you're exactly that kind of cur. And proud of it[or]Nah, that would be rude. You'd rather that she give it to you out of love. Perhaps you just need to find the right thing[or]That puts you in mind of an old song they sing down at the kennels, [quotation mark]Take my bone and run with it, honey, you're a better dog than me[quotation mark]. Ah! An excellent idea, perhaps you can charm her with a song[or]You would rather get the bone by using your voice than using your teeth[stopping]."
 	
 Instead of asking or telling the female dog about:
 	change outcome-override to force-success;
@@ -4276,7 +4298,7 @@ title	subtable	description	toggle
 Table of Stuck
 title	subtable	description	toggle
 "General Pointers"		--		"Here are some practical pointers for this game:[paragraph break]* Try everything you can think of. If it doesn't work, try rephrasing.[line break]* Reread text to make sure you didn't miss anything.[line break]* Leave no stone unturned; conversely, don't obsess.[line break]* This game follows many, but not all, of the conventions of computer adventure games. If something makes sense to you, try it even though it [quotation mark]shouldn't work[quotation mark].[line break]* As far as we know, it is not possible to get trapped in an unwinnable situation. By winning, we mean you can complete the game. Achieving good outcomes is another matter.[line break]* If you are really stuck, put the game aside and let it percolate through your subconscious for a while. Come back fresh.[line break]* If you are really really stuck, con someone else into playing the game and watch them. You might get some ideas.[line break]* If you are really and truly stuck, you could search the Internet 
-  and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Failing all else, you can email us at: rover@red-bean.com and tell us in detail how our game has defeated your best efforts. We may be able to give you a hint that wouldn't spoil the rest of the game for you."		--
+  and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Failing all else, you can email us at: rover@red-bean.com and tell us in detail how our game has defeated your best efforts. We may be able to give you a hint that wouldn't spoil the rest of the game for you.[line break]* IFComp 2009 special bonus: As part of IFComp, we have supplied a walkthrough document which shows one possible way of working your way through the game. It doesn't hit all the fun stuff, but it will get you from start to finish."		--
 "Spelling"	--		"This game employs the standard Martian dialect and Roman characters rather than the ideographic characters more common on Earth."	--
 
 Table of Bugs
@@ -4531,6 +4553,7 @@ the unlocking it with action		FALSE		"UNSECURE"
 the uptiming action				TRUE		"UPTIME" [uptime]
 the using action			false		"TOGGLE"  [use]
 the waiting action					TRUE		"TIMER" [wait]
+the walkthroughing action		TRUE		"CHEAT" [walk through]
 the waking up action				false		"INITIALIZE" [wake, wake up]
 the waving action					false		"OSCILLATE"
 the wearing action					false		"ENGAGE"  [put on, wear]
