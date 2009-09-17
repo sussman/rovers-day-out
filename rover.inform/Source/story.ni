@@ -1615,7 +1615,12 @@ Persuasion rule for asking Rover to try barking:
 	
 Instead of telling the female dog about something:
 	try barking.
+	
+Instead of asking the female dog about something:
+	try barking.
 
+Instead of showing something (called the item) to the female dog:
+	say "She [one of]stands transfixed by [the item][or]stares at [the item][or]takes no notice of [the item] at all. She is so cosmopolitan[or]ignores your attempt to break the ice[or]looks beyond [the item] serenely[or]barely deigns to notice [the item][or]is not impressed[or]does not seem swayed by your demonstration[or]isn't sure what to make of you and your antics[in random order]."
 
 Barking is an action applying to nothing. Understand "bark" as barking.
 
@@ -3764,13 +3769,17 @@ Instead of taking, pushing or pulling the female dog:
 	say "[one of]At this stage of your relationship, that would seem too forward. No, it's better to bide your time and get to know her a little. Some chit-chat, maybe a little butt sniffing, nothing serious.[paragraph break]You tried rushing things too much last year with the Yorkie from across the Park, and that ended in disaster (granted, she was neurotic and was carrying a lot baggage from her last relationship, but still)[or]You don't know her well enough[stopping].";
 	
 Instead of giving something (called the item) to the female dog:
-	if the item is the delicious bone:
-		say "Her lips curve around the bone, and slowly your muzzles part. Her sultry breath curls your whiskers as you withdraw. For several minutes, you can think of nothing else. She is similarly silent, no doubt similarly transported by the intimacy of the moment.";
-		now the female dog is not seeking;
-		now the female dog carries the delicious bone;
-		change outcome-override to force-success;
+	if the player holds the item:
+		if the item is the delicious bone:
+			say "Her lips curve around the bone, and slowly your muzzles part. Her sultry breath curls your whiskers as you withdraw. For several minutes, you can think of nothing else. She is similarly silent, no doubt similarly transported by the intimacy of the moment.";
+			now the female dog is not seeking;
+			now the female dog carries the delicious bone;
+			change outcome-override to force-success;
+		otherwise:
+			say "The [item] does not impress her, and it falls to her feet. No doubt she has many suitors.";
+			move the item to the location;
 	otherwise:
-		say "The [item] does not impress her, and it falls to her feet. No doubt she has many suitors."
+		say "You can only give away something that you have. You don't have [the item]."
 		
 Instead of touching, petting, searching, or rubbing the female dog:
 	change outcome-override to force-success;
