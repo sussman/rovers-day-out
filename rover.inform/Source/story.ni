@@ -369,6 +369,11 @@ Carry out BSOEing:
 	return to main screen;
 	clear the screen.
 
+Section-breaking is an action applying to nothing.
+Carry out section-breaking:
+	say "[paragraph break]               *    *    *[paragraph break]".
+
+
 [borrowed from example I7 documentation, example 424 Odins:]
 After printing the name of something (called the target): 
     change the last mentioned thing [quotation mark][paragraph break][quotation mark]to the target.
@@ -1481,7 +1486,7 @@ After printing the banner text:
 	say variable letter spacing;
 	say paragraph break;
 	await keystroke;
-	clear the screen;
+	try section-breaking;
 	[display setup]
 	change the left hand status line to "[if the player is self-aware]MANUAL MODE[otherwise][last-noun in upper case] -> [status-line-action] : [last-success][end if]";
 	change the right hand status line to "[if the player is self-aware]Flosix/OS 210LTS[otherwise]Memory: [current memory usage].[a random number from 0 to 9]PB[end if]";
@@ -4522,6 +4527,7 @@ the saying no action				TRUE		"NEGATE" [no]
 the saying yes action				TRUE		"AFFIRM" [yes]
 the saying sorry action			TRUE		"ERR ACK"
 the searching action				false		"MANIFEST"  [look in]
+the section-breaking action	TRUE	"INTERRUPT"  [print "*   *   *" ]
 the shellupping action 			TRUE		"EXIT SHELL" [exit]
 the showing it to action			false		"DISPLAY"
 the shutdowning action			FALSE		"SHUTDOWN" [shutdown, reboot, halt]
@@ -4936,7 +4942,7 @@ When First Sim ends:
 	let metatext be "Janet: Crap.[line break]David: Windex?[line break]Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.[line break]David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?[line break]Janet: Yes, but it will take some time to install and debug.[line break]David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.[line break]Janet: Happy to have the help -- how about dinner first?[line break]David: Do you like Thai?";
 	say "[metatext in metaspeak]";
 	await keystroke;
-	clear the screen;
+	try section-breaking;
 	now the irradiator is patched;
 	now the current memory usage is 260;
 	now malloc is 256;
@@ -4949,8 +4955,7 @@ When Second Sim begins:
 	Restore the World;
 	Setup the World;
 	now the drapes are closed;
-	now the ACU is asleep;
-	clear the screen;
+	now the ACU is asleep;;
 	now arm-numb is zero;
 	now stardate is "23920415";
 	say "[ACU Boot Banner]";
@@ -5023,7 +5028,7 @@ When Real Thing begins:
 	Restore the World;
 	Setup the World;
 	now the ACU is asleep;
-	clear the screen;
+	try section-breaking;
 	now stardate is "23920416";
 	say "[ACU Boot Banner]";
 	now the dream index is 7;
@@ -5110,7 +5115,7 @@ Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding
 
 When Boarding Party begins:
 	await keystroke;
-	clear the screen;
+	try section-breaking;
 	say "The Casimir Drive cuts out and space folds back around you. Whatever sleep-drenched dreams you might have been having evaporate instantly as two gunships flash past at mildly relativistic velocities, slicing through your propulsion systems with military precision. The markings on the ships are those of the Myomita Corporation.[paragraph break]They must have been near by when they detected the formation of your Casimiar disturbance, as they they are coming in white hot and still accelerating at five gravities. Another Earth ship, an assault craft, is further out but is already braking hard to slow its approach on an intercept course.[paragraph break]Rover barks nervously as the drive section struts separate from the hull.";
 	change last-noun to "EMERGENCY ALERT";
 	change status-line-action to "ACTIVATE";
