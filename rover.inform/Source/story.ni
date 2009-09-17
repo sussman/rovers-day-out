@@ -5559,12 +5559,11 @@ When Back on Mars begins:
 	now the front door is open;
 	now Janet Xiang is in the Living Room;
 	now David Venkatachalam is in the Living Room;
-	[await keystroke;]
-	wait for any key; [### TODO: revert this to keystroke]
+	await keystroke;
 	now Rover is not awake;
 	now Rover carries the delicious bone;
 	now stardate is "23920817";
-	clear screen;
+	try section-breaking;
 	say "You wake up slowly, for once not a slave to your alarm clock. You sit up groggily, aching all over.[paragraph break]It takes a minute to grok the situation in front of you. Two people whom you certainly recognize are standing in the middle of your living room: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.[paragraph break]In a corner of the living room, Rover is fast asleep, the half-chewed bone still held scissor-fashion between his front paws."
 	
 Every turn during Back on Mars:
