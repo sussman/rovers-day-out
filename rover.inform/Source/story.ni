@@ -2452,7 +2452,7 @@ To say magpaper-clueless:
 
 To say magpaper-aware:
 	say "[fixed letter spacing]PID     TTY          STATUS    CMD[line break]";
-	say "[if IPL_pid is zero]-----[otherwise][right justify IPL_pid minus epoch_pid][end if]   ttys000      [doneness of IPL_pid]Initial Program Load [line break]";
+	say "00000   ttys000      [doneness of 1]Initial Program Load [line break]";
 	say "[if enamel_pid is zero]-----[otherwise][right justify enamel_pid minus epoch_pid][end if]	  ttys000      [doneness of enamel_pid]Apply Ablative Enamel [line break]";
 	say "[if ignite_pid is zero]-----[otherwise][right justify ignite_pid minus epoch_pid][end if]   ttys000      [doneness of ignite_pid]Ignite Fusion Reactor [line break]";
 	say "[if landing_pid is zero]-----[otherwise][right justify landing_pid minus epoch_pid][end if]   ttys000      [doneness of landing_pid]Landing Sequence [line break]";
