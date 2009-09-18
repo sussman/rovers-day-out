@@ -127,8 +127,8 @@ The IPL_pid, enamel_pid, ignite_pid, landing_pid, rover_pid, and epoch_pid are n
 [Ship orientation]
 Roll, pitch, and yaw are numbers that vary. 
 The roll is -60.
-The yaw is 90.
-The pitch is 30.
+The yaw is 120.
+The pitch is 60.
 
 The last mentioned thing is a thing that varies.
 
@@ -1596,7 +1596,7 @@ To reset the yoke:
 		reset the yoke.
 			
 To decide what number is the new vector:
-	decide on (a random number from 0 to 12) times 30 plus -180.
+	decide on (a random number from 0 to 6) times 60 plus -180.
 
 
 Chapter Teaching An Old Dog
@@ -3480,15 +3480,15 @@ Carry out yoking it more:
 	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
 	let D be the delta corresponding to the custom-direction of second noun in the Table of Axes;
 	if A is 1:
-		now pitch is pitch plus 30 times D;
+		now pitch is pitch plus 60 times D;
 		now the pitch is the limited pitch range;
 		now last-noun is "PITCH VECTOR";
 	otherwise if A is 2:
-		now roll is roll plus 30 times D;
+		now roll is roll plus 60 times D;
 		now the roll is the limited roll range;
 		now last-noun is "ROLL VECTOR";
 	otherwise if A is 3:
-		now yaw is yaw plus 30 times D;
+		now yaw is yaw plus 60 times D;
 		now the yaw is the limited yaw range;
 		now last-noun is "YAW VECTOR".
 		
@@ -3527,11 +3527,8 @@ clockwise					3				1
 Table of Orientations
 Angle		Inclination
 0				"perfect"
-30				"just the tiniest little bit"
-60				"a tad"
-90				"somewhat"
-120				"strongly"
-150				"almost completely"
+60				"a little bit"
+120				"half-way"
 180				"completely"
 
 Understand "push [something] [a custom direction]" as yoking it more when the player is the acu.
