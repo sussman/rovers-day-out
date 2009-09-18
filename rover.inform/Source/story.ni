@@ -2939,7 +2939,7 @@ The kitchen floor is a privately-named scenery in the kitchen. The printed name 
 
 Section Bathroom
 
-The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter and above it you[apostrophe]ve mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
+The clueless-name of the bathroom is "bathroom". The aware-name of the bathroom is "flight control". The clueless-description of the bathroom is "Your cottage[apostrophe]s living room is palatial compared to your bathroom. There is a pink marble counter and above it you[apostrophe]ve mounted a mirror on the wall. To the right of the mirror is a black glass plate. Between the counter and the shower is a white, porcelain toilet." The aware-description of the bathroom is "The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence." The bathroom can be really-visited. The bathroom is not really-visited. [this is used instead of visited because the mere attempt to go somewhere makes a place visited, whereas what we're interested in is whether it player actually reached the bathroom, so this flag is set as an after-action]
 
 The scent of the bathroom is "nice, with a minty overtone".
 
@@ -4870,7 +4870,7 @@ When Arm Hurts begins:
 	say "As you get out of bed, you notice that your left arm tickles a bit -- must have been the way you were sleeping."
 	
 When Arm Hurts ends:
-	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the black plate before rubbing the left arm]
+	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the blackbefore rubbing the left arm]
 		let metatext be "David: Is the static charge neutralization part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
 		say "[metatext in metaspeak]".
 
