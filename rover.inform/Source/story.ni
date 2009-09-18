@@ -3074,7 +3074,7 @@ The clueless-name of the bathroom walls is "bathroom walls". Understand "tan", "
  
 The clueless-name of the mirror is "mirror". The aware-name of mirror is "inspector". The clueless-description of the mirror is "[if the mirror is steamed]The mirror is covered with condensation[otherwise]You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination[end if]." The aware-description of the mirror is "[if the mirror is steamed]The inspector buffer is full and requires wiping[otherwise]About this ACU: You are a Burroughs model DT69105 mainframe running version 210LTS of the Flosix Operating System, [quotation mark]Hysterical Hydrax[quotation mark][end if]." The mirror-proxy is an aware-proxy which is part of the mirror. Understand "inspector" or "buffer" as the mirror-proxy. The mirror can be steamed. The mirror is not steamed. The mirror can be damaged. The mirror is not damaged. The scent of the mirror is "elbakramernu".
 
-Instead of rubbing the mirror:
+Instead of rubbing or pushing the mirror:
 	if the mirror is steamed:
 		now the mirror is not steamed;
 		if the player is clueless:
