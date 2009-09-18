@@ -130,6 +130,8 @@ The roll is -60.
 The yaw is 120.
 The pitch is 60.
 
+Last-yoke is a number that varies.[keeps track of whether the yoke is going in a good direction (if positive), neutral (0), or bad (negative)]
+
 The last mentioned thing is a thing that varies.
 
 Shells is a list of text that varies. Depth is a number that varies.
@@ -3409,7 +3411,7 @@ The plunger is furniture in the bathroom. The [john] shaft and the red rubber cu
 
 Definition: The plunger is trimmed if the roll is zero and the pitch is zero and the yaw is zero.
 
-The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The clueless-description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude", "control", or "RCS" as the plunger.  The plunger can be yanked. The plunger is not yanked. The scent of the plunger is "like it is brand new".
+The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]. [paragraph break]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude", "control", or "RCS" as the plunger.  The plunger can be yanked. The plunger is not yanked. The scent of the plunger is "like it is brand new".
 
 Notyoking is an action applying to one thing. Understand "right [something]" or "straighten [something]"  or "reposition [something]" or "adjust [something]" as notyoking.
 
@@ -3444,9 +3446,9 @@ The clueless-name of the red rubber cup is the "red rubber cup". The aware-name 
 To say yoke position:
 	if the player is clueless:
 		if the pitch is zero and the roll is zero and the yaw is zero:
-			say "The plunger stands perfectly straight, just the way you like it."; 
+			say "The plunger stands perfectly straight, just the way you like it"; 
 		otherwise:
-			say "Something about the plunger is not right, though. The handle of the plunger is ";
+			say "Something about the plunger just doesn't look proper. The handle of the plunger is ";
 			if the pitch is not zero:
 				say "tilted [magnitude of pitch] [if the pitch is greater than zero]backwards[otherwise]forwards[end if][run paragraph on]";
 				if the roll is not zero:
@@ -3456,8 +3458,7 @@ To say yoke position:
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]";
-			say "."
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]".
 							
 To say magnitude of (degrees - a number):
 	if degrees is less than zero:
@@ -3479,18 +3480,25 @@ Check yoking it more:
 Carry out yoking it more: 
 	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
 	let D be the delta corresponding to the custom-direction of second noun in the Table of Axes;
+	let O be zero;
 	if A is 1:
+		let O be the pitch;
 		now pitch is pitch plus 60 times D;
 		now the pitch is the limited pitch range;
 		now last-noun is "PITCH VECTOR";
+		now last-yoke is (the absolute value of O) minus (the absolute value of the pitch);
 	otherwise if A is 2:
+		let O be the roll;
 		now roll is roll plus 60 times D;
 		now the roll is the limited roll range;
 		now last-noun is "ROLL VECTOR";
+		now last-yoke is (the absolute value of O) minus (the absolute value of the roll);
 	otherwise if A is 3:
+		let O be the yaw;
 		now yaw is yaw plus 60 times D;
 		now the yaw is the limited yaw range;
-		now last-noun is "YAW VECTOR".
+		now last-noun is "YAW VECTOR";
+		now last-yoke is (the absolute value of O) minus (the absolute value of the yaw).
 		
 Report yoking it more:
 	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
@@ -3503,10 +3511,22 @@ Report yoking it more:
 	otherwise if A is 3:
 		let the angle be the yaw;
 	if the angle is 180 times D:
-		say "It doesn't look like it will move any further in that direction.";
+		say "It doesn't look like it will move any further in that direction. [run paragraph on]";
+		change outcome-override to force-failure;
+	if last-yoke is less than zero:
+		say "[one of]Oh no! You've made it even worse[or]Hmm. That was a step in the wrong direction[or]No, that only made matters worse[or]The plunger looks even worse now[or]You know, [the plunger] actually looked better before[or]Nope. It looks even worse now[or]The [plunger] is even more disturbing now[in random order].[paragraph break]";
+	otherwise if last-yoke is zero:
+		say "[one of]It doesn't look worse, but it also doesn't look any better now[or]At least you haven't made the situation any worse[or]It looks exactly the way it did before you tried to mess with it[or]It didn't budge[or]Maybe you could try moving [the plunger] the other way[in random order].[paragraph break]";
 	otherwise:
-		change outcome-override to force-success;
-		say yoke position.
+		say "[one of]Ah, that's better[or]You breathe an aesthetic sigh of relief[or]Certainly, a step in the right direction[or]That helped[or]That improved the situation[or]The [plunger] is now less offensive to your artistic sense of space and proportion[or]Your obsessive compulsive inner person does a happy dance as you move the [plunger] in a good direction[in random order].[paragraph break]";
+	say "[yoke position]. [paragraph break]".
+		
+To decide what number is the absolute value of (measured - a number):
+	if measured is not less than zero:
+		decide on measured;
+	if measured is less than zero:
+		let measured be measured * -1;
+	decide on measured.
 
 To decide what number is the limited (measured - a number) range:
 	if measured is greater than 180:
@@ -4560,7 +4580,7 @@ the waving action					false		"OSCILLATE"
 the wearing action					false		"ENGAGE"  [put on, wear]
 the whoing action					TRUE		"WHO" [who]
 the yelling action					TRUE		"BROADCAST"
-the yoking it more action		false		"VECTOR ADJUST" [push, pull,twist plunger]
+the yoking it more action		TRUE		"VECTOR ADJUST" [push, pull,twist plunger]
 
 Chapter Triggered Events
 
