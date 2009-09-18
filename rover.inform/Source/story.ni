@@ -3913,7 +3913,7 @@ Instead of pulling the small label:
 
 The Eating Room is inside from the Sleeping Room.
 
-The description of the Eating Room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes." The scent of the Eating Room is "more interesting here than the sleeping room, with hints of kibbles and treats in the air".
+The description of the Eating Room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. On the floor, there are two dishes." The scent of the Eating Room is "more interesting here than the sleeping room, with hints of kibbles and treats in the air".
 
 The sound of the eating room is "shouting and cursing from the next room over, which makes it hard to hear anything else. There is some sound coming from the cold box, kind of like a low growling sound"
 
@@ -3924,8 +3924,6 @@ The water maker is a sink in the Eating Room. The description of the water maker
 
 Instead of opening or switching on the water maker:
 	say "You balance precariously on your back paws, wobbling from side to side. You've seen Janet do this all the time, and always looks so simple. You paw at the faucet, but no water comes out.";
-
-The table is an enterable furniture in the Eating Room. The description of the table is "A big wooden table. Probably used for cooking stuff.[if nothing is on the table] Unfortunately, there is nothing, food or otherwise, on the table at the moment." The aware-name of the table is "reactor core". The clueless-name of the table is "table". The scent of the table is "like someone made a tuna sandwich here a couple weeks ago. Also, a hint of something like horseradish which makes you sneeze".
 
 The food dish and the water dish are fixed in place bowls in the Eating Room.
 
