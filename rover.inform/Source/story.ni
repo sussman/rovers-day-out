@@ -3411,7 +3411,7 @@ The plunger is furniture in the bathroom. The [john] shaft and the red rubber cu
 
 Definition: The plunger is trimmed if the roll is zero and the pitch is zero and the yaw is zero.
 
-The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]. [paragraph break]". The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude", "control", or "RCS" as the plunger.  The plunger can be yanked. The plunger is not yanked. The scent of the plunger is "like it is brand new".
+The clueless-name of the plunger is "plunger". The aware-name of the plunger is "attitude control". The description of the plunger is "A common plumber's plunger, consisting of a wooden shaft and red rubber cup. [yoke position]." The aware-description of the plunger is "An integrated system for controlling the pitch, roll, and yaw of the ship through the nose cone RCS thrusters. Currently, pitch is [pitch] degrees, roll [roll] degrees and yaw [yaw] degrees." The plunger-proxy is an aware-proxy that is part of the plunger. Understand "attitude", "control", or "RCS" as the plunger.  The plunger can be yanked. The plunger is not yanked. The scent of the plunger is "like it is brand new".
 
 Notyoking is an action applying to one thing. Understand "right [something]" or "straighten [something]"  or "reposition [something]" or "adjust [something]" as notyoking.
 
@@ -3450,15 +3450,15 @@ To say yoke position:
 		otherwise:
 			say "Something about the plunger just doesn't look proper. The handle of the plunger is ";
 			if the pitch is not zero:
-				say "tilted [magnitude of pitch] [if the pitch is greater than zero]backwards[otherwise]forwards[end if][run paragraph on]";
+				say "tilted [magnitude of pitch] [if the pitch is greater than zero]backwards[otherwise]forwards[end if]";
 				if the roll is not zero:
 					say " and it's also [run paragraph on]";
 			if the roll is not zero:
-				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if][run paragraph on]"; 
+				say "leaning [magnitude of roll] to the [if the roll is greater than zero]right[otherwise]left[end if]"; 
 			if the yaw is not zero:
 				if pitch is not zero or the roll is not zero:
 					say ". Furthermore, its handle is ";
-				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise[run paragraph on]".
+				say "twisted [magnitude of yaw] [if the yaw is less than zero]counter[end if]clockwise".
 							
 To say magnitude of (degrees - a number):
 	if degrees is less than zero:
@@ -3519,7 +3519,7 @@ Report yoking it more:
 		say "[one of]It doesn't look worse, but it also doesn't look any better now[or]At least you haven't made the situation any worse[or]It looks exactly the way it did before you tried to mess with it[or]It didn't budge[or]Maybe you could try moving [the plunger] the other way[in random order].[paragraph break]";
 	otherwise:
 		say "[one of]Ah, that's better[or]You breathe an aesthetic sigh of relief[or]Certainly, a step in the right direction[or]That helped[or]That improved the situation[or]The [plunger] is now less offensive to your artistic sense of space and proportion[or]Your obsessive compulsive inner person does a happy dance as you move the [plunger] in a good direction[in random order].[paragraph break]";
-	say "[yoke position]. [paragraph break]".
+	say "[yoke position]."
 		
 To decide what number is the absolute value of (measured - a number):
 	if measured is not less than zero:
