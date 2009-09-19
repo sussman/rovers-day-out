@@ -184,7 +184,8 @@ A there-delegate is a kind of thing. It is usually privately-named and scenery. 
 
 Wakefulness is a kind of value. The wakefulnesses are asleep, sleepwalking, groggy, and alert.
 
-Insightfulness is a kind of value. The insightfulnesses are self-aware and clueless.
+Insightfulness is a kind of value. The insightfulnesses are self-aware and 
+clueless.
 
 Comm status is a kind of value. The comm statuses are surrendered, refused, or silent.
 
