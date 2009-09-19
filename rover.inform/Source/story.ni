@@ -932,6 +932,13 @@ Instead of going when the player is self-aware:
 		say "[cant go out]";
 	otherwise:
 		continue the action.
+		
+After reading a command:
+	let T be indexed text;
+	let T be the player's command;
+	if T matches the regular expression "^go\s*$":
+		say "You'll have to say what you'd like to go towards.";
+		the rule succeeds.
 				
 To say cant go out:
 	say "You cannot extend your operations beyond the Valkyrie itself."
