@@ -1069,8 +1069,8 @@ Instead of smelling:
 					say "It smells [scent of the noun] here. [run paragraph on]";
 				try sniffscanning;
 				the rule succeeds;
-			otherwise if the noun is the ground:				
-				do nothing;[the ground is a backdrop, so not in the location; the default rule serves well.]
+			otherwise if the noun is a backdrop:				
+				do nothing;[the ground, walls, ceilng, etc. are backdrops, so not in the location; the default rule serves adequately.]
 			otherwise	 if the noun is not enclosed by the location:
 				say "[The noun] is not here, so you sniff the air.[paragraph break]";
 				if the noun is:
@@ -3952,6 +3952,10 @@ The Blazing Sunrise Area [i.e., the Earth ship] is a region.  The Sleeping Room 
 The description of the Sleeping Room is "[one of]You walk into the tumbledown shack. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings][paragraph break]You ignore him[stopping]." The scent of the Sleeping Room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here".  The printed name of the Sleeping Room is "Sleeping Room".
 
 The main floor is a privately-named scenery in the sleeping room. The printed name of the main floor is "floor". The clueless-name of the main floor is "floor". Understand "ground" or "floor" or "crusty" or "rug" or "carpet" or "carpeting" as the main floor. The aware-name of the main floor is "deck". The clueless-description of the main floor is "Crusty old carpeting of an indeterminant color." The scent of the main floor is "like someone has liberally applied a fresh coat of cesspool slops". The texture of the floor is "like 5 o'clock shadow on the rear end of an ancient, mummified elephant".
+
+The sunrise walls are a privately-named backdrop. The printed name of the sunrise walls is "walls". They are in the Eating Room and Sleeping Room.  The sunrise walls are plural-named. Understand "wall" or "walls" as sunrise walls.  The aware-name of the sunrise walls is "bulkheads". The clueless-name of the sunrise walls is "walls". The clueless-description of the sunrise walls is "Dingy walls that might have once been white, but are now a mottled brown color."  The aware-description of the sunrise walls is "Dull metal bulkheads of questionable structural integrity."  The sunrise walls-proxy is an aware-proxy that is part of the sunrise walls. Understand "bulkhead" and "bulkheads" as the sunrise walls-proxy. The scent of the sunrise walls is "like toona fysh gone bad". The texture of the sunrise walls is "somewhat slimy".
+
+The sunrise ceiling is a privately-named backdrop. The printed name of the sunrise ceiling is "ceiling". It is in the Eating Room and the Sleeping Room.  Understand "roof", "clapboard", or "ceiling" as the sunrise ceiling. The clueless-description of the sunrise ceiling is "A clapboard roof sags under its own weight, threatening to collapse at any moment." The aware-name of the sunrise ceiling is "ceiling". The texture of the sunrise ceiling is "jury-rigged and irregular, with bits and pieces poking out everywhere". The scent of the sunrise ceiling is "like hot tar and licorice"
 
 The sound of the sleeping room is "the ongoing rantings of the old, flat man on the wall. The more he blathers on, the more you tune him out".
 
