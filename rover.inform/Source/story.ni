@@ -845,7 +845,11 @@ Check going towards:
 	if the player is Rover and the noun is the Smoking Pit and Rover is in the Planet Area and Rover is not in the Front Yard:
 		say "You're already in The Park." instead;
 	if the noun is the location, say "You're already here." instead;
-	if the player is the ACU and the noun is not in the Valkyrie Area, say "You're not ready to go out yet." instead.
+	if the player is the ACU and the noun is not in the Valkyrie Area:
+		if the player is clueless:
+			say "You're not ready to go out yet." instead;
+		otherwise:
+			say "[cant go out]" instead.
 
 Carry out going towards:
 	if the player is the ACU and the noun is in the Valkyrie Area:
@@ -921,6 +925,15 @@ After going towards when the player is the ACU:
 				now the bathroom is really-visited;
 				let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
 				say "[metatext in metaspeak]".
+				
+Instead of going when the player is self-aware:
+	if the noun is outside and the room outside from the location is not in the Valkyrie Area:
+		say "[cant go out]";
+	otherwise:
+		continue the action.
+				
+To say cant go out:
+	say "You cannot extend your operations beyond the Valkyrie itself."
 
 Section Leaving
 
@@ -5448,7 +5461,10 @@ Instead of saying yes during Boarding Party:
 			say "[too late]";
 	otherwise:
 		say "There is no response.";
-		continue the action.
+		if the assault ship approach is one and the assault ship distance is one and the assault ship distance is greater than zero:
+			continue the action;
+		otherwise:
+			the rule succeeds. [this suppresses the default response "that was a rhetorical question]
 		
 To say too late:
 	say "[quotation mark]Too late, Valkyrie. We've already filed our report.[quotation mark][paragraph break]".
