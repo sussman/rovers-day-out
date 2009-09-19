@@ -5639,6 +5639,7 @@ When Back on Mars begins:
 	move the toilet cover to the bathroom;
 	move the old fridge to the kitchen;
 	move the white egg to Limbo;
+	move the dog food to Limbo;
 	now the chain is intact;
 	now the futon is folded;
 	now the front door is open;
@@ -5703,7 +5704,6 @@ Every turn during Back on Mars:
 		otherwise:
 			if a random chance of 1 in 3 succeeds:
 				wakeup-rover.
-
 To say the evil monologue:
 	say "David [if the player is in the living room] looks forlorn. He [end if]says dejectedly, [quotation mark]All that effort, and what do we have to show for it? Nothing. A rusty old heap of space junk. All the data, lost, and gone forever.[quotation mark][if the player is in the living room and Rover is in the living room] He kicks Rover, quickly withdraws his bruised foot in pain, looking up at the macerated space probe.[end if][paragraph break][quotation mark]Actually, that's not the case[quotation mark], you say. [quotation mark]Before attempting to transmit the data, I downloaded the entire probe's data into my memory. The data are encrypted, but intact. When the ansible failed, the only way I could fulfill the mission was to return to the Sol System.[quotation mark][paragraph break]";
 	say "[if the player is in the living room]David's head snaps up, as if he's been given a new lease on life. [end if][if the player is in the living room and Rover is in the living room]David points to the hopelessly junked spaceprobe above his head. [end if][quotation mark]Intact? Then you have the data? This is too good to be true! Janet, would you extract the probe data from the ACU and transfer it to my MARSpace account?[quotation mark][paragraph break]";
@@ -5714,6 +5714,14 @@ To wakeup-rover:
 	if Rover is in the location:
 		say "Rover slowly opens one eye, and then the other, and one paw abandons the bone momentarily to scratch his ear. He allows the bone to loll to one side of his mouth, and crunches it a bit more between his molars. He awakens leisurely, and sits up, glancing curiously at you, and then at Janet.";
 	now Rover is awake.
+
+Before giving the picture to Janet during Back on Mars:
+	say "Janet's armband does not have the memory or bandwidth to handle a dump of the mission data.";
+	the rule succeeds.
+	
+Before giving the picture to David during Back on Mars:
+	say "Aside from his cell phone, David doesn't seem to be carrying any kind of networked device. The cell phone certainly doesn't have the capacity to handle a dump of mission data.";
+	the rule succeeds.
 
 Instead of switching on audio during Back on Mars:
 	if audio is switched off:
