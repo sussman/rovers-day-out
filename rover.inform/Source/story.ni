@@ -1035,6 +1035,8 @@ Instead of smelling:
 					say "It smells [scent of the noun] here. [run paragraph on]";
 				try sniffscanning;
 				the rule succeeds;
+			otherwise if the noun is the ground:				
+				do nothing;[the ground is a backdrop, so not in the location; the default rule serves well.]
 			otherwise	 if the noun is not enclosed by the location:
 				say "[The noun] is not here, so you sniff the air.[paragraph break]";
 				if the noun is:
@@ -3903,6 +3905,8 @@ The Blazing Sunrise Area [i.e., the Earth ship] is a region.  The Sleeping Room 
 
 The description of the Sleeping Room is "[one of]You walk into the tumbledown shack. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.[paragraph break]The man yells at you and you tuck your head down. [quotation mark]Blah, blah, blah![quotation mark] He doesn[apostrophe]t seem to move though. Maybe he can[apostrophe]t move.[paragraph break]Nope. No movement. Hmph. You don[apostrophe]t feel so afraid of him[or]The smelly man[apostrophe]s house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, [rantings][paragraph break]You ignore him[stopping]." The scent of the Sleeping Room is "like a pair of old socks, providing a bit of respite from the offensive odor of the angry man who is also here".  The printed name of the Sleeping Room is "Sleeping Room".
 
+The main floor is a privately-named scenery in the sleeping room. The printed name of the main floor is "floor". The clueless-name of the main floor is "floor". Understand "ground" or "floor" or "crusty" or "rug" or "carpet" or "carpeting" as the main floor. The aware-name of the main floor is "deck". The clueless-description of the main floor is "Crusty old carpeting of an indeterminant color." The scent of the main floor is "worse than it looks".
+
 The sound of the sleeping room is "the ongoing rantings of the old, flat man on the wall. The more he blathers on, the more you tune him out".
 
 In the Sleeping Room is a man called the smelly man. Understand "angry" , "irate", "ranting", "flat" or "strange" as the smelly man. He is scenery. The description of the smelly man is "The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn’t move around at all. He just stays up against one wall. Boy, does he seem mad, [rantings]!" The clueless-name of the smelly man is "smelly man". The aware-name of the smelly man is "Myomita AI". The scent of the smelly man is "unbearable at this close range. It is like something out of a nightmare: a combination of mouthwash, carpet cleaner and air fresheners. Entirely sickening"
@@ -3945,6 +3949,8 @@ Instead of pulling the small label:
 The Eating Room is inside from the Sleeping Room.
 
 The description of the Eating Room is "The room has big cold box just like the eating room in your home. It[apostrophe]s less loud in this room, but you can hear the man in the other room yelling, [rantings]. On the floor, there are two dishes." The scent of the Eating Room is "more interesting here than the sleeping room, with hints of kibbles and treats in the air".
+
+The galley floor is a privately-named scenery in the eating room. The printed name of the galley floor is "floor". The clueless-name of the galley floor is "floor". Understand "ground" or "floor" or "linoleum" or "dirty" as the galley floor. The aware-name of the galley floor is "deck". The clueless-description of the galley floor is "Dirty linoleum." The scent of the galley floor is "like a hobo convention in condemned box of cat litter".
 
 The sound of the eating room is "shouting and cursing from the next room over, which makes it hard to hear anything else. There is some sound coming from the cold box, kind of like a low growling sound"
 
