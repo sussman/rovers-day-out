@@ -1130,8 +1130,20 @@ Tracking is an action applying to one thing.  Understand "track [thing]" as trac
 Instead of tracking a thing, say "Perhaps it's better if you just go toward the thing you want.".
 
 Following is an action applying to one thing.  Understand "follow [thing]" as following.
-Instead of following a thing, say "Just get up and go towards your goal!".
 
+Instead of following a thing (called the quarry):
+	if the quarry is in the location:
+		say "It is a short trip.";
+	otherwise:
+		 say "[one of]There ain't nothing to it, but to do it[or]Go for it: try going towards [the quarry], if you want[stopping]."
+
+A procedural rule while following:
+	ignore the can't reach inside rooms rule.
+
+After deciding the scope of the player while following:
+	if the player is rover:
+		place the female dog in scope;
+		place the smelly man in scope.
 
 Section Reorienting-release version
 
