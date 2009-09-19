@@ -193,7 +193,9 @@ Docking status is a kind of value. The docking statuses are free, contacting, or
 
 Everything has some text called aware-description.  Everything has some text called clueless-description. The aware-description of a thing is usually "".  The clueless-description of a thing is usually "".  The description of a thing is usually "[if the player is self-aware][aware-description][otherwise][clueless-description]". Everything has some text called aware-name. The aware-name of a thing is usually "". Everything has some text called clueless-name. The clueless-name of a thing is usually "". 
 
-Everything has some text called scent. The scent of something is usually "". Every room has some text called scent. The scent of a room is usually "".  
+Everything has some text called scent. The scent of something is usually "". Every room has some text called scent. The scent of a room is usually "". 
+
+Everything has some text called texture. The texture of something is usually "". 
 
 Definition: a room is scented if the scent of it is not "".
 Definition: a thing is scented if the scent of it is not "".
@@ -412,6 +414,21 @@ Before touching something (called the item):
 Instead of jumping when the player is self-aware:
 	change outcome-override to force-failure;
 	say "Branch instruction ignored. Instruction pointer unaffected."
+	
+Mounting is an action applying to one thing. Understand "mount [something]" as mounting.
+
+Check mounting:
+	if the player is self-aware:
+		say "Error: [one of]Device busy[or]Node locked[or]Illegal operation[or]File system not compatible[or]Special Device Conflict[in random order]." instead;
+
+Carry out mounting:
+	if the player is Rover:
+		if the noun is the female dog:
+			try touching the female dog;
+		otherwise:
+			say "No, [the noun] isn't your type.";
+	otherwise:
+		try entering the noun.
 		
 Cataloguing is an action applying to nothing. Understand "ls" as cataloguing when the player is self-aware.
 
@@ -555,7 +572,7 @@ After reading a command when the player is self-aware (this is the bypass parser
 		change S to "ping";
 	otherwise if T matches the regular expression "^cd":
 		change S to "cd";
-	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|mount|net|svn)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
+	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|net|svn)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
 		change S to "nop";
 	if S is not "":
 		change got-action to false;
@@ -4558,7 +4575,8 @@ the looking action					TRUE			"STATUS"  [look]
 the looking under action			false			"SCAN"
 the lying down action				false			"STANDBY"
 the lying on action				false			"STANDBY"
-the manpaging action				false			"MANUAL PAGE" [man]
+the manpaging action				false			"MANUAL PAmount]GE" [man]
+the mounting action				FALSE			"MOUNT" [mount]
 the nopping action					FALSE		"\DEV\NULL" [unix commands not available]
 the opening action					false			"ACCESS"  [open]
 the petting action					false			"SYNCH"
