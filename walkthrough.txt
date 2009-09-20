@@ -1,6 +1,292 @@
 Walkthrough for Rover's Day Out
 
 
-This walkthrough was written to accompany the initial release of Rover's Day Out as part of IF Comp 2009. 
+This walkthrough was written to accompany the initial release of Rover's Day Out as part of IF Comp 2009. This isn't a straight dump of commands to type at the prompt because that wouldn't work well. It would be too easy to get lost in the long train of commands, and it wouldn't make much sense. Also, some random elements of the game could throw it off. 
 
-more...
+So, we've broken the game into tasks and given an example way of approaching each task. Where order matters, we've put the tasks in the usual order that they'd be encountered. If you are stuck on a specific part of the game, you can scan through the walkthrough until you see how to get around your current part of the game, and then continue on your own. There are often several ways to approach a given situation, and in the interest of avoiding spoilers where possible, this walkthrough generally sticks to a relatively efficient way through the game. We encourage you to wander off this path and explore the game more fully. For those that absolutely, positively must see every last feature of the game, well, the source code is out there -- enjoy :-)
+
+Anything between square brackets is explanation. The player's input is given after asterisks. I don't really have to say it, but I will: <press the space bar> is not something you type -- just hit the space bar.
+
+[Opening quotation]
+* <press the space bar>
+
+[Game Banner]
+* <press the space bar>
+
+[Rover's Day Out: beta732.  You need to get up, figure out what you need to do, deal with your itchy arm, take a shower, eat, and go to the bathroom. How difficult can that be?]
+
+[step 1: get out of bed]
+
+* help [explore the help menus, credits, how to report bugs, etc.]
+* look
+* x alarm clock
+* i
+* snooze
+* x alarm clock
+* x button
+* press button
+* snooze
+* get up
+* look
+
+[step 2: figure out what you need to do]
+
+* x picture
+* x nameplate
+* read inscription
+* remember valkyrie
+* remember casimir 
+* x casimir drive
+* remember david [you can 'remember' various topics any time]
+* look
+* x drapes
+* open drapes
+* x me
+* i
+* x suit
+* x insignia
+* x letters
+* read letters
+* n
+* go kitchen
+* fold futon
+* go kitchen
+
+[step 3: dealing with your itchy arm. Your left arm with start to itch more and more. You need to scratch it. See, not rocket science, right?]
+
+* scratch left arm
+
+[step 4: more figuring things out - the task list. In the earlier part of the game, where things are more linear, the task list gives you a sense of the order in which things need to be done]
+
+* x fridge
+* x magpaper
+* read list
+* go bathroom
+
+[step 5: taking a shower]
+
+* disrobe
+* enter shower
+* press soap
+* press shampoo
+* exit
+* touch plate
+
+[step 6: the Blue Screen of Death. Note: this is part of the game. Do not actually, you know, in Real Life, reboot your machine]
+
+* <press space> 
+* <press space> 
+* <press space> 
+
+[Rover's Day Out: beta810. Take it from the top, but this time you can be more efficient because you already know what's going on.]
+
+[Step 7: Repeat previous actions]
+
+* stand
+* open drapes
+* fold futon
+* go bathroom
+* disrobe
+* enter shower
+* press soap
+* press shampoo
+* exit
+* touch plate
+* wear suit
+
+[Step 8: Breakfast -- Now that you've run through the parts that you've already seen, you have some breakfast]
+
+* go kitchen
+* open fridge
+* look in fridge
+* get egg
+* close fridge
+* open drawer
+* get pan
+* put pan on stove
+* break egg into pan
+* eat egg
+
+[Step 9: Feeding Rover -- You might as well feed Rover. You could do it later, but it's convenient to do it while your in the kitchen]
+
+* fill water bowl
+* put down water bowl
+* open cabinet
+* get dog chow
+* fill food bowl
+* put down food bowl
+
+[Step 10: Going to the bathroom]
+
+* go bathroom
+* disrobe
+* sit on toilet
+* use toilet
+* flush toilet [hmm...doesn't immediately work because you need to correct the position of the plunger -- a combination of pushing it left, right, or twisting it. Each time, the solution will be different, but here's an example:]
+* x plunger
+* push plunger left
+* push plunger left
+* push plunger forwards
+* twist plunger clockwise
+* twist plunger clockwise
+* flush toilet [ah, now it works]
+
+[Step 11: Let Rover out for walkies]
+
+* stand
+* wear suit
+* go living room
+* open door
+
+[Rover's Day Out. Release 1.  Things are more or less the same at the beginning, and you can run through your routine quickly now, having had some practice.]
+
+[Step 12: Get up, shower, eat, use bathroom, let Rover out for walkies]
+
+* look
+* [repeat the prior sequence of shower, breakfast, and going to the bathroom, up to flushing the toilet. Here, you find that the toilet is broken. There are a couple ways to fix it, but the easiest is:]
+* x toilet
+* x water tank
+* open lid
+* lift flapper valve
+* stand
+* wear suit
+* go living room
+* open door
+
+[Step 13: Figuring out how to navigate during walkies. Now, there's a jarring switch of point of view -- you *are* Rover, and you're out for walkies in the park]
+
+* x me
+* i
+* n
+* smell
+* go towards the smelly man [note, that as Rover, your sense of smell is your main means of navigation, and that since you can't give compass direction, you can walk towards distant smells]
+* x rock
+* go home
+* go home [when you get home, you drop what you're carrying, and your perspective switches back. To let Rover out again, just open the door. Ultimately, Rover needs to bring back a bone and an egg to enable the next stage of the game. You can also bring home the pink pillow at some point if you'd like.]
+
+[Step 14: Getting the egg]
+
+* open door
+* go man
+* again
+* again
+* again
+* again [be strong -- ignore the female dog for a moment]
+* again
+* go eating room
+* open fridge
+* get egg
+* go home
+* again [at times like this, I just hit "g" a bunch of times]
+* again
+* again
+* again
+* again
+* again
+* again
+
+[Step 15: Getting the bone]
+* open door [send rover back out for the bone]
+* go female dog
+* again
+* again
+* again
+* again
+* x female dog
+* x bone
+* take bone
+* bark
+* get bone
+* go home
+* again
+* again
+* again
+* again [When you bring the bone home, the nature of the game changes somewhat. The "cognitive constraints" are released, and the prompt changes to "READY>". You can still use all of the commands that you used before, but the world view has changed. You can use some UN*X commands at the new prompt. Although knowledge of UN*X isn't required to play the game, some people might get a kick out of seeing the world through the command line.]
+
+[Step 16: Blasting off]
+* man man
+* man acu [just for background]
+* get egg
+* [cook and eat the egg as before]
+* pwd     [example of entirely optional unixy fun]
+* ls	  [example of entirely optional unixy fun]	
+* cd ..	  [example of entirely optional unixy fun]
+* [go to the bathroom, and flush the toilet, as before]
+* <press space>
+
+[Step 17: The Boarding Party. In this part of the game, enemy ships approach your ship and lock onto the hull. They drill through and send their minions in to salvage parts from your ship. You can use your wits to defeat the minions and/or knock the assault ships off the hull. There is a lot of freedom of action here, so it is hard to prescribe a way through it. Here's one way to play through this section, although many variations are possible.]
+
+[step 17a: surrendering or not surrendering: when the approaching assault ship asks you to surrender, you can either say yes or no. Feel free to change your mind, as well. While you are talking to them, you can be doing other things to get ready for their visit.]
+
+* signal yes
+
+[step 17b: the ship locks on to the hull. Any time after the assault ship has made contact with the hull, you can knock them off by several methods, the simplest of which is to go to the bathroom and pull the plunger in some direction. Since the plunger controls the ships positioning thrusters, it will spin the ship, flinging off the invader. It will take them a couple turns to maneuver back to your ship. Each solution you come up with is likely to work only once -- at least your opponents are competent enough not to make the same mistake twice.]
+
+* go bathroom
+* wait [as needed until the assault ship makes contact with the hull]
+* push plunger left [or any direction]
+
+[step 17c: dealing with the minions. The assault ship will send over either robot or human technicians. Since they are taking you apart, it's in your interest to stop them. My favorite way of stopping a robot is to eat it. Yeah, they're edible, at least to you.]
+
+* eat robot [the robot may wiggle out of your grasp, so this might take several attempts]
+
+[step 17d: hold out as long as you can. As minions attack, follow them around the ship. Harry them and their assault ships as much as you can. Eventually, there is a resolution to the boarding situation. The degree of resolution depends on your effectiveness in slowing them down.]
+
+* <press space bar>
+
+[Step 18: Debrief with David and Janet. You can discuss the mission with David and Janet. You can ask or tell about various topics, although they are also trying to get some information out of you. To begin the conversation, you need to turn your audio on. If you don't do this, after a while, they'll do it anyhow. The conversation given below is not the only possible way it could go.]
+
+* listen
+* yes [in reply to Janet's question]
+* tell about jade frog [for example]
+* ask about Earth [for example]
+* tell about probe
+* tell about ansible
+* tell about ship
+
+[Step 19: Dealing with the traitor. At some point, the conversation will take a nefarious turn, and you'll need to resolve the situation quickly, before someone gets hurt. Some space is left below as spoiler protection...]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[OK, so David is a bad guy. He's pulled a ray gun on Janet and he's downloading your data, ready to send it to his masters on Earth. You have to do something to stop him. You cannot, however, directly attack him. There are a few solutions, but the most immediate one is to have Rover take him out. If Rover isn't in the living room (i.e., operations/cargo bay), you can call him.]
+
+* come
+* rover, attack david
+* <space bar>
+* <space bar>
+
+[There are many alternatives, but the most rewarding solution to the game is to neutralize only David, and avoid other collateral damage. Undo is permitted at the end of the game, so if you aren't happy about the way the game came out, you can go back a few steps and try something different.]
+
+[Step 20. Amusing -- If the game ended in a relatively pleasant way, you will see some text that goes into a bit of detail about how well you did, and what other things you might try if you played the game again.]
+
+* amusing
+
+Thanks for playing!
+
+- Jack and Ben
