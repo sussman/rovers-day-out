@@ -103,6 +103,55 @@ L__M(##Quit, 1); print "> ";
 ];
 -).
 
+Chapter Metaconversation
+
+[A word of caution about metatext: Since we are passing an argument between I6 and I7 (i.e, the caption in the FancyPrint function), it is critical that the metatext not contain a text substitution, but be entirely literal text. I7 considers literal text one type, while text with substitution is another type. Don't cross the streams!
+
+Also note, instead of a line break terminating each speaker's lines, an asterisk is used. To make all the spacing work out, put only one space after the colon which comes after the speaker's name. So, David: Says Something. But not: David:  Says Something.]
+
+To say (dialogue - some text) in metaspeak:
+	if Real Thing is happening or Boarding Party is happening or Back on Mars is happening:
+		the rule succeeds;
+	otherwise:
+		say paragraph break;
+ 		say first custom style;
+		say "[dialogue in fancyprint]";
+ 		say roman type;
+ 		say variable letter spacing;
+ 		say paragraph break.
+
+To say (dialogue - some text) in fancyprint:
+	(- FancyPrint ({dialogue}); -).
+
+Include (-
+
+Constant SPACE = 32;
+Constant RIGHTMARGIN = 45;
+
+Array BigBuffer -> 1024; !big enough to hold the largest metatext
+
+[FancyPrint caption i linelen;
+	caption.print_to_array(BigBuffer);
+	linelen = 0;
+	for (i=WORDSIZE : i < BigBuffer-->0+WORDSIZE : i++){
+		if (BigBuffer->i == '*'){
+			print "^";
+			linelen = 0;	
+			continue;
+		}
+		if (linelen > (RIGHTMARGIN - 5) && BigBuffer->i == SPACE){
+			print "^       ";
+			linelen = 7;
+			continue;
+		}
+		print (char) BigBuffer->i;
+		linelen++;
+	}
+	rtrue;
+];
+
+-).
+
 Chapter Declare Global Variables
 
 Current memory usage is a number that varies. Current memory usage is 508.
@@ -333,18 +382,6 @@ To say ACU Boot Banner:
 		say "Boot banner error.";
 	say "Release [release] / Serial number [serial] / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)";
 	say paragraph break.
-
-[General routine for displaying dialogue between Janet and David.]
-
-To say (dialogue - some text) in metaspeak:
-	if Real Thing is happening or Boarding Party is happening or Back on Mars is happening:
-		the rule succeeds;
-	otherwise:
-		say line break;
- 		say "[first custom style][dialogue]";
- 		say roman type;
- 		say variable letter spacing;
- 		say paragraph break.
 	
 [BSOD routines - uses Flexible Windows extension.]
 The BSOD-window is a g-window.   The type of the g-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
@@ -911,14 +948,14 @@ Before going a custom direction:
 	the rule succeeds.
 
 Instead of going towards when the player is in the Living Room and the futon is not folded:
-	say "You can't really move around much because of the futon. It takes up a lot of room.";
+	say "You can't really move around much because of the futon. It takes up a lot of room.[paragraph break]";
 	if the futon is not obstructed and (the First Sim is happening or the Second Sim is happening):
 		now the futon is obstructed;
 		if the First Sim is happening:	
-			let metatext be "David: Isn't that a tad inconvenient?[line break]Janet: Yeah, but it kind of made sense when I got it.";
+			let metatext be "David: Isn't that a tad inconvenient?*Janet: Yeah, but it kind of made sense when I got it.";
 			say "[metatext in metaspeak]";
 		otherwise if the Second Sim is happening:
-			let metatext be "Janet: Inconvenient, yes, but it does have its advantages.[line break]David: Agreed.";
+			let metatext be "Janet: Inconvenient, yes, but it does have its advantages.*David: Agreed.";
 			say "[metatext in metaspeak]".
 			
 After going towards when the player is the ACU:
@@ -937,7 +974,7 @@ After going towards when the player is the ACU:
 		-- kitchen:
 			if the counter is not discussed and the Second Sim is happening:
 				now the counter is discussed;
-				let metatext be "David: Where are your coffee machine and toaster?[line break]Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.[line break]David: Lazy.[line break]Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
+				let metatext be "David: Where are your coffee machine and toaster?*Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.*David: Lazy.*Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
 				say "[metatext in metaspeak]";
 			if the landing_pid is not zero and (Rover is hungry or Rover is thirsty) and Rover is in the kitchen:
 				if Rover is hungry:
@@ -951,7 +988,7 @@ After going towards when the player is the ACU:
 		-- bathroom:
 			if the bathroom is not really-visited and the Second Sim is happening:
 				now the bathroom is really-visited;
-				let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.[line break]David: It’s looked good this far.";
+				let metatext be "Janet: Let’s hope the simulation doesn’t crash again. I’d really like to run it all the way through to the Rover release.*David: It’s looked good this far.";
 				say "[metatext in metaspeak]".
 				
 Instead of going when the player is self-aware:
@@ -1405,11 +1442,11 @@ Instead of doing something when the player is clueless and the noun is an aware-
 	if the Real Thing has not happened:
 		if aware-references is less than 4:
 			if aware-references is 1:
-				let metatext be "David: How can it be aware of that?[line break]Janet: It can’t. That’s outside the simulation. I sometimes mumble to myself about whatever is on my mind from work. That must have carried over during the scan.[line break]David: Hmph.";
+				let metatext be "David: How can it be aware of that?*Janet: It can’t. That’s outside the simulation. I sometimes mumble to myself about whatever is on my mind from work. That must have carried over during the scan.*David: Hmph.";
 			otherwise if aware-references is 2:
-				let metatext be "David: So that was another random association? It seemed pretty purposeful to me.[line break]Janet: With the cognitive constraints in place, it would have to be, although the synaptic scan might be somewhat confounded because I was working on the program when the scan was made.[line break]David: Kind of like a feedback loop?[line break]Janet: No, not at all.[line break]David: Hmph.";
+				let metatext be "David: So that was another random association? It seemed pretty purposeful to me.*Janet: With the cognitive constraints in place, it would have to be, although the synaptic scan might be somewhat confounded because I was working on the program when the scan was made.*David: Kind of like a feedback loop?*Janet: No, not at all.*David: Hmph.";
 			otherwise if aware-references is 3:
-				let metatext be "Janet: Before you say it, yes. Nothing to do with the landing cycle, just another background musing.[line break]David: I was going to let that one slide without comment, actually.";
+				let metatext be "Janet: Before you say it, yes. Nothing to do with the landing cycle, just another background musing.*David: I was going to let that one slide without comment, actually.";
 			say "[metatext in metaspeak]";
 			now aware-references is aware-references + 1.
 	
@@ -1479,9 +1516,8 @@ Section Reorienting-test version
 Understand "reorient" as reorienting.
 		
 Report reorienting:
-	let metatext be "(The player is now [if player is self-aware]self-aware[otherwise]clueless[end if])";
-	say "[metatext in metaspeak]".
-	
+	say "The player is now [if player is self-aware]self-aware[otherwise]clueless[end if])".
+		
 Instead of attacking the chain: [consider leaving something like this in the game]
 	if the chain is intact:
 		now the chain is broken;
@@ -1544,11 +1580,8 @@ When play begins:
 
 After printing the banner text:
 	say "Type [quotation mark]help[quotation mark] for instructions, credits and license or just blaze on impetuously.";
-	say paragraph break;
-	let metatext be "Janet: David, are you hooked in?[line break]David: Ready to go. Is this the final version of the ACU, or another beta?[line break]Janet: A program is never finished, but I think we're ready to go.[line break]David: I hope so, Earth could launch any day now.[line break]Janet: Run program.";
+	let metatext be "Janet: David, are you hooked in?*David: Ready to go. Is this the final version of the ACU, or another beta?*Janet: A program is never finished, but I think we're ready to go.*David: I hope so, Earth could launch any day now.*Janet: Run program.";
 	say "[metatext in metaspeak]";
-	say variable letter spacing;
-	say paragraph break;
 	await keystroke;
 	try section-breaking;
 	[display setup]
@@ -2019,10 +2052,10 @@ Before doing something when (the noun is David Venkatachalam or second noun is D
 	say "Your boss isn't here.";
 	if the First Sim is happening or the Second Sim is happening:
 		if David-mentioned is one:
-			let metatext be "David: Why would it expect to see me in your cottage?[line break]Janet: Probably a random association.[line break]David: Do you think the ACU can hear us talking?[line break]Janet: That’s a philosophical issue. It has sound sensors, and they might be on, but it’s all bits. Bits in, bits out. I don’t think you could say that it really hears us in any meaningful way.";
+			let metatext be "David: Why would it expect to see me in your cottage?*Janet: Probably a random association.*David: Do you think the ACU can hear us talking?*Janet: That’s a philosophical issue. It has sound sensors, and they might be on, but it’s all bits. Bits in, bits out. I don’t think you could say that it really hears us in any meaningful way.";
 			say "[metatext in metaspeak]";
 		otherwise if David-mentioned is two:
-			let metatext be "David: Again, about me![line break]Janet: Whoa Nelly, let[apostrophe]s reign in that ego, cowboy. ";
+			let metatext be "David: Again, about me!*Janet: Whoa Nelly, let's reign in that ego, cowboy. ";
 			say "[metatext in metaspeak]";
 	the rule succeeds.
 		
@@ -2108,7 +2141,7 @@ The futon is a bed in the Living Room. The futon can be folded. The futon is not
 After examining the futon:
 	if the futon is not discussed and the Second Sim is happening:
 		now the futon is discussed;
-		let metatext be "David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.[line break]Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.[line break]David: I can’t argue that logic.[line break]Janet: That’s why you are management and why I do the computer programming.";
+		let metatext be "David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.*Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.*David: I can’t argue that logic.*Janet: That’s why you are management and why I do the computer programming.";
 		say "[metatext in metaspeak]".
 
 The mattress is part of the futon. The frame is part of the futon. The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is [if the futon is folded]offline[otherwise]online[end if]." The mattress-proxy is an aware-proxy that is part of the mattress. Understand "spatial" or "manifold" or "attenuator" as the mattress-proxy. The scent of the mattress is "like it might be time to get a new mattress". The texture of the mattress is "like foam rubber"
@@ -2208,10 +2241,10 @@ After taking off the flight suit:
 	if the flight suit is not already-doffed:
 		now the flight suit is already-doffed;
 		if the First Sim is happening:
-			let metatext be "David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.[line break]Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.[line break]David: I'm not staring at the stimulation.[line break]Janet: You said stimulation. That's funny.[line break]David: No, I said simulation - and I'm not staring.[line break]Janet: Alright -- you're the boss.";
+			let metatext be "David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.*Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.*David: I'm not staring at the stimulation.*Janet: You said stimulation. That's funny.*David: No, I said simulation - and I'm not staring.*Janet: Alright -- you're the boss.";
 			say "[metatext in metaspeak]";
 		if the Second Sim is happening:
-			let metatext be "David: That mole should be on your left side.[line break]Janet: Good eye for detail -- I’ll flip the UV coordinates on the next run.";
+			let metatext be "David: That mole should be on your left side.*Janet: Good eye for detail -- I’ll flip the UV coordinates on the next run.";
 			say "[metatext in metaspeak]".
 			
 To scandalize the poor little robot:
@@ -2257,7 +2290,7 @@ The lettering is a message that is part of the flight suit. Understand "letterin
 
 After reading the lettering for the first time:
 	if the first sim is happening or the second sim is happening:
-		let metatext be "David: If the ACU knows what you know, why doesn[apostrophe]t the ACU realize that it is the ACU? I mean, isn[apostrophe]t that what you would suspect if you woke up in a flight suit labeled ACU?[line break]Janet: Cognitive constraints are implemented – the willing suspension of disbelief is a programmatic imperative.[line break]David: I love it when you use big words![line break]Janet: You are a doofus, sir.";
+		let metatext be "David: If the ACU knows what you know, why doesn't the ACU realize that it is the ACU? I mean, isn't that what you would suspect if you woke up in a flight suit labeled ACU?*Janet: Cognitive constraints are implemented – the willing suspension of disbelief is a programmatic imperative.*David: I love it when you use big words!*Janet: You are a doofus, sir.";
 		say "[metatext in metaspeak]".
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A pulp novel rocket ship points away from the globe of Mars and towards space. The picture evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia". The texture of the insignia is "more rigid than the material around it, almost like plastic"
@@ -2285,7 +2318,7 @@ The clueless-name of the large button is "large button". Understand "snoo" or "s
 
 After examining the alarm clock for the second time:
 	if the First Sim is happening or the Second Sim is happening:
-		let metatext be "David:  Why is it so interested in the clock?[line break]Janet:  Not sure.";
+		let metatext be "David: Why is it so interested in the clock?*Janet: Not sure.";
 		say "[metatext in metaspeak]";
 
 Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story] The scent of the drapes is "much as you imagine burlap would might, were it aged for centuries and then baked in the sunlight until crispy". The drapes can be opened-before. The drapes are not opened-before. The texture of the drapes is "much heavier than they look, like the lead-lined aprons that some of the technicians use at work"
@@ -2298,7 +2331,7 @@ Instead of opening the drapes:
 		now the window is in the Living Room;
 		try looking;
 		if the drapes are not opened-before:
-			let metatext be "David: I see it successfully accessed the solar shield.[line break]Janet: Yes, the status line makes it clear what work is being performed.";
+			let metatext be "David: I see it successfully accessed the solar shield.*Janet: Yes, the status line makes it clear what work is being performed.";
 			say "[metatext in metaspeak]";
 			now the drapes are opened-before;
 	otherwise:
@@ -2554,12 +2587,12 @@ Instead of taking the magpaper:
 
 After reading the magpaper for the first time:
 	if the first sim is happening or the second sim is happening:
-		let metatext be "David: 'Take care of business'? Is that a euphemism?[line break]Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
+		let metatext be "David: 'Take care of business'? Is that a euphemism?*Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
 		say "[metatext in metaspeak]".
 
 After examining the old fridge for the first time:
 	if the first sim is happening or the second sim is happening:
-		let metatext be "David: Isn't a 'to-do' list a little heavy handed?[line break]Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.[line break]David: I think it would be better if it were less linear and more rule-based.[line break]Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
+		let metatext be "David: Isn't a 'to-do' list a little heavy handed?*Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.*David: I think it would be better if it were less linear and more rule-based.*Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.";
 		say "[metatext in metaspeak]";
 		
 After opening the old fridge:
@@ -2631,7 +2664,7 @@ To fry the white egg:
 	now the white egg is cooked;
 	say "[if the player is clueless]Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades[otherwise]A spherical array of powerful lasers discharges instantly, their combined output focused on the heavy helium being injected into the magnetic bottle within the reactor chamber. The ship surges with power[end if].";
 	if the Second Sim is happening:
-		let metatext be "Janet: If there were some heavy helium left after landing, could the ship take off again?[line break]David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we’ll have to fuse every gram of that heavy helium to make a soft landing.[line break]Janet: I just hate to leave the ship there. It could take years before our next Casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.[line break]David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.";
+		let metatext be "Janet: If there were some heavy helium left after landing, could the ship take off again?*David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we’ll have to fuse every gram of that heavy helium to make a soft landing.*Janet: I just hate to leave the ship there. It could take years before our next Casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.*David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.";
 		say "[metatext in metaspeak]".	
 	
 Instead of doing something to the white egg when the white egg is broken:
@@ -2661,7 +2694,7 @@ Before eating the white egg:
 			now the player is poopready;
 			say "[if the player is clueless]You gobble down what might well have been the best neoegg you've ever had[otherwise]You recycle the components of the heavy helium containment unit and reallocate them according to the ship's needs[end if].";
 			if the Second Sim is happening:
-				let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?[line break]Janet: Works for me, yeah.[line break]David: How about a plate and fork?[line break]Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";	
+				let metatext be "David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?*Janet: Works for me, yeah.*David: How about a plate and fork?*Janet: The ACU doesn’t miss them, and it’s less programming overhead. And bonus: fewer dishes to clean.";	
 				say "[metatext in metaspeak]";
 			otherwise if the Real Thing is happening and the landing_pid is not 0:
 				[i.e., taking off from the planet]
@@ -2676,7 +2709,7 @@ Before eating the white egg:
 			
 After taking the white egg for the first time during the First Sim:
 	say "You pluck the white egg out of the fridge.";
-	let metatext be "Janet: It[apostrophe]s a shame we don[apostrophe]t have enough heavy helium to bring the ship back.[line break]David: I[apostrophe]m afraid we[apostrophe]ve put all our baskets in one egg, as it were. That one egg represents every bit of heavy helium refined on Mars since Phobos was destroyed.[line break]Janet: [quotation mark]All Your Egg Are Belong to Us?[quotation mark][line break]David: Huh? Didn[apostrophe]t quite catch that.[line break]Janet: Never mind.";
+	let metatext be "Janet: It's a shame we don't have enough heavy helium to bring the ship back.*David: I'm afraid we've put all our baskets in one egg, as it were. That one egg represents every bit of heavy helium refined on Mars since Phobos was destroyed.*Janet: All Your Egg Are Belong to Us?*David: Huh? Didn't quite catch that.*Janet: Never mind.";
 	say "[metatext in metaspeak]".
 
 The range is enterable furniture in the kitchen[enterable so you can sit on it]. The drawer is an openable closed container that is part of the range.
@@ -3170,7 +3203,7 @@ Understand "look [something]" as searching.
 
 After examining the mirror for the first time:
 	if the First Sim is happening or the Second Sim is happening:
-		let metatext be "David:  Wait, is that memory usage correct?[line break]Janet:  Sure, it's fairly conservative.  The system has 640 PB available.[line break]David:  That's it?[line break]Janet:  C'mon, nobody will ever need more than 640 PB.";
+		let metatext be "David: Wait, is that memory usage correct?*Janet: Sure, it's fairly conservative. The system has 640 PB available.*David: That's it?*Janet: C'mon, nobody will ever need more than 640 PB.";
 		say "[metatext in metaspeak]";
 
 The bathroom ceiling is privately-named scenery in the bathroom. The irradiator is a switched off device which is part of the bathroom ceiling.  
@@ -3200,7 +3233,7 @@ After switching on the black plate when the First Sim is not happening:
 			change outcome-override to force-success;
 			say "The UV light diffuses over the entire surface of the ship and causes the chemical mixture on the hull to polymerize into an durable, clear ablative coating.";
 	if the enamel_pid is 0 and the Second Sim is happening:
-		let metatext be "Janet: I was holding my breath there. Looks like our patch worked.[line break]David: I had my fingers crossed too.";
+		let metatext be "Janet: I was holding my breath there. Looks like our patch worked.*David: I had my fingers crossed too.";
 		say "[metatext in metaspeak]";
 	now the enamel_pid is the turn count;
 	now the player is dry;
@@ -3650,7 +3683,7 @@ Every turn when the player is in the shower:
 		[this text is likely to be seen by first time players who would not know beforehand to take off their flight suit when entering the shower] 
 			if shower is a new experience and (the First Sim is happening or the Second Sim is happening):
 				now the shower is not a new experience;
-				let metatext be "David: I should probably check on the Casimir Drive harmonic suppressor; it still isn't stable.[line break]Janet: I'd like you to see everything.[line break]David: Well... If you think so....[line break]Janet: I do -- I need you to sign off budget authorization on the ACU before we burn it to firmware.[line break]David: Oh.";
+				let metatext be "David: I should probably check on the Casimir Drive harmonic suppressor; it still isn't stable.*Janet: I'd like you to see everything.*David: Well... If you think so....*Janet: I do -- I need you to sign off budget authorization on the ACU before we burn it to firmware.*David: Oh.";
 				say "[metatext in metaspeak]";
 		otherwise:
 			now the player is wet;
@@ -3662,7 +3695,7 @@ Every turn when the player is in the shower:
 				say "Rover's dog treat remains suprisingly crisp despite the shower.[paragraph break]";
 			if the shower is not sprayed:[sprayed triggers following metatext]
 				now the shower is sprayed;
-				let metatext be "David: Janet, I...[line break]Janet: David, if it were anyone but you, I would have a problem. Just let it go.[line break]David: Anyone else? Like who?[line break]Janet: Can we get back to the program?[line break]David: Okay, I'm paying attention.[line break]Janet: Obviously.";
+				let metatext be "David: Janet, I...*Janet: David, if it were anyone but you, I would have a problem. Just let it go.*David: Anyone else? Like who?*Janet: Can we get back to the program?*David: Okay, I'm paying attention.*Janet: Obviously.";
 				say "[metatext in metaspeak]".
 		
 Instead of taking off the flight suit when the player is clueless and the player is in the shower:
@@ -3743,10 +3776,10 @@ Instead of pushing or touching the soap button:
 		if the soap button is unpressed:
 			now the soap button is pressed;
 			if the First Sim is happening:
-				let metatext be "David: No comment.[line break]Janet: I don't know what I was thinking when I wrote that.";
+				let metatext be "David: No comment.*Janet: I don't know what I was thinking when I wrote that.";
 				say "[metatext in metaspeak]";
 			otherwise if the Second Sim is happening:
-				let metatext be "David: That was my favorite part! Why did you rewrite it?[line break]Janet: I thought it might be too distracting for the ACU.";
+				let metatext be "David: That was my favorite part! Why did you rewrite it?*Janet: I thought it might be too distracting for the ACU.";
 				say "[metatext in metaspeak]".
 	
 Instead of pushing or touching the shampoo button:
@@ -3767,7 +3800,7 @@ Instead of pushing or touching the shampoo button:
 		if the shampoo button is unpressed:
 			now the shampoo button is pressed;
 			if the Second Sim is happening:
-				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.[line break]David: Not really my department. Maybe it’s supposed to help with the heat.[line break]Janet: I’ve heard temps up to 1000 Kelvin?[line break]David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
+				let metatext be "Janet: David, what’s the ablative coating for? I thought that most of that planet’s atmosphere had been cooked off long ago.*David: Not really my department. Maybe it’s supposed to help with the heat.*Janet: I’ve heard temps up to 1000 Kelvin?*David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.";
 				say "[metatext in metaspeak]".
 
 Chapter The Planet
@@ -4142,7 +4175,7 @@ After examining the trees:
 To debate trees:
 	if the trees are not debated and the Second Sim is happening:
 		now the trees are debated;
-		let metatext be "David: Look, you can almost see my cottage over there, behind the Spruce trees.[line break]Janet: The Douglas Firs?[line break]David: No, I mean the Norway Spruce, over there.[line break]Janet: I know which one you mean, and believe me, they are Douglas Firs.[line break]David: I concede. Can we make up now?";
+		let metatext be "David: Look, you can almost see my cottage over there, behind the Spruce trees.*Janet: The Douglas Firs?*David: No, I mean the Norway Spruce, over there.*Janet: I know which one you mean, and believe me, they are Douglas Firs.*David: I concede. Can we make up now?";
 		say "[metatext in metaspeak]".
 		
 The pistol is a prop in Limbo. The clueless-name of the pistol is "revolver". The aware-name of the pistol is "ray gun". The clueless-description of the pistol is "A matte-black 38 special." The aware-description of the pistol is "A field-destabilization pistol. More than powerful enough to blast through the neoadamite in Valkyrie's hull." Understand "gun", "blaster", "weapon", "ray", or "laser" as the pistol. 
@@ -4161,15 +4194,15 @@ Instead of remembering a topic listed in the Table of Remembered Stuff when the 
 		say "You consult your memory banks: ";
 	say "[description entry][paragraph break]";
 	if remember-invoked is false and (the First Sim is happening or the Second Sim is happening):
-		let metatext be "David: Why did we lose audio?[line break]Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.[line break]David: That's fine.  How much can the ACU remember, though?[line break]Janet: It's based on my own synaptic scan, so it can willfully remember a wide variety of subjects -- almost any major component of my life, important events, and so on.  It adds depth to its decisions.[line break]David: If you say so.  I'd hate to know what it remembers about me.[line break]Janet: I wouldn't worry too much.";
+		let metatext be "David: Why did we lose audio?*Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.*David: That's fine.  How much can the ACU remember, though?*Janet: It's based on my own synaptic scan, so it can willfully remember a wide variety of subjects -- almost any major component of my life, important events, and so on.  It adds depth to its decisions.*David: If you say so.  I'd hate to know what it remembers about me.*Janet: I wouldn't worry too much.";
 		say "[metatext in metaspeak]";
 	otherwise:
 		if the topic is "David Venkatachalam" and (the First Sim is happening or the Second Sim is happening):
 			if david-remembered is less than three:
 				if david-remembered is 1:
-					let metatext be "David: I think I'd like to have heard that one.[line break]Janet: Not a chance.";
+					let metatext be "David: I think I'd like to have heard that one.*Janet: Not a chance.";
 				otherwise if david-remembered is 2:
-					let metatext be "David: I’m half tempted to decompile the code just to see what it said about me.[line break]Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.[line break]David: Grooze?";
+					let metatext be "David: I’m half tempted to decompile the code just to see what it said about me.*Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.*David: Grooze?";
 				say "[metatext in metaspeak]";
 			now david-remembered is david-remembered plus one;
 	now remember-invoked is true.
@@ -4323,13 +4356,13 @@ Chapter Dreams
 
 Table of Dreams
 index		dreamt		description		comment
-1		0		"Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?"	"David: You have some weird dreams.[line break]Janet: You can't hold me responsible for the subconscious ramblings of the ACU."
-2		0		"The alarm clock rolls into a ball, and flies the length of the vehicle construction facility, chased by an eager, slobbering dalmation. In the Martian gravity, Rover bounds three meters into the air and sails over the heads of an annoyed crew in cleanroom suits working frantically on the main fusion rocket heavy-helium regulator. The mission director, David Venkatachalam, grimaces, but your mother offers you a comforting cup of tea."		"David: The ACU certainly has that dog on its mind.[line break]Janet: Well, I do think about Rover a lot. Besides, the Rover is central to the mission, so a lot of the code is dedicated to the Rover.[line break]David: I don[apostrophe]t really make that expression do I? I looked pouty.[line break]Janet: All the time, but I like the word [quotation mark]petulant[quotation mark] better than [quotation mark]pouty[quotation mark].[line break]David: I’ll stick with pouty."	
-3		0		"A pudgy puppy hastily rounds a corner, sliding awkwardly on the polished dormitory floor. Behind it, there are flashes of light, and a rolling cloud, a mixture of smoke and Martian atmosphere. As the above-ground structures are ripped apart and lose pressure, the shivering ball of white fur leaps into your arms, burying its snout in the fold of your elbow. The Earth missiles continue to pound the university, but cannot penetrate to this depth. Huddled under a sturdy desk, you pet the frightened dog and hug it tight."		"David: Do you always hit the snooze button so many times?[line break]Janet: Yeah. The clock has been broken for years -- I can't reset the alarm time. It always goes off at 05:30, but I don't have to be at the spaceport until 08:30. Luckily, this serves a useful purpose in the simulation. Minimal resources are expended on each wake cycle, but if there were a problem during the approach, the ACU would elevate to full op status rapidly."
-4		0		"Rover sniffs the air and tears away from the picnic blanket. You and Tomasz watch with surprise as he runs, for once, away from the food. Rover bounds over the hedges, howling wildly, and spooks a xihuahua which had been playing with a tiny red ball. The so-called [quotation mark]shaved rat[quotation mark] gulps an oversized portion of air, extends its membranous ears and flies across the park into the arms of a douty grey-haired woman with a cane. Rover picks up the ball triumphantly, ignoring the piercing wavetrain of yips and indignant scolding coming, respectively, from the xihuahua and its owner. Shaking her cane limply towards Rover, she admonishes in an a strong Earth accent [quotation mark]That mongrel should be on a leash![quotation mark] Her own, unleashed, uncollared neodog stares accusingly from the safety of her arms, its distensible ribs alternately inflating and deflating like bellows. [quotation mark]Your kind is ruining Mars, ignoring every law, dissing your elders! You never lived on the surface, you never don't know what you've got![quotation mark]. You try to give the ball back to her, but she pushes it away in disgust, [quotation mark]Kids. Meh.[quotation mark]"		"David: Hey, different dream sequence. Is it glitching?[line break]Janet: No, the ACU's dreams are heavily influenced by power-up state of the processor and internal noise. Every time the ship dehibernates after a Casimir jump, it will experience some sort of dreaming. Some of them can be pretty bizarre.[line break]David: Good, I'd hate to think that we wasted two weeks of programming.[line break]Janet: I wouldn't say wasted.[line break]David: Huh? I didn't mean us.[line break]Janet: Cross your fingers and hope the whole thing doesn't crash again on the heat lamp."
-5		0		"The image of Tomasz blinks momentarily as the relay is handed off from ground station to ground station, trying to keep line of sight to Phobos. Behind him, you can see the tubular structure of the power station jutting over the edge of Stickley Crater. He is taking the news rather well, all things considered. Tomasz guesses your thoughts as you glance at your diamond engagement ring. [quotation mark]Don’t sweat it,[quotation mark]he says. [quotation mark]This whole rock is carbon, so plenty more where that came from.[quotation mark] There is blinding flash of light and the screen goes black."			"David: Is the ACU referring to me?[line break]Janet: As much as I’d like to say [quotation mark]yes[quotation mark], I don’t see how. The synaptic scans were frozen before we started seeing each other.[line break]David: Maybe you[apostrophe]ve had your eye on me for longer than you think.[line break]Janet: I wonder how many relationships have been ruined by armchair psychoanalysis?"
-6		0		"An angry dwarf emerges from under the kitchen sink, spilling dog chow all over the floor. He throws you a menacing look, pries the fridge open with a black rod, and snatches an egg off the shelf. Sand pours out of the fridge. [quotation mark]Hey,[quotation mark] you yell from the futon, [quotation mark]put that back[quotation mark]. You stop short, realizing that this sort of distraction is exactly why you haven’t completed your dissertation. You feel around under the futon, where you think you will have put the dissertation so you could find it in the past, and grab the stubby snout of a pig. The fleet-footed porcine slaps a fish into its ear, jumps into a dumbwaiter and disappears."			"David: That was surreal.[line break]Janet: And sometimes a cigar is just a cigar.[line break]David: Indeed."
-7		0		"Even mildly drugged and reclining on an overstuffed couch in the MARSpace human resources office, it's hard to relax in the presence of the MARSpace political officer conducting the final interview. You didn't catch her name, probably because she never mentioned it. After three such interviews and six months of background check, what more could they want?  [paragraph break][quotation mark]Ms. Xiang, thank you for your cooperation. Your tests show no hint of disloyalty to the Republic or MARSpace. We hope you understand the need for these measures, particularly for personnel with access to the Valkyrie's command and control functions. Now that you are cleared, I can inform you that credible sources have warned that the project may have been infiltrated by...[quotation mark]"	""
+1		0		"Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?"	"David: You have some weird dreams.*Janet: You can't hold me responsible for the subconscious ramblings of the ACU."
+2		0		"The alarm clock rolls into a ball, and flies the length of the vehicle construction facility, chased by an eager, slobbering dalmation. In the Martian gravity, Rover bounds three meters into the air and sails over the heads of an annoyed crew in cleanroom suits working frantically on the main fusion rocket heavy-helium regulator. The mission director, David Venkatachalam, grimaces, but your mother offers you a comforting cup of tea."		"David: The ACU certainly has that dog on its mind.*Janet: Well, I do think about Rover a lot. Besides, the Rover is central to the mission, so a lot of the code is dedicated to the Rover.*David: I don't really make that expression do I? I looked pouty.*Janet: All the time, but I like the word 'petulant' better than 'pouty'.*David: I’ll stick with pouty."	
+3		0		"A pudgy puppy hastily rounds a corner, sliding awkwardly on the polished dormitory floor. Behind it, there are flashes of light, and a rolling cloud, a mixture of smoke and Martian atmosphere. As the above-ground structures are ripped apart and lose pressure, the shivering ball of white fur leaps into your arms, burying its snout in the fold of your elbow. The Earth missiles continue to pound the university, but cannot penetrate to this depth. Huddled under a sturdy desk, you pet the frightened dog and hug it tight."		"David: Do you always hit the snooze button so many times?*Janet: Yeah. The clock has been broken for years -- I can't reset the alarm time. It always goes off at 05:30, but I don't have to be at the spaceport until 08:30. Luckily, this serves a useful purpose in the simulation. Minimal resources are expended on each wake cycle, but if there were a problem during the approach, the ACU would elevate to full op status rapidly."
+4		0		"Rover sniffs the air and tears away from the picnic blanket. You and Tomasz watch with surprise as he runs, for once, away from the food. Rover bounds over the hedges, howling wildly, and spooks a xihuahua which had been playing with a tiny red ball. The so-called [quotation mark]shaved rat[quotation mark] gulps an oversized portion of air, extends its membranous ears and flies across the park into the arms of a douty grey-haired woman with a cane. Rover picks up the ball triumphantly, ignoring the piercing wavetrain of yips and indignant scolding coming, respectively, from the xihuahua and its owner. Shaking her cane limply towards Rover, she admonishes in an a strong Earth accent [quotation mark]That mongrel should be on a leash![quotation mark] Her own, unleashed, uncollared neodog stares accusingly from the safety of her arms, its distensible ribs alternately inflating and deflating like bellows. [quotation mark]Your kind is ruining Mars, ignoring every law, dissing your elders! You never lived on the surface, you never don't know what you've got![quotation mark]. You try to give the ball back to her, but she pushes it away in disgust, [quotation mark]Kids. Meh.[quotation mark]"		"David: Hey, different dream sequence. Is it glitching?*Janet: No, the ACU's dreams are heavily influenced by power-up state of the processor and internal noise. Every time the ship dehibernates after a Casimir jump, it will experience some sort of dreaming. Some of them can be pretty bizarre.*David: Good, I'd hate to think that we wasted two weeks of programming.*Janet: I wouldn't say wasted.*David: Huh? I didn't mean us.*Janet: Cross your fingers and hope the whole thing doesn't crash again on the heat lamp."
+5		0		"The image of Tomasz blinks momentarily as the relay is handed off from ground station to ground station, trying to keep line of sight to Phobos. Behind him, you can see the tubular structure of the power station jutting over the edge of Stickley Crater. He is taking the news rather well, all things considered. Tomasz guesses your thoughts as you glance at your diamond engagement ring. [quotation mark]Don’t sweat it,[quotation mark]he says. [quotation mark]This whole rock is carbon, so plenty more where that came from.[quotation mark] There is blinding flash of light and the screen goes black."			"David: Is the ACU referring to me?*Janet: As much as I’d like to say 'yes', I don’t see how. The synaptic scans were frozen before we started seeing each other.*David: Maybe you've had your eye on me for longer than you think.*Janet: I wonder how many relationships have been ruined by armchair psychoanalysis?"
+6		0		"An angry dwarf emerges from under the kitchen sink, spilling dog chow all over the floor. He throws you a menacing look, pries the fridge open with a black rod, and snatches an egg off the shelf. Sand pours out of the fridge. [quotation mark]Hey,[quotation mark] you yell from the futon, [quotation mark]put that back[quotation mark]. You stop short, realizing that this sort of distraction is exactly why you haven’t completed your dissertation. You feel around under the futon, where you think you will have put the dissertation so you could find it in the past, and grab the stubby snout of a pig. The fleet-footed porcine slaps a fish into its ear, jumps into a dumbwaiter and disappears."			"David: That was surreal.*Janet: And sometimes a cigar is just a cigar.*David: Indeed."
+7		0		"Even mildly drugged and reclining on an overstuffed couch in the MARSpace human resources office, it's hard to relax in the presence of the MARSpace political officer conducting the final interview. You didn't catch her name, probably because she never mentioned it. After three such interviews and six months of background check, what more could they want?  [paragraph break]'Ms. Xiang, thank you for your cooperation. Your tests show no hint of disloyalty to the Republic or MARSpace. We hope you understand the need for these measures, particularly for personnel with access to the Valkyrie's command and control functions. Now that you are cleared, I can inform you that credible sources have warned that the project may have been infiltrated by...'"	""
 
 Chapter Menus
 
@@ -4460,7 +4493,7 @@ First after an actor doing something (this is the find non-technoverb actions ru
 			-- the memory-updating action:
 				continue the action;
 			-- otherwise:
-				say "(Note:  [test-action] isn't in technoverb-table)" in metaspeak;
+				say "(***Note:  [test-action] isn't in technoverb-table)[paragraph break]";
 				continue the action;
 	[if the noun is something:
 		change last-noun to "[aware-name of the noun]";]
@@ -4802,7 +4835,7 @@ When Bedtime ends:
 	now the player is alert;
 	now the IPL_pid is the turn count;
 	if dream index is greater than one and bedtime-dream-sequence-complaint is false:
-		let metatext be "David: Thank you. I can only take so many dream sequences.[line break]Janet: No problem. So, at this point, the Valkyrie would be at the edge of the probe's stellar system, and ready to switch over from Casimir to condensate drive and begin the approach.";
+		let metatext be "David: Thank you. I can only take so many dream sequences.*Janet: No problem. So, at this point, the Valkyrie would be at the edge of the probe's stellar system, and ready to switch over from Casimir to condensate drive and begin the approach.";
 		say "[metatext in metaspeak]";
 		now bedtime-dream-sequence-complaint is true;
 	if First Sim is happening:
@@ -4863,7 +4896,7 @@ Instead of taking, touching, switching on, or switching off the alarm clock duri
 		
 After examining the large button when the Bedtime-did-examine-button is false:
 	now Bedtime-did-examine-button is true;
-	let metatext be "David: You could use a new alarm clock.[line break]Janet: You could increase my salary.";
+	let metatext be "David: You could use a new alarm clock.*Janet: You could increase my salary.";
 	say "[metatext in metaspeak]".
 	
 After dreaming:
@@ -4957,7 +4990,7 @@ When Arm Hurts begins:
 	
 When Arm Hurts ends:
 	if the First Sim is happening: [suppresses message at start of second sim if Arm Hurts was not resolved before the First Sim ended -- e.g., if the player manages to press the blackbefore rubbing the left arm]
-		let metatext be "David: Is the static charge neutralization part of the script?[line break]Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.[line break]David: Like you would.[line break]Janet: Subject to the resolution of the synaptic scan, yes.";
+		let metatext be "David: Is the static charge neutralization part of the script?*Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.*David: Like you would.*Janet: Subject to the resolution of the synaptic scan, yes.";
 		say "[metatext in metaspeak]".
 
 Every turn during Arm Hurts:
@@ -5025,7 +5058,7 @@ First Sim is a scene. First Sim begins when play begins. First Sim ends when the
 
 When First Sim ends:
 	try BSODing;
-	let metatext be "Janet: Crap.[line break]David: Windex?[line break]Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.[line break]David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?[line break]Janet: Yes, but it will take some time to install and debug.[line break]David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.[line break]Janet: Happy to have the help -- how about dinner first?[line break]David: Do you like Thai?";
+	let metatext be "Janet: Crap.*David: Windex?*Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.*David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?*Janet: Yes, but it will take some time to install and debug.*David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.*Janet: Happy to have the help -- how about dinner first?*David: Do you like Thai?";
 	say "[metatext in metaspeak]";
 	await keystroke;
 	try section-breaking;
@@ -5061,7 +5094,7 @@ Every turn when the Second Sim is happening:
 	otherwise:
 		if the player is in the Living Room and the Living Room is not visited-during-havoc:
 			now the Living Room is visited-during-havoc;
-			let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?[line break]David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.[line break]Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
+			let metatext be "Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?*David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It’s too bad they didn’t have FTL communications when they built the probes – it would have saved us the trip.*Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.";
 			say "[metatext in metaspeak]";
 		fuss around door.
 		
@@ -5075,7 +5108,7 @@ To fuss around door:
 			now Rover is busy.
 
 When Second Sim ends:
-	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.[line break]David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.[line break]Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.[line break]David: I’ll put the champagne on ice.";
+	let metatext be "Janet: So, that’s it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.*David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.*Janet: It’s a deal. Give me ten minutes to make the final commit, and I’ll join you.*David: I’ll put the champagne on ice.";
 	say "[metatext in metaspeak]";
 	await keystroke;
 	Restore the World;
@@ -5090,14 +5123,14 @@ When Landing Sequence begins:
 	now the toilet cover is open;
 	now the toilet seat is closed;
 	if the Second Sim is happening:
-		let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.[line break]David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.[line break]Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
+		let metatext be "Janet: So now we begin the landing cycle. This is where the ACU really shines.*David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.*Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.";
 		say "[metatext in metaspeak]".
 	
 Landing Sequence ends when the landing_pid is not zero.
 
 When the Landing Sequence ends:
 	if the Second Sim is happening:
-		let metatext be "David: That’s it. One long burn down to the planet’s surface.[line break]Janet: And then, the ACU just needs to deploy the Rover.";
+		let metatext be "David: That’s it. One long burn down to the planet’s surface.*David: And then, the ACU just needs to deploy the Rover.";
 		say "[metatext in metaspeak]";
 	if Rover is in the location:
 		say "Rover runs out of the bathroom, and you hear him jumping around hear the front door.";
