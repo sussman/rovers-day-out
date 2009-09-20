@@ -4890,7 +4890,7 @@ Instead of looking when Bedtime-did-look is less than five during bedtime:
 	otherwise:
 		say "[one of]Alarm clock. Next to bed. Make it stop[or]Must wake up. Eyes blurry[or]Morning difficult. Alarm on. Turn off alarm[or]Evil, evil beeping alarm clock. So loud. Stop the beeping[stopping]."
 		
-Instead of taking, touching, switching on, or switching off the alarm clock during Bedtime:
+Instead of taking, touching, attacking, switching on, or switching off the alarm clock during Bedtime:
 	say "[one of]You reach clumsily in the general direction of the alarm clock and graze the over-sized snooze button[or]You fumble with the alarm clock and accidentally push the snooze button[or]In your early morning stupor, you squeeze the alarm clock like a water melon pit, sending it even nearer to the edge of the bed and incidentally hitting the snooze button[or]You poke the clock smartly in the middle of the snooze button[or]The alarm clock tumbles off the bed, but you catch it before it hits the ground. Setting it back on the bed, you depress the snooze button[or]A dalmation paw beats you to the alarm clock and scrapes the snooze button before you even have a chance to accidentally do it yourself[in random order].";
 	try snoozing.
 		
