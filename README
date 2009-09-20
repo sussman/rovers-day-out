@@ -1,0 +1,60 @@
+
+What is this?
+-------------
+
+This is the source code to "Rover's Day Out", an interactive fiction
+game (or more commonly known as "text adventure".)
+
+It was originally written by Jack Welch (with assistance from Ben
+Collins-Sussman) in summer of 2009, and was entered into the 2009
+InfoComp competition.  The code is now released under the "Creative
+Commons Attribution - Noncommercial - Share Alike 3.0" license, which
+you can find in the LICENSE file.
+
+The game is written in the Inform 7 language.  You can download the
+compiler and IDE as a single package from here:
+
+  http://www.inform-fiction.org
+
+When compiled, the source code produces a bytecode file which can be
+executed on any implementation of a Glulx virtual machine:
+
+  http://www.eblong.com/zarf/glulx/
+
+The game's source code lives in a single file called 'story.ni'.
+However, it also depends on an 'extension' module called "Flexible
+Windows.i7x" by Jon Ingold.
+
+
+To build the game:
+------------------
+
+1. Create a working Inform project from your source tree:
+
+  $ hg clone URL rover
+  $ cd rover
+  $ mv rover.inform/ moo.inform/
+
+  [...launch Inform, create new project in this dir called 'rover'...]
+
+  $ cp moo.inform/Source/story.ni rover.inform/Source/
+  $ cp moo.inform/uuid.txt rover.inform/
+  $ rm -rf moo.inform/
+
+
+2. Copy 'Flexible Windows.i7x' to wherever the Inform environment
+expects to find extension modules:
+
+  - on Mac, this is usually ~/Library/Inform/Extensions/.  Make a
+    subdirectory in there called 'Jon Ingold', and copy the .i7x file
+    into it.
+
+  - for Windows or Linux, the location will be slightly different.  
+    We'll let you figure it out.
+
+
+3. Launch the Inform IDE and load the rover.inform project.  The
+source code should be visible, and it should compile fine.  Make sure
+that Inform's settings are are set to "Glulx" as the target VM.
+
+

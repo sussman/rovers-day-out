@@ -1,0 +1,6 @@
+Walkthrough for Rover's Day Out
+
+
+This walkthrough was written to accompany the initial release of Rover's Day Out as part of IF Comp 2009. 
+
+more...
