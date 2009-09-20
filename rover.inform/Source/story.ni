@@ -4622,7 +4622,7 @@ the looking action					TRUE			"STATUS"  [look]
 the looking under action			false			"SCAN"
 the lying down action				false			"STANDBY"
 the lying on action				false			"STANDBY"
-the manpaging action				false			"MANUAL PAmount]GE" [man]
+the manpaging action				false			"MANUAL PAGE" [man]
 the mounting action				FALSE			"MOUNT" [mount]
 the nopping action					FALSE		"\DEV\NULL" [unix commands not available]
 the opening action					false			"ACCESS"  [open]
