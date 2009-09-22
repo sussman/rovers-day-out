@@ -1516,7 +1516,7 @@ Section Reorienting-test version
 Understand "reorient" as reorienting.
 		
 Report reorienting:
-	say "The player is now [if player is self-aware]self-aware[otherwise]clueless[end if])".
+	say "(The player is now [if player is self-aware]self-aware[otherwise]clueless[end if])".
 		
 Instead of attacking the chain: [consider leaving something like this in the game]
 	if the chain is intact:
@@ -4357,6 +4357,7 @@ topic		description
 "enamel release"		"The monomer solution is maintained under pressure, and its release to fluidics system is gated by the inspector, through spontaneous, diffuse polling of the ductbot network."
 "viewer"		"The viewer provides the ACU with realtime external sensor information and tactical overlays."
 "annunciator" or "annunciators"		"The cryochamber is fitted with annunciator circuits which trigger when the cryochamber changes status between open and closed. The alert can be heard throughout the ship. This is intended to make the crew aware that the engineering deck may be frigid, and as a reminder that the cryochamber is open, wasting power."
+"flosix" or "operating system" or "210LTS"	"The Valkyrie's critical systems are based on the Flosix Operating System, Long Term Support version 210. Flosix is an open source operating system which forked from similar projects in the late 21st Century. Flosix is particularly popular on Mars and in the Belt, far from the reach of the Myomita Corporation's software monopoly. The name of the operating system is derived from an abbreviation of the Free, Libre and Open Source principles embraced by its community, plus a suffix hearkening back to its UNIX roots."
 
 Chapter Dreams
 
