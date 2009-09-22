@@ -126,7 +126,7 @@ To say (dialogue - some text) in fancyprint:
 Include (-
 
 Constant SPACE = 32;
-Constant RIGHTMARGIN = 45;
+Constant RIGHTMARGIN = 60;
 
 Array BigBuffer -> 1024; !big enough to hold the largest metatext
 
@@ -1586,7 +1586,7 @@ After printing the banner text:
 	try section-breaking;
 	[display setup]
 	change the left hand status line to "[if the player is self-aware]MANUAL MODE[otherwise][last-noun in upper case] -> [status-line-action] : [last-success][end if]";
-	change the right hand status line to "[if the player is self-aware]Flosix/OS 210LTS[otherwise]Memory: [current memory usage].[a random number from 0 to 9]PB[end if]";
+	change the right hand status line to "[if the player is self-aware]Flosix/OS 210LTS[end if][if the player is clueless and the player is the ACU]Memory: [current memory usage].[a random number from 0 to 9]PB[end if][if the player is Rover]ROVER P.O.V.[end if]";
 	say "[ACU Boot Banner]";
 	try dreaming;
 	try beeping.
@@ -1789,10 +1789,10 @@ Persuasion rule for asking Rover to try attacking:
 	persuasion succeeds.
 	
 Instead of Rover attacking when Rover is in the Valkyrie Area:
-	if the noun is not David Venkatachalam:
+	if David Venkatachalam is not exposed:
 		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threatening here.";
 	otherwise:
-		if David is exposed:
+		if David Venkatachalam is in the location:
 			say "Rover throws his bone to the side, and the space probe crashes thunderously against the cargo bay bulkheads. [if David Venkatachalam is exposed]Rover had not approved of David's tone of speech towards Janet, and had been growling quietly in his corner. Given the command, he springs forward, paws planted on David's chest. David expires immediately, trapped under 45 tons of angry robotic Dalmation.[paragraph break][quotation mark]Good boy![quotation mark] exclaims Janet, a tear in her eye. And then, turning to the the ACU she admits, [quotation mark]I wish I had thought of that.[quotation mark][paragraph break]";
 			change outcome-override to force-success;
 			now endgame is david-killed;
@@ -1802,6 +1802,12 @@ Instead of Rover attacking when Rover is in the Valkyrie Area:
 			say "Rover looks around, but doesn't see anything threatening.";
 	rule succeeds.
 	
+Does the player mean attacking david venkatachalam:
+	it is very likely.
+	
+Does the player mean attacking the bone:
+	it is very unlikely.
+
 Section Lying Down
 
 Persuasion rule for asking Rover to try lying down:
