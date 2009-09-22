@@ -2,7 +2,7 @@
 
 
 The story headline is "An Interactive Fiction".
-The release number is 7.
+The release number is 8.
 The story genre is "Science Fiction".
 The story creation year is 2009.
 
