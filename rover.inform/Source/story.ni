@@ -4264,6 +4264,7 @@ topic		remembered		description
 "Phobos"		0		"Formerly, the smaller and lower, more rapidly orbiting of Mars' two moons. Phobos was destroyed by Earth forces during the Independence War. Phobos had served primarily as a power production facility for Mars."
 "Deimos"		0		"Since the destruction of Phobos, Mars' only moon. Deimos is leased by MARSpace and is considered a military asset."
 "Tomasz" or "Kowalski" or "Tomasz Kowalski"		0		"Tomasz was your fiancé five years ago. You had planned to get married on Mons Olympus and to honeymoon at Club Meridian on the equator." 	
+"mission"		0		"The mission of the MARSpace Exploration Vessel Valkyrie is to recover the data from the Musashi-5 space probe and convey those data to MARSpace command by any means necessary."
 
 Table of Doggie Memories
 topic			remembered		description
