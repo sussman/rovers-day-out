@@ -2389,6 +2389,9 @@ To say front door status:
 		otherwise:
 			say "Outside, it looks like a nice day".  
 			
+Instead of opening or closing the front door when the player is Rover:
+	say "You normally don't pay any attention to the door. It knows enough to get out of your way when you enter and leave your home."
+			
 Instead of opening the front door when the front door is closed:
 	if the landing_pid is zero:[i.e., ship not down yet]
 		say "[if the player is clueless]If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first[otherwise]ROVER release is not the current task[end if].";
@@ -4114,7 +4117,7 @@ Chapter Offstage
 
 Limbo is a room. Limbo is secluded.[and a dance] 
 
-Inert Rover is a male animal in Limbo. The aware-name of Inert Rover is "ROVER". The clueless-description of Inert Rover [which should never be encounter, BTW] is "Your dog." The aware-description of Inert Rover is "A mobile exploration and mining rig, the unit is presently inert, its quantum subprocessor having been distangled. The mangled Musashi-5 space probe is held firmly in ROVER's metallic jaws." The Inert Rover-proxy is an aware-proxy that is part of Inert Rover. Understand "robot" or "mobile" or "mining" or "tractor" or "rig" or "rover" as the inert rover-proxy. The scent of inert rover is "no better than when he was conscious". The texture of the inert rover is "short-haired and bristly"
+Inert Rover is a privately-named male animal in Limbo. The aware-name of Inert Rover is "ROVER". The clueless-description of Inert Rover [which should never be encounter, BTW] is "Your dog." The aware-description of Inert Rover is "A mobile exploration and mining rig, the unit is presently inert, its quantum subprocessor having been distangled. The mangled Musashi-5 space probe is held firmly in ROVER's metallic jaws." The Inert Rover-proxy is an aware-proxy that is part of Inert Rover. Understand "robot" or "mobile" or "mining" or "tractor" or "rig" or "rover" as the inert rover-proxy. The scent of inert rover is "no better than when he was conscious". The texture of the inert rover is "short-haired and bristly". Understand "Rover" as Inert Rover when the player is the acu.
 
 Persuasion rule for asking Inert Rover to try doing anything:
 	change last-noun to "ROVER";
