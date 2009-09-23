@@ -2486,7 +2486,7 @@ The nameplate is a fixed in place message which is part of the picture. Understa
 Instead of reading the nameplate:
 	change outcome-override to force-success;
 	if the player is clueless:
-		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break](remembering the photo)[paragraph break]";
+		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break][bracket]Note: You can recall [italic type]something[roman type] from your past by typing [quotation mark]REMEMBER [italic type]something[roman type][quotation mark][close bracket][paragraph break]";
 		try remembering "photo";
 	otherwise:
 		say "It says, [quotation mark]Deep Memory Unit[quotation mark]."
@@ -4220,7 +4220,7 @@ Instead of remembering a topic listed in the Table of Remembered Stuff when the 
 				if david-remembered is 1:
 					let metatext be "David: I think I'd like to have heard that one.*Janet: Not a chance.";
 				otherwise if david-remembered is 2:
-					let metatext be "David: I’m half tempted to decompile the code just to see what it said about me.*Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.*David: Grooze?";
+					let metatext be "David: I’m half tempted to decompile the code just to see what it said.*Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.*David: Grooze?";
 				say "[metatext in metaspeak]";
 			now david-remembered is david-remembered plus one;
 	now remember-invoked is true.
