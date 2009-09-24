@@ -143,7 +143,7 @@ Anything between square brackets is explanation. The player's input is given aft
 [Step 12: Get up, shower, eat, use bathroom, let Rover out for walkies]
 
 * look
-* [repeat the prior sequence of shower, breakfast, and going to the bathroom, up to flushing the toilet. Here, you find that the toilet is broken. There are a couple ways to fix it, but the easiest is:]
+* [repeat the prior sequence of shower, breakfast, and going to the bathroom, up to flushing the toilet. The fridge door is stuck the first time you try it, but opens subsequently. When you get to the toilet you will find that it doesn't flush normally; something is broken. There are a couple ways to fix it, but the easiest is:]
 * x toilet
 * x water tank
 * open lid
