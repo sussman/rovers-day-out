@@ -5557,7 +5557,7 @@ Instead of opening the front door when the front door is closed during Boarding 
 	the rule succeeds.
 	
 Understand "signal yes" or "send yes" or "send oui" or "say oui" or "dites oui" or "dis oui" or "transmettez oui" or "transmets oui" or "envoie oui" or "envoyez oui" or "répondez oui" or "réponds oui" or "oui" as saying yes. [to enable surrendering in French.]
-Understand "signal no" or "send no" or "send non" or "say non" or "dites non" or "dis non" or "transmettez non" or "transmets non" or "envoie non" or "envoyez non" or "répondez non" or "réponds non" or "non" as saying no.
+Understand "signal no" or "send no" or "send non" or "say non" or "dites non" or "dis non" or "transmettez non" or "transmets non" or "envoie non" or "envoyez non" or "répondez non" or "réponds non" as saying no.
 	
 Instead of saying yes during Boarding Party:
 	if the assault ship approach is 1:
