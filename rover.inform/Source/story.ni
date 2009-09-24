@@ -1757,20 +1757,24 @@ To say bulldozer gets the bone:
 	
 Instead of an animal barking:
 	change outcome-override to force-success;
-	if Back on Mars is happening:
+	if Back on Mars is happening and David Venkatachalam is in the location:
 		now the endgame is david-killed;
 		say "Forgetting his bone for a moment, Rover takes a big breath and lets out a mighty, [quotation mark]Woooooooof![quotation mark][paragraph break]The jagged, twisted space probe falls from his jaws, pinning David to the deck, and nearly slicing him in half. He expires instantly.[paragraph break]Rover takes a step back, the [quotation mark]Did I do something wrong?[quotation mark] expression playing across his face.[paragraph break]";
 		if David Venkatachalam is exposed:
 			say "Janet stares blankly for a moment and then reaches up, and strokes the treads on Rover’s forward transaxle. [quotation mark]Good dog, Rover,[quotation mark] she says. [quotation mark]Good boy.[quotation mark][paragraph break]";
-		otherwise:
+		otherwise:[David not exposed]
 			say "Janet screams, [quotation mark]David! No![quotation mark] and [if the player is not in the living room] you redirect your video feed to the cargo bay, where [end if]she falls on her knees next to him, cradling his bloody head in her lap.";
 		end the game in victory;
 		the rule succeeds;
-	say "[The actor] barks out a meaty, [doggerel]";
-	if the actor encloses the delicious bone:
-		now the delicious bone is in the holder of the actor;	
-		say "The bone drops to [the actor]'s feet.";
-	rule succeeds.
+	if Boarding Party has happened:
+		say "[Rover] produces a [one of]loud[or]140 dB[or]thunderous[or]tremendous[or]soul splitting[in random order] howl that resonates off the ship's bulkheads. When he opens his mouth, the probe falls out, but he is quick enough to catch it mid-air.";
+		the rule succeeds;	
+	otherwise:[Not yet Back on Mars -- i.e., the usual situation]
+		say "[The actor] barks out a meaty, [doggerel]";
+		if the actor encloses the delicious bone:
+			now the delicious bone is in the holder of the actor;	
+			say "The bone drops to [the actor]'s feet.";
+		the rule succeeds.
 	
 To say doggerel:
 	say "[quotation mark][one of]Woof! Woof[or]Arf! Arf[or]Bow! Wow[or]Gaa....Ruffff[or]Gurrah[or]Rrrrrrrrrrrrrrrr[or]Yap! Yap[or]Buhwahwahwahwahwah[in random order]![quotation mark][paragraph break]".
