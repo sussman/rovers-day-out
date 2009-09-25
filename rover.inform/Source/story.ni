@@ -4878,7 +4878,7 @@ Instead of doing something with something (called the item) during Bedtime:
 	if the futon encloses the item or the item is the futon:
 		[player is allowed to try to interact with stuff that's also in bed]
 		continue the action;
-	otherwise if the current action is examining or reading:
+	otherwise if the current action is examining or reading or smelling:
 		[player can attempt to examine/read, but will likely be limited by a general rule for low lighting that applies when the drapes are closed, or by other more specific rules.]
 		continue the action;
 	otherwise:
