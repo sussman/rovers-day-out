@@ -923,8 +923,12 @@ Carry out going towards:
 		change outcome-override to force-success;
 	otherwise:
 		let the way be the best route from the location to the location of the noun, using even locked doors;
-		if the way is not a direction, say "You can't figure out how to get there." instead;
+		if the way is not a direction:
+			say "You can't figure out how to get there." instead;
 		let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
+		if the destination is nothing:
+			say "You're not sure how to get there.";
+			the rule succeeds;
 		change outcome-override to force-success;
 		if the player is Rover, say "[one of]You trot off in that direction[or]You let your nose lead the way[or]You bound away towards your goal[or]Your legs carry you as fast as they can[or]You eagerly scamper that way[or]You scuttle forth[or]Trot, trot, trot[in random order].[paragraph break]";
 		move the player to the destination.
@@ -4876,7 +4880,7 @@ Instead of doing something with something (called the item) during Bedtime:
 	if the futon encloses the item or the item is the futon:
 		[player is allowed to try to interact with stuff that's also in bed]
 		continue the action;
-	otherwise if the current action is examining or reading:
+	otherwise if the current action is examining or reading or smelling:
 		[player can attempt to examine/read, but will likely be limited by a general rule for low lighting that applies when the drapes are closed, or by other more specific rules.]
 		continue the action;
 	otherwise:
