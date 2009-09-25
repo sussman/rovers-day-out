@@ -1,0 +1,2530 @@
+(playing the beta-01 game)
+
+                                                                     
+                                                                     
+                                                                     
+                                             
+### My personal comments jotted down in the middle of the transcript
+### use this three-hash format. I comment after the part of text I
+### want to reflect on.
+
+Start of a transcript of
+
+Rover's Day Out
+An Interactive Fiction by Jack Welch and Ben Collins-Sussman
+Release 0 / Serial number 090824 / Inform 7 build 5U92 (I6/v6.31 lib 6/12N) 
+Type "help" for instructions, credits and license or just blaze on impetuously.
+
+
+
+Janet: David, are you hooked in?
+David: Ready to go. Is this the final version of the ACU, or another beta?
+Janet: A program is never finished, but I think we're ready to go.
+David: I hope so, Earth could launch any day now.
+Janet: Run program.
+
+
+
+Rover's Day Out
+An Interactive Fiction by Janet Xiang
+Release beta 732 / Serial number 23920401 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?
+
+<beep> <beep> <beep>
+
+Identification number: //EA3B10A1-A0C7-40B1-B40F-D195BB89C7B7//
+Interpreter version 1.2.1 / VM 3.1.0 / Library serial number 080126
+Standard Rules version 2/080430 by Graham Nelson
+Glulx Text Effects version 3 by Emily Short
+Flexible Windows version 6 by Jon Ingold
+
+>look
+Alarm clock. Next to bed. Make it stop.
+
+<beep> <beep> <beep>
+
+>turn off alarm clock
+In your early morning stupor, you squeeze the alarm clock like a water melon pit, sending it even nearer to the edge of the bed and incidentally hitting the snooze button.
+
+The alarm clock rolls into a ball, and flies the length of the vehicle construction facility, chased by an eager, slobbering dalmation. In the Martian gravity, Rover bounds three meters into the air and sails over the heads of an annoyed crew in cleanroom suits working frantically on the main fusion rocket heavy-helium regulator. The mission director, David Venkatachalam, grimaces, but your mother offers you a comforting cup of tea.
+
+
+David: The ACU certainly has that dog on its mind.
+Janet: Well, I do think about Rover a lot. Besides, the Rover is central to the mission, so a lot of the code is dedicated to the Rover.
+David: I don't really make that expression do I? I looked pouty.
+Janet: All the time, but I like the word "petulant" better than "pouty".
+David: I'll stick with pouty.
+
+<beep> <beep> <beep>
+
+>look
+Must wake up. Eyes blurry.
+
+<beep> <beep> <beep>
+
+>wake up
+Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral off the edge of the futon. Oh well, you can find it later. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.
+
+
+David: Thank you. I can only take so many dream sequences.
+Janet: No problem. So, at this point, the Valkyrie would be at the edge of the probe's stellar system, and ready to switch over from casimir to condensate drive and begin the approach.
+
+As you get out of bed, you notice that your left arm is numb -- must have been the way you were sleeping.
+
+>examine left arm
+Darkness is great for sleeping, not so good for looking at stuff.
+
+>loook
+That's not a verb I recognize.
+
+>look
+Living Room
+Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light.
+
+Your left arm feels weird.
+
+>open drapes
+You push aside the drapes.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window, illuminating a framed picture on the wall. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+### Is "principle" a typo here? I'm unfamiliar with american spellings
+### for a lot of words, so I'd have put "principal" here... Not sure
+### if it's right or wrong.
+
+You can see Rover here.
+
+Rover lies on his side.
+
+>examine picture
+A picture of the Starship Valkyrie, still under construction in drydock. There is small brass nameplate below the picture.
+
+>read it
+You can't see "it" (the picture) at the moment.
+
+### Buggy response from I7 here.
+
+>read nameplate
+It says, "Good luck at MARSpace! - Tomasz"
+
+Tomasz's valediction makes you remember happier times...
+
+(remembering the photo)
+
+Your late fiancé gave you the photo when you began working on the Valkyrie Project as a graduate student -- a happier time before the Independence War with Earth, and the attacks on Mars by Earth's Myomita Corporation. Back then, Valkyrie's experimental casimir drive was an exciting technological adventure, rather than a military priority. Now the Valkyrie is Mars' only chance to recover data from a recently discovered space probe marrooned in deep space. For whatever reason, MARSpace feels that probe could hold information which could finally give Mars the upperhand in its competition with Earth.
+
+
+David: Why did we lose audio?
+Janet: I've muted the memories -- they are, after all, a bit personal. Besides, it's just back story for this mission.
+David: Fine, we'll skip the boring parts.
+
+>look
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>go to kitchen
+You can't really move around much because of the futon. It takes up a lot of room.
+
+David: Isn't that a tad inconvenient?
+Janet: Yeah, but it kind of made sense when I got it.
+
+Rover walks towards the drapes.
+
+>examine futon
+Your futon is huge, and oh so comfy. The wooden frame supports a king-size mattress that is pulled out to form a bed.
+
+>push it
+With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage.
+
+Rover cocks his head and ogles the window.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet.
+
+You can see a water bowl (empty) and a food bowl (empty) here.
+
+>examine sink
+A small, utilitarian kitchen sink. Below the sink, there is a small cabinet.
+
+Your left arm is bothering you.
+
+>examine left arm
+That's odd. Your left arm is itching like the dickens, but it looks entirely normal.
+
+It feels like a swarm of spiders is running up and down your left arm, tickling you.
+
+>shake arm
+That's not a verb I recognize.
+
+>strech arm
+That's not a verb I recognize.
+
+### Usually when my arm tingles/tickles, it's because I lost sensation
+### after cutting off circulation. For that moving it around to aid
+### blood flow back works better than scratching. That's why this
+### confused me for a while before I figured it out.
+
+>examine cabinet
+The small wooden cabinet under the sink is closed.
+
+Your left arm feels fat and numb.
+
+From the direction of the living room, you hear Rover snoring loudly.
+
+>examine fridge
+The small refrigerator dates back to the international era, but is still in good working order, if somewhat small by today's standards. The glossy, white enameled unit has a single compartment. A strip of yellow magpaper is attached to the refrigerator door.
+
+
+David: Isn't a "to-do" list a little heavy handed?
+Janet: Sure, but stuff has to happen in a certain order, and it's just more efficient this way.
+David: I think it would be better if it were less linear and more rule-based.
+Janet: Okay, mister critic, then you write the code. If we want to recover that probe before Earth gets to it, we are on a very tight development and testing schedule.
+
+>examine paper
+It is a to-do list, in your own writing.
+
+>read it
+Morning:
+X. Get up
+2. Shower
+3. Breakfast
+4. Take care of business
+5. Let Rover go walkies
+
+
+David: "Take care of business"? Is that a euphemism?
+Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.
+
+>go to bathroom
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a toothbrush and a plastic box.
+
+>examine box
+A small plastic box labeled "Tooth Floss," with a blue button just below where the floss comes out.
+
+Your left arm feels fat and numb.
+
+>touch arm
+Which do you mean, the left arm, or the right arm?
+
+>left
+You feel nothing unexpected.
+
+### Feel nothing? I've just been told it's killing me, I would expect
+### to feel something.
+
+>scratch left arm
+Ooooo. Ahhhh...slowly, the sensation returns in your left arm. That feels so good.
+
+
+David: Is the static charge neutralization part the script?
+Janet: No, that's the point of the ACU -- it isn't a set script. As we throw malfunctions at it in these simulations, the ACU responds appropriately. We can't, for instance, know that Valkyrie will accumulate a static charge in a particular area, so the ACU has to be flexible enough to react to unpredictable events.
+David: Like you would.
+Janet: Subject to the resolution of the synaptic scan, yes.
+
+### Typo: should be "part of the script?" in the first line of dialog.
+
+>touch plate
+The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on.
+
+From the direction of the living room, you hear Rover dragging something around.
+
+>enter shower
+The Shower
+Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". The shower has not activated because you are still wearing clothes.
+
+
+David: I should probably check on the casimir drive harmonic suppressor; it still isn't stable.
+Janet: I'd like you to see everything.
+David: Well... If you think so....
+Janet: I do -- I need you to sign off budget authorization on the ACU before we burn it to firmware.
+David: Oh.
+
+From the direction of the living room, you hear Rover running in circles.
+
+>go to living room
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>take off clothes
+You take off your blue flight suit and it falls to the living room floor. You are naked.
+
+David: I don't think I should be seeing this. I mean, I'm your boss. There's that whole power dynamic thing.
+Janet: Don't worry: I'm not inclined to sue you for staring at a simulation.
+David: I'm not staring at the stimulation.
+Janet: You said stimulation. That's funny.
+David: No, I said simulation - and I'm not staring.
+Janet: Alright -- you're the boss.
+
+>go to shower
+The Shower
+You are in your shower and water of just the right temperature is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". 
+
+
+David: Janet, I...
+Janet: David, if it were anyone but you, I would have a problem. Just let it go.
+David: Anyone else? Like who?
+Janet: Can we get back to the program?
+David: Okay, I'm paying attention.
+Janet: Obviously.
+
+From the direction of the living room, you hear Rover growling at something.
+
+>press shampoo
+(the shampoo dispenser)
+You wash your hair. It no longer feels like a straw-encrusted swarm of yellow-headed tommygoffs.
+
+From the direction of the living room, you hear Rover walking about.
+
+>press soap
+(the soap dispenser)
+A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then wash it off.
+
+David: No comment.
+Janet: I don't know what I was thinking when I wrote that.
+
+>go to bathroom
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a toothbrush and a plastic box.
+
+>press plate
+You switch the black plate on.
+
+*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.
+
+
+
+Janet: Crap.
+David: Windex?
+Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.
+David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?
+Janet: Yes, but it will take some time to install and debug.
+David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.
+Janet: Happy to have the help -- how about dinner first?
+David: Do you like Thai?
+
+Rover's Day Out
+An Interactive Fiction by Janet Xiang
+Release beta810 / Serial number 23920415 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+### Replace fiction with simulation here? Seems weird to call an AI
+### environment an interactive fiction.
+
+Rover sniffs the air and tears away from the picnic blanket. You and Tomasz watch with surprise as he runs, for once, away from the food. Rover bounds over the hedges, howling wildly, and spooks a xihuahua which had been playing with a tiny red ball. The so-called "shaved rat" gulps an oversized portion of air, extends its membranous ears and flys across the park into the arms of a douty grey-haired woman with a cane. Rover picks up the ball triumphantly, ignoring the piercing wavetrain of yips and indignant scolding coming, respectively, from the xihuahua and its owner. Shaking her cane limply towards Rover, she admonishes in an a strong Earth accent "That mongrel should be on a leash!" Her own, unleashed, uncollared neodog stares accusingly from the safety of her arms, its distensible ribs alternately inflating and deflating like bellows. "Your kind is ruining Mars, ignoring every law, dissing your elders! You never lived on the surface, you never don't know what you've got!". You try to give the ball back to her, but she pushes it away in disgust, "Kids. Meh."
+
+
+David: Hey, different dream sequence. Is it glitching?
+Janet: No, the ACU's dreams are heavily influenced by power-up state of the processor and internal noise. Every time the ship dehibernates after a casimir jump, it will experience some sort of dreaming. Some of them can be pretty bizarre.
+David: Good, I'd hate to think that we wasted two weeks of programming.
+Janet: I wouldn't say wasted.
+David: Huh? I didn't mean us.
+Janet: Cross your fingers and hope the whole thing doesn't crash again on the heat lamp.
+
+<beep> <beep> <beep>
+
+>turn off clock
+The alarm clock tumbles off the bed, but you catch it before it hits the ground. Setting it back on the bed, you depress the snooze button.
+
+The image of Tomasz blinks momentarily as the relay is handed off from ground station to ground station, trying to keep line of sight to Phobos. Behind him, you can see the tubular structure of the power station jutting over the edge of Stickley Crater. He is taking the news rather well, all things considered. Tomasz guesses your thoughts as you glance at your diamond engagement ring. "Don't sweat it,"he says. "This whole rock is carbon, so plenty more where that came from." There is blinding flash of light and the screen goes black.
+
+
+David: Is the ACU referring to me?
+Janet: As much as I'd like to say "yes", I don't see how. The synaptic scans were frozen before we started seeing each other.
+David: Maybe you've had your eye on me for longer than you think.
+Janet: I wonder how many relationships have been ruined by armchair psychoanalysis?
+
+<beep> <beep> <beep>
+
+From somewhere in the cottage, Rover sneezes loudly to let you know that he's annoyed by the alarm clock.
+
+>get up
+Gathering your resolve, you slowly slide off the side of the futon, inadvertantly sending the alarm clock on a death spiral off the edge of the futon. Oh well, you can find it later. Meanwhile, you slowly stand up, recapitulating millions of years of evolution in a few seconds.
+
+>open drapes
+You push aside the drapes.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>push futon
+With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage.
+
+>take off clothes
+You take off your blue flight suit and it falls to the living room floor. You are naked.
+
+David: That mole should be on your left side.
+Janet: Good eye for detail -- I'll flip the UV coordinates on the next run.
+
+>go to shower
+The Shower
+You are in your shower and water of just the right temperature is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". 
+
+>press soap
+(the soap dispenser)
+A soapy paste is dispensed from the button, and you lather up.
+
+David: That was my favorite part! Why did you rewrite it?
+Janet: I thought it might be too distracting for the ACU.
+
+From the direction of the living room, you hear Rover doing whatever it is he does when he's not out for walkies and he thinks he's out of your sight.
+
+>press shampoo
+(the shampoo dispenser)
+You wash your hair. It no longer feels like a straw-encrusted swarm of red-headed tommygoffs.
+
+Janet: David, what's the ablative coating for? I thought that most of that planet's atmosphere had been cooked off long ago.
+David: Not really my department. Maybe it's supposed to help with the heat.
+Janet: I've heard temps up to 1000 Kelvin?
+David: In that ballbark. They think the probe impacted on the star-facing side of the planet. Estimates put the surface temp there between 800 and 1200K.
+
+>go to bathroom
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+
+Janet: Let's hope the simulation doesn't crash again. I'd really like to run it all the way through to the Rover release.
+David: It's looked good this far.
+
+>push plate
+The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day.
+
+Janet: I was holding my breath there. Looks like our patch worked.
+David: I had my fingers crossed too.
+
+>brush teeth
+(first grabbing the toothbrush)
+The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved.
+
+From the direction of the living room, you hear Rover sniffing something.
+
+>examine box
+A small plastic box labeled "Tooth Floss," with a blue button just below where the floss comes out.
+
+>use floss
+That's not a verb I recognize.
+
+>push button
+(first taking the plastic box)
+You grab a strand of light green dental floss as it reels out of the dispenser.
+
+>use floss
+That's not a verb I recognize.
+
+>put floss in teeth
+Those can't contain things.
+
+From the direction of the living room, you hear Rover scratching something.
+
+>floss
+What do you want to floss?
+
+>floss teeth
+You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now.
+
+From the direction of the living room, you hear Rover barking at something.
+
+>go to kitchen
+The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter. The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping out. 
+
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet.
+
+You can see a water bowl (empty) and a food bowl (empty) here.
+
+
+David: Where are your coffee machine and toaster?
+Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.
+David: Lazy.
+Janet: You don't know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It's based on my neural bindings, but the ACU definitely has a mind of its own, and I don't want to have to worry about what it might try do with a toaster.
+
+### I didn't catch this reference to being able to sing random tunes
+### with references to other universes until I read through it again,
+### but it's awesome that you have something interesting hanging off
+### of "sing" and "jump".
+
+From the direction of the living room, you hear Rover playing.
+
+>read note
+Morning:
+X. Get up
+X. Shower
+3. Breakfast
+4. Take care of business
+5. Let Rover go walkies
+
+>open fridge
+As the fridge creaks open on its ancient hinges, Rover slips into the kitchen. He pokes his nose in the fridge and sniffs around, although he knows full well that stuff in the fridge is for people only and that he'd be in a heap of trouble if he got too curious in there.
+
+Rover sighs audibly and frowns at his food bowl. His stomach rumbles with hunger.
+
+>open drawer
+You open the drawer, revealing a frying pan.
+
+Rover contemplates the profound emptiness of the food bowl. He looks at the food bowl. He looks at you. He looks at the food bowl. He looks at you.
+
+>open cabinet
+You open the cabinet, revealing a small box of reward nuggets and a 20 kilo bag of dog chow.
+
+Rover notices the lack of food in his soi-disant food bowl. He paws pathetically at the food bowl, and the hollow, tin ring of the pitiful bowl echoes through the kitchen.
+
+### The variations on this are wonderful. "soi-disant food bowl", lol.
+
+He eyes the empty water bowl thirstily.
+
+>get chow
+Taken.
+
+>put chow in food bowl
+(first taking the food bowl)
+You  empty the bag of dog chow into Rover's bowl, giving him a generous portion that should more than carry him through a day's worth of Rover antics.
+
+Rover watches with interest as you fill his food bowl.
+
+>examine tap
+A small, utilitarian kitchen sink. Below the sink, there is a small cabinet.
+
+Rover eyes the empty water bowl thirstily.
+
+>fill water bowl with tap
+(first taking the water bowl)
+You run the sink briefly to make sure the water is cold, and then fill Rover's bowl about half way up.
+
+Rover looks towards the sink as you fill his water bowl.
+
+>drop water bowl
+Rover's tongue is a blur as he laps up the water, draining the water bowl in seconds.
+
+>drop food bowl
+Rover gulps down the food, without pausing for niceties such as breathing.
+
+### It was counter intuitive to me that I had to drop these bowls. I
+### would have expected the "fill action" to pick up, fill and drop
+### atomically.
+
+>look in fridge
+You poke around in the fridge and find a white egg.
+
+>get egg
+Taken.
+
+>get pan
+Taken.
+
+>put pan on range
+You put the frying pan on the the cooking range.
+
+>turn on range
+Your stove is a Cupertino SmartRange® -- there are no controls, just a stylish glass surface with rounded corners.
+
+Rover lies down next to the food bowl.
+
+>put egg in pan
+You put the white egg into the frying pan.
+
+>turn on range
+Your stove is a Cupertino SmartRange® -- there are no controls, just a stylish glass surface with rounded corners.
+
+>break egg
+You crack the egg into the frying pan. The neoegg shell sublimates as the contents spread over the pan's non-stick surface. Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades.
+
+Janet: If there were some heavy helium left after landing, could the ship take off again?
+David: Hypothetically, yes, but the planet has essentially no atmosphere to break against and it has about nine times Earth gravity. Even with optimal approach we'll have to fuse every gram of that heavy helium to make a soft landing.
+Janet: I just hate to leave the ship there. It could take years before our next casimir ship will be built, and who knows if Valkyrie will survive that long on that chthonian rock.
+David: Nice word. From MARSpace perspective, all that matters is that the probe data are recovered.
+
+>eat egg
+You gobble down what might well have been the best neoegg you've ever had.
+
+David: Wait a minute! She just scoops the egg out of the pan with her hand and eats it like a grizzly bear raking salmon out of a river?
+Janet: Works for me, yeah.
+David: How about a plate and fork?
+Janet: The ACU doesn't miss them, and it's less programming overhead. And bonus: fewer dishes to clean.
+
+Rover prances past you at a convenient back-scratching distance.
+
+>scratch rover
+You scratch Rover's back and he slowly inches forward, trying to get you to scratch more towards the base of his spine.
+
+>scratch spine
+You can't see any such thing.
+
+>scratch rover
+Rover waits expectantly for more petting.
+
+>read note
+Morning:
+X. Get up
+X. Shower
+X. Breakfast
+4. Take care of business
+5. Let Rover go walkies
+
+>go to bathroom
+It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a bag of dog food, you put it back in the cabinet. 
+
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+
+Janet: So now we begin the landing cycle. This is where the ACU really shines.
+David: What about timing? The ship has to be in the right orientation and to fire the fusion thrusters at exactly the right time.
+Janet: The ACU works so fast that no matter how many individual steps it takes, the effect occurs at the right time.
+
+>sit on toilet
+(the toilet)
+You sit on the toilet seat.
+
+>wait
+Time passes.
+
+From the direction of the kitchen, you hear Rover entertaining himself.
+
+>push
+What do you want to push?
+
+>use toilet
+You can't see any such thing.
+
+>l
+The Bathroom (on the toilet seat)
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+From the direction of the kitchen, you hear Rover snoring softly (in the sense that it probably can't be heard outside of the cottage).
+
+>examine toilet
+(the toilet)
+You are sitting on a plain vanilla toilet, having a water tank and bowl. Nothing to write home about. The toilet seat is down, but the cover is raised.
+
+A plunger stands next to the toilet, between it and the shower.
+
+From the direction of the kitchen, you hear Rover rolling around on the floor.
+
+>pee
+You complete your business with great aplomb.
+
+>pee
+You've already done your business. Keep trying and you might end up with hemorrhoids.
+
+### Heh.
+
+>get up
+You stand up again, although you are uncomfortably aware that you have left some, shall we say, "unresolved" business behind you.
+
+>flush toilet
+(the toilet)
+You are distracted momentarily. Something just isn't right in the bathroom.
+
+>examine toilet
+(the toilet)
+A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. The toilet seat is down, but the cover is raised.
+
+A plunger stands next to the toilet, between it and the shower.
+
+>close cover
+You lower the toilet cover into position.
+
+>flush toilet
+(the toilet)
+Before you do so, the plunger catches your attention.
+
+From the direction of the kitchen, you hear Rover jumping around.
+
+>examine plunger
+A common plumber's plunger, consisting of a wooden shaft and red rubber cup. Something about the plunger is not right, though. The handle of the plunger is tilted completely  backwards and it's also leaning strongly  to the left. Furthermore, its handle is twisted completely clockwise.
+
+
+>get plunger
+Since the day Tomasz jammed the plunger down on the bathroom floor, it has been stuck there like a barbed harpoon in the side of a great whale. Well, maybe more like a giant squid on wrapped around an unfortunate whale, since squids have (you have heard) suckers. Some kind of weird interaction between the rubber cup and the micropores in the floor have effectively bonded the plunger to the floor, and any attempt to remove it would probably destroy one or the other. The plunger doesn't really bother you, and most of the time you just ignore it.
+
+>flush toilet
+(the toilet)
+Maybe you've been reading too much Lovecraft, but the plunger next to the toilet seems to be somehow misshapen and twisted. Its suddenly alien geometry suggests to you that some inchoate force of primordial corruption is reaching from across the stars, gibbering and gyrating contemptibly in the half-formed chaos between the toilet and the shower. Or maybe the eldritch plunger is just tilted a bit.
+
+From the direction of the kitchen, you hear Rover scratching himself.
+
+>straighten plunger
+That's not a verb I recognize.
+
+>pull plunger
+It's stuck to the floor. On the other hand, if you want to push it in a particular direction, just say so.
+
+>push plunger
+It's stuck to the floor. On the other hand, if you want to push it in a particular direction, just say so.
+
+>push plunger left
+You adjust the plunger handle leftwards. Something about the plunger is not right, though. The handle of the plunger is tilted completely  backwards and it's also leaning almost completely  to the left. Furthermore, its handle is twisted completely clockwise.
+
+From the direction of the kitchen, you hear Rover chewing something.
+
+>pull plunger forwards
+You adjust the plunger handle forwards. Something about the plunger is not right, though. The handle of the plunger is tilted almost completely  backwards and it's also leaning almost completely  to the left. Furthermore, its handle is twisted completely clockwise.
+
+From the direction of the kitchen, you hear Rover walking in your direction.
+
+>push plunger right
+You adjust the plunger handle rightwards. Something about the plunger is not right, though. The handle of the plunger is tilted almost completely  backwards and it's also leaning strongly  to the left. Furthermore, its handle is twisted completely clockwise.
+
+>push plunger right
+You adjust the plunger handle rightwards. Something about the plunger is not right, though. The handle of the plunger is tilted almost completely  backwards and it's also leaning  to the left. Furthermore, its handle is twisted completely clockwise.
+
+>push plunger right
+You adjust the plunger handle rightwards. Something about the plunger is not right, though. The handle of the plunger is tilted almost completely  backwards and it's also leaning a tad  to the left. Furthermore, its handle is twisted completely clockwise.
+
+>push plunger right
+You adjust the plunger handle rightwards. Something about the plunger is not right, though. The handle of the plunger is tilted almost completely  backwards and it's also leaning just the tiniest little bit  to the left. Furthermore, its handle is twisted completely clockwise.
+
+From the direction of the kitchen, you hear Rover breathing quietly (quietly for Rover, who is a heavy breather).
+
+>push plunger right
+You adjust the plunger handle rightwards. Something about the plunger is not right, though. The handle of the plunger is tilted almost completely  backwards. Furthermore, its handle is twisted completely clockwise.
+
+>push plunger forwards
+You adjust the plunger handle forwards. Something about the plunger is not right, though. The handle of the plunger is tilted strongly  backwards. Furthermore, its handle is twisted completely clockwise.
+
+>push plunger forwards
+You adjust the plunger handle forwards. Something about the plunger is not right, though. The handle of the plunger is tilted  backwards. Furthermore, its handle is twisted completely clockwise.
+
+From the direction of the kitchen, you hear Rover barking at something.
+
+>push plunger forwards
+You adjust the plunger handle forwards. Something about the plunger is not right, though. The handle of the plunger is tilted a tad  backwards. Furthermore, its handle is twisted completely clockwise.
+
+From the direction of the kitchen, you hear Rover scratching something.
+
+>push plunger forwards
+You adjust the plunger handle forwards. Something about the plunger is not right, though. The handle of the plunger is tilted just the tiniest little bit  backwards. Furthermore, its handle is twisted completely clockwise.
+
+>push plunger forwards
+You adjust the plunger handle forwards. Something about the plunger is not right, though. The handle of the plunger is twisted completely clockwise.
+
+>twist plunger counterclockwise
+You adjust the plunger handle counterclockwise. Something about the plunger is not right, though. The handle of the plunger is twisted almost completely clockwise.
+
+>twist plunger counterclockwise
+You adjust the plunger handle counterclockwise. Something about the plunger is not right, though. The handle of the plunger is twisted strongly clockwise.
+
+>twist plunger counterclockwise
+You adjust the plunger handle counterclockwise. Something about the plunger is not right, though. The handle of the plunger is twisted clockwise.
+
+>twist plunger counterclockwise
+You adjust the plunger handle counterclockwise. Something about the plunger is not right, though. The handle of the plunger is twisted a tad clockwise.
+
+>twist plunger counterclockwise
+You adjust the plunger handle counterclockwise. Something about the plunger is not right, though. The handle of the plunger is twisted just the tiniest little bit clockwise.
+
+>twist plunger counterclockwise
+You adjust the plunger handle counterclockwise. The plunger stands perfectly straight, just the way you like it.
+
+From the direction of the kitchen, you hear Rover dragging something around.
+
+>flush toilet
+(the toilet)
+The cottage's aging plumbing rumbles and vibrates as the toilet flushes.
+
+
+David: That's it. One long burn down to the planet's surface.
+Janet: And then, the ACU just needs to deploy the Rover.
+
+From the living room, Rover gives a short bark and scratches at the front door.
+
+>go to living room
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover and a flight suit here.
+
+
+Janet: When Rover brings the probe back to the ship, it will automatically extract the data and send it back by ansible. Did you enter the ansible parameters?
+David: Yes, I had to do it manually since the frequency and coordinates are encrypted. It's too bad they didn't have FTL communications when they built the probes - it would have saved us the trip.
+Janet: Yes, but then Earth would get the information as well -- even encrypted, I wouldn't want it to fall into their hands.
+
+Rover paws at the front door.
+
+>put on clothes
+(first taking the flight suit)
+You put on the flight suit.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears.
+
+
+Janet: So, that's it. Rover goes out, gets the probe, brings it back to the ship, and then the information is squirted back to MARSpace.
+David: Well, congratulations, Doctor Xiang, on a job well done. I say we celebrate tonight, and get up early for the launch tomorrow morning.
+Janet: It's a deal. Give me ten minutes to make the final commit, and I'll join you.
+David: I'll put the champagne on ice.
+
+Rover's Day Out
+An Interactive Fiction by Janet Xiang and David Venkatachalam
+Release 1 / Serial number 23920416 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+Even mildly drugged and reclining on an overstuffed couch in the MARSpace human resources office, it's hard to relax in the presence of the MARSpace political officer conducting the final interview. You didn't catch her name, probably because she never mentioned it. After three such interviews and six months of background check, what more could they want?  
+
+"Ms. Xiang, thank you for your cooperation. Your tests show no hint of disloyalty to the Republic or MARSpace. We hope you understand the need for these measures, particularly for personnel with access to the Valkyrie's command and control functions. Now that you are cleared, I can inform you that credible sources have warned that the project may have been infiltrated by..."
+
+<BEEP> <BEEP> <BEEP>
+
+You weren't particularly enjoying this dream, but being jarred awake by a violently shaking futon is even less pleasurable.
+
+As the bed bucks and tumbles, several scenarios flash through your mind: explosive decompression of the dome? Volcanic activity? Meteor impact? Before you can even consider your next action, you are thrown from the futon onto the living room floor. Light pours in from the window. It looks like the drapes were somehow torn away from the window.
+
+>look
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>push futon
+With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+You can see a food bowl (empty) and a water bowl (empty) here.
+
+From the direction of the living room, you hear Rover sniffing something.
+
+>read note
+Morning:
+X. Get up
+2. Shower
+3. Breakfast
+4. Take care of business
+5. Let Rover go walkies
+
+From the direction of the living room, you hear Rover snoring loudly.
+
+>go to bathroom
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+>take off clothes
+You take off your blue flight suit and it falls to the bathroom floor. You are naked.
+
+From the direction of the living room, you hear Rover walking about.
+
+>enter shower
+The Shower
+You are in your shower and water of just the right temperature is raining down on you. Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". 
+
+From the direction of the living room, you hear Rover scratching himself.
+
+>press soap
+(the soap dispenser)
+A soapy paste is dispensed from the button, and you lather up.
+
+From the direction of the living room, you hear Rover jumping around.
+
+>press shampoo
+(the shampoo dispenser)
+You wash your hair. It no longer feels like a straw-encrusted swarm of red-headed tommygoffs.
+
+From the direction of the living room, you hear Rover rolling around on the floor.
+
+>exit shower
+
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+You can also see a flight suit here.
+
+>press plate
+The heat lamp on the ceiling flares to a brilliant red, and you dry in an instant. You now feel fresh and ready to face the day.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+You can see a food bowl (empty) and a water bowl (empty) here.
+
+>open cabinet
+That's already open.
+
+>look in cabinet
+In the cabinet are a small box of reward nuggets and a 20 kilo bag of dog chow.
+
+>get chow
+Taken.
+
+>put chow in food bowl
+(first taking the food bowl)
+You  empty the bag of dog chow into Rover's bowl, giving him a generous portion that should more than carry him through a day's worth of Rover antics.
+
+Rover trots in from the living room when he hears kibbles trinkling into his bowl.
+
+Rover sniffs the sink.
+
+>fill water bowl with tap
+(first taking the water bowl)
+You run the sink briefly to make sure the water is cold, and then fill Rover's bowl about half way up.
+
+Rover looks towards the sink as you fill his water bowl.
+
+>put down water bowl
+Rover slurps the water bowl dry.
+
+>put down food bowl
+Rover makes short work of the food in his bowl.
+
+>open fridge
+Rover looks up when he hears the old fridge open. He sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room.
+
+>get egg
+Taken.
+
+From the direction of the living room, you hear Rover chewing something.
+
+>open drawer
+That's already open.
+
+>get pan
+Taken.
+
+>put pan on range
+You put the frying pan on the the cooking range.
+
+>put egg in pan
+You put the white egg into the frying pan.
+
+>break egg
+You crack the egg into the frying pan. The neoegg shell sublimates as the contents spread over the pan's non-stick surface. Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades.
+
+>eat egg
+You gobble down what might well have been the best neoegg you've ever had.
+
+>read note
+Morning:
+X. Get up
+X. Shower
+X. Breakfast
+4. Take care of business
+5. Let Rover go walkies
+
+From the direction of the living room, you hear Rover running in circles.
+
+>go to bathroom
+It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a bag of dog food, you put it back in the cabinet. 
+
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+You can also see a flight suit here.
+
+>sit on toilet
+(the toilet)
+You sit on the toilet seat.
+
+>pee
+You complete your business with great aplomb.
+
+>get up
+You stand up again, although you are uncomfortably aware that you have left some, shall we say, "unresolved" business behind you.
+
+From the direction of the living room, you hear Rover growling at something.
+
+>close cover
+You lower the toilet cover into position.
+
+>examine plunger
+A common plumber's plunger, consisting of a wooden shaft and red rubber cup. Something about the plunger is not right, though. The handle of the plunger is tilted just the tiniest little bit  forwards. Furthermore, its handle is twisted just the tiniest little bit counterclockwise.
+
+
+From the direction of the living room, you hear Rover snoring softly (in the sense that it probably can't be heard outside of the cottage).
+
+>push plunger backwards
+You adjust the plunger handle backwards. Something about the plunger is not right, though. The handle of the plunger is twisted just the tiniest little bit counterclockwise.
+
+>twist plunger clockwise
+You adjust the plunger handle clockwise. The plunger stands perfectly straight, just the way you like it.
+
+>flush toilet
+(the toilet)
+There is a tinny clanking from within the toilet, but nothing happens.
+
+>open toilet
+Which do you mean, the toilet, the toilet bowl, the toilet seat, or the toilet cover?
+
+>bowl
+That's not something you can open.
+
+>examine toilet bowl
+The white porcelain bowl is the bottom part of the toilet. Both the cover and seat are down.
+
+>open it
+That's not something you can open.
+
+>flush toilet
+(the toilet)
+There is a tinny clanking from within the toilet, but nothing happens.
+
+From the direction of the living room, you hear Rover doing whatever it is he does when he's not out for walkies and he thinks he's out of your sight.
+
+>open cover
+You lift the toilet cover.
+
+>examine toilet
+(the toilet)
+A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. The toilet seat is down, but the cover is raised.
+
+A plunger stands next to the toilet, between it and the shower.
+
+From the direction of the living room, you hear Rover entertaining himself.
+
+>flush toilet
+(the toilet)
+There is a tinny clanking from within the toilet, but nothing happens.
+
+From the direction of the living room, you hear Rover walking in your direction.
+
+>look
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+You can also see a flight suit here.
+
+>flush toilet
+(the toilet)
+There is a tinny clanking from within the toilet, but nothing happens.
+
+>examine counter
+A counter of that pink faux marble that is so common in Martian bathrooms. On it are a plastic box and a toothbrush.
+
+>open it
+That's not something you can open.
+
+>look under it
+You find nothing of interest.
+
+>get plunger
+Nah. You like it where it is. It kind of reminds you of Tomasz, and his efforts at home repair that never quite went right.
+
+From the direction of the living room, you hear Rover playing.
+
+>examine it
+A common plumber's plunger, consisting of a wooden shaft and red rubber cup. The plunger stands perfectly straight, just the way you like it.
+
+
+>examine bowl
+The white porcelain bowl is the bottom part of the toilet. The toilet seat is down, but the cover is raised.
+
+>examine toilet
+(the toilet)
+A plain vanilla toilet, having a water tank and bowl. Nothing to write home about. The toilet seat is down, but the cover is raised.
+
+A plunger stands next to the toilet, between it and the shower.
+
+>examine tank
+(the tank lid)
+A lid made of the same porcelain material as the water tank itself.
+
+>open it
+You open the water tank, revealing a flapper valve, a metapropylene lever, and a flush chain.
+
+From the direction of the living room, you hear Rover breathing quietly (quietly for Rover, who is a heavy breather).
+
+>examine valve
+A black rubber valve that seals the bottom of the water tank, allowing the toilet to flush only when it is pulled upward by the chain that connects it to the flush lever.
+
+From the direction of the living room, you hear Rover rolling around on the floor.
+
+>pull valve
+You reach in to lift the black rubber valve at the bottom of the toilet.
+
+The cottage's aging plumbing rumbles and vibrates as the toilet flushes.
+
+From the living room, Rover gives a short bark and scratches at the front door.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. The fridge door is not completely closed. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+On the the cooking range is a frying pan (empty).
+
+You can also see a food bowl (empty) and a water bowl (empty) here.
+
+From the direction of the living room, you hear Rover breathing quietly (quietly for Rover, who is a heavy breather).
+
+>read note
+Morning:
+X. Get up
+X. Shower
+X. Breakfast
+X. Take care of business
+5. Let Rover go walkies
+
+>go to bathroom
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+You can also see a flight suit here.
+
+>put on suit
+(first taking the flight suit)
+You put on the flight suit.
+
+>brush teeth
+(first grabbing the toothbrush)
+The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved.
+
+>press button
+(first taking the plastic box)
+You grab a strand of light green dental floss as it reels out of the dispenser.
+
+From the direction of the living room, you hear Rover sniffing something.
+
+>floss teeth
+You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now.
+
+>go to living room
+The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter. The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping out. 
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+Rover sniffs the front door.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. Rover slips out the door.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.
+
+>examine sky
+Through the dust, you can see little more than dim light from above.
+
+>out
+But you aren't in anything at the moment.
+
+>walk
+You'll have to say which compass direction to go in.
+
+>n
+Woof?
+
+>follow rover
+That's not a verb I recognize.
+
+>examine rover
+(the rover-proxy)
+You can't see any such thing.
+
+>run
+You'll have to say which compass direction to go in.
+
+>w
+Woof?
+
+>e
+Woof?
+
+>s
+Woof?
+
+>listen
+You hear nothing unexpected.
+
+>look
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here.
+
+>i
+In your mouth, you are carrying nothing.
+
+>inventory
+In your mouth, you are carrying nothing.
+
+>look
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The wind picks up, making it even more difficult to see.
+
+>look
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>look
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here.
+
+>go to living room
+You duck back into the living room and Janet closes the front door behind you.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+>examine rover
+(Rover)
+He's a big, happy dalmation.
+
+Rover circles an area on the floor.
+
+>examine window
+The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park.
+
+Rover paws at the front door.
+
+>open window
+That's not something you can open.
+
+Rover sniffs the front door.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. The fridge door is not completely closed. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+On the the cooking range is a frying pan (empty).
+
+You can also see a food bowl (empty) and a water bowl (empty) here.
+
+>close fridge
+You close the old fridge.
+
+From the living room, you hear Rover scratching at the front door.
+
+>look in cabinet
+In the cabinet are a 20 kilo bag of dog chow and a small box of reward nuggets.
+
+From the direction of the living room, you hear Rover chewing something.
+
+>get nuggets
+(the small box of reward nuggets)
+The box rattles as you pick it up. Rover is suddenly standing next to you, eyes wide open, and fixed on the box of treats.
+
+>give nugget to rover
+(the small box of reward nuggets to Rover)
+Rover doesn't seem interested.
+
+>examine nuggets
+(the small box of reward nuggets)
+The bright red box is labeled "Reward Nuggets" and has a picture of a dog with angel wings and a halo above its head.
+
+Rover is watching you.
+
+>take nugget
+(the small box of reward nuggets)
+You already have that.
+
+>go to living room
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+Rover trundles along behind you, his attention riveted to the small box of reward nuggets.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.
+
+>l
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>walk
+You'll have to say which compass direction to go in.
+
+>north
+Woof?
+
+>examine rover
+(the rover-proxy)
+You can't see any such thing.
+
+>look for rover
+You can't see any such thing.
+
+>go to living room
+You duck back into the living room and Janet closes the front door behind you.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover here.
+
+Rover paws at the front door.
+
+>examine rover
+(Rover)
+He's young as dogs go, about 5 years old, so not a puppy either, although he's almost as playful at times.
+
+Rover looks at the front door.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The wind picks up, making it even more difficult to see.
+
+>drop nuggets
+You can't see any such thing.
+
+>inventory
+In your mouth, you are carrying nothing.
+
+>smell
+It smells like the outdoors here. From a long way off you smell the stale funk of a man. Interestingly, you detect the intriguing aroma of a female dog carried across the park by the wind. The reassuring smell of home is a hop, lick and a bark away.
+
+>go to park
+That noun did not make sense in this context.
+
+>go to the park
+That noun did not make sense in this context.
+
+>go dog
+The Park
+You are outside. Ominous clouds of dust loom on the ever-darkening horizon.
+
+You can see a lump of rock here.
+
+>examine rock
+You taste the rock. Not edible. Not a bone. Not interesting.
+
+>get it
+You take the rock in your mouth.
+
+>smell
+It smells dry and stale here. From a considerable distance you smell the stench of a man. Interestingly, you detect the diverting bouquet of a female dog wafting enticingly from not too far away. The pleasant smell of home is two shakes of a tail from here.
+
+>go man
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>examine marks
+Paw marks from a medium-sized dog. From the look of the field, they must belong to a dog that either likes digging or was trying to find something important buried around here.
+
+>dig
+You dig for a while with your front paws. Finding nothing, you kick the dirt back in again so you won't be blamed for digging up the yard.
+
+>smell
+It smells of freshly turned soil here. From a ways off you smell the disagreeable scent of a man. Interestingly, you detect the appealing fragrance of a female dog coloring the air with its lovely scent from only a short run away. The comforting smell of home is a short run from here.
+
+>go dog
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>examine furrow
+(the long furrow)
+On your muzzle, you can feel heat radiating from the furrow walls, which are shiny and black. On the walls and floor of the trench, you can see some scratches that look like they could have been made by dog paws.
+
+>dig
+You dig for a while with your front paws. Finding nothing, you kick the dirt back in again so you won't be blamed for digging up the yard.
+
+>go dog
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a female dog here.
+
+>examine dog
+Your heart catches in your throat as you stand in her glorious presence. Graceful, athletic, and possessed of a noble bearing, she smites you with a glance down her long, fine muzzle. In her angelic mouth, she is coquettishly carrying a bone almost as big as she is.
+
+>examine bone
+It is the biggest, juiciest bone you've ever seen.  You envy the bone, which is clamped between the bewitchingly white teeth of the female dog.
+.
+
+>get bone
+The rock falls out of your mouth with a thud.
+
+It is a nice bone...but how would she feel if you just took it? She might find that playful, but then again, she might take it the wrong way. She might like resent such a bold move, uninvited. On the other hand, she could be secretly wishing that you'd make the first move. It might be just the right thing. It could also be a dreadful mistake though. You might come across as greedy and pushy. Not the sort of impression you'd like to make... Um. What were you thinking about? You forget.
+
+>go man
+The Park
+You are right outside a dilapidated shack, that has clearly been neglected.
+
+>go man
+Sleeping Room
+You walk into the tumbledown shack. There is a man here who looks old and grumpy. Like your home, this place has a sleeping room and an eating room. It looks like you've walked right into the sleeping room.
+
+The man yells at you and you tuck your head down. "Blah, blah, blah!" He doesn't seem to move though. Maybe he can't move.
+
+Nope. No movement. Hmph. You don't feel so afraid of him.
+
+On the pullout sofa is a pink pillow.
+
+>examine man
+The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn't move around at all. He just stays up against one wall. Boy, does he seem mad, "Blah, blah, blah, dog, blah, bad!"!
+
+>examine pillow
+A puffy, pink pillow with a pretty design on it: a red ball, with radiating red and white rays.
+
+>get pillow
+You pick up the pink pillow in your jaws.
+
+>go home
+The Park
+You are right outside a dilapidated shack, that has clearly been neglected.
+
+>go home
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a lump of rock and a female dog here.
+
+>go home
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go home
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go home
+The Park
+You are outside.
+
+>go home
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go home
+You walk in the front door, hop up on the futon and drop the pink pillow. You had thought about playing with the pillow more, but on the way home, it got soaked with drool and tasted bad, so you decide to make a present of it to Janet.
+
+You jump down from the futon before a surprised Janet can yell at you. Standing back and admiring your work, you marvel that somehow the pink of the pillow and purple of the futon don't clash.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+On the purple futon is a pink pillow.
+
+You can also see Rover here.
+
+Rover sniffs the front door.
+
+>get pillow
+Taken.
+
+Rover paces back and forth, looking at the front door.
+
+>examine it
+A fluffy pink pillow bearing the Myomita corporate logo, and a small label.
+
+Rover seems relaxed.
+
+>read label
+Property of Myomita Corporation. Experimental Starship "Blazing Sunrise", Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL.
+
+>remove label
+You disrupt the fragile, crystalline lattice of the malfunctioning nanotronic paratemporospatial transgressor, releasing the strained pocket universe within it. Reality crumbles around you, observable only because your local time is similarly falling to pieces and diluting. Even so, you perceive the effect to be accelerating and expanding, or alternatively, that your universe is being drawn inward.
+
+EPILOGUE
+
+It was a flawed, dysfunctional, cut-rate universe with underimplemented objects, a contrived plot and questionable morality, but it was what you and countless other sentient lifeforms affectionately called home.
+
+This afternoon, you snuffed out reality itself, which was substantially more than you had intended to get done today.
+
+Looking on the bright side, you trimmed off a thorny branch on the shrubbery of the multiverse, a timeline that was rapidly headed in an unredeemably unpleasant direction. Perhaps by snipping off the most recent sickly bud of that deformed bush, you have changed something fundamental in the multiverse, and the colorful flower of the future may yet bloom.
+
+
+Would you like to RESTART, RESTORE a saved game, or QUIT?
+> undo
+Living Room
+[Previous turn undone.]
+
+>open pillow
+That's not something you can open.
+
+Rover paws at the front door.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. Rover slips out the door.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go man
+The Park
+You are outside. The wind picks up, making it even more difficult to see.
+
+>go man
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go man
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go man
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a lump of rock and a female dog here.
+
+>get rock
+You grab the rock with your mouth, being careful not to crush it.
+
+>go hom
+That noun did not make sense in this context.
+
+>go hom
+That noun did not make sense in this context.
+
+>go hom
+That noun did not make sense in this context.
+
+>go hom
+That noun did not make sense in this context.
+
+>go home
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go home
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go home
+The Park
+You are outside. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go home
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. Dust spins in the air.
+
+>go home
+You return to the living room with the funny-tasting rock in your mouth. Janet takes a look at the rock and says "You've started a rock collection? Well, Okay," and closes the door behind you.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see a lump of rock and Rover here.
+
+Rover walks around the room, occasionally sniffing various spots on the floor.
+
+>get rock
+Taken.
+
+Rover sniffs the front door.
+
+>examine it
+A fist-sized rock that Rover brought in.
+
+Rover sniffs the front door.
+
+>open it
+That's not something you can open.
+
+>break it
+Violence isn't the answer to this one.
+
+>throw it
+Dropped.
+
+Rover paws at the front door.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The ground shakes forcefully.
+
+>go home
+You duck back into the living room and Janet closes the front door behind you.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover and a lump of rock here.
+
+Rover paws at the front door.
+
+>i
+You are carrying:
+  a pink pillow
+  a small box of reward nuggets
+    a dog treat
+
+Rover sniffs the front door.
+
+>get treat from box
+Taken.
+
+Rover paws at the front door.
+
+>give treat to rover
+(Rover)
+Rover nearly takes your hand off in rush to swallow the treat. A series of emotions wash over Rover's face, but finally it settles into an expression of exhiliration.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here.
+
+>i
+In your mouth, you are carrying nothing.
+
+>go dog
+The Park
+You are outside.
+
+>go dog
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go dog
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go dog
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a female dog here.
+
+>examine dog
+Your eyes are drawn to her perfectly rounded shoulders and haunches, her long arcing tail, and her soft, pendulous ears. You avert your gaze so as not to appear overly forward. In her sultry mouth, she is daintily carrying a bone.
+
+>examine dog
+You glance at her slyly while pretending to survey the ground near her feet. The fine columns of her legs rise magnificently from the ground, standing proudly atop her perfectly trimmed paws. The fur on her legs is bristly, and you wonder what it would be like to rub against it. Distractedly, your gaze drifts over her until a blowing clod of dust ricochets off your head, cutting short your revery. In her alluring mouth, she is seductively carrying a bone.
+
+>examine dog
+She remains silent and statuesque, but you sense that she quietly harbors the same feelings for you, but is afraid to admit it to herself. Perhaps she has had some past history, a bad master, an unrequited episode of pupply love, but none of that matters. You catch her eye for just a fraction of a second and teeter on the edge of a bottomless cavern as you are drawn deeper and deeper into the depths of her dark, beckoning eyes. You think you have shared something  special with her. Not wanting to push her too far, too fast, you gather your strength and turn your head virtously away. In her sensual mouth, she is elegantly carrying a bone.
+
+>examine dog
+As you once again regard her grandeur, you catch her looking at you. Not directly at you, more at the horizon, but clearly, she was looking you over. Your heart races to know that your initial impression was right, her feelings for you run like an underground stream coursing through a mountain, just below the surface, where they wait to be tapped like a geyser. Her resolve and self-control are astounding. In her luscious mouth, she is agilely carrying a bone.
+
+>examine dog
+A beautiful female dog. In her sweet mouth, she is provocatively carrying a bone.
+
+>examine dog
+A beautiful female dog. In her amorous mouth, she is flirtaciously carrying a bone.
+
+>examine dog
+A beautiful female dog. In her toothsome mouth, she is seductively carrying a bone.
+
+>examine dog
+A beautiful female dog. In her tempting mouth, she is provocatively carrying a bone.
+
+>examine dog
+A beautiful female dog. In her toothsome mouth, she is coquettishly carrying a bone.
+
+>examine dog
+A beautiful female dog. In her sultry mouth, she is elegantly carrying a bone.
+
+>get bone
+You wonder: is she holding out the bone to taunt you? Is this some sort of a power game that she's playing with you? Or could the bone be symbolic in some way of the sort of sharing that she might expect from a mate? She could be offering the bone to you. Would it be a mistake to take it? What would that say about the dynamics and balance between partners in this relationship? Who is a giver and who is a taker? This sort of mind game confuses you and you decide that not taking the bone is marginally more in your interest than the more obvious option of taking the bone.
+
+>get bone
+You would rather hold out for her to offer you the bone, than to take it outright.
+
+>get bone
+You would rather win the bone by impressing her. You're a cur, yes, but not the sort of cur that takes bones from ladies.
+
+>go home
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go home
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go home
+The Park
+You are outside. The wind picks up, making it even more difficult to see.
+
+>go home
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. Dust spins in the air.
+
+>go home
+You duck back into the living room and Janet closes the front door behind you.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover and a lump of rock here.
+
+Rover sniffs the front door.
+
+>i
+You are carrying:
+  a pink pillow
+  a small box of reward nuggets
+    a dog treat
+
+>drop pillow
+Dropped.
+
+Rover paws at the front door.
+
+>drop nuggets
+(the small box of reward nuggets)
+Dropped.
+
+Rover sniffs the front door.
+
+>get box
+The box rattles as you pick it up. Rover stares at the box of treats, successfully suppressing the urge to drool. For the moment.
+
+>give box to rover
+(Rover)
+Rover doesn't seem interested.
+
+Rover sniffs the front door.
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+Rover approaches the treat silently, with his head bent and eyes half closed, like a supplicant before the altar. With a look of deep reverence he takes the treat in his mouth and backs away. A series of emotions wash over Rover's face, but finally it settles into an expression of extreme satisfaction.
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+Rover snaps his tongue out like a frog and whips the treat out of your hand from two meters away. It's just something he does. A series of emotions wash over Rover's face, but finally it settles into an expression of elation.
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+Rover does a slow motion dive and twist in mid-air, gracefully arcing above you and swabbing your hand liberally with his broad, moist tongue. The treat has disappeared down his gullet by the time he lands. A series of emotions wash over Rover's face, but finally it settles into an expression of exultation.
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+Rover gobbles down the treat and then pretends indignantly that he hasn't received anything at all. A series of emotions wash over Rover's face, but finally it settles into an expression of ecstasy.
+
+>
+I beg your pardon?
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+Rover carefully lifts the treat out of your hand using a toothy sidewise grip. A series of emotions wash over Rover's face, but finally it settles into an expression of enjoyment.
+
+>put treat in pillow
+You need to be holding the dog treat before you can put it into something else.
+
+>get treat
+Taken.
+
+>put treat in pillow
+That can't contain things.
+
+Rover paws at the front door.
+
+>i
+You are carrying:
+  a dog treat
+  a small box of reward nuggets
+
+Rover sniffs the front door.
+
+>l
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see a pink pillow, Rover, and a lump of rock here.
+
+>examine rock
+A fist-sized rock that Rover brought in.
+
+Rover bounds up onto the futon and begins to get comfortable, rolling his muzzle back and forth on the mattress. Abruptly, his head pokes up and he realizes that you are watching him. Recognizing the awkwardness of being caught on the forbidden futon, Rover slinks down behind it and slowly emerges. He looks over his own shoulder at the futon as if to say "I wonder who that dog was on the futon".
+
+>get pillow
+Taken.
+
+Rover paws at the front door.
+
+>give pillow to rover
+(Rover)
+Rover doesn't seem interested.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. Dust spins in the air.
+
+>i
+In your mouth, you are carrying nothing.
+
+>go man
+The Park
+You are outside. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go man
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go man
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go man
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a female dog here.
+
+>go man
+The Park
+You are right outside a dilapidated shack, that has clearly been neglected. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go man
+Sleeping Room
+The smelly man's house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, "Blah? Blah, blah, blah, blah, dog. Blah, blah, blah, blah, Mars? Blah! Blah, blah, blah, dog, blah!"
+
+You ignore him.
+
+>go eating room
+Eating Room
+The room has big cold box just like the eating room in your home. It's less loud in this room, but you can hear the man in the other room yelling, "Blah, blah, blah, blah, blah, blah!". There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes.
+
+You can see a food dish (in which is some canned food) and a water dish (in which is a crystal clear water) here.
+
+>get food dish
+That's fixed in place.
+
+>get food
+(the food dish)
+That's fixed in place.
+
+>examine canned food
+A large helping of smelly, brown cubes of meat smothered in gravy. The kind of food that comes from a can, not a bag. The good stuff.
+
+>examine water dish
+The other dog's plastic water dish looks much better than yours.
+
+>eat canned food
+One second the canned food is right there in front of you, the next you are staring at the bottom of the bowl. A warm, satisfied feeling flows from your snout to your tail.
+
+>drink water
+(the water dish)
+There's nothing suitable to drink here.
+
+>look
+Eating Room
+The room has big cold box just like the eating room in your home. It's less loud in this room, but you can hear the man in the other room yelling, "Bad dog! Blah!". There's a water maker here too. Next to the water maker is a table that is too tall to be reached except on your hind legs. On the floor, there are two dishes.
+
+You can see a food dish (empty) and a water dish (in which is a crystal clear water) here.
+
+>examine table
+A big wooden table. Probably used for cooking stuff. Unfortunately, there is nothing, food or otherwise, on the table at the moment.
+
+>examine water maker
+A thing that people have in their homes.  They can get water out of it to put in your bowl.
+
+>open fridge
+You open the cold box, revealing a white egg.
+
+>get egg
+You gently pick up the white egg using your front teeth.
+
+>go dog
+Sleeping Room
+The smelly man's house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, "Blah, blah, blah, blah, dog? Blah! Blah, blah!"
+
+You ignore him.
+
+>examine man
+The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn't move around at all. He just stays up against one wall. Boy, does he seem mad, "Blah, blah, Myomita, blah, blah, blah, Earth, blah, blah, dog, blah, blah!"!
+
+>examine man
+The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn't move around at all. He just stays up against one wall. Boy, does he seem mad, "Blah, out, blah, blah, dog!"!
+
+>examine man
+The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn't move around at all. He just stays up against one wall. Boy, does he seem mad, "Blah, blah, blah, blah, blah, blah!"!
+
+>examine man
+The man seems flat like a rug, rather than round like a ball. He makes a lot of noise, but he doesn't move around at all. He just stays up against one wall. Boy, does he seem mad, "Bad dog! Blah!"!
+
+>go dog
+The Park
+You are right outside a dilapidated shack, that has clearly been neglected. The wind picks up, making it even more difficult to see.
+
+>go dog
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a female dog here.
+
+>drop egg
+Dropped.
+
+>give egg to dog
+(first taking the white egg)
+You carefully take hold of the white egg with your teeth.
+
+The white egg does not impress her, and it falls to her feet. No doubt she has many suitors.
+
+>get egg
+The white egg is already in your mouth.
+
+>go home
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go home
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go home
+The Park
+You are outside.
+
+>go home
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The sky rumbles and rolls, and flashes of lightning snap between billowing clouds of dirt-colored dust.
+
+>go home
+You enter your home and lay the egg at Janet's feet. She looks so surprised! "Good boy," she exclaims and you give her a big kiss to let her know you understand.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see a white egg, Rover, and a lump of rock here.
+
+Rover sniffs the front door.
+
+>get egg
+Taken.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+On the the cooking range is a frying pan (empty).
+
+You can also see a food bowl (empty) and a water bowl (empty) here.
+
+Rover trundles along behind you, his attention riveted to the small box of reward nuggets.
+
+>put egg in pan
+You put the white egg into the frying pan.
+
+>brea kit
+That's not a verb I recognize.
+
+>break it
+You crack the egg into the frying pan. The neoegg shell sublimates as the contents spread over the pan's non-stick surface. Immediately, the surface of the range glows red. When the egg is cooked sunny-side up to perfection, the glow fades.
+
+>eat egg
+You gobble down what might well have been the best neoegg you've ever had.
+
+>go to living room
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see a lump of rock here.
+
+Rover trundles along behind you, his attention riveted to the small box of reward nuggets.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. Rover slips out the door.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here.
+
+>smell
+It smells like the outdoors here. From a long way off you smell the odor of a man. Interestingly, you detect the engrossing perfume of a female dog carried across the park by the wind. The heartening smell of home is a hop, lick and a bark away.
+
+>go man
+The Park
+You are outside. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go man
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>smell
+It smells of freshly turned soil here. From a ways off you smell the disagreeable scent of a man. Interestingly, you detect the enthralling scent of a female dog coloring the air with its lovely scent from only a short run away. The soothing smell of home is a short run from here.
+
+>go dog
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go dog
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a female dog here.
+
+>examine dog
+A beautiful female dog. In her alluring mouth, she is daintily carrying a bone.
+
+>get bone
+Nah, that would be rude.
+
+>get bone
+Nah, that would be rude.
+
+>get bone
+Nah, that would be rude.
+
+>get bone
+Nah, that would be rude.
+
+>court dog
+That's not a verb I recognize.
+
+>i
+In your mouth, you are carrying nothing.
+
+>go home
+The Park
+A long furrow scars the ground in this part of the park. Smoke billows from the darkened walls of the deep hole.
+
+You can see a long furrow (empty) here.
+
+>go home
+The Park
+A dug-up field pock marked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>go home
+The Park
+You are outside. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go home
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go home
+You duck back into the living room and Janet closes the front door behind you.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see Rover and a lump of rock here.
+
+>get nuggets
+(the small box of reward nuggets)
+You already have that.
+
+>throw box out of door
+I only understood you as far as wanting to throw the small box of reward nuggets.
+
+>put box outside
+I didn't understand that sentence.
+
+>give box to rover
+(Rover)
+Rover doesn't seem interested.
+
+Rover paws at the front door.
+
+>attach box to rover
+(Rover)
+You would achieve nothing by this.
+
+Rover sniffs the front door.
+
+>i
+You are carrying:
+  a pink pillow
+  a dog treat
+  a small box of reward nuggets
+
+Rover paws at the front door.
+
+>give pillow to rover
+(Rover)
+Rover doesn't seem interested.
+
+Rover sniffs the front door.
+
+>examine pillow
+A fluffy pink pillow bearing the Myomita corporate logo, and a small label.
+
+Rover paws at the front door.
+
+>read label
+Property of Myomita Corporation. Experimental Starship "Blazing Sunrise", Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL.
+
+Rover sniffs the front door.
+
+>put pillow on futon
+You put the pink pillow on the purple futon.
+
+Rover paws at the front door.
+
+>open window
+That's not something you can open.
+
+>put pillow outside
+I didn't understand that sentence.
+
+>open door
+(the front door)
+Rover looks up when he hears the door begin to open. Rover slips out the door.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, full of energy. 
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The wind picks up, making it even more difficult to see.
+
+>i
+In your mouth, you are carrying nothing.
+
+>smell
+It smells like the outdoors here. From a long way off you smell the stale funk of a man. Interestingly, you detect the riveting perfume of a female dog carried across the park by the wind. The cheerful smell of home is a hop, lick and a bark away.
+
+>go home
+You duck back into the living room and Janet closes the front door behind you.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+On the purple futon is a pink pillow.
+
+You can also see Rover and a lump of rock here.
+
+>get rock
+Taken.
+
+Rover paws at the front door.
+
+>throw rock
+Dropped.
+
+Rover scratches his ears.
+
+>get it
+Taken.
+
+Rover sniffs the front door.
+
+>examine it
+A fist-sized rock that Rover brought in.
+
+Rover rests his front paws on the window and stares out at the Park.
+
+>give rock to rover
+(Rover)
+Rover doesn't seem interested.
+
+>i
+You are carrying:
+  a lump of rock
+  a dog treat
+  a small box of reward nuggets
+
+>give treat to rover
+(Rover)
+Rover gobbles down the treat. A series of emotions wash over Rover's face, but finally it settles into an expression of euphoria.
+
+>give box to rover
+(Rover)
+Rover doesn't seem interested.
+
+Rover sniffs the front door.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+On the the cooking range is a frying pan (empty).
+
+You can also see a food bowl (empty) and a water bowl (empty) here.
+
+Rover trundles along behind you, his attention riveted to the small box of reward nuggets.
+
+>put treat in pan
+You need to be holding the dog treat before you can put it into something else.
+
+>get treat
+Taken.
+
+Rover circles the cabinet.
+
+>put it in pan
+You put the dog treat into the frying pan.
+
+>get it
+You haven't given Rover the last dog treat you took out of the box, and you don't want to find them all over the cottage a few months from now when your neurotically fastidious mother shows up on short notice.
+
+>get treat from pan
+You haven't given Rover the last dog treat you took out of the box.
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+You haven't given Rover the last dog treat you took out of the box.
+
+Rover looks at the the cooking range.
+
+>i
+You are carrying:
+  a lump of rock
+  a small box of reward nuggets
+
+>examine pan
+A small, non-stick frying pan .
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+You haven't given Rover the last dog treat you took out of the box.
+
+>get treat
+You haven't given Rover the last dog treat you took out of the box.
+
+>get pan
+Taken.
+
+>i
+You are carrying:
+  a frying pan
+    a dog treat
+  a lump of r
+ock
+  a small box of reward nuggets
+
+Rover dashes back and forth like a possessed dog for no apparent reason.
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+You haven't given Rover the last dog treat you took out of the box.
+
+Rover licks his front paws.
+
+>give treat to rover
+(Rover)
+(first taking the dog treat)
+You haven't given Rover the last dog treat you took out of the box.
+
+Rover rolls and squirms back and forth on the floor trying to scratch an itch.
+
+>i
+You are carrying:
+  a frying pan
+    a dog treat
+  a lump of rock
+  a small box of reward nuggets
+
+>get treat
+You haven't given Rover the last dog treat you took out of the box.
+
+>get treat from pan
+You haven't given Rover the last dog treat you took out of the box.
+
+>get treat out of pan
+I only understood you as far as wanting to get the dog treat.
+
+>drop box
+Dropped.
+
+>get treat
+You haven't given Rover the last dog treat you took out of the box.
+
+Rover appears lost in thought.
+
+>go to living room
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+On the purple futon is a pink pillow.
+
+>get treat
+You haven't given Rover the last dog treat you took out of the box.
+
+>drop treat
+You haven't got that.
+
+From the direction of the kitchen, you hear Rover barking at something.
+
+>drop pan
+Dropped.
+
+>examine pan
+A small, non-stick frying pan .
+
+>get treat
+You haven't given Rover the last dog treat you took out of the box.
+
+>sing
+You quietly sing a short song that Tomasz had taught you. The song is about a lonely colony ship engineer who pines for his sweetheart back on Earth.
+
+>jump
+You're just a hair over one a half meters tall, but in the Martian gravity, you nearly bean yourself on the the living room ceiling.
+
+>jump
+You're just a hair over one a half meters tall, but in the Martian gravity, you nearly bean yourself on the the living room ceiling.
+
+From the direction of the kitchen, you hear Rover scratching himself.
+
+>sing
+You sing a slow ballad,"The Orange Hills of Mars".
+
+From the direction of the kitchen, you hear Rover dragging something around.
+
+>sing
+You crank out a bawdy drinking song, "Bartender, set me up a Barsoom".
+
+From the direction of the kitchen, you hear Rover snoring softly (in the sense that it probably can't be heard outside of the cottage).
+
+>sing
+You hum (because you can't remember the words) a short tune that children learn to remember the order of the planets in the Solar System. Obviously, the song missed its mark with you, although you still remember the catchy melody.
+
+>sing
+You bang out a respectable version of "A Common Hope", the anthem of the People's Government of Mars.
+
+From the direction of the kitchen, you hear Rover snoring loudly.
+
+>sing
+You sing a short tune.
+
+>sing
+You sing a short tune.
+
+From the direction of the kitchen, you hear Rover growling at something.
+
+>sing
+You sing a short tune.
+
+>eat
+(the rock)
+That's plainly inedible.
+
+>read pillow
+You can't see any such thing.
+
+>l
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+On the purple futon is a pink pillow.
+
+You can also see a frying pan (in which is a dog treat) here.
+
+>get pillow
+Taken.
+
+>examine it
+A fluffy pink pillow bearing the Myomita corporate logo, and a small label.
+
+From the direction of the kitchen, you hear Rover running in circles.
+
+>examine logo
+You can't see any such thing.
+
+>examine label
+a small, cloth label attached to the pillow
+
+>read it
+Property of Myomita Corporation. Experimental Starship "Blazing Sunrise", Nanotronic Paratemporospatial Transgressor. Warning: Lattice under lethal PTS tension. DO NOT REMOVE THIS LABEL.
+
+>open pillow
+That's not something you can open.
+
+From the direction of the kitchen, you hear Rover playing.
+
+>look in pillow
+You find nothing of interest.
+
+From the direction of the kitchen, you hear Rover doing whatever it is he does when he's not out for walkies and he thinks he's out of your sight.
+
+>pull futon
+It's too early in the day to head back to bed.
+
+>l
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see a frying pan (in which is a dog treat) here.
+
+>examine window
+The garden skylights are just coming on. They cast long shadows from a stand of Norwegian Spruce trees at the far side of the park.
+
+>open it
+That's not something you can open.
+
+>go to bathroom
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+>examine mirror
+The mirror is covered with condensation.
+
+
+David:  Wait, is that memory usage correct?
+Janet:  Sure, it's fairly conservative.  The system has 640 PB available.
+David:  That's it?
+Janet:  C'mon, nobody will ever need more than 640 PB.
+
+>wipe mirror
+You wipe away the condensation and can see yourself in the mirror. You are naked.
+
+>examine mirror
+You see yourself in the mirror: a young woman with dark brown hair, high cheekbones and a look of determination.
+
+From the direction of the kitchen, you hear Rover entertaining himself.
+
+>l
+The Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass touch plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+From the direction of the kitchen, you hear Rover jumping around.
+
+>press plate
+The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on.
+
+From the direction of the kitchen, you hear Rover walking in your direction.
+
+>go to kitchen
+The Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+You can see a small box of reward nuggets (empty), Rover, a food bowl (empty), and a water bowl (empty) here.
+
+>go to living room
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window -- strangely, your drapes are nowhere to be seen. The principle furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+You can see a frying pan (in which is a dog treat) here.
+
+>lie on pillow
+You know that if you lie down this early in the morning you'll feel weird the entire day and that no amount of coffee in the afternoon with put things right again.
+
+From the direction of the kitchen, you hear Rover scratching something.
+
+>lie
+You know that if you lie down this early in the morning you'll feel weird the entire day and that no amount of coffee in the afternoon with put things right again.
+
+From the direction of the kitchen, you hear Rover walking about.
+
+>sleep
+You aren't feeling especially drowsy.
+
+>die
+That's not a verb I recognize.
+
+>explode
+That's not a verb I recognize.
+
+>transmit
+That's not a verb I recognize.
