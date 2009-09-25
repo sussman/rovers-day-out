@@ -57,7 +57,7 @@ Rule for writing a paragraph about Rover when the player is self-aware and Board
 		say "ROVER cradles the space probe delicately [one of]in his sleep[or]while in power conservation mode[purely at random].";
 	otherwise:
 		if Rover carries the delicious bone:
-			say "ROVER chews contently on [one of]his bone[or]the space probe[purely at random].";
+			say "ROVER chews contentedly on [one of]his bone[or]the space probe[purely at random].";
 		otherwise:
 			say "ROVER remains on hot standby.";
 	now Rover is busy.
@@ -201,7 +201,7 @@ On-the-pot is a number that varies. On-the-pot is 0.
 Stardate is a text that varies. Stardate is "23920401".
 [Used in banners as serial number, also used in the time/date command
 Here's a brief history of time for the game:
-	April 1, 2392: 	Janet and David run the first simulaton.
+	April 1, 2392: 	Janet and David run the first simulation.
 						Patching happens. They date.
 	April 15, 2392:	J&D run the second simulation up to "Walkies".
 						Overnight, David patches the ansible routine.
@@ -405,7 +405,7 @@ Carry out BSOEing:
 	await keystroke;
 	open up BSOD-window;
 	move focus to BSOD-window, clearing the window;
-	say "[second custom style]                 WINDEX                 [paragraph break]STOP :: FLOSIX VIRTUAL MACHINE EXITED WITH STATUS 'SUCCESS'.[paragraph break]HOLOTRAINER -> EXECUTE : COMPLETE[line break]HOLOTRANINER -> SHUTDOWN : TRUE[line break]TRANSCRIPT -> ENCRYPT : AUTHORIZATION JANETXIANG[line break]TRANSCRIPT -> CACHE : TRUE[line break]COGNITIVE CONSTRAINTS -> ENGAGE : TRUE[line break]ACU-2.0 NEURALNET -> SAVE : TRUE[paragraph break]SYSTEM WILL NOW SHUTDOWN FOR SCHEDULED MAINTENANCE.[paragraph break]";
+	say "[second custom style]                 WINDEX                 [paragraph break]STOP :: FLOSIX VIRTUAL MACHINE EXITED WITH STATUS 'SUCCESS'.[paragraph break]HOLOTRAINER -> EXECUTE : COMPLETE[line break]HOLOTRANINER -> SHUTDOWN : TRUE[line break]TRANSCRIPT -> ENCRYPT : AUTHORIZATION JANETXIANG[line break]TRANSCRIPT -> CACHE : TRUE[line break]COGNITIVE CONSTRAINTS -> ENGAGE : TRUE[line break]ACU-2.0 NEURALNET -> SAVE : TRUE[paragraph break]SYSTEM WILL NOW SHUT DOWN FOR SCHEDULED MAINTENANCE.[paragraph break]";
 	wait for any key;
 	shut down BSOD-window;
 	return to main screen;
@@ -595,7 +595,7 @@ Carry out uptiming:
 		if the IPL_pid is 0:
 			say "You still haven't dragged your sorry butt out of bed.";
 		otherwise:
-			say "Your alarm clock started going off at 5:30 this morning, and took you another [IPL_pid] minutes to haul yourself to consciousness. You've been up since then. Congratulations.";
+			say "Your alarm clock started going off at 5:30 this morning, and it took you another [IPL_pid] minutes to haul yourself to consciousness. You've been up since then. Congratulations.";
 	otherwise:
 		say "[time of day]  up [turn count - epoch_pid] minutes,   1 user,    load average 0.99 [paragraph break]".	
 
@@ -665,7 +665,7 @@ A glulx timed activity rule (this is the countdown rule):
 		-- 40: say "[line break]Preparing to unmount all volumes[run paragraph on]";
 		--	30: say "[line break]Preparing to disengage sensors[run paragraph on]";
 		--	20: say "[line break]Preparing to disengage effectors[run paragraph on]";
-		--	10: say "[line break]Preparing ACU executive shutdown[run paragraph on]";
+		--	10: say "[line break]Preparing ACU for executive shutdown[run paragraph on]";
 		--	 1: say "[line break]Root authentication failed.[paragraph break]Command aborted.[line break]"; 
 		--	 0: stop timer;
 		-- otherwise: say ".[run paragraph on]";
@@ -727,7 +727,7 @@ Carry out pinging:
 			repeat with X running from 1 to 5:
 				let routetime be a random number from 1 to 9;
 				say "ping 127.0.0.1 with 56 bytes: [5 + routetime] attoseconds[line break]";
-			say "100% packets received[paragraph break]";
+			say "100% of packets received[paragraph break]";
 			change the outcome-override to force-success;
 			the rule succeeds;
 		otherwise:
@@ -819,7 +819,7 @@ Instead of fingering a topic listed in the Table of Fingers:
 		
 Table of Fingers
 topic		name		dir		login		shell		laston		plan
-"David" or "Venkatachalam"	"David Venkatachalam"		"/home/dave"	"dave"		"tcsh"		"Fri Apr 17 04:30 (CST) on console"	"Thank God men cannot as yet fly and lay waste the sky as well as the earth! (Thoreau, 1817-1862)"
+"David" or "Venkatachalam"	"David Venkatachalam"		"/home/dave"	"dave"		"tcsh"		"Fri Apr 17 04:30 (CST) on console"	"Thank God men cannot as yet fly and lay waste the sky as well as the earth! (Henry David Thoreau, 1817-1862)"
 "Janet" or "Xiang"		"Janet Xiang"	"/home/xyzzy"		"xyzzy"		"bash"		"Thu Apr 16 17:17 (CST) on ttys001"		"Necessity is blind until it becomes conscious. Freedom is the consciousness of necessity.[line break]-----BEGIN GEEK CODE BLOCK-----[line break]Version: 8.2[line break]GCS d-- s--:- a C++++$ FL?P E++ [line break]W N o K-- w-- O M++ V PS++ PE++[line break]Y+$ PGP++ t+++ R+++ 3d++ b++++[line break]D G+++ e++++ h+ r-- x+[line break]------END GEEK CODE BLOCK------"
 "ACU" or "autonomous" or "control" or "unit" or "me"		"Autonomous Control Unit"		"/operations"		"acu"		"bash"		--		"No plan"
 "root" or "administrator" or "admin"		"root"		"/var/root"		"root"		"bash"		"Fri Apr 17 04:32 (CST) on console"		"No plan"
@@ -925,7 +925,7 @@ Carry out going towards:
 		if the way is not a direction, say "You can't figure out how to get there." instead;
 		let the destination be the room the way from the location; [ben said:  huh?  english grammar parse failure...Jack said: OK, I've replaced "the heading" with "the way" which seems to be the favorite word choice in the examples. Still sounds stilted.]
 		change outcome-override to force-success;
-		if the player is Rover, say "[one of]You trot off in that direction[or]You let your nose lead the way[or]You bound away towards your goal[or]Your legs carry you as fast as you can[or]You eagerly scamper that way[or]You scuttle forth[or]Trot, trot, trot[in random order].[paragraph break]";
+		if the player is Rover, say "[one of]You trot off in that direction[or]You let your nose lead the way[or]You bound away towards your goal[or]Your legs carry you as fast as they can[or]You eagerly scamper that way[or]You scuttle forth[or]Trot, trot, trot[in random order].[paragraph break]";
 		move the player to the destination.
 	
 Rule for reaching inside a room when the current action is going towards: 
@@ -961,11 +961,11 @@ Instead of going towards when the player is in the Living Room and the futon is 
 After going towards when the player is the ACU:
 	if the player carries the reward nuggets replicator:
 		if Rover is in the location:
-			say "[Rover] [if the player is clueless][one of]begs for some treats[or]dances around, trying to suggest that he'd be glad to do one of his tricks for a reward nugget[or]sniffs at [the reward nuggets replicator][or]keeps an eye on [the reward nuggets replicator][or]stares dreamily at the doggie treats[or]watches you intently, concentrating on [reward nuggets replicator][or]scrutinizes [reward nuggets replicator][or]contemplates [the reward nuggets replicator][or]dreams about the doggie treats in that [reward nuggets replicator][or]lays down, rolls over, and barks, hoping to persuade you to toss him a treat[or]sits and gives kisses, hoping to earn a reward nugget[in random order][otherwise]maintains a fix on [the reward nuggets replicator][end if].";
+			say "[Rover] [if the player is clueless][one of]begs for some treats[or]dances around, trying to suggest that he'd be glad to do one of his tricks for a reward nugget[or]sniffs at [the reward nuggets replicator][or]keeps an eye on [the reward nuggets replicator][or]stares dreamily at the doggie treats[or]watches you intently, concentrating on [reward nuggets replicator][or]scrutinizes [reward nuggets replicator][or]contemplates [the reward nuggets replicator][or]dreams about the doggie treats in that [reward nuggets replicator][or]lies down, rolls over, and barks, hoping to persuade you to toss him a treat[or]sits and gives kisses, hoping to earn a reward nugget[in random order][otherwise]maintains a fix on [the reward nuggets replicator][end if].";
 		otherwise:
 			if the location is the shower:
 				now Rover is in the bathroom;
-				say "[Rover] [if the player is clueless]pads along behind you until you get to the shower, but decides he's not willing to risk a bath for some reward nuggets[otherwise]follows your focus as you select the extruder, but he stops just outside it in the flight control area[end if].";
+				say "[Rover] [if the player is clueless]pads along behind you until you get to the shower but decides he's not willing to risk a bath for some reward nuggets[otherwise]follows your focus as you select the extruder, but he stops just outside it in the flight control area[end if].";
 			otherwise:
 				now Rover is in the location;
 				say "[Rover] trundles along behind you, his attention riveted to [the reward nuggets replicator].";
@@ -974,7 +974,7 @@ After going towards when the player is the ACU:
 		-- kitchen:
 			if the counter is not discussed and the Second Sim is happening:
 				now the counter is discussed;
-				let metatext be "David: Where are your coffee machine and toaster?*Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.*David: Lazy.*Janet: You don’t know the crazy things that the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
+				let metatext be "David: Where are your coffee machine and toaster?*Janet: I mapped the ship functions to the minimum number of objects. More objects means more ways for things to go wrong and more time debugging. Call me lazy.*David: Lazy.*Janet: You don’t know the crazy things the ACU does! Sometimes it walks around trying to eat or take everything in sight. Sometimes it sings and jumps around. It’s based on my neural bindings, but the ACU definitely has a mind of its own, and I don’t want to have to worry about what it might try do with a toaster.";
 				say "[metatext in metaspeak]";
 			if the landing_pid is not zero and (Rover is hungry or Rover is thirsty) and Rover is in the kitchen:
 				if Rover is hungry:
@@ -1047,7 +1047,7 @@ Instead of unfolding the futon:
 		say "[if the player is clueless]What?  Doesn't it already take up just about the entire living room?[otherwise]The Casimir Drive is already extended.[end if]";
 	otherwise:
 		if Back on Mars is happening:
-			say "In an act of desperation, you prepare to deploy the Casimir Drive while in dry dock. An internal warning flashes red in your virtual vision, blinking insistantly. You try to push it to the side, but it is modal:[paragraph break]WARNING: Deep gravity well. Deploying Casimir Drive will cause a Casimir inversion. Theoretically, this may result in destruction on a planetary or greater scale. Confirm that Casimir deployment is authorized (Y/N)[paragraph break]BINARY INPUT REQUIRED>";
+			say "In an act of desperation, you prepare to deploy the Casimir Drive while in dry dock. An internal warning flashes red in your virtual vision, blinking insistently. You try to push it to the side, but it is modal:[paragraph break]WARNING: Deep gravity well. Deploying Casimir Drive will cause a Casimir inversion. Theoretically, this may result in destruction on a planetary or greater scale. Confirm that Casimir deployment is authorized (Y/N)[paragraph break]BINARY INPUT REQUIRED>";
 			if the player consents:
 				change outcome-override to force-success;
 				say "There is a flash of white. And then nothing.";
@@ -1176,12 +1176,12 @@ To say home-smell:
 Table of Nasal Rangefinding
 range		manscent				dogscent				homescent
 0			"an unfortunately small distance"			"at muzzle's distance from you"		"just on the other side of that wall"
-1			"just around the corner"	"coming from somewhere really close"	"a hop, lick and a bark away"
+1			"just around the corner"	"coming from somewhere really close"	"a hop, lick, and a bark away"
 2			"not too far away"	"coloring the air with its lovely scent from only a short run away"		"two shakes of a tail from here"
 3			"some distance"		"wafting enticingly from not too far away"	"a short run from here"
 4			"a ways off"			"carried across the park by the wind"		"still present"
 5			"a considerable distance"	"coming from a reasonable distance away"		"getting fainter"
-6			"a long way off"	"delicately scenting the air"		"worringly faint from here"
+6			"a long way off"	"delicately scenting the air"		"worryingly faint from here"
 7			"far away"			"faintly, but definitely, tickling your nose from some remote, and no doubt exotic, location."		"all but undetectable from here"
 8			"far, far away"		"a distant, but enviable, location"		"only a wispy trace at this far extreme of your faithful nose's olfactory abilities"
 
@@ -1227,7 +1227,7 @@ To await keystroke:
 		
 Section Potty Language
 
-Businessing is an action applying to nothing. Understand "crap" or "poop" or "defecate" or "do business" or "piss" or "pee" or "urinate" or "micturate" or "tinkle" or "whiz" or "void" as businessing.
+Businessing is an action applying to nothing. Understand "crap" or "poop" or "defecate" or "do business" or "piss" or "pee" or "urinate" or "micturate" or "tinkle" or "whiz" or "void" or "take a dump" as businessing.
 
 Check Businessing:
 	if the player is Rover:
@@ -1270,7 +1270,7 @@ Instead of tying the dental floss to something:
 			say "Tangling up the dental floss in the flush chain is asking for trouble."; [only clueless case is required, as chain is broken during the Real Thing scene]
 		otherwise:
 			change outcome-override to force-success;
-			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperature[end if].";
+			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperture[end if].";
 			now the chain is repaired.
 
 Understand the commands "fix", "mend", and "repair" as something new. 
@@ -1294,7 +1294,7 @@ Instead of repairing the chain:
 		if the player holds the dental floss:
 			try tying the dental floss to the chain;
 		otherwise:
-			say "[if the player is clueless]Looks like you need something to unite the two ends of the rusted out chain[otherwise]The distal and proximal termini of the servo linkage have become disentangled. You need to relink across the relay to re-establish the control pathway[end if].";
+			say "[if the player is clueless]Looks like you need something to unite the two ends of the rusted out chain[otherwise]The distal and proximal termini of the servo linkage have become disentangled. You need to relink across the relay to reestablish the control pathway[end if].";
 		
 Instead of repairing the toilet:
 	if the chain is not broken:
@@ -1303,7 +1303,7 @@ Instead of repairing the toilet:
 		if the tank top is open:
 			try repairing the chain;
 		otherwise:
-			say "[if the player is clueless]Sounds like the problem is in the water tank somewhere[otherwise]You detect a fault within the plasma constrictor, but diagnostics are limited as the plasma constrictor hatch is closed[end if]."
+			say "[if the player is clueless]Sounds like the problem is in the water tank somewhere[otherwise]You detect a fault within the plasma constrictor, but diagnostics are limited, as the plasma constrictor hatch is closed[end if]."
 			
 Instead of repairing Rover:
 	say "[if the player is clueless]Rover has already been fixed, and he didn't enjoy it[otherwise]Although ROVER is missing two nuts on his underchassis, you consider him fixed[end if]."
@@ -1328,13 +1328,13 @@ Petting is an action applying to one thing. Understand "pet [something]" or "str
 
 Check Petting:
 	if the noun is the female dog:
-		say "[one of]Maybe you'd consider that after a few months of social pleasantries and a suitable period of getting to know each other[or]You admire her for her sense of humor and the way she seems to understand you on a profoundly personal level. You don't want to risk everything that the two of you have built together by rushing head long into a physical relationship[or]You are too nervous[stopping]." instead;
+		say "[one of]Maybe you'd consider that after a few months of social pleasantries and a suitable period of getting to know each other[or]You admire her for her sense of humor and the way she seems to understand you on a profoundly personal level. You don't want to risk everything that the two of you have built together by rushing headlong into a physical relationship[or]You are too nervous[stopping]." instead;
 	if the noun is not Rover:
 		say "You [if the player is clueless]stroke [the noun] fondly[otherwise]are not able to synch with [the noun][end if]." instead.
 		
 Report Petting:
 	change the outcome-override to force-success;
-	say "[one of]You scratch [Rover] behind the ears, and he makes a rumbling happy sound[or]You rub [Rover] under the chin, and he cranes back his neck and twists his head from side to side in enjoyment[or]You rub [Rover]'s chest and his back leg fiddles[or]You stroke [Rover]'s back and he nuzzles up against you[or]You scratch [Rover]'s back and he slowly inches forward, trying to get you to scratch more towards the base of his spine[or]You reach out to pet Rover and he flips over, feet peddling the air, in search of some belly rubs, which you give[or]You pat [Rover] briefly, but he lets you know that a brief pat is not satisfactory. You spend some time scratching [Rover], as he repositions himself constantly, trying to get you to scratch an ever-moving itch[or][Rover] waits expectantly for more petting[or][Rover] licks your hand[or][Rover] expresses his gratitiude with some lip smacking sounds[or]Now that you've rearranged his fur, [Rover] spends a moment scratching his ears and licking himself to get it all back to the way it was[or][Rover] seems comforted[or][Rover] seems lost in the moment[in random order]."
+	say "[one of]You scratch [Rover] behind the ears, and he makes a rumbling happy sound[or]You rub [Rover] under the chin, and he cranes back his neck and twists his head from side to side in enjoyment[or]You rub [Rover]'s chest and his back leg fiddles[or]You stroke [Rover]'s back and he nuzzles up against you[or]You scratch [Rover]'s back and he slowly inches forward, trying to get you to scratch more towards the base of his spine[or]You reach out to pet Rover and he flips over, feet pedaling the air, in search of some belly rubs, which you give[or]You pat [Rover] briefly, but he lets you know that a brief pat is not satisfactory. You spend some time scratching [Rover], as he repositions himself constantly, trying to get you to scratch an ever-moving itch[or][Rover] waits expectantly for more petting[or][Rover] licks your hand[or][Rover] expresses his gratitude with some lip-smacking sounds[or]Now that you've rearranged his fur, [Rover] spends a moment scratching his ears and licking himself to get it all back to the way it was[or][Rover] seems comforted[or][Rover] seems lost in the moment[in random order]."
 	
 Section Cooking
 
@@ -1351,10 +1351,10 @@ Check cooking:
 		say "[if the player is clueless]You usually cook your eggs in a frying pan[otherwise]You will need a magnetic bottle to contain the heavy helium sphere during the fusion process[end if].";
 		the rule fails;
 	if the frying pan is not on the range:
-		say "[if the player is clueless]The frying pan isn't going to do much good if it's not on the stove[otherwise]The fusion reaction can't start unless the magnetic bottle correctly positioned on the fusion chamber[end if].";
+		say "[if the player is clueless]The frying pan isn't going to do much good if it's not on the stove[otherwise]The fusion reaction can't start unless the magnetic bottle is correctly positioned on the fusion chamber[end if].";
 		the rule fails;
 	if the white egg is not in the frying pan:
-		say "[if the player is clueless]You wonder if the egg wouldn't cook better if you actually put it in the frying pan[otherwise]The sphere of fusion fuel isn't contained in the magnetic bottle[end if].";
+		say "[if the player is clueless]You wonder whether the egg wouldn't cook better if you actually put it in the frying pan[otherwise]The sphere of fusion fuel isn't contained in the magnetic bottle[end if].";
 		the rule fails.
 		
 Carry out cooking:
@@ -1375,7 +1375,7 @@ Carry out standing:
 	
 Report standing:  
 	if the perch stood from is not nothing:
-		say "You [if the player is clueless]get off[otherwise]deactive your connection to[end if] [the perch stood from].";
+		say "You [if the player is clueless]get off[otherwise]deactivate your connection to[end if] [the perch stood from].";
 	otherwise:
 		say "You are [if the player is clueless]standing in[otherwise]currently accessing[end if] [the location in lower case]."
 		
@@ -1414,7 +1414,7 @@ Report using:
 		-- the toilet:
 			try businessing instead;
 		-- otherwise:
-			say "[one of]I'm afraid you'll need to be more specific.[or]Apologies, but that's a bit vague; can you express differently?[or]I don't quite follow.[or]Sorry, can you rephrase that?[or]Can you be more precise, please?[in random order]";
+			say "[one of]I'm afraid you'll need to be more specific.[or]Apologies, but that's a bit vague; can you express it differently?[or]I don't quite follow.[or]Sorry, can you rephrase that?[or]Can you be more precise, please?[in random order]";
 			
 Section Walkthroughing
 
@@ -1469,14 +1469,14 @@ Instead of jumping:[a before rule takes care of the aware context; this is just 
 Instead of singing:
 	if the player is clueless:
 		if the player is Rover:
-			say "You [one of]howl a familiar ditty about the dog who thought he was a cat[or]bark out a short rendition of [quotation mark]Oh, little juicy chicken[quotation mark][or]sing [quotation mark]Wag my tail[quotation mark], but don't remember anything beyond the first couple lines. So you sing them again. And again. Now you can't get the song out of your head[or]whip out a jazzy version of [quotation mark]I got your tidbits, baby[quotation mark][or]sing a short song[stopping].";
+			say "You [one of]howl a familiar ditty about the dog who thought he was a cat[or]bark out a short rendition of [quotation mark]Oh, little juicy chicken[quotation mark][or]sing [quotation mark]Wag my tail[quotation mark], but don't remember anything beyond the first couple of lines. So you sing them again. And again. Now you can't get the song out of your head[or]whip out a jazzy version of [quotation mark]I got your tidbits, baby[quotation mark][or]sing a short song[stopping].";
 			if the female dog is in the location and the female dog carries the delicious bone:
 				say "[line break][one of]The lovely female dog listens to you in rapture, and her mouth drops open in amazement when you conclude your crooning. A bone drops out of her mouth and rolls near your feet. You assume it is a gift to you, her way of saying [quotation mark]Bravo![quotation mark], or something to that effect[or]Charmed by your romantic baritone, the beautiful young houndess again drops her bone[or]Somewhat predictably now, she drops the bone[stopping].";
 			the female dog recovers in two turns from now;
 			[multiple phrases because the female dog should be given the behaviour of picking up the bone after a turn or two if it's just lying there on the ground.]
 			now the delicious bone is in the location;
 		otherwise:
-			say "You [one of]quietly sing a short song that Tomasz had taught you. The song is about a lonely colony ship engineer who pines for his sweetheart back on Earth[or]sing a slow ballad,[quotation mark]The Orange Hills of Mars[quotation mark][or]crank out a bawdy drinking song, [quotation mark]Bartender, set me up a Barsoom[quotation mark][or]hum (because you can't remember the words) a short tune that children learn to remember the order of the planets in the Solar System. Obviously, the song missed its mark with you, although you still remember the catchy melody[or]bang out a respectable version of [quotation mark]A Common Hope[quotation mark], the anthem of the People's Government of Mars[or]sing a short tune[stopping].";	
+			say "You [one of]quietly sing a short song that Tomasz had taught you. The song is about a lonely colony ship engineer who pines for his sweetheart back on Earth[or]sing a slow ballad,[quotation mark]The Orange Hills of Mars[quotation mark][or]belt out a bawdy drinking song, [quotation mark]Bartender, set me up a Barsoom[quotation mark][or]hum (because you can't remember the words) a short tune that children learn to remember the order of the planets in the Solar System. Obviously, the song missed its mark with you, although you still remember the catchy melody[or]bang out a respectable version of [quotation mark]A Common Hope[quotation mark], the anthem of the People's Government of Mars[or]sing a short tune[stopping].";	
 	otherwise:
 		say "You dump core, producing reams and reams of symbolic notation representing the instantaneous states of your quantum processor across local multiverses."
 		
@@ -1484,13 +1484,13 @@ Instead of burning:
 	if the player is the acu:
 		say "[if the player is clueless]Burning anything in your cottage would set off the environmental alarms[otherwise]Interdicted by the fire suppression system[end if].";
 	otherwise:
-		say "You can sit, rollover, bark, come, lay down, give kisses, dig, and attack. That's a lot of tricks for a dog. Pyrokinesis is next on your list, but you're not there yet."
+		say "You can sit, rollover, bark, come, lie down, give kisses, dig, and attack. That's a lot of tricks for a dog. Pyrokinesis is next on your list, but you're not there yet."
 		
 Instead of buying:
 	if the player is the acu:
-		say "[if the player is clueless]Your think about how few Marx are in the bank and decide to hold off on any purchasing until after pay day[otherwise]You are not able to access the banking network[end if].";
+		say "[if the player is clueless]You think about how few Marx you have in the bank and decide to hold off on any purchasing until after payday[otherwise]You are not able to access the banking network[end if].";
 	otherwise:
-		say "First, you check your pockets for your wallet. Oh wait, you have no pockets. BECAUSE YOU'RE A DOG! It bears repeating from time to time."
+		say "First, you check your pockets for your wallet. Oh wait, you don't have any pockets. BECAUSE YOU'RE A DOG! It bears repeating from time to time."
 		
 Instead of dropping something which is not enclosed by the player:
 	change outcome-override to force-failure;
@@ -1557,7 +1557,7 @@ Carry out trimming:
 	now the yaw is zero.
 	
 Report trimming:
-	say "All ship shape and Bristol fashion, cap'n. Halyards (whatever they are) and mainsheets are trimmed smartly, and she's coming about aleeward (a direction not even implemented in the game). Arr."; 
+	say "All shipshape and Bristol fashion, cap'n. Halyards (whatever they are) and mainsheets are trimmed smartly, and she's coming about aleeward (a direction not even implemented in the game). Arr."; 
 	
 Section Disabled For Testing
 
@@ -1579,7 +1579,7 @@ When play begins:
 	Setup the World.
 
 After printing the banner text:
-	say "Type [quotation mark]help[quotation mark] for instructions, credits and license or just blaze on impetuously.";
+	say "Type [quotation mark]help[quotation mark] for instructions, credits, and license or just blaze on impetuously.";
 	let metatext be "Janet: David, are you hooked in?*David: Ready to go. Is this the final version of the ACU, or another beta?*Janet: A program is never finished, but I think we're ready to go.*David: I hope so, Earth could launch any day now.*Janet: Run program.";
 	say "[metatext in metaspeak]";
 	await keystroke;
@@ -1593,7 +1593,7 @@ After printing the banner text:
 	
 Section Save the World
 
-To Save the World: [programmatically store inital state of class properties]
+To Save the World: [programmatically store initial state of class properties]
 	Repeat with selection running through persons:
 		now the initial-enclosure of the selection is the holder of the selection;
 	Repeat with selection running through props:
@@ -1616,7 +1616,7 @@ To Save the World: [programmatically store inital state of class properties]
 	
 Section Setup the World
 
-To Setup the World: [explictly set initial conditions]
+To Setup the World: [explicitly set initial conditions]
 [globals]
 	now epoch_pid is the turn count;	
 	now the time of day is 5:30 am;
@@ -1740,7 +1740,7 @@ Carry out barking:
 	if the female dog is in the location and the female dog carries the delicious bone:
 		say "[one of]No doubt in awe of your rhetorical skills, the lovely damsel drops the bone. Her gift to you, you suppose[or]Stunned by your eloquence, the beautiful young hound again drops her bone, in tribute to your virile superiority[or]Somewhat predictably now, she drops the bone[stopping].";
 		the female dog recovers in two turns from now;
-		[multiple phrases because the female dog should be given the behaviour of picking up the bone after a turn or two if it's just lying there o the ground.]
+		[multiple phrases because the female dog should be given the behaviour of picking up the bone after a turn or two if it's just lying there on the ground.]
 		now the delicious bone is in the location.
 		
 At the time when the female dog recovers:
@@ -1750,18 +1750,18 @@ At the time when the female dog recovers:
 		now the female dog is not seeking;
 		say "[bulldozer gets the bone]";
 	otherwise:
-		say "The female dog [one of]bashfully scans the ground at her feet, no doubt nervous about making eye contact at this early stage in your relationship[or]averts your magnetic gaze and pretends to study the ground[or]is playing hard to get. She studies the ground as if she is looking for something, but you know that all she needs is a big, strong dalmation[or]tries to gather her wits and gazes at the ground. Maybe you came on too strong[or]searches the ground as she tries to prepare some witty remark to impress you[or]coyly turns away and looks at her feet; she may be more introverted than you had at first supposed[or]is left dumbfounded by your brilliance. She stares at the ground, unsure of herself[in random order]."
+		say "The female dog [one of]bashfully scans the ground at her feet, no doubt nervous about making eye contact at this early stage in your relationship[or]averts her eyes from your magnetic gaze and pretends to study the ground[or]is playing hard to get. She studies the ground as if she is looking for something, but you know that all she needs is a big, strong dalmation[or]tries to gather her wits and gazes at the ground. Maybe you came on too strong[or]searches the ground as she tries to prepare some witty remark to impress you[or]coyly turns away and looks at her feet; she may be more introverted than you had at first supposed[or]is left dumbfounded by your brilliance. She stares at the ground, unsure of herself[in random order]."
 		
 To say bulldozer gets the bone:
-	say "The beautiful female dog bows her [one of]graceful[or]swan like[or]lithe[or]delicate[or]finely shaped[or]sculpted[in random order] neck and takes the bone in her [one of]irresistable[or]voluptuous[or]inviting[or]enticing[or]tempting[or]stunning[or]striking[or]beguiling[or]enchanting[or]charming[or]alluring[or]tantalizing[or]comely[or]fair[in random order] lips."
+	say "The beautiful female dog bows her [one of]graceful[or]swanlike[or]lithe[or]delicate[or]finely shaped[or]sculpted[in random order] neck and takes the bone in her [one of]irresistable[or]voluptuous[or]inviting[or]enticing[or]tempting[or]stunning[or]striking[or]beguiling[or]enchanting[or]charming[or]alluring[or]tantalizing[or]comely[or]fair[in random order] lips."
 	
 Instead of an animal barking:
 	change outcome-override to force-success;
 	if Back on Mars is happening and David Venkatachalam is in the location:
 		now the endgame is david-killed;
-		say "Forgetting his bone for a moment, Rover takes a big breath and lets out a mighty, [quotation mark]Woooooooof![quotation mark][paragraph break]The jagged, twisted space probe falls from his jaws, pinning David to the deck, and nearly slicing him in half. He expires instantly.[paragraph break]Rover takes a step back, the [quotation mark]Did I do something wrong?[quotation mark] expression playing across his face.[paragraph break]";
+		say "Forgetting his bone for a moment, Rover takes a deep breath and lets out a mighty, [quotation mark]Woooooooof![quotation mark][paragraph break]The jagged, twisted space probe falls from his jaws, pinning David to the deck and nearly slicing him in half. He expires instantly.[paragraph break]Rover takes a step back, the [quotation mark]Did I do something wrong?[quotation mark] expression playing across his face.[paragraph break]";
 		if David Venkatachalam is exposed:
-			say "Janet stares blankly for a moment and then reaches up, and strokes the treads on Rover’s forward transaxle. [quotation mark]Good dog, Rover,[quotation mark] she says. [quotation mark]Good boy.[quotation mark][paragraph break]";
+			say "Janet stares blankly for a moment and then reaches up and strokes the treads on Rover’s forward transaxle. [quotation mark]Good dog, Rover,[quotation mark] she says. [quotation mark]Good boy.[quotation mark][paragraph break]";
 		otherwise:[David not exposed]
 			say "Janet screams, [quotation mark]David! No![quotation mark] and [if the player is not in the living room] you redirect your video feed to the cargo bay, where [end if]she falls on her knees next to him, cradling his bloody head in her lap.";
 		end the game in victory;
@@ -1794,16 +1794,16 @@ Persuasion rule for asking Rover to try attacking:
 	
 Instead of Rover attacking when Rover is in the Valkyrie Area:
 	if David Venkatachalam is not exposed:
-		say "Rover's fur stands on edge and he growls momentarily, but then realizes that there is nothing threatening here.";
+		say "Rover's fur stands on edge, and he growls momentarily but then realizes that there is nothing threatening here.";
 	otherwise:
 		if David Venkatachalam is in the location:
-			say "Rover throws his bone to the side, and the space probe crashes thunderously against the cargo bay bulkheads. [if David Venkatachalam is exposed]Rover had not approved of David's tone of speech towards Janet, and had been growling quietly in his corner. Given the command, he springs forward, paws planted on David's chest. David expires immediately, trapped under 45 tons of angry robotic Dalmation.[paragraph break][quotation mark]Good boy![quotation mark] exclaims Janet, a tear in her eye. And then, turning to the the ACU she admits, [quotation mark]I wish I had thought of that.[quotation mark][paragraph break]";
+			say "Rover throws his bone to the side, and the space probe crashes thunderously against the cargo bay bulkheads. [if David Venkatachalam is exposed]Rover had not approved of David's tone of speech towards Janet and had been growling quietly in his corner. Given the command, he springs forward, paws planted on David's chest. David expires immediately, trapped under 45 tons of angry robotic dalmation.[paragraph break][quotation mark]Good boy![quotation mark] exclaims Janet, a tear in her eye. And then, turning to the the ACU she admits, [quotation mark]I wish I had thought of that.[quotation mark][paragraph break]";
 			change outcome-override to force-success;
 			now endgame is david-killed;
 			end the game in victory;
 			the rule succeeds;
 		otherwise:
-			say "Rover looks around, but doesn't see anything threatening.";
+			say "Rover looks around but doesn't see anything threatening.";
 	rule succeeds.
 	
 Does the player mean attacking david venkatachalam:
@@ -1825,7 +1825,7 @@ check lying down:
 	if the player is an animal:
 		say "You're too excited to lie down! Woof!" instead;
 	otherwise:
-		say "[if player is clueless]You know that if you lie down this early in the morning you'll feel weird the entire day and that no amount of coffee in the afternoon with put things right again[otherwise]You rest for 0.0[a random number from 100 to 999][a random number from 100 to 999] femtoseconds. How [one of]refreshing[or]invigorating[or]energizing[or]exhilarating[or]stimulating[in random order][end if]." instead.
+		say "[if player is clueless]You know that if you lie down this early in the morning you'll feel weird the entire day and that no amount of coffee in the afternoon will put things right again[otherwise]You rest for 0.0[a random number from 100 to 999][a random number from 100 to 999] femtoseconds. How [one of]refreshing[or]invigorating[or]energizing[or]exhilarating[or]stimulating[in random order][end if]." instead.
 			
 carry out lying down:
 	do nothing.
@@ -1892,7 +1892,7 @@ Digging is an action applying to nothing. Understand "dig" and "excavate" as dig
 check digging:
 	if the player is the acu:
 		if the player is clueless:
-			say "You're a interactive fiction professional, not a ditch digger. Nope, nothing so lucrative.";
+			say "You're an interactive fiction professional, not a ditch digger. Nope, nothing so lucrative.";
 		otherwise:
 			say "You're a giant network of quantum transputational circuitry; you don't dig ditches. Besides, that's why you are equipped with a ROVER.";
 		the rule fails;
@@ -1902,7 +1902,7 @@ Carry out digging:
 	say "You dig for a while with your front paws. Finding nothing, you kick the dirt back in again so you won't be blamed for digging up the yard."
 	
 Instead of an animal digging:
-	say "Rover scratches the ground and sniffs, but doesn't seem interested in digging here.";
+	say "Rover scratches the ground and sniffs, but he doesn't seem interested in digging here.";
 	the rule succeeds.
 
 Section Coming
@@ -1916,7 +1916,7 @@ check coming:
 	if the player is Rover:
 		say "You are already here." instead;
 	if the player is in the shower:
-		say "[if the player is clueless][one of]Rover has had a few experiences with the shower and none were pleasant from his perspective, so he just pokes his head in and then darts back out[or]Rover pokes his nose into te shower, and then beats a hasty retreat[or]Rover sniifs the shower distrustfull and then backs out[or]Rover peeks into the shower and then withdraws[in random order][otherwise]ROVER rolls into the extruder area, but will not fit within it, so he idles outside it[end if].";
+		say "[if the player is clueless][one of]Rover has had a few experiences with the shower, and none were pleasant from his perspective, so he just pokes his head in and then darts back out[or]Rover pokes his nose into the shower, and then beats a hasty retreat[or]Rover sniffs the shower distrustfully and then backs out[or]Rover peeks into the shower and then withdraws[in random order][otherwise]ROVER rolls into the extruder area but will not fit within it, so he idles outside it[end if].";
 		move Rover to the bathroom;
 		the rule fails.
 	
@@ -1977,7 +1977,7 @@ Report Dancing:
 		say "You spring into the air and land on all fours.";
 	otherwise if the player is the ACU:
 		if the player is clueless:
-			say "You try to remember some of the steps that you and Tomasz learned during your ill-fated attempt at ballroom dancing. You think you recall the [one of]cha-cha, but can't quite what number it goes to. Is it seven or eight?[or]lambada, but perhaps you're mixing it up with the rumba. Rumba, lambada, what's the difference in the grand scheme of things?[or]tango, but the more you think about it, the more you are convinced that you learned to lead, and thinking about reversing the steps makes your head.[or]waltz. One-two-veer off, one-two veer off.[in random order]";
+			say "You try to remember some of the steps that you and Tomasz learned during your ill-fated attempt at ballroom dancing. You think you recall the [one of]cha-cha, but can't quite what number it goes to. Is it seven or eight?[or]lambada, but perhaps you're mixing it up with the rumba. Rumba, lambada, what's the difference in the grand scheme of things?[or]tango, but the more you think about it, the more you are convinced that you learned to lead, and thinking about reversing the steps makes your head spin.[or]waltz. One-two-veer off, one-two-veer off.[in random order]";
 		otherwise:
 			say "You test cycle the RCS thrusters, firing opposing pairs."
 
@@ -1995,7 +1995,7 @@ Report Yelling:
 		say "You howl balefully, or at least as balefully as you can manage, not being entirely sure what it means.";
 	otherwise if the player is the ACU:
 		if the player is clueless:
-			say "Confident that your neighbors won't hear a thing through the cottages's excellent sound insulation, you let loose with a primal scream.";
+			say "Confident that your neighbors won't hear a thing through the cottage's excellent sound insulation, you let loose with a primal scream.";
 		otherwise:
 			say "You emit a 160 dB test tone throughout the ship.";
 			[TOCONSIDER: useful against pirates, shouldn't work if the ship is depressurized]
@@ -2024,20 +2024,20 @@ Section Answering Rover
 
 Instead of answering Rover that "hello":
 	change outcome-override to force-success;
-	say "[one of][Rover] shakes his head slowly, once again lamenting your ignorance of dog-speak and stubborn insistence on making noises that mean absolutely nothing.[or][Rover] pauses for a moment to compose his reply, [quotation mark]Errrr...Wruff.[quotation mark][or][Rover] hesistates. Did you just say [quotation mark]walkies[quotation mark]? Hello. Walkies. Hello. Walkies. Gawoof, they sound a lot alike. Why can't you just learn to bark properly?[or][Rover] looks around wondering if perhaps you are talking to someone else.[or][Rover] wags his tail.[stopping]"
+	say "[one of][Rover] shakes his head slowly, once again lamenting your ignorance of dog-speak and stubborn insistence on making noises that mean absolutely nothing.[or][Rover] pauses for a moment to compose his reply, [quotation mark]Errrr...Wruff.[quotation mark][or][Rover] hesitates. Did you just say [quotation mark]walkies[quotation mark]? Hello. Walkies. Hello. Walkies. Gawoof, they sound a lot alike. Why can't you just learn to bark properly?[or][Rover] looks around wondering if perhaps you are talking to someone else.[or][Rover] wags his tail.[stopping]"
 	
 Section Burying
 
 Burying is an action applying to one thing. Understand "bury [something]" as burying when the player is Rover.
 
 Check burying:
-	if the noun is: 
+	if the noun is:
 		-- Rover: 
 			say "If you buried yourself, who would dig you out? In a flash of brilliant insight, you decide not to inter yourself for all eternity in The Park." instead;
 		-- delicious bone: 
 			say "And risk losing the world record yummiest ever bone? No way." instead;
 		-- female dog:
-			say "[one of]You wonder for a moment what it would be like suffer tragically for love, and to be buried next to your heart's desire for all eternity, so close in death, but never...[paragraph break]You whack your head into the ground repeatedly until the emo-goth fumes clear and you can see straight again[or]You tried that with the Yorkie, and you never found her again[or]She doesn't seem likely to go in for that sort of thing. Too straight-laced[or]After a moment of reconsideration, you decide that's not a good idea[stopping]." instead.
+			say "[one of]You wonder for a moment what it would be like to suffer tragically for love and to be buried next to your heart's desire for all eternity, so close in death, but never...[paragraph break]You whack your head into the ground repeatedly until the emo-goth fumes clear and you can see straight again[or]You tried that with the Yorkie, and you never found her again[or]She doesn't seem likely to go in for that sort of thing. Too straight-laced[or]After a moment of reconsideration, you decide that's not a good idea[stopping]." instead.
 
 Report burying:
 	if Rover is in the Planet Area:
@@ -2086,7 +2086,7 @@ TB-TS is a there-delegate. It is in the bathroom. The destination of TB-TS is th
 
 TS is a here-delegate. It is in the shower. Understand "shower" as TS. The aware-name of TS is "extruder".
 
-TS-TB is a there-delegate. It is in the shower. The destination of TS-TB is the bathroom. Understand "bathroom" or "plunger" or "counter" or "mirror" as TS-TB. The clueless-name of TS-TB is "bathroom". The clueless-description of TS-TB is "You can see part of the marble counter from here, as well as the mirror mounted above the counter[if the mirror is steamed]. The mirror is steamed up[end if]. Nearer to the shower, you can see a plunger with a red tip." The aware-name of TS-TB is "flight control". The aware-description of TS-TB is "A complicated-looking flight control center. You can see the console from here, but can't make out any of the readouts. Nearer to the extruder, you can see the tip of the vector input port." Understand "inspector" or "readout" or "readouts" or "vector input port" as TS-TB when the player is self-aware.
+TS-TB is a there-delegate. It is in the shower. The destination of TS-TB is the bathroom. Understand "bathroom" or "plunger" or "counter" or "mirror" as TS-TB. The clueless-name of TS-TB is "bathroom". The clueless-description of TS-TB is "You can see part of the marble counter from here, as well as the mirror mounted above the counter[if the mirror is steamed]. The mirror is steamed up[end if]. Nearer to the shower, you can see a plunger with a red tip." The aware-name of TS-TB is "flight control". The aware-description of TS-TB is "A complicated-looking flight control center. You can see the console from here but can't make out any of the readouts. Nearer to the extruder, you can see the tip of the vector input port." Understand "inspector" or "readout" or "readouts" or "vector input port" as TS-TB when the player is self-aware.
 
 TK is a here-delegate. It is in the kitchen. Understand "kitchen" as TK. The aware-name of TK is "engineering". Understand "control" or "controls" as the TK when the acu is self-aware.
 
@@ -2115,7 +2115,7 @@ Test living_room with "stand up / open drapes / look / test picture".[add tests 
 
 The Living Room is outside from the Kitchen and outside from Bathroom.  The Bathroom is outside from the Shower. The Living Room contains the player. Understand "home" as the Living Room. The Living Room can be visited-during-havoc. The Living Room is not visited-during-havoc. The scent of the living room is "a little musty".
 
-The walls are a backdrop.  They are in the Living Room and Kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. The scent of the walls is "faintly of rust. Must be iron-oxide from the local quarry". The texture of the walls is "like fine-grit sand paper".
+The walls are a backdrop.  They are in the Living Room and Kitchen.  The walls are plural-named. Understand "wall" or "walls" as walls.  The aware-name of the walls is "bulkheads". The clueless-name of the walls is "walls". The clueless-description of the walls is "You painted the walls white a few months ago, but they've already taken on a slightly reddish hue thanks to the fine Martian dust in the air."  The aware-description of the walls is "Solid metal bulkheads, backed by tons of reinforcing composite alloy, line the interior of the cargo bay."  The walls-proxy is an aware-proxy that is part of the walls. Understand "bulkhead" and "bulkheads" as the walls-proxy. The scent of the walls is "faintly of rust. Must be iron oxide from the local quarry". The texture of the walls is "like fine-grit sand paper".
 
 The ceiling is a backdrop. It is in the Living Room and Kitchen.  Understand "roof" or "stucco" as ceiling. The clueless-description of the ceiling is "The ceiling is an off-white stucco material designed to absorb sound." The aware-description of the ceiling is "The domed roof of the cargo bay, like the ceiling of a gothic cathedral, looms 35 meters above the floor." The aware-name of the ceiling is "ceiling". The texture of the ceiling is "unpleasantly pointy".
 
@@ -2131,13 +2131,13 @@ The sound of the living room is "[LR-sound]".
 	
 To say LR-sound:
 	if the player is clueless:
-		say "very little. As usual, the house is quiet at this time of the morning. From the kitchen, you can make out the labored sound of your old fridge's compressor turning on and off. Closer by, despite the triple pane glass, you can sometimes catch a bit of bird song from outside the window";
+		say "very little. As usual, the house is quiet at this time of the morning. From the kitchen, you can make out the labored sound of your old fridge's compressor turning on and off. Closer by, despite the triple-pane glass, you can sometimes catch a bit of birdsong from outside the window";
 	otherwise:
 		if the old fridge is in the kitchen:
 			say "a faint hum from the cryochamber in the engineering section";
 		otherwise:
 			if Back on Mars is happening and the audio is switched on:
-				say "David and Janet chatting in the living room as well as the usual sounds of the ship in dry dock";
+				say "David and Janet chatting in the living room, as well as the usual sounds of the ship in dry dock";
 			otherwise:
 				say "the normal chatter of ship maintenance sounds in the operations section"
 		
@@ -2151,7 +2151,7 @@ The futon is a bed in the Living Room. The futon can be folded. The futon is not
 After examining the futon:
 	if the futon is not discussed and the Second Sim is happening:
 		now the futon is discussed;
-		let metatext be "David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.*Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.*David: I can’t argue that logic.*Janet: That’s why you are management and why I do the computer programming.";
+		let metatext be "David: Maybe the problem isn’t that the futon is too big, but that the apartment is too small.*Janet: No, the problem is the futon. If the futon were a cantaloupe of the same size, it would still be too large.*David: I can’t argue with that logic.*Janet: That’s why you're management and why I do the computer programming.";
 		say "[metatext in metaspeak]".
 
 The mattress is part of the futon. The frame is part of the futon. The clueless-name of the mattress is "mattress". The aware-name of the mattress is "spatial manifold attenuator".The clueless-description of the mattress is "A thick, heavy purple mattress." The aware-description of the mattress is "The spatial manifold attenuator is [if the futon is folded]offline[otherwise]online[end if]." The mattress-proxy is an aware-proxy that is part of the mattress. Understand "spatial" or "manifold" or "attenuator" as the mattress-proxy. The scent of the mattress is "like it might be time to get a new mattress". The texture of the mattress is "like foam rubber"
@@ -2164,7 +2164,7 @@ Before closing the futon:
 	try folding the futon;
 	rule succeeds.
 	
-The clueless-name of the frame is "bed frame". The clueless-description of the frame is "A wooden frame designed to some how fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of engineering and geometry." The aware-description of the frame is "The Casimir Drive extension strut is [if the futon is folded]contracted[otherwise]extended[end if]." The aware-name of the frame is "extension strut".  The frame-proxy is an aware-proxy that is part of the frame. Understand "extension" or "strut" as the frame-proxy. The scent of the frame is "like pine". The texture of the frame is "smooth and hard"
+The clueless-name of the frame is "bed frame". The clueless-description of the frame is "A wooden frame designed to somehow fold up into a third of the space that it normally occupies when the bed is pulled out. A true feat of engineering and geometry." The aware-description of the frame is "The Casimir Drive extension strut is [if the futon is folded]retracted[otherwise]extended[end if]." The aware-name of the frame is "extension strut".  The frame-proxy is an aware-proxy that is part of the frame. Understand "extension" or "strut" as the frame-proxy. The scent of the frame is "like pine". The texture of the frame is "smooth and hard"
 
 On the futon is a woman called the ACU. The ACU is privately-named. The player is the ACU. She is wearing a flight suit. A left arm and a right arm, back, belly, body, teeth and giblets are parts of the ACU. The teeth are plural-named. The giblets are plural-named.
 
@@ -2183,7 +2183,7 @@ To say acu-clueless-description:
 	if the ACU wears the flight suit:
 		say ". You are wearing a MARSpace standard issue flight suit";
 	otherwise if the location is the kitchen or the location is the living room:
-		say ".[paragraph break]By the way, it's not big deal because you're in your own cottage, but it's worth mentioning that you are [one of]completely naked[or]wearing only skin[or]bereft of attire[or]prancing about with not so much as a loincloth[or]in your birthday suit[or]underdressed for most activities[or]au naturel[in random order]".
+		say ".[paragraph break]By the way, it's not a big deal because you're in your own cottage, but it's worth mentioning that you are [one of]completely naked[or]wearing only skin[or]bereft of attire[or]prancing about with not so much as a loincloth[or]in your birthday suit[or]underdressed for most activities[or]au naturel[in random order]".
 
 The clueless-name of the left arm is "left arm". The clueless-description of the left arm is "[dumb arm]. ". The aware-name of the left arm is "port hull". The aware-description of the left arm is "The port hull." The left arm-proxy is an aware-proxy that is part of the left arm. Understand "port" or "hull" as the left arm-proxy. The scent of the left arm is "[scent of the acu]".
 
@@ -2192,9 +2192,9 @@ To say dumb arm:
 		say "Your left arm -- the one you throw frisbees with.";
 	otherwise:
 		if arm-numb is greater than 24:
-			say "[one of]That's odd, your arm itches like the dickens (yes, even in the throws of perturbing progressive pruritis, the word that comes to mind is [quotation mark]dickens[quotation mark]. You don't know why. It doesn't really matter. What matters is that your arm is itchy.  Really itchy. Dickens, indeed. Anyhow, even though your arm itches like the dickens, it looks quite normal[or]You'd imagine your arm would be swollen and red, and all sausage-like, but it looks normal despite the itching[or]How can such a normal-looking arm itch so much? It makes no sense[or]Despite the worsening itch, your left arm looks quite normal[stopping]";
+			say "[one of]That's odd, your arm itches like the dickens (yes, even in the throes of perturbing progressive pruritus, the word that comes to mind is [quotation mark]dickens[quotation mark]. You don't know why. It doesn't really matter. What matters is that your arm is itchy.  Really itchy. Dickens, indeed. Anyhow, even though your arm itches like the dickens, it looks quite normal[or]You'd imagine your arm would be swollen and red, and all sausage-like, but it looks normal despite the itching[or]How can such a normal-looking arm itch so much? It makes no sense[or]Despite the worsening itch, your left arm looks quite normal[stopping]";
 		otherwise if arm-numb is greater than 12:
-			say "[one of]Your arm is pretty itchy, but it looks okay[or]Nothing remarkable about your arm; it just feels itchy[or]It looks just like the right arm. The difference is that your right arm isn't so itchy. Aye, there's there's the rub[stopping]";
+			say "[one of]Your arm is pretty itchy, but it looks okay[or]Nothing remarkable about your arm; it just feels itchy[or]It looks just like the right arm. The difference is that your right arm isn't so itchy. Aye, there's the rub[stopping]";
 		otherwise:
 			say "[one of]It's a good match for the one on the right[or]Looks normal enough[or]Nothing out of the ordinary, really[in random order]"
 			
@@ -2208,7 +2208,7 @@ Instead of doing something to the 	bug bite:
 	otherwise if the current action is touching:
 		try touching the left arm;
 	otherwise:
-		say "You look carefully, but don't see one."
+		say "You look carefully, but you don't see one."
 		
 The clueless-name of the right arm is "right arm". The clueless-description of the right arm is "[if the player is the ACU]Your right arm. The one that you don't throw frisbees with[otherwise][the clueless-name of the ACU]'s right arm[end if]." The aware-name of the right arm is "starboard hull". The aware-description of the right arm is "The starboard hull." The right arm-proxy is an aware-proxy that is part of the right arm. Understand "starboard" or "hull" as the right arm-proxy. The scent of the right arm is  "[scent of the acu]".
 
@@ -2224,10 +2224,10 @@ The clueless-name of teeth is "teeth". Understand "teeth" or "tooth" as teeth. T
 
 Audio is a device which is part of the ACU. The aware-name of Audio is "Internal Microphones". Audio is switched off. Understand "internal" or "microphone" or "microphones" as Audio. The description of audio is "Being audio, you can't really see it. There is a certain logic to that, you'd have to admit."
 
-The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting [if the drapes are open]blue [end if]flight suit with a MARSpace insignia. Some letters are also sewn above the insignia." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing which bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" or "isolator" or "housing" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed. The scent of the flight suit is "of the insecticide which is routinely impregnated into the fabric itself". The texture of the flight suit is "comfortable, having been through the wash so many times"
+The flight suit is a wearable prop. The ACU wears the flight suit. Understand "flight" or "suit" or "flightsuit" or "jump suit" or "clothing" or "clothes" or "jumpsuit" as the flight suit.  The clueless-name of the flight suit is "flight suit". The aware-name of the flight suit is "quantum isolator". The clueless-description of the flight suit is "[if the flight suit is worn]You are wearing[otherwise]It is[end if] a loose-fitting [if the drapes are open]blue [end if]flight suit with a MARSpace insignia. Some letters are also sewn above the insignia." The aware-description of the flight suit is "The ACU is contained in a quantum-isolated housing that bears the insignia of MARSpace and an identification code." The flight suit-proxy is an aware-proxy that is part of the flight suit. Understand "quantum" or "isolator" or "housing" as the flight suit-proxy. The flight suit can be already-doffed. The flight suit is not already-doffed. The scent of the flight suit is "of the insecticide that is routinely impregnated into the fabric itself". The texture of the flight suit is "comfortable, having been through the wash so many times"
 
 Before wearing the flight suit when the player is wet and the player is clueless:
-	say "Yuck. If you put the flight suit on right out of the shower, it would be damp all day (and you'd chaffe in all sorts of places that are best left unchaffed).";
+	say "Yuck. If you put the flight suit on fresh out of the shower, it would be damp all day (and you'd chafe in all sorts of places that are best left unchafed).";
 	the rule succeeds.
 	
 Before taking off the flight suit when the player is enclosed by a supporter:
@@ -2259,14 +2259,14 @@ After taking off the flight suit:
 			
 To scandalize the poor little robot:
 	if the maintenance droid is innocent:
-		say "The maintenance droid glances away from his work for a moment, and then does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core frothed with quantum foam, and ringed by a halo of dark matter.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you retrieve and modestly pull up the quantum isolation shield.[paragraph break]";
+		say "The maintenance droid glances away from his work for a moment and then does a double take, gaping first at your retracted quantum isolation shield and then at your unusually large transputational core frothed with quantum foam, and ringed by a halo of dark matter.[paragraph break]It turns out to be more raw processing power than the old boy can handle, and the robot's own quantum ganglia scintillate wildly before showering the deck in an embarrassing fountain of sparks and molten metal. The droid melts like a candle into a pool of silvery slag, which you scoop up for recycling.[paragraph break]The effect achieved, you retrieve and modestly pull up the quantum isolation shield.[paragraph break]";
 		increase the henchmen defeated by one;
 		now the maintenance droid is jaded;
 		now the ACU wears the flight suit;
 		move the maintenance droid to Limbo;
 	otherwise if seen-better-said is false: 
 		change seen-better-said to true;
-		say "The maintenance droid shakes his head and goes back to work, murmurring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
+		say "The maintenance droid shakes his head and goes back to work, murmuring, [quotation mark]Yeah? I've seen better.[quotation mark][paragraph break]".
 
 Disrobing is an action applying to nothing.  Understand "disrobe" or "undress" or "strip" or "strip down" or "peel down" as disrobing.
 
@@ -2305,14 +2305,14 @@ After reading the lettering for the first time:
 
 The insignia is part of the flight suit. The clueless-description of the insignia is "The insignia depicts the planet Mars. A pulp novel rocket ship points away from the globe of Mars and towards space. The picture evokes the spear and sword of Ares, the symbol of Mars back to alchemical times." To say the aware-description of the insignia: say the clueless-description of the insignia. The aware-name of the insignia is "insignia". The clueless-name of the insignia is "insignia". The texture of the insignia is "more rigid than the material around it, almost like plastic"
 
-The alarm clock is a prop on the futon.  Understand "LED" and "LEDs" and "green" as the alarm clock when the player is clueless. The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with fading green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The Casimir Drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" or "transgressor" as the alarm clock-proxy. The scent of the alarm clock is "like burnt bakelite and glowing thermionic valves". The texture of the alarm clock is "like impact-resistant plastic. And for good reason"
+The alarm clock is a prop on the futon.  Understand "LED" and "LEDs" and "green" as the alarm clock when the player is clueless. The clueless-name of the alarm clock is "alarm clock". The clueless-description of the alarm clock is "It[apostrophe]s a cheap, white plastic alarm clock with fading green LEDs that read [time of day].  A large button juts out of the top.". A large button and a switch are part of the alarm clock. The aware-name of the alarm clock is "temporal transgressor". The aware-description of the alarm clock is "The Casimir Drive's temporal transgressor glows green as usual.  A basic toggle is on top." The alarm clock-proxy is an aware-proxy that is part of the alarm clock. Understand "temporal" or "transgressor" as the alarm clock-proxy. The scent of the alarm clock is "like burnt Bakelite and glowing thermionic valves". The texture of the alarm clock is "like impact-resistant plastic. And for good reason"
 
 Instead of taking the alarm clock when the alarm clock is on the futon and bedtime is not happening:
 	say "[if the player is clueless]You'd rather leave it on the futon so it's there when you need it[otherwise]The transgressor is already in optimal proximity to the Casimir Drive[end if]."
 	
 Instead of taking the alarm clock when the holder of the alarm clock is the Living Room:
 	now the alarm clock is on the futon;
-	say "You [if the player is clueless]pick up your beat up old alarm clock and put it back on the futon, so you can enjoy its lovely beeping tomorrow, and tomorrow, and tomorrow[otherwise]reapproximate the temporal transgressor to the Casimir Drive[end if]."
+	say "You [if the player is clueless]pick up your beat-up old alarm clock and put it back on the futon, so you can enjoy its lovely beeping tomorrow, and tomorrow, and tomorrow[otherwise]reapproximate the temporal transgressor to the Casimir Drive[end if]."
 	
 Instead of pushing the large button when bedtime is not happening:
 	if the player is clueless:
@@ -2324,14 +2324,14 @@ Before switching on or switching off the alarm clock:
 	say "[if the player is clueless]The alarm clock senses the electrical activity in your brain and turns itself on and off as needed[otherwise]The proximity alert system is always functional[end if].";
 	the rule succeeds.
 
-The clueless-name of the large button is "large button". Understand "snoo" or "snooze" as the large button. The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the dimly illuminated word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magnofluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" or "magnofluctuator" or "toggle" as the large button-proxy. The scent of the large button is "indistiguishible from the from the rest of the alarm clock". 
+The clueless-name of the large button is "large button". Understand "snoo" or "snooze" as the large button. The aware-name of the button is "mf toggle".  The clueless-description of the large button is "Mounted almost flush with the top of the clock, you can barely make out the dimly illuminated word [quotation mark]snoo[quotation mark]."  The aware-description of the large button is "Mounted on top of the temporal transgressor is a slightly worn magnofluctuator toggle." The large button-proxy is an aware-proxy that is part of the large button. Understand "mf" or "magnofluctuator" or "toggle" as the large button-proxy. The scent of the large button is "indistinguishable from the rest of the alarm clock". 
 
 After examining the alarm clock for the second time:
 	if the First Sim is happening or the Second Sim is happening:
 		let metatext be "David: Why is it so interested in the clock?*Janet: Not sure.";
 		say "[metatext in metaspeak]";
 
-Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story] The scent of the drapes is "much as you imagine burlap would might, were it aged for centuries and then baked in the sunlight until crispy". The drapes can be opened-before. The drapes are not opened-before. The texture of the drapes is "much heavier than they look, like the lead-lined aprons that some of the technicians use at work"
+Some drapes are furniture in the Living Room. Understand "curtains" or "curtain" as the drapes. The drapes can be open. The drapes are closed. The clueless-name of the drapes is "drapes". The aware-name of the drapes is "solar shield". The clueless-description of the drapes is "The heavy brown drapes are [if open]open[otherwise]closed[end if]. [if open]Light pours in.[otherwise]The room is dark."[no aware-description is given since the drapes are missing in that part of the story] The scent of the drapes is "much as you imagine burlap would might smell, were it aged for centuries and then baked in the sunlight until crispy". The drapes can be opened-before. The drapes are not opened-before. The texture of the drapes is "much heavier than they look, like the lead-lined aprons that some of the technicians use at work"
 
 Instead of opening the drapes:
 	if the drapes are closed:
@@ -2352,7 +2352,7 @@ Instead of pulling or pushing the drapes when the drapes are closed:
 
 Instead of closing the drapes:
 	if the drapes are open:
-		say "It would be too dark to move around if you close the drapes and you’d risk falling back to sleep. You reconsider and leave the drapes open.";
+		say "It would be too dark to move around if you close the drapes, and you’d risk falling back to sleep. You reconsider and leave the drapes open.";
 	otherwise:
 		say "They are as closed as they're going to get."
 		
@@ -2370,7 +2370,7 @@ Instead of examining or reading when the drapes are closed:
 		say "[one of]Darkness is great for sleeping, not so good for looking at stuff[or]A sliver of sunlight only goes so far; you can't see that well in the dim light[or]With the drapes closed, you can't see very well[or]It's too dark to see much[stopping]."
 	
 Instead of going towards when the player is in the Living Room and the drapes are closed:
-	say "It's too dark to move around much. [one of]Grues and all that, you know. [or][stopping][paragraph break][if a random chance of one in three succeeds][one of]You shin yourself on the futon frame[or]You step on something stringy but resilient. Rover yaps in pain and scrambles to the otherside of the futon[or]The floor creeks ominiously[or]Something wet and warm is licking the back of your knees. You really hope it is Rover[or]Something brushes past you in the dark, panting[or]You stumble over Rover and land on your knees. You are rewarded with a hot puff of first-thing-in-the-morning dog breath. You will need no coffee today[or]As you are feeling your way around the futon, the beam of light coming in through the drapes catches you right in the eye and you are momentarily blinded[in random order].[end if]".
+	say "It's too dark to move around much. [one of]Grues and all that, you know. [or][stopping][paragraph break][if a random chance of one in three succeeds][one of]You shin yourself on the futon frame[or]You step on something stringy but resilient. Rover yaps in pain and scrambles to the other side of the futon[or]The floor creaks ominiously[or]Something wet and warm is licking the back of your knees. You really hope it is Rover[or]Something brushes past you in the dark, panting[or]You stumble over Rover and land on your knees. You are rewarded with a hot puff of first-thing-in-the-morning dog breath. You will need no coffee today[or]As you are feeling your way around the futon, the beam of light coming in through the drapes catches you right in the eye and you are momentarily blinded[in random order].[end if]".
 
 The LR floor is a privately-named scenery in the Living Room. The printed name of the LR floor is "floor". Understand "floor" or "hardwood" or "ground" as the LR floor. The clueless-name of the LR floor is "living room floor". The aware-name of the LR floor is "cargo bay floor". The clueless-description of the LR floor is "A hardwood floor." The aware-description of the LR floor is "The cargo bay's high-adhesion floor has been scratched and scuffed by Rover's tractors." The cargo bay floor-proxy is an aware-proxy that is part of the LR floor. Understand "cargo" or "bay" or "floor" as the cargo bay floor-proxy. The scent of the LR floor is "dusty". The texture of the LR floor is "generally smooth, if you ignore the occasional bit of gritty dust"
 
@@ -2402,10 +2402,10 @@ Instead of opening the front door when the front door is closed:
 		the rule succeeds;
 	[Ship has landed, attempt to let Rover out for walkies]
 	if Rover is not in the Living Room:
-		say "[if the player is clueless]Hearing the door jiggle, Rover [one of]bounds[or]wanders[or]strolls[or]meanders[or]tromps[or]traipses[in random order] into the living room to see what is going on[otherwise]Alerted by the change in cargo bay door status, ROVER rolls into cargo bay[end if]. [run paragraph on]";
+		say "[if the player is clueless]Hearing the door jiggle, Rover [one of]bounds[or]wanders[or]strolls[or]meanders[or]tromps[or]traipses[in random order] into the living room to see what is going on[otherwise]Alerted by the change in cargo bay door status, ROVER rolls into the cargo bay[end if]. [run paragraph on]";
 		now Rover is in the Living Room;
 	otherwise:
-		say "[Rover] [if the player is clueless]looks up when he hears the door begin to open[otherwise]scans the cargo bay door begins to open[end if]. [run paragraph on]";
+		say "[Rover] [if the player is clueless]looks up when he hears the door begin to open[otherwise]scans the cargo bay as the door begins to open[end if]. [run paragraph on]";
 	if Rover is thirsty or Rover is hungry:
 		say "Instead of ";
 		if the player is clueless:
@@ -2417,21 +2417,21 @@ Instead of opening the front door when the front door is closed:
 	[Ship is on the ground, ROVER is prepped to go out]
 	change the outcome-override to force-success;
 	if the player is clueless:
-		say "[one of]You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash[or]Rover wiggles his butt through the door before you have it even half-way open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[in random order].[paragraph break]";
+		say "[one of]You swing the front door fully open, confident that Rover will walk about the park and then return. Rover is out in a flash[or]Rover wiggles his butt through the door before you have it even halfway open, his tail slapping back and forth against the gate as it disappears[or]Rover slips out the door[in random order].[paragraph break]";
 	otherwise: [aware]
-		say "[Rover] [one of]deploys to the planet surface through the cargo bay doors[or]spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship[or]oscillates his aft sensor array at high frequency and rolls down the cargo ramp, disappearing into the sand storm[in random order].[paragraph break]";
+		say "[Rover] [one of]deploys to the planet surface through the cargo bay doors[or]spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship[or]oscillates his aft sensor array at high frequency and rolls down the cargo ramp, disappearing into the sandstorm[in random order].[paragraph break]";
 	now the front door is open; [signaling the end of second sim scene]
 	if the Real Thing is happening:
 		move Rover to the Front Yard. [signaling the beginning of walkies scene]
 	
 Rover is a male animal. He is in the Living Room.  Rover has insightfulness. Rover is clueless. Rover can be awake. Rover is awake.  Rover can be either hungry or stuffed. Rover is hungry. Rover can be either thirsty or slaked. Rover is thirsty. The doggie bits are a privately-named part of Rover. Rover can be busy. Rover is not busy. The texture of the Rover is "short-haired and smooth"
 
-The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "A robotic mining rig". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" or "mobile" or "robotic" or "tractor" or "mining" or "rig" or "ROVER" as the rover-proxy. The scent of the Rover is "[if the player is rover]like the dashing, young hound that you know you are[otherwise]like a dog who needs, but is unlikely to get, a bath[end if]".Understand "dog" as Rover when the player is the acu. Understand "robot" or "robotic" or "rig" or "mining" or "mobile" as Rover when the player is the acu and the acu is self-aware.
+The clueless-name of Rover is "Rover". The aware-name of Rover is "ROVER". The clueless-description of Rover is "[if the player is the ACU]He's a big, happy dalmation[otherwise]You're a big dog with white fur and dark spots. You smell clean[end if]."  The aware-description of Rover is "A robotic mining rig". The rover-proxy is an aware-proxy that is part of rover. Understand "robot" or "mobile" or "robotic" or "tractor" or "mining" or "rig" or "ROVER" as the rover-proxy. The scent of the Rover is "[if the player is rover]like the dashing young hound that you know you are[otherwise]like a dog who needs, but is unlikely to get, a bath[end if]".Understand "dog" as Rover when the player is the acu. Understand "robot" or "robotic" or "rig" or "mining" or "mobile" as Rover when the player is the acu and the acu is self-aware.
 
 Instead of examining Rover when the drapes are open:
 	if the player is clueless:
 		if the player is the ACU:
-			say "He's [one of]a big, happy dalmation[or]a medium-to-largish dog, mostly white with some black dots[or]not genineered or cyberized; he's just a regular old dalamation, like the ones originally bred on Earth[or]got to mass at least 30 kilos, although he is athletic and trim[or]not what you'd typically call a lap dog, although he'd beg (literally) to differ[or]the sort of dog that if you had one hundred more, you could make a Disney film[or]young as dogs go, about 5 years old, so not a puppy either, although he's almost as playful at times[or]almost entirely dalmation, although there must have been some other breed somewhere in his lineage, as he has a brown spot just over his left eye, while all the other spots are black[or]a classic dalmation with black rather than green or orange spots, which are more in vogue among today's Martian dog fanciers[or]a strong dog, with powerful back legs and a supple back[or]a noble-appearing dog, who stands squarely with straight shoulders, and firmly planted back legs[or]a short-haired dog, white with black spots. Despite the shortness of his hair, it tends to get on everything from furniture to clothes[or]the kind of dog often depicted as a [quotation mark]fire dog[quotation mark] in old Earth films[or]a monochromatic dog in a polychromatic world[or]got floppy ears, a straight tail, and a look of mischief in his eyes[or]smiling at you, raising one side of his mouth so you can see his teeth. Other people find it alarming, but you know he's just trying to be congenial[or]a gentle, obedient dalmation[in random order].[paragraph break]";
+			say "He's [one of]a big, happy dalmation[or]a medium-to-largish dog, mostly white with some black dots[or]not genineered or cyberized; he's just a regular old dalmation, like the ones originally bred on Earth[or]got to mass at least 30 kilos, although he is athletic and trim[or]not what you'd typically call a lapdog, although he'd beg (literally) to differ[or]the sort of dog that if you had one hundred more, you could make a Disney film[or]young as dogs go, about 5 years old, so not a puppy either, although he's almost as playful at times[or]almost entirely dalmation, although there must have been some other breed somewhere in his lineage, as he has a brown spot just over his left eye, while all the other spots are black[or]a classic dalmation with black rather than green or orange spots, which are more in vogue among today's Martian dog fanciers[or]a strong dog, with powerful back legs and a supple back[or]a noble-appearing dog, who stands squarely with straight shoulders, and firmly planted back legs[or]a short-haired dog, white with black spots. Despite the shortness of his hair, it tends to get on everything from furniture to clothes[or]the kind of dog often depicted as a [quotation mark]fire dog[quotation mark] in old Earth films[or]a monochromatic dog in a polychromatic world[or]got floppy ears, a straight tail, and a look of mischief in his eyes[or]smiling at you, raising one side of his mouth so you can see his teeth. Other people find it alarming, but you know he's just trying to be congenial[or]a gentle, obedient dalmation[in random order].[paragraph break]";
 			if Rover carries the delicious bone:
 				say "Rover is chewing on a big bone that he picked up earlier in the Park.";
 			otherwise:
@@ -2455,7 +2455,7 @@ Instead of examining Rover when the drapes are open:
 		say paragraph break.
 		
 To say how Rover looks:
-	say "You're [one of]a big dog with white fur and dark spots[or]a suave and sophisticated dog, with a streak of nobility[or]debonair, cosmopolitan dog, well-bred and cut from the best cloth[or]a fun-loving, easy going dog, who's fun to be around[or]a classic black and white dalmation, with a beauty mark above your left eye. Some say it is a mark of Royalty going back to 16th Century Croatia. You're not sure about that, but it's what you tell the ladies[or]a gallant, upright dog, with a strict moral code and a clear sense of right and wrong[or]a loyal dog, with the best master in the world, Janet[or]not like the other dalmation one sees vamping about the park sporting white coats with outrageous green and orange dots. No, you are the real thing: black dots on a white coat. All of your genes are real, not grown in a lab somewhere[or]a fully biological dog, with no synthetic parts. You like it that way. You think your parts are already nice enough[or]a well-groomed, healthy dalmation. Presumably, irresistable to the ladies[in random order]".
+	say "You're [one of]a big dog with white fur and dark spots[or]a suave and sophisticated dog, with a streak of nobility[or]a debonair, cosmopolitan dog, well-bred and cut from the best cloth[or]a fun-loving, easy-going dog, who's fun to be around[or]a classic black and white dalmation, with a beauty mark above your left eye. Some say it is a mark of royalty going back to 16th Century Croatia. You're not sure about that, but it's what you tell the ladies[or]a gallant, upright dog, with a strict moral code and a clear sense of right and wrong[or]a loyal dog, with the best master in the world, Janet[or]not like the other dalmations one sees vamping about the park sporting white coats with outrageous green and orange dots. No, you are the real thing: black dots on a white coat. All of your genes are real, not grown in a lab somewhere[or]a fully biological dog, with no synthetic parts. You like it that way. You think your parts are already nice enough[or]a well-groomed, healthy dalmation. Presumably, irresistable to the ladies[in random order]".
 	
 To say how Rover smells:
 	say "You smell [one of]clean[or]virtuous[or]like you're ready for anything[or]masculine[or]slightly musky[or]nothing at all like wet dog, and you have every intention of making sure that remains the case[or](in your opinion) foxy[or]like Janet's house[or]a little like those kibbles you've been eating for the last week[or]your butt. Yup, it's squeaky clean and ready to meet the world[or]virile[or]rugged and sturdy[or]like a red-blooded, male dog in his prime[or]fearless[or]bold and daring[or]fresh[or]dogly[in random order]".
@@ -2478,7 +2478,7 @@ To Drop Rover's Payload:
 	
 Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover modules". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated mechanical module bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "complicated" or "module" or "modules" or "mechanical" as the doggie bits-proxy. The scent of the doggie bits is "[the scent of Rover]".
 
-The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. [If Real Thing has happened]You notice that a few pixels have gone dark in the picture. Not a big deal, though. Probably only something you'd notice. [end if]There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is non-functional, it is critical that these encoded data be returned directly the MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. The scent of the picture is "like Tomasz's old cologne. It brings back memories". The texture of the picture is "flat". Understand "pixel" or "pixels" as the picture when the Real Thing has happened and the player is clueless.
+The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. [If Real Thing has happened]You notice that a few pixels have gone dark in the picture. Not a big deal, though. Probably only something you'd notice. [end if]There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is nonfunctional, it is critical that these encoded data be returned directly to MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. The scent of the picture is "like Tomasz's old cologne. It brings back memories". The texture of the picture is "flat". Understand "pixel" or "pixels" as the picture when the Real Thing has happened and the player is clueless.
 
 Instead of searching the picture:  
 	try examining the picture.
@@ -2497,7 +2497,7 @@ Instead of reading the nameplate:
 
 Section Kitchen
 
-The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. [if the old fridge is open]The fridge door is not completely closed. [end if]There is a[if the drawer is open]n open[end if] drawer under the range. On the opposite wall there is a sink and under it, a[if the cabinet is open]n open[end if] storage cabinet."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads which line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault[if the cabinet is open], which is not properly secured[end if]. The [if the drawer is open]opened [end if]reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros[if the old fridge is open]. The cryochamber is open, chilling the engineering section[end if]."
+The Kitchen is a room. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. [if the old fridge is open]The fridge door is not completely closed. [end if]There is a[if the drawer is open]n open[end if] drawer under the range. On the opposite wall there is a sink and under it, a[if the cabinet is open]n open[end if] storage cabinet."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault[if the cabinet is open], which is not properly secured[end if]. The [if the drawer is open]opened [end if]reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros[if the old fridge is open]. The cryochamber is open, chilling the engineering section[end if]."
 
 The scent of the kitchen is "homey, a rich organic smell that has layered year after year as you have cooked your meals. In short, it smells a lot like ramen noodles".
 
@@ -2507,7 +2507,7 @@ To say TK-sound:
 	if the player is clueless:
 		say "the asthmatic wheeze of your antique refrigerator, huffing and puffing its way through another day (perhaps its last) of loyal service to your family";
 	otherwise:
-		say "[if the refrigerator is in the kitchen]the loud hum of the cryochamber, [end if]the high pitched whine of the reactor core, and the gurgle of liquids moving through conduits in the walls of the engineering section".
+		say "[if the refrigerator is in the kitchen]the loud hum of the cryochamber, [end if]the high-pitched whine of the reactor core, and the gurgle of liquids moving through conduits in the walls of the engineering section".
 
 Instead of going towards or exiting when the player is in the kitchen:
 	if the player carries the food bowl or the player carries the water bowl or the player carries the dog chow bag or the player carries the white egg:
