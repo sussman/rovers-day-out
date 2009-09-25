@@ -2491,8 +2491,9 @@ The nameplate is a fixed in place message which is part of the picture. Understa
 Instead of reading the nameplate:
 	change outcome-override to force-success;
 	if the player is clueless:
-		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break][bracket]Note: You can recall [italic type]something[roman type] from your past by typing [quotation mark]REMEMBER [italic type]something[roman type][quotation mark][close bracket][paragraph break]";
+		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break]";
 		try remembering "photo";
+		say "[paragraph break][bracket]Note: You can recall [italic type]something[roman type] from your past by typing [quotation mark]REMEMBER [italic type]something[roman type][quotation mark][close bracket][paragraph break]";
 	otherwise:
 		say "It says, [quotation mark]Deep Memory Unit[quotation mark]."
 
