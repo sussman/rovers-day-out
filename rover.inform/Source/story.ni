@@ -411,7 +411,12 @@ Carry out BSOEing:
 	shut down BSOD-window;
 	return to main screen;
 	clear the screen.
-
+	
+Trailering is an action applying to nothing.
+Carry out Trailering:
+	try section-breaking;
+	say "Preview of [quotation mark]Red Rover, Red Rover[quotation mark], the sequel to [quotation mark]Rover's Day Out[quotation mark][paragraph break]Captain's Log, September 5, 2396, Janet Xiang recording. Despite our sensor anomalies and the disorienting effect of the serial Casimir jumps which brought us here, Valkyrie emerged into a textbook-perfect polar orbit about Aurora.[paragraph break]We're on our first pass, with an orbital period of 90 minutes, and so far we've dropped ten probes, eight in the drink and two on land masses. The atmosphere is definitely breathable, and the probes show multicellular plant life: everything from kelp to trees. So far, no animal life, not even zooplankton. Rover is eager to be the first. Two years on a space ship are too long to go between walks.[paragraph break]We'll be in communications blackout for the next 20 hours, so I'm sending this initial report ahead of schedule. There's one other item I need to mention: shortly after we arrived, we detected what looked like a secondary tachyon emission near the south pole. It was a momentary pulse, and we can't tell if came from the pole itself, or just originated in that direction relative to Valkyrie. We'll drop surface and air probes more densely over the south polar area, and we'll scan that cone with our ansible while awaiting the next window with the MARSpace relay.[paragraph break]Oh, and to make this official: This is Captian Janet Xiang of the MARSpace Exploration Vessel Valkyrie. I hereby claim planet Aurora as territory of the People's Republic of Mars."
+		
 Section-breaking is an action applying to nothing.
 Carry out section-breaking:
 	say "[paragraph break]               *    *    *[paragraph break]".
@@ -5946,7 +5951,8 @@ Rule for printing the player's obituary:
 		-- otherwise:
 			say "default response for testing purposes.";
 	if the game ended in victory:
-		try BSOEing.
+		[try BSOEing.]
+		try Trailering.
 			
 To say eel-epilogue:
 	if the front door is open:
