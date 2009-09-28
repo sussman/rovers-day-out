@@ -393,7 +393,7 @@ Carry out BSODing:
 	await keystroke;
 	open up BSOD-window;
 	move focus to BSOD-window, clearing the window;
-	say "[second custom style]                 WINDEX                 [paragraph break]A fatal exception F1 has occurred at    [line break]0013AF3411BC:5D00193D39B4 in DLL 35A3249[line break]in kernel ring beta. The current appli- [line break]cation will be terminated.              [paragraph break]* Press any key to terminate the current[line break]  application.                          [line break]* Press META+ALT+DEL again to restart   [line break]  the ACU. You will lose all state      [line break]  information.  Sorry.                  [paragraph break][paragraph break]       Press a key to continue          "; 
+	say "[second custom style]                 WINDEX                 [paragraph break]A fatal exception F1 has occurred at    [line break]0013AF3411BC:5D00193D39B4 in DLL 35A3249[line break]in kernel ring beta. The current appli- [line break]cation will be terminated.              [paragraph break]* Something unpleasant has happened in  [line break]  the transputational core processor.   [line break]* Quantum entanglement compromised due  [line break]  to runtime error. All data lost.      [line break]* Sorry about that.                     [paragraph break][paragraph break]       Press a key to continue          ";
 	await keystroke;
 	shut down BSOD-window;
 	return to main screen;
