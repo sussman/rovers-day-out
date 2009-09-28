@@ -2502,7 +2502,7 @@ Instead of reading the nameplate:
 	if the player is clueless:
 		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break]";
 		try remembering "photo";
-		say "[paragraph break][bracket]Note: You can recall [italic type]something[roman type] from your past by typing [quotation mark]REMEMBER [italic type]something[roman type][quotation mark][close bracket][paragraph break]";
+		say "[paragraph break][bracket]Note: You can recall [italic type]something[roman type] from your past by typing [quotation mark]REMEMBER [italic type]something[roman type][quotation mark], e.g. [quotation mark]REMEMBER casimir drive[quotation mark][close bracket][paragraph break]";
 	otherwise:
 		say "It says, [quotation mark]Deep Memory Unit[quotation mark]."
 
@@ -5089,7 +5089,7 @@ First Sim is a scene. First Sim begins when play begins. First Sim ends when the
 
 When First Sim ends:
 	try BSODing;
-	let metatext be "Janet: Crap.*David: Windex?*Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.*David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?*Janet: Yes, but it will take some time to install and debug.*David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.*Janet: Happy to have the help -- how about dinner first?*David: Do you like Thai?";
+	let metatext be "Janet: Crap.  The ACU crashed.*David: Windex?*Janet: It's the Myomita operating system. It's backwards compatible to the 20th century. Maybe earlier.*David: We can't use Windex as the substrate for the ACU -- it's too critical. Can it run under Flosix?*Janet: Yes, but it will take some time to install and debug.*David: I can help you, the rest of the ship is Flosix, stem to stern. I live and breathe Flosix.*Janet: Happy to have the help -- how about dinner first?*David: Do you like Thai?";
 	say "[metatext in metaspeak]";
 	await keystroke;
 	try section-breaking;
