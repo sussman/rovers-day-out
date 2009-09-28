@@ -5506,7 +5506,8 @@ Instead of inserting the maintenance droid into the old fridge:
 	now the old fridge is damaged;
 	move the maintenance droid to Limbo.
 	
-[###TODO: make sure there is a reasonable response for attempting to put the robot in the toilet or sink]
+Instead of inserting the maintenance droid into the bathroom sink:
+	say "The decontamination system would have little effect on a robot."
 	
 Instead of inserting the maintenance droid into the water tank:
 	if the maintenance droid is not carried by the player:
