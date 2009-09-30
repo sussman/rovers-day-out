@@ -2560,6 +2560,9 @@ Instead of opening the old fridge:
 [TOCONSIDER: for V 2.0, could make this a puzzle, requiring use of the toothpaste to grease the fridge hinges.]
 	
 Instead of searching a refrigerator (called R):
+	if R is closed:
+		say "Before you can look in it, you've got to open it!";
+		the rule succeeds;
 	if the player is clueless:
 		say "You poke around in the fridge and find [a list of things in R][run paragraph on]";
 		if nothing is in R:
