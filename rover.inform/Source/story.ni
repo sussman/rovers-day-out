@@ -5612,7 +5612,7 @@ Instead of saying yes during Boarding Party:
 			say "[too late]";
 	otherwise:
 		say "There is no response.";
-		if the assault ship approach is one and the assault ship distance is one and the assault ship distance is greater than zero:
+		if the assault ship approach is one and the assault ship distance is one:
 			continue the action;
 		otherwise:
 			the rule succeeds. [this suppresses the default response "that was a rhetorical question]
@@ -5637,8 +5637,12 @@ Instead of saying no during Boarding Party:
 		otherwise:
 			say "[too late]";
 	otherwise:
-		say "There is no response";
-		continue the action.
+		say "There is no response.";
+		if the assault ship approach is one and the assault ship distance is one:
+			continue the action;
+		otherwise:
+			the rule succeeds. [this suppresses the default response "that was a rhetorical question".]
+		
 		
 To say the intruder:
 	say "[if the underling is in the location][the underling][otherwise]the intruder[end if]".
