@@ -214,7 +214,10 @@ Here's a brief history of time for the game:
 ]
 
 Pillow-locale is a room that varies. Pillow-locale is the Sleeping Room.
+
 Rock-locale is a room that varies. Rock-locale is the Barren Plain.
+
+Gone-towards is a number that varies. Gone-towards is zero.
 
 Chapter Class Definitions
 
@@ -969,6 +972,10 @@ Instead of going towards when the player is in the Living Room and the futon is 
 			say "[metatext in metaspeak]".
 			
 After going towards when the player is the ACU:
+	increase gone-towards by one;
+	if gone-towards is 10:
+		let metatext be "David: That's a lot to keep saying just to move from room to room. Rather inefficient, don't you think?*Janet: Oh? What would you suggest?*David: How about just saying 'lr' to go to the living room or 'k' to go to the kitchen? Or something to that effect.*Janet: Hmm. Let me add that...done. And on the fly no less.*David: I'm impressed.*Janet: You're okay for a hardware guy.";
+		say "[metatext in metaspeak]";
 	if the player carries the reward nuggets replicator:
 		if Rover is in the location:
 			say "[Rover] [if the player is clueless][one of]begs for some treats[or]dances around, trying to suggest that he'd be glad to do one of his tricks for a reward nugget[or]sniffs at [the reward nuggets replicator][or]keeps an eye on [the reward nuggets replicator][or]stares dreamily at the doggie treats[or]watches you intently, concentrating on [reward nuggets replicator][or]scrutinizes [reward nuggets replicator][or]contemplates [the reward nuggets replicator][or]dreams about the doggie treats in that [reward nuggets replicator][or]lies down, rolls over, and barks, hoping to persuade you to toss him a treat[or]sits and gives kisses, hoping to earn a reward nugget[in random order][otherwise]maintains a fix on [the reward nuggets replicator][end if].";
@@ -1016,6 +1023,14 @@ After reading a command:
 				
 To say cant go out:
 	say "You cannot extend your operations beyond the Valkyrie itself."
+	
+Kitchen-going is an action applying to nothing. Understand "k" as kitchen-going when the player is the acu and gone-towards is greater than 9. Instead of kitchen-going, try going towards the kitchen.
+
+Bathroom-going is an action applying to nothing. Understand "b" as bathroom-going when the player is the acu and gone-towards is greater than 9. Instead of bathroom-going, try going towards the bathroom.
+
+Livingroom-going is an action applying to nothing. Understand "lr" as livingroom-going when the player is the acu and gone-towards is greater than 9. Instead of livingroom-going, try going towards the living room.
+
+Shower-going is an action applying to nothing. Understand "sh" as shower-going when the player is the acu and gone-towards is greater than 9 and the player is clueless. Instead of shower-going, try going towards the shower. [clueless is specified because sh when aware will spawn a bash shell.]
 
 Section Leaving
 
