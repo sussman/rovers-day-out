@@ -3898,6 +3898,9 @@ Instead of climbing when the player is in the long furrow:
 	
 Instead of going up when Rover is in the furrow:
 	try exiting.
+	
+Rule for printing room description details of the long furrow:
+	stop.
 
 The furrow walls are scenery. They are plural-named. They are part of the furrow. The description of the furrow walls is "The walls and the floor of the furrow are hard and shiny, more like glass. At places, the shiny layer has cracked and peeled off, and you can see dirt behind it. There are scratches on the walls and floor, long grooves that have somehow hardened like the walls themselves." Understand "wall", "walls", "floor", "dirt", "soil", "earth", "ground", "crater", "ditch", "excavation", "black", "shiny", "trench" or "glass" as the furrow walls. The aware-name of the furrow walls is "trench". The texture of the furrow walls is "quite warm".
 
