@@ -3417,6 +3417,8 @@ The toilet seat is a flipchair which is in the bathroom. The clueless-name of th
 
 Instead of searching the toilet:
 	try searching the toilet bowl.
+	
+
 
 The toilet cover is a flipchair which is in the bathroom. The clueless-name of the toilet cover is the "toilet cover". The aware-name of the toilet cover is "reactant shield". Understand "wooden", "wood" , "laminated" or "laminate" as the toilet cover. The clueless-description of the toilet cover is "The cover is made of plastic but has been laminated to give it the appearance of unstained wood. The toilet cover is [if toilet bowl is open]open[otherwise]closed[end if]." The aware-description of the toilet cover is "The neoadamite shield over the reaction chamber is presently [if the toilet bowl is open]not [end if]secured." The toilet cover-proxy is an aware-proxy that is part of the toilet cover. Understand "reactant", "shield", or "neoadamite" as the toilet cover-proxy. The scent of the toilet cover is "like plastic masquerading as wood". The texture of the toilet cover is "completely smooth despite the simulated wood grain appearance".
 
@@ -3443,11 +3445,11 @@ Before entering the toilet:
 		the rule fails.
 
 Before opening a flipchair (called the flop):
-	if a flipchair holds the player:
-		say "You can't do that while you are [if the player is clueless]on[otherwise]accessing[end if] [the holder of the player].";
-		the rule fails;
 	if the flop is open:
 		say "[The flop] is already [if the player is clueless]raised[otherwise]disengaged[end if].";
+		the rule fails;
+	if the holder of player is a flipchair:
+		say "You can't do that while you are [if the player is clueless]on[otherwise]accessing[end if] [the holder of the player].";
 		the rule fails;
 	otherwise:
 		change the outcome-override to force-success;	
@@ -3458,11 +3460,11 @@ Before opening a flipchair (called the flop):
 		the rule succeeds.
 		
 Before closing a flipchair (called the flop):
-	if a flipchair holds the player:
-		say "You can't do that while you are [if the player is clueless]on[otherwise]accessing[end if] [the holder of the player].";
-		the rule fails;
 	if the flop is closed:
 		say "[The flop] is already [if the player is clueless]down[otherwise]in position[end if].";
+		the rule fails;
+	if the holder of the player is a flipchair:
+		say "You can't do that while you are [if the player is clueless]on[otherwise]accessing[end if] [the holder of the player].";
 		the rule fails;
 	otherwise:
 		now the flop is closed;	
