@@ -5296,7 +5296,7 @@ Boarding Party is a scene.  Boarding Party begins when Real Thing ends. Boarding
 When Boarding Party begins:
 	await keystroke;
 	try section-breaking;
-	say "The Casimir Drive cuts out and space folds back around you. Whatever sleep-drenched dreams you might have been having evaporate instantly as two gunships flash past at mildly relativistic velocities, slicing through your propulsion systems with military precision. The markings on the ships are those of the Myomita Corporation.[paragraph break]They must have been nearby when they detected the formation of your Casimir disturbance, as they are coming in white hot and still accelerating at five gravities. Another Earth ship, an assault craft, is farther out but is already braking hard to slow its approach on an intercept course.[paragraph break]Rover barks nervously as the drive section struts separate from the hull.";
+	say "The Casimir Drive cuts out and space folds back around you. Whatever sleep-drenched dreams you might have been having evaporate instantly as two gunships flash past at relativistic velocities, slicing through your propulsion systems with military precision. The markings on the ships are those of the Myomita Corporation.[paragraph break]They must have been nearby when they detected the formation of your Casimir disturbance, as they are coming in white hot and still accelerating at five gravities. Another Earth ship, an assault craft, is farther out but is already braking hard to slow its approach on an intercept course.[paragraph break]Rover barks nervously as the drive section struts separate from the hull.";
 	change last-noun to "EMERGENCY ALERT";
 	change status-line-action to "ACTIVATE";
 	change last-success to "TRUE";
