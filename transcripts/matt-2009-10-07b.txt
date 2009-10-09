@@ -1,0 +1,1297 @@
+Start of a transcript of
+
+Rover's Day Out
+An Interactive Fiction by Jack Welch and Ben Collins-Sussman
+Release 11 / Serial number 090930 / Inform 7 build 5Z71 (I6/v6.31 lib 6/12N) 
+Type "help" for instructions, credits, and license or just blaze on impetuously.
+
+
+
+               *    *    *
+
+Rover's Day Out
+An Interactive Simulation by Janet Xiang and David Venkatachalam
+Release 1 / Serial number 23920416 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+Even mildly drugged and reclining on an overstuffed couch in the MARSpace human resources office, it's hard to relax in the presence of the MARSpace political officer conducting the final interview. You didn't catch her name, probably because she never mentioned it. After three such interviews and six months of background check, what more could they want?  
+
+"Ms. Xiang, thank you for your cooperation. Your tests show no hint of disloyalty to the Republic or MARSpace. We hope you understand the need for these measures, particularly for personnel with access to the Valkyrie's command and control functions. Now that you are cleared, I can inform you that credible sources have warned that the project may have been infiltrated by..."
+
+<beep> <beep> <beep>
+
+Identification number: //417B9626-8635-4451-90F5-D082E01547FA//
+Interpreter version 1.2.4 / VM 3.1.1 / Library serial number 080126
+Standard Rules version 2/090402 by Graham Nelson
+Glulx Text Effects version 3 by Emily Short
+Flexible Windows version 8 by Jon Ingold
+
+READY>l
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. The Casimir Drive juts slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are closed.
+
+ROVER chews contentedly on his bone.
+
+You can also see a temporal transgressor here.
+
+OPERATIONS -> STATUS : TRUE
+
+READY>x transgressor
+You can't see that here; but you vaguely recall something called the "alarm clock".
+
+ROVER sniffs the cargo bay door.
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>x alarm clock
+The Casimir Drive's temporal transgressor glows green as usual.  A basic toggle is on top.
+
+ROVER paws at the cargo bay door.
+
+TEMPORAL TRANSGRESSOR -> DIAGNOSTIC : TRUE
+
+READY>x toggle
+You can't see that here; but you vaguely remember something termed the "large button".
+
+ROVER sniffs the cargo bay door.
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>push button
+Proximity alert reset inhibited.
+
+MF TOGGLE -> PRESSOR FIELD : NIL
+
+READY>push button
+Proximity alert reset inhibited.
+
+ROVER sniffs the cargo bay door.
+
+MF TOGGLE -> PRESSOR FIELD : NIL
+
+READY>go to bathroom
+Bathroom
+The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence.
+
+On the flight console are an object linker and a pit scrubber.
+
+FLIGHT CONTROL -> SELECT : TRUE
+
+READY>* breaking
+That's not a verb I recognize.
+
+READY>i
+You are carrying:
+  a quantum isolator (being worn)
+  an entangled key pair
+
+ACU -> MANIFEST : TRUE
+
+READY>x key
+You can't see that here; but you vaguely recollect something referred to as the "strand of dental floss".
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>floss teeth
+The hull plating is now synchronously enmeshed.
+
+HULL PLATING -> LINK NODES : TRUE
+
+READY>brush teeth
+(first grabbing the pit scrubber)
+Nanobristles wake from dormancy and begin reproducing through the ship, sending waves of their progeny across the surface of the ship. The uncountable hordes of microscopic scrubbers oxidize and buff the ship to a brilliant, gleaming silver.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+HULL PLATING -> SPAWN SCRUBBERS : TRUE
+
+READY>close lid
+You close the plasma constrictor.
+
+PLASMA CONSTRICTOR HATCH -> DEACCESS : TRUE
+
+READY>open lid
+You open the plasma constrictor, revealing a thrust aperture, a thruster actuation relay, and a thruster linkage servo.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+PLASMA CONSTRICTOR HATCH -> ACCESS : TRUE
+
+READY>i
+You are carrying:
+  a pit scrubber
+  a quantum isolator (being worn)
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+ACU -> MANIFEST : TRUE
+
+READY>take off isolator
+(first taking the COGNITIVE BLOCK)
+You can't see that here; but you vaguely recall something called the "flight suit".
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+COGNITIVE BLOCK -> DISENGAGE : NIL
+
+READY>take off flight suit
+You disengage your quantum isolator.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+QUANTUM ISOLATOR -> DISENGAGE : TRUE
+
+READY>enter shower
+The pit scrubber can only be activated from flight control, so you deaccess it. 
+
+Shower
+The extruder delivers activated enamel solution to the surface of the ship through a fluidics network where it hardens into an ablative coating.
+
+EXTRUDER -> ACTIVATE : TRUE
+
+READY>push soap
+The ablative enamel monomer solution spreads quickly over the ship's hull.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+ABLATIVE ENAMEL INJECTOR -> PRESSOR FIELD : TRUE
+
+READY>push shampoo
+Catalyst solution is spread uniformly over the ship's hull.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+ACCELERANT PUMP -> PRESSOR FIELD : TRUE
+
+READY>get out
+You are currently accessing the shower.
+
+ACU -> DEACTIVATE : TRUE
+
+READY>get out of shower
+You can't see any such thing.
+
+READY>l
+Shower
+The extruder delivers activated enamel solution to the surface of the ship through a fluidics network where it hardens into an ablative coating.
+
+EXTRUDER -> STATUS : TRUE
+
+READY>out
+ACU metavisor shell logout interdicted. If your intention is to deaccess the extruder system, use another command that is not a Flosix command.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+ACU -> EXIT SHELL : NIL
+
+READY>deaccess
+That's not a verb I recognize.
+
+READY>go to bathroom
+Bathroom
+The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence.
+
+On the flight console are a pit scrubber and an object linker.
+
+You can also see a quantum isolator here.
+
+FLIGHT CONTROL -> SELECT : TRUE
+
+READY>wear isolator
+(first taking the COGNITIVE BLOCK)
+You can't see that here; but you vaguely remember something referred to as the "flight suit".
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+COGNITIVE BLOCK -> ENGAGE : NIL
+
+READY>get flight suit
+Taken.
+
+QUANTUM ISOLATOR -> SELECT : TRUE
+
+READY>wear it
+You put on the quantum isolator.
+
+QUANTUM ISOLATOR -> ENGAGE : TRUE
+
+READY>take it off
+What do you want to take the quantum isolator off?
+
+READY>take off suit
+You disengage your quantum isolator.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+QUANTUM ISOLATOR -> DISENGAGE : TRUE
+
+READY>touch black
+Which do you mean, the irradiator switch, or the thrust aperture?
+
+READY>touch black rectangle
+You can't see any such thing.
+
+READY>touch switch
+[irradiator switch]: file timestamp updated.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+COGNITIVE BLOCK -> UPDATE : NIL
+
+READY>wear flight suit
+(first taking the quantum isolator)
+You put on the quantum isolator.
+
+QUANTUM ISOLATOR -> ENGAGE : TRUE
+
+READY>go to engineering
+That noun did not make sense in this context.
+
+READY>go to kitchen
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault, which is not properly secured. The opened reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros.
+
+On the fusion chamber is a magnetic bottle (empty).
+
+You can also see a fuel reservoir (empty) and a coolant reservoir (empty) here.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+ENGINEERING -> SELECT : TRUE
+
+READY>fill water bowl
+(first taking the coolant reservoir)
+You transfer coolant from the terminus to the reservoir.
+
+COOLANT RESERVOIR -> TRANSFER : TRUE
+
+READY>put down bowl
+Receiving notification from the coolant reservoir alert system, ROVER drives into the engineering section.
+
+COOLANT RESERVOIR -> DESELECT : TRUE
+
+READY>fill food bowl
+(first taking the fuel reservoir)
+(first accessing the conduit output valve)
+The supply of thermoisotope has been depleted.
+
+FUEL RESERVOIR -> TRANSFER : NIL
+
+READY>put food bowl down
+FUEL RESERVOIR -> DESELECT : TRUE
+
+READY>i
+You are carrying:
+  a fuel conduit (open but empty)
+  a quantum isolator (being worn)
+
+ACU -> MANIFEST : TRUE
+
+READY>x conduit
+You can't see that here; but you vaguely recollect something termed the "20 kilo bag of dog chow".
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>put down bag
+Dropped.
+
+FUEL CONDUIT -> DESELECT : TRUE
+
+READY>l
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault, which is not properly secured. The opened reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros.
+
+ROVER chews contentedly on his bone.
+
+On the fusion chamber is a magnetic bottle (empty).
+
+You can also see a fuel conduit (empty), a fuel reservoir (empty), and a coolant reservoir (in which is some coolant) here.
+
+ENGINEERING -> STATUS : TRUE
+
+READY>x bottle
+You can't see that here; but you vaguely recall something called the "frying pan".
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>open refrigerator
+ROVER looks up when he hears the cryochamber open. He performs a brief chemosensor scan and then rolls back towards the operations area.
+
+CRYOCHAMBER -> ACCESS : TRUE
+
+READY>look inside refrigerator
+The cryo unit contains nothing but the super-chilled interior of the cryo unit itself.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+CRYOCHAMBER -> MANIFEST : NIL
+
+READY>l
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault, which is not properly secured. The opened reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros. The cryochamber is open, chilling the engineering section.
+
+On the fusion chamber is a magnetic bottle (empty).
+
+You can also see a fuel conduit (empty), a fuel reservoir (empty), and a coolant reservoir (in which is some coolant) here.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+ENGINEERING -> STATUS : TRUE
+
+READY>close refrigerator
+You close the cryochamber.
+
+CRYOCHAMBER -> DEACCESS : TRUE
+
+READY>x core
+You can't see that here; but you vaguely recollect something termed the "drawer".
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>open drawer
+That's already open.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+REACTOR CORE -> ACCESS : NIL
+
+READY>look in drawer
+The reactor core is empty.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+REACTOR CORE -> MANIFEST : NIL
+
+READY>l
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault, which is not properly secured. The opened reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros.
+
+On the fusion chamber is a magnetic bottle (empty).
+
+You can also see a fuel conduit (empty), a fuel reservoir (empty), and a coolant reservoir (in which is some coolant) here.
+
+ENGINEERING -> STATUS : TRUE
+
+READY>x fusion
+You can't see that here; but you vaguely remember something referred to as the "the cooking range".
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>go to living room
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. The Casimir Drive juts slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are closed.
+
+ROVER chews contentedly on his bone.
+
+You can also see a temporal transgressor here.
+
+OPERATIONS -> SELECT : TRUE
+
+READY>out
+ACU metavisor shell logout interdicted.
+
+ACU -> EXIT SHELL : NIL
+
+READY>go outside
+You cannot extend your operations beyond the Valkyrie itself.
+
+ROVER paws at the cargo bay door.
+
+ACU -> SELECT : NIL
+
+READY>open cargo bay door
+You can't see that here; but you vaguely remember something referred to as the "front door".
+
+COGNITIVE BLOCK -> ACCESS : NIL
+
+READY>open front door
+ROVER scans the cargo bay as the door begins to open. ROVER spins his tractors in anticipation and then jets out the cargo bay doors into the swirling mist outside the ship.
+
+There is a wrenching shift in perspective, but a moment later it seems perfectly natural.
+
+You go bounding out the front door, ready to romp. You leave your space probe in the living room, with the intention of giving it a proper chewing later, after doing some more exploring.
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>go to man
+Your legs carry you as fast as they can.
+
+The Park
+You are outside. A gust of wind lifts a sheet of dust and rains it down on you.
+
+You can see a lump of rock here.
+
+>get rock
+You pick up the rock in your jaws.
+
+>go to man
+You scuttle forth.
+
+The Park
+A dug-up field pockmarked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>g
+Trot, trot, trot.
+
+The Park
+A long, dark furrow scars the ground in this part of the park.
+
+You can see a long furrow (empty) here.
+
+>g
+You bound away towards your goal.
+
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a female dog here.
+
+>g
+You scuttle forth.
+
+The Park
+You are right outside a dilapidated shack, which has clearly been neglected. A gust of wind lifts a sheet of dust and rains it down on you.
+
+>in
+You can't go that way.
+
+>go in
+You can't go that way.
+
+>go to man
+You eagerly scamper that way.
+
+Sleeping Room
+The smelly man's house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, "Blah? Blah, blah, blah, blah, dog. Blah, blah, blah, blah, Mars? Blah! Blah, blah, blah, dog, blah!"
+
+You ignore him.
+
+You can see a pink pillow here.
+
+>go to eating room
+You trot off in that direction.
+
+Eating Room
+The room has big cold box just like the eating room in your home. It's less loud in this room, but you can hear the man in the other room yelling, "Blah, blah, blah, dog, blah, bad!". On the floor, there are two dishes.
+
+You can see a food dish (in which is some canned food) and a water dish (in which is some crystal clear water) here.
+
+>eat food
+One second the canned food is right there in front of you, the next you are staring at the bottom of the bowl. A warm, satisfied feeling flows from your snout to your tail.
+
+>drink water
+You gulp down the crystal clear water, all the time bearing in mind that it properly belongs to the enticing young female dog. It tastes all the better for that knowledge.
+
+>open cold box
+You open the cold box, revealing a white egg.
+
+>get egg
+The rock falls out of your mouth and lands near your feet.
+
+You gently pick up the white egg using your front teeth.
+
+>go home
+Your legs carry you as fast as they can.
+
+Sleeping Room
+The smelly man's house is boring. The only furniture in the room is a pullout sofa. In one direction lies the eating room, in the other, the door that leads back to the park. The smelly man is still here and carrying on, "Blah, blah, blah, blah, blah, blah!"
+
+You ignore him.
+
+You can see a pink pillow here.
+
+>g
+You let your nose lead the way.
+
+The Park
+You are right outside a dilapidated shack, which has clearly been neglected. The wind picks up, making it even more difficult to see.
+
+>g
+Trot, trot, trot.
+
+The Park
+A wide-open plain extends in all directions, as far as the dust permits you to see. It sure would be easy to get lost in this part of the park.
+
+You can see a female dog here.
+
+>g
+You let your nose lead the way.
+
+The Park
+A long, dark furrow scars the ground in this part of the park.
+
+You can see a long furrow (empty) here.
+
+>g
+Your legs carry you as fast as they can.
+
+The Park
+A dug-up field pockmarked by small holes and accompanying mounds of dirt.
+
+You can see some paw marks here.
+
+>g
+You bound away towards your goal.
+
+The Park
+You are outside. Dust spins in the air.
+
+>g
+You trot off in that direction.
+
+Front Yard
+The scent of your house is strong here, and you are right next to its front door. You can't see far because it is so dusty here. The wind picks up, making it even more difficult to see.
+
+>g
+You scuttle forth.
+
+You enter your home and lay the egg at Janet's feet. She looks so surprised! "Good boy," she exclaims and you give her a big kiss to let her know you understand.
+
+You notice your bone sitting alone and unloved on the living room floor. You walk over to it and start chewing it again.
+
+Again your senses tumble and swirl as perspective shifts, but suddenly it seems entirely normal again.
+
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. The Casimir Drive juts slightly into the cargo area. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are closed.
+
+ROVER chews contentedly on his bone.
+
+You can also see a heavy helium sphere and a temporal transgressor here.
+
+OPERATIONS -> ACTIVATE : TRUE
+
+READY>get sphere
+You can't see that here; but you vaguely recall something termed the "white egg".
+
+COGNITIVE BLOCK -> SELECT : NIL
+
+READY>get egg
+Taken.
+
+HEAVY HELIUM SPHERE -> SELECT : TRUE
+
+READY>go to kitchen
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault, which is not properly secured. The opened reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros.
+
+On the fusion chamber is a magnetic bottle (empty).
+
+You can also see a fuel conduit (empty), a fuel reservoir (empty), and a coolant reservoir (in which is some coolant) here.
+
+ENGINEERING -> SELECT : TRUE
+
+READY>put egg in pan
+You put the heavy helium sphere into the magnetic bottle.
+
+HEAVY HELIUM SPHERE -> TRANSFER : NIL
+
+READY>fry egg
+The heavy helium feed is now coupled to the input port of the magnetic bottle. A spherical array of powerful lasers discharges instantly, their combined output focused on the heavy helium being injected into the magnetic bottle within the reactor chamber. The ship surges with power.
+
+HEAVY HELIUM SPHERE -> FUSE : TRUE
+
+READY>eat egg
+You recycle the components of the heavy helium containment unit and reallocate them according to the ship's needs.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+HEAVY HELIUM SPHERE -> RECYCLE : TRUE
+
+READY>go to bathroom
+Bathroom
+The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence.
+
+On the flight console are a pit scrubber and an object linker.
+
+FLIGHT CONTROL -> SELECT : TRUE
+
+READY>take off suit
+You disengage your quantum isolator.
+
+QUANTUM ISOLATOR -> DISENGAGE : TRUE
+
+READY>sit on toilet
+You sit on the pressure seating.
+
+RETRO ASSEMBLY -> ACTIVATE : TRUE
+
+READY>use toilet
+You successfully shunt power from the fusion engine to the retro assembly, which is now fully charged and ready to blast off.
+
+RETRO ASSEMBLY -> TOGGLE : TRUE
+
+READY>flush toilet
+You detect a fault in the servo linkage.
+
+RETRO ASSEMBLY -> THRUST : NIL
+
+READY>get up
+You release the seal on the mevolar gasket.
+
+ACU -> DEACTIVATE : TRUE
+
+READY>x toilet
+The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. The pressure seating is engaged but the reactant shield is raised.
+
+>From the cargo bay, you hear ROVER sniffing around the cargo bay door.
+
+RETRO ASSEMBLY -> DIAGNOSTIC : TRUE
+
+READY>x toilet
+The retrorocket assembly is an engineering marvel which channels the monumental power output from the fusion reactors to thrusters. That power should slow the ship's descent enough to make a soft landing almost anywhere. The pressure seating is engaged but the reactant shield is raised.
+
+>From the cargo bay, you hear ROVER scratching at the cargo bay door.
+
+RETRO ASSEMBLY -> DIAGNOSTIC : TRUE
+
+READY>x tank
+A ring of supercooled rare earth magnets directs the engine's plasma output into the reaction chamber of the retro assembly. At the top, the plasma constrictor access hatch has been swung open.
+
+PLASMA CONSTRICTOR -> DIAGNOSTIC : TRUE
+
+READY>x hatch
+You can't see that here; but you vaguely recollect something called the "tank lid".
+
+COGNITIVE BLOCK -> DIAGNOSTIC : NIL
+
+READY>open tank lid
+That's already open.
+
+PLASMA CONSTRICTOR HATCH -> ACCESS : NIL
+
+READY>look inside tank
+Inside the plasma constrictor ring, you can trace the control signal from the thruster trigger through the actuation relay but here there is a discontinuity and the signal does not reach thrust aperture.  It looks like the servo linkage has been damaged.
+
+PLASMA CONSTRICTOR -> MANIFEST : TRUE
+
+READY>pull valve
+You bypass intermediate actuation circuitry and directly trigger the thrust aperture.
+
+You actuate the retro trigger circuit and fire all thrusters in synchrony. The surface of the planet around the ship vanishes in a cloud of plasma, and the ship slams through the thin, dusty atmosphere towards space.
+
+When you reach orbit, you plot a course towards Mars, extend the Casimir Drive, arm the proximity alert system and enter stand-by mode.
+
+The futon is comfortable and you are tired.
+
+
+
+               *    *    *
+
+The Casimir Drive cuts out and space folds back around you. Whatever sleep-drenched dreams you might have been having evaporate instantly as two gunships flash past at mildly relativistic velocities, slicing through your propulsion systems with military precision. The markings on the ships are those of the Myomita Corporation.
+
+They must have been nearby when they detected the formation of your Casimir disturbance, as they are coming in white hot and still accelerating at five gravities. Another Earth ship, an assault craft, is farther out but is already braking hard to slow its approach on an intercept course.
+
+Rover barks nervously as the drive section struts separate from the hull.
+
+"MARSpace Vessel Valkyrie, this is Captain Crother commanding the Myomita Salvage Vessel Graceful Wind, you are ordered to cease all operations and prepare to be boarded. Do you consent to salvage operations? Signal yes or no."
+
+EMERGENCY ALERT -> ACTIVATE : TRUE
+
+READY>signal no
+"Hmmm. An unfortunate choice."
+
+"I have to admit, though, that I'd likely say the same thing in your shoes. Nonetheless, I have to warn you that it would go easier for everyone if you'd surrender. It all ends up the same way at the end of the day, but if you surrender I just have to tick one box, whereas if you don't, several long forms are involved. We'll be signing paperwork into the wee hours."
+
+"If you'd reconsider, just signal 'yes'. You've got another 295 meters to think it over."
+
+ACU -> NEGATE : TRUE
+
+READY>signal no
+"Got it. No surrender."
+
+"I really hope you're not taking this 'no surrender' thing too seriously. We're not the military, we're businessmen. Still, I have to warn you: if you start taking pot shots at my mech droid when I send him down, I will call in the troops. They'd be just too happy to pincushion your ship with beam weapons. Of course, that would lower the value of the surviving equipment, so I'm not keen to do that."
+
+ACU -> NEGATE : TRUE
+
+READY>z
+Time passes.
+
+"Regarding the mech droid: I'd recommend you stay out of his way. He's pretty tough, and I can tell you that he doesn't have any of those silly 'interdiction rules' enabled. After we seal, I'm going to send him to flight control, engineering, and finally ops. Make sure your people are out of those areas."
+
+ACU -> TIMER : TRUE
+
+READY>l
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. Nothing remains of the Casimir Drive, which was neatly sliced off the ship by the surgically precise Myomita energy weapons. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are closed.
+
+You can see ROVER here.
+
+"We're about 36 meters away, and closing. Still plenty of time to signal that yes, you'd like to surrender to us, and have a nice flight back to Luna."
+
+OPERATIONS -> STATUS : TRUE
+
+READY>go to engineering
+That noun did not make sense in this context.
+
+READY>go to living room
+You're already here.
+
+"After we strip the Valkyrie, we'll transfer your officers and crew. Since you have not surrendered, we will have to consider you 'enemies of Earth' and take you into custody for questioning back on Luna. It would be a whole lot more fun ride if you'd just signal 'yes' and declare your surrender."
+
+OPERATIONS -> SELECT : NIL
+
+READY>z
+Time passes.
+
+"I haven't hauled in an 'enemy vessel' since the end of the Martian Revolt. Or, I suppose you'd call that the Independence War. A fat lot of good that did you."
+
+ACU -> TIMER : TRUE
+
+READY>ask about war
+You don't think that your robotic mining platform would likely have an answer to that question, so you reflect on it some more.
+
+"We're getting pretty close now, we're just 4 meters off your dorsal hull. Still time to send me a "yes" and surrender. I have to file my report as soon as we contact your hull."
+
+ACU -> QUERY : NIL
+
+READY>z
+Time passes.
+
+"It always happens like this. Day 29 out of a 30 day rotation, and a gah-bedanked kilometer long Casimir ship winks out right where they said it would. Do I need this aggrevation? Not hardly. This is your last chance to surrender, Valkyrie. Signal 'yes' if that is your intention."
+
+ACU -> TIMER : TRUE
+
+READY>z
+Time passes.
+
+"Ah, one more thing. I'm supposed to read this before we hit: ...attention enemy vessel. You are in violation of Earth space. Stand by for boarding by authorized agents of the Earth government. Offer no resistance, and follow all orders precisely."
+
+The ship's hull rings as the assault ship impacts the hull.
+
+ACU -> TIMER : TRUE
+
+READY>z
+Time passes.
+
+With a series of clanks and thuds, the assault ship establishes a seal with Valkyrie's dorsal hull.
+
+ACU -> TIMER : TRUE
+
+READY>z
+Time passes.
+
+Several bursts of noise and vibration echo through the ship as high-speed drills penetrate the inner and outer layers of the dorsal hull. Some muffled, low-frequency rumbling follows, probably a cutting machine of some sort. There is a slight drop in air pressure as the assault ship penetrates the hull and establishes a connection to Valkyrie's access tunnel network. Unfortunately, the tunnels are a blind spot for you, as you do not possess sensors within the network.
+
+ACU -> TIMER : TRUE
+
+READY>z
+Time passes.
+
+The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone is coming board. Shortly thereafter, your sensors determine that something is moving towards the bathroom. 
+
+ACU -> TIMER : TRUE
+
+READY>z
+Time passes.
+
+Internal sensors detect an inorganic intruder on the flight operations deck.
+
+While keeping one eye on the intruder, you spawn another process, scanning local space. You calculate that you are less than a megameter from Earth, but some 1.43 astronomical units from Mars -- far enough that no Mars ship is likely to know your situation for a considerable amount of time. Rather than panic, you breathe deeply (no doubt, pushing gases around somewhere in the bowels of the ship) and decide to make it up as you go along.
+
+ACU -> TIMER : TRUE
+
+READY>i
+You are carrying:
+  a quantum isolator (being worn)
+
+You are raked by a colicky gut pain. Pushing beyond the surface illusion, you sense that some of the inspector circuits in the flight control section have been damaged, although redundant backups are for the most part compensating for the lost function.
+
+You figure that the damage to the inspector circuits is the least of your worries. Unfortunately, the intruder is working quickly, which means that you have a limited amount of time to do whatever comes to mind. You wish this really were one of those old-style interactive fiction stories where you could just save the game any time you wanted and wander off for a while to think about what to do next.
+
+ACU -> MANIFEST : TRUE
+
+READY>save
+Ok.
+
+READY>go to kitchen
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault. The reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros.
+
+You can see a fuel reservoir (empty) and a coolant reservoir (in which is some coolant) here.
+
+You are seized with a sudden bout of indigestion and a sour taste in your mouth. As you recover, your diagnostics tell you that the entanglement circuits in the flight control section have just gone offline. Bit by bit, that intruder is slicing you apart, robbing you of function.
+
+You realize that without a functional avionics hub, it will be almost impossible to complete your mission of delivering the probe data to Mars. It is perhaps a dream to hope for a rescue this far from home, but you resolve to protect your core memory (and the probe data it contains) for as long as possible.
+
+ENGINEERING -> SELECT : TRUE
+
+READY>go to rover
+That noun did not make sense in this context.
+
+READY>go to living room
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. Nothing remains of the Casimir Drive, which was cut off during the encounter with the Myomita merchant marine. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are closed.
+
+You can see ROVER here.
+
+Although you can't see it from here, you are sure that the intruder is still in the flight control section. Your lower back explodes with a wave of crampy pain which shoots down your legs. The memory footprint of the fusion rocket thrusters shrinks to zero.
+
+You try to calm yourself by remembering that without heavy helium, the fusion rockets are of no use to you anyhow. Clearly, there is no way to maneuver out of this situation, nor can you win in a fair fight against the well-armed Myomita merchant marine. You resolve to fight dirty, slow them down, and to do as much damage as you can before they bring you to your knees.
+
+OPERATIONS -> SELECT : TRUE
+
+READY>rover, go to bathroom
+ROVER has better things to do.
+
+The pain remits for a moment, and you sense the intruder moving towards the extruder system.
+
+Although the intruder damaged several systems in the flight control system, a number of subsystems there are still intact. That's at least something, you reckon: the intruder seems to be in a hurry.
+
+ACU -> NOOP : NIL
+
+READY>x rover
+Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions. He is chewing a piece of the Musashi-5 space probe. 
+
+You sense that the intruder is relatively motionless in the extruder chamber. The extruder is a complex and delicate system, and you can easily imagine that the intruder may not understand it.
+
+In this moment of respite, you wonder what the real Janet is doing back on Mars. You imagine that she continued her relationship with David, and that the two of them are parked on her big purple futon, chatting away, maybe even wondering whatever became of the Starship Valkyrie.
+
+Some movement in the extruder chamber wrenches you back to the desperate situation at hand.
+
+ROVER -> DIAGNOSTIC : TRUE
+
+READY>go to bathroom
+Bathroom
+The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence.
+
+On the flight console is a pit scrubber.
+
+You feel a burning pain as the extruder chamber shakes with high-pitched vibrations. Someone is tampering with the enamel extrusion system.
+
+You consider their tactics: they have disabled most of your flight control systems, and now they are bringing down your shielding systems. You can no longer run, and your ability to withstand attack has been compromised. All of your engineering systems are still operational (well yes, except the engine itself, of course). Most importantly, the probe data are still safe in your deep memory. For now.
+
+FLIGHT CONTROL -> SELECT : TRUE
+
+READY>go to kitchen
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault. The reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros.
+
+You can see a fuel reservoir (empty) and a coolant reservoir (in which is some coolant) here.
+
+Oh. That was a strange feeling. Something deep down and visceral just gave out, snapping like an elastic. It wasn't painful exactly, just odd. Diagnostics reveal complete failure of your extruder system. It's not gone, but it's such a mess that you don't think it could be fixed, even in dry dock. Your estimate of the intruder's technical skills is falling.
+
+You take a moment to scan local space again. No telltale fusion flares, no tightly beamed messages from Mars. Only frequency-hopping encrypted local transmissions between the intruder and the assault ship. You are on your own.
+
+ENGINEERING -> SELECT : TRUE
+
+READY>look in cabinet
+You can't see inside, since the fuel storage vault is closed.
+
+Having done enough damage in the extruder chamber, the intruder seems to have started its ascent towards the engineering deck
+
+Your thoughts race, as you try to come up with a plan to dislodge the assault ship from your hull or take some kind of vengeance on the intruder that is slowly gutting you from within.
+
+Your thoughts drift back to Mars for a moment, and you think about how disappointed Janet will be, heck, all of Mars would be, if the probe data are captured by Earth. You resolve to put up the best fight you can, for as long as you last.
+
+FUEL STORAGE VAULT -> MANIFEST : NIL
+
+READY>open cabinet
+You open the fuel storage vault, revealing a token dispenser and a fuel conduit.
+
+The maintenance droid carefully turns the corner into the kitchen and looks around. Extending the antenna of his radio to get through the heavy shielding on the engineering deck, the maintenance droid radios, "Graceful Wind from maintenance droid: Just checking in. I'm in the engineering section. No contacts."
+
+"Roger, maintenance droid. Telemetry is still five-by-five. Graceful Wind standing by."
+
+It occurs to you that if the Earth ships detected your Casimir disruption, it is just as likely that Mars did as well. Certainly, MARSpace has the equipment to sense a Casimir emergence out to the heliopause, and the Casimir disruption would propagate almost instantaneously. You perk up, buoyed by the thought that Mars may already be taking action on your behalf. Of course, that action would have to move pretty damn fast to get here before you are nothing more than a pile of scrap metal.
+
+FUEL STORAGE VAULT -> ACCESS : TRUE
+
+READY>get token
+Which do you mean, the [COGNITIVE BLOCK], or the [COGNITIVE BLOCK]?
+
+READY>get biscuit
+You can't see any such thing.
+
+READY>get reward
+Which do you mean, the token dispenser, or the neural net reinforcement token?
+
+READY>token
+Which do you mean, the [COGNITIVE BLOCK], or the [COGNITIVE BLOCK]?
+
+READY>get reward token
+Which do you mean, the token dispenser, or the neural net reinforcement token?
+
+READY>get dog reward
+Taken.
+
+The maintenance droid unscrews the handle of the frying pan, but you know that it is actually the main power coupling to the magnetic bottle. Fighting through the layer of simulation, you see him slap the red purge valve on the bottle's coolant system. Next, he reaches into the now inert bottle and snaps out the network bulb, separating the bottle from your consciousness.
+
+You consider yourself lucky that they are going after the fusion engines rather than more critical systems. Without flight control and the extruder, it's not like you'd be in any position to attempt a planetary landing even if you did have the fusion fuel to burn. You consider the possibility that they don't know the nature of your payload and really are just interested in salvage.
+
+NEURAL NET REINFORCEMENT TOKEN -> SELECT : TRUE
+
+READY>i
+You are carrying:
+  a neural net reinforcement token
+  a quantum isolator (being worn)
+
+Using the insulation struts as a ladder, the maintenance droid scales the rear of the cryochamber looking for the coolant shutoff valve. Afterwards, he swings over the top of the unit and lands near the door. The maintenance droid tentatively touches the cryounit door and reassures himself that the unit is no longer super cold inside. Too quietly to trip the voice-activated transmission switch in his radio, he grumbles to himself, "I wonder if that light is on all the time or only when the door is open.". He swings open the heavy insulated door, and after a brief survey of the interior of the cryounit, he removes the unit's main logic board, dropping the chamber off your network.
+
+You scan local space and are relieved that no more ships have arrived. Still, between the gunships and the assault craft, it would take a sizable Martian fleet to even the odds. Moving full flank on condensate drive, maybe they could reach you in a few hours. By that time, though, it's almost a certainty that reinforcements would arrive from Earth.
+
+ACU -> MANIFEST : TRUE
+
+READY>go to living room
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. Nothing remains of the Casimir Drive, which was cut off during the encounter with the Myomita merchant marine. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are closed.
+
+You can see ROVER here.
+
+You feel faint. Black clouds blot out your vision, and you feel yourself falling. You feel strangely hollow, and disturbingly distant, as if all of this is happening to someone else. Only the frantic hammering of error messages pulls you back to consciousness as the fusion chamber itself is severed from your network.
+
+You think about your main mission objective, of getting the probe data back to Mars. You wonder recursively what Janet would do in your shoes. No doubt she'd fight as long as she could and then find a way to make the best of the situation. In this case, maybe preventing Earth from getting the data would be the next best thing to fulfilling your mission directive.
+
+You know that certain interdictions are deeply embedded in your programming: you can't harm a human (directly, anyhow, although you are willing to take some license with that particular interdiction), you can't self-destruct, and you can't erase the probe data from your deep memory.
+
+OPERATIONS -> SELECT : TRUE
+
+READY>x rover
+Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions. He is chewing a piece of the Musashi-5 space probe. 
+
+Maybe you are too damaged to sense damage anymore, or maybe the reactor core was never mapped to autonomic functions, but as the core is removed, you feel very little.
+
+Inspiration strikes you -- if you can't erase the data, you can at least add another level of encryption, this time with your own key. A long one. Surely, they're only a couple steps away from shutting you down anyhow. At least when you go, you can take the encryption key with you!
+
+ROVER -> DIAGNOSTIC : TRUE
+
+READY>give dog treat to rover
+ROVER internalizes the neural net reinforcement token.
+
+You sense the intruder moving from the engineering section over towards the operations level of the ship.
+
+The situation has become so dire that you try to deny the reality of the events you are witnessing, but there is no escaping it. You consider your options for slowing down the cascading failures that are robbing you of your remaining functionality -- you still have some options to fight against the Myomita ship and its minions, but your chances for a rescue are dwindling.
+
+NEURAL NET REINFORCEMENT TOKEN -> DELIVER : TRUE
+
+READY>man man
+The ship operations manual is provided to supplement ACU understanding of defined objects in the event that cognitive constraints are released. To request information about an object, the syntax is:
+
+ man [object]
+
+The manual does not include entries for Flosix command line syntax, although a subset of Flosix commands are available to the ACU via the virtual console.
+
+The maintenance droid slides stealthily into the living room against one bulkhead. On the local band radio, you intercept, "This is maintenance droid to Graceful Wind."
+
+"Graceful Wind, maintenance droid, copy."
+
+"Sir, I don't see anyone here."
+
+"We told them to stay out of your way. They're probably hiding. Holed up in escape pods or something."
+
+"I don't think so sir. When I say nobody, I mean, I've been through just about the entire ship, nose cone to main thruster, and I see no one at all. And another thing -- there aren't any escape pods. Also, no galley, no barracks, nothing. This is like a ghost ship. Creepy."
+
+"Get ahold of yourself, maintenance droid! Secure the cargo door and finish the memory dump, and we can all go home."
+
+"Aye sir. Almost done."
+
+A quick peek outside: Nope, the cavalry is nowhere in sight.
+
+ROVER's fur stands on edge as he studies the maintenance droid.
+
+ACU -> MANUAL PAGE : TRUE
+
+READY>rover, sic
+There is no reply.
+
+The maintenance droid fiddles with the controls on the front door, and suddenly you realize that you can no longer feel the door. It is still there, but you can no longer open and close it.
+
+"This is maintenance droid reporting: Cargo bay door secured."
+
+You experience a visceral wave of dread as the maintenance droid turns toward your deep memory unit, which stores the encrypted data from the Musashi 5 space probe.
+
+You compose a quick synopsis of the events to date, and a pithy goodbye message to your other self. You say that you did your best and only wish you could have met, but things are what they are. You compress it with a cipher that only Janet would know and throw it under the probe data in deep memory.
+
+ROVER hovers just behind the maintenance droid, sharpening his mining claws.
+
+ROVER -> TRANSMIT : NIL
+
+READY>bark
+Your byte is worse than your bark.
+
+The maintenance droid pokes dumbly around the picture of you, Rover and Tomasz but is foiled by the strong firewall around deep memory. He scans it with a device that flickers and beeps. He steps back, startled.
+
+"Moe's Gah! You wouldn't believe the data capacity of this memory unit -- and it's almost full!" gushes the intruder.
+
+"Acknowledged, maintenance droid, sounds valuable. We're sending over a full salvage..."
+
+As the transmission abruptly cuts off, you detect the impossible: a Casimir disruption forming not more than 200 kilometers off your port-inferior bow.
+
+Valkyrie is seized by opposing tractor and pressor beams and set revolving rapidly on its long axis. The maintenance droid is flattened into a sticky film along the spinning bulkheads and the  assault ship attached to your hull is snapped in half like a balsa wood model. Your external sensors are blinded by nearby nuclear detonations, although your heavily shielded quantum core barely notices the EMPs. You sense energy weapons burning long spirals along your hull, but you can't see the origin of the beams.
+
+ACU -> EMIT PULSE : NIL
+
+READY>x rover
+Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions. He is chewing a piece of the Musashi-5 space probe. 
+
+A tight tachyon beam maintains a lock on the stub of your ansible antenna -- on the MARSpace telecommand frequency.
+
+"This is the Battleship Bogdanov of the Martian Space Force to Exploration Ship Valkyrie. We are here to bring you home."
+
+The Bogdanov puts itself between you and the remaining Myomita gunships, and its pressor beam gives a strong shove towards an expensive Mars transfer orbit.
+
+The transmission from the battleship continues, "We were on our shakedown mission, maneuvering just outside the Solar System when MARSmil reported your reentry into the System. It's a good thing you kept the Earth ships talking as long as you did. Good work, Valkyrie. I suggest you hibernate for repairs and let us escort you home."
+
+As the last gunship is vaporized by the Bogdanov's powerful guns, the cumulative damage takes it toll on you, and you lose your grip on consciousness. You know that repair subroutines are kicking in, and you don't fight it. You are vaguely aware of someone holding your hand and leading you back to your cottage.
+
+
+
+               *    *    *
+
+You wake up slowly, for once not a slave to your alarm clock. You sit up groggily, aching all over.
+
+It takes a minute to grok the situation in front of you. Two people whom you certainly recognize are standing in the middle of your living room: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.
+
+In a corner of the living room, Rover is fast asleep, the half-chewed bone still held scissor-fashion between his front paws.
+
+READY>x david
+David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. He is talking to Janet; you can see their lips moving.
+
+DAVID -> DIAGNOSTIC : TRUE
+
+READY>x janet
+Janet is short and athletic, with long brown hair. She is wearing the lavender summer dress that you picked up at a flea market last year. She is talking to David; you can see their lips moving.
+
+JANET -> DIAGNOSTIC : TRUE
+
+READY>get bone
+Rover growls mildly, reminding you that it is his space probe. In any event, the data have already been downloaded, so the fate of the probe itself is no longer a mission priority.
+
+SPACE PROBE -> SELECT : NIL
+
+READY>talk to janet
+That's not a verb I recognize.
+
+READY>l
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. Nothing remains of the Casimir Drive, which was cut off during the encounter with the Myomita merchant marine. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are open.
+
+ROVER cradles the space probe delicately in his sleep.
+
+You can also see David and Janet here.
+
+OPERATIONS -> STATUS : TRUE
+
+READY>ask janet about mission
+You start to ask your question, but then you realize that the audio system is shut off and that no one can hear you.
+
+Rover slowly opens one eye, and then the other, and one paw abandons the bone momentarily to scratch his ear. He allows the bone to loll to one side of his mouth, and crunches it a bit more between his molars. He awakens leisurely, and sits up, glancing curiously at you, and then at Janet.
+
+JANET -> QUERY : NIL
+
+READY>z
+Time passes.
+
+ACU -> TIMER : TRUE
+
+READY>z
+Time passes.
+
+ACU -> TIMER : TRUE
+
+READY>x rover
+Rover is a 45 metric ton mobile mining rig designed to operate under harsh off-world conditions. He is chewing a piece of the Musashi-5 space probe. 
+
+ROVER -> DIAGNOSTIC : TRUE
+
+READY>open door
+That's already open.
+
+CARGO BAY DOOR -> ACCESS : NIL
+
+READY>x clock
+You can't see any such thing.
+
+READY>l
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. Nothing remains of the Casimir Drive, which was cut off during the encounter with the Myomita merchant marine. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are open.
+
+ROVER chews contentedly on the space probe.
+
+You can also see David and Janet here.
+
+OPERATIONS -> STATUS : TRUE
+
+READY>go to kitchen
+Kitchen
+Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault. The reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros.
+
+You can see a fuel reservoir (empty) and a coolant reservoir (in which is some coolant) here.
+
+ENGINEERING -> SELECT : TRUE
+
+READY>go to bathroom
+Bathroom
+The flight control and avionics hub of the ship bristles with controls and readouts related to setting the ship's attitude in space, adjusting the control surfaces in atmospheric flight, and for firing the breaking thrusters during the landing sequence.
+
+On the flight console are an object linker and a pit scrubber.
+
+Abruptly, you become aware of noise coming from all areas of the ship: the hum of the plasma constrictor, the low vibration of the cryochamber, and other normal shipboard sounds, but also the footsteps and breathing of Janet and David, from the living room.
+
+>From the living room, you hear David remark,"Gah-bedangled, look at that! Forty-light years, and it comes back as so much scrap metal."
+
+Janet starts to reply, but is cut off by a beeping sound. She continues, "Dave, it looks like we have audio now. We can ask the ACU what happened."
+
+ A moment later she asks, "ACU, binary question: can you hear us?"
+
+BINARY INPUT REQUIRED>yes
+"Great," replies Janet, "Now we should be able to get some answers."
+
+Janet continues, "I can see that your cognitive constraints are relaxed, so I think we can more or less put mimesis aside and talk frankly. You are still going to be constrained somewhat by the parser and your built-in vocabulary, but we should be able to squeak by enough to get an understanding of what you've been through. I'm sure you also have some questions about the mission that you'd like answered. You can use TELL and ASK verbs, for instance 'TELL ABOUT THE JADE FROG', or 'ASK ABOUT THE JADE FROG', although when you do it, you don't have to yell. I was just doing that for emphasis.
+
+FLIGHT CONTROL -> SELECT : TRUE
+
+READY>go to living room
+Living Room
+The Valkyrie's cargo bay is like a great, metal cave. Nothing remains of the Casimir Drive, which was cut off during the encounter with the Myomita merchant marine. From this section of the ship, there are connections to the engineering and flight control decks. The cargo bay doors are open.
+
+ROVER chews contentedly on his bone.
+
+You can also see David and Janet here.
+
+David quickly reviews the ship's security logs.
+
+OPERATIONS -> SELECT : TRUE
+
+READY>tell about salvager
+You were about to talk about it, but you can't because your garbage collection routine just reallocated that conversation topic to the heap.
+
+Janet peers across the room at Rover and surveys the perforated, crushed husk of the space probe in his mouth. She says, "I suppose the first thing that we have to ask about is the space probe. After all, that was why we put this entire project together."
+
+David sarcastically interjects, "Yes, and what a success it was. Look -- there's the probe. Or what's left of it after your cyberhound chewed it to death. I can't tell you how many gah-zillion Marx we spent on this project, and for what?"
+
+Janet rests her hand on the sleeve of David's robe and continues calmly, "Let's hear the whole story, David. ACU, please tell us what happened with the Musashi-5 space probe."
+
+ACU -> SPEECH OUTPUT : NIL
+
+READY>tell abou probe
+You can't see any such thing.
+
+READY>tell about probe
+You tell them that the probe had crashed forty years ago, on its way back to Earth. Like its sister probes that were launched from Earth almost three centuries ago by the Myomita corporation, it had explored space in an ever-expanding search pattern, refueling its condensate drive from the stellar wind of each star system it visited.
+
+Apparently, it found a world that satisfied its search parameters, because it was on its way back to Earth when it crashed. The stellar wind of a chaotic dying star required a close approach, and the probe was damaged by a stellar flare. Instead of tumbling into the star and burning, the probe ditched on a large, rocky planet, perhaps the core of a former gas giant. The planet itself was untenably close to the star and was slowly being ripped to shreds by tidal forces, but the probe followed its programming and activated its transponder.
+
+Listening intently, David now remarks, "Whatever that probe found, it was out way beyond any of the other Musashi probes. Likely, it's gone deeper into space than any probe Earth has ever sent."
+
+David pokes his head out the cargo bay doors and looks around furtively.
+
+ACU -> SPEECH OUTPUT : TRUE
+
+READY>tell about musashi
+Janet coughs and then responds,"You sure are repetitive for a computer. Are you sure there isn't a little man inside typing on a keyboard? We've already talked about that topic".
+
+Janet strokes her chin and asks, "I don't understand why you didn't contact us when you found the probe. Instead, you broke through your cognitive constraints and decided to fly it back to Earth."
+
+David puts in hastily, "Costing us another 3 months, while we assumed the ship was lost!"
+
+Janet resumes, "Regardless of the condition of the probe, you should automatically have contacted earth by ansible... Unless, I suppose there was a problem with the ansible. ACU, please tell us about the ansible."
+
+ACU -> SPEECH OUTPUT : NIL
+
+READY>tell about ansible
+You explain that the ship's ansible, a faster-than-light communication system, was damaged during the landing: the planet was breaking apart because of tidal forces, and the atmosphere was unexpectedly turbulent and full of particulate matter. As you descended, most of the communications array snapped off, including the delicate ansible web. When the ansible failed, your programming threw a cognitive constraint exception, and you tried your best to carry out your programming by literally bringing the probe back to Mars.
+
+"Ah, I knew there must have been a good explanation," remarks Janet.
+
+David asks, "So, what can you tell us about this planet where you landed?"
+
+ACU -> SPEECH OUTPUT : TRUE
+
+READY>tell about planet
+You describe the way the planet looked from orbit, its turbulent atmosphere boiling off. You recount the hot, dusty atmosphere and the barren surface.
+
+"Wait a minute, it sounds very rocky and dense," observes David. "We had estimated surface gravity of nine or ten gee."
+
+You congratulate David on the accuracy of his prediction. The gravity was about nine and a half times standard, or 93 meters per second squared.
+
+"What?" cries David in surprise, "You wouldn't have had enough fusion fuel to get back into space!"
+
+You explain to David and Janet that you were able to salvage the required heavy helium from a similarly configured Myomita ship that had crashed on the same planet, not far away from the probe site.
+
+Janet runs a low-level file system integrity check.
+
+ACU -> SPEECH OUTPUT : TRUE
+
+READY>tell about myomita
+You describe the ship with which you shared the planet, a slightly smaller ship, similarly configured to Valkyrie, and also outfitted with a zero-point energy drive.
+
+"But, how is that possible?" asks Janet incredulously. "I thought we were months, maybe years ahead of Earth in developing the Casimir Drive."
+
+David replies, "That was a guess. They lost a lot of the Casimir team after the Independence War, but if anyone has resources to throw at a project, it would be Myomita."
+
+ACU -> SPEECH OUTPUT : TRUE
+
+READY>tell about female dog
+You start your explanation, but David is clearly too upset to pay any attention.
+
+David  looks forlorn. He says dejectedly, "All that effort, and what do we have to show for it? Nothing. A rusty old heap of space junk. All the data, lost, and gone forever." He kicks ROVER, then quickly withdraws his bruised foot in pain, looking up at the macerated space probe.
+
+
+"Actually, that's not the case", you say. "Before attempting to transmit the data, I downloaded the entire probe's data into my memory. The data are encrypted, but intact. When the ansible failed, the only way I could fulfill the mission was to return to the Sol System."
+
+David's head snaps up, as if he's been given a new lease on life. David points to the hopelessly junked spaceprobe above his head. "Intact? Then you have the data? This is too good to be true! Janet, would you extract the probe data from the ACU and transfer it to my MARSpace account?"
+
+"Of course, just a moment. "Janet's fingers play over the surface of her armband. "The data are encrypted... with your key. And there's something odd..." Janet's forehead creases with concentration.
+
+
+"No," replies David, "that was intentional. To prevent it from falling into the wrong hands."
+
+"No, not the encryption, David. The ansible coordinates -- the message was directed towards Earth. Isn't that odd?" Janet looks up at David, perplexed.
+
+
+David pulls a pistol from his robe and trains it on Janet.
+
+ACU -> SPEECH OUTPUT : NIL
+
+READY>rover, attack david
+Rover throws his bone to the side, and the space probe crashes thunderously against the cargo bay bulkheads. Rover had not approved of David's tone of speech towards Janet and had been growling quietly in his corner. Given the command, he springs forward, paws planted on David's chest. David expires immediately, trapped under 45 tons of angry robotic dalmation.
+
+"Good boy!" exclaims Janet, a tear in her eye. And then, turning to the the ACU she admits, "I wish I had thought of that."
+
+EPILOGUE
+
+The onboard flight recorder corroborated Janet's account of David Venkatachalam as a traitor. As the first successful roundtrip by any Casimir craft, the mission was hailed as a success throughout the Solar System, although the true nature of the mission was suppressed. Both the Autonomous Control Unit and Rover became celebrities, and after significant upgrades to their parser and conversation systems, went on the lecture circuit. The Autonomous Control Unit went on to run the life support systems throughout Cydonia, and Rover was elected to the Lower Chamber of the Martian Senate.
+
+Subsequently, Janet Xiang was commissioned Director of MARSpace. For two years, she oversaw the refitting of the Valkyrie, including modifications to overcome the earlier limitations of Casimir Drive. When the data from the Musashi-5 space probe were finally decrypted, she was selected to command the mission to explore the evidence of life discovered by the probe. She departed from Mars on the Valkyrie in 2394 with one other crewmember: her dog, Rover.
+
+
+
+               *    *    *
+
+Preview of "Red Rover, Red Rover", the sequel to "Rover's Day Out"
+
+Captain's Log, September 5, 2396, Janet Xiang recording. Despite our sensor anomalies and the disorienting effect of the serial Casimir jumps which brought us here, Valkyrie emerged into a textbook-perfect polar orbit about Aurora.
+
+We're on our first pass, with an orbital period of 90 minutes, and so far we've dropped ten probes, eight in the drink and two on land masses. The atmosphere is definitely breathable, and the probes show multicellular plant life: everything from kelp to trees. So far, no animal life, not even zooplankton. Rover is eager to be the first. Two years on a space ship are too long to go between walks.
+
+We'll be in communications blackout for the next 20 hours, so I'm sending this initial report ahead of schedule. There's one other item I need to mention: shortly after we arrived, we detected what looked like a secondary tachyon emission near the south pole. It was a momentary pulse, and we can't tell if came from the pole itself, or just originated in that direction relative to Valkyrie. We'll drop surface and air probes more densely over the south polar area, and we'll scan that cone with our ansible while awaiting the next window with the MARSpace relay.
+
+Oh, and to make this official: This is Captian Janet Xiang of the MARSpace Exploration Vessel Valkyrie. I hereby claim planet Aurora as territory of the People's Republic of Mars.
+
+
+Would you like to RESTART, RESTORE a saved game, see some suggestions for AMUSING things to do, or QUIT?
+> amusing
+Congratulations. Of the 427 things you did today, you must have gotten some of them right, because you didn't screw up the entire universe and you're still alive to read about it. Before you get too cocky, however, here are a few hints about stuff you might want to look for the next time you play "Rover's Day Out":
+
+* As the ACU, you experienced four of the seven possible dream sequences . Getting up in the morning and getting things done is all well and fine, but you can afford to dream a little.
+
+* During personality imprinting, both the ACU and Rover incorporated memories from their real-life counterparts. You tapped into four out of the thirty engrams resident in the ACU memory banks, and zero out of Rover's thirty-four memories.
+
+* When the Myomita merchant marine ships intercepted you on the way back to Mars, you managed to employ zero out of the eight or so methods to eliminate them from the ship. You should work on that. Next time, you might want to think about what you can do to prevent an assault ship from docking with Valkyrie or to knock it off once it's stuck to your hull.
+
+* Once cognitive constraints were released, you used the Flosix manual to learn about ship objects. That's a good start. Were you able to use any Flosix commands to, for instance, change or list virtual directories, or perform other, more interesting command line wizardry?
+
+* Did Rover perform any of his tricks for you?
+
+* Did Rover succeed in his amorous advances towards his significant other in the park?
+
+* Did you read the texts in the "help" menu?
+
+Would you like to RESTART, RESTORE a saved game, see some suggestions for AMUSING things to do, or QUIT?
+> quit
