@@ -388,7 +388,7 @@ To say ACU Boot Banner:
 	say paragraph break.
 	
 [BSOD routines - uses Flexible Windows extension.]
-The BSOD-window is a g-window.   The type of the g-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
+The BSOD-window is a g-window.   The type of the BSOD-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
 
 BSODing is an action applying to nothing.
 Carry out BSODing:
@@ -4212,7 +4212,7 @@ Instead of searching or examining the window when the player is self-aware durin
 	change outcome-override to force-failure;
 	say "Through the viewer you can see nothing but swirling dust."
 	
-Instead of searching or examining the window when the damage counter greater than the number of rows in the Table of Underling Tasks during Boarding Party:
+Instead of searching or examining the window when the damage counter is greater than the number of rows in the Table of Underling Tasks during Boarding Party:
 	change outcome-override to force-failure;
 	say "Your external sensors are overloaded. You can't see a thing!"
 	
