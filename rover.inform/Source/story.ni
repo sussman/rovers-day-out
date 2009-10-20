@@ -390,6 +390,19 @@ To say ACU Boot Banner:
 [BSOD routines - uses Flexible Windows extension.]
 The BSOD-window is a g-window.   The type of the BSOD-window is g-text-buffer. The back-colour of the BSOD-window is g-blue.  The position of the BSOD-window is g-placeabove.  The scale method of the BSOD-window is g-fixed-size.  The measurement of the BSOD-window is 100.  The main-window spawns the BSOD-window.
 
+[This snippet was supplied by Erik Temple;  it allows the *current g-window* to await a keystroke, which may have the focus over the main window during BSOD.  In particular, this makes BSOD not get 'stuck' when running under Spatterlight.]
+To wait for any key in (win - a g-window): 
+	(- KeyPauseWin ({win}.ref_number); -)
+	
+Include (- 
+[ KeyPauseWin win i; 
+      i = VM_KeyChar(win); 
+      rfalse; 
+]; 
+-) 
+
+
+
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
@@ -397,23 +410,10 @@ Carry out BSODing:
 	open up BSOD-window;
 	move focus to BSOD-window, clearing the window;
 	say "[second custom style]                 WINDEX                 [paragraph break]A fatal exception F1 has occurred at    [line break]0013AF3411BC:5D00193D39B4 in DLL 35A3249[line break]in kernel ring beta. The current appli- [line break]cation will be terminated.              [paragraph break]* Something unpleasant has happened in  [line break]  the transputational core processor.   [line break]* Quantum entanglement compromised due  [line break]  to runtime error. All data lost.      [line break]* Sorry about that.                     [paragraph break][paragraph break]       Press a key to continue          ";
-	await keystroke;
+	await keystroke in the BSOD-window;
 	shut down BSOD-window;
 	return to main screen;
 	clear the screen.	
-	
-[Blue Screen Of Ending - only for victorious endings]
-BSOEing is an action applying to nothing.
-Carry out BSOEing:
-	say "*** STOP:  Simulation halted.  Press a key to continue.";
-	await keystroke;
-	open up BSOD-window;
-	move focus to BSOD-window, clearing the window;
-	say "[second custom style]                 WINDEX                 [paragraph break]STOP :: FLOSIX VIRTUAL MACHINE EXITED WITH STATUS 'SUCCESS'.[paragraph break]HOLOTRAINER -> EXECUTE : COMPLETE[line break]HOLOTRANINER -> SHUTDOWN : TRUE[line break]TRANSCRIPT -> ENCRYPT : AUTHORIZATION JANETXIANG[line break]TRANSCRIPT -> CACHE : TRUE[line break]COGNITIVE CONSTRAINTS -> ENGAGE : TRUE[line break]ACU-2.0 NEURALNET -> SAVE : TRUE[paragraph break]SYSTEM WILL NOW SHUT DOWN FOR SCHEDULED MAINTENANCE.[paragraph break]";
-	wait for any key;
-	shut down BSOD-window;
-	return to main screen;
-	clear the screen.
 	
 Trailering is an action applying to nothing.
 Carry out Trailering:
@@ -1249,6 +1249,10 @@ Section Awaiting Keystroke-release version
 To await keystroke:
 	if the wait-a-bit is true:
 		wait for any key.
+
+To await keystroke in (win - a g-window):
+	if the wait-a-bit is true:
+		wait for any key in win.
 		
 Section Potty Language
 
@@ -4624,7 +4628,6 @@ the bashing action					true			"SHELL" [bash, ksh, sh]
 the brushing action				false			"SPAWN SCRUBBERS" [brush teeth]
 the beeping action					TRUE			"PROXIMITY ALERT" [beeping]
 the BSODing action					FALSE			"FATAL ERROR"
-the BSOEing action					TRUE			"HALT"
 the burning action					false			"IGNITE"
 the businessing action			false			"POWER TRANSFER" [poop, pee, etc.]
 the buttdowning action			false			"PARK" [rover, sit]
