@@ -128,11 +128,12 @@ Include (-
 
 Constant SPACE = 32;
 Constant RIGHTMARGIN = 60;
+Constant BIGNESS = 1024;
 
-Array BigBuffer -> 1024; !big enough to hold the largest metatext
+Array BigBuffer -> BIGNESS; !big enough to hold the largest metatext
 
 [FancyPrint caption i linelen;
-	caption.print_to_array(BigBuffer,1024);
+	caption.print_to_array(BigBuffer,BIGNESS);
 	linelen = 0;
 	for (i=WORDSIZE : i < BigBuffer-->0+WORDSIZE : i++){
 		if (BigBuffer->i == '*'){
