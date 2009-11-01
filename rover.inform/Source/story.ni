@@ -132,7 +132,7 @@ Constant RIGHTMARGIN = 60;
 Array BigBuffer -> 1024; !big enough to hold the largest metatext
 
 [FancyPrint caption i linelen;
-	caption.print_to_array(BigBuffer);
+	caption.print_to_array(BigBuffer,1024);
 	linelen = 0;
 	for (i=WORDSIZE : i < BigBuffer-->0+WORDSIZE : i++){
 		if (BigBuffer->i == '*'){
