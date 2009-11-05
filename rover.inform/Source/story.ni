@@ -2,10 +2,10 @@
 
 
 The story headline is "An Interactive Fiction".
-The release number is 11.
+The release number is 12.
 The story genre is "Science Fiction".
 The story creation year is 2009.
-The story description is "Three hundred years ago, the Brazilian Space Agency discovered a rocky exoplanet only 38 light years from Earth. With a surface temperature of 1200 Celcius and nine times Earth gravity, it's hardly the sort of place you'd take your dog walkies. Most days.".
+The story description is "Three hundred years ago, the Brazilian Space Agency discovered a rocky exoplanet only 38 light years from Earth. With a surface temperature of 1200 Celsius and nine times Earth gravity, it's hardly the sort of place you'd take your dog walkies. Most days.".
 
 Include Glulx Text Effects by Emily Short.
 Include Basic Screen Effects by Emily Short.
