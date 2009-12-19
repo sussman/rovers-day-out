@@ -1754,7 +1754,7 @@ Instead of asking the female dog about something:
 Instead of showing something (called the item) to the female dog:
 	say "She [one of]stands transfixed by [the item][or]stares at [the item][or]takes no notice of [the item] at all. She is so cosmopolitan[or]ignores your attempt to break the ice[or]looks beyond [the item] serenely[or]barely deigns to notice [the item][or]is not impressed[or]does not seem swayed by your demonstration[or]isn't sure what to make of you and your antics[in random order]."
 
-Barking is an action applying to nothing. Understand "bark" as barking.
+Barking is an action applying to nothing. Understand "bark" as barking. Understand "speak", "talk", "woof", "arf", "yap" or "talk" as barking when the player is Rover.
 
 Check barking:
 	if the player is not an animal:
