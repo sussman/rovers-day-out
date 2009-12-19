@@ -285,7 +285,7 @@ leftwards is a direction. The opposite of leftwards is rightwards.
 rightwards is a direction. The opposite of rightwards is leftwards.
 clockwise is a direction. The opposite of clockwise is counterclockwise.
 counterclockwise is a direction. The opposite of counterclockwise is clockwise.
- Understand "forward", "front" as forwards. Understand "backward", "back" as backwards. Understand "left", "port" and "leftward" as leftwards. Understand "right", "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise.  [ben said:  how about "left" and "right"? Jack replied: Yes, I've added them. Leftwards and rightwards were originally left and right, so left/right were implicitly understood, but then I added "-wards" for consistency. We might need to add some disambiguation versus other left/right objects like arms.]
+ Understand "forward", "front" as forwards. Understand "backward", "back" as backwards. Understand "left", "port" and "leftward" as leftwards. Understand "right", "starboard" and "rightward" as rightwards. Understand "widdershins", "withershins" and "anticlockwise" as counterclockwise. Understand "deasil" as clockwise.  [ben said:  how about "left" and "right"? Jack replied: Yes, I've added them. Leftwards and rightwards were originally left and right, so left/right were implicitly understood, but then I added "-wards" for consistency. We might need to add some disambiguation versus other left/right objects like arms.]
 
 A direction can be built-in or custom. A direction is usually built-in. Forwards, backwards, leftwards, rightwards, clockwise and counterclockwise are custom.
 
