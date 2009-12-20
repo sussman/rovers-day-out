@@ -4087,7 +4087,7 @@ Instead of taking the delicious bone when the player is the acu:
 
 The Strange Porch is west of the Featureless Desert. The printed name of the featureless desert is "The Park". The description of the Strange Porch is "You are right outside a dilapidated shack, which has clearly been neglected[inconsequential outside detail]." The scent of the Strange Porch is "metallic, like when you lick aluminum foil".
 
-The shabby shack is scenery in the strange porch.  The description of the shabby shack is "The shabby shack could use more than a coat of paint. The walls are bent at strange angles, and the door is askew[inconsequential outside detail]." The scent of the shabby shack is "uninviting: a mixture of garbage and chemical waste smells -- what you might expect to smell in a sewage line minus the good stuff". Understand "house", "shack", or "building" as the shabby shack. The texture of the shabby shack is "creepy".
+The shabby shack is scenery in the strange porch. The description of the shabby shack is "The shabby shack could use more than a coat of paint. The walls are bent at strange angles, and the door is askew[inconsequential outside detail]." The scent of the shabby shack is "uninviting: a mixture of garbage and chemical waste smells -- what you might expect to smell in a sewage line minus the good stuff". Understand "house", "shack", or "building" as the shabby shack. The texture of the shabby shack is "creepy". The clueless-name of the shabby shack is "shack". The aware-name of the shabby shack is "myomita ship".
 
 Before entering the shabby shack:
 	try entering the splintered door;
