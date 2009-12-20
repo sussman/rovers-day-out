@@ -5703,7 +5703,7 @@ Instead of saying yes during Boarding Party:
 			the rule succeeds. [this suppresses the default response "that was a rhetorical question]
 		
 To say too late:
-	say "[quotation mark]Too late, Valkyrie. We've already filed our report.[quotation mark][paragraph break]".
+	say "[quotation mark]La-la-la, we're not listening anymore Valkyrie. We've already filed our report.[quotation mark][paragraph break]".
 		
 Instead of saying no during Boarding Party:
 	if the assault ship approach is 1:
