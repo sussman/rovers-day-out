@@ -53,6 +53,11 @@ The block swearing obscenely rule is not listed in any rulebook.
 The block kissing rule is not listed in any rulebook.
 The kissing yourself rule is not listed in any rulebook.
 
+[To suppress the default library message asking for a compass direction...]
+This is the nouveau vague going rule: say "More specific, please. Go towards what?"
+
+The nouveau vague going rule is listed instead of the block vaguely going rule in the for supplying a missing noun rulebook.
+
 Rule for writing a paragraph about Rover when the player is self-aware and Boarding Party is not happening:
 	if Rover is not awake:
 		say "ROVER cradles the space probe delicately [one of]in his sleep[or]while in power conservation mode[purely at random].";
