@@ -3529,7 +3529,7 @@ After closing a flipchair (called the flop):
 	
 Understand "raise [something raisable]" as opening. Understand "lift [something raisable]" as opening when the player is the acu.
 
-Understand "lower [something raisable]" as closing when the player is the acu.
+Understand "lower [something raisable]" as closing when the player is the acu. Understand "put [something raisable] down" as closing when the player is the acu.
 
 Before entering a flipchair (called the flop):
 	if the flop is open:
