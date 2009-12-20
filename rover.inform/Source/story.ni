@@ -3995,6 +3995,8 @@ Instead of giving something (called the item) to the female dog:
 	otherwise:
 		say "You can only give away something that you have. You don't have [the item]."
 		
+Understand "her legs", "her leg", "her fur", "her bristly fur", "her bristly leg fur", "her furry legs", "her furry leg", "legs", "fur", "leg" as the female dog when Rover can see the female dog.
+		
 Instead of touching, petting, searching, or rubbing the female dog:
 	change outcome-override to force-success;
 	say "[one of]You're more at the sniffing and posturing stage[or]You're not even on your second date with her! Better keep your paws to yourself[or]You'd rather give her a chance to make the first move[or]You get the impression that she's not ready for that[or]You start to, but then you lose the nerve[or]You shift a little closer to her and nonchalantly drape your tail near her, but a gust of wind pushes it away[in random order]."
