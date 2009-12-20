@@ -612,7 +612,7 @@ Carry out uptiming:
 		otherwise:
 			say "Your alarm clock started going off at 5:30 this morning, and it took you another [IPL_pid] minutes to haul yourself to consciousness. You've been up since then. Congratulations.";
 	otherwise:
-		say "[time of day]  up [turn count - epoch_pid] minutes,   1 user,    load average 0.99 [paragraph break]".	
+		say "[time of day]  up [turn count - epoch_pid] minutes subjective,   1 user,    load average 0.99 [paragraph break]".	
 
 After reading a command when the player is self-aware (this is the bypass parser for unix commands rule): 
 	[Bypassing the parser allows for unpredictable variety of arguments and flags, e.g., shutdown -r now
@@ -822,20 +822,15 @@ Instead of fingering a topic listed in the Table of Fingers:
 	if the name entry is not "Autonomous Control Unit":
 		say "Last login [laston entry]";
 	otherwise:
-		say "On since ";
-		if The Real Thing is happening:
-			say "Tue Jul 21";
-		otherwise:
-			say "Wed Oct 21";
-		say " 05:30";
+		say "On since Thu Apr 16 02:30";
 	say line break;
 	say "No Mail.";
 	say "Plan: [plan entry]."
 		
 Table of Fingers
 topic		name		dir		login		shell		laston		plan
-"David" or "Venkatachalam"	"David Venkatachalam"		"/home/dave"	"dave"		"tcsh"		"Fri Apr 17 04:30 (CST) on console"	"Thank God men cannot as yet fly and lay waste the sky as well as the earth! (Henry David Thoreau, 1817-1862)"
-"Janet" or "Xiang"		"Janet Xiang"	"/home/xyzzy"		"xyzzy"		"bash"		"Thu Apr 16 17:17 (CST) on ttys001"		"Necessity is blind until it becomes conscious. Freedom is the consciousness of necessity.[line break]-----BEGIN GEEK CODE BLOCK-----[line break]Version: 8.2[line break]GCS d-- s--:- a C++++$ FL?P E++ [line break]W N o K-- w-- O M++ V PS++ PE++[line break]Y+$ PGP++ t+++ R+++ 3d++ b++++[line break]D G+++ e++++ h+ r-- x+[line break]------END GEEK CODE BLOCK------"
+"David" or "Venkatachalam"	"David Venkatachalam"		"/home/dave"	"dave"		"tcsh"		"Fri Apr 16 02:30 (CST) on console"	"Thank God men cannot as yet fly and lay waste the sky as well as the earth! (Henry David Thoreau, 1817-1862)"
+"Janet" or "Xiang"		"Janet Xiang"	"/home/xyzzy"		"xyzzy"		"bash"		"Wed Apr 15 17:17 (CST) on ttys001"		"Necessity is blind until it becomes conscious. Freedom is the consciousness of necessity.[line break]-----BEGIN GEEK CODE BLOCK-----[line break]Version: 8.2[line break]GCS d-- s--:- a C++++$ FL?P E++ [line break]W N o K-- w-- O M++ V PS++ PE++[line break]Y+$ PGP++ t+++ R+++ 3d++ b++++[line break]D G+++ e++++ h+ r-- x+[line break]------END GEEK CODE BLOCK------"
 "ACU" or "autonomous" or "control" or "unit" or "me"		"Autonomous Control Unit"		"/operations"		"acu"		"bash"		--		"No plan"
 "root" or "administrator" or "admin"		"root"		"/var/root"		"root"		"bash"		"Fri Apr 17 04:32 (CST) on console"		"No plan"
 
@@ -6057,7 +6052,7 @@ Rule for printing the player's obituary:
 		-- pillowed: 
 			say "It was a flawed, dysfunctional, cut-rate universe with underimplemented objects, a contrived plot, and questionable morality, but it was what you and countless other sentient lifeforms affectionately called home.[paragraph break]This afternoon, you snuffed out reality itself, which was substantially more than you had intended to get done today.[paragraph break]Looking on the bright side, you trimmed off a thorny branch on the shrubbery of the multiverse, a timeline that was rapidly headed in an unredeemably unpleasant direction. Perhaps by snipping off the most recent sickly bud of that deformed bush, you have changed something fundamental in the multiverse, and the colorful flower of the future may yet bloom.";
 		-- casimired:
-			say "Mars was destroyed on August 27, 2392 by what many suppose was a secret weapon wielded by the Myomita Corporation on behalf of Earth. Regardless of the true situation, the Belt and other former colony worlds fell back into lock step with the Earth administration, and the Solar System was consolidated under Unified Corporate Rule.[paragraph break]No one ever learned of the mission of the Valkyrie or the critical information it had extracted from the Musashi-5 space probe.[paragraph break]Almost two centuries after these events, the Solar System was conquered by an alien race that no human had ever heard of, although the aliens had heard of us.";
+			say "Mars was destroyed on August 17, 2392 by what many suppose was a secret weapon wielded by the Myomita Corporation on behalf of Earth. Regardless of the true situation, the Belt and other former colony worlds fell back into lock step with the Earth administration, and the Solar System was consolidated under Unified Corporate Rule.[paragraph break]No one ever learned of the mission of the Valkyrie or the critical information it had extracted from the Musashi-5 space probe.[paragraph break]Almost two centuries after these events, the Solar System was conquered by an alien race that no human had ever heard of, although the aliens had heard of us.";
 		-- transferred:
 			say "Mars was destroyed by a Casimir inversion on August 17, 2392 and served as a warning to all other worlds that would dare defy Earth’s rule. Based on the data recovered from the Musashi-5 probe, the Myomita Corporation launched a war fleet into Deep Space in 2394, intent on expanding its empire.";
 		-- david-killed: 
