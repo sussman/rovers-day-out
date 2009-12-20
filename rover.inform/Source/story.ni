@@ -1303,7 +1303,7 @@ Instead of tying the dental floss to something:
 			now the chain is repaired;
 			the rule succeeds;
 	if the second noun is dental floss:
-		say "[if the player is clueless]Tying the floss in a knot would not help[otherwise]Linking the linker is to self-referential to contemplate[end if].";
+		say "[if the player is clueless]Tying the floss in a knot would not help[otherwise]Linking the linker to itself is too self-referential to contemplate[end if].";
 	otherwise:		
 		say "[if the player is clueless]It's a short little piece of dental floss, and it would look very odd tied to [a second noun][otherwise]Diagnostics indicate that [the second noun] does not require linkage[end if]."	
 
