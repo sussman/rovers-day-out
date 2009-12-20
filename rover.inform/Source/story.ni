@@ -1025,13 +1025,29 @@ After reading a command:
 To say cant go out:
 	say "You cannot extend your operations beyond the Valkyrie itself."
 	
-Kitchen-going is an action applying to nothing. Understand "k" as kitchen-going when the player is the acu and gone-towards is greater than 9. Instead of kitchen-going, try going towards the kitchen.
+Kitchen-going is an action applying to nothing. Understand "k" as kitchen-going when the player is the acu and gone-towards is greater than 9. 
 
-Bathroom-going is an action applying to nothing. Understand "b" as bathroom-going when the player is the acu and gone-towards is greater than 9. Instead of bathroom-going, try going towards the bathroom.
+Carry out kitchen-going:
+	change last-noun to "ENGINEERING";
+	try going towards the kitchen.
 
-Livingroom-going is an action applying to nothing. Understand "lr" as livingroom-going when the player is the acu and gone-towards is greater than 9. Instead of livingroom-going, try going towards the living room.
+Bathroom-going is an action applying to nothing. Understand "b" as bathroom-going when the player is the acu and gone-towards is greater than 9. 
 
-Shower-going is an action applying to nothing. Understand "sh" as shower-going when the player is the acu and gone-towards is greater than 9 and the player is clueless. Instead of shower-going, try going towards the shower. [clueless is specified because sh when aware will spawn a bash shell.]
+Carry out bathroom-going:
+	change last-noun to "FLIGHT CONTROL";
+	try going towards the bathroom.
+
+Livingroom-going is an action applying to nothing. Understand "lr" as livingroom-going when the player is the acu and gone-towards is greater than 9. 
+
+Carry out livingroom-going:
+	change last-noun to "OPERATIONS";
+	try going towards the living room.
+
+Shower-going is an action applying to nothing. Understand "sh" as shower-going when the player is the acu and gone-towards is greater than 9 and the player is clueless. [clueless is specified because sh when aware will spawn a bash shell.]
+
+Carry out shower-going:
+	change last-noun to "EXTRUDER";
+	try going towards the shower.
 
 Section Leaving
 
@@ -4678,6 +4694,7 @@ the asking it for action			false			"REQUISITION"
 the attacking action				false			"OFFENSE MODE" [attack!]
 the barking action					false			"EMIT PULSE"
 the bashing action					true			"SHELL" [bash, ksh, sh]
+the bathroom-going action		TRUE			"ACTIVATE"
 the brushing action				false			"SPAWN SCRUBBERS" [brush teeth]
 the beeping action					TRUE			"PROXIMITY ALERT" [beeping]
 the BSODing action					FALSE			"FATAL ERROR"
@@ -4728,9 +4745,11 @@ the growling action				TRUE			"NOTIFY"
 the inserting it into action		false			"TRANSFER"  [put]
 the jumping action					TRUE			"JNZ" [jump]
 the kissing action					false			"INTERFACE" [kiss]
+the kitchen-going action			TRUE			"ACTIVATE"
 the kittying action				FALSE			"CONCATENATE" [cat, when aware]
 the leaving action					false			"DESELECT"
 the listening to action			TRUE			"AUDIO INPUT"
+the livingroom-going action		TRUE			"ACTIVATE"
 the locating action				false			"LOCATE" [find, locate]
 the locking it with action		FALSE			"SECURE"
 the logoutting action 			FALSE			"LOGOUT" [logout]
@@ -4764,6 +4783,7 @@ the saying sorry action			TRUE		"ERR ACK"
 the searching action				false		"MANIFEST"  [look in]
 the section-breaking action	TRUE	"INTERRUPT"  [print "*   *   *" ]
 the shellupping action 			TRUE		"EXIT SHELL" [exit]
+the shower-going action			TRUE		"ACTIVATE"
 the showing it to action			false		"DISPLAY"
 the shutdowning action			FALSE		"SHUTDOWN" [shutdown, reboot, halt]
 the singing action					TRUE		"DUMP" [sing]
