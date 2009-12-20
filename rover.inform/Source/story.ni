@@ -1293,15 +1293,19 @@ Report businessing:
 Section Stuff to do with Floss
 
 Instead of tying the dental floss to something:
-	if the second noun is not the chain:
-		say "[if the player is clueless]It's a short little piece of dental floss, and it would look very odd tied to [a second noun][otherwise]Diagnostics indicate that [the second noun] does not require linkage[end if].";
-	otherwise:
-		if the chain is intact:
-			say "Tangling up the dental floss in the flush chain is asking for trouble."; [only clueless case is required, as chain is broken during the Real Thing scene]
-		otherwise:
+	if the the chain is broken:
+		if the second noun is the lever or the second noun is the flapper valve:
+			say "The floss is just marginally too short to reach from the lever to the flapper valve. The remnants of the rusted chain might be enough to make up the difference, though.";
+			the rule fails;
+		otherwise if the second noun is the chain:
 			change outcome-override to force-success;
 			say "[if the player is clueless]You carefully tie the two ends of the chain together with the dental floss. There. It looks like it should hold[otherwise]You bind the proximal and distal nodes of the chain with the entangled key pair, creating a bypass route from the thruster actuation relay to the thrust aperture[end if].";
-			now the chain is repaired.
+			now the chain is repaired;
+			the rule succeeds;
+	if the second noun is dental floss:
+		say "[if the player is clueless]Tying the floss in a knot would not help[otherwise]Linking the linker is to self-referential to contemplate[end if].";
+	otherwise:		
+		say "[if the player is clueless]It's a short little piece of dental floss, and it would look very odd tied to [a second noun][otherwise]Diagnostics indicate that [the second noun] does not require linkage[end if]."	
 
 Understand the commands "fix", "mend", and "repair" as something new. 
 
