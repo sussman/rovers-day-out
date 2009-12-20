@@ -2105,7 +2105,16 @@ Report burying:
 	otherwise:
 		say "You'd get into trouble digging indoors."
 		
+Section Tail Wagging
 
+Wagging is an action applying to one thing. Understand "wag [something]" as wagging when Rover is the player.
+
+Carry out wagging:
+	if the noun is the tail:
+		say "You wag your tail with pleasure.";
+	otherwise:
+		say "Wagging is for tails.[paragraph break]Aside from having something to chase when no one else is around to play, what else are tails good for but wagging? Hah -- butt wagging. You made a joke."
+				
 Chapter The Valkyrie
 
 Section David-Proxy
@@ -2536,7 +2545,9 @@ To Drop Rover's Payload:
 		say "The [item] falls out of your mouth[one of] with a thud[or] and rolls slightly[or] and lands near your feet[or], startling you[in random order].[paragraph break]";
 		now the item is in the holder of Rover.
 	
-Understand "ear" and "ears" and "nose" and "neck" and "back" and "stomach" and "tummy" and "belly" and "paw" and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover modules". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated mechanical module bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "complicated" or "module" or "modules" or "mechanical" as the doggie bits-proxy. The scent of the doggie bits is "[the scent of Rover]".
+Understand "ear", "ears", "nose", "neck", "back", "stomach", "tummy", "belly", "paw", and "paws" as doggie bits. The clueless-name of the doggie bits is "Rover". The aware-name of doggie bits is "rover modules". The clueless-description of doggie bits is "Rover is covered from nose to tail with white fur dotted with black splotches." The aware-description of the doggie bits is "A complicated mechanical module bolted to the ROVER platform." The doggie bits-proxy is an aware-proxy that is part of the doggie bits. Understand "complicated" or "module" or "modules" or "mechanical" as the doggie bits-proxy. The scent of the doggie bits is "[the scent of Rover]".
+
+The tail is part of Rover. The clueless-name of the tail is "tail". The aware-name of tail is "aft sensor array". The clueless-description of the tail is "A short, white tail." The aware-description of the tail is "A complex array of full-spectrum sensors." The tail-proxy is an aware-proxy that is part of the tail. Understand "aft", "sensor", "sensors", "array" as the tail-proxy. The scent of the tail is "[the scent of Rover]".
 
 The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. [If Real Thing has happened]You notice that a few pixels have gone dark in the picture. Not a big deal, though. Probably only something you'd notice. [end if]There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is nonfunctional, it is critical that these encoded data be returned directly to MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. The scent of the picture is "like Tomasz's old cologne. It brings back memories". The texture of the picture is "flat". Understand "pixel" or "pixels" as the picture when the Real Thing has happened and the player is clueless.
 
@@ -4781,6 +4792,7 @@ the using action			false		"TOGGLE"  [use]
 the waiting action					TRUE		"TIMER" [wait]
 the walkthroughing action		TRUE		"CHEAT" [walk through]
 the waking up action				false		"INITIALIZE" [wake, wake up]
+the wagging action					TRUE		"OSCILLATE"
 the waving action					false		"OSCILLATE"
 the wearing action					false		"ENGAGE"  [put on, wear]
 the whoing action					TRUE		"WHO" [who]
