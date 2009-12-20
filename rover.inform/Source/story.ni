@@ -6043,7 +6043,6 @@ Rule for amusing a victorious player:
 	let janet-memories be zero;
 	repeat with N running from one to the number of rows in the Table of Dreams:
 		if dreamt in row N of the Table of Dreams is one, increase dream-score by one;
-	increase the dream-score by one;[for the nightmare -- not in the table]
 	repeat with N running from one to the number of rows in the Table of Remembered Stuff:
 		if remembered in row N of Table of Remembered Stuff is one, increase janet-memories by one;
 	repeat with N running from one to the number of rows in the Table of Doggie Memories:
