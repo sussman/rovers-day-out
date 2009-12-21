@@ -1508,9 +1508,22 @@ title	subtable	description	toggle
 	
 Chapter General Insteads
 
-Instead of throwing something (called the projectile) at something:
+Instead of throwing something (called the projectile) at something (called the target):
 	if the player is the acu:
-		say "[if the player is clueless]On second thought, you decide not to throw [the projectile]. The cottage is hard enough to keep tidy without throwing things about[otherwise]You take exception to throwing [the projectile]. You throw an exception instead[end if].";
+		if the target is:
+			-- the maintenance droid:
+				if the maintenance droid is not targeted:
+					say "You propel [the projectile] at the droid, which is so involved in its work that it doesn[apostrophe]t even see it coming. There is metallic clang as [the projectile] slams into the droid, ripping through its carapace and burying itself deep in the robot's circuitry. The droid thrashes blindly before falling silent.[paragraph break]You dispose of its remains.";
+					increase the henchmen defeated by one;
+					now the maintenance droid is targeted;
+					move the projectile to the location;
+					move the maintenance droid to Limbo;
+				otherwise:
+					say "The wary maintenance droid moves with lightning speed, withdraws a leather baseball mitt from some internal compartment and catches [the projectile] in mid-air. He throws it back to you putting a little spin on it on says, [quotation mark]This is fun, but I've got work to do.[quotation mark] You catch [the projectile] in your tractor field.";
+			-- the technician:
+				say "You wind up and prepare to throw [the projectile] with the force of a kinetic weapon, but your failsafes kick in, and you find yourself paralyzed.";
+			-- otherwise:
+				say "[if the player is clueless]On second thought, you decide not to throw [the projectile]. The cottage is hard enough to keep tidy without throwing things about[otherwise]You take exception to throwing [the projectile]. You throw an exception instead[end if].";
 	otherwise:
 		try dropping the projectile.
 
@@ -1891,6 +1904,15 @@ Does the player mean attacking david venkatachalam:
 	
 Does the player mean attacking the bone:
 	it is very unlikely.
+	
+Instead of attacking the maintenance droid:
+	if the maintenance droid is battered:
+		say "As you align the gravitic compensator to target the maintenance droid, the droid extends its manipulator arms and you sense a suppression field build around the droid. You push the compensators past their design specification, but cannot overcome the countermeasure. The droid chuckles softly and returns to its work.";
+	otherwise:
+		say "You narrow the gravitic compensators to point source, and the hapless droid is sheared into a spaghetti-like strand, which whips in circles, showering the deck with sparks before disappearing in to a puff of smoke. You are surprised by how good that felt.";
+		increase the henchmen defeated by one;
+		now the maintenance droid is battered;
+		move the maintenance droid to Limbo.
 
 Section Lying Down
 
@@ -4252,7 +4274,7 @@ To say assault ship designation:
 
 There are some gunships in Limbo. The gunships are scenery. The description of the gunships is "Four highly maneuverable Backstabber-class gunships fly an intricate englobement pattern around Valkyrie. At any time, at least two of the ships maintain a weapons lock on Valkyrie with their main excimer lasers." The aware-name of the gunships is "gunships".
 
-The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. The maintenance droid can be shielded. The maintenance droid is not shielded. Understand "robot" and "repairbot" as the maintenance droid. The maintenance droid can be either innocent or jaded. The maintenance droid is innocent. The texture of the maintenance droid is "not at all metallic, but somewhat slick, suggesting that the droid's exoskeleton might have a teflotron coating"
+The maintenance droid is an edible prop in Limbo. The clueless-name of the maintenance droid is "repair guy". The aware-name of the maintenance droid is "maintenance droid". The clueless-description of the maintenance droid is "A burly guy from the maintenance department." The aware-description of the maintenance droid is "Shaped like a hovering canister and sporting many special-purpose appendages, this particular maintenance droid has a particularly sadistic demeanor." The maintenance droid can be toxic. The maintenance droid is not toxic. The maintenance droid can be shielded. The maintenance droid is not shielded. The maintenance droid can be battered. The maintenance droid is not battered. The maintenance droid can be targeted. The maintenance droid is not targeted. Understand "robot" and "repairbot" as the maintenance droid. The maintenance droid can be either innocent or jaded. The maintenance droid is innocent. The texture of the maintenance droid is "not at all metallic, but somewhat slick, suggesting that the droid's exoskeleton might have a teflotron coating"
 
 The technician is a man in Limbo. The clueless-name of the technician is "technician". The aware-name of the technicians is "technician". The clueless-description of the technicians is "member of the technical staff." The aware-description of the technicians is "A space technician. He seems to be well-equipped, and unfortunately competent." The technician can be radsuited. The technician is not radsuited. The technician can be biosuited. The technician is not biosuited. The technician is failsafed.
 
@@ -6086,7 +6108,7 @@ Rule for amusing a victorious player:
 	say "Congratulations. Of the [turn count] things you did today, you must have gotten some of them right, because you didn't screw up the entire universe and you're still alive to read about it. Before you get too cocky, however, here are a few hints about stuff you might want to look for the next time you play [quotation mark][story title][quotation mark]:[paragraph break]";
 	say "* As the ACU, you experienced [dream-score in words] of the seven possible dream sequences [if dream-score is less than seven]. Getting up in the morning and getting things done is all well and fine, but you can afford to dream a little[end if].[paragraph break]";
 	say "* During personality imprinting, both the ACU and Rover incorporated memories from their real-life counterparts. You tapped into [janet-memories in words] out of the [number of rows in the Table of Remembered Stuff in words] engrams resident in the ACU memory banks, and [rover-memories in words] out of Rover's [number of rows in the Table of Doggie Memories in words] memories.[paragraph break]";
-	say "* When the Myomita merchant marine ships intercepted you on the way back to Mars, you managed to employ [henchmen defeated in words] out of the eight or so methods to eliminate them from the ship. [if henchmen defeated is zero]You should work on that. [end if][run paragraph on]";
+	say "* When the Myomita merchant marine ships intercepted you on the way back to Mars, you managed to employ [henchmen defeated in words] out of the ten or so methods to eliminate them from the ship. [if henchmen defeated is zero]You should work on that. [end if][run paragraph on]";
 	if assault ship approach is greater than one:
 		say "You should be congratulated on finding [assault ship approach - 1 in words] out of the about four ways to dislodge an assault ship once it attaches to Valkyrie. Good going.[paragraph break]";
 	otherwise:
