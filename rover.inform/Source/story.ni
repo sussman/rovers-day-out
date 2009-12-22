@@ -10,6 +10,7 @@ The story description is "Three hundred years ago, the Brazilian Space Agency di
 Include Glulx Text Effects by Emily Short.
 Include Basic Screen Effects by Emily Short.
 Include Menus by Emily Short.
+Include Adaptive Hints by Eric Eve.
 Include Case Management by Emily Short.
 Include Flexible Windows by Jon Ingold.
 
@@ -1655,7 +1656,8 @@ Report trimming:
 Section Disabled For Testing
 
 When play begins:
-	change the wait-a-bit to false.
+	change the wait-a-bit to false;
+	activate the Table of Getting Out of Bed.
 	
 Section Unit Testing
 
@@ -4518,7 +4520,7 @@ index		dreamt		description		comment
 
 Chapter Menus
 
-Understand "help" or "hint" or "hints" or "about" or "info" as asking for help.
+Understand "help" or "about" or "info" as asking for help.
 
 Asking for help is an action out of world.
 
@@ -4572,7 +4574,7 @@ title	subtable	description	toggle
 
 Table of Stuck
 title	subtable	description	toggle
-"General Pointers"		--		"Here are some practical pointers for this game:[paragraph break]* Try everything you can think of. If it doesn't work, try rephrasing.[line break]* Reread text to make sure you didn't miss anything.[line break]* Leave no stone unturned; conversely, don't obsess.[line break]* This game follows many, but not all, of the conventions of computer adventure games. If something makes sense to you, try it even though it [quotation mark]shouldn't work[quotation mark].[line break]* As far as we know, it is not possible to get trapped in an unwinnable situation. By winning, we mean you can complete the game. Achieving good outcomes is another matter.[line break]* If you are really stuck, put the game aside and let it percolate through your subconscious for a while. Come back fresh.[line break]* If you are really really stuck, con someone else into playing the game and watch them. You might get some ideas.[line break]* If you are really and truly stuck, you could search the Internet and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Failing all else, you can email us at: rover@red-bean.com and tell us in detail how our game has defeated your best efforts. We may be able to give you a hint that wouldn't spoil the rest of the game for you.[line break]* IFComp 2009 special bonus: As part of IFComp, we have supplied a walkthrough document that shows one possible way of working your way through the game. It doesn't hit all the fun stuff, but it will get you from start to finish."		--
+"General Pointers"		--		"Here are some practical pointers for this game:[paragraph break]* Try everything you can think of. If it doesn't work, try rephrasing.[line break]* Reread text to make sure you didn't miss anything.[line break]* Leave no stone unturned; conversely, don't obsess.[line break]* This game follows many, but not all, of the conventions of computer adventure games. If something makes sense to you, try it even though it [quotation mark]shouldn't work[quotation mark].[line break]* As far as we know, it is not possible to get trapped in an unwinnable situation. By winning, we mean you can complete the game. Achieving good outcomes is another matter.[line break]* If you are really stuck, put the game aside and let it percolate through your subconscious for a while. Come back fresh.[line break]* If you are really really stuck, con someone else into playing the game and watch them. You might get some ideas.[line break]* If you are really and truly stuck, you could search the Internet and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Within the game, you can type [quotation mark]hint[quotation mark] to bring up some context-specific hints. To minimize spoilers, the hints are revealed one at a time, and go from general to specific.[line break]* If all else fails, the game includes a walkthrough (type [quotation mark]walkthrough[quotation mark], which shows one possible way through the game. The walkthrough is nothing but spoilers, so please consider this a last resort, or something to look at after you've played through the game."		--
 "Spelling"	--		"This game employs the standard Martian dialect and Roman characters rather than the ideographic characters more common on Earth."	--
 
 Table of Bugs
@@ -6118,3 +6120,305 @@ Rule for amusing a victorious player:
 	say "* Did Rover succeed in his amorous advances towards his significant other in the park?[paragraph break]";
 	say "* Did you read the texts in the 'help' menu?".
 	
+Chapter Hints
+
+Table of Active Hints (continued)
+title		subtable			description			toggle
+text		table-name		text					a rule
+
+Table of Potential Hints (continued)
+title													subtable
+"How do I get out of bed?"					Table of Getting Out Of Bed
+"Where are my compass directions."			Table of No NEWS
+"The futon is obstructing my movement."	Table of Futonistic Obstruction
+"What's up with that picture?"				Table of Mnemonic Devices
+"It's too dark to see."						Table of Grue Vision
+"What should I be doing?"					Table of Enlightenment
+"How do I fix my itchy arm?"					Table of Brachial Pruritis
+"How do I take a shower?"					Table of Shower Favors
+"Why did everything reset?."					Table of Square One
+"What's for breakfast?"						Table of Omelets
+"How do I give Rover some water?"			Table of Hydration
+"How do I feed Rover?"						Table of Sustenance
+"What does [quotation mark]taking care of business[quotation mark] mean?"														Table of Euphemisms
+"What's the problem with the toilet?"		Table of Stick Straightening
+"How do I walk Rover?"						Table of Perambulation
+"You're kidding right? Again?"				Table of Persistence		
+"Why doesn't the toilet flush?"				Table of Plumbing
+"What am I looking for?"						Table of Bone Retrieval
+"How can I complete the mission?"			Table of Refueling
+"How do I get of this rock?"					Table of Blasting Off
+"What can I do against the other ships?"	Table of Evasive Action
+"Is there any way to fight the droids?"	Table of RockemSockem
+"How can I fight the technicians?"			Table of Antitech
+"Why can't I hear David and Janet?"		Table of Low Volume
+"How do I stop David?"						Table of Defeating Evil
+
+
+A hint activation rule:
+	if the Bedtime is happening then activate the Table of Getting Out Of Bed.
+	
+A hint deactivation rule:
+	if the Bedtime is not happening then deactivate the Table of Getting Out Of Bed.
+
+Table of Getting out of bed
+hint													used
+"Actually, what's the rush? Would it hurt to snooze a bit more?"		a number
+"You're too tired to use the alarm clock effectively."
+"If you weren't in bed, you would not be so likely to fall back asleep."
+"What if you were vertical instead of horizontal?"
+"You just need to get out of bed. Try standing."
+
+A hint activation rule:
+	if the futon is not folded and Bedtime is not happening then activate the Table of Futonistic Obstruction.
+	
+A hint deactivation rule:
+	if the futon is folded then deactivate the Table of Futonistic Obstruction.
+	
+Table of No NEWS
+hint													used
+"Compass directions don't have any meaning here. Sorry, it's a matter of physics."
+"You'll need to specify directions in some other manner."
+"What do you want to head towards?"
+"You can say [quotation mark]Go towards bathroom[quotation mark] to go into the bathroom. [quotation mark]Go bathroom[quotation mark] also works and is shorter."
+
+Table of Futonistic Obstruction
+hint													used
+"A futon is a folding bed, popular in Japan."
+"Futons are a good choice of furniture when space is at a premium. They fold up during the day time and serve as a couch. At night, they can be unfolded again as a bed."
+"This futon is so big that you can't walk around it when it is extended as a bed."
+"To make more room to walk around, you need to fold up the futon."
+
+Table of Mnemonic Devices
+hint													used
+"The light falls right on the picture... as if someone wants you to notice it. Hmm."
+"Did you look at the picture and the frame?"
+"There's a brass nameplate on the frame. Wonder what it says."
+"Did you read the nameplate?"
+"You can remember about any topic. Sounds like a good way to figure out what's going on."												
+"What's all this business about a space probe? Did you remember that?"
+"How about the independence war? Can you remember about the war, or Earth and Mars?"
+"Did you remember myomita? How about MARSpace?"
+"You know some names. What can you remember about them?"
+"I wonder what tricks Rover knows."
+
+Table of Grue Vision
+hint													used
+"It's pretty dark in here."
+"Not much light is getting into the room."
+"You probably closed the drapes when you went to bed."
+"It's sunny outside, but the drapes are closed."
+"You need to open the drapes to see better."
+
+Table of Enlightenment
+hint													used
+"If you look around, you might get some clues."
+"Sometimes people make a list of things to do."
+"Where would you put a to-do list?"
+"Did you look in the kitchen?"
+"How about on the fridge?"
+"Read the to-do list on the fridge."
+
+Table of Brachial Pruritis
+hint													used
+"If your arm is distracting you, do something about it."
+"What can you do to stop the itching?"
+"What if it were a mosquito bite, what would you do?"
+"Try scratching your left arm."
+
+Table of Shower Favors
+hint													used
+"First, you need to find the shower."
+"You can get to the shower through the bathroom. There's no shower door, just walk in."
+"Don't get your clothes wet. Leave them outside the shower."
+"Use some soap. You don't know where you've been."
+"To use the soap press the soap button."
+"Use some shampoo too."
+"Tommygoffs, by the way, are a common name for a pit-viper also known as the fer-de-lance. They're common in Belize and on Mars."
+"When you get out of the shower, you need to dry off."
+"There are no towels."
+"The heat lamp in the ceiling may help."
+"You need to press or touch something to turn on the heat lamp."
+"The black plate activates the heat lamp."
+
+Table of Square One
+hint													used
+"Yes, everything reset."
+"The first time, the banner said beta732, and the release date was April 1, 2392. How about now?"
+"What do you think is going on? Is the background conversation the same?"
+													
+Table of Omelets
+hint													used
+"What's for breakfast? Are there any cornflakes and milk in the fridge?"
+"Looks like breakfast will consist of a neoegg."
+"You'll need to fry the neoegg."
+"To fry the egg, you'll need a frying pan."
+"The frying pan is usually in the drawer under the stove."
+"To cook the egg, you'll need to break it into the pan."
+"Place the pan on the stove to heat it."
+"The stove will only activate if there is something to cook in the pan."
+"Once the egg is cooked, you can eat the egg. You don't need a fork or other utensils."
+
+Table of Hydration
+hint													used
+"In the kitchen, there are two bowls."
+"Put water in one bowl, dog food in the other."
+"Where will you find water it the kitchen?"
+"You can fill the water bowl from the sink."
+"[quotation mark]Fill water bowl[quotation mark] will do the trick."
+"Rover can't get drink from the bowl while you are still holding it."
+"Drop the water bowl so Rover can have a drink."
+
+Table of Sustenance
+hint													used
+"In the kitchen, there are two bowls."
+"Put dog food in one bowl, water in the other."
+"The dog food is stored in the kitchen."
+"A bag of dog food is found in the cabinet under the sink."
+"You need to get the dog food to the dog food bowl."
+"You can pour the dog food into the dog bowl."
+"If you've picked up the bowl, Rover can't eat the food until you put the bowl down."
+
+Table of Euphemisms
+hint													used
+"Taking care of business means...well, what do you expect?"
+"After eating, you might need to do something."
+"It would be messy if you took care of business anywhere aside from the bathroom."
+"For this particular kind of business, a toilet would be helpful."
+"Taking care of business is a euphemism for going to the bathroom. What specifically that means is left up to you."
+
+Table of Stick Straightening
+hint													used
+"Look around the bathroom. Something doesn't seem to be right."
+"Examine each item in the bathroom."
+"The plunger seems to be strangely positioned."
+"Can you straighten out the plunger?"
+"Can you move the plunger?"
+"Can you push or twist the plunger?"
+"Can you push or twist the plunger is a specific direction?"
+"Can you push the plunger forward or backward, left or right, or clockwise and counterclockwise?"
+"By moving the plunger around in various directions, can you center it and get it to stand straight up?"
+"If you've centered the plunger, does anything work now that didn't before?"
+"Before you leave the bathroom, you should flush the toilet."
+
+Table of Perambulation
+hint													used
+"Rover should not take his walk in the house. That would be messy."
+"Rover wants to go for a walk in the park."
+"You can trust Rover to come back, just let him out."
+"The only way out of the apartment is the front door."
+"To let Rover out for walkies, open the front door."
+
+Table of Persistence
+hint													used
+"What!?! Is this the same as the last time?"
+"Is this still a beta test?"
+"Is this exactly like last time, or has something important changed?"
+"What do you think happened to the drapes?"
+"The last two times were practice -- this time is for real."
+
+Table of Plumbing
+hint													used
+"The toilet isn't working like normal."
+"Something is making a rattling sound when you flush the toilet."
+"Did you check out the toilet?"
+"Did you try troubleshooting the toilet?"
+"Is there something wrong with the toilet tank?"
+"Did you look inside the toilet?"
+"Did you try opening the toilet tank lid?"
+"What is wrong with the chain?"
+"Can you either fix the chain or bypass it?"
+"Ultimately, you need to find some way of raising the flapper valve."
+"You could raise the flapper valve to allow the toilet to flush."
+
+Table of Bone Retrieval
+hint													used
+"What was the purpose of your mission?"
+"Are you looking for something that was lost on this planet?"
+"Sometimes Rover doesn't see things as they really are."
+"The Status Line shows what Rover is really doing."
+"You need to retrieve the space probe."
+"To Rover, the space probe looks like a bone."
+"Rover must get the bone from the female dog."
+"The female dog will only be impressed if you talk to her."
+"When Rover talks to the female dog (i.e., barks) she will drop the bone. Take it before she takes it back."
+"After Rover has the bone, he can take it home."
+
+Table of Refueling
+hint													used
+"You need to get the probe data back to Mars."
+"You cannot transmit the data back to Mars because the ansible is broken."
+"There is no way to fix the ansible. You can't go outside the ship, and Rover has no clue about ansibles."
+"If you can't send the data back to Mars, you'll have to take the data back to Mars."
+"You can't blast off because you don't have any fuel for the fusion rockets."
+"You'll need some heavy helium."
+"You only brought one heavy helium sphere with you, and you used it up during landing."
+"You'll have to find another heavy helium sphere."
+"The heavy helium sphere looks like something else. You may remember from earlier."
+"The heavy helium sphere looks like an egg."
+"You need to find another egg."
+"The other egg is found in a place where people keep eggs."
+"The other egg is in a refrigerator."
+"The other egg is not in your refrigerator; it's in someone else's."
+"To fuel the fusion rockets, you will need to inject heavy helium into the reactor core and then recycle the carboy."
+"To fuel the engines, you need to fry and eat another egg."
+
+Table of Blasting Off
+hint													used
+"You need to fire the fusion rockets to lift off."
+"Your engines are fully fueled (that [quotation mark]egg[quotation mark] you ate was full of heavy helium)."
+"How did you fire the engines for landing?"
+"The flushing the toilet will fire the fusion rockets."
+"The toilet is still broken. How did you flush it last time?"
+
+Table of Evasive Action
+hint													used
+"The gunships don't seem interested in you, but the assault ship is intent on docking."
+"There are several things you can do to make life difficult for the assault ships."
+"The assault ship's goal is to dock stably with the Valkyrie to allow transfer of personnel. Anything you can do to disrupt that process is in your interest."
+"It takes some time for the ship to approach. During that time, is there any way of coating the ship with a protective barrier?"
+"Can you think of a way to alter the ship's position? The docking ring is not very strong."
+"Remember back in the first simulation how you neutralized a static charge? What happens if you do the same now, after the other ship attaches to the back of the ship?"
+"What is the purpose of the toothbrush?"
+"What happens if you brush your teeth after the other ship attaches?"
+
+Table of RockemSockem
+hint													used
+"The maintenance droids are trying to disassemble you! You've got to stop them."
+"The droids will move around the ship as they complete tasks, you have to keep up with them."
+"Only one droid will board at a time. They've seen a lot of Kung Fu movies, but still miss the point."
+"There are multiple ways to slow down the droids. Some of them require you to grab a droid. They may wiggle out of your grasp, but you can try again."
+"Do you think droids are tasty?"
+"Could violence be the answer to this one?"
+"Is there anything you could do to a droid from a distance?"
+"Did you know that droids are, by default, sheltered and easily scandalized?"
+"Being metallic, how do you think a droid would fair in an intense magnetic field?"
+"Do you think droids would operate well under ultracold conditions?"
+
+Table of Antitech
+hint													used
+"If the droids strike out, the salvagers from Myomita will send over humans. They're cheaper than droids. Unfortunately, your programming prevents you from directly attacking people (some corollary of Asimov's Laws of Robotics, you figure)."
+"The repairmen will move around the ship, you need to follow them around."
+"Sometimes you can do something in one part of the ship that will affect other areas of the ship."
+"Rover might not like these repairmen either."
+"Wonder what the sink does."
+"You know, it's probably pretty radioactive in the reactor core."
+"Opening the front door wouldn't hurt anybody, would it?"
+"Even if you can't take out every last repairman, slowing them down buys you time."
+
+Table of Low Volume
+hint													used
+"Janet and David are talking, but you can't seem to hear them."
+"Did you try look, smell, touch, and taste? Does that cover it?"
+"Your audio feed is off. You need to listen."
+
+Table of Defeating Evil
+hint													used
+"So, David turns out to be a bad guy."
+"Reasoning with David is not an option."
+"Attacking David won't work. It's against your programming to attack a human."
+"Do you have a friend on board who will do what you say?"
+"Rover knows some tricks."
+"During the war, Rover learned a command, but it is seldom used."
+"You can tell Rover to attack David (e.g., [quotation mark]Rover, attack David[quotation mark])."
+
