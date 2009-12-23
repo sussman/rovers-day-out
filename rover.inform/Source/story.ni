@@ -952,6 +952,7 @@ Before going a built-in direction (called the way):
 	if the ACU is the player: 
 		if the player is clueless:
 			say "Compass directions? On Mars? The magnetic field here is too weak.";
+			now the ACU is lost;
 		otherwise:
 			say "That term is undefined in the present reference frame.";
 	otherwise: [maybe safer to say 'if Rover is the player'?]
@@ -2289,7 +2290,7 @@ Does the player mean doing something to the belly:
 	it is likely.
 	[otherwise, touch belly results in a disambiguation between the Rover and the bely]
 
-The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "[acu-clueless-description].". The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop. The scent of the acu is "[if the enamel_pid is zero]like you could you use a shower[otherwise]fresh and clean[end if]". 
+The ACU has wakefulness. The ACU has insightfulness. The ACU is asleep. The ACU is clueless. The aware-name of the ACU is "ACU". The clueless-name of the ACU is "Janet". The ACU is proper-named. The clueless-description of the ACU is "[acu-clueless-description].". The aware-description of the ACU is "Your consciousness extends throughout the many systems that comprise the Valkyrie." The acu-proxy is an aware-proxy that is part of the acu. Understand "acu" or "autonomous" or "control unit" as the acu-proxy. The ACU can be wet or dry. The ACU is dry.  Understand "Janet" as the ACU when the ACU is clueless. The ACU has comm status. The comm status of the ACU is silent. The ACU can be an enemy of Earth. The ACU is not an enemy of Earth. The ACU can be penetrated. The ACU is not penetrated. The ACU has poopstate. The ACU is prepoop. The scent of the acu is "[if the enamel_pid is zero]like you could you use a shower[otherwise]fresh and clean[end if]". The ACU can be lost. The ACU is not lost.
 
 To say acu-clueless-description:
 	say "You seem just like you have every other day of your life";
@@ -2593,7 +2594,10 @@ Understand "ear", "ears", "nose", "neck", "back", "stomach", "tummy", "belly", "
 
 The tail is part of Rover. The clueless-name of the tail is "tail". The aware-name of tail is "aft sensor array". The clueless-description of the tail is "A short, white tail." The aware-description of the tail is "A complex array of full-spectrum sensors." The tail-proxy is an aware-proxy that is part of the tail. Understand "aft", "sensor", "sensors", "array" as the tail-proxy. The scent of the tail is "[the scent of Rover]".
 
-The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. [If Real Thing has happened]You notice that a few pixels have gone dark in the picture. Not a big deal, though. Probably only something you'd notice. [end if]There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is nonfunctional, it is critical that these encoded data be returned directly to MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. The scent of the picture is "like Tomasz's old cologne. It brings back memories". The texture of the picture is "flat". Understand "pixel" or "pixels" as the picture when the Real Thing has happened and the player is clueless.
+The picture is a fixed in place scenery in the Living Room. The clueless-name of the picture is "picture". The aware-name of the picture is "deep memory". The clueless-description of the picture is "A picture of the Starship Valkyrie, still under construction in drydock. [If Real Thing has happened]You notice that a few pixels have gone dark in the picture. Not a big deal, though. Probably only something you'd notice. [end if]There is small brass nameplate below the picture." Understand "photo" or "framed" as the picture. The aware-description of the picture is "Deep memory which stores all mission-critical data [if Real Thing has happened]including the data downloaded from the Musashi-5 space probe. Since the ansible is nonfunctional, it is critical that these encoded data be returned directly to MARSpace for analysis[end if]. There is a small plastic sign beneath the deep memory unit." The picture-proxy is an aware-proxy that is part of the picture. Understand "core", "deep", "memory", "unit", "data", or "records" as the picture-proxy. The picture can be damaged. The picture is not damaged. The scent of the picture is "like Tomasz's old cologne. It brings back memories". The texture of the picture is "flat". Understand "pixel" or "pixels" as the picture when the Real Thing has happened and the player is clueless. The picture can be inspected or not inspected.
+
+After examining the picture:
+	now the picture is inspected.
 
 Instead of searching the picture:  
 	try examining the picture.
@@ -2682,7 +2686,7 @@ Instead of searching a refrigerator (called R):
 			change outcome-override to force-success;
 	say "."
 
-The magpaper is message.  The magpaper is part of the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" or "jobs" or "queue" or "priority" or "task" or "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]." The texture of the magpaper is "dry and flimsy".
+The magpaper is message.  The magpaper is part of the old fridge. Understand "note" and "post-it" and "sticky" and "paper" and "list" as magpaper.  The clueless-name of the magpaper is "magpaper to-do list". The aware-name of the magpaper is "task manager".  The clueless-description of the magpaper is "It is a to-do list, in your own writing."  The aware-description of the magpaper is "It is a list of jobs in your priority queue." The magpaper-proxy is an aware-proxy which is part of the magpaper. Understand "job" or "jobs" or "queue" or "priority" or "task" or "manager" as the magpaper-proxy.  The inscription of the magpaper is "[if the player is clueless][magpaper-clueless][otherwise][magpaper-aware]." The texture of the magpaper is "dry and flimsy". The magpaper can be inspected. The magpaper is not inspected.
 
 To reset magpaper:
 	Now the IPL_pid is zero;
@@ -2727,6 +2731,7 @@ Instead of taking the magpaper:
 		say "The task list cannot be relocated; it has a fixed address in system priority memory."
 
 After reading the magpaper for the first time:
+	now the magpaper is inspected;
 	if the first sim is happening or the second sim is happening:
 		let metatext be "David: 'Take care of business'? Is that a euphemism?*Janet: Yes. I had a heck of a time mapping the landing sequence to my daily routine.";
 		say "[metatext in metaspeak]".
@@ -6129,14 +6134,15 @@ text		table-name		text					a rule
 Table of Potential Hints (continued)
 title													subtable
 "How do I get out of bed?"					Table of Getting Out Of Bed
-"Where are my compass directions."			Table of No NEWS
+"Where are my compass directions?"			Table of No NEWS
 "The futon is obstructing my movement."	Table of Futonistic Obstruction
 "What's up with that picture?"				Table of Mnemonic Devices
 "It's too dark to see."						Table of Grue Vision
-"What should I be doing?"					Table of Enlightenment
+"What should I be doing?"					Table of Stuff To Do
 "How do I fix my itchy arm?"					Table of Brachial Pruritis
 "How do I take a shower?"					Table of Shower Favors
-"Why did everything reset?."					Table of Square One
+"How do I dry off?"							Table of Radiant Heating
+"Umm...did everything just reset?"			Table of Square One
 "What's for breakfast?"						Table of Omelets
 "How do I give Rover some water?"			Table of Hydration
 "How do I feed Rover?"						Table of Sustenance
@@ -6170,10 +6176,10 @@ hint													used
 "You just need to get out of bed. Try standing."
 
 A hint activation rule:
-	if the futon is not folded and Bedtime is not happening then activate the Table of Futonistic Obstruction.
+	if ACU is lost and gone-towards is zero then activate the Table of No NEWS.
 	
 A hint deactivation rule:
-	if the futon is folded then deactivate the Table of Futonistic Obstruction.
+	if gone-towards is greater than zero then deactivate the Table of No NEWS.
 	
 Table of No NEWS
 hint													used
@@ -6182,6 +6188,12 @@ hint													used
 "What do you want to head towards?"
 "You can say [quotation mark]Go towards bathroom[quotation mark] to go into the bathroom. [quotation mark]Go bathroom[quotation mark] also works and is shorter."
 
+A hint activation rule:
+	if the futon is not folded and the futon is obstructed and the First Sim is happening then activate the Table of Futonistic Obstruction.
+	
+A hint deactivation rule:
+	if the futon is folded or the First Sim is not happening then deactivate the Table of Futonistic Obstruction.
+
 Table of Futonistic Obstruction
 hint													used
 "A futon is a folding bed, popular in Japan."
@@ -6189,9 +6201,15 @@ hint													used
 "This futon is so big that you can't walk around it when it is extended as a bed."
 "To make more room to walk around, you need to fold up the futon."
 
+A hint activation rule:
+	if the picture is inspected and the First Sim is happening then activate the Table of Mnemonic Devices.
+	
+A hint deactivation rule:
+	if the First Sim is not happening then deactivate the Table of Mnemonic Devices.
+
 Table of Mnemonic Devices
 hint													used
-"The light falls right on the picture... as if someone wants you to notice it. Hmm."
+"The light was falling right on the picture... as if someone wanted you to notice it. Hmm."
 "Did you look at the picture and the frame?"
 "There's a brass nameplate on the frame. Wonder what it says."
 "Did you read the nameplate?"
@@ -6202,6 +6220,12 @@ hint													used
 "You know some names. What can you remember about them?"
 "I wonder what tricks Rover knows."
 
+A hint activation rule:
+	if the drapes are closed and bedtime is not happening then activate the Table of Grue Vision.
+	
+A hint deactivation rule:
+	if the drapes are open then deactivate the Table of Grue Vision.
+
 Table of Grue Vision
 hint													used
 "It's pretty dark in here."
@@ -6210,7 +6234,14 @@ hint													used
 "It's sunny outside, but the drapes are closed."
 "You need to open the drapes to see better."
 
-Table of Enlightenment
+A hint activation rule:
+	if the first sim is happening and the drapes are open and the futon is folded and the magpaper is not inspected then activate the Table of Stuff To Do.
+		
+A hint deactivation rule:
+	if the magpaper is inspected or First Sim is not happening then deactivate the Table of Stuff To Do.
+	
+
+Table of Stuff To Do
 hint													used
 "If you look around, you might get some clues."
 "Sometimes people make a list of things to do."
@@ -6219,12 +6250,24 @@ hint													used
 "How about on the fridge?"
 "Read the to-do list on the fridge."
 
+A hint activation rule:
+	if Arm Hurts is happening then activate the Table of Brachial Pruritis.
+		
+A hint deactivation rule:
+	if Arm Hurts is not happening then deactivate the Table of Brachial Pruritis.
+
 Table of Brachial Pruritis
 hint													used
 "If your arm is distracting you, do something about it."
 "What can you do to stop the itching?"
 "What if it were a mosquito bite, what would you do?"
 "Try scratching your left arm."
+
+A hint activation rule:
+	if the First Sim is happening and (the player is in the Bathroom or the Player is in the Shower) then activate the Table of Shower Favors.
+			
+A hint deactivation rule:
+	if the First Sim is not happening or (the First Sim is happening and the shampoo button is pressed and the soap button is pressed) then deactivate the Table of Shower Favors.
 
 Table of Shower Favors
 hint													used
@@ -6235,11 +6278,26 @@ hint													used
 "To use the soap press the soap button."
 "Use some shampoo too."
 "Tommygoffs, by the way, are a common name for a pit-viper also known as the fer-de-lance. They're common in Belize and on Mars."
+
+A hint activation rule:
+	if the First Sim is happening and the shampoo button is pressed and the soap button is pressed then activate the Table of Radiant Heating.
+	
+A hint deactivation rule:
+	if the First Sim is not happening then deactivate the Table of Radiant Heating.
+
+Table of Radiant Heating
+hint													used
 "When you get out of the shower, you need to dry off."
 "There are no towels."
 "The heat lamp in the ceiling may help."
 "You need to press or touch something to turn on the heat lamp."
 "The black plate activates the heat lamp."
+
+A hint activation rule:
+	if the Second Sim is happening and Bedtime is not happening then activate the Table of Square One.
+	
+A hint deactivation rule:
+	if the Second Sim is not happening or (the Second Sim is happening and the futon is folded) then deactivate the Table of Square One. 
 
 Table of Square One
 hint													used
