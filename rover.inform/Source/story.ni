@@ -982,12 +982,15 @@ After going towards when the player is the ACU:
 		if Rover is in the location:
 			say "[Rover] [if the player is clueless][one of]begs for some treats[or]dances around, trying to suggest that he'd be glad to do one of his tricks for a reward nugget[or]sniffs at [the reward nuggets replicator][or]keeps an eye on [the reward nuggets replicator][or]stares dreamily at the doggie treats[or]watches you intently, concentrating on [reward nuggets replicator][or]scrutinizes [reward nuggets replicator][or]contemplates [the reward nuggets replicator][or]dreams about the doggie treats in that [reward nuggets replicator][or]lies down, rolls over, and barks, hoping to persuade you to toss him a treat[or]sits and gives kisses, hoping to earn a reward nugget[in random order][otherwise]maintains a fix on [the reward nuggets replicator][end if].";
 		otherwise:
-			if the location is the shower:
-				now Rover is in the bathroom;
-				say "[Rover] [if the player is clueless]pads along behind you until you get to the shower but decides he's not willing to risk a bath for some reward nuggets[otherwise]follows your focus as you select the extruder, but he stops just outside it in the flight control area[end if].";
-			otherwise:
-				now Rover is in the location;
-				say "[Rover] trundles along behind you, his attention riveted to [the reward nuggets replicator].";
+			if Rover is in Limbo:
+				do nothing;
+			otherwise:[Rover not in Limbo]			
+				if the location is the shower:
+					now Rover is in the bathroom;
+					say "[Rover] [if the player is clueless]pads along behind you until you get to the shower but decides he's not willing to risk a bath for some reward nuggets[otherwise]follows your focus as you select the extruder, but he stops just outside it in the flight control area[end if].";
+				otherwise:
+					now Rover is in the location;
+					say "[Rover] trundles along behind you, his attention riveted to [the reward nuggets replicator].";
 		now Rover is busy;
 	if the location is:
 		-- kitchen:
@@ -2523,7 +2526,7 @@ Instead of opening the front door when the front door is closed:
 		say "[if the player is clueless]If you open the front door, Rover will get all excited and expect to go walkies. Better get your morning routine out of the way first[otherwise]ROVER release is not the current task[end if].";
 		the rule succeeds;
 	[Ship has landed, attempt to let Rover out for walkies]
-	if Rover is not in the Living Room:
+	if Rover is not in the Living Room and Rover is not in Limbo:
 		say "[if the player is clueless]Hearing the door jiggle, Rover [one of]bounds[or]wanders[or]strolls[or]meanders[or]tromps[or]traipses[in random order] into the living room to see what is going on[otherwise]Alerted by the change in cargo bay door status, ROVER rolls into the cargo bay[end if]. [run paragraph on]";
 		now Rover is in the Living Room;
 	otherwise:
@@ -2755,13 +2758,14 @@ After opening the old fridge:
 	if Rover is in the location:
 		say "[Rover] looks up when he hears [the old fridge] open. [run paragraph on]";
 	otherwise:
-		say "[if the player is clueless]As the fridge creaks open on its ancient hinges, Rover slips into the kitchen[otherwise]Rover pops into the engineering section to investigate the thermal shift[end if]. [run paragraph on]";
-		now Rover is in the kitchen;
-	if Rover is hungry:
-		say "[if the player is clueless]He pokes his nose in the fridge and sniffs around, although he knows full well that stuff in the fridge is for people only and that he'd be in a heap of trouble if he got too curious in there[otherwise]This behavior may indicate that Rover's fuel reserve is low[end if].";
-	otherwise:
-		say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]performs a brief chemosensor scan and then rolls back towards the operations area[end if].";
-		now Rover is in the Living Room.
+		if Rover is not in Limbo:
+			say "[if the player is clueless]As the fridge creaks open on its ancient hinges, Rover slips into the kitchen[otherwise]Rover pops into the engineering section to investigate the thermal shift[end if]. [run paragraph on]";
+			now Rover is in the kitchen;
+		if Rover is hungry:
+			say "[if the player is clueless]He pokes his nose in the fridge and sniffs around, although he knows full well that stuff in the fridge is for people only and that he'd be in a heap of trouble if he got too curious in there[otherwise]This behavior may indicate that Rover's fuel reserve is low[end if].";
+		otherwise:
+			say "He [if the player is clueless]sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room[otherwise]performs a brief chemosensor scan and then rolls back towards the operations area[end if].";
+			now Rover is in the Living Room.
 
 The white egg is an edible prop in the old fridge. Understand "neoegg" as the white egg. The white egg can be raw or cooked. The white egg is raw. Understand "cooked" or "fried" as the white egg when the white egg is cooked. Understand "raw" or "uncooked" as the white egg when the white egg is raw. The white egg can be broken or intact. The white egg is intact. The clueless-name of the white egg is "[if the white egg is cooked]fried [end if]white egg". The aware-name of the white egg is "heavy helium sphere".  The aware-description of the white egg is "A reinforced carboy [if the white egg is cooked]that once contained[otherwise]of[end if] super-chilled Helium-8." The white egg-proxy is an aware-proxy that is part of the white egg. Understand "helium" or "heavy" or "sphere" as the white egg-proxy. The clueless-description of the white egg is "[if cooked]A perfectly fried egg: The yellow yolk lies at the geometric center of a white disc, like the star at the center of a nascent system. The yolk is just a notch short of congealing, and the white is neither runny nor burnt. Another culinary success[otherwise if the egg is broken]A raw egg, with bright yellow yolk[otherwise]A big white neoegg[end if]." The scent of the white egg is "[egg-whiff]". The texture of the neoegg is "not quite smooth and a bit tacky".
 
@@ -2945,7 +2949,7 @@ After filling the water bowl with the kitchen sink:
 	if Rover is in the location:
 		say "[Rover] looks towards [the kitchen sink] as you fill his [water bowl].";
 	otherwise:
-		if Rover is thirsty:
+		if Rover is thirsty and Rover is not in Limbo:
 			say "[Rover] [if the player is clueless]wanders into the kitchen when he hears water splashing into his bowl[otherwise]detects the transfer of coolant to the reservoir[end if].";
 			now Rover is in the kitchen.
 			
@@ -2954,7 +2958,7 @@ After filling the food bowl with the dog chow bag:
 	if Rover is in the location:
 		say "[Rover] watches[if Rover is hungry] with interest[end if] as you fill his [food bowl].";
 	otherwise:
-		if Rover is hungry:
+		if Rover is hungry and Rover is not in Limbo:
 			say "[Rover] [if the player is clueless]trots in from the living room when he hears kibbles trickling into his bowl[otherwise]detects the transfer of radioisotope fuel to the reservoir[end if].";
 			now Rover is in the kitchen.
 			
@@ -3025,14 +3029,15 @@ After putting a bowl (called the vessel) on the counter:
 	
 After inserting a bowl (called the vessel) into the cabinet:
 	change outcome-override to force-success;
-	if Rover is not in the location:
-		now Rover is in the location;
-		say "[if the player is clueless][Rover] zips into the kitchen[otherwise]This triggers a [ROVER] transfer system-related error. [Rover] rolls headlong into the engineering section[end if] and he[run paragraph on]";
-	otherwise:
-		say "[if the player is clueless]This is one of Rover's favorite games! He[otherwise][Rover][end if]"; 
-	say "[if the player is clueless] pulls [the vessel] back out of[otherwise] removes [the vessel] from[end if] [the cabinet].";
-	now the player carries the vessel;
-	try silently dropping the vessel.
+	if Rover is not in Limbo:
+		if Rover is not in the location:
+			now Rover is in the location;
+			say "[if the player is clueless][Rover] zips into the kitchen[otherwise]This triggers a [ROVER] transfer system-related error. [Rover] rolls headlong into the engineering section[end if] and he[run paragraph on]";
+		otherwise:
+			say "[if the player is clueless]This is one of Rover's favorite games! He[otherwise][Rover][end if]"; 
+		say "[if the player is clueless] pulls [the vessel] back out of[otherwise] removes [the vessel] from[end if] [the cabinet].";
+		now the player carries the vessel;
+		try silently dropping the vessel.
 	
 Before putting something (called the item) on the kitchen floor:
 	try dropping the item;
@@ -3163,12 +3168,13 @@ Instead of eating the dog treat:
 
 After taking the reward nuggets replicator:
 	say "[if the player is clueless and the dog treat is in the reward nuggets replicator]A dog treat rattles around in the replicator as you pick it up[otherwise]The token dispenser hums as you access it[end if]. [run paragraph on]";
-	if Rover is not in the location:
-		say "[Rover ] [if the player is clueless]is suddenly standing next to you, eyes wide open, and fixed on the reward nugget replicator[otherwise]arrives immediately and enthusiastically awaits neural conditioning[end if].";
-		now Rover is in the location;
-	otherwise:
-		say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if].";
-	now Rover is busy.
+	if Rover is not in Limbo:
+		if Rover is not in the location:
+			say "[Rover ] [if the player is clueless]is suddenly standing next to you, eyes wide open, and fixed on the reward nugget replicator[otherwise]arrives immediately and enthusiastically awaits neural conditioning[end if].";
+			now Rover is in the location;
+		otherwise:
+			say "[Rover] [if the player is clueless]stares at the box of treats, successfully suppressing the urge to drool. For the moment[otherwise] rests on hot standby, eagerly awaiting an opportunity for neural reinforcement[end if].";
+		now Rover is busy.
 		
 Instead of giving the water bowl to Rover:
 	try dropping the water bowl;
