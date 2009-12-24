@@ -1915,6 +1915,12 @@ Instead of attacking the maintenance droid:
 		increase the henchmen defeated by one;
 		now the maintenance droid is battered;
 		move the maintenance droid to Limbo.
+		
+Does the player mean attacking the maintenance droid:
+	it is very likely.
+	
+Does the player mean attacking the technician:
+	it is very likely.
 
 Section Lying Down
 
@@ -2017,6 +2023,9 @@ Persuasion rule for asking Rover to try coming:
 Coming is an action applying to nothing. Understand "come" or "come here" or "here boy" or "food" or "dinner" or "chow" or "come and get it" as coming.
 
 check coming:
+	if Rover is in Limbo:
+		say "Rover does not respond.";	
+		the rule fails;
 	if the player is Rover:
 		say "You are already here." instead;
 	if the player is in the shower:
@@ -3285,8 +3294,6 @@ Instead of giving the floss to Rover:
 	move the dental floss to Limbo;
 	change outcome-override to force-success;
 	say "[Rover] [if the player is clueless]wads up the floss and chews it loudly before swallowing it[otherwise]integrates the keypair into his neuromatrix[end if]." 
-	
-[TODO: tie ends of floss to stuff]
 
 The clueless-name of the toothbrush is "toothbrush".  Understand "brush", "green", "bristle", "bristles", or "sonic" as the toothbrush. The aware-name of the toothbrush is "pit scrubber". The clueless-description of the toothbrush is "A green sonic toothbrush with slightly worn bristles." The aware-description of the toothbrush is "The pit scrubber system appears to be operational. The countless nanobots it contains are dormant until they are released on the skin of the ship to polish out micropits from collisions with microscopic particles during the flight." The toothbrush-proxy is an aware-proxy that is part of the toothbrush. Understand "pit", "scrubber", "nanobot", or "nanobots" as the toothbrush-proxy. The scent of the toothbrush is "strongly of spearmint". The texture of the toothbrush is "unexpectedly warm".
 
@@ -5580,12 +5587,16 @@ Does the player mean rubbing back:
 
 Instead of rubbing back during Boarding Party:
 	say "You neutralize the static charge on the dorsal hull plates.[paragraph break]";
-	if the assault ship is not using harpoons and the assault ship is not free:
-		say "Its deck clamps no longer secured by electrostatic attraction, the assault ship springs free of the Valkyrie, with shock attenuators extending like rifle shots, and the flexible boarding tunnel flailing wildly.[paragraph break]The assault ship comes to a relative stop some distance from Valkyrie, and it reels in the docking port. A familiar voice crackles through the comm system: [quotation mark]Valkyrie, from Myomita Assault Vessel [assault ship designation]. That was dirty pool in my book, but I have to say it was clever. Not enough to put us off our job, though. Let's see you wiggle out of this one...[quotation mark][paragraph break]The assault ship fires a ring of burrowing harpoons into the deck, where they embed deeply in the permalloy. Slowly, the assault ship winches itself back into position.[paragraph break]";
-		now the assault ship is free;
-		increase the assault ship approach by one;
-		now the ACU is an enemy of Earth;
-		now the assault ship distance is 3.
+	if the assault ship is not free:
+		if the assault ship is not using harpoons:
+			say "Its deck clamps no longer secured by electrostatic attraction, the assault ship springs free of the Valkyrie, with shock attenuators extending like rifle shots, and the flexible boarding tunnel flailing wildly.[paragraph break]The assault ship comes to a relative stop some distance from Valkyrie, and it reels in the docking port. A familiar voice crackles through the comm system: [quotation mark]Valkyrie, from Myomita Assault Vessel [assault ship designation]. That was dirty pool in my book, but I have to say it was clever. Not enough to put us off our job, though. Let's see you wiggle out of this one...[quotation mark][paragraph break]The assault ship fires a ring of burrowing harpoons into the deck, where they embed deeply in the permalloy. Slowly, the assault ship winches itself back into position.[paragraph break]";
+			now the assault ship is free;
+			increase the assault ship approach by one;
+			now the ACU is an enemy of Earth;
+			now the assault ship is using harpoons;
+			now the assault ship distance is 3;
+		otherwise:[assault ship is using harpoons]
+			say "Sparks sizzle between the hull of the assault ship and the Valkyrie, but the remaining charge differential is trivial, and the assault ship's harpoons hold it fast to the deck plating.[paragraph break]".
 	
 After yoking the plunger more during Boarding Party:
 	say "The reaction control system thrusters mounted on the nose cone fire a brief impulse, spinning the Valkyrie.[paragraph break]";
@@ -6112,7 +6123,7 @@ Rule for amusing a victorious player:
 	repeat with N running from one to the number of rows in the Table of Doggie Memories:
 		if remembered in row N of Table of Doggie Memories is one, increase rover-memories by one;
 	say "Congratulations. Of the [turn count] things you did today, you must have gotten some of them right, because you didn't screw up the entire universe and you're still alive to read about it. Before you get too cocky, however, here are a few hints about stuff you might want to look for the next time you play [quotation mark][story title][quotation mark]:[paragraph break]";
-	say "* As the ACU, you experienced [dream-score in words] of the seven possible dream sequences [if dream-score is less than seven]. Getting up in the morning and getting things done is all well and fine, but you can afford to dream a little[end if].[paragraph break]";
+	say "* As the ACU, you experienced [dream-score in words] of the seven possible dream sequences[if dream-score is less than seven]. Getting up in the morning and getting things done is all well and fine, but you can afford to dream a little[end if].[paragraph break]";
 	say "* During personality imprinting, both the ACU and Rover incorporated memories from their real-life counterparts. You tapped into [janet-memories in words] out of the [number of rows in the Table of Remembered Stuff in words] engrams resident in the ACU memory banks, and [rover-memories in words] out of Rover's [number of rows in the Table of Doggie Memories in words] memories.[paragraph break]";
 	say "* When the Myomita merchant marine ships intercepted you on the way back to Mars, you managed to employ [henchmen defeated in words] out of the ten or so methods to eliminate them from the ship. [if henchmen defeated is zero]You should work on that. [end if][run paragraph on]";
 	if assault ship approach is greater than one:
