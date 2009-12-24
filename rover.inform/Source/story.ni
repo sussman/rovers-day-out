@@ -1,5 +1,4 @@
 "Rover's Day Out" by Jack Welch and Ben Collins-Sussman
-emptiness
 
 The story headline is "An Interactive Fiction".
 The release number is 12.
@@ -6304,6 +6303,12 @@ hint													used
 "Yes, everything reset."
 "The first time, the banner said beta732, and the release date was April 1, 2392. How about now?"
 "What do you think is going on? Is the background conversation the same?"
+
+A hint activation rule:
+	if the Second Sim is happening and enamel_pid is not zero and the ignite_pid is zero then activate the Table of Omelets.[i.e., shower has been taken, egg has not yet been ingested]
+
+A hint deactivation rule:
+	if Second Sim is not happening or (the Second Sim is happening and the white egg is cooked) then deactivate the Table of Omelets.	
 													
 Table of Omelets
 hint													used
@@ -6317,6 +6322,12 @@ hint													used
 "The stove will only activate if there is something to cook in the pan."
 "Once the egg is cooked, you can eat the egg. You don't need a fork or other utensils."
 
+A hint activation rule:
+	if the Second Sim is happening and Rover is thirsty and the player is in the kitchen then activate the Table of Hydration.
+	
+A hint deactivation rule:
+	if the Second Sim is not happening or (the Second Sim is happening and Rover is slaked) then deactivate the Table of Hydration.
+
 Table of Hydration
 hint													used
 "In the kitchen, there are two bowls."
@@ -6326,6 +6337,12 @@ hint													used
 "[quotation mark]Fill water bowl[quotation mark] will do the trick."
 "Rover can't get drink from the bowl while you are still holding it."
 "Drop the water bowl so Rover can have a drink."
+
+A hint activation rule:
+	if the Second Sim is happening and Rover is hungry and the player is in the kitchen then activate the Table of Sustenance.
+	
+A hint deactivation rule:
+	if the Second Sim is not happening or (the Second Sim is happening and Rover is stuffed) then deactivate the Table of Sustenance.
 
 Table of Sustenance
 hint													used
@@ -6337,6 +6354,12 @@ hint													used
 "You can pour the dog food into the dog bowl."
 "If you've picked up the bowl, Rover can't eat the food until you put the bowl down."
 
+A hint activation rule:
+	if the Second Sim is happening and the ignite_pid is not zero then activate the Table of Euphemisms. [i.e., egg has been ingested.]
+	
+A hint deactivation rule:
+	if Second Sim is not happening or (the Second Sim is happening and the landing_pid is not zero) then deactivate the Table of Euphemisms.
+
 Table of Euphemisms
 hint													used
 "Taking care of business means...well, what do you expect?"
@@ -6344,6 +6367,12 @@ hint													used
 "It would be messy if you took care of business anywhere aside from the bathroom."
 "For this particular kind of business, a toilet would be helpful."
 "Taking care of business is a euphemism for going to the bathroom. What specifically that means is left up to you."
+
+A hint activation rule:
+	if the Second Sim is happening and the player is postpoop and the landing_pid is zero then activate the Table of Stick Straightening. [i.e., pooped, but not flushed.]
+	
+A hint deactivation rule:
+	if Second Sim is not happening or (the Second Sim is happening and the landing_pid is not zero) then deactivate the Table of Stick Straightening.
 
 Table of Stick Straightening
 hint													used
@@ -6359,6 +6388,13 @@ hint													used
 "If you've centered the plunger, does anything work now that didn't before?"
 "Before you leave the bathroom, you should flush the toilet."
 
+
+A hint activation rule:
+	if the Second Sim is happening and the landing_pid is not zero then activate the Table of Perambulation.
+		
+A hint deactivation rule:
+	if the Second Sim is not happening then deactivate the Table of Perambulation.
+
 Table of Perambulation
 hint													used
 "Rover should not take his walk in the house. That would be messy."
@@ -6367,6 +6403,12 @@ hint													used
 "The only way out of the apartment is the front door."
 "To let Rover out for walkies, open the front door."
 
+A hint activation rule:
+	if the Real Thing is happening and the enamel_pid is zero then activate the Table of Persistence.
+	
+A hint deactivation rule:
+	if the Real Thing is not happening or (the Real Thing is happening and the enamel_pid is not zero) then deactivate the Table of Persistence.
+
 Table of Persistence
 hint													used
 "What!?! Is this the same as the last time?"
@@ -6374,6 +6416,12 @@ hint													used
 "Is this exactly like last time, or has something important changed?"
 "What do you think happened to the drapes?"
 "The last two times were practice -- this time is for real."
+
+A hint activation rule:
+	if the Real Thing is happening and the acu is postpoop and the landing_pid is zero then activate the Table of Plumbing.
+	
+A hint deactivation rule:
+	if the Real Thing is not happening or (the Real Thing is happening and the landing_pid is not zero) then deactivate the Table of Plumbing.
 
 Table of Plumbing
 hint													used
@@ -6389,6 +6437,12 @@ hint													used
 "Ultimately, you need to find some way of raising the flapper valve."
 "You could raise the flapper valve to allow the toilet to flush."
 
+A hint activation rule:
+	if the Real Thing is happening and Rover is not in the Valkyrie Area then activate the Table of Bone Retrieval.
+	
+A hint deactivation rule:
+	if the Real Thing is not happening or (the Real Thing is happening and the delicious bone is in the Valkyrie Area) then deactivate the Table of Bone Retrieval.
+
 Table of Bone Retrieval
 hint													used
 "What was the purpose of your mission?"
@@ -6398,9 +6452,15 @@ hint													used
 "You need to retrieve the space probe."
 "To Rover, the space probe looks like a bone."
 "Rover must get the bone from the female dog."
-"The female dog will only be impressed if you talk to her."
+"The female dog will only be impressed if Rover talks to her."
 "When Rover talks to the female dog (i.e., barks) she will drop the bone. Take it before she takes it back."
 "After Rover has the bone, he can take it home."
+
+A hint activation rule:
+	if the Real Thing is happening and the delicious bone is in the Valkyrie Area and the white egg is not in Limbo then activate the Table of Refueling.
+	
+A hint deactivation rule:
+	if the Real Thing is not happening or (the Real Thing is happening and the delicious bone is in the Valkyrie Area and the white egg is in Limbo) then deactivate the Table of Refueling.
 
 Table of Refueling
 hint													used
@@ -6421,6 +6481,12 @@ hint													used
 "To fuel the fusion rockets, you will need to inject heavy helium into the reactor core and then recycle the carboy."
 "To fuel the engines, you need to fry and eat another egg."
 
+A hint activation rule:
+	if the Real Thing is happening and the white Egg is in Limbo then activate the Table of Blasting Off.
+	
+A hint deactivation rule:
+	if the Real Thing is not happening then deactivate the Table of Blasting Off.
+
 Table of Blasting Off
 hint													used
 "You need to fire the fusion rockets to lift off."
@@ -6428,6 +6494,12 @@ hint													used
 "How did you fire the engines for landing?"
 "The flushing the toilet will fire the fusion rockets."
 "The toilet is still broken. How did you flush it last time?"
+
+A hint activation rule:
+	if Boarding Party is happening then activate the Table of Evasive Action.
+	
+A hint deactivation rule:
+	if Boarding Party is not happening then deactivate the Table of Evasive Action.
 
 Table of Evasive Action
 hint													used
@@ -6439,6 +6511,12 @@ hint													used
 "Remember back in the first simulation how you neutralized a static charge? What happens if you do the same now, after the other ship attaches to the back of the ship?"
 "What is the purpose of the toothbrush?"
 "What happens if you brush your teeth after the other ship attaches?"
+
+A hint activation rule:
+	if Boarding Party is happening and henchmen defeated is less than four then activate the Table of RockemSockem.
+	
+A hint deactivation rule:
+	if Boarding Party is not happening or (Boarding Party is happening and henchmen defeated is greater than three) then deactivate the Table of RockemSockem.
 
 Table of RockemSockem
 hint													used
@@ -6453,22 +6531,37 @@ hint													used
 "Being metallic, how do you think a droid would fair in an intense magnetic field?"
 "Do you think droids would operate well under ultracold conditions?"
 
+A hint activation rule:
+	if Boarding Party is happening and henchmen defeated is greater than three then activate the Table of Antitech.
+	
+A hint deactivation rule:
+	if Boarding Party is not happening then deactivate the Table of Antitech.
+
 Table of Antitech
 hint													used
-"If the droids strike out, the salvagers from Myomita will send over humans. They're cheaper than droids. Unfortunately, your programming prevents you from directly attacking people (some corollary of Asimov's Laws of Robotics, you figure)."
-"The repairmen will move around the ship, you need to follow them around."
+"If the droids strike out, the salvagers from Myomita will send over human technicians. They're cheaper than droids. Unfortunately, your programming prevents you from directly attacking people (some corollary of Asimov's Laws of Robotics, you figure)."
+"The technicians will move around the ship, you need to follow them around."
 "Sometimes you can do something in one part of the ship that will affect other areas of the ship."
-"Rover might not like these repairmen either."
+"Rover might not like these technicians either."
 "Wonder what the sink does."
 "You know, it's probably pretty radioactive in the reactor core."
 "Opening the front door wouldn't hurt anybody, would it?"
-"Even if you can't take out every last repairman, slowing them down buys you time."
+"Even if you can't take out every last technician, slowing them down buys you time."
+
+A hint activation rule:
+	if Back on Mars is happening and audio is switched off then activate the Table of Low Volume.
+	
+A hint deactivation rule:
+	if Back on Mars is happening and audio is switched on then deactivate the Table of Low Volume.
 
 Table of Low Volume
 hint													used
 "Janet and David are talking, but you can't seem to hear them."
 "Did you try look, smell, touch, and taste? Does that cover it?"
 "Your audio feed is off. You need to listen."
+
+A hint activation rule:
+	if Back on Mars is happening and David Venkatachalam is exposed then activate the Table of Defeating Evil.
 
 Table of Defeating Evil
 hint													used
