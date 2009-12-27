@@ -2012,7 +2012,7 @@ check digging:
 		
 Carry out digging:
 	change outcome-override to force-success;
-	say "You dig for a while with your front paws. Finding nothing, you kick the dirt back in again so you won't be blamed for digging up the yard."
+	say "You dig for a while with your front paws. Finding nothing, you kick the dirt back in again so you won't be blamed for digging up the [if Rover is in the Front Yard]yard[otherwise]park[end if]."
 	
 Instead of an animal digging:
 	say "Rover scratches the ground and sniffs, but he doesn't seem interested in digging here.";
