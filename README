@@ -42,15 +42,18 @@ To build the game:
   $ rm -rf moo.inform/
 
 
-2. Copy 'Flexible Windows.i7x' to wherever the Inform environment
+2. Copy the included .i7x files to wherever the Inform environment
 expects to find extension modules:
 
-  - on Mac, this is usually ~/Library/Inform/Extensions/.  Make a
-    subdirectory in there called 'Jon Ingold', and copy the .i7x file
-    into it.
+  - on Mac, this is usually ~/Library/Inform/Extensions/.  On Windows
+    or Linux, the location will be slightly different.  We'll let you
+    figure it out.
 
-  - for Windows or Linux, the location will be slightly different.  
-    We'll let you figure it out.
+  - create a directory called "Jon Ingold" in the Extensions
+    directory, then copy 'Flexible Windows.i7x' into it.
+
+  - create a directory called "Eric Eve' in the Extensions directory,
+    then copy 'Adaptive Hints.i7x' into it.
 
 
 3. Launch the Inform IDE and load the rover.inform project.  The
