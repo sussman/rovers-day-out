@@ -4545,7 +4545,10 @@ Carry out asking for help:
 	change the current menu to the Table of Options;
 	carry out the displaying activity;
 	clear the screen;
-	try looking.
+	if Bedtime is happening:
+		say "You [one of]rub your eyes and stare into the darkness[or]yawn[or]inspect the inside of your eyelids[at random].";
+	otherwise:
+		try looking.
 
 Table of Options
 title	subtable	description	toggle
