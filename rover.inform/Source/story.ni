@@ -4419,6 +4419,7 @@ topic		remembered		description
 "Deimos"		0		"Since the destruction of Phobos, Mars' only moon. Deimos is leased by MARSpace and is considered a military asset."
 "Tomasz" or "Kowalski" or "Tomasz Kowalski"		0		"Tomasz was your fiancé five years ago. You had planned to get married on Mons Olympus and to honeymoon at Club Meridian on the equator." 	
 "mission"		0		"The mission of the MARSpace Exploration Vessel Valkyrie is to recover the data from the Musashi-5 space probe and convey those data to MARSpace command by any means necessary."
+"plunger"		0		"Shortly after you moved from the dorms to your own cottage, Tomasz gave you a rubber plumber's plunger as a sort of housewarming gift. In trying to make the case that a plunger was very functional and not at all lame or unromantic gift, Tomasz stuck the plunger to the bathroom floor, perhaps a little more forcefully than was strictly necesssary. It's been stuck there ever since. Some kind of reaction between the rubber suction cup and the ultra-absorbant flooring."
 
 Table of Doggie Memories
 topic			remembered		description
