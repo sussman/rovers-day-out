@@ -225,6 +225,8 @@ Rock-locale is a room that varies. Rock-locale is the Barren Plain.
 
 Gone-towards is a number that varies. Gone-towards is zero.
 
+Timer mode is a number that varies. Timer mode is zero.
+
 Chapter Class Definitions
 
 A prop is a kind of thing. It is usually portable. [If props can be carried out of their initial room, they should not be in the room description, but appear in the room contents list.]
@@ -407,20 +409,25 @@ Include (-
 ]; 
 -) 
 
-
-
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
 	await keystroke;
+	change timer mode to 2;
+	set timer to 5000;	[5 second delay]
 	open up BSOD-window;
 	move focus to BSOD-window, clearing the window;
 	say "[second custom style]                 WINDEX                 [paragraph break]A fatal exception F1 has occurred at    [line break]0013AF3411BC:5D00193D39B4 in DLL 35A3249[line break]in kernel ring beta. The current appli- [line break]cation will be terminated.              [paragraph break]* Something unpleasant has happened in  [line break]  the transputational core processor.   [line break]* Quantum entanglement compromised due  [line break]  to runtime error. All data lost.      [line break]* Sorry about that.                     [paragraph break][paragraph break]       Press a key to continue          ";
 	await keystroke in the BSOD-window;
 	shut down BSOD-window;
 	return to main screen;
+	stop timer;
 	clear the screen.	
 	
+A glulx timed activity rule (this is the bsod window hint rule):
+	say "[paragraph break]PRESS [bracket]SPACE[close bracket] TO RESET SIMULATION.";
+	stop timer.
+
 Trailering is an action applying to nothing.
 Carry out Trailering:
 	try section-breaking;
@@ -660,32 +667,34 @@ Reps is a number that varies.
 	
 To shutdown:
 	[glulx timed events-related code builds on the Glulx Entry Points Extension]
-	change reps to 50; 
 	if glulx timekeeping is supported: 
-		start timer;
+		change reps to 50;
+		change timer mode to 1;
+		set timer to 300;
 	otherwise:
 		say "Preparing to shutdown.....[line break]Preparing to unmount all volumes.....[line break]Preparing to disengage sensors.....[line break]Preparing to disengage effectors.....[line break]Preparing to ACU shutdown.....[paragraph break]Root authentication failed.[line break]Command aborted."
 	
-To start timer:
-	(- glk_request_timer_events(300); -)
-	[starts time with 300 millisecond delay between events]
+To set timer to (delay - number):
+	(- glk_request_timer_events({delay}); -)
+	[starts time with delay milliseconds between events]
 	
 To stop timer:
 	(-  glk_request_timer_events(0); -)
 
 A glulx timed activity rule (this is the countdown rule):
 	[The inexorable march towards an aborted shutdown]
-	if reps is:
-		-- 50: say "Preparing to shutdown[run paragraph on]";
-		-- 40: say "[line break]Preparing to unmount all volumes[run paragraph on]";
-		--	30: say "[line break]Preparing to disengage sensors[run paragraph on]";
-		--	20: say "[line break]Preparing to disengage effectors[run paragraph on]";
-		--	10: say "[line break]Preparing ACU for executive shutdown[run paragraph on]";
-		--	 1: say "[line break]Root authentication failed.[paragraph break]Command aborted.[line break]"; 
-		--	 0: stop timer;
-		-- otherwise: say ".[run paragraph on]";
-	decrease reps by one;
-	the rule succeeds.
+	if the timer mode is 1:
+		if reps is:
+			-- 50: say "Preparing to shutdown[run paragraph on]";
+			-- 40: say "[line break]Preparing to unmount all volumes[run paragraph on]";
+			--	30: say "[line break]Preparing to disengage sensors[run paragraph on]";
+			--	20: say "[line break]Preparing to disengage effectors[run paragraph on]";
+			--	10: say "[line break]Preparing ACU for executive shutdown[run paragraph on]";
+			--	 1: say "[line break]Root authentication failed.[paragraph break]Command aborted.[line break]"; 
+			--	 0: stop timer;
+			-- otherwise: say ".[run paragraph on]";
+		decrease reps by one;
+		the rule succeeds.
 	
 Locating is an action applying to nothing.  
 
@@ -1128,6 +1137,8 @@ Instead of taking the mattress:
 	
 Instead of taking the frame:
 	say "The frame is an integral part of the futon."
+	
+
 	
 Section Smelling
 
@@ -1993,6 +2004,8 @@ Carry out rollovering:
 Instead of an animal rollovering:
 	say "Rover rolls over like a puppy. He quickly jumps to his feet again.";
 	the rule succeeds.
+	
+Understand "roll [something]" as pushing.
 		
 Section Digging
 
