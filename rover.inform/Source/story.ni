@@ -2904,7 +2904,7 @@ To say emptiness of (vessel - a bowl):
 	say "[The vessel] is [if the vessel is not full]empty[otherwise]full".
 	
 After dropping a bowl (called the vessel):
-	if Rover is not in the location:
+	if Rover is not in the location and Rover is not in Limbo:
 		if the player is clueless:
 			say "[one of][Rover] runs into the kitchen, his rear end making a wide, sliding turn on the living room's hardwood floor as he rounds the corner[or][Rover] clambers around the corner from the living room, and stops in front of the bowls[or]Hearing the clank of [the vessel] as you put it down, [Rover] appears in the kitchen, licking his lips[or][Rover] trots into the kitchen when he hears the metal bowl clink as you set it down[or][Rover] strolls into the kitchen to investigate the promising sound of clinking dog bowls[or][Rover] arrives in the kitchen, panting from exertion[or]Putting the dog bowl down is tantamount to yelling [quotation mark]Here boy![quotation mark], as evidenced by the sudden appearance of [Rover] in the kitchen[in random order].";
 		otherwise:[aware]
