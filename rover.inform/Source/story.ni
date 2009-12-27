@@ -2628,7 +2628,7 @@ Instead of reading the nameplate:
 
 Section Kitchen
 
-The Kitchen is privately-named. Understand "kitchen" as the kitchen when the player is the ACU. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. [if the old fridge is open]The fridge door is not completely closed. [end if]There is a[if the drawer is open]n open[end if] drawer under the range. On the opposite wall there is a sink and under it, a[if the cabinet is open]n open[end if] storage cabinet."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault[if the cabinet is open], which is not properly secured[end if]. The [if the drawer is open]opened [end if]reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros[if the old fridge is open]. The cryochamber is open, chilling the engineering section[end if]."
+The Kitchen is privately-named. Understand "kitchen" as the kitchen when the player is the ACU. The clueless-name of the kitchen is "kitchen". The aware-name of the kitchen is "engineering".  The clueless-description of the kitchen is "The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. [if the old fridge is open]The fridge door is not completely closed. [end if]There is a[if the drawer is open]n open[end if] drawer under the range. On the opposite wall there is a sink and under it, a[if the cabinet is open]n open[end if] wooden cabinet."  The aware-description of the kitchen is "Swaths of engineering controls -- both holographic and physical -- cover the humming consoles and bulkheads that line the boundaries of this alcove. Along one wall is the coolant output terminus, and below that the fuel storage vault[if the cabinet is open], which is not properly secured[end if]. The [if the drawer is open]opened [end if]reactor core and the fusion chamber are stacked just to the side of the cryochamber, which maintains the stabilized heavy helium fuel at near absolute zero until it is needed to provide power to ascent/descent retros[if the old fridge is open]. The cryochamber is open, chilling the engineering section[end if]."
 
 The scent of the kitchen is "homey, a rich organic smell that has layered year after year as you have cooked your meals. In short, it smells a lot like ramen noodles".
 
@@ -3691,8 +3691,8 @@ Instead of taking the plunger:
 	otherwise:
 		say "Disarticulating the attitude control would be counterproductive."
 		
-Before pushing or pulling the plunger:
-	say "It's stuck to the floor. On the other hand, if you want to push it in a particular direction, just say so.";
+Before pushing or pulling or turning the plunger:
+	say "It's stuck to the floor. On the other hand, if you want to push or twist it in a particular direction, just say so.";
 	the rule succeeds. 
 	
 Before pushing or pulling the shaft:
@@ -4419,7 +4419,7 @@ topic		remembered		description
 "Deimos"		0		"Since the destruction of Phobos, Mars' only moon. Deimos is leased by MARSpace and is considered a military asset."
 "Tomasz" or "Kowalski" or "Tomasz Kowalski"		0		"Tomasz was your fiancé five years ago. You had planned to get married on Mons Olympus and to honeymoon at Club Meridian on the equator." 	
 "mission"		0		"The mission of the MARSpace Exploration Vessel Valkyrie is to recover the data from the Musashi-5 space probe and convey those data to MARSpace command by any means necessary."
-"plunger"		0		"Shortly after you moved from the dorms to your own cottage, Tomasz gave you a rubber plumber's plunger as a sort of housewarming gift. In trying to make the case that a plunger was very functional and not at all lame or unromantic gift, Tomasz stuck the plunger to the bathroom floor, perhaps a little more forcefully than was strictly necesssary. It's been stuck there ever since. Some kind of reaction between the rubber suction cup and the ultra-absorbant flooring."
+"plunger"		0		"Shortly after you moved from the dorms to your own cottage, Tomasz gave you a rubber plumber's plunger as a sort of housewarming gift. In trying to make the case that a plunger was very functional and not at all a lame or unromantic gift, Tomasz jammed the plunger down on the bathroom floor, perhaps a little more forcefully than was strictly necesssary. It's been stuck there ever since. Some kind of reaction between the rubber suction cup and the ultra-absorbant flooring."
 
 Table of Doggie Memories
 topic			remembered		description
