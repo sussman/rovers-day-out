@@ -1,0 +1,968 @@
+Start of a transcript of
+
+Rover's Day Out
+An Interactive Fiction by Jack Welch and Ben Collins-Sussman
+Release 11 / Serial number 090930 / Inform 7 build 5Z71 (I6/v6.31 lib 6/12N) 
+Type "help" for instructions, credits, and license or just blaze on impetuously.
+
+
+Janet: David, are you hooked in?
+David: Ready to go. Is this the final version of the ACU,
+       or another beta?
+Janet: A program is never finished, but I think we're ready
+       to go.
+David: I hope so, Earth could launch any day now.
+Janet: Run program.
+
+
+
+               *    *    *
+
+Rover's Day Out
+An Interactive Simulation by Janet Xiang
+Release beta 732 / Serial number 23920401 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?
+
+<beep> <beep> <beep>
+
+Identification number: //417B9626-8635-4451-90F5-D082E01547FA//
+Interpreter version 1.2.1 / VM 3.1.0 / Library serial number 080126
+Standard Rules version 2/090402 by Graham Nelson
+Glulx Text Effects version 3 by Emily Short
+Flexible Windows version 8 by Jon Ingold
+
+>version
+Rover's Day Out
+An Interactive Fiction by Jack Welch and Ben Collins-Sussman
+Release 11 / Serial number 090930 / Inform 7 build 5Z71 (I6/v6.31 lib 6/12N) 
+Type "help" for instructions, credits, and license or just blaze on impetuously.
+
+
+Janet: David, are you hooked in?
+David: Ready to go. Is this the final version of the ACU,
+       or another beta?
+Janet: A program is never finished, but I think we're ready
+       to go.
+David: I hope so, Earth could launch any day now.
+Janet: Run program.
+
+
+
+               *    *    *
+
+Rover's Day Out
+An Interactive Simulation by Janet Xiang
+Release beta 732 / Serial number 23920401 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+Rover draws pensively on his stubby cigar, the tip glowing red below his dealer's hat. He paws nonchalantly at the scotch and water he has been nursing for the last half hour. Despite the tower of chips in front of him, he's either in trouble now, or trying to play the rest of the table for suckers. His tail is no longer wagging, though, and you suspect that the scotch may be getting the better of him. He can't mass more than about 30 kilos, and he's been putting them away tonight. You push all in, figuring that even if you lose it all, at least you'll get some sleep before you need to get back to the MARSpace. Elva the cleaning lady folds, as does Isaac Asimov and that boy that you kissed in fourth grade. Wait...don't go....where is everyone going?
+
+<beep> <beep> <beep>
+
+Identification number: //417B9626-8635-4451-90F5-D082E01547FA//
+Interpreter version 1.2.1 / VM 3.1.0 / Library serial number 080126
+Standard Rules version 2/090402 by Graham Nelson
+Glulx Text Effects version 3 by Emily Short
+Flexible Windows version 8 by Jon Ingold
+
+>about
+ > What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+
+ > Adventure Games
+   Learn More
+
+ > What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+
+   What is this?
+ > How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+   What is this?
+ > How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+
+ > How To Play
+   Commands
+   Common Actions
+   Conversation
+   Saving and Restoring
+
+Most adventure games are turn-based, rather than timed. Take as long as you want to think about your actions. The game gives you some information, such as a description of the room that you are in and what objects it contains, and then it is up to you to say what you are doing. You can enter your "move" by typing it at the command prompt, which looks like a "greater than" sign: >
+
+For example, let's say you are in the kitchen, and there is an avocado on the counter. To get more information about the avocado, you could say "examine avocado", and learn what it looks like.
+
+Not every command that you can think of will work, so you might need to try some rephrasing. In general, you should not use punctuation. The only exception is when you want to direct a question or command to someone or something else. In such cases, you can say the name of the person or thing to whom you are addressing your remark, followed by a command and then the question or command. For example, you could say:  "Eugene, give me the axe".
+
+
+
+Please press SPACE to continue.
+ > How To Play
+   Commands
+   Common Actions
+   Conversation
+   Saving and Restoring
+ > How To Play
+   Commands
+   Common Actions
+   Conversation
+   Saving and Restoring
+
+   How To Play
+ > Commands
+   Common Actions
+   Conversation
+   Saving and Restoring
+   How To Play
+ > Commands
+   Common Actions
+   Conversation
+   Saving and Restoring
+
+   How To Play
+   Commands
+ > Common Actions
+   Conversation
+   Saving and Restoring
+   How To Play
+   Commands
+ > Common Actions
+   Conversation
+   Saving and Restoring
+
+   How To Play
+   Commands
+   Common Actions
+ > Conversation
+   Saving and Restoring
+   How To Play
+   Commands
+   Common Actions
+ > Conversation
+   Saving and Restoring
+
+A couple of verbs are helpful for conversation; these include:
+
+    SAY  something
+    TELL someone ABOUT some topic
+    ASK  someone ABOUT some topic
+    SHOW someone something
+    SHOW something TO someone
+
+With all of these commands, you do not need to, indeed you should not, use quotation marks.
+
+
+
+Please press SPACE to continue.
+   How To Play
+   Commands
+   Common Actions
+ > Conversation
+   Saving and Restoring
+   How To Play
+   Commands
+   Common Actions
+ > Conversation
+   Saving and Restoring
+
+   What is this?
+ > How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+
+   What is this?
+   How does this work?
+ > Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+   What is this?
+   How does this work?
+ > Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+
+ > General Pointers
+   Spelling
+
+   What is this?
+   How does this work?
+ > Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+ > Entomology
+   Acknowledgements
+   License
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+ > Entomology
+   Acknowledgements
+   License
+
+ > A Matter of Interpretation
+   Zapping Bugs
+
+This game is designed to run on a virtual machine, some flavor of Glulx interpreter. You are, no doubt, using some implementation of the Glulx interpreter written for your specific hardware -- it could be your entertainment corner, hologoggles, dishwasher, cortical implant -- whatever.  Even if you are using some old silicon-semiconductor clunker from the International days, it should still work. We've made every effort to test it on a number of platforms, but these tests are far from comprehensive. So far as we know, there are no interpreter-specific issues.  However, if the game doesn't run right for you, you could try another interpreter and see if that fixes the situation.
+
+Whether you think the problem is the interpreter or the game itself, we'd appreciate it if you'd let us know. (see "Zapping Bugs")
+
+
+
+Please press SPACE to continue.
+ > A Matter of Interpretation
+   Zapping Bugs
+ > A Matter of Interpretation
+   Zapping Bugs
+
+   A Matter of Interpretation
+ > Zapping Bugs
+   A Matter of Interpretation
+ > Zapping Bugs
+
+Help us splotch bugs! In this case, we're not referring to the plastic-eating cockroaches responsible for so many dome failures in the last few years, but to errors in the game itself. This game was, in part, written by humans, so eras are all but certainly present. The more freedom you have in your actions, the more likely it is that you'll expose some unknown weakness in the game. What should you do if you elicit such an error?  First, you can gloat for a reasonable amount of time (this is a judgement call) about how very slick you are to have uncovered the hitherto unknown fault. Then, you can be a good citizen and us know about it so we can fix it in the next update, and spare the next several billion people the same painful experience. There's no monetary reward for finding errors, but your name will appear on the next version of the ultra-prestigious bug finders list. Now there's something you can show to your grandchildren with pride. Report bugs to:
+
+rover@red-bean.com
+
+"Splotches welcome."
+
+
+
+Please press SPACE to continue.
+   A Matter of Interpretation
+ > Zapping Bugs
+   A Matter of Interpretation
+ > Zapping Bugs
+
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+ > Entomology
+   Acknowledgements
+   License
+
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+ > Acknowledgements
+   License
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+ > Acknowledgements
+   License
+
+ > Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+   Animals
+
+Who are the fearless, dedicated individuals who put their very lives on the line to test this game?
+
+* David Anderson, Utopia Planetia
+* Beth Vanichtheeranont, Lake Eridania
+* John Lodder, Deimos Colony
+* Frances Collins-Sussman, Hyderabad-3
+* Chris Exner, Tranquility Base
+* Kathyrnne Wolf, People's Republic of Portland
+* Peter Olson, Asteroid B-318-C
+* Jeff Bailey, Big G Ltd.
+* Andrea Phillips, Plungers Intl. #454
+
+Special thanks also go to Margaret Frey (MARSpace Graphic Design Division) and Rochelle Lodder (Luna Kibbutz Copyeditor's Guild) for their inimitable refinements.
+
+Note: Any omissions, errors, or outright offensive bits of the game that made it through beta-testing are not the fault of the beta-testers, nor, we should point out of the authors, who would be entirely ready to take the blame were it their fault. The truth is that any fault whatsoever lies with Richard Milhous Nixon, the 37th (depending on the method of counting) President of the United States of America. We will not be held accountable for his poor spelling, loose grammar, and penchant for elaborate data structures named after the surprisingly numerous flavors of goat cheeses.
+
+
+
+Please press SPACE to continue.
+ > Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+   Animals
+ > Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+   Animals
+
+   Beta Testers
+ > The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+   Animals
+   Beta Testers
+ > The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+   Animals
+
+So far, no one aside from beta testers has reported a bug... you could be the first...
+
+
+
+Please press SPACE to continue.
+   Beta Testers
+ > The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+   Animals
+   Beta Testers
+ > The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+   Animals
+
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+ > Giant Shoulders
+   Consultants
+   Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+ > Giant Shoulders
+   Consultants
+   Animals
+
+This game was written in a few months thanks to the excellent tools available to the interactive fiction community. It was written in the Inform 7 language which has a proud heritage traceable back to the first games of this genre, but which is overwhelming attributable to its creator, Graham Nelson.
+
+We gleefully employed a number of modules written by Emily Short, also a major contributor to the Inform 7 language itself. Specifically, this project incorporates her Glulx Text Effects, Basic Screen Effects, Menus, and Case Management Modules. Doubtless, we also extensively picked some tasty bits out of the Inform 7 documentation and examples, written by both Graham and Emily.  Big thanks to Jon Ingold for his Flexible Windows extensions as well.
+
+This game is written for the Glulx interpreter because, frankly, it wouldn't fit in anything else. While we appreciate efficient coding and conciseness where possible, having Glulx available was very liberating. We owe Andrew Plotkin thanks for developing the Glulx virtual machine, as well as the Glk library which makes the game playable on so many platforms.
+
+
+
+Please press SPACE to continue.
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+ > Giant Shoulders
+   Consultants
+   Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+ > Giant Shoulders
+   Consultants
+   Animals
+
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+ > Consultants
+   Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+ > Consultants
+   Animals
+
+During writing, on several occasions we asked the community for help and advice, either when we were stumped, or when we wanted to get some ideas before starting down a potentially blind alley.
+
+In particular, we would like to thank Andrew Plotkin and Rob Newcomb for their assistance in getting the status line display to work correctly.
+
+
+
+Please press SPACE to continue.
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+ > Consultants
+   Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+ > Consultants
+   Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+ > Consultants
+   Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+ > Consultants
+   Animals
+
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+ > Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+ > Animals
+
+No animals, not even cybernetic ones, were harmed in the creation of this work.
+
+
+
+Please press SPACE to continue.
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+ > Animals
+   Beta Testers
+   The Ultra-Prestigious Bug Finder List
+   Giant Shoulders
+   Consultants
+ > Animals
+
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+ > Acknowledgements
+   License
+
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+ > License
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+ > License
+
+ > Creative Commons License
+
+This game is released under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States license. As a consequence, you are free to copy, distribute, display, and use this work and to make derivative works under the following conditions:
+
+Attribution. You must attribute such works mentioning our names Jack Welch and Ben Collins-Sussman and the title of this work "Rover's Day Out". This can appear in the title, with the Release Information, or in the acknowledgements section of a menu system. Attribution does not suggest my endorsement of derivative works or their authors.
+
+Noncommercial. You may not use this work for commercial purposes.
+
+Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
+
+If you would like a copy of the Inform7 source for this game, please let us know by email: rover@red-bean.com
+
+
+
+Please press SPACE to continue.
+ > Creative Commons License
+ > Creative Commons License
+
+   What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+ > License
+
+Living Room (on the futon)
+Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light.
+
+>x me
+Lying down. Wearing pajamas. That's all the description you can handle at this time in the morning.
+
+<beep> <beep> <beep>
+
+>i
+You are carrying nothing, which is more often than not the case when you wake up most days.
+
+<beep> <beep> <beep>
+
+>up
+You'll have to get off the futon first.
+
+<beep> <beep> <beep>
+
+>get up
+You get off the futon.
+
+As you get out of bed, you notice that your left arm tickles a bit -- must have been the way you were sleeping.
+
+>x arm
+Which do you mean, the left arm, or the right arm?
+
+>left
+Darkness is great for sleeping, not so good for looking at stuff.
+
+>turn light on
+That's not something you can switch.
+
+>l
+Living Room
+Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light.
+
+It feels like something is tickling your left arm.
+
+>open drapes
+You push aside the drapes.
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window, illuminating a framed picture on the opposite wall. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+On the purple futon is an alarm clock.
+
+You can also see Rover here.
+
+
+
+David: I see it successfully accessed the solar shield.
+Janet: Yes, the status line makes it clear what work is being
+       performed.
+
+>turn clock off
+The alarm clock senses the electrical activity in your brain and turns itself on and off as needed.
+
+>x left arm
+Looks normal enough. 
+
+>x right arm
+Your right arm. The one that you don't throw frisbees with.
+
+>x rover
+He's a noble-appearing dog, who stands squarely with straight shoulders, and firmly planted back legs.
+
+>i
+You are carrying:
+  a flight suit (being worn)
+
+Rover turns suddenly, as if he might have seen a skwerrel.
+
+>x suit
+You are wearing a loose-fitting blue flight suit with a MARSpace insignia. Some letters are also sewn above the insignia.
+
+>x letters
+The letters on the flight suit are embroidered in white on a red background.
+
+Your left arm is rather itchy.
+
+>remove suit
+You take off your blue flight suit and it falls to the living room floor. You are naked.
+
+
+
+David: I don't think I should be seeing this. I mean, I'm
+       your boss. There's that whole power dynamic thing.
+Janet: Don't worry: I'm not inclined to sue you for staring
+       at a simulation.
+David: I'm not staring at the stimulation.
+Janet: You said stimulation. That's funny.
+David: No, I said simulation - and I'm not staring.
+Janet: Alright -- you're the boss.
+
+It's a little drafty in your cottage without any clothes on.
+
+>x left arm
+Your arm is pretty itchy, but it looks okay. 
+
+It feels like you might have a bug bite on your left arm.
+
+Without your flight suit, you feel naked. Because you are.
+
+>x bite
+You look very carefully for any evidence of a bug bite, or something along those lines, but your arm looks totally normal.
+
+>wear suit
+(first taking the flight suit)
+You put on the flight suit.
+
+The itching is getting worse, your left arm is beginning to bother you.
+
+>l
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window, illuminating a framed picture on the opposite wall. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+On the purple futon is an alarm clock.
+
+You can also see Rover here.
+
+Your left arm is rather itchy.
+
+Rover scratches his ears.
+
+>get clock
+You'd rather leave it on the futon so it's there when you need it.
+
+>enter kitchen
+You can't really move around much because of the futon. It takes up a lot of room.
+
+
+
+David: Isn't that a tad inconvenient?
+Janet: Yeah, but it kind of made sense when I got it.
+
+>roll futon
+I only understood you as far as wanting to roll.
+
+>roll
+You're not lying down.
+
+>fold futon
+With a little effort, the futon folds up, snug against the wall, leaving more room to walk around the cramped cottage.
+
+>* Yeah, I have a futon like that that's too big to roll...
+You seem to want to talk to someone, but I can't see whom.
+
+>* ...but I think the "original" ones are meant to be rolled, not folded.
+You seem to want to talk to someone, but I can't see whom.
+
+>* So it might be good to take that verb into account.
+That's not a verb I recognize.
+
+>enter kitchen
+Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, a storage cabinet.
+
+You can see a water bowl (empty) and a food bowl (empty) here.
+
+From the direction of the living room, you hear Rover playing.
+
+>open cabinet
+You open the cabinet, revealing a reward nugget replicator and a 20 kilo bag of dog chow.
+
+>get all from it
+You can't use multiple objects with that verb.
+
+>get bag
+Taken.
+
+Feels like you've got a mosquito bite on your left arm.
+
+From the direction of the living room, you hear Rover growling at something.
+
+>put chow in bowl
+Which do you mean, the water bowl, or the food bowl?
+
+>food
+Rover tears around the corner excitedly, arriving in the kitchen.
+
+That left arm of yours is really itching a lot.
+
+>get nugget
+Which do you mean, the reward nugget replicator, or the dog treat?
+
+>replicator
+A dog treat rattles around in the replicator as you pick it up. Rover stares at the box of treats, successfully suppressing the urge to drool. For the moment.
+
+>l
+Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+You can see Rover, a water bowl (empty), and a food bowl (empty) here.
+
+>get water
+Taken.
+
+Rover is obviously waiting for you to give him a bowl.
+
+He sighs audibly and frowns at his food bowl. He looks at the food bowl. He looks at you. He looks at the food bowl. He looks at you.
+
+>put food in food bowl
+(the 20 kilo bag of dog chow in the food bowl)
+(first taking the food bowl)
+You  empty the bag of dog chow into Rover's bowl, giving him a generous portion that should more than carry him through a day's worth of Rover antics.
+
+Rover watches with interest as you fill his food bowl.
+
+What did you ever do to your left arm to make it itch so much? It's quite unpleasant.
+
+Rover stares longingly at the bowl in your hand.
+
+>put water in water bowl
+(the sink in the water bowl)
+You run the sink briefly to make sure the water is cold, and then fill Rover's bowl about halfway up.
+
+Rover looks towards the sink as you fill his water bowl.
+
+Rover outright gapes at the bowl you carry, then gently sniffs it in hope that you'll give it to him.
+
+Rover looks at you and rubs his back against the wall, giving you a satisfied grin.
+
+>drop food bowl
+Rover tingles with anticipation as he stares at the bowl you're carrying.
+
+Rover makes short work of the food in his bowl.
+
+>drop water bowl
+Rover drinks the water.
+
+Rover looks at you and jumps up on his back legs, pawing at your arm. You narrowly avoid being scratched.
+
+>pat rover
+You rub Rover under the chin, and he cranes back his neck and twists his head from side to side in enjoyment.
+
+That left arm of yours is really itching a lot.
+
+>l
+Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is a drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+You can see a water bowl (empty), a food bowl (empty), and Rover here.
+
+Feels like you've got a mosquito bite on your left arm.
+
+Rover looks at you and scratches his left paw with the right one while making an "ahem" sound.
+
+>talk to rover
+That's not a verb I recognize.
+
+>ask rover about itself
+(Rover about that)
+There is no reply.
+
+>open drawer
+You open the drawer, revealing a frying pan.
+
+What did you ever do to your left arm to make it itch so much? It's quite unpleasant.
+
+Rover looks at you and makes a scratching gesture. Towards his left paw. Scratching. Left. Hmm.
+
+>l
+What is up with that left arm? Man, that itching is annoying.
+
+Rover looks at you and waits for you to scratch your itchy arm, and get on to important stuff -- like paying attention to him.
+
+>scratch arm
+Which do you mean, the left arm, or the right arm?
+
+>left
+Ooooo. Ahhhh...slowly, the itchiness subsides. That feels so good.
+
+
+
+David: Is the static charge neutralization part of the script?
+Janet: No, that's the point of the ACU -- it isn't a set
+       script. As we throw malfunctions at it in these simulations,
+       the ACU responds appropriately. We can't, for instance,
+       know that Valkyrie will accumulate a static charge
+       in a particular area, so the ACU has to be flexible
+       enough to react to unpredictable events.
+David: Like you would.
+Janet: Subject to the resolution of the synaptic scan, yes.
+
+>l
+Kitchen
+The kitchen is small but functional, with a space-saver refrigerator and a glass-top electric range. There is an open drawer under the range. On the opposite wall there is a sink and under it, an open storage cabinet.
+
+You can see a water bowl (empty), a food bowl (empty), and Rover here.
+
+Rover dashes back and forth like a possessed dog for no apparent reason.
+
+>open fridge
+Rover looks up when he hears the old fridge open. He sniffs the fridge door and decides there is nothing in the fridge worth getting in trouble over. He saunters out of the kitchen and back towards the living room.
+
+>close it
+You close the old fridge.
+
+From the direction of the living room, you hear Rover jumping around.
+
+>out
+It took a lot of training to get Rover to eat it in the kitchen, so rather than walk out with a bag of dog food, you put it back in the cabinet. 
+
+Living Room
+You are in the living room of a small cottage. Piped-in sunlight pours in through the room's single window, illuminating a framed picture on the opposite wall. The principal furnishing is a king-size purple futon which takes up almost all the floor space. From the living room you can see the entrance to the kitchen and bathroom. The cottage's front door is closed.
+
+On the purple futon is an alarm clock.
+
+You can also see Rover here.
+
+>enter bathroom
+Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a toothbrush and a plastic box.
+
+Rover trundles along behind you, his attention riveted to the reward nugget replicator.
+
+>x plate
+A glossy black plate that is just to the right of the bathroom mirror.
+
+>read it
+That's not something you can read.
+
+>push it
+The heat lamp senses that you are not wet. Its power conservation settings prevent it from turning on.
+
+>pee
+You can do a lot of things in your one-piece flight suit. That ain't one of them.
+
+>get toothbrush
+Taken.
+
+>x it
+A green sonic toothbrush with slightly worn bristles.
+
+Rover circles an area on the floor.
+
+>l
+Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter is a plastic box.
+
+You can also see Rover here.
+
+>x box
+A small plastic box labeled "Tooth Floss," with a blue button just below where the floss comes out.
+
+>push blue button
+(first taking the plastic box)
+You grab a strand of light green dental floss as it reels out of the dispenser.
+
+>brush teeth
+The toothbrush sprays each tooth with a fizzy foam, vibrates it into lather and rinses. Your teeth feel smooth and your breath is much improved.
+
+>floss teeth
+You floss your teeth and then swallow the tasty (and nutritious) floss. You feel so much better now.
+
+>l
+Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass plate. Between the counter and the shower is a white, porcelain toilet.
+
+You can see Rover here.
+
+Rover seems relaxed.
+
+>x counter
+A counter of that pink faux marble that is so common in Martian bathrooms.
+
+>remove suit
+You take off your blue flight suit and it falls to the bathroom floor. You are naked.
+
+>shower
+That's not a verb I recognize.
+
+>enter shower
+The last time you walked out of the bathroom with your toothbrush, you never found it again. You toss it on the counter. The plastic box almost makes it out of the bathroom, but you remember to set it down before stepping out. 
+
+Shower
+You are in your shower and water of just the right temperature is spraying down on you. Two buttons are molded into the wall of the shower stall. One is labeled "soap", and the other, "shampoo". 
+
+Rover pads along behind you until you get to the shower but decides he's not willing to risk a bath for some reward nuggets.
+
+
+
+David: Janet, I...
+Janet: David, if it were anyone but you, I would have a problem.
+       Just let it go.
+David: Anyone else? Like who?
+Janet: Can we get back to the program?
+David: Okay, I'm paying attention.
+Janet: Obviously.
+
+>push shampoo
+You wash your hair. It no longer feels like a straw-encrusted swarm of red-headed tommygoffs.
+
+From the direction of the bathroom, you hear Rover breathing quietly (quietly for Rover, who is a heavy breather).
+
+>push soap
+A stream of hot, pearlescent white soap is ejected forcefully from the throbbing button, and pools in your hand. You rub it over your entire body with wanton abandon and then rinse it off.
+
+
+David: No comment.
+Janet: I don't know what I was thinking when I wrote that.
+
+From the direction of the bathroom, you hear Rover chewing something.
+
+>out
+
+Bathroom
+Your cottage's living room is palatial compared to your bathroom. There is a pink marble counter and above it you've mounted a mirror on the wall. To the right of the mirror is a black glass plate. Between the counter and the shower is a white, porcelain toilet.
+
+On the marble counter are a plastic box and a toothbrush.
+
+You can also see Rover and a flight suit here.
+
+Rover looks at the water tank.
+
+>touch plate
+You switch the black plate on.
+
+*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.
+
+
+
+
+Janet: Crap.  The ACU crashed.
+David: Windex?
+Janet: It's the Myomita operating system. It's backwards
+       compatible to the 20th century. Maybe earlier.
+David: We can't use Windex as the substrate for the ACU --
+       it's too critical. Can it run under Flosix?
+Janet: Yes, but it will take some time to install and debug.
+David: I can help you, the rest of the ship is Flosix, stem
+       to stern. I live and breathe Flosix.
+Janet: Happy to have the help -- how about dinner first?
+David: Do you like Thai?
+
+
+
+               *    *    *
+
+Rover's Day Out
+An Interactive Simulation by Janet Xiang
+Release beta810 / Serial number 23920415 / Inform 10.6 build Mu-013 (I6/v.7.1 lib 7/18N)
+
+Rover sniffs the air and tears away from the picnic blanket. You and Tomasz watch with surprise as he runs, for once, away from the food. Rover bounds over the hedges, howling wildly, and spooks a xihuahua that had been playing with a tiny red ball. The so-called "shaved rat" gulps an oversized portion of air, extends its membranous ears, and flies across the park into the arms of a stooped grey-haired woman with a cane. Rover picks up the ball triumphantly, ignoring the piercing wavetrain of yips and indignant scolding coming, respectively, from the xihuahua and its owner. Shaking her cane limply towards Rover, she admonishes in a strong Earth accent "That mongrel should be on a leash!" Her own, unleashed, uncollared neodog stares accusingly from the safety of her arms, its distensible ribs alternately inflating and deflating like bellows. "Your kind is ruining Mars, ignoring every law, dissing your elders! You never lived on the surface, you never don't know what you've got!". You try to give the ball back to her, but she pushes it away in disgust, "Kids. Meh."
+
+
+
+David: Hey, different dream sequence. Is it glitching?
+Janet: No, the ACU's dreams are heavily influenced by power-up
+       state of the processor and internal noise. Every time
+       the ship dehibernates after a Casimir jump, it will
+       experience some sort of dreaming. Some of them can
+       be pretty bizarre.
+David: Good, I'd hate to think that we wasted two weeks of
+       programming.
+Janet: I wouldn't say wasted.
+David: Huh? I didn't mean us.
+Janet: Cross your fingers and hope the whole thing doesn't
+       crash again on the heat lamp.
+
+<beep> <beep> <beep>
+
+>* uh. the background is blue everywhere except behind text.
+That's not a verb I recognize.
+
+>about
+ > What is this?
+   How does this work?
+   Help! I'm stuck!
+   Entomology
+   Acknowledgements
+   License
+
+Living Room (on the futon)
+Where the heavy drapes meet, a sliver of sunlight shines into the otherwise dark living room. A framed picture hangs on the living room wall in the small area illuminated by the shaft of light.
+
+>save
+Ok.
+
+>quit
+Are you sure you want to quit? y
