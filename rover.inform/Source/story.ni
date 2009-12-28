@@ -19,6 +19,13 @@ Release along with cover art.
 
 Book 1 Mechanics
 
+Chapter Capabilities
+
+Section Status Line
+
+To decide whether status is disabled:
+	(- ~~gg_statuswin -)
+
 Chapter No More Get All
 [In the standard rules, Take is defined with the grammar token "things" rather than "thing". To expurge "get all" from the game, "take" must be redefined as something new, with full grammar here. This is based on a helpful usenet post by Khelwood, dated 21 December 2006.]
 
@@ -412,21 +419,22 @@ Include (-
 BSODing is an action applying to nothing.
 Carry out BSODing:
 	say "*** STOP:  0x76A59BEE200198D2F99:  Fatal Exception.  Press a key to continue.";
-	await keystroke;
-	change timer mode to 2;
-	set timer to 5000;	[5 second delay]
-	open up BSOD-window;
-	move focus to BSOD-window, clearing the window;
-	say "[second custom style]                 WINDEX                 [paragraph break]A fatal exception F1 has occurred at    [line break]0013AF3411BC:5D00193D39B4 in DLL 35A3249[line break]in kernel ring beta. The current appli- [line break]cation will be terminated.              [paragraph break]* Something unpleasant has happened in  [line break]  the transputational core processor.   [line break]* Quantum entanglement compromised due  [line break]  to runtime error. All data lost.      [line break]* Sorry about that.                     [paragraph break][paragraph break]       Press a key to continue          ";
-	await keystroke in the BSOD-window;
-	shut down BSOD-window;
-	return to main screen;
-	stop timer;
+	await keystroke;	
+	open up BSOD-window;[this should return a testable code for whether it worked.]
+	if BSOD-window is g-present:[flexible windows extension tracks its existence]
+		change timer mode to 2;[mode 2 selects behavior in timed events function]
+		set timer to 5000;	[kicks off the timer with 5 second delay]
+		move focus to BSOD-window, clearing the window;
+		say "[second custom style]                 WINDEX                 [paragraph break]A fatal exception F1 has occurred at    [line break]0013AF3411BC:5D00193D39B4 in DLL 35A3249[line break]in kernel ring beta. The current appli- [line break]cation will be terminated.              [paragraph break]* Something unpleasant has happened in  [line break]  the transputational core processor.   [line break]* Quantum entanglement compromised due  [line break]  to runtime error. All data lost.      [line break]* Sorry about that.                     [paragraph break][paragraph break]       Press a key to continue          ";
+		await keystroke in the BSOD-window;
+		shut down BSOD-window;
+		return to main screen;
+		stop timer;[the timed event never happens if user hits a key first]
 	clear the screen.	
 	
 A glulx timed activity rule (this is the bsod window hint rule):
-	say "[paragraph break]PRESS [bracket]SPACE[close bracket] TO RESET SIMULATION.";
-	stop timer.
+	say "[paragraph break]PRESS [bracket]SPACE[close bracket] TO RESET SIMULATION.";[this pops up if user does nothing for 5 seconds.]
+	stop timer.[prevent this from happening *every* 5 seconds]
 
 Trailering is an action applying to nothing.
 Carry out Trailering:
@@ -4905,6 +4913,7 @@ Every turn:
 		if last-noun matches the text "COGNITIVE BLOCK":
 			if the current action is not manpaging:
 				change last-success to "NIL";
+	if the player is self-aware or status is disabled:
 		say "[last-noun in upper case] -> [status-line-action] : [last-success][paragraph break]";
 	if the elevate flag is false:
 		update prompt;
