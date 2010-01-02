@@ -4,7 +4,7 @@ The story headline is "An Interactive Fiction".
 The release number is 12.
 The story genre is "Science Fiction".
 The story creation year is 2009.
-The story description is "Three hundred years ago, the Brazilian Space Agency discovered a rocky exoplanet only 38 light years from Earth. With a surface temperature of 1200 Celsius and nine times Earth gravity, it's hardly the sort of place you'd take your dog walkies. Most days.".
+The story description is "Three hundred years ago, the Brazilian Space Agency discovered a rocky exoplanet only 38 light years from Earth. With a surface temperature of 1200 Celsius and nine times Earth gravity, it's hardly the sort of place you'd take your dog walkies. Most days."
 
 Include Glulx Text Effects by Emily Short.
 Include Basic Screen Effects by Emily Short.
@@ -19,7 +19,7 @@ Release along with cover art.
 
 Book 1 Mechanics
 
-Chapter Capabilities
+Chapter Capabilities 
 
 Section Status Line
 
@@ -433,8 +433,10 @@ Carry out BSODing:
 	clear the screen.	
 	
 A glulx timed activity rule (this is the bsod window hint rule):
-	say "[paragraph break]PRESS [bracket]SPACE[close bracket] TO RESET SIMULATION.";[this pops up if user does nothing for 5 seconds.]
-	stop timer.[prevent this from happening *every* 5 seconds]
+	if the timer mode is 2:
+		say "[paragraph break]PRESS [bracket]SPACE[close bracket] TO RESET SIMULATION.";[this pops up if user does nothing for 5 seconds.]
+		stop timer;[prevent this from happening *every* 5 seconds]
+		the rule succeeds.
 
 Trailering is an action applying to nothing.
 Carry out Trailering:
@@ -4619,7 +4621,7 @@ title	subtable	description	toggle
 
 Table of Stuck
 title	subtable	description	toggle
-"General Pointers"		--		"Here are some practical pointers for this game:[paragraph break]* Try everything you can think of. If it doesn't work, try rephrasing.[line break]* Reread text to make sure you didn't miss anything.[line break]* Leave no stone unturned; conversely, don't obsess.[line break]* This game follows many, but not all, of the conventions of computer adventure games. If something makes sense to you, try it even though it [quotation mark]shouldn't work[quotation mark].[line break]* As far as we know, it is not possible to get trapped in an unwinnable situation. By winning, we mean you can complete the game. Achieving good outcomes is another matter.[line break]* If you are really stuck, put the game aside and let it percolate through your subconscious for a while. Come back fresh.[line break]* If you are really really stuck, con someone else into playing the game and watch them. You might get some ideas.[line break]* If you are really and truly stuck, you could search the Internet and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Within the game, you can type [quotation mark]hint[quotation mark] to bring up some context-specific hints. To minimize spoilers, the hints are revealed one at a time, and go from general to specific.[line break]* If all else fails, the game includes a walkthrough (type [quotation mark]walkthrough[quotation mark], which shows one possible way through the game. The walkthrough is nothing but spoilers, so please consider this a last resort, or something to look at after you've played through the game."		--
+"General Pointers"		--		"Here are some practical pointers for this game:[paragraph break]* Try everything you can think of. If it doesn't work, try rephrasing.[line break]* Reread text to make sure you didn't miss anything.[line break]* Leave no stone unturned; conversely, don't obsess.[line break]* This game follows many, but not all, of the conventions of computer adventure games. If something makes sense to you, try it even though it [quotation mark]shouldn't work[quotation mark].[line break]* As far as we know, it is not possible to get trapped in an unwinnable situation. By winning, we mean you can complete the game. Achieving good outcomes is another matter.[line break]* If you are really stuck, put the game aside and let it percolate through your subconscious for a while. Come back fresh.[line break]* If you are really really stuck, con someone else into playing the game and watch them. You might get some ideas.[line break]* If you are really and truly stuck, you could search the Internet and see if someone has already posted a similar question/answer. Since you could be playing this years after it was released, maybe we've even created a FAQ about it. If you do post a question or answer, preface your message with a spoiler warning and skip down a bunch of lines before writing anything too revealing.[line break]* Within the game, you can type [quotation mark]hint[quotation mark] to bring up some context-specific hints. To minimize spoilers, the hints are revealed one at a time, and go from general to specific.[line break]* If all else fails, the game includes a walkthrough (type [quotation mark]walkthrough[quotation mark]), which shows one possible way through the game. The walkthrough is nothing but spoilers, so please consider this a last resort, or something to look at after you've played through the game."		--
 "Spelling"	--		"This game employs the standard Martian dialect and Roman characters rather than the ideographic characters more common on Earth."	--
 
 Table of Bugs
