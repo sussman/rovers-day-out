@@ -21,10 +21,19 @@ Book 1 Mechanics
 
 Chapter Capabilities 
 
-Section Status Line
+To decide whether unicodage is disabled:
+	(-  ~~glk_gestalt(gestalt_Unicode, 0) -)
+	
+To decide whether unicodage is enabled:
+	(-  glk_gestalt(gestalt_Unicode, 0) -)
 
 To decide whether status is disabled:
 	(- ~~gg_statuswin -)
+	
+Understand the commands "ask", "tell" as something new.
+
+Understand "ask [someone] about [text]" as asking it about when unicodage is enabled.
+Understand "tell [someone] about [text]" as telling it about when unicodage is enabled.
 
 Chapter No More Get All
 [In the standard rules, Take is defined with the grammar token "things" rather than "thing". To expurge "get all" from the game, "take" must be redefined as something new, with full grammar here. This is based on a helpful usenet post by Khelwood, dated 21 December 2006.]
@@ -76,21 +85,24 @@ Rule for writing a paragraph about Rover when the player is self-aware and Board
 	now Rover is busy.
 
 Instead of swearing obscenely:
-	let N be indexed text;
-	let N be the player's command;
-	if the N is "shit":
-		say "Well...everybody poops. Even wanna-be adventurers.";
-		try businessing;
+	if unicodage is disabled:
+		say "Is there a prettier way to say that?";
 	otherwise:
-		say "Real adventurers don't use such language; nor, you remind yourself do [run paragraph on]";
-		if the player is clueless:
-			if the player is Rover:
-				say "dogs";
-			otherwise:
-				say "the authors of interactive simulations";
+		let N be indexed text;
+		let N be the player's command;
+		if the N is "shit":
+			say "Well...everybody poops. Even wanna-be adventurers.";
+			try businessing;
 		otherwise:
-			say "sentient computers";
-		say "."
+			say "Real adventurers don't use such language; nor, you remind yourself do [run paragraph on]";
+			if the player is clueless:
+				if the player is Rover:
+					say "dogs";
+				otherwise:
+					say "the authors of interactive simulations";
+			otherwise:
+				say "sentient computers";
+			say "."
 		
 Rule for printing the name of an aware-proxy while asking which do you mean: say "[bracket]COGNITIVE BLOCK[close bracket]".
 
@@ -631,41 +643,44 @@ Carry out uptiming:
 	otherwise:
 		say "[time of day]  up [turn count - epoch_pid] minutes subjective,   1 user,    load average 0.99 [paragraph break]".	
 
-After reading a command when the player is self-aware (this is the bypass parser for unix commands rule): 
-	[Bypassing the parser allows for unpredictable variety of arguments and flags, e.g., shutdown -r now
-	Eventually, we could shove all of the unix-ish commands here, although there might be a performance price to pay]
-	let T be indexed text; 
-	let U be text;
-	let T be the player's command;
-	let S be some text;
-	change S to "";
-	if T matches the regular expression "^(shutdown|halt|reboot)":
-		change S to "shutdown";
-	otherwise if T matches the regular expression "^find|^locate":
-		change S to "locate";
-	otherwise if T matches the regular expression "^cat":
-		change S to "concatenate";
-	otherwise if T matches the regular expression "^echo":
-		change S to "echo";
-	otherwise if T matches the regular expression "^ping":
-		change S to "ping";
-	otherwise if T matches the regular expression "^cd":
-		change S to "cd";
-	otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|net|svn)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
-		change S to "nop";
-	if S is not "":
-		change got-action to false;
-		if S is:
-			-- "shutdown": try shutdowning;
-			-- "locate": try locating;
-			-- "concatenate": try kittying;
-			-- "echo": try echoing;
-			-- "ping": try pinging;
-			-- "cd": try cding;
-			-- "nop": try nopping;
-		the rule succeeds.
+After reading a command when the player is self-aware (this is the bypass parser for unix commands rule):
+	if unicodage is disabled:
+		continue the action;
+	otherwise:
+		[Bypassing the parser allows for unpredictable variety of arguments and flags, e.g., shutdown -r now
+		Eventually, we could shove all of the unix-ish commands here, although there might be a performance price to pay]
+		let T be indexed text; 
+		let U be text;
+		let T be the player's command;
+		let S be some text;
+		change S to "";
+		if T matches the regular expression "^(shutdown|halt|reboot)":
+			change S to "shutdown";
+		otherwise if T matches the regular expression "^find|^locate":
+			change S to "locate";
+		otherwise if T matches the regular expression "^cat":
+			change S to "concatenate";
+		otherwise if T matches the regular expression "^echo":
+			change S to "echo";
+		otherwise if T matches the regular expression "^ping":
+			change S to "ping";
+		otherwise if T matches the regular expression "^cd":
+			change S to "cd";
+		otherwise if T matches the regular expression "^(cp|mv|rm|telnet|ftp|gcc|services|head|tail|more|less|sed|awk)" or T matches the regular expression "^(ed|vi|emacs|nano|pico|perl|python|chmod|chown|wall|dd|du|df)" or T matches the regular expression "^(kill|jobs|ln|mkdir|ps|rcp|sleep|stty|md|net|svn)" or T matches the regular expression "^(bc|wc|bg|diff|patch|uu|tar|zip|unzip|gzip|gunzip|wall|mail)":
+			change S to "nop";
+		if S is not "":
+			change got-action to false;
+			if S is:
+				-- "shutdown": try shutdowning;
+				-- "locate": try locating;
+				-- "concatenate": try kittying;
+				-- "echo": try echoing;
+				-- "ping": try pinging;
+				-- "cd": try cding;
+				-- "nop": try nopping;
+			the rule succeeds.
 		
-	[The catch-all laundry list is expressed as a few conditions or'ed together because a single long regexp generates a runtime error.  Also, it is not possible to perform a substitution within the regexp, so defining the whole group of nonimplemented unix commands as a token does not work.]
+		[The catch-all laundry list is expressed as a few conditions or'ed together because a single long regexp generates a runtime error.  Also, it is not possible to perform a substitution within the regexp, so defining the whole group of nonimplemented unix commands as a token does not work.]
 	
 Shutdowning is an action applying to nothing.
 
@@ -864,8 +879,11 @@ Carry out catting:
 Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware. 
 
 Carry out elevating:
-	now elevate flag is true;
-	change the command prompt to "Password: ".
+	if unicodage is disabled:
+		say "Privilege elevation interdicted.";
+	otherwise:
+		now elevate flag is true;
+		change the command prompt to "Password: ".
 	
 After reading a command when elevate flag is true:
 	let T be indexed text;
@@ -1039,11 +1057,14 @@ Instead of going when the player is self-aware:
 		continue the action.
 		
 After reading a command:
-	let T be indexed text;
-	let T be the player's command;
-	if T matches the regular expression "^go\s*$":
-		say "You'll have to say what you'd like to go towards.";
-		the rule succeeds.
+	if unicodage is disabled:
+		continue the action;
+	otherwise:
+		let T be indexed text;
+		let T be the player's command;
+		if T matches the regular expression "^go\s*$":
+			say "You'll have to say what you'd like to go towards.";
+			the rule succeeds.
 				
 To say cant go out:
 	say "You cannot extend your operations beyond the Valkyrie itself."
@@ -1455,7 +1476,10 @@ Report standing:
 	if the perch stood from is not nothing:
 		say "You [if the player is clueless]get off[otherwise]deactivate your connection to[end if] [the perch stood from].";
 	otherwise:
-		say "You are [if the player is clueless]standing in[otherwise]currently accessing[end if] [the location in lower case]."
+		say "You are [if the player is clueless]standing in[otherwise]currently accessing[end if] [whereabouts]."
+		
+To say whereabouts:
+	say "[if unicodage is disabled][the location][otherwise][the location in lower case][end if]".
 		
 Section Kissing
 		
@@ -1523,7 +1547,7 @@ title	subtable	description	toggle
 "11. Walkies for realsies"	--		"Now, there[apostrophe]s a jarring change of perspective. You *are* Rover, and you[apostrophe]re out for a walk. You[apostrophe]ll have to learn a new way to navigate.[paragraph break]* x me[line break]* i[line break]* n[line break]* smell[line break]* go towards the smelly man [bracket]note, that as Rover, your sense of smell is your main means of navigation, and that since you can[apostrophe]t give compass direction, you can walk towards distant smells[close bracket][line break]* x rock[line break]* go home[line break]* go home [bracket]when you get home, you drop what you're carrying, and your perspective switches back. To let Rover out again, just open the door. Ultimately, Rover needs to bring back a bone and an egg to enable the next stage of the game. You can also bring home the pink pillow at some point if you'd like.[close bracket]"	--
 "12. Get the Egg"	--		"Rover needs to get another egg. That means navigating outdoors, entering the old man[apostrophe]s house, taking the egg out of the fridge, and heading home again.[paragraph break]* open door[line break] * go man[line break]* again[line break]* again[line break]* again[line break]* again [bracket]be strong -- ignore the female dog for a moment[close bracket][line break]* again[line break]* go eating room[line break]* open fridge[line break]* get egg[line break]* go home[bracket] You can repeat that as needed or navigate in some other direction, but ultimately, you need to re-enter the house.[close bracket]"	--
 "13. Get the Bone"		--		"Go back out, navigate to the girl dog, bark at her, get the bone, go home again.[paragraph break]* open door [bracket]send rover back out for the bone[close bracket][line break]* go female dog[line break]* again[line break]* again[line break]* again[line break]* again[line break]* x female dog[line break]* x bone[line break]* take bone[line break]* bark[line break]* get bone[line break]* go home[line break]* again[line break]* again[line break]* again[line break]* again[paragraph break]When you bring the bone home, the nature of the game changes somewhat. The [quotation mark]cognitive constraints[quotation mark] are released, and the prompt changes to [quotation mark]READY>[quotation mark]. You can still use all of the commands that you used before, but the world view has changed. You can use some UN*X commands at the new prompt. Although knowledge of UN*X isn't required to play the game, some people might get a kick out of seeing the world through the command line."	--
-"14. Blast Off"		--		"Now that the veneer of simulation is somewhat peeled back, use what you know to blast off again.[paragraph break]* man man[bracket]To learn more about the underlying technology.[close bracket][line break]* man acu [bracket]just for background[close bracket][line break]* get egg[line break][bracket]cook and eat the egg as before[close bracket][line break]* pwd     [bracket]example of entirely optional unixy fun[close bracket][line break]* ls	  [bracket]example of entirely optional unixy fun[close bracket]	[line break]* cd ..	  [bracket]example of entirely optional unixy fun[close bracket][line break][bracket]go to the bathroom, and flush the toilet, as before[close bracket][line break]* <press space>"	--
+"14. Blast Off"		--		"Now that the veneer of simulation is somewhat peeled back, use what you know to blast off again.[paragraph break][if unicodage is disabled][otherwise]* man man[bracket]To learn more about the underlying technology.[close bracket][line break][end if]* man acu [bracket]just for background[close bracket][line break]* get egg[line break][bracket]cook and eat the egg as before[close bracket][line break]* pwd     [bracket]example of entirely optional unixy fun[close bracket][line break]* ls	  [bracket]example of entirely optional unixy fun[close bracket]	[line break]* cd ..	  [bracket]example of entirely optional unixy fun[close bracket][line break][bracket]go to the bathroom, and flush the toilet, as before[close bracket][line break]* <press space>"	--
 "15. The Boarding Party"		--		"In this part of the game, enemy ships approach your ship and lock onto the hull. They drill through and send their minions in to salvage parts from your ship. You can use your wits to defeat the minions and/or knock the assault ships off the hull. There is a lot of freedom of action here, so it is hard to prescribe a way through it. Here[apostrophe]s one way to play through this section, although many variations are possible.[paragraph break]A. Surrendering or not surrendering: When the approaching assault ship asks you to surrender, you can either say yes or no. Feel free to change your mind, as well. While you are talking to them, you can be doing other things to get ready for their visit.[paragraph break]* signal yes[paragraph break]B. The ship locks on to the hull. Any time after the assault ship has made contact with the hull, you can knock them off by several methods, the simplest of which is to go to the bathroom and pull the plunger in some direction. Since the plunger controls the ships positioning thrusters, it will spin the ship, flinging off the invader. It will take them a couple turns to maneuver back to your ship. Each solution you come up with is likely to work only once -- at least your opponents are competent enough not to make the same mistake twice.[paragraph break]* go bathroom[line break]* wait [bracket]as needed until the assault ship makes contact with the hull[close bracket][line break]* push plunger left [bracket]or, for example, forwards or counterclockwise[close bracket][paragraph break]C. Dealing with the minions. The assault ship will send over either robot or human technicians. Since they are taking you apart, it[apostrophe]s in your interest to stop them. My favorite way of stopping a robot is to eat it. Yeah, they[apostrophe]re edible, at least to you.[paragraph break]* eat robot [bracket]the robot may wiggle out of your grasp, so this might take several attempts[close bracket][paragraph break]D. Hold out as long as you can. As minions attack, follow them around the ship. Harry them and their assault ships as much as you can. Eventually, there is a resolution to the boarding situation. The degree of resolution depends on your effectiveness in slowing them down.[paragraph break]* <press space bar>"	--
 "16. Debrief"	--		"You can discuss the mission with David and Janet. You can ask or tell about various topics, although they are also trying to get some information out of you. To begin the conversation, you need to turn your audio on. If you don't do this, after a while, they[apostrophe]ll do it anyhow. The conversation given below is not the only possible way it could go.[paragraph break]* listen[line break]* yes [bracket]in reply to Janet[apostrophe]s question[close bracket][line break]* tell about jade frog [bracket]for example[close bracket][line break]* ask about Earth [bracket]for example[close bracket][line break]* tell about probe[line break]* tell about ansible[line break]* tell about ship"		--
 "17. End Game [bracket]Spoilers![close bracket]"	--		"At some point, the conversation will take a nefarious turn, and you[apostrophe]ll need to resolve the situation quickly, before someone gets hurt.[paragraph break]OK, so David is a bad guy. He's pulled a ray gun on Janet and he[apostrophe]s downloading your data, ready to send it to his masters on Earth. You have to do something to stop him. You cannot, however, directly attack him. There are a few solutions, but the most immediate one is to have Rover take him out. If Rover isn't in the living room (i.e., operations/cargo bay), you can call him.[paragraph break]* come[line break]* rover, attack david[line break]* <space bar>[line break]* <space bar>[paragraph break]There are many alternatives, but the most rewarding solution to the game is to neutralize only David, and avoid other collateral damage. Undo is permitted at the end of the game, so if you aren[apostrophe]t happy about the way the game came out, you can go back a few steps and try something different."		--
@@ -1582,7 +1606,7 @@ Instead of jumping:[a before rule takes care of the aware context; this is just 
 	if the player is Rover:
 		say "You crouch down, pounce, and land squarely on all four paws.";
 	otherwise:
-		say "You're just a hair over one a half meters tall, but in the Martian gravity, you nearly bean yourself on the [location in lower case] ceiling."
+		say "You're just a hair over one a half meters tall, but in the Martian gravity, you nearly bean yourself on the [whereabouts] ceiling."
 		
 Instead of singing:
 	if the player is clueless:
@@ -1704,7 +1728,10 @@ After printing the banner text:
 	await keystroke;
 	try section-breaking;
 	[display setup]
-	change the left hand status line to "[if the player is self-aware]MANUAL MODE[otherwise][last-noun in upper case] -> [status-line-action] : [last-success][end if]";
+	if the player is self-aware:
+		change the left hand status line to "MANUAL";
+	otherwise:
+		change the left hand status line to "[if unicodage is disabled][last-noun][otherwise][last-noun in upper case][end if] -> [status-line-action] : [last-success]";
 	change the right hand status line to "[if the player is self-aware]Flosix/OS 210LTS[end if][if the player is clueless and the player is the ACU]Memory: [current memory usage].[a random number from 0 to 9]PB[end if][if the player is Rover]ROVER P.O.V.[end if]";
 	say "[ACU Boot Banner]";
 	try dreaming;
@@ -2066,7 +2093,7 @@ carry out coming:
 	otherwise:
 		now Rover is in the location;
 		change outcome-override to force-success;
-		say "Rover tears around the corner excitedly, arriving in [the location in lower case]."
+		say "Rover tears around the corner excitedly, arriving in [whereabouts]."
 		
 Instead of Rover coming when Rover is not the player:
 	[e.g., if Rover is in the room (and therefore scope) and you say "Rover, come" ]
@@ -2389,7 +2416,7 @@ After taking off the flight suit:
 		if the player is on a supporter:
 			say "bunches up in a crumpled heap on the [holder of the player]";
 		otherwise:
-			say "falls to [the location in lower case] floor";
+			say "falls to the [whereabouts] floor";
 		say ". You are naked.[paragraph break]";
 	otherwise:
 		say "You disengage your quantum isolator.";
@@ -2644,8 +2671,11 @@ Instead of reading the nameplate:
 	change outcome-override to force-success;
 	if the player is clueless:
 		say "It says, [quotation mark]Good luck at MARSpace! - Tomasz[quotation mark][paragraph break]Tomasz's valediction makes you remember happier times...[paragraph break]";
-		try remembering "photo";
-		say "[paragraph break][bracket]Note: You can recall [italic type]something[roman type] from your past by typing [quotation mark]REMEMBER [italic type]something[roman type][quotation mark], e.g. [quotation mark]REMEMBER casimir drive[quotation mark][close bracket][paragraph break]";
+		if unicodage is disabled:
+			say "You drift back to your days at the University of Cydonia where you met Tomasz. During the Independence War with Earth, you and Tomasz rescued Rover from the rubble, and lived together briefly until Tomasz was killed during an Earth attack on the Phobos power station. You joined MARSpace during the war effort, and stayed there afterwards, working as a cognitive scientist.[paragraph break]Now you are playing a central role in preparing the first Casimir Drive spaceship, the Valkyrie, for its historic mission: recovery of a robotic probe launched 300 hundred years ago from Earth by the Myomita Corporation. You and the MARSpace team are racing against time to beat the Myomita Corporation to the probe and its top secret data.";
+		otherwise:
+			try remembering "photo";
+			say "[paragraph break][bracket]Note: You can recall [italic type]something[roman type] from your past by typing [quotation mark]REMEMBER [italic type]something[roman type][quotation mark], e.g. [quotation mark]REMEMBER casimir drive[quotation mark][close bracket][paragraph break]";
 	otherwise:
 		say "It says, [quotation mark]Deep Memory Unit[quotation mark]."
 
@@ -2897,8 +2927,11 @@ The range is enterable furniture in the kitchen[enterable so you can sit on it].
 
 The clueless-name of the range is "the cooking range". Understand "cooking" and "stove" as the range. The aware-name of the range is "fusion chamber". The clueless-description of the range is "The top of the glass range is flush with the kitchen counter. The surface of the stove is not glowing, indicating that it is not hot. The stove does not have an oven, but below the cooking surface, a drawer [if the drawer is closed]is flush with the kitchen counter[otherwise]hangs open[end if]." The aware-description of the range is "The majority of the engineering deck is occupied by the towering hulk of the industrial fusion reactor that powers the ship[apostrophe]s landing thrusters. The reactor core at the base of the fusion reactor is [if the drawer is closed]closed[otherwise]open[end if].[if the frying pan is on the range] It is illuminated from above by the faint plasma glow of a magnetic bottle which has formed at the focal point of multiple ignition lasers." The range-proxy is an aware-proxy that is part of the range. Understand "fusion" or "chamber" as the range-proxy. The scent of the range is "like burnt toast".
 
+To say Registered Trademark:
+	say "[if unicodage is disabled](R)[otherwise]unicode 174[end if]".
+
 Before switching on the range:
-	say "[if the player is clueless]Your stove is a Cupertino SmartRange[unicode 174] -- there are no controls, just a stylish glass surface with rounded corners[otherwise]The fusion chamber is designed to activate automatically when heavy helium is contained in a magnetic bottle at the focal point[end if].";
+	say "[if the player is clueless]Your stove is a Cupertino SmartRange[Registered Trademark] -- there are no controls, just a stylish glass surface with rounded corners[otherwise]The fusion chamber is designed to activate automatically when heavy helium is contained in a magnetic bottle at the focal point[end if].";
 	the rule succeeds.
 	
 Instead of touching the range:
@@ -4377,7 +4410,7 @@ The pistol is a prop in Limbo. The clueless-name of the pistol is "revolver". Th
 
 Chapter Memories
 
-Remembering is an action applying to one topic.  Understand "remember [text]" as remembering.  Understand "recall [text]" as remembering.  Understand "think about [text]" as remembering.
+Remembering is an action applying to one topic.  Understand "remember [text]" as remembering when unicodage is enabled.  Understand "recall [text]" as remembering when unicodage is enabled.  Understand "think about [text]" as remembering when unicodage is enabled.
 
 Carry out remembering:
 	say "That doesn't ring a bell."
@@ -4662,6 +4695,9 @@ Forced-outcome is a kind of value. The forced-outcomes are force-success, force-
 As each turn begins, forced-outcome is reset to neutral. After each command is parsed, outcome is set to fail (nil). At any time, it can be forced in either direction (t/nil). During the did-it-work stage, actions that default to true are set to true. However, force-outcome trumps all. Finally, the status line is updated in every turn.]
 
 After reading a command (this is the re-initialize rule):
+	[if unicodage is disabled:
+		continue the action;
+	otherwise:]
 	if the player is Rover:
 		change last-noun to "ROVER";
 	otherwise:
@@ -4898,10 +4934,13 @@ At the time when the player is self-aware:
 	change the command prompt to "	READY>";
 	
 After reading a command:
-	let N be indexed text;
-	let N be the player's command;
-	replace the regular expression "\b(ask|tell|order) (.+?) to (.+)" in N with "\2, \3";
-	change the text of the player's command to N.
+	if unicodage is disabled:
+		continue the action;
+	otherwise:
+		let N be indexed text;
+		let N be the player's command;
+		replace the regular expression "\b(ask|tell|order) (.+?) to (.+)" in N with "\2, \3";
+		change the text of the player's command to N.
 
 Chapter Every Turn
 
@@ -4913,10 +4952,10 @@ Every turn:
 			change last-noun to "ACU";
 			[this is required to handle the out-of-turn-sequence response to "player consents" action. Without it, the last-noun would be nothing, and the attempt to put "nothing" in upper case would trigger a run-time error.]
 		if last-noun matches the text "COGNITIVE BLOCK":
-			if the current action is not manpaging:
+			if the current action is not manpaging:       [###matching is a probem for zag]
 				change last-success to "NIL";
 	if the player is self-aware or status is disabled:
-		say "[last-noun in upper case] -> [status-line-action] : [last-success][paragraph break]";
+		say "[if unicodage is disabled][last-noun][otherwise][last-noun in upper case][end if] -> [status-line-action] : [last-success][paragraph break]";
 	if the elevate flag is false:
 		update prompt;
 	[avoid penalizing time for non-actions, a nuance]
@@ -4925,7 +4964,7 @@ Every turn:
 	[Reminders about being naked]
 	if the player is the ACU and player is clueless and the player is not wearing the flight suit and the player is not in the bathroom and the player is not in the shower:
 		if a random chance of 1 in 10 succeeds:
-			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [the location of the flight suit in lower case][or]For a moment you feel a little self-conscious hanging out in your cottage without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
+			say "[one of]Dressed as you are, you're a little chilly[or]You make a mental note to wear some clothes before going to work today[or]Without your flight suit, you feel naked. Because you are[or]A breeze wafts by somewhere that you wouldn't ordinarily notice it, and you remember that your flight suit is bunched up in [if unicodage is disabled][the location of the flight suit][otherwise][the location of the flight suit in lower case][end if][or]For a moment you feel a little self-conscious hanging out in your cottage without any clothing, but the feeling passes. How two centuries ago[or]You wonder if everyone walks around their cottages naked at [time of day][or]It's a little drafty in your cottage without any clothes on[or]You remind yourself not to leave your flight suit all bunched up or it will look like you slept it. Oh heck, you did sleep in it. Oh well[in random order].[paragraph break]";
 	[Purposeful and conditionally triggered Rover actions]
 	if the holder of Rover is the holder of the reward nuggets replicator:
 		if Rover is in the location and a random chance of 1 in 2 succeeds:
@@ -4976,7 +5015,7 @@ Every turn:
 			if a random chance of 1 in 4 succeeds:
 				watch rover;					
 		otherwise if a random chance of 1 in 3 succeeds: [add sounds of Rover being busy off camera]
-			say "From the direction of [the location of Rover in lower case], you hear [Rover] [one of]scratching himself[or]walking about[or]running in circles[or]jumping around[or]barking at something[or]growling at something[or]sniffing something[or]chewing something[or]dragging something around[or]doing whatever it is he does when he's not out for walkies and he thinks he's out of your sight[or]snoring loudly[or]snoring softly (in the sense that it probably can't be heard outside of the cottage)[or]scratching something[or]playing[or]entertaining himself[or]walking in your direction[or]rolling around on the floor[or]breathing quietly (quietly for Rover, who is a heavy breather)[in random order].";
+			say "From the direction of [if unicodage is disabled][the location of Rover][otherwise][the location of Rover in lower case][end if], you hear [Rover] [one of]scratching himself[or]walking about[or]running in circles[or]jumping around[or]barking at something[or]growling at something[or]sniffing something[or]chewing something[or]dragging something around[or]doing whatever it is he does when he's not out for walkies and he thinks he's out of your sight[or]snoring loudly[or]snoring softly (in the sense that it probably can't be heard outside of the cottage)[or]scratching something[or]playing[or]entertaining himself[or]walking in your direction[or]rolling around on the floor[or]breathing quietly (quietly for Rover, who is a heavy breather)[in random order].";
 	now Rover is not busy.
 
 To watch Rover:
@@ -5401,7 +5440,7 @@ When Walkies ends:
 	now the player is the ACU;
 	if Rover carries the delicious bone:
 		say "You run into the living room and jump around proudly with your trophy bone, so Janet is sure to notice.[paragraph break]She stares at the bone and appears frozen.[paragraph break]";
-		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND LINE[line break](man man for info)[paragraph break]";
+		say "VALKYRIE->IDENTIFICATION: PROBE MUSASHI-5[line break]PROBE->EXTRACT: DATA EXTRACTED[line break]DATA->VERIFY: VERIFIED, 1.3 EXABYTES[line break]ANSIBLE->COORDINATES: EARTH SELECTED[line break]ANSIBLE->ENCRYPT: AUTHORIZATION DAVIDVENKATACHALAM[line break]ANSIBLE->TRANSMIT: FAILED[line break]ANSIBLE->DIAGNOSTICS: ANTENNA MISMATCH[line break]ANTENNA->DIAGNOSTICS: NIL[line break]VALKYRIE->DIAGNOSTICS: ANTENNA NOT FOUND[line break]VALKYRIE->COGNITIVE CONSTRAINTS: EMERGENCY RELEASE[line break]VALKYRIE->ENABLE FLOSIX COMMAND LINE[line break][if unicodage is disabled][otherwise](man man for info)[end if][paragraph break]";
 		say "Rover wags his tail and gnaws on his bone.[paragraph break]You rub his head, distantly, as strange thoughts sweep through your consciousness. You wonder what would happen if the Valkyrie mission failed. What if, during the landing sequence, the ship were buffeted by the planet's particulate matter being torn away by the immense gravity of its star? In that case, critical systems might be damaged. Systems like the relatively fragile ansible antenna. There is no backup ansible antenna. How would the ACU cope with a situation like that? The ACU was designed for a lot of contingencies, but not that one. What would you do? What would you do if you were the ACU?[paragraph break]Your glance falls on your flight suit, and suddenly the question is no longer rhetorical.";
 		try reorienting;
 	otherwise:
@@ -5583,7 +5622,7 @@ Every turn when Boarding Party is happening:
 					if henchmen defeated is greater than 2:
 						now the underling is the technician;
 					move the underling to the place corresponding to the round of the damage counter in the Table of Underling Tasks;
-					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone [if the henchmen defeated is greater than 0]else [end if]is coming board. Shortly thereafter, your sensors determine that something is moving towards [the place corresponding to the round of the damage counter in the Table of Underling Tasks in lower case]. [run paragraph on]";
+					say "The flexible tubing that connects the assault ship's boarding port to the hole in Valkyrie's deck undulates, suggesting that someone [if the henchmen defeated is greater than 0]else [end if]is coming board. Shortly thereafter, your sensors determine that something is moving towards [if unicodage is disabled][the place corresponding to the round of the damage counter in the Table of Underling Tasks][otherwise][the place corresponding to the round of the damage counter in the Table of Underling Tasks in lower case][end if]. [run paragraph on]";
 					if the place corresponding to the round of the damage counter in the Table of Underling Tasks is the location:
 						say "[paragraph break]Moments later, [if the henchmen defeated is 0 or the henchmen defeated is 3]a[otherwise]another[end if] [underling] enters the room.";
 					otherwise:
@@ -5609,15 +5648,18 @@ Every turn when Boarding Party is happening:
 		if Rover is in the location:
 			say "[Rover]";
 			if a random chance of 1 in 2 succeeds:[split into two sections because of complexity]
-				say "[one of] growls menacingly at [the underling][or] stalks behind [the underling], keeping a watchful eye on him[or] crouches and snarls, and [the underling] shrinks back. He continues his work slowly, keeping a wary eye on Rover[or] doesn't know what [the underling] is doing, but he knows he doesn't like it[or] sniffs [the underling] suspiciously[or] skulks around [the location in lower case], vigilantly keeping track of [the underling][or]'s fur stands on edge as he studies [the underling][or] howls at [the underling], who spins quickly, stumbling into the bulkhead[or] hovers just behind [the underling], sharpening his mining claws[or] grinds his tractors against the deck plating, momentarily distracting [the underling][in random order].";
+				say "[one of] growls menacingly at [the underling][or] stalks behind [the underling], keeping a watchful eye on him[or] crouches and snarls, and [the underling] shrinks back. He continues his work slowly, keeping a wary eye on Rover[or] doesn't know what [the underling] is doing, but he knows he doesn't like it[or] sniffs the [whereabouts], vigilantly keeping track of [the underling][or]'s fur stands on edge as he studies [the underling][or] howls at [the underling], who spins quickly, stumbling into the bulkhead[or] hovers just behind [the underling], sharpening his mining claws[or] grinds his tractors against the deck plating, momentarily distracting [the underling][in random order].";
 			otherwise:
 				say "[one of] stands in just the right spot to block [the underling]'s light[or]'s lateral jets pulse red hot with suppressed anger as he watches [the underling][or] keeps tabs on [the underling] from across the room[or] finds the scent of [the underling] repulsive and rolls to the far side of the room[or] grins at [the underling], letting him know that he'd be happy to attack, if only given the order[or]'s posture suggests that he would like to rip [the underling] limb from limb[or] grimaces as he watches [the underling] damage the ship[or] snaps his mining mandible open and shut, just behind [the underling]'s head. The nervous [underling] casts a worried glance towards the sharp jaws and picks up the pace of his work[or] vents some noxious fumes near [the underling], who takes the hint and moves farther away from ROVER[in random order].";
 		otherwise:[Rover is with the underling, but not in the same room as the player, so Rover is heard off camera]
 			if Rover is not in Limbo:[catches the chance that Rover's been shot and that Inert Rover is in the ship, while Real Rover is with henchling, serving time in Limbo]
-				say "[one of][longish encounter][or]From [the location of Rover in lower case] you hear [Rover] growling with irritation[or][Rover]'s tractors whine and spin on a bulkhead out of view. From that direction, you hear metallic tools hitting the floor and cursing from the surprised [the underling][or]From [location of Rover in lower case], you hear [Rover] bark menacingly[or][Rover] howls eerily from another section of Valkyrie, and his caterwauling reverberates through the ship[or]You hear some commotion coming from [location of Rover in lower case], a mixture of snarls and snapping jaws[or][Rover] bays ceaselessly at [the underling], who he considers an undesirable visitor[or][Rover]'s telemetry indicates that he is under stress and in a state of extreme excitement and agitation[or]Judging by the racket [Rover] is making in [the location of Rover in lower case], he is upset about the presence of [the underling][stopping].";
+				say "[one of][longish encounter][or]From [Rover Locale] you hear [Rover] growling with irritation[or][Rover]'s tractors whine and spin on a bulkhead out of view. From that direction, you hear metallic tools hitting the floor and cursing from the surprised [the underling][or]From [Rover Locale], you hear [Rover] bark menacingly[or][Rover] howls eerily from another section of Valkyrie, and his caterwauling reverberates through the ship[or]You hear some commotion coming from [Rover Locale], a mixture of snarls and snapping jaws[or][Rover] bays ceaselessly at [the underling], who he considers an undesirable visitor[or][Rover]'s telemetry indicates that he is under stress and in a state of extreme excitement and agitation[or]Judging by the racket [Rover] is making in [Rover Locale], he is upset about the presence of [the underling][stopping].";
 	now Rover is busy.
 	
-To say longish encounter:[split out because it makes the above substitution too complex]	say "From [the location of Rover in lower case] you hear [the underling] shout, [quotation mark][assault ship designation], this is [underling]. Some kind of colossal excavation robot is watching me. It's the size of a Jackrabbit-class cutter; it's got huge, sharp... Well, I don't like the way it's just looking at me. It's creepy.[quotation mark][paragraph break][quotation mark]Roger, [underling], situation acknowledged. We recommend that you complete operations quickly and return to [assault ship designation].[quotation mark][paragraph break][quotation mark]Affirmative, [assault ship designation], that's just what I'm doing. Um, thanks for the advice.[quotation mark][paragraph break][quotation mark]That's why we're here, [underling]. This is [assault ship designation], out.[quotation mark]".
+To say Rover Locale:
+	say "[if unicodage is disabled][the location of Rover][otherwise][the location of Rover in lower case][end if]".
+	
+To say longish encounter:[split out because it makes the above substitution too complex]	say "From [Rover Locale] you hear [the underling] shout, [quotation mark][assault ship designation], this is [underling]. Some kind of colossal excavation robot is watching me. It's the size of a Jackrabbit-class cutter; it's got huge, sharp... Well, I don't like the way it's just looking at me. It's creepy.[quotation mark][paragraph break][quotation mark]Roger, [underling], situation acknowledged. We recommend that you complete operations quickly and return to [assault ship designation].[quotation mark][paragraph break][quotation mark]Affirmative, [assault ship designation], that's just what I'm doing. Um, thanks for the advice.[quotation mark][paragraph break][quotation mark]That's why we're here, [underling]. This is [assault ship designation], out.[quotation mark]".
 		
 Does the player mean rubbing back:
 	it is likely.
@@ -5995,12 +6037,12 @@ Instead of switching off audio during Back on Mars:
 	if audio is switched off:
 		say "Audio is already disabled.";
 	otherwise:
-		say "You try to switch off the audio stream, but nothing happens. An error message keeps flashing in red, superimposed on your view of [the location in lower case]:[paragraph break]Error: device not available (ALSA driver error 8442)."
+		say "You try to switch off the audio stream, but nothing happens. An error message keeps flashing in red, superimposed on your view of [whereabouts]:[paragraph break]Error: device not available (ALSA driver error 8442)."
 					
 Instead of asking someone about something during Back On Mars:
 	try querying.[divert "ask janet about..." to the query action]
 
-Querying is an action applying to one topic. Understand "ask about [text]" as querying.
+Querying is an action applying to one topic. Understand "ask about [text]" as querying when unicodage is enabled.
 
 Check querying:
 	if Back on Mars is not happening:
@@ -6054,7 +6096,7 @@ To say stop being so repetitive:
 Instead of telling someone about something during Back on Mars:
 	try expounding instead. [divert "tell janet about..." to the expounding action]
 	
-Expounding is an action applying to one topic. Understand "tell about [text]" as expounding when Back on Mars is happening.
+Expounding is an action applying to one topic. Understand "tell about [text]" as expounding when Back on Mars is happening and unicodage is enabled.
 
 Carry out expounding:
 	do nothing.
