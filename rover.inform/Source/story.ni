@@ -521,7 +521,7 @@ Carry out mounting:
 	otherwise:
 		try entering the noun.
 		
-Cataloguing is an action applying to nothing. Understand "ls" as cataloguing when the player is self-aware.
+Cataloguing is an action applying to nothing. Understand "ls" as cataloguing when the player is self-aware and unicodage is enabled.
 
 Carry out cataloguing:	
 	let L be a list of text;
@@ -556,7 +556,7 @@ Carry out cataloguing:
 
 Understand "grep [something]" as searching when the player is self-aware.
 
-Manpaging is an action applying to one topic. Understand "man [text]" or "consult manual about [text]" as manpaging when the player is self-aware.
+Manpaging is an action applying to one topic. Understand "man [text]" or "consult manual about [text]" as manpaging when the player is self-aware and unicodage is enabled.
 
 Carry out manpaging:
 	say "No manual entry found."
@@ -845,7 +845,7 @@ Carry out shellupping:
 		say paragraph break;
 		truncate shells to depth minus 1 entries.
 		
-Fingering is an action applying to one topic. Understand "finger [text]" as fingering when the player is self-aware.
+Fingering is an action applying to one topic. Understand "finger [text]" as fingering when the player is self-aware and unicodage is enabled.
 
 Carry out fingering:
 		say "finger: no such user[paragraph break]".
@@ -878,7 +878,7 @@ Carry out catting:
 	otherwise: [i.e., rover]
 		say "Bah, cats. They're good for chasing, but not much else."
 			
-Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware. 
+Elevating is an action applying to nothing. Understand "su" or "sudo" as elevating when the player is self-aware and unicodage is enabled. 
 
 Carry out elevating:
 	if unicodage is disabled:
@@ -5952,7 +5952,11 @@ When Back on Mars begins:
 	now Rover carries the delicious bone;
 	now stardate is "23920817";
 	try section-breaking;
-	say "You wake up slowly, for once not a slave to your alarm clock. You sit up groggily, aching all over.[paragraph break]It takes a minute to grok the situation in front of you. Two people whom you certainly recognize are standing in the middle of your living room: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.[paragraph break]In a corner of the living room, Rover is fast asleep, the half-chewed bone still held scissor-fashion between his front paws."
+	say "You wake up slowly, for once not a slave to your alarm clock. You sit up groggily, aching all over.[paragraph break]It takes a minute to grok the situation in front of you. Two people whom you certainly recognize are standing in the middle of your living room: David Venkatachalam and yourself, or rather, your alter ego in the flesh, Janet Xiang.[paragraph break]In a corner of the living room, Rover is fast asleep, the half-chewed bone still held scissor-fashion between his front paws.";
+	if unicodage is disabled:
+		now audio is switched on;
+		now Rover is awake;
+		now David Venkatachalam is exposed.
 	
 Every turn during Back on Mars:
 	let elapsed be the turn count minus epoch_pid;
