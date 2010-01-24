@@ -1730,14 +1730,14 @@ After printing the banner text:
 	await keystroke;
 	try section-breaking;
 	[display setup]
-	if the player is self-aware:
-		change the left hand status line to "MANUAL";
-	otherwise:
-		change the left hand status line to "[if unicodage is disabled][last-noun][otherwise][last-noun in upper case][end if] -> [status-line-action] : [last-success]";
+	change the left hand status line to "[if the player is clueless][left-msg][otherwise]MANUAL[end if]";
 	change the right hand status line to "[if the player is self-aware]Flosix/OS 210LTS[end if][if the player is clueless and the player is the ACU]Memory: [current memory usage].[a random number from 0 to 9]PB[end if][if the player is Rover]ROVER P.O.V.[end if]";
 	say "[ACU Boot Banner]";
 	try dreaming;
 	try beeping.
+	
+To say left-msg:
+	say "[if unicodage is disabled][last-noun][otherwise][last-noun in upper case][end if] -> [status-line-action] : [last-success]";
 	
 Section Save the World
 
@@ -4960,7 +4960,7 @@ Every turn:
 			if the current action is not manpaging:       [###matching is a probem for zag]
 				change last-success to "NIL";
 	if the player is self-aware or status is disabled:
-		say "[if unicodage is disabled][last-noun][otherwise][last-noun in upper case][end if] -> [status-line-action] : [last-success][paragraph break]";
+		say "[left-msg][paragraph break]";
 	if the elevate flag is false:
 		update prompt;
 	[avoid penalizing time for non-actions, a nuance]
