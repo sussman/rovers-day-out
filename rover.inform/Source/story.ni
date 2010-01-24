@@ -6253,10 +6253,12 @@ title													subtable
 
 
 A hint activation rule:
-	if the Bedtime is happening then activate the Table of Getting Out Of Bed.
+	if the Bedtime is happening:
+		activate the Table of Getting Out Of Bed.
 	
 A hint deactivation rule:
-	if the Bedtime is not happening then deactivate the Table of Getting Out Of Bed.
+	if the Bedtime is not happening:
+		deactivate the Table of Getting Out Of Bed.
 
 Table of Getting out of bed
 hint													used
@@ -6267,10 +6269,12 @@ hint													used
 "You just need to get out of bed. Try standing."
 
 A hint activation rule:
-	if ACU is lost and gone-towards is zero then activate the Table of No NEWS.
+	if ACU is lost and gone-towards is zero:
+		activate the Table of No NEWS.
 	
 A hint deactivation rule:
-	if gone-towards is greater than zero then deactivate the Table of No NEWS.
+	if gone-towards is greater than zero:
+		deactivate the Table of No NEWS.
 	
 Table of No NEWS
 hint													used
@@ -6280,10 +6284,12 @@ hint													used
 "You can say [quotation mark]Go towards bathroom[quotation mark] to go into the bathroom. [quotation mark]Go bathroom[quotation mark] also works and is shorter."
 
 A hint activation rule:
-	if the futon is not folded and the futon is obstructed and the First Sim is happening then activate the Table of Futonistic Obstruction.
+	if the futon is not folded and the futon is obstructed and the First Sim is happening:
+		activate the Table of Futonistic Obstruction.
 	
 A hint deactivation rule:
-	if the futon is folded or the First Sim is not happening then deactivate the Table of Futonistic Obstruction.
+	if the futon is folded or the First Sim is not happening:
+		deactivate the Table of Futonistic Obstruction.
 
 Table of Futonistic Obstruction
 hint													used
@@ -6293,10 +6299,12 @@ hint													used
 "To make more room to walk around, you need to fold up the futon."
 
 A hint activation rule:
-	if the picture is inspected and the First Sim is happening then activate the Table of Mnemonic Devices.
+	if the picture is inspected and the First Sim is happening:
+		activate the Table of Mnemonic Devices.
 	
 A hint deactivation rule:
-	if the First Sim is not happening then deactivate the Table of Mnemonic Devices.
+	if the First Sim is not happening:
+		deactivate the Table of Mnemonic Devices.
 
 Table of Mnemonic Devices
 hint													used
@@ -6312,10 +6320,12 @@ hint													used
 "I wonder what tricks Rover knows."
 
 A hint activation rule:
-	if the drapes are closed and bedtime is not happening then activate the Table of Grue Vision.
+	if the drapes are closed and bedtime is not happening:
+		activate the Table of Grue Vision.
 	
 A hint deactivation rule:
-	if the drapes are open then deactivate the Table of Grue Vision.
+	if the drapes are open:
+		deactivate the Table of Grue Vision.
 
 Table of Grue Vision
 hint													used
@@ -6326,10 +6336,12 @@ hint													used
 "You need to open the drapes to see better."
 
 A hint activation rule:
-	if the first sim is happening and the drapes are open and the futon is folded and the magpaper is not inspected then activate the Table of Stuff To Do.
+	if the first sim is happening and the drapes are open and the futon is folded and the magpaper is not inspected:
+		activate the Table of Stuff To Do.
 		
 A hint deactivation rule:
-	if the magpaper is inspected or First Sim is not happening then deactivate the Table of Stuff To Do.
+	if the magpaper is inspected or First Sim is not happening:
+		deactivate the Table of Stuff To Do.
 	
 
 Table of Stuff To Do
@@ -6342,10 +6354,12 @@ hint													used
 "Read the to-do list on the fridge."
 
 A hint activation rule:
-	if Arm Hurts is happening then activate the Table of Brachial Pruritis.
+	if Arm Hurts is happening:
+		activate the Table of Brachial Pruritis.
 		
 A hint deactivation rule:
-	if Arm Hurts is not happening then deactivate the Table of Brachial Pruritis.
+	if Arm Hurts is not happening:
+		deactivate the Table of Brachial Pruritis.
 
 Table of Brachial Pruritis
 hint													used
@@ -6385,10 +6399,12 @@ hint													used
 "The black plate activates the heat lamp."
 
 A hint activation rule:
-	if the Second Sim is happening and Bedtime is not happening then activate the Table of Square One.
+	if the Second Sim is happening:
+		activate the Table of Square One.
 	
 A hint deactivation rule:
-	if the Second Sim is not happening or (the Second Sim is happening and the futon is folded) then deactivate the Table of Square One. 
+	if the player is postpoop:
+		deactivate the Table of Square One.
 
 Table of Square One
 hint													used
@@ -6397,10 +6413,12 @@ hint													used
 "What do you think is going on? Is the background conversation the same?"
 
 A hint activation rule:
-	if the Second Sim is happening and enamel_pid is not zero and the ignite_pid is zero then activate the Table of Omelets.[i.e., shower has been taken, egg has not yet been ingested]
+	if the Second Sim is happening and enamel_pid is not zero and the ignite_pid is zero:
+		activate the Table of Omelets.[i.e., shower has been taken, egg has not yet been ingested]
 
 A hint deactivation rule:
-	if Second Sim is not happening or (the Second Sim is happening and the white egg is cooked) then deactivate the Table of Omelets.	
+	if the white egg is cooked:
+		deactivate the Table of Omelets.	
 													
 Table of Omelets
 hint													used
@@ -6415,10 +6433,12 @@ hint													used
 "Once the egg is cooked, you can eat the egg. You don't need a fork or other utensils."
 
 A hint activation rule:
-	if the Second Sim is happening and Rover is thirsty and the player is in the kitchen then activate the Table of Hydration.
+	if the Second Sim is happening and Rover is thirsty and the player is in the kitchen:
+		activate the Table of Hydration.
 	
 A hint deactivation rule:
-	if the Second Sim is not happening or (the Second Sim is happening and Rover is slaked) then deactivate the Table of Hydration.
+	if Rover is slaked:
+		deactivate the Table of Hydration.
 
 Table of Hydration
 hint													used
@@ -6431,10 +6451,12 @@ hint													used
 "Drop the water bowl so Rover can have a drink."
 
 A hint activation rule:
-	if the Second Sim is happening and Rover is hungry and the player is in the kitchen then activate the Table of Sustenance.
+	if the Second Sim is happening and Rover is hungry and the player is in the kitchen:
+		activate the Table of Sustenance.
 	
 A hint deactivation rule:
-	if the Second Sim is not happening or (the Second Sim is happening and Rover is stuffed) then deactivate the Table of Sustenance.
+	if Rover is stuffed:
+		deactivate the Table of Sustenance.
 
 Table of Sustenance
 hint													used
@@ -6447,10 +6469,12 @@ hint													used
 "If you've picked up the bowl, Rover can't eat the food until you put the bowl down."
 
 A hint activation rule:
-	if the Second Sim is happening and the ignite_pid is not zero then activate the Table of Euphemisms. [i.e., egg has been ingested.]
+	if the Second Sim is happening and the ignite_pid is not zero:
+		activate the Table of Euphemisms. [i.e., egg has been ingested.]
 	
 A hint deactivation rule:
-	if Second Sim is not happening or (the Second Sim is happening and the landing_pid is not zero) then deactivate the Table of Euphemisms.
+	if Second Sim is not happening or (the Second Sim is happening and the landing_pid is not zero):
+		deactivate the Table of Euphemisms.
 
 Table of Euphemisms
 hint													used
@@ -6461,10 +6485,12 @@ hint													used
 "Taking care of business is a euphemism for going to the bathroom. What specifically that means is left up to you."
 
 A hint activation rule:
-	if the Second Sim is happening and the player is postpoop and the landing_pid is zero then activate the Table of Stick Straightening. [i.e., pooped, but not flushed.]
+	if the Second Sim is happening and the player is postpoop and the landing_pid is zero:
+		activate the Table of Stick Straightening. [i.e., pooped, but not flushed.]
 	
 A hint deactivation rule:
-	if Second Sim is not happening or (the Second Sim is happening and the landing_pid is not zero) then deactivate the Table of Stick Straightening.
+	if Second Sim is not happening or (the Second Sim is happening and the landing_pid is not zero):
+		deactivate the Table of Stick Straightening.
 
 Table of Stick Straightening
 hint													used
@@ -6482,10 +6508,12 @@ hint													used
 
 
 A hint activation rule:
-	if the Second Sim is happening and the landing_pid is not zero then activate the Table of Perambulation.
+	if the Second Sim is happening and the landing_pid is not zero:
+		activate the Table of Perambulation.
 		
 A hint deactivation rule:
-	if the Second Sim is not happening then deactivate the Table of Perambulation.
+	if the Second Sim is not happening:
+		deactivate the Table of Perambulation.
 
 Table of Perambulation
 hint													used
@@ -6496,10 +6524,12 @@ hint													used
 "To let Rover out for walkies, open the front door."
 
 A hint activation rule:
-	if the Real Thing is happening and the enamel_pid is zero then activate the Table of Persistence.
+	if the Real Thing is happening and player is not postpoop:
+		activate the Table of Persistence.
 	
 A hint deactivation rule:
-	if the Real Thing is not happening or (the Real Thing is happening and the enamel_pid is not zero) then deactivate the Table of Persistence.
+	if player is postpoop:
+		deactivate the Table of Persistence.
 
 Table of Persistence
 hint													used
@@ -6510,10 +6540,12 @@ hint													used
 "The last two times were practice -- this time is for real."
 
 A hint activation rule:
-	if the Real Thing is happening and the acu is postpoop and the landing_pid is zero then activate the Table of Plumbing.
+	if the Real Thing is happening and landing sequence is happening:
+		activate the Table of Plumbing.
 	
 A hint deactivation rule:
-	if the Real Thing is not happening or (the Real Thing is happening and the landing_pid is not zero) then deactivate the Table of Plumbing.
+	if landing sequence is not happening:
+		deactivate the Table of Plumbing.
 
 Table of Plumbing
 hint													used
@@ -6530,10 +6562,12 @@ hint													used
 "You could raise the flapper valve to allow the toilet to flush."
 
 A hint activation rule:
-	if the Real Thing is happening and Rover is not in the Valkyrie Area then activate the Table of Bone Retrieval.
+	if the Real Thing is happening and Rover is not in the Valkyrie Area:
+		activate the Table of Bone Retrieval.
 	
 A hint deactivation rule:
-	if the Real Thing is not happening or (the Real Thing is happening and the delicious bone is in the Valkyrie Area) then deactivate the Table of Bone Retrieval.
+	if the Real Thing is not happening or (the Real Thing is happening and the delicious bone is in the Valkyrie Area):
+		deactivate the Table of Bone Retrieval.
 
 Table of Bone Retrieval
 hint													used
@@ -6549,10 +6583,12 @@ hint													used
 "After Rover has the bone, he can take it home."
 
 A hint activation rule:
-	if the Real Thing is happening and the delicious bone is in the Valkyrie Area and the white egg is not in Limbo then activate the Table of Refueling.
+	if the Real Thing is happening and the delicious bone is in the Valkyrie Area and the white egg is not in Limbo:
+		activate the Table of Refueling.
 	
 A hint deactivation rule:
-	if the Real Thing is not happening or (the Real Thing is happening and the delicious bone is in the Valkyrie Area and the white egg is in Limbo) then deactivate the Table of Refueling.
+	if the Real Thing is not happening or (the Real Thing is happening and the delicious bone is in the Valkyrie Area and the white egg is in Limbo):
+		deactivate the Table of Refueling.
 
 Table of Refueling
 hint													used
@@ -6574,10 +6610,12 @@ hint													used
 "To fuel the engines, you need to fry and eat another egg."
 
 A hint activation rule:
-	if the Real Thing is happening and the white Egg is in Limbo then activate the Table of Blasting Off.
+	if the Real Thing is happening and the ignite_pid is not zero:
+		activate the Table of Blasting Off.
 	
 A hint deactivation rule:
-	if the Real Thing is not happening then deactivate the Table of Blasting Off.
+	if the Real Thing is not happening:
+		deactivate the Table of Blasting Off.
 
 Table of Blasting Off
 hint													used
@@ -6588,10 +6626,12 @@ hint													used
 "The toilet is still broken. How did you flush it last time?"
 
 A hint activation rule:
-	if Boarding Party is happening then activate the Table of Evasive Action.
+	if Boarding Party is happening:
+		activate the Table of Evasive Action.
 	
 A hint deactivation rule:
-	if Boarding Party is not happening then deactivate the Table of Evasive Action.
+	if Boarding Party is not happening:
+		deactivate the Table of Evasive Action.
 
 Table of Evasive Action
 hint													used
@@ -6605,10 +6645,12 @@ hint													used
 "What happens if you brush your teeth after the other ship attaches?"
 
 A hint activation rule:
-	if Boarding Party is happening and henchmen defeated is less than four then activate the Table of RockemSockem.
+	if Boarding Party is happening and henchmen defeated is less than four:
+		activate the Table of RockemSockem.
 	
 A hint deactivation rule:
-	if Boarding Party is not happening or (Boarding Party is happening and henchmen defeated is greater than three) then deactivate the Table of RockemSockem.
+	if Boarding Party is not happening or (Boarding Party is happening and henchmen defeated is greater than three):
+		deactivate the Table of RockemSockem.
 
 Table of RockemSockem
 hint													used
@@ -6624,10 +6666,12 @@ hint													used
 "Do you think droids would operate well under ultracold conditions?"
 
 A hint activation rule:
-	if Boarding Party is happening and henchmen defeated is greater than three then activate the Table of Antitech.
+	if Boarding Party is happening and henchmen defeated is greater than three:
+		activate the Table of Antitech.
 	
 A hint deactivation rule:
-	if Boarding Party is not happening then deactivate the Table of Antitech.
+	if Boarding Party is not happening:
+		deactivate the Table of Antitech.
 
 Table of Antitech
 hint													used
@@ -6641,10 +6685,12 @@ hint													used
 "Even if you can't take out every last technician, slowing them down buys you time."
 
 A hint activation rule:
-	if Back on Mars is happening and audio is switched off then activate the Table of Low Volume.
+	if Back on Mars is happening and audio is switched off:
+		activate the Table of Low Volume.
 	
 A hint deactivation rule:
-	if Back on Mars is happening and audio is switched on then deactivate the Table of Low Volume.
+	if Back on Mars is happening and audio is switched on:
+		deactivate the Table of Low Volume.
 
 Table of Low Volume
 hint													used
@@ -6653,7 +6699,8 @@ hint													used
 "Your audio feed is off. You need to listen."
 
 A hint activation rule:
-	if Back on Mars is happening and David Venkatachalam is exposed then activate the Table of Defeating Evil.
+	if Back on Mars is happening and David Venkatachalam is exposed:
+		activate the Table of Defeating Evil.
 
 Table of Defeating Evil
 hint													used
