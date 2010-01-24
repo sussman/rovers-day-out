@@ -813,13 +813,13 @@ Pwding is an action applying to nothing. Understand "pwd" as pwding when the pla
 Carry out pwding:
 	say "[the path of the acu-proxy][paragraph break]";
 	
-Bashing is an action applying to nothing. Understand "bash" or "sh" or "ksh" as bashing when the player is self-aware.
+Bashing is an action applying to nothing. Understand "bash" or "sh" or "ksh" as bashing when the player is self-aware and unicodage is enabled.
 
 Carry out bashing:
 	say paragraph break;
 	add "$" to shells.
 	
-Cshing is an action applying to nothing. Understand "csh" or "zsh" or "tcsh" as cshing when the player is self-aware.
+Cshing is an action applying to nothing. Understand "csh" or "zsh" or "tcsh" as cshing when the player is self-aware and unicodage is enabled.
 
 Carry out cshing:
 	say paragraph break;
@@ -835,7 +835,7 @@ Carry out logoutting:
 	otherwise:
 		say "logout: not login shell: use [apostrophe]exit[apostrophe][line break]".
 		
-Shellupping is an action applying to nothing. Understand "exit" as shellupping when the player is self-aware.
+Shellupping is an action applying to nothing. Understand "exit" as shellupping when the player is self-aware and unicodage is enabled.
 
 Carry out shellupping:
 	now depth is the number of entries in shells;
@@ -1708,6 +1708,22 @@ Section Disabled For Testing
 When play begins:
 	change the wait-a-bit to false;
 	activate the Table of Getting Out of Bed.
+	
+Section Nontechnoverbs
+
+First after an actor doing something (this is the find non-technoverb actions rule):
+	if got-action is true:
+		do nothing;
+	otherwise:[meaning, it wasn't found in the technoverb table]
+		if test-action is:  [ignore these actions, they shouldn't be reported]
+			-- the memory-updating action:
+				continue the action;
+			-- otherwise:
+				say "(***Note:  [test-action] isn't in technoverb-table)[paragraph break]";
+				continue the action;
+	[if the noun is something:
+		change last-noun to "[aware-name of the noun]";]
+	continue the action.
 	
 Section Unit Testing
 
@@ -2814,7 +2830,7 @@ After opening the old fridge:
 	change the outcome-override to force-success;
 	[now Rover is busy; - sounds more natural to not inhibit other same round actions]
 	if Rover is in the location:
-		say "[Rover] looks up when he hears [the old fridge] open. [run paragraph on]";
+		say "[Rover] looks up when he hears [the old fridge] open.";
 	otherwise:
 		if Rover is not in Limbo:
 			say "[if the player is clueless]As the fridge creaks open on its ancient hinges, Rover slips into the kitchen[otherwise]Rover pops into the engineering section to investigate the thermal shift[end if]. [run paragraph on]";
@@ -4700,9 +4716,6 @@ Forced-outcome is a kind of value. The forced-outcomes are force-success, force-
 As each turn begins, forced-outcome is reset to neutral. After each command is parsed, outcome is set to fail (nil). At any time, it can be forced in either direction (t/nil). During the did-it-work stage, actions that default to true are set to true. However, force-outcome trumps all. Finally, the status line is updated in every turn.]
 
 After reading a command (this is the re-initialize rule):
-	[if unicodage is disabled:
-		continue the action;
-	otherwise:]
 	if the player is Rover:
 		change last-noun to "ROVER";
 	otherwise:
@@ -4726,21 +4739,6 @@ First before an actor doing something (this is the catch failed actions rule):
 			change last-noun to "[aware-name of the location of the player]";
 		otherwise:
 			if the noun is something then change last-noun to "[aware-name of the noun]".
-
-[This rule can be moved to not for release]
-First after an actor doing something (this is the find non-technoverb actions rule):
-	if got-action is true:
-		do nothing;
-	otherwise:[meaning, it wasn't found in the technoverb table]
-		if test-action is:  [ignore these actions, they shouldn't be reported]
-			-- the memory-updating action:
-				continue the action;
-			-- otherwise:
-				say "(***Note:  [test-action] isn't in technoverb-table)[paragraph break]";
-				continue the action;
-	[if the noun is something:
-		change last-noun to "[aware-name of the noun]";]
-	continue the action.
 	
 The outcome stage rule is listed after the report stage rule in the specific action-processing rules.
 
@@ -4956,12 +4954,12 @@ Every turn:
 		if the last-noun is "":
 			change last-noun to "ACU";
 			[this is required to handle the out-of-turn-sequence response to "player consents" action. Without it, the last-noun would be nothing, and the attempt to put "nothing" in upper case would trigger a run-time error.]
-		if last-noun matches the text "COGNITIVE BLOCK":
+		if unicodage is enabled and last-noun matches the text "COGNITIVE BLOCK":
 			if the current action is not manpaging:       [###matching is a probem for zag]
 				change last-success to "NIL";
 	if the player is self-aware or status is disabled:
 		say "[left-msg][paragraph break]";
-	if the elevate flag is false:
+	if the elevate flag is false and unicodage is enabled:
 		update prompt;
 	[avoid penalizing time for non-actions, a nuance]
 	if the current action is taking inventory or the current action is looking:
