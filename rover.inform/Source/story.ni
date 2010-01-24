@@ -328,7 +328,7 @@ A device has an truth state called initial-onoff. The initial-onoff of a device 
 
 A water is a kind of thing. Waters are privately-named. The indefinite article of a water is usually "some".
 
-Conclusion is a kind of value. The conclusions are alive, pillowed, casimired, transferred, casimired, eeled, david-killed, both-killed and janet-shot.  
+Conclusion is a kind of value. The conclusions are alive, pillowed, casimired, transferred, casimired, eeled, david-killed, both-killed and janet-killed.  
 
 Endgame is a conclusion that varies. The endgame is usually alive.
 
@@ -1941,6 +1941,9 @@ Persuasion rule for asking Rover to try attacking:
 	persuasion succeeds.
 	
 Instead of Rover attacking when Rover is in the Valkyrie Area:
+	if the noun is Janet or the noun is the  ACU or the noun is Rover:
+		say "Rover looks confused.";
+		the rule succeeds;
 	if David Venkatachalam is not exposed:
 		say "Rover's fur stands on edge, and he growls momentarily but then realizes that there is nothing threatening here.";
 	otherwise:
