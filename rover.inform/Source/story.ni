@@ -1,7 +1,7 @@
 "Rover's Day Out" by Jack Welch and Ben Collins-Sussman
 
 The story headline is "An Interactive Fiction".
-The release number is 13.
+The release number is 14.
 The story genre is "Science Fiction".
 The story creation year is 2009.
 The story description is "Three hundred years ago, the Brazilian Space Agency discovered a rocky exoplanet only 38 light years from Earth. With a surface temperature of 1200 Celsius and nine times Earth gravity, it's hardly the sort of place you'd take your dog walkies. Most days."
