@@ -60,7 +60,7 @@ Understand "pick up [thing]" or "pick [thing] up" as taking.
 Chapter Rules Modifications
 
 [Devices are responsible for giving their on/off status -- if desired -- as part of their description. There's only a few devices in the game, so not a biggie.]
-The examine described devices rule is not listed in any rulebook.
+The examine devices rule is not listed in any rulebook.
 
 [In this case, real adventurers might need to...]
 The block swearing obscenely rule is not listed in any rulebook.
@@ -1307,7 +1307,8 @@ Carry out reorienting:
 	if the player is self-aware:
 		now the player is clueless;
 	otherwise if the player is not Rover:
-		now the player is self-aware.
+		now the player is self-aware;
+		change the command prompt to "	READY>".
 		
 Section Awaiting Keystroke-release version
 
@@ -2410,7 +2411,7 @@ The clueless-name of the right arm is "right arm". The clueless-description of t
 
 The clueless-name of the back is "back". The clueless-description of the back is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if] back, so far as you can see, looks normal." The aware-name of the back is "dorsal hull". The aware-description of the back is "The dorsal hull." The back-proxy is an aware-proxy that is part of the back. Understand "dorsal" or "hull" as back-proxy. The scent of the back is "[scent of the acu]".
 
-The clueless-name of the belly is "belly". Understand "stomach" and "chest" as belly. The clueless-description of the belly is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if] belly isn't particularly remarkable, although a couple more visits to the MARSpace gym couldn't hurt." The aware-name of the belly is "heat deflector". The aware-description of the belly is "The lower hull of the ship, which is thicker than the dorsal hull to better withstand the heat and pressure of an atmospheric landing." The belly-proxy is an aware-proxy that is part of the belly. Understand "ventral" or "hull" or "plating" or "deflector" as belly-proxy. The scent of the back is "[scent of the acu]".
+The clueless-name of the belly is "belly". Understand "stomach" and "chest" as belly. The clueless-description of the belly is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s [end if] belly isn't particularly remarkable, although a couple more visits to the MARSpace gym couldn't hurt." The aware-name of the belly is "heat deflector". The aware-description of the belly is "The lower hull of the ship, which is thicker than the dorsal hull to better withstand the heat and pressure of an atmospheric landing." The belly-proxy is an aware-proxy that is part of the belly. Understand "ventral" or "hull" or "plating" or "deflector" as belly-proxy. The scent of the belly is "[scent of the acu]".
 
 The clueless-name of the body is "body". The clueless-description of the body is "[if the player is the ACU]Your[otherwise][the clueless-name of the ACU]'s[end if] body. Nothing too special -- two arms, two legs, the usual really." The aware-name of the body is "superstructure". The aware-description of the body is "The superstructure of the Valkyrie, a network of metal and composite scaffolding built to withstand the stresses of interstellar flight and planetary landings." The scent of the body is "[scent of the acu]". 
 
@@ -4355,7 +4356,7 @@ Persuasion rule for asking Inert Rover to try doing anything:
 	say "Rover has been rendered unconscious. He's not moving at all, and doesn't respond to your command.";
 	persuasion fails.
 
-David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed. He can be exposed. He is not exposed. Understand "boss" or "director" as David Venkatachalam.
+David Venkatachalam is a man in Limbo. The description of David Venkatachalam is "David is of medium build, slightly bald, and has a pointed goatee. He is wearing a fashionable business robe and a bowler hat. [if audio is switched off]He is talking to Janet; you can see their lips moving." The clueless-name of David Venkatachalam is "David Venkatachalam". The aware-name of David Venkatachalam is "David". David Venkatachalam is failsafed.  David Venkatachalam can be exposed. David Venkatachalam is not exposed. Understand "boss" or "director" as David Venkatachalam.
 
 David Venkatachalam wears a black business robe and a burgundy bowler hat. Understand "fashionable" and "expensive" as the black business robe. The description of the black business robe is "A shiny, black business robe, with a wide sash of gold terry cloth and high slit in the rear. Surely, the custom-tailored robe is every bit as expensive as it looks. The robe comes down almost to the floor in the front, although David's fancy boots can be seen as he walks."  The gold terry cloth sash is part of the black business robe. The description of the gold terry cloth sash is "At least twice as long as David is tall, the width of the sash is meant to impress business associates with David's social standing as director of the Valkyrie project."  Understand "long" and "wide" as the gold terry cloth sash. David Venkatachalam wears fancy boots. The fancy boots are plural-named. The indefinite article of the fancy boots is "a pair of". The description of the fancy boots is "Exotic boots, apparently made of snakeskin, possibly imported from Earth. They stand in stark contrast to the more functional boots worn by most executives on Mars." Understand "exotic" and "snake" and "skin" and "snakeskin" as the fancy boots. The description of the burgundy bowler hat is "A bulbous, helmet-like version of the classic hat, with a relatively narrow brim. The burgundy-colored hat looks like an antique with no piercings." Understand "bulbous" and "antique" as the burgundy bowler hat. The aware-name of the black business robe is "clothing". The aware-name of the burgundy bowler hat is "clothing". The aware-name of the gold terry cloth sash is "clothing". The aware-name of the fancy boots is "clothing". The goatee is a part of David Venkatachalam. The description of the goatee is "A waxed, black goatee of medium length, which comes to a crisp point below David's chin." The aware-name of the goatee is "david".
 
@@ -4734,7 +4735,7 @@ First before an actor doing something (this is the catch failed actions rule):
 	if got-action is true:
 		do nothing;
 	otherwise:
-		change test-action to the action-name part of the current action;
+		change test-action to the action name part of the current action;
 		if test-action is a verb listed in the Table of Technoverbs:
 			change got-action to true;
 			change the status-line-action to technoverb entry;
@@ -4936,10 +4937,8 @@ the whoing action					TRUE		"WHO" [who]
 the yelling action					TRUE		"BROADCAST"
 the yoking it more action		TRUE		"VECTOR ADJUST" [push, pull,twist plunger]
 
-Chapter Triggered Events
 
-At the time when the player is self-aware:
-	change the command prompt to "	READY>";
+Chapter Triggered Events
 	
 After reading a command:
 	if unicodage is disabled:
