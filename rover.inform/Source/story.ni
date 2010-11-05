@@ -15,7 +15,7 @@ Include Flexible Windows by Jon Ingold.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.
 
-Release along with cover art.
+Release along with cover art, an interpreter, and the introductory booklet.
 
 Book 1 Mechanics
 
@@ -403,6 +403,7 @@ To say ACU Boot Banner:
 	say "An Interactive Simulation by Janet Xiang[if the Real Thing is happening] and David Venkatachalam[end if]";
 	say line break;
 	let serial be "[stardate]";
+	let release be "beta";
 	if First Sim is happening:
 		let release be "beta 732";
 	otherwise if Second Sim is happening:
@@ -495,6 +496,7 @@ After touching something (called the item):
 	if the item is the player:
 		say "You feel normal. Nothing out of the ordinary, really.";
 	otherwise:
+		let T be "";
 		let the regverb be "feel";
 		if the texture of the item is "":
 			let the T be "[one of]unremarkable[or]as you'd expect[or]like [it-they] should[or]normal[in random order]";
@@ -1586,6 +1588,7 @@ Instead of doing something when the player is clueless and the noun is an aware-
 	say "You can't see any such thing.";
 	if the Real Thing has not happened:
 		if aware-references is less than 4:
+			let metatext be "";
 			if aware-references is 1:
 				let metatext be "David: How can it be aware of that?*Janet: It can’t. That’s outside the simulation. I sometimes mumble to myself about whatever is on my mind from work. That must have carried over during the scan.*David: Hmph.";
 			otherwise if aware-references is 2:
@@ -3841,6 +3844,7 @@ Carry out yoking it more:
 Report yoking it more:
 	let A be the axis corresponding to the custom-direction of second noun in the Table of Axes;
 	let D be the delta corresponding to the custom-direction of second noun in the Table of Axes;
+	let the angle be the pitch;
 	say "You adjust the plunger handle [second noun]. [run paragraph on]";
 	if A is 1:
 		let the angle be the pitch;
@@ -4451,9 +4455,10 @@ Instead of remembering a topic listed in the Table of Remembered Stuff when the 
 			if david-remembered is less than three:
 				if david-remembered is 1:
 					let metatext be "David: I think I'd like to have heard that one.*Janet: Not a chance.";
+					say "[metatext in metaspeak]";
 				otherwise if david-remembered is 2:
 					let metatext be "David: I’m half tempted to decompile the code just to see what it said.*Janet: My code is not for the faint of heart. If you wander in there, watch out for grues.*David: Grooze?";
-				say "[metatext in metaspeak]";
+					say "[metatext in metaspeak]";
 			now david-remembered is david-remembered plus one;
 	now remember-invoked is true.
 	
