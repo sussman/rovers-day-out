@@ -7,9 +7,10 @@ game (or more commonly known as "text adventure".)
 
 It was originally written by Jack Welch (with assistance from Ben
 Collins-Sussman) in summer of 2009, and was entered into the 2009
-InfoComp competition.  The code is now released under the "Creative
-Commons Attribution - Noncommercial - Share Alike 3.0" license, which
-you can find in the LICENSE file.
+InfoComp competition and won 1st place.
+
+The code is now released under the "Creative Commons Attribution - 
+Noncommercial - Share Alike 3.0" license, which you can find in the LICENSE file.
 
 The game is written in the Inform 7 language.  You can download the
 compiler and IDE as a single package from here:
@@ -31,7 +32,7 @@ To build the game:
 
 1. Create a working Inform project from your source tree:
 
-  $ hg clone URL rover
+  $ git clone URL rover
   $ cd rover
   $ mv rover.inform/ moo.inform/
 
