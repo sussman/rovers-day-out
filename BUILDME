@@ -54,14 +54,17 @@ expects to find extension modules:
   - create a directory called "Jon Ingold" in the Extensions
     directory, then copy 'Flexible Windows.i7x' into it.
 
-  - create a directory called "Eric Eve' in the Extensions directory,
+  - create a directory called "Eric Eve" in the Extensions directory,
     then copy 'Adaptive Hints.i7x' into it.
 
-  - create a directory called "Eric Eve' in the Extensions directory,
-    then copy 'Adaptive Hints.i7x' into it.
+  - create a directory called "Dannii Willis" in the Extensions directory,
+    then copy both 'Alternative Startup Rules.i7x' and 'Glk object recovery.i7x'
+    into it.
+
+  - create a directory called "Emily Short" in the Extensions directory,
+    then copy 'Glulx Entry Points.i7x' into it.
 
 
-- 
 
 
 3. Launch the Inform IDE and load the rover.inform project.  The
