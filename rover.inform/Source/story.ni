@@ -10,7 +10,6 @@ Include Glulx Text Effects by Emily Short.
 Include Basic Screen Effects by Emily Short.
 Include Menus by Emily Short.
 Include Adaptive Hints by Eric Eve.
-Include Case Management by Emily Short.
 Include Flexible Windows by Jon Ingold.
 
 Use full-length room descriptions, no scoring, american dialect and the serial comma.

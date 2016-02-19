@@ -23,12 +23,13 @@ executed on any implementation of a Glulx virtual machine:
   http://www.eblong.com/zarf/glulx/
 
 The game's source code lives in a single file called 'story.ni'.
-However, it also depends on an 'extension' module called "Flexible
-Windows.i7x" by Jon Ingold.
+However, it also depends on several Extension modules.
 
 
 To build the game:
 ------------------
+
+(These instructions are based on Inform release 6M62, early 2016)
 
 1. Create a working Inform project from your source tree:
 
@@ -55,6 +56,12 @@ expects to find extension modules:
 
   - create a directory called "Eric Eve' in the Extensions directory,
     then copy 'Adaptive Hints.i7x' into it.
+
+  - create a directory called "Eric Eve' in the Extensions directory,
+    then copy 'Adaptive Hints.i7x' into it.
+
+
+- 
 
 
 3. Launch the Inform IDE and load the rover.inform project.  The
